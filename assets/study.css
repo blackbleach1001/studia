@@ -2,7 +2,7 @@
    Studia — wygląd materiałów (notatki, fiszki, strona główna)
    Atkinson Hyperlegible (tekst) + Playfair Display (nagłówki)
    ========================================================= */
-@import url("reader.css");
+@import url("reader.css?v=cdbaef69");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 :root{

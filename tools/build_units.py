@@ -158,6 +158,12 @@ def build_kliniczna(subj):
         div = main.select_one(".wyklad-divider")
         i = order.index(div)
         keep = order[:i] if u["key"] == "wyklad-1" else order[i + 1:]
+        intro = main.find(id="wprowadzenie")
+        if intro is not None:
+            # wstęp opisywał wspólny plik obu wykładów — zostaje zakres i literatura
+            drop(intro.find("div", class_="eyebrow"), intro.find("div", class_="pending"))
+            if intro.find("h2"):
+                intro.find("h2").string = "Zakres wykładu i literatura"
         for c in order:
             if c not in keep:
                 c.decompose()
@@ -324,3 +330,5 @@ if __name__ == "__main__":
             redirect(f'{subj["dir"]}/{old}', new)
         print(subj["dir"], [u["file"] for u in subj["units"]])
     build_index(SUBJECTS)
+    import runpy
+    runpy.run_path(str(ROOT / "tools" / "version_assets.py"), run_name="__main__")
