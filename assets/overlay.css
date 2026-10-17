@@ -1,0 +1,35 @@
+/* =========================================================
+   Studia — nakładka na starsze materiały
+   Ujednolica czytanie bez zmiany treści: Atkinson w tekście,
+   Playfair w nagłówkach, linia ok. 65 znaków, wyrównanie do lewej.
+   ========================================================= */
+@import url("reader.css");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
+
+body, body *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp){
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif !important;
+}
+body h1, body h2, body h3, body h4,
+body h1 *, body h2 *, body h3 *, body h4 *{
+  font-family:"Playfair Display",Georgia,serif !important;
+}
+body{font-size:18px;line-height:1.65;-webkit-text-size-adjust:100%}
+body p, body li, body dd, body blockquote{
+  text-align:left !important;hyphens:manual !important;
+  max-width:65ch;
+}
+body p, body li{line-height:1.65}
+body strong, body b{font-weight:700}
+html{scroll-padding-bottom:140px}
+:focus-visible{outline:3px solid var(--st-accent);outline-offset:2px}
+
+/* przycisk do fiszek w miejscu dawnych pytań */
+.fiszki-link{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin:12px 0;padding:12px 14px;border-radius:12px;
+  background:var(--st-accent-soft);border-left:4px solid var(--st-accent);
+}
+.fiszki-link a{
+  display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;
+  background:var(--st-accent-deep);color:#fff !important;text-decoration:none;font-weight:700;
+}

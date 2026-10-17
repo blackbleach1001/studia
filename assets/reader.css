@@ -1,35 +1,77 @@
-/* Wspólne ustawienia czytania dla wszystkich materiałów */
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap");
-
-.reader-bar{
-  position:fixed;right:14px;bottom:14px;z-index:50;
-  display:flex;gap:6px;padding:6px;
-  background:rgba(255,253,249,.94);backdrop-filter:blur(6px);
-  border:1px solid #e6dccf;border-radius:999px;
-  box-shadow:0 4px 18px rgba(43,33,24,.12);
+/* =========================================================
+   Studia — pasek czytania, tryb skupienia, lektor
+   Własne zmienne --st-*, żeby nie kolidować ze stylami materiałów.
+   Kolor przedmiotu: --st-h, --st-s, --st-l na :root strony.
+   ========================================================= */
+:root{
+  --st-h:345; --st-s:32%; --st-l:60%;
+  --st-accent:hsl(var(--st-h),var(--st-s),var(--st-l));
+  --st-accent-deep:hsl(var(--st-h),var(--st-s),32%);
+  --st-accent-soft:hsl(var(--st-h),40%,95%);
+  --st-accent-mid:hsl(var(--st-h),34%,86%);
+  --st-paper:#fffdf9; --st-ink:#2b2118; --st-ink-soft:#5c4d40; --st-line:#e6dccf;
+  --st-hl:hsl(48,95%,82%);
 }
-.reader-bar a,.reader-bar button{
-  font:600 .85rem/1 "Source Serif 4",Georgia,serif;
-  color:#2b2118;background:transparent;border:0;border-radius:999px;
-  padding:9px 13px;cursor:pointer;text-decoration:none;
-  -webkit-tap-highlight-color:transparent;
+/* =========================================================
+   Tryb skupienia — dotknięty akapit wyraźny, reszta przygasa
+   ========================================================= */
+[data-block]{transition:opacity .2s,background-color .2s;border-radius:6px}
+body.focus [data-block]{opacity:.32}
+body.focus [data-block].is-active{opacity:1}
+body.focus details.sec>summary{opacity:.55}
+body.focus details.sec>summary.is-active{opacity:1}
+body.focus .tldr,body.focus .def,body.focus .note,body.focus .tbl,body.focus .script{background:transparent;border-color:var(--st-line)}
+body.focus table th{background:transparent}
+body.focus .hero,body.focus .toc,body.focus .crumbs{opacity:.45}
+[data-block].is-active{background:var(--st-accent-soft);box-shadow:0 0 0 6px var(--st-accent-soft)}
+body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-shadow:none}
+
+/* podświetlenie lektora */
+::highlight(tts-sentence){background-color:var(--st-hl);color:var(--st-ink)}
+::highlight(tts-word){background-color:hsl(40,95%,62%);color:var(--st-ink)}
+[data-block].tts-fallback{background:var(--st-hl);box-shadow:0 0 0 6px var(--st-hl)}
+
+/* =========================================================
+   Pasek na dole + panel lektora
+   ========================================================= */
+.dock{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:max(12px,env(safe-area-inset-bottom));z-index:40;
+  width:min(560px,calc(100% - 24px));
 }
-.reader-bar button[aria-pressed="true"]{background:var(--accent,#ba7889);color:#fff}
-
-/* Czcionka Atkinson Hyperlegible */
-body.atk, body.atk *:not(svg):not(svg *){
-  font-family:"Atkinson Hyperlegible",system-ui,sans-serif !important;
+.dock-bar{
+  display:flex;gap:6px;padding:6px;align-items:center;
+  background:rgba(255,253,249,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid var(--st-line);border-radius:999px;box-shadow:0 6px 24px rgba(43,33,24,.14);
 }
-body.atk .reader-bar a, body.atk .reader-bar button{font-family:"Atkinson Hyperlegible",sans-serif !important}
+.dock-bar a,.dock-bar button{
+  flex:1 1 0;min-height:44px;border:0;border-radius:999px;background:transparent;
+  color:var(--st-ink);font:700 .95rem/1 "Atkinson Hyperlegible",sans-serif;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:0 10px;
+}
+.dock-bar a:hover,.dock-bar button:hover{background:var(--st-accent-soft)}
+.dock-bar [aria-pressed="true"],.dock-bar [aria-expanded="true"]{background:var(--st-accent-deep);color:#fff}
+.dock svg{width:20px;height:20px;flex:0 0 auto}
 
-/* Tryb skupienia */
-body.focus{font-size:19px;line-height:1.75}
-body.focus .wrap{max-width:700px}
-body.focus .toc, body.focus .pills, body.focus .src, body.focus .sec-lead{display:none}
-body.focus .grid{grid-template-columns:1fr}
-body.focus .card p,body.focus .card li,body.focus table{font-size:1rem}
-body.focus details:not([open]){opacity:.72}
-body.focus details[open]{box-shadow:0 0 0 2px var(--accent,#ba7889)}
-body.focus .reader-bar{opacity:.85}
+.player{
+  margin-bottom:8px;padding:12px 14px;background:rgba(255,253,249,.98);
+  border:1px solid var(--st-line);border-radius:18px;box-shadow:0 6px 24px rgba(43,33,24,.14);
+}
+.player[hidden]{display:none}
+.player .row{display:flex;align-items:center;gap:8px}
+.player .ctl{
+  width:44px;height:44px;border-radius:50%;border:1.5px solid var(--st-line);
+  background:#fff;color:var(--st-ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.player .ctl.main{width:54px;height:54px;background:var(--st-accent-deep);border-color:var(--st-accent-deep);color:#fff}
+.player .now{flex:1;min-width:0;font-size:.88rem;color:var(--st-ink-soft);line-height:1.3}
+.player .now b{display:block;color:var(--st-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player .rate{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.9rem}
+.player .rate input{flex:1;accent-color:var(--st-accent-deep);min-height:44px}
+.player .rate output{min-width:3.4em;text-align:right;font-weight:700}
+.player .voice{margin:6px 0 0;font-size:.8rem;color:var(--st-ink-soft)}
+.player .hint{margin:6px 0 0;font-size:.8rem;color:var(--st-ink-soft)}
 
-@media print{.reader-bar{display:none}}
+@media print{.dock{display:none} details.sec .body{display:block}}
+
