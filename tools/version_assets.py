@@ -15,7 +15,7 @@ def h(p):
 
 def setv(text, name, ver):
     # name lub name?v=xxxx  →  name?v=ver
-    return re.sub(r'(%s)(\?v=[0-9a-f]+)?(?=["\')])' % re.escape(name), r"\1?v=" + ver, text)
+    return re.sub(r'(?<![\w-])(%s)(\?v=[0-9a-f]+)?(?=["\')])' % re.escape(name), r"\1?v=" + ver, text)
 
 # 1) reader.css jest importowany w study.css i overlay.css
 rv = h(A / "reader.css")
@@ -24,7 +24,7 @@ for css in ["study.css", "overlay.css"]:
     p.write_text(setv(p.read_text(encoding="utf-8"), "reader.css", rv), encoding="utf-8")
 
 # 2) pozostałe pliki — po aktualizacji importów
-vers = {n: h(A / n) for n in ["study.css", "overlay.css", "reader.css", "reader.js", "flashcards.js"]}
+vers = {n: h(A / n) for n in ["study.css", "overlay.css", "reader.css", "reader.js", "flashcards.js", "srs.js", "check.js", "today.js", "cards-index.js"]}
 
 for page in list(ROOT.glob("*.html")) + list(ROOT.glob("*/*.html")):
     if "tools" in page.parts:
@@ -33,6 +33,9 @@ for page in list(ROOT.glob("*.html")) + list(ROOT.glob("*/*.html")):
     n = t
     for name, v in vers.items():
         n = setv(n, "assets/" + name, v)
+    cj = page.parent / "cards.js"
+    if cj.exists():
+        n = setv(n, "cards.js", h(cj))
     if n != t:
         page.write_text(n, encoding="utf-8")
 print(vers)

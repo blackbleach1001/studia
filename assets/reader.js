@@ -27,7 +27,7 @@
   /* ---------- bloki tekstu ---------- */
   var BLOCK_SEL = "h2, h3, details > summary, p, li, tr, dd, blockquote";
   function mark(el) {
-    if (el.hasAttribute("data-block") || el.closest(".dock, .st-nav, .st-sheet, .toc, .crumbs, .hero .links, nav, script, style")) return;
+    if (el.hasAttribute("data-block") || el.closest(".dock, .st-nav, .st-sheet, .st-check, .st-pager, .toc, .crumbs, .hero .links, nav, script, style")) return;
     if (/^H[23]$/.test(el.tagName) && el.closest("summary")) return;          // nagłówek w summary — czytamy summary
     if (el.tagName === "LI" && el.querySelector("p")) return;                   // li z akapitami — czytamy akapity
     if (el.tagName === "P" && el.closest("li, td, th, blockquote")) return;
@@ -40,7 +40,7 @@
     root.querySelectorAll(BLOCK_SEL).forEach(mark);
     // starsze materiały: tekst bezpośrednio w <div> (np. odpowiedzi, karty)
     root.querySelectorAll("div").forEach(function (d) {
-      if (d.closest("[data-block], .dock, .st-nav, .st-sheet")) return;
+      if (d.closest("[data-block], .dock, .st-nav, .st-sheet, .st-check, .st-pager")) return;
       if (d.querySelector("p, li, div, table, h1, h2, h3, h4, details, ul, ol")) return;
       if (d.textContent.trim().length < 12) return;
       mark(d);
