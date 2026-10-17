@@ -132,3 +132,11 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   background:hsl(var(--sh),var(--ss),var(--sl));color:#fff;font:700 .875rem/1 "Atkinson Hyperlegible",sans-serif;font-variant-numeric:tabular-nums;
 }
 .row.empty .ic{background:hsl(var(--sh),var(--ss),var(--sl));color:#fff}
+/* powtórki na dziś — zwinięty wiersz pod przedmiotami */
+.group.today{margin-top:22px}
+.today-box{background:var(--card);border-radius:14px;box-shadow:0 0 0 .5px var(--line);overflow:hidden}
+.today-box>summary{list-style:none;cursor:pointer}
+.today-box>summary::-webkit-details-marker{display:none}
+.today-box>summary::after{transform:rotate(135deg);transition:transform .2s}
+.today-box[open]>summary::after{transform:rotate(-45deg)}
+.today-box .ios-list.inner{border-radius:0;box-shadow:none;border-top:.5px solid var(--line)}

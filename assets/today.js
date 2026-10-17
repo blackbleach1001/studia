@@ -34,7 +34,7 @@
     return;
   }
 
-  /* strona główna: grupa „Na dziś” */
+  /* strona główna: jeden zwinięty wiersz pod listą przedmiotów */
   var main = document.querySelector("main");
   if (!main) return;
   var total = 0, rows = "";
@@ -43,18 +43,16 @@
     if (!s.due) return;
     var h = s.d.hsl;
     rows += '<li style="--sh:' + h[0] + ';--ss:' + h[1] + '%;--sl:' + h[2] + '%"><a class="row" href="' + root + s.d.href + '">' +
-      '<span class="ic">' + ICON + '</span><span class="tx"><span class="t">' + s.d.name + '</span>' +
-      '<span class="s">' + s.due + " " + pl(s.due) + " do powtórki</span></span>" +
-      '<span class="badge">' + s.due + "</span></a></li>";
+      '<span class="ic alt">' + ICON + '</span><span class="tx"><span class="t">' + s.d.short + '</span>' +
+      '<span class="s">' + s.due + " " + pl(s.due) + "</span></span></a></li>";
   });
-  if (!total) {
-    var next = decks.map(function (s) { return s.next; }).filter(Boolean).sort()[0];
-    rows = '<li style="--sh:150;--ss:30%;--sl:40%"><span class="row empty"><span class="ic">' + CHECK + '</span>' +
-      '<span class="tx"><span class="t">Na dziś wszystko powtórzone</span>' +
-      '<span class="s">' + (next ? "Następna powtórka: " + SRS.label(next) : "Brak zaplanowanych powtórek") + "</span></span></span></li>";
-  }
+  if (!total) return;                       // nic do powtórki — nic nie pokazujemy
   var g = document.createElement("section");
-  g.className = "group";
-  g.innerHTML = '<h2>Na dziś' + (total ? " · " + total : "") + '</h2><ul class="ios-list">' + rows + "</ul>";
-  main.insertBefore(g, main.firstChild);
+  g.className = "group today";
+  g.innerHTML =
+    '<details class="today-box"><summary class="row" style="--sh:28;--ss:22%;--sl:45%">' +
+      '<span class="ic alt">' + ICON + '</span><span class="tx"><span class="t">Powtórki na dziś</span>' +
+      '<span class="s">' + total + " " + pl(total) + "</span></span></summary>" +
+      '<ul class="ios-list inner">' + rows + "</ul></details>";
+  main.appendChild(g);
 })();
