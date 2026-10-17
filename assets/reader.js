@@ -92,10 +92,9 @@
         '<button class="ctl" type="button" data-a="prev" aria-label="Poprzedni akapit">' + ICON.prev + '</button>' +
         '<button class="ctl main" type="button" data-a="play" aria-label="Odtwórz">' + ICON.play + '</button>' +
         '<button class="ctl" type="button" data-a="next" aria-label="Następny akapit">' + ICON.next + '</button>' +
-        '<div class="now" aria-live="polite"><b data-now>Dotknij akapitu, od którego mam zacząć</b><span data-sub>albo naciśnij odtwórz</span></div>' +
+        '<div class="now" aria-live="polite"><b data-now>Lektor</b><span data-sub></span></div>' +
       '</div>' +
       '<label class="rate">Prędkość <input type="range" min="0.6" max="1.8" step="0.05" data-a="rate"> <output data-rate></output></label>' +
-      '<p class="voice" data-voice></p>' +
     '</section>' : "") +
     '<nav class="dock-bar" aria-label="Narzędzia czytania">' +
       (HOME === "none" ? "" : '<a href="' + HOME + '">' + ICON.back + '<span>Spis</span></a>') +
@@ -108,7 +107,7 @@
   var btnFocus = $('[data-a="focus"]'), btnPlayer = $('[data-a="player"]');
   var player = $(".player"), btnPlay = $('[data-a="play"]');
   var rateIn = $('[data-a="rate"]'), rateOut = $("[data-rate]");
-  var nowEl = $("[data-now]"), subEl = $("[data-sub]"), voiceEl = $("[data-voice]");
+  var nowEl = $("[data-now]"), subEl = $("[data-sub]");
 
   function applyUI() {
     document.body.classList.toggle("focus", !!S.focus);
@@ -167,14 +166,6 @@
     }
     vs.sort(function (a, b) { return score(b) - score(a); });
     voice = vs[0] || null;
-    if (voiceEl) {
-      if (!voice) voiceEl.textContent = "Nie znalazłam polskiego głosu na tym urządzeniu.";
-      else {
-        var good = score(voice) >= 6;
-        voiceEl.textContent = "Głos: " + voice.name + (good ? "" :
-          " · lepiej brzmi wersja rozszerzona: Ustawienia → Dostępność → Treść mówiona → Głosy → Polski.");
-      }
-    }
   }
   pickVoice();
   if ("onvoiceschanged" in synth) synth.addEventListener("voiceschanged", pickVoice);
@@ -269,7 +260,7 @@
     utt.onend = function () { if (my === token && speaking) advance(); };
     utt.onerror = function (ev) {
       if (my !== token || !speaking || ev.error === "interrupted" || ev.error === "canceled") return;
-      stop(); subEl.textContent = "Lektor nie może teraz mówić. Sprawdź, czy iPad nie jest wyciszony.";
+      stop(); subEl.textContent = "Odtwarzanie niedostępne";
     };
     // Safari na iPadzie gubi wypowiedź podaną zaraz po cancel() — krótka przerwa
     if (wasBusy) setTimeout(function () { if (my === token) synth.speak(utt); }, 80);
@@ -299,7 +290,7 @@
   }
   function stop() {
     speaking = false; token++; synth.cancel(); clearHL(); cur = null; sents = []; si = 0; render();
-    nowEl.textContent = "Dotknij akapitu, od którego mam zacząć"; subEl.textContent = "albo naciśnij odtwórz";
+    nowEl.textContent = "Lektor"; subEl.textContent = "";
   }
   function render() {
     btnPlay.innerHTML = speaking ? ICON.pause : ICON.play;

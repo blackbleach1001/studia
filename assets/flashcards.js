@@ -41,7 +41,6 @@
     if (!order.length) {
       app.innerHTML = head +
         '<div class="card-done"><p><strong>Wszystkie fiszki oznaczone jako umiem.</strong></p>' +
-        '<p>Możesz przejrzeć je jeszcze raz albo zacząć od nowa.</p>' +
         '<div class="deck-tools"><button class="btn" type="button" data-a="mode">Pokaż wszystkie</button>' +
         '<button class="btn" type="button" data-a="reset">Zacznij od nowa</button></div></div>';
       return;
@@ -53,7 +52,7 @@
         '<h2 class="fcard-q">' + c.q + '</h2>' +
         (shown
           ? '<div class="fcard-a">' + c.a + '</div>'
-          : '<p class="fcard-hint">Odpowiedz na głos albo na kartce, potem odsłoń.</p>') +
+          : '') +
       '</article>' +
       '<div class="fcard-actions">' +
         (shown

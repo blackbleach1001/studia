@@ -48,9 +48,9 @@ fiszki_name = out.stem + "-fiszki.html"
 for cont, first in containers.values():
     n = len([x for x in cont.select('details.q[data-remove]')])
     box = soup.new_tag("p", attrs={"class": "fiszki-link"})
-    box.append(NavigableString("Pytania sprawdzające są teraz w fiszkach. "))
+    box.append(NavigableString("Pytania sprawdzające "))
     a = soup.new_tag("a", href=fiszki_name)
-    a.string = "Otwórz fiszki"
+    a.string = "Fiszki"
     box.append(a)
     first.insert_before(box)
 for q in soup.select("details.q[data-remove]"):
@@ -95,7 +95,7 @@ if cards:
 <header class="hero">
   <div class="eyebrow">{subject}</div>
   <h1>Fiszki</h1>
-  <p class="meta">{len(cards)} pytań z notatek „{title}”. Fiszki oznaczone jako „Umiem” znikają z powtórki.</p>
+  <p class="meta">{title} · {len(cards)} pytań</p>
 </header>
 <main id="deck"></main>
 </div>
