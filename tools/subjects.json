@@ -17,10 +17,14 @@
  {"dir":"metodologia","name":"Podstawy metodologii i statystyki","short":"Metodologia","kind_label":"Wykład + Ćwiczenia","hsl":[150,26,44],
   "meta":"Józefacka · Bedyńska i Cypryańska · Babbie",
   "units":[
-   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia jako nauka empiryczna","src":"Józefacka t. 1, s. 9–17","sub_short":"Józefacka t. 1, s. 9–17"},
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia jako nauka empiryczna","src":"Józefacka t. 1, s. 9–17","sub_short":"Józefacka t. 1, s. 9–17","sim":"sym-wyklad-1.html"},
    {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Konceptualizacja, operacjonalizacja, pomiar","src":"Józefacka t. 1, s. 64–72 · Babbie","sub_short":"Józefacka · Babbie"},
-   {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS"},
+   {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS","sim":"sym-cwiczenia-1.html"},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Jak zaliczyć przedmiot","sub_short":"Sylabus"}
+  ],
+  "sims":[
+   {"label":"Wykład 1","title":"Anegdota czy badanie · Falsyfikowalność","href":"sym-wyklad-1.html"},
+   {"label":"Ćwiczenia 1","title":"Pozycja odwrócona · Wzór · Braki danych","href":"sym-cwiczenia-1.html"}
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 56","href":"fiszki.html"},

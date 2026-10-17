@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Symulacje · Wykład 1 · Podstawy metodologii i statystyki</title>
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/study.css?v=65493010">
+<link rel="stylesheet" href="../assets/sim.css?v=58cab1e2">
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%} .page{--sh:150;--ss:26%;--sl:44%}</style>
+</head>
+<body>
+<div class="page sim-page">
+<header class="st-hero">
+  <p class="st-eyebrow">Symulacje · Wykład 1 · Józefacka t. 1, s. 9–17</p>
+  <h1>Psychologia jako nauka empiryczna</h1>
+  <p class="st-meta">Dwie symulacje do klikania: anegdota a systematyczne badanie oraz zasada falsyfikowalności Poppera.</p>
+</header>
+
+<!-- ============ 1. Anegdota czy badanie ============ -->
+<section class="sim" id="anegdota" aria-labelledby="a-h">
+  <div class="sim-head"><span class="num">1</span><h2 id="a-h">Anegdota czy badanie?</h2></div>
+  <p class="q">Co lepiej działa na ból głowy po imprezie: klin czy pożywne jedzenie? Ustaw, jak jest naprawdę, i porównaj, co mówią anegdoty, a co badanie z losowym podziałem na dwie grupy.</p>
+  <div class="sim-grid">
+    <div class="ctl">
+      <div>
+        <span class="lbl" id="a-truth-l">Jak jest naprawdę</span>
+        <div class="seg" id="a-truth" role="group" aria-labelledby="a-truth-l">
+          <button type="button" data-v="1" aria-pressed="true">Jedzenie lepsze o 1 pkt</button>
+          <button type="button" data-v="0" aria-pressed="false">Brak różnicy</button>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Dowód anegdotyczny</span>
+        <div class="row-btns"><button type="button" class="btn" id="a-ask">Zapytaj znajomego</button></div>
+      </div>
+      <div>
+        <span class="lbl">Badanie: losowy przydział do grup, pomiar bólu 0–10</span>
+        <div class="row-btns">
+          <button type="button" class="btn primary" id="a-10">+10 osób</button>
+          <button type="button" class="btn primary" id="a-100">+100 osób</button>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Replikacja: to samo badanie, nowe osoby</span>
+        <div class="row-btns"><button type="button" class="btn" id="a-rep" disabled>Powtórz badanie</button></div>
+      </div>
+      <div class="row-btns"><button type="button" class="btn" id="a-reset">Od nowa</button></div>
+    </div>
+    <div>
+      <div class="viz" id="a-anec-box" hidden>
+        <p class="cap" style="margin-top:0"><b>Anegdoty</b> · <span id="a-anec-sum"></span></p>
+        <ul class="chips" id="a-anec"></ul>
+      </div>
+      <div class="viz">
+        <svg id="a-dots" viewBox="0 0 600 176" role="img" aria-label="Wyniki bólu w dwóch grupach"></svg>
+        <p class="cap">Każda kropka to jedna osoba. Pionowa kreska to średnia grupy.</p>
+      </div>
+      <div class="viz">
+        <svg id="a-conv" viewBox="0 0 600 170" role="img" aria-label="Przewaga jedzenia a liczba osób w badaniu"></svg>
+        <p class="cap">Przewaga jedzenia (średni ból po klinie − po jedzeniu) w miarę dokładania osób. Linia przerywana to prawdziwa wartość.</p>
+      </div>
+      <div class="viz" id="a-rep-box" hidden>
+        <svg id="a-reps" viewBox="0 0 600 90" role="img" aria-label="Wyniki replikacji"></svg>
+        <p class="cap">Wyniki replikacji przy tej samej liczbie osób.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="a-n">0</b><span>osób w badaniu</span></div>
+        <div class="stat"><b id="a-mk">—</b><span>średni ból · klin</span></div>
+        <div class="stat"><b id="a-mj">—</b><span>średni ból · jedzenie</span></div>
+        <div class="stat"><b id="a-d">—</b><span>przewaga jedzenia</span></div>
+      </div>
+      <p class="take" id="a-take" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. Falsyfikowalność ============ -->
+<section class="sim" id="falsyfikowalnosc" aria-labelledby="f-h">
+  <div class="sim-head"><span class="num">2</span><h2 id="f-h">Falsyfikowalność</h2></div>
+  <p class="q">Hipoteza jest falsyfikowalna, gdy da się wskazać obserwację, która by ją obaliła. Zbieraj obserwacje dla każdej hipotezy i patrz, czy cokolwiek może im przeczyć.</p>
+  <div class="sim-grid">
+    <div class="ctl">
+      <div>
+        <span class="lbl" id="f-hyp-l">Hipoteza</span>
+        <div class="seg stack" id="f-hyp" role="group" aria-labelledby="f-hyp-l">
+          <button type="button" data-v="swan" aria-pressed="true">„Wszystkie łabędzie są białe”</button>
+          <button type="button" data-v="fusion" aria-pressed="false">„Przed egzaminem energie umysłowe zdającego i egzaminatora łączą się w fuzję”</button>
+        </div>
+      </div>
+      <div class="row-btns">
+        <button type="button" class="btn primary" id="f-obs">Obserwuj 10 łabędzi</button>
+        <button type="button" class="btn" id="f-aus">Wyprawa do Australii</button>
+      </div>
+      <div class="row-btns"><button type="button" class="btn" id="f-reset">Od nowa</button></div>
+    </div>
+    <div>
+      <div class="viz">
+        <svg id="f-grid" viewBox="0 0 600 200" role="img" aria-label="Zebrane obserwacje"></svg>
+        <p class="cap" id="f-cap"></p>
+      </div>
+      <ul class="chips" id="f-why"></ul>
+      <div class="stats">
+        <div class="stat"><b id="f-n">0</b><span>obserwacji</span></div>
+        <div class="stat ok"><b id="f-yes">0</b><span>zgodnych z hipotezą</span></div>
+        <div class="stat bad"><b id="f-no">0</b><span>sprzecznych z hipotezą</span></div>
+      </div>
+      <p class="take" id="f-take" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<nav class="st-pager" aria-label="Powiązane strony">
+  <a class="prev" href="wyklad-1.html"><span>Notatki</span><b>Wykład 1</b><i>Psychologia jako nauka empiryczna</i></a>
+  <a class="next" href="sym-cwiczenia-1.html"><span>Następne symulacje</span><b>Ćwiczenia 1</b><i>Baza danych i wskaźniki</i></a>
+</nav>
+</div>
+
+<script src="../assets/sim.js?v=89b7525c"></script>
+<script>
+(function () {
+  var S = window.Sim;
+
+  /* ================= 1. Anegdota czy badanie ================= */
+  var SD = 2.2, BASE = 6;
+  var A = { truth: 1, K: [], J: [], hist: [], reps: [], anec: [], r: S.rng(7) };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function pain(method) {
+    var m = method === "K" ? BASE : BASE - A.truth;
+    return S.clamp(Math.round(m + SD * S.normal(A.r)), 0, 10);
+  }
+  function addPeople(k) {
+    for (var i = 0; i < k; i++) {
+      // losowy przydział do grup o równej liczebności
+      var g = A.K.length === A.J.length ? (A.r() < .5 ? "K" : "J") : (A.K.length > A.J.length ? "J" : "K");
+      (g === "K" ? A.K : A.J).push(pain(g));
+      if (A.K.length && A.J.length) A.hist.push({ n: A.K.length + A.J.length, d: S.mean(A.K) - S.mean(A.J) });
+    }
+    A.reps = [];
+    drawA();
+  }
+  function replicate() {
+    var n = A.K.length + A.J.length, k = [], j = [];
+    for (var i = 0; i < n; i++) (i % 2 ? j : k).push(pain(i % 2 ? "J" : "K"));
+    A.reps.push(S.mean(k) - S.mean(j));
+    drawA();
+  }
+  function ask() {
+    var m = A.r() < .5 ? "K" : "J", p = pain(m);
+    var who = m === "K" ? "Klin" : "Jedzenie";
+    var txt, side;
+    if (p <= 3) { txt = "„" + who + " mi świetnie pomógł" + (m === "J" ? "o" : "") + "” · ból " + p + "/10"; side = m; }
+    else if (p >= 7) { txt = "„" + who + " nic nie dał" + (m === "J" ? "o" : "") + "” · ból " + p + "/10"; side = m === "K" ? "J" : "K"; }
+    else { txt = "„" + who + "? Tak sobie” · ból " + p + "/10"; side = null; }
+    A.anec.unshift({ txt: txt, side: side });
+    drawA();
+  }
+
+  function drawDots() {
+    var svg = $("a-dots"); S.clear(svg);
+    var x0 = 92, x1 = 584, X = function (v) { return x0 + (x1 - x0) * v / 10; };
+    for (var v = 0; v <= 10; v++) {
+      S.svg("line", { x1: X(v), x2: X(v), y1: 12, y2: 150, "class": "grid" }, svg);
+      S.text(svg, X(v), 168, String(v), { "class": "tick", "text-anchor": "middle" });
+    }
+    var rows = [["Klin", A.K, 50, "hsl(36,48%,46%)"], ["Jedzenie", A.J, 115, "hsl(150,28%,34%)"]];
+    var jr = S.rng(3);
+    rows.forEach(function (row) {
+      S.text(svg, 4, row[2] + 5, row[0], { "font-size": 14, "font-weight": 700, fill: "var(--ink)" });
+      var r = row[1].length > 120 ? 2.6 : 4;
+      row[1].forEach(function (p) {
+        S.svg("circle", { cx: X(p) + (jr() - .5) * 14, cy: row[2] + (jr() - .5) * 40, r: r, fill: row[3], "fill-opacity": .5 }, svg);
+      });
+      if (row[1].length) {
+        var m = S.mean(row[1]);
+        S.svg("line", { x1: X(m), x2: X(m), y1: row[2] - 27, y2: row[2] + 27, stroke: "var(--ink)", "stroke-width": 3, "stroke-linecap": "round" }, svg);
+        S.text(svg, X(m) + 6, row[2] - 18, "śr. " + S.fmt(m), { "font-size": 12, "font-weight": 700, fill: "var(--ink)" });
+      }
+    });
+    S.text(svg, 4, 168, "ból →", { "class": "tick" });
+    svg.setAttribute("aria-label", A.K.length ? "Średni ból: klin " + S.fmt(S.mean(A.K)) + ", jedzenie " + S.fmt(S.mean(A.J)) : "Brak danych z badania");
+  }
+
+  function drawConv() {
+    var svg = $("a-conv"); S.clear(svg);
+    var x0 = 44, x1 = 584, y0 = 12, y1 = 140, lo = -4, hi = 4;
+    var maxN = Math.max(20, A.hist.length ? A.hist[A.hist.length - 1].n : 20);
+    var X = function (n) { return x0 + (x1 - x0) * Math.sqrt(n) / Math.sqrt(maxN); };
+    var Y = function (d) { return y0 + (y1 - y0) * (hi - S.clamp(d, lo, hi)) / (hi - lo); };
+    for (var d = lo; d <= hi; d += 2) {
+      S.svg("line", { x1: x0, x2: x1, y1: Y(d), y2: Y(d), "class": "grid" }, svg);
+      S.text(svg, x0 - 8, Y(d) + 4, (d > 0 ? "+" : "") + S.fmt(d, 0), { "class": "tick", "text-anchor": "end" });
+    }
+    [2, 10, 50, 100, 200, 500, 1000, 2000].forEach(function (n) {
+      if (n <= maxN) S.text(svg, X(n), 158, String(n), { "class": "tick", "text-anchor": "middle" });
+    });
+    S.svg("line", { x1: x0, x2: x1, y1: Y(A.truth), y2: Y(A.truth), stroke: "var(--tint)", "stroke-width": 2, "stroke-dasharray": "6 5" }, svg);
+    S.text(svg, x1, Y(A.truth) - 6, "prawda: " + (A.truth ? "+1" : "0"), { "font-size": 12, "font-weight": 700, fill: "var(--tint)", "text-anchor": "end" });
+    if (A.hist.length) {
+      var pts = A.hist.map(function (h) { return X(h.n).toFixed(1) + "," + Y(h.d).toFixed(1); }).join(" ");
+      S.svg("polyline", { points: pts, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+      var last = A.hist[A.hist.length - 1];
+      S.svg("circle", { cx: X(last.n), cy: Y(last.d), r: 5, fill: "var(--ink)" }, svg);
+    } else {
+      S.text(svg, (x0 + x1) / 2, 80, "Dodaj osoby do badania", { "text-anchor": "middle", "font-size": 13, fill: "var(--ink-mute)" });
+    }
+  }
+
+  function drawReps() {
+    var box = $("a-rep-box"), svg = $("a-reps");
+    box.hidden = !A.reps.length; if (!A.reps.length) return;
+    S.clear(svg);
+    var x0 = 30, x1 = 584, lo = -4, hi = 4, X = function (d) { return x0 + (x1 - x0) * (S.clamp(d, lo, hi) - lo) / (hi - lo); };
+    for (var d = lo; d <= hi; d++) {
+      S.svg("line", { x1: X(d), x2: X(d), y1: 8, y2: 62, "class": "grid" }, svg);
+      S.text(svg, X(d), 80, (d > 0 ? "+" : "") + d, { "class": "tick", "text-anchor": "middle" });
+    }
+    S.svg("line", { x1: X(A.truth), x2: X(A.truth), y1: 4, y2: 66, stroke: "var(--tint)", "stroke-width": 2, "stroke-dasharray": "6 5" }, svg);
+    var jr = S.rng(11);
+    A.reps.forEach(function (d) { S.svg("circle", { cx: X(d), cy: 35 + (jr() - .5) * 40, r: 5, fill: "var(--ink)", "fill-opacity": .55 }, svg); });
+  }
+
+  function drawA() {
+    var n = A.K.length + A.J.length;
+    $("a-n").textContent = n;
+    $("a-mk").textContent = A.K.length ? S.fmt(S.mean(A.K)) : "—";
+    $("a-mj").textContent = A.J.length ? S.fmt(S.mean(A.J)) : "—";
+    var d = A.K.length && A.J.length ? S.mean(A.K) - S.mean(A.J) : NaN;
+    $("a-d").textContent = isNaN(d) ? "—" : (d > 0 ? "+" : "") + S.fmt(d);
+    $("a-rep").disabled = n < 2;
+    // anegdoty
+    var box = $("a-anec-box"), ul = $("a-anec");
+    box.hidden = !A.anec.length; S.clear(ul);
+    A.anec.slice(0, 6).forEach(function (a) { var li = document.createElement("li"); li.textContent = a.txt; ul.appendChild(li); });
+    var k = A.anec.filter(function (a) { return a.side === "K"; }).length, j = A.anec.filter(function (a) { return a.side === "J"; }).length;
+    $("a-anec-sum").textContent = A.anec.length + " " + (A.anec.length === 1 ? "historia" : A.anec.length < 5 ? "historie" : "historii") + ": za klinem " + k + ", za jedzeniem " + j;
+    drawDots(); drawConv(); drawReps();
+    // wniosek
+    var t = $("a-take"), msg;
+    if (!n && !A.anec.length) msg = "<b>Start.</b> Zapytaj kilku znajomych albo od razu dodaj osoby do badania.";
+    else if (!n) msg = "<b>Anegdoty się wykluczają.</b> Każda historia to jedna osoba i jeden przypadek. To może być inspiracja do hipotezy, ale nie dowód.";
+    else if (A.reps.length >= 3 && n < 40) msg = "<b>Przy " + n + " osobach replikacje dają bardzo różne wyniki.</b> Dodaj osób i powtórz badanie jeszcze raz: wyniki zbiorą się bliżej prawdy.";
+    else if (A.reps.length >= 3) msg = "<b>Przy " + n + " osobach replikacje dają podobne wyniki.</b> Badanie jest powtarzalne.";
+    else if (n < 40) msg = "<b>Przy " + n + " osobach wynik jeszcze skacze.</b> Pojedyncze osoby wyraźnie go przesuwają. Dodaj więcej osób.";
+    else msg = "<b>Przy " + n + " osobach wynik stabilizuje się wokół prawdy</b> (" + (A.truth ? "jedzenie lepsze o 1 pkt" : "brak różnicy") + "). Tego nie dało się zobaczyć w anegdotach.";
+    t.innerHTML = msg;
+  }
+
+  S.seg($("a-truth"), function (v) { A.truth = +v; reset(); });
+  function reset() { A.K = []; A.J = []; A.hist = []; A.reps = []; A.anec = []; A.r = S.rng(7 + A.truth * 13); drawA(); }
+  $("a-ask").onclick = ask;
+  $("a-10").onclick = function () { addPeople(10); };
+  $("a-100").onclick = function () { addPeople(100); };
+  $("a-rep").onclick = replicate;
+  $("a-reset").onclick = reset;
+  drawA();
+
+  /* ================= 2. Falsyfikowalność ================= */
+  var F = { hyp: "swan", obs: [], r: S.rng(21), forceBlack: false };
+  var EXPL = {
+    "1s": "Zdał, był spokojny → „fuzja przebiegła harmonijnie”",
+    "1n": "Zdał, był zestresowany → „fuzja dodała mu energii”",
+    "0s": "Nie zdał, był spokojny → „egzaminator zablokował fuzję”",
+    "0n": "Nie zdał, był zestresowany → „energia się rozproszyła”"
+  };
+  function observe() {
+    for (var i = 0; i < 10; i++) {
+      if (F.hyp === "swan") {
+        var black = F.forceBlack ? (F.forceBlack = false, true) : F.r() < 1 / 150;
+        F.obs.push(black ? "b" : "w");
+      } else {
+        F.obs.push((F.r() < .7 ? "1" : "0") + (F.r() < .5 ? "s" : "n"));
+      }
+    }
+    drawF();
+  }
+  function drawF() {
+    var svg = $("f-grid"); S.clear(svg);
+    var cols = 30, size = 19, show = F.obs.slice(-300), off = F.obs.length - show.length;
+    show.forEach(function (o, i) {
+      var cx = 12 + (i % cols) * size + 4, cy = 12 + Math.floor(i / cols) * size;
+      if (F.hyp === "swan") {
+        S.svg("circle", { cx: cx, cy: cy, r: 7, fill: o === "b" ? "var(--ink)" : "#fff", stroke: o === "b" ? "hsl(8,52%,44%)" : "rgba(60,45,30,.35)", "stroke-width": o === "b" ? 3 : 1 }, svg);
+      } else {
+        S.svg("rect", { x: cx - 7, y: cy - 7, width: 14, height: 14, rx: 3, fill: o[0] === "1" ? "hsl(150,28%,60%)" : "hsl(36,48%,62%)" }, svg);
+      }
+    });
+    svg.setAttribute("viewBox", "0 0 600 " + Math.max(60, Math.ceil(Math.max(show.length, 1) / cols) * size + 8));
+    if (!F.obs.length) S.text(svg, 300, 34, F.hyp === "swan" ? "Brak obserwacji" : "Brak obserwacji", { "text-anchor": "middle", "font-size": 13, fill: "var(--ink-mute)" });
+    var n = F.obs.length, no = F.hyp === "swan" ? F.obs.filter(function (o) { return o === "b"; }).length : 0;
+    $("f-n").textContent = n; $("f-yes").textContent = n - no; $("f-no").textContent = no;
+    $("f-obs").textContent = F.hyp === "swan" ? "Obserwuj 10 łabędzi" : "Obserwuj 10 egzaminów";
+    $("f-aus").hidden = F.hyp !== "swan";
+    $("f-cap").textContent = F.hyp === "swan"
+      ? "Biały krąg to biały łabędź, czarny z obwódką to czarny łabędź." + (off ? " Widać ostatnie 300 obserwacji." : "")
+      : "Zielony kwadrat: zdał. Żółty: nie zdał. Każdy wynik zostaje wyjaśniony fuzją.";
+    var why = $("f-why"); S.clear(why);
+    if (F.hyp === "fusion") F.obs.slice(-4).reverse().forEach(function (o) { var li = document.createElement("li"); li.textContent = EXPL[o]; why.appendChild(li); });
+    var t = $("f-take");
+    t.classList.toggle("bad", F.hyp === "fusion" && n > 0);
+    if (!n) t.innerHTML = "<b>Start.</b> Zbierz obserwacje.";
+    else if (F.hyp === "swan" && !no) t.innerHTML = "<b>" + n + " potwierdzeń, a hipoteza nadal nie jest udowodniona.</b> Indukcja działa post factum: wystarczy jeden czarny łabędź, żeby ją obalić. Wiadomo, jaka obserwacja by jej przeczyła, więc hipoteza jest falsyfikowalna.";
+    else if (F.hyp === "swan") t.innerHTML = "<b>Jeden czarny łabędź obalił hipotezę</b> mimo " + (n - no) + " wcześniejszych potwierdzeń. Badanie mogło ją potwierdzić albo odrzucić: obie opcje były empirycznie możliwe.";
+    else t.innerHTML = "<b>" + n + " obserwacji, 0 sprzecznych, ale to nie dowód.</b> Każdy wynik da się dopasować do „fuzji”, a jej nie da się zdefiniować ani zmierzyć. Żadna obserwacja nie może jej obalić, więc twierdzenie jest niefalsyfikowalne.";
+  }
+  S.seg($("f-hyp"), function (v) { F.hyp = v; F.obs = []; F.r = S.rng(21); drawF(); });
+  $("f-obs").onclick = observe;
+  $("f-aus").onclick = function () { F.forceBlack = true; observe(); };
+  $("f-reset").onclick = function () { F.obs = []; F.r = S.rng(21); drawF(); };
+  drawF();
+})();
+</script>
+<script src="../assets/reader.js?v=4db82ece" data-home="../" data-back="./" data-back-label="Metodologia" data-title="Symulacje · Wykład 1" data-nodock></script>
+</body>
+</html>

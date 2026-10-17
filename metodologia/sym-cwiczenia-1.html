@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Symulacje · Ćwiczenia 1 · Podstawy metodologii i statystyki</title>
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/study.css?v=65493010">
+<link rel="stylesheet" href="../assets/sim.css?v=58cab1e2">
+<style>
+:root{--st-h:150;--st-s:26%;--st-l:44%} .page{--sh:150;--ss:26%;--sl:44%}
+.formula{font:600 .875rem/1.5 ui-monospace,"SF Mono",Menlo,monospace;background:var(--paper-2);border-radius:10px;padding:8px 12px;margin:10px 0 0;overflow-x:auto;white-space:nowrap}
+.formula .bad{color:hsl(8,52%,44%);text-decoration:underline wavy;text-underline-offset:3px}
+.formula .ok{color:var(--tint)}
+.items{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.item{min-height:64px;border:0;border-radius:12px;background:var(--paper-2);cursor:pointer;padding:6px 4px;
+  font:700 .8125rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--ink-soft);-webkit-tap-highlight-color:transparent}
+.item b{display:block;font-size:1.375rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.item[aria-pressed="true"]{background:#fff;box-shadow:inset 0 0 0 1.5px hsl(8,52%,60%)}
+.item[aria-pressed="true"] b{color:hsl(8,52%,44%)}
+</style>
+</head>
+<body>
+<div class="page sim-page">
+<header class="st-hero">
+  <p class="st-eyebrow">Symulacje · Ćwiczenia 1 · Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska</p>
+  <h1>Baza danych i wskaźniki</h1>
+  <p class="st-meta">Trzy symulacje do zadania domowego 1: pozycja odwrócona w SWLS, wzór na odwracanie i braki danych w sumie i średniej.</p>
+</header>
+
+<!-- ============ 1. Pozycja odwrócona ============ -->
+<section class="sim" id="odwracanie" aria-labelledby="r-h">
+  <div class="sim-head"><span class="num">1</span><h2 id="r-h">Co się dzieje, gdy nie odwrócisz pozycji?</h2></div>
+  <p class="q">Osiem osób wypełniło SWLS w wersji z zajęć: pozycje 1, 2, 3R, 4, 5, skala 1–7. Pozycja 3 brzmi „Nie jestem zadowolona ze swojego życia”. Włącz i wyłącz odwracanie i zobacz, co dzieje się ze wskaźnikiem.</p>
+  <div class="sim-grid">
+    <div class="ctl">
+      <button type="button" class="switch" role="switch" aria-checked="false" id="r-rev">
+        <span>Odwróć SWLS3 → SWLS3R<small>przekształcenie 8 − $source</small></span><span class="knob" aria-hidden="true"></span>
+      </button>
+      <div>
+        <span class="lbl" id="r-kind-l">Wskaźnik</span>
+        <div class="seg" id="r-kind" role="group" aria-labelledby="r-kind-l">
+          <button type="button" data-v="mean" aria-pressed="true">Średnia · 1–7</button>
+          <button type="button" data-v="sum" aria-pressed="false">Suma · 5–35</button>
+        </div>
+      </div>
+      <div class="formula" id="r-formula" aria-live="polite"></div>
+    </div>
+    <div>
+      <div class="sheet"><table id="r-table"></table></div>
+      <div class="viz" style="margin-top:12px">
+        <svg id="r-plot" viewBox="0 0 600 150" role="img" aria-label="Wskaźnik SWLS dla ośmiu osób"></svg>
+        <p class="cap" id="r-cap">Każda kropka to wskaźnik jednej osoby na pełnym zakresie skali.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="r-range">—</b><span>rozstęp wskaźnika (max − min)</span></div>
+        <div class="stat" id="r-corr-box"><b id="r-corr">—</b><span>korelacja pozycji 3 z sumą pozostałych</span></div>
+      </div>
+      <p class="take" id="r-take" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. Wzór na odwracanie ============ -->
+<section class="sim" id="wzor" aria-labelledby="w-h">
+  <div class="sim-head"><span class="num">2</span><h2 id="w-h">Wzór na odwracanie i pułapka skali od zera</h2></div>
+  <p class="q">Porównaj wzór z ćwiczeń, (min + max) − Poz, ze wzorem z Bedyńskiej, (liczba stopni + 1) − Poz. Wybierz skalę i sprawdź, dokąd trafia każda odpowiedź.</p>
+  <div class="sim-grid">
+    <div class="ctl">
+      <div>
+        <span class="lbl" id="w-scale-l">Skala odpowiedzi</span>
+        <div class="seg" id="w-scale" role="group" aria-labelledby="w-scale-l">
+          <button type="button" data-v="1,4" aria-pressed="false">1–4</button>
+          <button type="button" data-v="1,5" aria-pressed="false">1–5</button>
+          <button type="button" data-v="1,7" aria-pressed="true">1–7</button>
+          <button type="button" data-v="0,4" aria-pressed="false">0–4</button>
+        </div>
+      </div>
+      <div>
+        <span class="lbl" id="w-f-l">Wzór</span>
+        <div class="seg stack" id="w-f" role="group" aria-labelledby="w-f-l">
+          <button type="button" data-v="mm" aria-pressed="true">(min + max) − Poz · ćwiczenia</button>
+          <button type="button" data-v="st" aria-pressed="false">(liczba stopni + 1) − Poz · Bedyńska</button>
+        </div>
+      </div>
+      <p class="cap" id="w-ex" style="margin:0;font-size:.875rem;color:var(--ink-mute)"></p>
+    </div>
+    <div>
+      <div class="viz">
+        <svg id="w-plot" viewBox="0 0 600 190" role="img" aria-label="Odpowiedzi przed i po odwróceniu"></svg>
+        <p class="cap">Górny rząd: odpowiedź osoby. Dolny rząd: wynik po odwróceniu. Szare pole to zakres skali.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="w-rule">—</b><span>wzór dla tej skali</span></div>
+        <div class="stat" id="w-out-box"><b id="w-out">0</b><span>wyników poza skalą</span></div>
+      </div>
+      <p class="take" id="w-take" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. Braki danych ============ -->
+<section class="sim" id="braki" aria-labelledby="b-h">
+  <div class="sim-head"><span class="num">3</span><h2 id="b-h">Braki danych: suma czy średnia?</h2></div>
+  <p class="q">Osoba ze slajdu: SWLS1 = 6, SWLS2 bez odpowiedzi, SWLS3 = 2 (po odwróceniu 6), SWLS4 = 5, SWLS5 = 6. Stuknij pozycję, żeby usunąć albo przywrócić odpowiedź.</p>
+  <div class="sim-grid">
+    <div class="ctl">
+      <div>
+        <span class="lbl">Pozycje po odwróceniu</span>
+        <div class="items" id="b-items"></div>
+      </div>
+      <p class="cap" style="margin:0;font-size:.8125rem;color:var(--ink-mute)">Odpowiedź w SWLS2 po przywróceniu jest przykładowa: na slajdzie jej nie ma.</p>
+    </div>
+    <div>
+      <div class="viz">
+        <svg id="b-plot" viewBox="0 0 600 150" role="img" aria-label="Średnia i suma na zakresach skali"></svg>
+        <p class="cap">Pełna kropka: wynik z ważnych odpowiedzi. Pusty krąg: suma, jaką dałaby osoba odpowiadająca na każdą pozycję tak jak średnio.</p>
+      </div>
+      <div class="stats">
+        <div class="stat" id="b-s1"><b>—</b><span>SUM(…) w Jamovi</span></div>
+        <div class="stat" id="b-s2"><b>—</b><span>MEAN(…) w Jamovi</span></div>
+        <div class="stat" id="b-s3"><b>—</b><span>SUM(…, ignore_missing=1)</span></div>
+        <div class="stat" id="b-s4"><b>—</b><span>MEAN(…, ignore_missing=1)</span></div>
+      </div>
+      <p class="take" id="b-take" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<nav class="st-pager" aria-label="Powiązane strony">
+  <a class="prev" href="sym-wyklad-1.html"><span>Poprzednie symulacje</span><b>Wykład 1</b><i>Anegdota i falsyfikowalność</i></a>
+  <a class="next" href="cwiczenia-1.html"><span>Notatki</span><b>Ćwiczenia 1</b><i>Proces badawczy i baza danych w Jamovi</i></a>
+</nav>
+</div>
+
+<script src="../assets/sim.js?v=89b7525c"></script>
+<script>
+(function () {
+  var S = window.Sim, $ = function (id) { return document.getElementById(id); };
+  var RED = "hsl(8,52%,44%)";
+
+  /* ================= 1. Pozycja odwrócona ================= */
+  var DATA = [ // SWLS1..5, pozycja 3 w surowej postaci
+    [6, 6, 2, 6, 7], [7, 6, 1, 7, 6], [4, 4, 4, 5, 3], [2, 3, 6, 2, 1],
+    [1, 2, 7, 2, 2], [5, 5, 3, 4, 5], [3, 2, 5, 3, 4], [6, 5, 3, 5, 6]
+  ];
+  var R = { rev: false, kind: "mean" };
+  function items(row, rev) { return row.map(function (v, i) { return i === 2 && rev ? 8 - v : v; }); }
+  function index(row, rev, kind) { var it = items(row, rev), s = it.reduce(function (a, b) { return a + b; }, 0); return kind === "sum" ? s : s / 5; }
+
+  function drawR() {
+    var rev = R.rev, kind = R.kind, d = kind === "sum" ? 0 : 1;
+    // tabela
+    var h = "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">SWLS1</th><th scope=\"col\">SWLS2</th><th scope=\"col\">SWLS3</th>" +
+      (rev ? "<th scope=\"col\" class=\"hi\">SWLS3R</th>" : "") + "<th scope=\"col\">SWLS4</th><th scope=\"col\">SWLS5</th><th scope=\"col\">" + (kind === "sum" ? "SWLS_suma" : "SWLS_średnia") + "</th></tr></thead><tbody>";
+    DATA.forEach(function (row, p) {
+      h += "<tr><td>" + (p + 1) + "</td><td>" + row[0] + "</td><td>" + row[1] + "</td><td" + (rev ? " style=\"color:var(--ink-mute)\"" : " class=\"flip\"") + ">" + row[2] + "</td>" +
+        (rev ? "<td class=\"hi\">" + (8 - row[2]) + "</td>" : "") + "<td>" + row[3] + "</td><td>" + row[4] + "</td><td class=\"idx\">" + S.fmt(index(row, rev, kind), d) + "</td></tr>";
+    });
+    $("r-table").innerHTML = h + "</tbody>";
+    // formuła
+    var fn = kind === "sum" ? "SUM" : "MEAN";
+    $("r-formula").innerHTML = (kind === "sum" ? "SWLS_suma" : "SWLS_średnia") + " = " + fn + "(SWLS1, SWLS2, " +
+      (rev ? "<span class=\"ok\">SWLS3R</span>" : "<span class=\"bad\">SWLS3</span>") + ", SWLS4, SWLS5)";
+    // wykres
+    var svg = $("r-plot"); S.clear(svg);
+    var lo = kind === "sum" ? 5 : 1, hi = kind === "sum" ? 35 : 7, x0 = 30, x1 = 584, y = 70;
+    var X = function (v) { return x0 + (x1 - x0) * (v - lo) / (hi - lo); };
+    S.svg("rect", { x: x0, y: y - 26, width: x1 - x0, height: 52, rx: 10, fill: "var(--paper-2)" }, svg);
+    var step = kind === "sum" ? 5 : 1;
+    for (var v = lo; v <= hi; v += step) {
+      S.svg("line", { x1: X(v), x2: X(v), y1: y - 26, y2: y + 26, "class": "grid" }, svg);
+      S.text(svg, X(v), y + 46, String(v), { "class": "tick", "text-anchor": "middle" });
+    }
+    S.text(svg, x0, 18, "niezadowolenie", { "class": "tick" });
+    S.text(svg, x1, 18, "zadowolenie", { "class": "tick", "text-anchor": "end" });
+    var cur = DATA.map(function (r) { return index(r, rev, kind); });
+    var old = DATA.map(function (r) { return index(r, false, kind); });
+    DATA.forEach(function (r, p) {
+      var yy = y + (p % 2 ? 10 : -10);
+      if (rev) {
+        S.svg("circle", { cx: X(old[p]), cy: yy, r: 6, fill: "none", stroke: RED, "stroke-width": 1.5, "stroke-opacity": .7 }, svg);
+        S.svg("line", { x1: X(old[p]), x2: X(cur[p]), y1: yy, y2: yy, stroke: "var(--ink-mute)", "stroke-width": 1.5, "stroke-dasharray": "3 3" }, svg);
+      }
+      S.svg("circle", { cx: X(cur[p]), cy: yy, r: 7, fill: rev ? "var(--tint)" : RED, "fill-opacity": .85 }, svg);
+      S.text(svg, X(cur[p]), yy + 4, String(p + 1), { "font-size": 9, "font-weight": 700, "text-anchor": "middle", fill: "#fff" });
+    });
+    svg.setAttribute("aria-label", "Wskaźniki osób: " + cur.map(function (v) { return S.fmt(v, d); }).join(", "));
+    $("r-cap").textContent = rev ? "Pełne kropki: wskaźnik po odwróceniu. Puste kółka: ten sam wskaźnik bez odwrócenia." : "Każda kropka to wskaźnik jednej osoby na pełnym zakresie skali.";
+    // liczby
+    var rng = Math.max.apply(null, cur) - Math.min.apply(null, cur), rngOld = Math.max.apply(null, old) - Math.min.apply(null, old);
+    $("r-range").textContent = S.fmt(rng, d);
+    var x3 = DATA.map(function (r) { return items(r, rev)[2]; }), rest = DATA.map(function (r) { return r[0] + r[1] + r[3] + r[4]; });
+    var c = S.corr(x3, rest);
+    $("r-corr").textContent = S.fmt(c, 2);
+    $("r-corr-box").className = "stat " + (c > 0 ? "ok" : "bad");
+    var t = $("r-take");
+    t.classList.toggle("bad", !rev);
+    t.innerHTML = rev
+      ? "<b>Po odwróceniu pozycja 3 mówi to samo co reszta</b> (r = " + S.fmt(c, 2) + "). Rozstęp wskaźnika rośnie z " + S.fmt(rngOld, d) + " do " + S.fmt(rng, d) + ": zadowoleni i niezadowoleni znów się wyraźnie różnią. Do formuły wstawiasz SWLS3R, nie SWLS3."
+      : "<b>Bez odwrócenia pozycja 3 przeczy pozostałym</b> (r = " + S.fmt(c, 2) + "). Wskaźniki ściskają się do środka skali: osoby zadowolone wyglądają na mniej zadowolone, a niezadowolone na bardziej. Zakres 1–7 nadal się zgadza, więc ten błąd nie wyjdzie w teście zdrowego rozsądku.";
+  }
+  S.toggle($("r-rev"), function (on) { R.rev = on; drawR(); });
+  S.seg($("r-kind"), function (v) { R.kind = v; drawR(); });
+  drawR();
+
+  /* ================= 2. Wzór na odwracanie ================= */
+  var W = { min: 1, max: 7, f: "mm" };
+  function drawW() {
+    var mn = W.min, mx = W.max, steps = mx - mn + 1;
+    var k = W.f === "mm" ? mn + mx : steps + 1;
+    var vals = []; for (var v = mn; v <= mx; v++) vals.push(v);
+    var res = vals.map(function (v) { return k - v; });
+    var lo = Math.min(mn, Math.min.apply(null, res)), hi = Math.max(mx, Math.max.apply(null, res));
+    var svg = $("w-plot"); S.clear(svg);
+    var x0 = 60, x1 = 570, X = function (v) { return x0 + (x1 - x0) * (v - lo) / Math.max(1, hi - lo); };
+    var yT = 40, yB = 140;
+    S.text(svg, 4, yT + 5, "Poz", { "font-size": 13, "font-weight": 700, fill: "var(--ink)" });
+    S.text(svg, 4, yB + 5, "PozR", { "font-size": 13, "font-weight": 700, fill: "var(--ink)" });
+    S.svg("rect", { x: X(mn) - 18, y: yB - 20, width: X(mx) - X(mn) + 36, height: 40, rx: 12, fill: "var(--paper-2)" }, svg);
+    var out = 0;
+    vals.forEach(function (v, i) {
+      var r = res[i], bad = r < mn || r > mx; if (bad) out++;
+      S.svg("line", { x1: X(v), y1: yT + 16, x2: X(r), y2: yB - 16, stroke: bad ? RED : "var(--tint)", "stroke-width": 2, "stroke-opacity": .8 }, svg);
+      S.svg("circle", { cx: X(v), cy: yT, r: 15, fill: "#fff", stroke: "rgba(60,45,30,.3)" }, svg);
+      S.text(svg, X(v), yT + 5, String(v), { "text-anchor": "middle", "font-size": 14, "font-weight": 700, fill: "var(--ink)" });
+      S.svg("circle", { cx: X(r), cy: yB, r: 15, fill: bad ? RED : "var(--tint)" }, svg);
+      S.text(svg, X(r), yB + 5, String(r), { "text-anchor": "middle", "font-size": 14, "font-weight": 700, fill: "#fff" });
+    });
+    S.text(svg, (X(mn) + X(mx)) / 2, yB + 40, "zakres skali " + mn + "–" + mx, { "class": "tick", "text-anchor": "middle" });
+    svg.setAttribute("aria-label", vals.map(function (v, i) { return v + " → " + res[i]; }).join(", "));
+    $("w-rule").textContent = k + " − Poz";
+    $("w-out").textContent = out;
+    $("w-out-box").className = "stat " + (out ? "bad" : "ok");
+    $("w-ex").textContent = mn === 0 ? "Np. PSS (0–4): pozycje 2R i 3R." : mx === 7 ? "Np. SWLS (1–7): pozycja 3R." : mx === 5 ? "Np. BRS-6 i SCS (1–5)." : "Skala czterostopniowa od 1.";
+    var t = $("w-take"); t.classList.toggle("bad", out > 0);
+    if (out) t.innerHTML = "<b>" + out + (out === 1 ? " wynik wypada" : " wyniki wypadają") + " poza skalę.</b> Skala " + mn + "–" + mx + " ma " + steps + " stopni, więc wzór z Bedyńskiej daje " + k + " − Poz i zamienia 0 w " + k + ". Ten wzór działa tylko dla skal od 1.";
+    else if (W.f === "st") t.innerHTML = "<b>Tu oba wzory dają to samo</b>, bo skala zaczyna się od 1: liczba stopni + 1 = min + max = " + k + ". Przełącz na skalę 0–4, żeby zobaczyć różnicę.";
+    else t.innerHTML = "<b>Wzór z ćwiczeń działa zawsze:</b> min + max = " + mn + " + " + mx + " = " + k + ". Najniższa odpowiedź zamienia się w najwyższą, a środek skali zostaje na miejscu" + (steps % 2 ? " (" + (k / 2) + " → " + (k / 2) + ")." : ".");
+  }
+  S.seg($("w-scale"), function (v) { var p = v.split(","); W.min = +p[0]; W.max = +p[1]; drawW(); });
+  S.seg($("w-f"), function (v) { W.f = v; drawW(); });
+  drawW();
+
+  /* ================= 3. Braki danych ================= */
+  var B = { vals: [6, 6, 6, 5, 6], miss: [false, true, false, false, false] };
+  var names = ["SWLS1", "SWLS2", "SWLS3R", "SWLS4", "SWLS5"];
+  var box = $("b-items");
+  names.forEach(function (n, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "item";
+    b.addEventListener("click", function () {
+      if (!B.miss[i] && B.miss.filter(function (m) { return !m; }).length === 1) return; // zostaw choć jedną odpowiedź
+      B.miss[i] = !B.miss[i]; drawB();
+    });
+    box.appendChild(b);
+  });
+  function setStat(id, val, cls) { var e = $(id); e.className = "stat" + (cls ? " " + cls : ""); e.querySelector("b").textContent = val; }
+  function drawB() {
+    var btns = box.querySelectorAll("button");
+    btns.forEach(function (b, i) {
+      b.setAttribute("aria-pressed", B.miss[i] ? "true" : "false");
+      b.setAttribute("aria-label", names[i] + (B.miss[i] ? ": brak odpowiedzi" : ": " + B.vals[i]));
+      b.innerHTML = names[i] + "<b>" + (B.miss[i] ? "—" : B.vals[i]) + "</b>";
+    });
+    var valid = B.vals.filter(function (v, i) { return !B.miss[i]; }), k = 5 - valid.length;
+    var sum = valid.reduce(function (a, b) { return a + b; }, 0), mean = sum / valid.length;
+    setStat("b-s1", k ? "puste" : String(sum), k ? "bad" : "");
+    setStat("b-s2", k ? "puste" : S.fmt(mean, 2), k ? "bad" : "");
+    setStat("b-s3", String(sum), k ? "bad" : "");
+    setStat("b-s4", S.fmt(mean, 2), "ok");
+    // wykres: dwie skale
+    var svg = $("b-plot"); S.clear(svg);
+    var x0 = 110, x1 = 584;
+    function gauge(y, lo, hi, step, val, ghost, label, col) {
+      var X = function (v) { return x0 + (x1 - x0) * (v - lo) / (hi - lo); };
+      S.text(svg, 4, y + 5, label, { "font-size": 13, "font-weight": 700, fill: "var(--ink)" });
+      S.svg("rect", { x: x0, y: y - 9, width: x1 - x0, height: 18, rx: 9, fill: "var(--paper-2)" }, svg);
+      for (var v = lo; v <= hi; v += step) S.text(svg, X(v), y + 30, String(v), { "class": "tick", "text-anchor": "middle" });
+      if (ghost !== null) {
+        S.svg("line", { x1: X(val), x2: X(ghost), y1: y, y2: y, stroke: RED, "stroke-width": 2, "stroke-dasharray": "3 3" }, svg);
+        S.svg("circle", { cx: X(ghost), cy: y, r: 8, fill: "#fff", stroke: "var(--ink-mute)", "stroke-width": 1.5 }, svg);
+      }
+      S.svg("circle", { cx: X(val), cy: y, r: 9, fill: col }, svg);
+    }
+    gauge(36, 1, 7, 1, mean, null, "Średnia", "var(--tint)");
+    gauge(104, 5, 35, 5, sum, k ? mean * 5 : null, "Suma", k ? RED : "var(--tint)");
+    svg.setAttribute("aria-label", "Średnia " + S.fmt(mean, 2) + " na skali 1–7, suma " + sum + " na skali 5–35");
+    var t = $("b-take"); t.classList.toggle("bad", k > 0);
+    t.innerHTML = k
+      ? "<b>Suma z " + valid.length + " pozycji (" + sum + ") jest zaniżona</b>: wygląda na niższe zadowolenie, choć osoba odpowiada średnio " + S.fmt(mean, 2) + ". Średnia z ważnych odpowiedzi zostaje na skali 1–7. W Jamovi bez ignore_missing=1 obie formuły zwrócą puste pole. Pomijaj braki tylko wtedy, gdy klucz lub prowadzący na to pozwala."
+      : "<b>Bez braków suma i średnia niosą tę samą informację</b>: suma = 5 × średnia (" + sum + " = 5 × " + S.fmt(mean, 1) + "). Różnica pojawia się dopiero przy brakach danych.";
+  }
+  drawB();
+})();
+</script>
+<script src="../assets/reader.js?v=4db82ece" data-home="../" data-back="./" data-back-label="Metodologia" data-title="Symulacje · Ćwiczenia 1" data-nodock></script>
+</body>
+</html>

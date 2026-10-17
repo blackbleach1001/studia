@@ -24,7 +24,7 @@ for css in ["study.css", "overlay.css"]:
     p.write_text(setv(p.read_text(encoding="utf-8"), "reader.css", rv), encoding="utf-8")
 
 # 2) pozostałe pliki — po aktualizacji importów
-vers = {n: h(A / n) for n in ["study.css", "overlay.css", "reader.css", "reader.js", "flashcards.js", "srs.js", "check.js", "today.js", "cards-index.js"]}
+vers = {n: h(A / n) for n in ["study.css", "overlay.css", "reader.css", "reader.js", "flashcards.js", "srs.js", "check.js", "today.js", "cards-index.js", "sim.css", "sim.js"]}
 
 for page in list(ROOT.glob("*.html")) + list(ROOT.glob("*/*.html")):
     if "tools" in page.parts:

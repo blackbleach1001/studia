@@ -32,6 +32,12 @@ def finish(soup, subj, unit, units, container):
         + (f'<p class="st-meta">{esc(unit["sub"])}</p>' if unit.get("sub") else "")
         + "</header>", "html.parser")
     container.insert(0, hero)
+    if unit.get("sim"):
+        link = BeautifulSoup(
+            f'<a class="sim-link" href="{unit["sim"]}"><span class="ic">{ICONS["sim"]}</span>'
+            f'<span><b>Zobacz to w symulacjach</b><span class="s">Kliknij i obserwuj, jak zmieniają się dane</span></span></a>',
+            "html.parser")
+        container.insert(1, link)
     # przejścia
     seq = [u for u in units if u["kind"] != "info"]
     i = seq.index(unit) if unit in seq else None
@@ -202,6 +208,7 @@ ICONS = {
     "notes": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>',
     "cards": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
     "quiz": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>',
+    "sim": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M7 15l4-5 3 3 5-7"/><circle cx="19" cy="6" r="1.2" fill="currentColor"/></svg>',
     "info": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
 }
 
@@ -217,6 +224,9 @@ def hub(subj):
         us = [u for u in subj["units"] if u["kind"] == kind]
         if us:
             groups.append((label, "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)))
+    sims = subj.get("sims", [])
+    if sims:
+        groups.append(("Symulacje", "".join(row(m["href"], "sim", f'{m["label"]} · Symulacje', m.get("title", "")) for m in sims)))
     extra = subj.get("practice", [])
     if extra:
         groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
@@ -274,6 +284,7 @@ def build_index(subjects):
         if n("wyk"): parts.append(rng("Wykład", "Wykłady", n("wyk")))
         if n("cw"): parts.append(rng("Ćwiczenia", "Ćwiczenia", n("cw")))
         if n("zaj"): parts.append(rng("Zajęcia", "Zajęcia", n("zaj")))
+        if subj.get("sims"): parts.append("Symulacje")
         parts += [p["title"].split(" · ")[0] for p in subj.get("practice", [])]
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
