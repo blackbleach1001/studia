@@ -7,9 +7,16 @@
   var KEY = "studia-reader-v2";
   var S = { focus: false, rate: 1, player: false };
   try { Object.assign(S, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function save() {
+    try {
+      var out = Object.assign({}, S);
+      if (NOFOCUS) { var prev = JSON.parse(localStorage.getItem(KEY) || "{}"); out.focus = !!prev.focus; }
+      localStorage.setItem(KEY, JSON.stringify(out));
+    } catch (e) {}
+  }
 
   var script = document.currentScript;
+  var NOFOCUS = !!(script && script.hasAttribute("data-nofocus"));
   var HOME = (script && script.dataset.home) || "../";
   var root = document.querySelector("main") || document.body;
   var synth = window.speechSynthesis;
@@ -19,7 +26,7 @@
   /* ---------- bloki tekstu ---------- */
   var BLOCK_SEL = "h2, h3, details > summary, p, li, tr, dd, blockquote";
   function mark(el) {
-    if (el.hasAttribute("data-block") || el.closest(".dock, .toc, .crumbs, .hero .links, nav, script, style")) return;
+    if (el.hasAttribute("data-block") || el.closest(".dock, .st-nav, .st-sheet, .toc, .crumbs, .hero .links, nav, script, style")) return;
     if (/^H[23]$/.test(el.tagName) && el.closest("summary")) return;          // nagłówek w summary — czytamy summary
     if (el.tagName === "LI" && el.querySelector("p")) return;                   // li z akapitami — czytamy akapity
     if (el.tagName === "P" && el.closest("li, td, th, blockquote")) return;
@@ -32,7 +39,7 @@
     root.querySelectorAll(BLOCK_SEL).forEach(mark);
     // starsze materiały: tekst bezpośrednio w <div> (np. odpowiedzi, karty)
     root.querySelectorAll("div").forEach(function (d) {
-      if (d.closest("[data-block], .dock")) return;
+      if (d.closest("[data-block], .dock, .st-nav, .st-sheet")) return;
       if (d.querySelector("p, li, div, table, h1, h2, h3, h4, details, ul, ol")) return;
       if (d.textContent.trim().length < 12) return;
       mark(d);
@@ -65,40 +72,127 @@
     }
   }
   root.addEventListener("click", function (e) {
-    if (e.target.closest("a, button, input, .dock")) return;
+    if (e.target.closest("a, button, input, .dock, .st-nav, .st-sheet")) return;
     var b = e.target.closest("[data-block]");
     if (!b) return;
     setActive(b, false);
     if (speaking) { startAt(b); }          // lektor przeskakuje do dotkniętego akapitu
   });
 
-  /* ---------- pasek ---------- */
+  /* ---------- ikony (w stylu SF Symbols) ---------- */
   var ICON = {
-    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
+    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 19l-7-7 7-7"/></svg>',
+    list: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.2" fill="currentColor" stroke="none"/></svg>',
     focus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/></svg>',
     speak: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>',
-    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
-    pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>',
-    prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 17l-5-5 5-5M11 17l-5-5 5-5"/></svg>',
-    next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17l5-5-5-5M13 17l5-5-5-5"/></svg>'
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
+    prev: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 6.5v11a.8.8 0 0 1-1.25.66L2.5 12.66a.8.8 0 0 1 0-1.32l7.25-5.5A.8.8 0 0 1 11 6.5zM21 6.5v11a.8.8 0 0 1-1.25.66l-7.25-5.5a.8.8 0 0 1 0-1.32l7.25-5.5A.8.8 0 0 1 21 6.5z"/></svg>',
+    next: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32l-7.25-5.5A.8.8 0 0 0 13 6.5zM3 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32L4.25 5.84A.8.8 0 0 0 3 6.5z"/></svg>'
   };
 
+  /* ---------- pasek nawigacji u góry: wstecz + tytuł po przewinięciu ---------- */
+  var BACK = (script && script.dataset.back) || HOME;
+  var BACK_LABEL = (script && script.dataset.backLabel) || "Studia";
+  var h1 = document.querySelector("h1");
+  var pageTitle = (script && script.dataset.title) || (h1 ? h1.textContent.replace(/\s+/g, " ").trim() : document.title);
+  var nav = document.createElement("header");
+  nav.className = "st-nav";
+  nav.innerHTML =
+    (BACK === "none" ? "<span></span>" : '<a class="st-back" href="' + BACK + '">' + ICON.back + "<span>" + BACK_LABEL + "</span></a>") +
+    '<div class="st-title" aria-hidden="true">' + pageTitle.replace(/</g, "&lt;") + "</div><span></span>";
+  document.body.insertBefore(nav, document.body.firstChild);
+  function onScroll() {
+    var y = window.scrollY || 0;
+    nav.classList.toggle("is-scrolled", y > 4);
+    var past = h1 ? h1.getBoundingClientRect().bottom < 52 : y > 120;
+    nav.classList.toggle("show-title", past);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- spis treści ---------- */
+  function headings() {
+    return Array.prototype.filter.call(document.querySelectorAll("h2"), function (h) {
+      return !h.closest(".st-nav, .st-sheet, .dock, nav, .toc") && h.textContent.trim().length > 1;
+    });
+  }
+  var HEADS = headings();
+  var hasToc = HEADS.length >= 3;
+  var sheet = null;
+  if (hasToc) {
+    sheet = document.createElement("div");
+    sheet.className = "st-sheet"; sheet.hidden = true;
+    sheet.innerHTML =
+      '<div class="st-scrim" data-close></div>' +
+      '<section class="st-panel" role="dialog" aria-modal="true" aria-labelledby="st-toc-t">' +
+        '<div class="st-grab" aria-hidden="true"></div>' +
+        '<header><h2 id="st-toc-t">Spis treści</h2><button type="button" data-close>Gotowe</button></header>' +
+        "<ol></ol>" +
+      "</section>";
+    document.body.appendChild(sheet);
+    var ol = sheet.querySelector("ol");
+    HEADS.forEach(function (h, i) {
+      if (!h.id) h.id = "sekcja-" + (i + 1);
+      var t = h.cloneNode(true);
+      t.querySelectorAll(".tag, .src, .num, .n").forEach(function (x) { x.remove(); });
+      var li = document.createElement("li");
+      li.innerHTML = '<a href="#' + h.id + '"></a>';
+      li.firstChild.textContent = t.textContent.replace(/\s+/g, " ").trim();
+      ol.appendChild(li);
+    });
+    sheet.addEventListener("click", function (e) {
+      if (e.target.closest("[data-close]")) { closeToc(); return; }
+      var a = e.target.closest("a[href^='#']");
+      if (!a) return;
+      e.preventDefault();
+      var h = document.getElementById(a.getAttribute("href").slice(1));
+      closeToc();
+      // otwórz zwinięte sekcje, w których jest nagłówek
+      for (var d = h.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
+      h.scrollIntoView({ block: "start" });
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) closeToc(); });
+  }
+  var lastFocus = null;
+  function reachable(h) {
+    if (h.getClientRects().length) return true;
+    for (var d = h.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) if (!d.open) return true;
+    return false;
+  }
+  function openToc() {
+    var cur = null;
+    sheet.querySelectorAll("li").forEach(function (li, i) { li.hidden = !reachable(HEADS[i]); });
+    HEADS.forEach(function (h) { if (h.getBoundingClientRect().top < 120) cur = h; });
+    sheet.querySelectorAll("li").forEach(function (li, i) { li.classList.toggle("is-current", HEADS[i] === cur); });
+    lastFocus = document.activeElement;
+    sheet.hidden = false; document.body.classList.add("st-locked");
+    var c = sheet.querySelector(".is-current a") || sheet.querySelector("a");
+    if (c) { c.scrollIntoView({ block: "center" }); }
+    sheet.querySelector("header button").focus({ preventScroll: true });
+  }
+  function closeToc() {
+    sheet.hidden = true; document.body.classList.remove("st-locked");
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+
+  /* ---------- pasek narzędzi na dole + lektor ---------- */
   var dock = document.createElement("div");
   dock.className = "dock";
   dock.innerHTML =
     (hasTTS ?
     '<section class="player" id="tts-player" aria-label="Lektor" hidden>' +
+      '<div class="now" aria-live="polite"><b data-now>Lektor</b><span data-sub></span></div>' +
       '<div class="row">' +
         '<button class="ctl" type="button" data-a="prev" aria-label="Poprzedni akapit">' + ICON.prev + '</button>' +
         '<button class="ctl main" type="button" data-a="play" aria-label="Odtwórz">' + ICON.play + '</button>' +
         '<button class="ctl" type="button" data-a="next" aria-label="Następny akapit">' + ICON.next + '</button>' +
-        '<div class="now" aria-live="polite"><b data-now>Lektor</b><span data-sub></span></div>' +
       '</div>' +
-      '<label class="rate">Prędkość <input type="range" min="0.6" max="1.8" step="0.05" data-a="rate"> <output data-rate></output></label>' +
+      '<label class="rate"><span>Prędkość</span><input type="range" min="0.6" max="1.8" step="0.05" data-a="rate" aria-label="Prędkość czytania"><output data-rate></output></label>' +
     '</section>' : "") +
-    '<nav class="dock-bar" aria-label="Narzędzia czytania">' +
-      (HOME === "none" ? "" : '<a href="' + HOME + '">' + ICON.back + '<span>Spis</span></a>') +
-      '<button type="button" data-a="focus" aria-pressed="false">' + ICON.focus + '<span>Skupienie</span></button>' +
+    '<nav class="dock-bar" aria-label="Narzędzia">' +
+      (hasToc ? '<button type="button" data-a="toc" aria-haspopup="dialog">' + ICON.list + '<span>Spis treści</span></button>' : "") +
+      (NOFOCUS ? "" : '<button type="button" data-a="focus" aria-pressed="false">' + ICON.focus + '<span>Skupienie</span></button>') +
       (hasTTS ? '<button type="button" data-a="player" aria-expanded="false" aria-controls="tts-player">' + ICON.speak + '<span>Lektor</span></button>' : "") +
     '</nav>';
   document.body.appendChild(dock);
@@ -110,8 +204,8 @@
   var nowEl = $("[data-now]"), subEl = $("[data-sub]");
 
   function applyUI() {
-    document.body.classList.toggle("focus", !!S.focus);
-    btnFocus.setAttribute("aria-pressed", S.focus ? "true" : "false");
+    document.body.classList.toggle("focus", !!S.focus && !NOFOCUS);
+    if (btnFocus) btnFocus.setAttribute("aria-pressed", S.focus ? "true" : "false");
     if (player) {
       player.hidden = !S.player;
       btnPlayer.setAttribute("aria-expanded", S.player ? "true" : "false");
@@ -125,6 +219,7 @@
     var b = e.target.closest("[data-a]");
     if (!b) return;
     var a = b.dataset.a;
+    if (a === "toc") { openToc(); return; }
     if (a === "focus") {
       S.focus = !S.focus;
       if (S.focus && !active) { var first = firstVisibleBlock(); if (first) setActive(first, false); }

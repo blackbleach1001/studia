@@ -79,7 +79,7 @@ out.write_text(str(soup), encoding="utf-8")
 # ---------- strona z fiszkami ----------
 if cards:
     page = f"""<!doctype html>
-<html lang="pl">
+<html lang="pl" class="st-themed">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -91,9 +91,8 @@ if cards:
 </head>
 <body>
 <div class="page">
-<nav class="crumbs" aria-label="Ścieżka"><a href="../">Studia</a> / <a href="{out.name}">{subject}</a> / Fiszki</nav>
 <header class="hero">
-  <div class="eyebrow">{subject}</div>
+  <p class="eyebrow">{subject}</p>
   <h1>Fiszki</h1>
   <p class="meta">{title} · {len(cards)} pytań</p>
 </header>
@@ -103,7 +102,7 @@ if cards:
 {json.dumps(cards, ensure_ascii=False, indent=0).replace("</", "<\\/")}
 </script>
 <script src="../assets/flashcards.js"></script>
-<script src="../assets/reader.js" data-home="../"></script>
+<script src="../assets/reader.js" data-nofocus data-home="../" data-back="{out.name}" data-back-label="Notatki"></script>
 </body>
 </html>
 """

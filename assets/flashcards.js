@@ -33,8 +33,11 @@
           '<span style="width:' + (100 * k / total) + '%"></span></div>' +
         '<p class="deck-stat">Umiem <strong>' + k + '</strong> z ' + total + '</p>' +
         '<div class="deck-tools">' +
+          '<div class="seg" role="group" aria-label="Zakres">' +
+            '<button type="button" data-a="todo" aria-pressed="' + (mode === "todo") + '">Do powtórki</button>' +
+            '<button type="button" data-a="all" aria-pressed="' + (mode === "all") + '">Wszystkie</button>' +
+          '</div>' +
           '<button class="btn" type="button" data-a="shuffle">Przetasuj</button>' +
-          '<button class="btn" type="button" data-a="mode" aria-pressed="' + (mode === "all") + '">' + (mode === "all" ? "Pokaż tylko do powtórki" : "Pokaż wszystkie") + '</button>' +
         '</div>' +
       '</div>';
 
@@ -47,7 +50,7 @@
     }
     var i = order[pos], c = data[i];
     app.innerHTML = head +
-      '<article class="fcard' + (shown ? " is-shown" : "") + '" aria-live="polite">' +
+      '<article class="fcard' + (shown ? " is-shown" : " can-reveal") + '" aria-live="polite"' + (shown ? "" : ' data-a="show"') + '>' +
         '<p class="fcard-n">Pytanie ' + (pos + 1) + ' z ' + order.length + (c.src ? ' · ' + c.src : "") + (known[i] ? ' · <span class="ok">umiem</span>' : "") + '</p>' +
         '<h2 class="fcard-q">' + c.q + '</h2>' +
         (shown
@@ -72,6 +75,7 @@
     if (a === "again") { known[i] = false; save(); next(false); return; }
     if (a === "shuffle") { shuffle(); return; }
     if (a === "mode") { mode = mode === "all" ? "todo" : "all"; build(); return; }
+    if (a === "todo" || a === "all") { if (mode !== a) { mode = a; build(); } return; }
     if (a === "reset") { known = {}; save(); mode = "todo"; build(); return; }
   });
   function next(remove) {
