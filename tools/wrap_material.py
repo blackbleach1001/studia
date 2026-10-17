@@ -102,7 +102,7 @@ if cards:
 {json.dumps(cards, ensure_ascii=False, indent=0).replace("</", "<\\/")}
 </script>
 <script src="../assets/flashcards.js"></script>
-<script src="../assets/reader.js" data-nofocus data-home="../" data-back="{out.name}" data-back-label="Notatki"></script>
+<script src="../assets/reader.js" data-nofocus data-home="../" data-back="./" data-back-label="{subject}"></script>
 </body>
 </html>
 """

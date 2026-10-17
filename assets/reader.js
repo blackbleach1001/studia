@@ -17,6 +17,7 @@
 
   var script = document.currentScript;
   var NOFOCUS = !!(script && script.hasAttribute("data-nofocus"));
+  var NODOCK = !!(script && script.hasAttribute("data-nodock"));
   var HOME = (script && script.dataset.home) || "../";
   var root = document.querySelector("main") || document.body;
   var synth = window.speechSynthesis;
@@ -110,6 +111,8 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  if (NODOCK) return;
 
   /* ---------- spis treści ---------- */
   function headings() {

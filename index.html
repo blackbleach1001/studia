@@ -7,103 +7,27 @@
 <title>Studia</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Studia">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#fffdf9">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="assets/study.css">
 <style>
 :root{--st-h:28;--st-s:22%;--st-l:45%}
-.page{max-width:1000px;padding-top:max(28px,env(safe-area-inset-top))}
+.page{padding-top:max(28px,env(safe-area-inset-top))}
 .hero{border:0;padding:20px 4px 4px}
 .hero h1{font-size:2.5rem}
-.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:8px 24px;align-items:start}
-.group h2{
-  display:flex;align-items:center;gap:8px;margin:26px 4px 8px;
-  font:700 .8125rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-mute);
-}
-.group h2 i{width:9px;height:9px;border-radius:50%;background:hsl(var(--sh),var(--ss),var(--sl));flex:0 0 auto}
-.list{list-style:none;margin:0;padding:0;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 0 0 .5px var(--line)}
-.list li{margin:0;position:relative}
-.list li+li::before{content:"";position:absolute;top:0;right:0;left:62px;border-top:.5px solid var(--line)}
-.row{
-  display:flex;align-items:center;gap:14px;min-height:60px;padding:10px 14px;
-  color:var(--ink);text-decoration:none;-webkit-tap-highlight-color:transparent;
-}
-.row:active{background:var(--tint-soft)}
-.row .ic{
-  width:34px;height:34px;border-radius:8px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
-  background:hsl(var(--sh),var(--ss),var(--sl));color:#fff;
-}
-.row .ic.alt{background:hsl(var(--sh),calc(var(--ss) + 6%),88%);color:hsl(var(--sh),var(--ss),30%)}
-.row .ic svg{width:20px;height:20px}
-.row .tx{flex:1;min-width:0}
-.row .t{display:block;font-weight:700;line-height:1.3}
-.row .s{display:block;font-size:.875rem;color:var(--ink-mute);line-height:1.35;margin-top:1px}
-.row::after{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:4px;border-right:2px solid var(--ink-mute);border-top:2px solid var(--ink-mute);transform:rotate(45deg);opacity:.7}
-.row.empty{color:var(--ink-mute);min-height:52px;padding-left:16px}
-.row.empty::after{display:none}
+.row.empty .t{color:var(--ink-mute)}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="page hub">
   <header class="hero">
     <p class="eyebrow">Psychologia SWPS · Semestr 3</p>
     <h1>Studia</h1>
   </header>
-  <main class="groups" id="subjects"></main>
+  <main>
+    <section class="group"><h2>Przedmioty</h2><ul class="ios-list"><li style="--sh:209;--ss:33%;--sl:56%"><a class="row" href="poznawcza/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Psychologia poznawcza</span><span class="s">Wykłady 1–3 · Ćwiczenia 1 · Fiszki · Powtórka</span></span></a></li><li style="--sh:150;--ss:26%;--sl:44%"><a class="row" href="metodologia/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Podstawy metodologii i statystyki</span><span class="s">Wykłady 1–2 · Ćwiczenia 1 · Fiszki · Trening</span></span></a></li><li style="--sh:12;--ss:42%;--sl:58%"><a class="row" href="kliniczna/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Psychologia kliniczna i zdrowia</span><span class="s">Wykłady 1–2 · Fiszki</span></span></a></li><li style="--sh:345;--ss:32%;--sl:60%"><a class="row" href="rozmowa/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Rozmowa psychologiczna</span><span class="s">Zajęcia 1 · Fiszki</span></span></a></li><li style="--sh:300;--ss:20%;--sl:46%"><a class="row" href="praca/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Psychologia pracy i organizacji</span><span class="s">Wykłady 1–2</span></span></a></li><li style="--sh:36;--ss:48%;--sl:54%"><span class="row empty"><span class="ic alt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span><span class="tx"><span class="t">Psychologia edukacji</span><span class="s">Brak materiałów</span></span></span></li></ul></section>
+  </main>
 </div>
-
-<script>
-/* ===== Spis materiałów — nowy materiał = nowa pozycja w "items" =====
-   type: "notes" (notatki), "cards" (fiszki), "quiz" (test / trening) */
-var SUBJECTS = [
-  { name: "Psychologia poznawcza", h: 209, s: "33%", l: "56%", items: [
-    { type: "notes", title: "Literatura do wykładów i ćwiczeń", sub: "Rozdziały podręcznika, oś czasu, kto jest kim", href: "poznawcza/literatura.html" },
-    { type: "cards", title: "Fiszki", sub: "Pytania kontrolne · 39", href: "poznawcza/literatura-fiszki.html" },
-    { type: "quiz", title: "Powtórka", sub: "Test, fiszki, pytania otwarte", href: "poznawcza/powtorka.html" }
-  ]},
-  { name: "Podstawy metodologii i statystyki", h: 150, s: "26%", l: "44%", items: [
-    { type: "notes", title: "Wykłady i ćwiczenia", sub: "Nauka, hipotezy, zmienne, Jamovi i SPSS", href: "metodologia/notatki.html" },
-    { type: "cards", title: "Fiszki", sub: "Sprawdź się · 56", href: "metodologia/notatki-fiszki.html" },
-    { type: "quiz", title: "Trening", sub: "Test, pytania otwarte, fiszki", href: "metodologia/trening.html" }
-  ]},
-  { name: "Psychologia kliniczna i zdrowia", h: 12, s: "42%", l: "58%", items: [
-    { type: "notes", title: "Wykłady 1–2", sub: "Patogeneza i salutogeneza, modele zdrowia, stres", href: "kliniczna/notatki.html" },
-    { type: "cards", title: "Fiszki", sub: "Sprawdź się · 40", href: "kliniczna/notatki-fiszki.html" }
-  ]},
-  { name: "Rozmowa psychologiczna", h: 345, s: "32%", l: "60%", items: [
-    { type: "notes", title: "Zajęcia 1 · Kontakt, kontrakt i etyka", sub: "Geller i Król · Zalewski", href: "rozmowa/zajecia-1.html" },
-    { type: "cards", title: "Fiszki · Zajęcia 1", sub: "Wejściówka · 14", href: "rozmowa/zajecia-1-fiszki.html" }
-  ]},
-  { name: "Psychologia pracy i organizacji", h: 300, s: "20%", l: "46%", items: [
-    { type: "notes", title: "Wykłady 1–2", sub: "Organizacja, motywacja, środowisko pracy, CSR, etyka", href: "praca/notatki.html" }
-  ]},
-  { name: "Psychologia edukacji", h: 36, s: "48%", l: "54%", items: [] }
-];
-
-var ICONS = {
-  notes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>',
-  cards: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
-  quiz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>'
-};
-function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
-var root = document.getElementById("subjects");
-SUBJECTS.forEach(function (sub) {
-  var g = document.createElement("section");
-  g.className = "group";
-  g.style.setProperty("--sh", sub.h); g.style.setProperty("--ss", sub.s); g.style.setProperty("--sl", sub.l);
-  var rows = sub.items.length
-    ? sub.items.map(function (it) {
-        return '<li><a class="row" href="' + it.href + '">' +
-          '<span class="ic' + (it.type === "notes" ? "" : " alt") + '">' + ICONS[it.type] + '</span>' +
-          '<span class="tx"><span class="t">' + esc(it.title) + '</span>' + (it.sub ? '<span class="s">' + esc(it.sub) + '</span>' : "") + '</span>' +
-        '</a></li>';
-      }).join("")
-    : '<li><span class="row empty">Brak materiałów</span></li>';
-  g.innerHTML = '<h2><i aria-hidden="true"></i>' + esc(sub.name) + '</h2><ul class="list">' + rows + '</ul>';
-  root.appendChild(g);
-});
-</script>
 </body>
 </html>

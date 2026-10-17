@@ -136,3 +136,28 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
 }
 .seg button[aria-pressed="true"]{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px var(--line)}
 .deck-tools{align-items:center;justify-content:space-between}
+
+/* =========================================================
+   Listy grupowane (jak w Ustawieniach iOS) — strona główna i przedmioty
+   ========================================================= */
+.group h2{
+  display:flex;align-items:center;gap:8px;margin:26px 4px 8px;
+  font:700 .8125rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--ink-mute);
+}
+.group h2 i{width:9px;height:9px;border-radius:50%;background:hsl(var(--sh),var(--ss),var(--sl));flex:0 0 auto}
+.ios-list{list-style:none;margin:0;padding:0;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 0 0 .5px var(--line)}
+.ios-list li{margin:0;position:relative}
+.ios-list li+li::before{content:"";position:absolute;top:0;right:0;left:62px;border-top:.5px solid var(--line)}
+.row{display:flex;align-items:center;gap:14px;min-height:60px;padding:10px 14px;color:var(--ink);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.row:active{background:var(--tint-soft)}
+.row .ic{width:34px;height:34px;border-radius:8px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:hsl(var(--sh),var(--ss),var(--sl));color:#fff}
+.row .ic.alt{background:hsl(var(--sh),calc(var(--ss) + 6%),88%);color:hsl(var(--sh),var(--ss),30%)}
+.row .ic svg{width:20px;height:20px}
+.row .tx{flex:1;min-width:0}
+.row .t{display:block;font-weight:700;line-height:1.3}
+.row .s{display:block;font-size:.875rem;color:var(--ink-mute);line-height:1.35;margin-top:1px}
+.row::after{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:4px;border-right:2px solid var(--ink-mute);border-top:2px solid var(--ink-mute);transform:rotate(45deg);opacity:.7}
+.row.empty{color:var(--ink-mute);min-height:52px;padding-left:16px}
+.row.empty::after{display:none}
+.hub .hero{border:0;padding-bottom:0}
+.hub .group:first-child h2{margin-top:18px}

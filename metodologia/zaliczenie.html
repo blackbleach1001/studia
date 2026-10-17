@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Informacje · Podstawy metodologii i statystyki</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9; --ink:#2b2118; --ink-soft:#5a4a3c; --line:#e8dfd2;
+  --acc:hsl(150,26%,44%); --acc-dark:hsl(150,28%,30%);
+  --acc-soft:hsl(150,26%,93%); --acc-mid:hsl(150,24%,82%);
+  --warn:hsl(12,42%,58%); --warn-soft:hsl(12,50%,95%);
+  --gold:hsl(36,48%,54%); --gold-soft:hsl(36,60%,94%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 80px}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;color:var(--ink)}
+h1{font-size:2.1rem;margin:.2em 0 .1em}
+h2{font-size:1.45rem;margin:0}
+h3{font-size:1.1rem;margin:1.3em 0 .4em;color:var(--acc-dark)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-dark)}
+.sub{color:var(--ink-soft);font-style:italic;margin:0 0 18px}
+.dots{display:flex;gap:6px;margin:10px 0 18px}
+.dots span{width:14px;height:14px;border-radius:50%}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px}
+nav.toc a{font-size:.82rem;text-decoration:none;color:var(--acc-dark);background:var(--acc-soft);border:1px solid var(--acc-mid);padding:3px 10px;border-radius:99px}
+details.sec{scroll-margin-top:60px;border-top:2px solid var(--acc);margin:0 0 8px;padding:6px 0 4px}
+details.sec>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;padding:8px 0}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary .num{font-family:"Playfair Display",serif;color:var(--acc);font-size:1.3rem;min-width:1.6em}
+details.sec>summary::after{content:"＋";margin-left:auto;color:var(--acc)}
+details.sec[open]>summary::after{content:"−"}
+.tag{display:inline-block;font-size:.7rem;font-family:system-ui,sans-serif;letter-spacing:.04em;padding:1px 8px;border-radius:99px;vertical-align:middle;margin-left:4px;border:1px solid}
+.tag.w{color:var(--acc-dark);border-color:var(--acc-mid);background:var(--acc-soft)}
+.tag.j{color:hsl(36,50%,32%);border-color:hsl(36,48%,78%);background:var(--gold-soft)}
+.tag.s{color:hsl(12,40%,38%);border-color:hsl(12,42%,82%);background:var(--warn-soft)}
+.tag.c{color:var(--ink-soft);border-color:var(--line);background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:12px 14px}
+.card h4{margin:0 0 4px;font-family:"Playfair Display",serif;font-size:1.02rem}
+.card p{margin:0;font-size:.95rem}
+.card.warn{border-left-color:var(--warn)}
+.card.gold{border-left-color:var(--gold)}
+.big{font-family:"Playfair Display",serif;font-size:1.8rem;color:var(--acc-dark);line-height:1}
+.def{background:var(--acc-soft);border-left:4px solid var(--acc);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+.def b:first-child{color:var(--acc-dark)}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.95rem}
+.trap{background:var(--warn-soft);border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.95rem}
+.syl{font-family:"Source Serif 4",serif;background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:12px 0}
+.syl .line{border-top:1px dashed var(--ink-soft);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Playfair Display",serif;color:var(--acc-dark);font-weight:500}
+.scroll{overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.flow span{background:#fff;border:1px solid var(--acc-mid);border-radius:6px;padding:4px 10px;font-size:.9rem}
+.flow i{color:var(--acc);font-style:normal}
+details.q{background:#fff;border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:0 14px}
+details.q>summary{cursor:pointer;padding:10px 0;font-weight:600}
+details.q>summary::marker{color:var(--acc)}
+details.q .a{padding:0 0 12px;border-top:1px dashed var(--line);padding-top:8px}
+ul{padding-left:1.2em}
+li{margin:.25em 0}
+.ok{color:var(--acc-dark);font-weight:600}
+.no{color:hsl(12,45%,45%);font-weight:600}
+footer{margin-top:40px;font-size:.82rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px}
+/* przełącznik części */
+.switch{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:8px 16px;justify-content:center}
+.switch a{flex:1;max-width:200px;white-space:nowrap;text-align:center;text-decoration:none;font-family:"Playfair Display",serif;font-size:.95rem;padding:6px 10px;border-radius:99px;border:1.5px solid var(--acc);color:var(--acc-dark)}
+.switch a.cw-btn{background:var(--acc-dark);color:#fff;border-color:var(--acc-dark)}
+.part{border-radius:12px;padding:18px 18px 14px;margin:30px 0 18px;scroll-margin-top:60px}
+.part .kicker{color:inherit;opacity:.8}
+.part h2{font-size:1.7rem;color:inherit;margin:.15em 0 .2em}
+.part p{margin:0;font-size:.92rem;opacity:.9}
+.part.wyk{background:var(--acc-soft);color:var(--acc-dark);border:1px solid var(--acc-mid)}
+.part.cwi{background:var(--acc-dark);color:#fff;margin-top:56px}
+.part.cwi::before{content:"✂ · · · · · · · · · · · · · · · · · · · · · · · · ·";display:block;color:var(--acc-dark);background:var(--paper);margin:-46px -18px 28px;font-size:.8rem;letter-spacing:.1em}
+.cw-zone details.sec{border-top:2px dashed var(--acc-dark)}
+.cw-zone details.sec>summary .num{color:#fff;background:var(--acc-dark);border-radius:6px;padding:0 6px;font-size:1rem;min-width:auto}
+.cw-zone nav.toc a{background:var(--acc-dark);color:#fff;border-color:var(--acc-dark)}
+.tag.b{color:hsl(209,35%,32%);border-color:hsl(209,33%,80%);background:hsl(209,40%,95%)}
+.tag.e{color:hsl(25,35%,32%);border-color:hsl(25,35%,80%);background:hsl(25,45%,95%)}
+code,.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.code{display:block;background:var(--ink);color:#f3ece2;border-radius:8px;padding:10px 14px;margin:8px 0;white-space:pre-wrap;line-height:1.5}
+.code .c{color:#a9c9b5}
+.path{font-family:system-ui,sans-serif;font-size:.82rem;background:var(--acc-soft);border:1px solid var(--acc-mid);border-radius:5px;padding:1px 6px;white-space:nowrap}
+@media print{details.sec{break-inside:avoid} nav.toc,.switch{display:none}}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style></head>
+<body>
+
+<div class="wrap"><header class="st-hero"><p class="st-eyebrow">Informacje</p><h1>Jak zaliczyć przedmiot</h1></header>
+
+
+
+
+
+
+
+<!-- 0 -->
+<details class="sec" id="s0" open="">
+<summary><span class="num">0</span><h2>Jak zaliczyć przedmiot <span class="tag s">Sylabus</span></h2></summary>
+<div class="grid">
+<div class="card"><div class="big">40 pkt</div><h4>Egzamin (test)</h4><p>Jednokrotny wybór; wykłady + ćwiczenia + literatura obowiązkowa. <b>Próg: 21</b>.</p></div>
+<div class="card"><div class="big">40 pkt</div><h4>Kolokwium praktyczne</h4><p>Ostatnie ćwiczenia, na uczelni: analizy w pakiecie + interpretacja. <b>Próg: 20</b>. Bez AI. 1 poprawka.</p></div>
+<div class="card"><div class="big">20 pkt</div><h4>2 zadania domowe</h4><p>Po 10 pkt, <b>każde ≥ 5</b> osobno. 2 tygodnie na wykonanie, <b>−1 pkt za każdy dzień</b> spóźnienia.</p></div>
+</div>
+<div class="trap"><b>Pułapki formalne:</b>
+<ul>
+<li>Punkty za zadanie domowe i kolokwium liczą się <b>tylko jeśli w załączniku jest raport z programu statystycznego</b> z właściwymi analizami.</li>
+<li>Trzeba zaliczyć <b>każdy</b> element osobno — wysoki wynik z egzaminu nie ratuje niezaliczonego kolokwium.</li>
+<li>Ćwiczenia: 1 nieobecność OK · 2. = zadanie dodatkowe lub odrobienie z inną grupą · 3+ = niezaliczenie.</li>
+<li>Bezkrytyczne użycie AI w zadaniach domowych = odejmowane punkty.</li>
+</ul></div>
+<div class="scroll"><table>
+<tr><th>Ocena</th><th>% punktów</th><th>Ocena</th><th>% punktów</th></tr>
+<tr><td>5,0</td><td>90,50–100</td><td>3,5</td><td>60,50–70,49</td></tr>
+<tr><td>4,5</td><td>80,50–90,49</td><td>3,0</td><td>50,50–60,49</td></tr>
+<tr><td>4,0</td><td>70,50–80,49</td><td>2,0</td><td>&lt; 50,50</td></tr>
+</table></div>
+<h3>Co obejmują zadania domowe</h3>
+<div class="grid">
+<div class="card gold"><h4>ZD 1</h4><p>Przekształcenia danych surowych, statystyki opisowe, normalność rozkładu, korelacje, analiza kontyngencji.</p></div>
+<div class="card gold"><h4>ZD 2</h4><p>Testy dla prób niezależnych i zależnych, test dla jednej próby.</p></div>
+</div>
+<h3>Mapa tematów</h3>
+<div class="scroll"><table>
+<tr><th>#</th><th>Wykład</th><th>Ćwiczenia</th></tr>
+<tr><td>1</td><td>Psychologia jako nauka empiryczna ← <b>tu jesteśmy</b></td><td>Pakiet statystyczny, baza danych, wskaźniki</td></tr>
+<tr><td>2</td><td>Zmienne, operacjonalizacja, metody badań</td><td>Statystyki opisowe, normalność</td></tr>
+<tr><td>3</td><td>Statystyki opisowe, rozkład normalny</td><td>Korelacje, determinacja, kontyngencja</td></tr>
+<tr><td>4</td><td>Paradygmat korelacyjny i regresyjny, hipotezy</td><td>t niezależne / U Manna-Whitneya</td></tr>
+<tr><td>5</td><td>Paradygmat (quasi)eksperymentalny</td><td>t zależne / Wilcoxon / t jednej próby</td></tr>
+<tr><td>6</td><td>Próba i jej dobór</td><td>Podsumowanie + kolokwium</td></tr>
+<tr><td>7</td><td>Wnioskowanie, istotność, przedziały ufności</td><td></td></tr>
+<tr><td>8</td><td>Założenia testów, moc, wielkość efektu</td><td></td></tr>
+<tr><td>9</td><td>Etyka badań psychologicznych</td><td></td></tr>
+</table></div>
+<div class="note"><b>Strategia</b> <span class="tag c">uzup.</span> Sylabus przewiduje aż 110 h na przygotowanie do zaliczeń. Kolokwium sprawdza <i>ręce</i> (klikanie analiz w Jamovi i czytanie wyników) — tego nie da się nadrobić czytaniem. Po każdych ćwiczeniach powtórz analizę samodzielnie na innych danych i opisz wynik własnymi słowami, bez podglądania. AI używaj do tłumaczenia, czego nie rozumiesz, i do odpytywania — nie do robienia analiz za Ciebie.</div>
+</details>
+<!-- 1 -->
+
+<!-- 2 -->
+
+<!-- 3 -->
+
+<!-- 4 -->
+
+<!-- 5 -->
+
+<!-- 6 -->
+
+<!-- 7 -->
+
+<!-- 8 -->
+
+<!-- 9 -->
+
+<!-- 10 -->
+
+<!-- 11 -->
+
+<!-- ===================== ĆWICZENIA ===================== -->
+
+<!-- ===================== WYKŁAD 2 ===================== -->
+
+
+
+
+<!-- D1 -->
+
+<!-- D2 -->
+
+<!-- D3 -->
+
+<!-- D4 -->
+
+<!-- D5 -->
+
+<!-- D6 -->
+
+<!-- D7 -->
+
+<!-- D8 -->
+
+<footer>Źródła: slajdy W1 (dr E. Brygoła, 2026/27); slajdy C1 (T. Godlewski, 2026/27); sylabus przedmiotu 2026/2027; Józefacka, N. M., Kołek, M. F., Arciszewska-Leszczuk, A. (2023). <i>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</i> (s. 9–17, 64–72, 105–114). PWN; Babbie, E. (2003). Konceptualizacja, operacjonalizacja i pomiar. W: <i>Badania społeczne w praktyce</i> (s. 139–171). PWN; Bedyńska, S. (2013). Wprowadzanie danych i podstawy pracy z programem IBM SPSS Statistics; Standardowe sposoby tworzenia wskaźników zmiennych. W: S. Bedyńska, M. Cypryańska (red.), <i>Statystyczny drogowskaz 1</i> (s. 48–71, 114–131). Sedno.</footer>
+</div>
+<script data-back="./" data-back-label="Metodologia" data-home="../" src="../assets/reader.js"></script></body>
+</html>

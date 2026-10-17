@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Wykład 2 · Psychologia poznawcza</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --ink:#2b2118;
+  --ink-soft:#5c4f43;
+  --rule:#e9e0d3;
+  --parchment:#f7f1e7;
+  /* Psychologia poznawcza — pastel dusty blue, H209 S33 L56 */
+  --accent:hsl(209 33% 56%);
+  --accent-deep:hsl(209 36% 36%);
+  --accent-tint:hsl(209 40% 95%);
+  --accent-line:hsl(209 33% 80%);
+  --warn:#9a6a1f;
+  --warn-tint:#fbf3e3;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7}
+a{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:3px}
+
+.page{display:grid;grid-template-columns:15rem minmax(0,46rem);gap:3.5rem;max-width:68rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+@media (max-width:900px){.page{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:1.75rem}}
+
+/* ——— Spis treści ——— */
+.toc{position:sticky;top:1.5rem;align-self:start;font-size:.92rem;line-height:1.45;max-height:calc(100vh - 3rem);overflow-y:auto;padding-right:.4rem}
+.toc .grp{font-family:var(--display);font-size:.95rem;color:var(--accent-deep);margin:1.1rem 0 .35rem}
+.toc h2{font-family:var(--display);font-weight:500;font-size:1.05rem;margin:0 0 .75rem}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent-line)}
+.toc li a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--ink-soft);text-decoration:none}
+.toc li a:hover{color:var(--accent-deep)}
+.toc li a b{font-weight:600;color:var(--accent-deep);margin-right:.35rem}
+.toc .tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+@media (max-width:900px){.toc{max-height:none;position:static;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;background:var(--parchment)}}
+
+button{font:inherit;font-size:.85rem;color:var(--accent-deep);background:var(--paper);border:1px solid var(--accent-line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--accent-tint)}
+
+/* ——— Nagłówek ——— */
+header.masthead{border-bottom:3px double var(--accent-line);padding-bottom:1.75rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
+.pill{display:inline-block;font-size:.82rem;padding:.2rem .75rem;border-radius:999px;background:var(--accent);color:#fff;letter-spacing:.01em}
+.pill.ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--accent-line)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.08;margin:0 0 .6rem;letter-spacing:-.01em}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:38rem}
+.source-line{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft)}
+.source-line cite{font-style:italic;color:var(--ink)}
+
+/* ——— Sekcje ——— */
+section.chapter{margin:0 0 3rem}
+.chapter-head{display:flex;align-items:baseline;gap:.9rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.chapter-head .num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--accent)}
+.chapter-head h2{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.2;margin:0}
+.src{display:inline-block;font-size:.78rem;color:var(--accent-deep);background:var(--accent-tint);border-radius:4px;padding:.05rem .45rem;margin-left:.3rem;white-space:nowrap;vertical-align:.1em}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;color:var(--accent-deep);font-size:.85rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--accent-line)}
+
+h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:1.6rem 0 .5rem}
+h4{font-family:var(--body);font-weight:600;font-size:1rem;margin:1.2rem 0 .3rem}
+p{margin:0 0 .9rem}
+ul,ol{margin:0 0 1rem;padding-left:1.35rem}
+li{margin:.25rem 0}
+strong{font-weight:600}
+.term{font-weight:600;color:var(--accent-deep)}
+
+/* ——— Rozwijane bloki ——— */
+details.block{border:1px solid var(--rule);border-radius:10px;background:var(--paper);margin:.9rem 0}
+details.block>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;font-family:var(--display);font-size:1.12rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+details.block>summary::-webkit-details-marker{display:none}
+details.block>summary::after{content:"+";font-family:var(--body);color:var(--accent);font-size:1.3rem;line-height:1}
+details.block[open]>summary::after{content:"–"}
+details.block[open]>summary{border-bottom:1px solid var(--rule)}
+details.block .inner{padding:.9rem 1.2rem .4rem}
+details.block.ramka{background:var(--parchment);border-color:#e3d6c3}
+details.block.ramka>summary .kind{font-family:var(--body);font-size:.8rem;color:var(--ink-soft);margin-right:.5rem}
+
+/* ——— Wyróżnienia ——— */
+.key{border-left:4px solid var(--accent);background:var(--accent-tint);padding:.85rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0 1.2rem}
+.key p:last-child{margin-bottom:0}
+.key .label{display:block;font-size:.82rem;color:var(--accent-deep);margin-bottom:.2rem}
+.flag{border-left:4px solid var(--warn);background:var(--warn-tint);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem}
+.flag .label{display:block;font-size:.82rem;color:var(--warn);margin-bottom:.15rem}
+blockquote{margin:1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--accent-line);font-style:italic;color:var(--ink-soft)}
+
+/* ——— Tabele ——— */
+.table-wrap{overflow-x:auto;margin:1rem 0 1.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;background:var(--accent-tint);color:var(--accent-deep)}
+td:last-child{font-weight:600;white-space:nowrap}
+
+/* ——— Karty postaci ——— */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.8rem;margin:1rem 0 1.5rem}
+.card{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:8px;padding:.8rem .95rem;font-size:.93rem;line-height:1.5}
+.card h4{margin:0 0 .15rem;font-family:var(--display);font-weight:500;font-size:1.05rem}
+.card .yr{font-size:.8rem;color:var(--accent-deep);display:block;margin-bottom:.35rem}
+.card p{margin:0}
+
+/* ——— Oś czasu ——— */
+.timeline{list-style:none;padding:0;margin:1rem 0 1.5rem;position:relative}
+.timeline::before{content:"";position:absolute;left:4.1rem;top:.4rem;bottom:.4rem;width:2px;background:var(--accent-line)}
+.timeline li{display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;margin:0 0 .75rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:3.82rem;top:.62rem;width:.62rem;height:.62rem;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .y{font-family:var(--display);font-weight:500;text-align:right;color:var(--accent-deep)}
+
+/* ——— Wykresy ——— */
+.fig{margin:1.2rem 0;padding:1rem 1rem .6rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.5}
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:640px){.fig-row{grid-template-columns:1fr}}
+
+/* ——— Pytania kontrolne ——— */
+details.q{border-bottom:1px solid var(--rule);padding:.25rem 0}
+details.q>summary{cursor:pointer;padding:.55rem 0;font-weight:600;list-style:none;display:grid;grid-template-columns:1.8rem 1fr;gap:.4rem}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary .n{color:var(--accent);font-family:var(--display)}
+details.q .a{padding:0 0 .8rem 2.2rem;font-size:.97rem}
+
+.syl{list-style:none;padding:0;margin:.4rem 0 0}
+.syl li{display:grid;grid-template-columns:1.4rem 1fr;gap:.3rem;margin:.35rem 0}
+.syl li::before{content:"✓";color:var(--accent-deep);font-weight:600}
+.syl a{font-size:.88rem;white-space:nowrap}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.6rem;margin:.6rem 0 1rem}
+.meta-grid div{border:1px solid var(--rule);border-radius:8px;padding:.55rem .75rem;font-size:.9rem;line-height:1.4}
+.meta-grid b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--accent-deep)}
+.part{margin:4.5rem 0 2.5rem;padding:2rem 0 1.5rem;border-top:3px double var(--accent-line);border-bottom:1px solid var(--rule)}
+.part .pills{margin-bottom:.8rem}
+.part-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin:0 0 .5rem}
+.phases .y{font-size:1.4rem}
+.part-cw{background:var(--accent-tint);border-top:6px solid var(--accent);border-bottom:none;border-radius:0 0 12px 12px;padding:1.6rem 1.4rem 1.4rem;margin-top:6rem}
+.part-cw+.part{margin-top:2rem}
+table.wide{min-width:46rem;font-size:.88rem}
+table.wide td:first-child{font-weight:600;white-space:normal;color:var(--ink)}
+table.wide td{font-weight:400;white-space:normal}
+.toc .grp.cw{border-top:1px solid var(--accent-line);padding-top:.9rem;margin-top:1.4rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+
+
+/* ——— Zakładki i zwijane tematy ——— */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;padding:.7rem 0;margin:0 0 1.4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.tabs [role=tab]{font-family:var(--display);font-size:1.05rem;padding:.45rem 1.2rem;border-radius:999px;border:1px solid var(--accent-line);color:var(--accent-deep);background:var(--paper)}
+.tabs [role=tab][aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .count{font-family:var(--body);font-size:.78rem;opacity:.8;margin-left:.25rem}
+.panel-hint{font-size:.92rem;color:var(--ink-soft);margin:0 0 1rem}
+.unit{border:1px solid var(--rule);border-radius:14px;background:var(--paper);margin:0 0 1rem;scroll-margin-top:5rem}
+.unit>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;border-radius:14px}
+.unit>summary::-webkit-details-marker{display:none}
+.unit>summary:hover{background:var(--accent-tint)}
+.unit[open]>summary{border-bottom:3px double var(--accent-line);border-radius:14px 14px 0 0}
+.unit .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.55rem}
+.unit-title{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,3.6vw,1.95rem);line-height:1.15;margin-bottom:.3rem}
+.unit-lede{display:block;color:var(--ink-soft);font-size:.98rem}
+.unit-toggle{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--accent-line);display:grid;place-items:center;color:var(--accent-deep);font-size:1.3rem;line-height:1}
+.unit-toggle::before{content:"+"}
+.unit[open] .unit-toggle::before{content:"–"}
+.unit-body{padding:1.6rem 1.3rem .4rem}
+.unit-cw{border-top:4px solid var(--accent)}
+@media (max-width:640px){.unit>summary{padding:1rem}.unit-body{padding:1.2rem .9rem .2rem}}
+.chapter,.block,.q{scroll-margin-top:5rem}
+.zal{margin-bottom:1.6rem}
+.toc .grp a{color:inherit;text-decoration:none}
+.toc .grp a:hover{color:var(--accent-deep)}
+mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color:inherit;padding:0 .08em}
+.note-hl{font-size:.88rem;color:var(--ink-soft)}
+.sdt td{white-space:normal}
+.sdt td.ok{background:hsl(150 30% 95%);color:hsl(150 32% 26%)}
+.sdt td.err{background:#fbf0e6;color:#8a4a1c}
+@media print{.tabs,.panel-hint{display:none}.panel[hidden]{display:block}.unit-toggle{display:none}}
+@media print{
+  .toc,.tools{display:none}
+  .page{display:block;padding:0}
+  details.block,details.q{break-inside:avoid}
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style></head>
+<body>
+<div class="page">
+
+<main><header class="st-hero"><p class="st-eyebrow">Wykład 2 · Maruszewski, rozdz. 2, s. 43–83</p><h1>W jaki sposób spostrzegamy świat?</h1><p class="st-meta">Fazy spostrzegania, spór atomizm–postać, kategoryzacja, cykl percepcyjny, percepcja bezpośrednia.</p></header>
+
+
+
+<div aria-labelledby="tab-wyk" class="panel" id="panel-wyk" role="tabpanel">
+
+
+<div class="unit-body" id="rozdzial-2">
+<section class="chapter" id="syl-2">
+<div class="chapter-head"><span class="num">§</span><h2>Wymagania z sylabusa</h2></div>
+<div class="key">
+<span class="label">Wykład 2: W jaki sposób spostrzegamy świat?</span>
+<ul class="syl">
+<li><span>Podstawowa terminologia i charakterystyka procesu spostrzegania <a href="#r2-1">→ 2.1</a></span></li>
+<li><span>Etapy procesu spostrzegania <a href="#r2-2">→ 2.2</a></span></li>
+<li><span>Percepcja jako proces rozpoznawania i kategoryzacji <a href="#r2-4">→ 2.4</a></span></li>
+<li><span>Spostrzeganie jako proces oddolny i odgórny <a href="#oddolne-odgorne">→ 2.1</a> <a href="#r2-5">→ 2.5</a></span></li>
+<li><span>Złudzenia i błędy percepcji <a href="#zludzenia">→ zestawienie</a></span></li>
+<li><span>Stałości percepcyjne <a href="#stalosci">→ 2.1</a></span></li>
+<li><span>Wkład spostrzegania w kierowanie zachowaniem <a href="#cykl">→ 2.4.4</a> <a href="#r2-5">→ 2.5.2</a></span></li>
+<li><span>Deficyty percepcji: agnozje <a href="#agnozje">→ spoza rozdziału, do uzupełnienia</a></span></li>
+</ul>
+</div>
+</section>
+<section class="chapter" id="wstep-2">
+<div class="chapter-head"><span class="num">0</span><h2>Wstęp do rozdziału</h2></div>
+<ul>
+<li>Spostrzeganie tylko na pierwszy rzut oka jest elementarne. Wbrew introspekcji <strong>nie jest natychmiastowe</strong> — trwa i ma kolejne fazy. <span class="src">s. 43</span></li>
+<li>To nie tylko proces <span class="term">bottom-up</span> (od dołu ku górze: od danych zmysłowych do analizy w ośrodkach mózgowych). Istotną część stanowią procesy <span class="term">top-down</span> (od góry ku dołowi), np. wpływ nastawień i oczekiwań na to, jakie informacje pobieramy.</li>
+<li>Spostrzeganie jest procesem nie tylko <strong>czuciowym</strong>, ale i <strong>ruchowym</strong> — świadczą o tym badania nad eksploracją percepcyjną i ruchami gałek ocznych (automatycznymi i intencjonalnymi). Parafrazując Brunera: nie tylko widzimy, ale patrzymy i rozglądamy się; nie tylko słyszymy, ale słuchamy; nie tylko czujemy zapach, ale wąchamy.</li>
+<li>Klasyczny spór: relacja między <strong>wrażeniami</strong> a <strong>spostrzeżeniami</strong>; jego częściowe rozwiązanie jest odmienne od stanowisk obu adwersarzy. Współcześnie: <strong>detektory cech</strong>.</li>
+<li>Dwa współczesne podejścia: <strong>konstruktywizm</strong> (spostrzegamy za pośrednictwem tworzonych przez nas reprezentacji) i <strong>percepcja bezpośrednia</strong> (mamy bezpośredni dostęp do otoczenia, choć zapewniające go procesy są złożone). <span class="src">s. 44</span></li>
+</ul>
+</section>
+<!-- ============ 2.1 ============ -->
+<section class="chapter" id="r2-1">
+<div class="chapter-head"><span class="num">2.1</span><h2>Problemy podstawowe</h2></div>
+<p>Wydaje się, że spostrzeganie jest proste, automatyczne, poza kontrolą świadomości i daje dokładny obraz świata. Nic bardziej mylnego: nie jest ani proste, ani całkowicie automatyczne, ani wierne. <span class="src">s. 45</span></p>
+<ul>
+<li><strong>Perspektywa fizyczna</strong> modyfikuje spostrzeżenie. Czteroletni synek autora zobaczył dziurę w rajstopach na kolanie pani; ojciec, patrząc z innego miejsca, żadnej dziury nie widział.</li>
+<li><strong>Perspektywa psychologiczna</strong> — motywy i emocje — także silnie modyfikuje spostrzeganie, zwłaszcza w spostrzeganiu społecznym.</li>
+</ul>
+<div class="key">
+<span class="label">Definicja do zapamiętania</span>
+<p>Spostrzeganie to <strong>proces tworzenia reprezentacji przedmiotu</strong> na podstawie informacji otrzymanych z narządów zmysłowych i — w pewnych przypadkach — informacji zawartych w pamięci.</p>
+</div>
+<h3>Podstawowa terminologia</h3>
+<div class="cards">
+<div class="card"><h4>Bodziec dystalny</h4><p>Dowolny bodziec <strong>poza organizmem</strong>, oddziałujący z pewnej odległości na narządy zmysłów. Np. kartka i pisak w dłoni (wzrokowe), muzyka Preisnera z głośników (słuchowe).</p></div>
+<div class="card"><h4>Bodziec proksymalny</h4><p>Bodziec powstający w <strong>bezpośrednim kontakcie</strong> bodźca dystalnego z narządem zmysłu. Kartka, pisak i ręka tworzą <strong>obraz siatkówkowy</strong> — odwrócony i pomniejszony; to nie jest obraz „do oglądania” (Neisser, 1978a). Muzyka wprawia w drgania błonę bębenkową, potem kosteczki (młoteczek, kowadełko, strzemiączko) pobudzają włókna błony podstawnej; różne wysokości dźwięku pobudzają różne części błony (Wortman, Loftus i Marshall, 1985). Ale pobudzenie błony to jeszcze nie muzyka.</p></div>
+<div class="card"><h4>Wrażenie</h4><p>Odzwierciedlenie <strong>elementarnej cechy</strong> zmysłowej. Hebb (1969): aktywność dróg wstępujących od narządów zmysłów. Wrażenia są od siebie <strong>izolowane</strong> (barwa niezależna od wielkości). Wrażenia subiektywnie pierwotne nie muszą mieć fizjologicznych odpowiedników: trójkąt widzimy jako elementarny, a fizjologicznie rejestrowane są trzy linie i trzy kąty.</p></div>
+<div class="card"><h4>Spostrzeżenie</h4><p>Obraz przedmiotu — <strong>wszystkich dostępnych cech</strong> rejestrowanych różnymi zmysłami (w oczach: kolor tęczówek, wielkość, rzęsy, brwi, makijaż). Hebb: efekt aktywności kory, która odebrała i połączyła informacje z różnych zmysłów. Mózg musi „wiedzieć”, że cechy należą do jednego przedmiotu — łączenie wrażeń to efekt <strong>percepcyjnego uczenia się</strong>. <span class="src">s. 46</span></p></div>
+</div>
+<p>Cechy współwystępują, a zmiana jednej jest skoordynowana ze zmianami innych: gdy ktoś patrzy w bok, tęczówka na obrazie siatkówkowym staje się elipsą. Podobnie w słuchu: psychoakustyka opisuje wysokość, głośność i barwę, a my interpretujemy dźwięk jako odgłos szpilek albo żołnierskich butów, na kamiennych płytach albo asfalcie, zbliżający się albo oddalający. <strong>Spostrzeżenie to interpretacja przedmiotowa wrażeń.</strong></p>
+<figure class="fig">
+<svg aria-label="Schemat: bodziec dystalny, bodziec proksymalny z kodowaniem sensorycznym, potem dwie drogi: wrażenia przesłane do kory oraz kodowanie emocjonalne; obie prowadzą do spostrzeżenia z dekodowaniem znaczenia semantycznego i emocjonalnego" role="img" viewbox="0 0 640 230">
+<defs><marker id="ar2" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="12" text-anchor="middle">
+<rect fill="#fffdf9" height="50" rx="8" stroke="hsl(209 33% 70%)" width="96" x="8" y="90"></rect>
+<text x="56" y="112">Bodziec</text><text x="56" y="127">dystalny</text>
+<rect fill="#fffdf9" height="70" rx="8" stroke="hsl(209 33% 70%)" width="118" x="130" y="80"></rect>
+<text x="189" y="104">Bodziec</text><text x="189" y="119">proksymalny</text><text fill="#5c4f43" font-size="10" x="189" y="136">kodowanie sensoryczne</text>
+<rect fill="hsl(209 40% 95%)" height="64" rx="8" stroke="hsl(209 33% 70%)" width="178" x="282" y="18"></rect>
+<text x="371" y="42">Wrażenia → kora</text><text fill="#5c4f43" font-size="10" x="371" y="58">drogi czuciowe,</text><text fill="#5c4f43" font-size="10" x="371" y="71">zakodowane impulsy nerwowe</text>
+<rect fill="#fbf3e3" height="64" rx="8" stroke="#d9c49c" width="178" x="282" y="148"></rect>
+<text x="371" y="172">Kodowanie emocjonalne</text><text fill="#5c4f43" font-size="10" x="371" y="188">kolaterale → wzgórze,</text><text fill="#5c4f43" font-size="10" x="371" y="201">ciało migdałowate</text>
+<rect fill="#fffdf9" height="70" rx="8" stroke="hsl(209 36% 36%)" stroke-width="1.5" width="138" x="494" y="80"></rect>
+<text font-weight="600" x="563" y="104">Spostrzeżenie</text><text fill="#5c4f43" font-size="10" x="563" y="121">dekodowanie znaczenia</text><text fill="#5c4f43" font-size="10" x="563" y="134">semantycznego i emocj.</text>
+</g>
+<g fill="none" marker-end="url(#ar2)" stroke="hsl(209 36% 36%)" stroke-width="1.5">
+<line x1="104" x2="128" y1="115" y2="115"></line>
+<line x1="248" x2="280" y1="102" y2="60"></line>
+<line x1="248" x2="280" y1="128" y2="170"></line>
+<line x1="460" x2="492" y1="60" y2="100"></line>
+<line x1="460" x2="492" y1="170" y2="130"></line>
+</g>
+</svg>
+<figcaption>Ryciny 2.1 i 2.2 połączone. Informacja jest kodowana w narządach zmysłów i dekodowana w korze; odtworzony obraz jest bliższy rzeczywistości niż obraz siatkówkowy (trójwymiarowy zamiast dwuwymiarowego, nieodwrócony). Muzyka rejestrowana w uchu jako ciąg dźwięków różniących się głośnością, barwą i wysokością dopiero w korze staje się stereofoniczną melodią.</figcaption>
+</figure>
+<h3>Kodowanie emocjonalne <span class="src">s. 46–47</span></h3>
+<ul>
+<li>Od dróg czuciowych odgałęziają się <strong>kolaterale</strong> — do struktur podkorowych, głównie <strong>wzgórza</strong> i <strong>ciała migdałowatego</strong>, skąd biegną bezpośrednie połączenia do kory. Tam następuje wczesna ocena znaczenia emocjonalnego.</li>
+<li>Gdy bodziec ma duże znaczenie emocjonalne, uruchamiane są proste programy behawioralne — <span class="term">reakcja „walcz albo uciekaj”</span> (<em>flight or fight response</em>; Cannon, 1932).</li>
+<li><strong>LeDoux (2000)</strong>: pobudzenie okolic podkorowych zwiększa wrażliwość na pewne rodzaje bodźców. Bodźce są oznakowane emocjonalnie, <strong>zanim dotrą do kory</strong>. Reagowanie jest szybkie, ale mniej precyzyjne niż sterowane przez korę.</li>
+<li>Znaczenie emocjonalne bywa zdeterminowane przez właściwości sensoryczne — kształt i sposób poruszania się. <strong>Pająki i węże</strong> wywołują silne reakcje bez uczenia się; mogą istnieć specjalne filtry sensoryczne otwierające drogę do okolic podkorowych (Pisula, informacja osobista).</li>
+<li>Reakcja emocjonalna może też „podczepić się” pod bodźce obojętne w wyniku <strong>uczenia się</strong>: jeśli podczas zmywania naczyń myślimy o czymś silnie emocjonującym, brudne naczynia mogą potem same wywoływać tę emocję.</li>
+</ul>
+<p>Spostrzeżenie to więc <strong>złożona struktura</strong>: zawiera właściwości percepcyjne i właściwości określające znaczenie przedmiotu dla jednostki.</p>
+<details class="block" id="stalosci" open="">
+<summary>Stałość spostrzegania</summary>
+<div class="inner">
+<div class="key"><span class="label">Definicja</span><p><span class="term">Stałość spostrzegania</span>: spostrzeżenie nie zmienia się albo zmienia się w mniejszym stopniu niż bodźce proksymalne. <span class="src">s. 47–49</span></p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Rodzaj stałości</th><th>Przykład i wyjaśnienie</th></tr></thead>
+<tbody>
+<tr><td><strong>Kształtu</strong></td><td style="font-weight:400;white-space:normal">Otwierane drzwi widzimy jako prostokątne, choć na siatkówce powstaje trapez (ryc. 2.3). Gdy badani dobierają z serii figur (od prostokąta do wąskiego trapezu) kształt drzwi, wskazują kształt bliższy prostokątowi — popełniają błąd.</td></tr>
+<tr><td><strong>Jasności</strong></td><td style="font-weight:400;white-space:normal">Węgiel w słońcu wydaje się czarny, kartka w ciemnej piwnicy biała, choć od węgla odbija się więcej światła. Najprostsze wyjaśnienie odwołuje się do wiedzy. Prostsze, bez wiedzy: oko rejestruje konfiguracje — węgiel w słońcu jest ciemniejszy od wszystkich innych przedmiotów, kartka w piwnicy jaśniejsza. Układ wzrokowy reaguje na <strong>stosunki jasności</strong>, a nie jasność bezwzględną.</td></tr>
+<tr><td><strong>Wielkości</strong></td><td style="font-weight:400;white-space:normal">Osoba o wzroście 175 cm wydaje się tak samo wysoka z 2 i z 20 metrów. Wystarczy porównać ją z innymi przedmiotami. Słupki przy drodze (ryc. 2.4) na zdjęciu są coraz mniejsze, a widzimy je jako równe. Korekta może opierać się też na danych o krzywiźnie soczewki (uwypukla się przy bliskich przedmiotach, spłaszcza przy dalekich).</td></tr>
+<tr><td><strong>Barwy</strong></td><td style="font-weight:400;white-space:normal">Pomidor na straganie przykrytym niebieską folią powinien wydawać się fioletowy, a widzimy go jako czerwony. Pomidor jest w widzeniu centralnym, a barwa oświetlenia rejestrowana w widzeniu peryferyjnym; układ wzrokowy wprowadza poprawkę. Stałość ma granice: w żółtym świetle lamp sodowych skóra nabiera trupiego odcienia.</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details class="block" id="oddolne-odgorne" open="">
+<summary>Procesy dół–góra i góra–dół</summary>
+<div class="inner">
+<div class="table-wrap"><table>
+<thead><tr><th>Dół–góra (<em>bottom-up</em>)</th><th>Góra–dół (<em>top-down</em>)</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">Zapoczątkowane odbiorem informacji przez narządy zmysłów; analizowane na wyższych piętrach układu nerwowego, łącznie z korą. Na najwyższym poziomie spostrzeżenie powstaje dzięki interpretacji z użyciem informacji z pamięci.</td>
+<td style="font-weight:400;white-space:normal">Procesy pamięciowe <strong>kierują poszukiwaniem i interpretacją</strong> danych zmysłowych. Konieczne, gdy informacja sensoryczna jest niepełna.</td>
+</tr></tbody>
+</table></div>
+<ul>
+<li>Zdjęcie polityka w gazecie codziennej ma słabą jakość (druk rastrowy) — znajomość jego nazwiska pozwala rozpoznać twarz.</li>
+<li><strong>Figury ukryte w tle</strong> (ryc. 2.5): duży trójkąt z 16 małych. Łatwo wyodrębnić małe trójkąty; policzenie średnich (z 4 małych) jest trudniejsze. Poszukiwanie kieruje ogólny schemat figury — całości i jej części.</li>
+<li>Stałość jasności też bywa tłumaczona procesem góra–dół: wiemy, że węgiel jest czarny, a papier biały.</li>
+</ul>
+<p>Wniosek: doświadczenie wpływa na interpretację danych zmysłowych, a obraz spostrzegania jako samego odbioru informacji jest uproszczeniem. <span class="src">s. 50</span></p>
+</div>
+</details>
+</section>
+<!-- ============ 2.2 ============ -->
+<section class="chapter" id="r2-2">
+<div class="chapter-head"><span class="num">2.2</span><h2>Fazy procesu spostrzegania</h2></div>
+<p>Fizjologicznie: światło wywołuje zmiany fotochemiczne w <strong>fotoreceptorach</strong> — pręcikach (rodopsyna) i czopkach (fotopsyny i jodopsyny) (Hoyenga i Hoyenga, 1988). Rozpad substancji światłoczułych wywołuje impuls, przekazywany do komórek dwubiegunowych i zwojowych siatkówki, dalej przez <strong>ciała kolankowate</strong> i <strong>wzgórki czworacze</strong> do płatów potylicznych. Proces jest wieloetapowy i trwa — impulsy nie przemieszczają się tak szybko, jak sądzi większość ludzi. <span class="src">s. 50</span></p>
+<ol class="timeline phases">
+<li><span class="y">1</span><span><strong>Rejestracja sensoryczna.</strong> Zmiana bodźca zewnętrznego w impuls nerwowy; impulsy często niosą już informację o konkretnych cechach. Pobudzane są <span class="term">detektory cech</span> — komórki lub zespoły komórek wyspecjalizowane w wykrywaniu jednej cechy (Lindsay i Norman, 1984); detektor ruchu nie zareaguje na linię pionową. Dane z tej fazy <strong>nie są dostępne świadomości</strong>. Rejestracja wiąże się z <strong>buforem / magazynem pamięci sensorycznej</strong> (Sperling, 1960), który utrzymuje informację, dopóki nie zostaną wykonane inne operacje (ocena emocjonalna, kategoryzacja).</span></li>
+<li><span class="y">2</span><span><strong>Faza oceny emocjonalnej.</strong> Kolaterale do struktur podkorowych: pierwotna ocena, czy bodziec jest <strong>przyjemny czy nieprzyjemny, korzystny czy niekorzystny</strong> — zanim zorientujemy się, czego dotyczy (Öhman, 1987). Przykład z życia: osoba sympatyczna „od pierwszego wejrzenia”, choć nie wiemy, czy ją znamy i co sprawia, że wydaje się sympatyczna. Dowody eksperymentalne: obronność percepcyjna i pacjenci po komisurotomii (niżej).</span></li>
+<li><span class="y">3</span><span><strong>Faza rozpoznania treści bodźca (oceny semantycznej).</strong> Określenie <strong>kategorii</strong>, do której bodziec należy, przez porównanie danych sensorycznych z kategoriami w pamięci. Bruner (1978): poszukiwanie kategorii, do której najlepiej pasowałyby napływające bodźce (ryc. 2.6).</span></li>
+<li><span class="y">4</span><span><strong>Faza oceny znaczenia metaforycznego.</strong> Spostrzeganie nie zawsze kończy się rozpoznaniem — ludzie (choć nie wszyscy) potrafią nadać bodźcom inny sens. <span class="src">s. 52</span></span></li>
+</ol>
+<details class="block" open="">
+<summary>Obronność percepcyjna jako dowód na fazę oceny emocjonalnej</summary>
+<div class="inner">
+<ul>
+<li><strong>Bruner i Postman (1947)</strong>: przez bardzo krótki czas eksponowano słowa wulgarne i neutralne o tej samej długości. Czas potrzebny do odczytania powinien być identyczny — a słowa wulgarne wymagały więcej czasu, jakby ludzie bronili się przed ich odczytaniem. Zjawisko nazwano <span class="term">obronnością percepcyjną</span>. <span class="src">s. 51</span></li>
+<li><strong>Paradoks (Floyd Allport, za: Reykowski, 1974)</strong>: aby bronić się przed rozpoznaniem słowa wulgarnego, trzeba je najpierw odczytać i rozpoznać — a wtedy jest już za późno na obronę.</li>
+<li><strong>Rozwiązanie:</strong> faza oceny emocjonalnej następuje <em>przed</em> fazą rozpoznania, więc jej wynik może blokować uruchomienie fazy późniejszej. Fazy są od siebie niezależne.</li>
+<li><strong>Pacjenci po komisurotomii</strong> (przecięciu spoidła wielkiego łączącego półkule): pacjent czytał słowa obiema półkulami, ale nie rozpoznawał ich, gdy eksponowano je prawej półkuli. Choć nie potrafił ich wypowiedzieć, umiał określić, czy były pozytywne czy negatywne (LeDoux, 2000).</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Faza rozpoznania: czas poszukiwania kategorii</summary>
+<div class="inner">
+<figure class="fig">
+<svg aria-label="Dane sensoryczne dynamiczne i zmienne łączą się w procesie dopasowania ze schematami pamięciowymi uporządkowanymi i względnie stabilnymi" role="img" viewbox="0 0 560 120">
+<defs><marker id="ar3" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<polygon fill="hsl(209 40% 95%)" points="20,60 45,20 70,45 95,12 115,42 150,25 135,58 160,85 120,80 110,108 80,85 50,105 48,78 12,88" stroke="hsl(209 33% 60%)"></polygon>
+<text fill="#2b2118" font-size="11" text-anchor="middle" x="88" y="57">Dane sensoryczne</text>
+<text fill="#5c4f43" font-size="9" text-anchor="middle" x="88" y="71">dynamiczne i zmienne</text>
+<rect fill="#fffdf9" height="50" rx="6" stroke="hsl(209 33% 60%)" width="180" x="370" y="35"></rect>
+<text fill="#2b2118" font-size="11" text-anchor="middle" x="460" y="56">Schematy pamięciowe</text>
+<text fill="#5c4f43" font-size="9" text-anchor="middle" x="460" y="71">uporządkowane, względnie stabilne</text>
+<line marker-end="url(#ar3)" marker-start="url(#ar3)" stroke="hsl(209 36% 36%)" stroke-width="1.5" x1="165" x2="365" y1="60" y2="60"></line>
+<text fill="hsl(209 36% 36%)" font-size="11" text-anchor="middle" x="265" y="50">proces dopasowania</text>
+</svg>
+<figcaption>Ryc. 2.6 (schemat). Dane sensoryczne są zdecydowanie bogatsze niż dane pamięciowe.</figcaption>
+</figure>
+<ul>
+<li><strong>Saul Sternberg (1969)</strong> — proces ma charakter <strong>sekwencyjny</strong>. <span class="term">Efekt wielkości zbioru</span>: im więcej bodźców trzeba porównać, tym dłużej to trwa. Procedura: badany widział literę, potem zbiór liter różnej wielkości; miał stwierdzić, czy zbiór zawiera wcześniejszą literę. Każdy dodatkowy element wydłużał decyzję o ok. <strong>38 ms</strong>. <span class="src">s. 52</span></li>
+<li>Wyniki da się też wyjaśnić przeszukiwaniem <strong>równoległym</strong> (Townsend, 1971).</li>
+<li>Dłuższe przeszukiwanie → lepiej dopasowana kategoria → dokładniejsze spostrzeżenie.</li>
+<li>Znalezienie kategorii (np. „stół”, „osoba ciepła emocjonalnie”) pozwala wykonywać inne operacje na systemie kategorii: stoły to meble i zwykle stoją w pokojach; osoby ciepłe są empatyczne i udzielają wsparcia.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Faza oceny znaczenia metaforycznego</summary>
+<div class="inner">
+<ul>
+<li>Przykład ze <strong>stanu wojennego</strong>: wiele osób nosiło przypięty do ubrania <strong>opornik</strong>. Nie oznaczało to naprawiania radia ani członkostwa w związku elektryków — znaczenie komunikatu metaforycznego było wtedy dla wszystkich oczywiste.</li>
+<li>Często komunikaty metaforyczne rozumie niewielu, a ten sam komunikat bywa różnie interpretowany. Autor cytuje fragment wiersza <strong>Wisławy Szymborskiej</strong> z tomu <em>Widok z ziarnkiem piasku</em> (1997): dosłownie opisuje on pewne zachowania, ale metaforycznie mówi o czymś zupełnie innym; inaczej odczyta go psycholog, biolog, inżynier.</li>
+<li>Metafory nie dają bezpośredniego dostępu do intencji twórcy.</li>
+</ul>
+<div class="key"><span class="label">Wniosek</span><p>Faza metaforyczna pokazuje, że spostrzeganie <strong>nie jest procesem wyłącznie zmysłowym</strong> — obejmuje procesy wnioskowania, odwołujące się do indywidualnego systemu znaczeń. Granice między procesami poznawczymi i ich fazami są płynne; podział wprowadza się dla wygody opisu. <span class="src">s. 52</span></p></div>
+</div>
+</details>
+</section>
+<!-- ============ 2.3 ============ -->
+<section class="chapter" id="r2-3">
+<div class="chapter-head"><span class="num">2.3</span><h2>Spór o strukturę spostrzeżeń w psychologii klasycznej</h2></div>
+<p>Spór dotyczył natury relacji między wrażeniami a spostrzeżeniami (dokładnie referuje go Tomaszewski, 1968). Jak każdy wielki spór w psychologii — trudno rozstrzygalny. Pytanie: co jest ważniejsze, <strong>część czy całość</strong>? Czy o cechach całości wnioskujemy z części, czy cechy części są wyznaczane przez całość? Odpowiedź zależy od tego, czy psychologia ma się upodobnić do nauk przyrodniczych (prymat części — atomizm), czy humanistycznych (holizm). <span class="src">s. 53</span></p>
+<div class="cards">
+<div class="card"><h4>Asocjacjonizm (atomizm)</h4><span class="yr">XIX w.</span><p>Związany z naturalistycznym ukierunkowaniem ówczesnej psychologii. Przedstawiciele: <strong>Wilhelm Wundt, Edward B. Titchener</strong>.</p></div>
+<div class="card"><h4>Psychologia postaci (Gestalt)</h4><span class="yr">XX w.</span><p>Nazywana też psychologią całości lub <strong>strukturalizmem</strong>. Poparcie czerpała z fizyki (teoria pola). Przedstawiciele: <strong>Max Wertheimer, Kurt Koffka, Wolfgang Köhler</strong>; później Kurt Lewin (motywacja, myślenie). Terapia Gestalt to odrębny nurt.</p></div>
+</div>
+<div class="flag"><span class="label">Uwaga na nazewnictwo</span>Maruszewski nazywa psychologię postaci <strong>strukturalizmem</strong>. W większości podręczników „strukturalizm” oznacza szkołę <strong>Wundta i Titchenera</strong>, czyli stronę atomistyczną tego sporu. Tak robi też Sternberg w literaturze do ćwiczeń (<a href="#c1-historia">S9</a>). Jeśli na teście pojawi się słowo „strukturalizm”, sprawdź w treści pytania, o którą szkołę chodzi.</div>
+<h3>Tabela 2.1 — Asocjacjonizm vs psychologia postaci <span class="src">s. 54</span></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Asocjacjonizm (atomizm)</th><th>Psychologia postaci</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400;white-space:normal">prymat części nad całością</td><td style="font-weight:400;white-space:normal">prymat całości nad częściami</td></tr>
+<tr><td style="font-weight:400;white-space:normal">wrażenia pierwotne, spostrzeżenia wtórne</td><td style="font-weight:400;white-space:normal">spostrzeżenia pierwotne; wrażenia poznajemy dopiero przez analizę spostrzeżeń</td></tr>
+<tr><td style="font-weight:400;white-space:normal">łączenie wrażeń według praw kojarzenia</td><td style="font-weight:400;white-space:normal">wyodrębnianie całości według zasad Wertheimera; zasady mają charakter wrodzony</td></tr>
+<tr><td style="font-weight:400;white-space:normal">wszystkie części pola percepcyjnego jednakowo ważne</td><td style="font-weight:400;white-space:normal">w polu percepcyjnym jest figura (ważniejsza) i tło (mniej ważne)</td></tr>
+<tr><td style="font-weight:400;white-space:normal">nieznane fizjologiczne podstawy wrażeń subiektywnie pierwotnych</td><td style="font-weight:400;white-space:normal">nieznane fizjologiczne podstawy spostrzeżeń i ich „spoiwa”</td></tr>
+<tr><td style="font-weight:400;white-space:normal">główny problem: które wrażenia są konstytutywną częścią spostrzeżenia</td><td style="font-weight:400;white-space:normal">główny problem: izomorfizm — powstawanie obrazów nerwowych w mózgu</td></tr>
+</tbody>
+</table></div>
+<details class="block" open="">
+<summary>Wiersz 1–2: prymat całości i pierwotność spostrzeżeń</summary>
+<div class="inner">
+<ul>
+<li><strong>Kontekst</strong> zmienia element: czerwień na szarym tle jest czysta i wyrazista, a na czerwonym — brudna i szara. Ta sama czerwona szminka wygląda inaczej u blondynki i u brunetki. <span class="src">s. 53–54</span></li>
+<li>Atomista: barwę można umieścić poza kontekstem i wtedy widzimy ją naprawdę. Zwolennik postaci: w warunkach naturalnych zawsze spostrzegamy barwę w kontekście — jako barwę jakiegoś przedmiotu. Nawet po izolacji (np. we wnętrzu czerwonej kuli) działa <strong>„kontekst historyczny”</strong> — to, co widzieliśmy wcześniej. Jedyną osobą bez kontekstu historycznego jest noworodek, ale trudno go badać, bo nie powie, co widzi.</li>
+<li>Ryc. 2.7: ten sam znak czytamy jako <strong>13</strong> albo <strong>B</strong>, zależnie od tego, czy patrzymy w kolumnę liczb, czy w wiersz liter.</li>
+<li><strong>Figury wieloznaczne</strong> (dwa niezależne obrazy z tych samych elementów): <strong>sześcian Neckera</strong>, <strong>schodki Schrödera</strong> (ryc. 2.8), rysunek starszej i młodszej kobiety (ryc. 2.9). Gdyby atomizm był prawdziwy, każdy rysunek dawałby jeden i tylko jeden obraz. <span class="src">s. 55</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Wiersz 3: prawa kojarzenia vs zasady Wertheimera</summary>
+<div class="inner">
+<h4>Asocjacjonizm — prawa kojarzenia (Arystoteles)</h4>
+<ol>
+<li>przez <strong>styczność w czasie</strong> — elementy współwystępujące lub następujące po sobie (melodia; słowo „ikslawok” czytane od tyłu daje „Kowalski”);</li>
+<li>przez <strong>styczność w przestrzeni</strong> — sąsiednie elementy; kluczowe dla spostrzegania wzrokowego (prostokąt = cztery kąty proste i dwie pary równoległych boków);</li>
+<li>przez <strong>podobieństwo</strong>;</li>
+<li>przez <strong>kontrast</strong> — dwa ostatnie rzadko używane do wyjaśniania spostrzegania.</li>
+</ol>
+<p>Asocjacjoniści uważali, że najważniejsza jest styczność w czasie, a pozostałe prawa dają się do niej sprowadzić. Wielokrotne łączne powtarzanie elementów sprzyja kojarzeniu. <span class="src">s. 55</span></p>
+<h4>Hebb (1969): zespoły komórkowe i sekwencje fazowe</h4>
+<ul>
+<li><span class="term">Zespoły komórkowe</span> — wyspecjalizowane obwody neuronów do wykrywania elementarnych cech.</li>
+<li>Spostrzeganie prostokąta (ryc. 2.10): wzrok skupia się na wierzchołku → aktywuje się zespół dla kąta prostego → oko przesuwa się do następnego wierzchołka → kolejny kąt prosty… aż do powrotu do punktu wyjścia.</li>
+<li>Seria ruchów oczu w określonej kolejności, przerywanych w miejscach, gdzie pobierana jest informacja o cechach, to <span class="term">sekwencja fazowa</span>: „kąt prosty – ruch w prawo – kąt prosty – ruch w dół – kąt prosty – ruch w lewo – kąt prosty – ruch w górę”. Ruchy oczu biegną po <strong>konturze</strong>.</li>
+<li>Z czasem sekwencja się utrwala, a jej początkowe fazy wystarczą, by reszta została przywołana automatycznie.</li>
+<li>Wniosek: łączenie elementów odbywa się na zasadzie <strong>styczności w czasie</strong>, nie w przestrzeni. Nie widzimy prostokąta od razu w całości — jest za duży, by objąć go jednym rzutem oka. <span class="src">s. 56</span></li>
+</ul>
+<h4>Psychologia postaci — zasady Wertheimera (1923)</h4>
+<p>Zasady wyodrębniania całości <strong>niezwiązane z uczeniem się</strong>. Aby wykluczyć wpływ doświadczenia, Wertheimer używał abstrakcyjnych zbiorów kropek. <span class="src">s. 56–57</span></p>
+<div class="cards">
+<div class="card"><h4>1. Bliskość przestrzenna</h4><p>Sąsiedztwo w polu widzenia: kropki położone blisko siebie widzimy jako grupę.</p></div>
+<div class="card"><h4>2. Podobieństwo</h4><p>Jednakowy wygląd: kropki tego samego koloru wśród innych, elementy o tym samym kształcie.</p></div>
+<div class="card"><h4>3. Wspólna droga</h4><p>Elementy poruszające się w tym samym kierunku tworzą grupę. Jadący autobus to chmura poruszających się punktów, domy w tle — chmura nieruchomych.</p></div>
+<div class="card"><h4>4. Dobra kontynuacja / dobra figura</h4><p>Łatwiej wyodrębnić grupę zbudowaną według jednolitej zasady; układy zamknięte łatwiej niż otwarte.</p></div>
+<div class="card"><h4>5. Niewielkie rozmiary</h4><p>Łatwiej wyodrębniamy małe elementy. Krzyż maltański: dwa krzyże, łatwiej widać ten o węższych ramionach.</p></div>
+<div class="card"><h4>6. Symetria</h4><p>Figury symetryczne wyodrębniamy łatwiej; szczególny przypadek dobrej figury.</p></div>
+<div class="card"><h4>7. Zgodność z chwilowym nastawieniem</h4><p>Oczekiwanie ułatwia spostrzeżenie; czynnik doceniony dopiero niedawno. Po trzech parach blisko położonych linii i jednej samotnej spodziewamy się linii dopełniającej parę.</p></div>
+<div class="card"><h4>8. Uprzednie doświadczenie</h4><p>Nieusunięty błąd w książce (np. słowa połączone razem) nie przeszkadza w czytaniu, czasem go nie zauważamy. Wertheimer uznawał ten czynnik za <strong>drugoplanowy</strong>.</p></div>
+</div>
+<figure class="fig">
+<svg aria-label="Trzy ilustracje zasad: bliskość — kropki zgrupowane w wiersze; podobieństwo — kolumny kółek i kwadratów; dobra kontynuacja — dwie przecinające się linie" role="img" viewbox="0 0 600 150">
+<g fill="hsl(209 36% 36%)">
+<!-- bliskość: rows -->
+<g transform="translate(20,25)">
+<circle cx="0" cy="0" r="4"></circle><circle cx="18" cy="0" r="4"></circle><circle cx="36" cy="0" r="4"></circle><circle cx="54" cy="0" r="4"></circle><circle cx="72" cy="0" r="4"></circle><circle cx="90" cy="0" r="4"></circle><circle cx="108" cy="0" r="4"></circle><circle cx="126" cy="0" r="4"></circle>
+<circle cx="0" cy="12" r="4"></circle><circle cx="18" cy="12" r="4"></circle><circle cx="36" cy="12" r="4"></circle><circle cx="54" cy="12" r="4"></circle><circle cx="72" cy="12" r="4"></circle><circle cx="90" cy="12" r="4"></circle><circle cx="108" cy="12" r="4"></circle><circle cx="126" cy="12" r="4"></circle>
+<circle cx="0" cy="44" r="4"></circle><circle cx="18" cy="44" r="4"></circle><circle cx="36" cy="44" r="4"></circle><circle cx="54" cy="44" r="4"></circle><circle cx="72" cy="44" r="4"></circle><circle cx="90" cy="44" r="4"></circle><circle cx="108" cy="44" r="4"></circle><circle cx="126" cy="44" r="4"></circle>
+<circle cx="0" cy="56" r="4"></circle><circle cx="18" cy="56" r="4"></circle><circle cx="36" cy="56" r="4"></circle><circle cx="54" cy="56" r="4"></circle><circle cx="72" cy="56" r="4"></circle><circle cx="90" cy="56" r="4"></circle><circle cx="108" cy="56" r="4"></circle><circle cx="126" cy="56" r="4"></circle>
+<circle cx="0" cy="88" r="4"></circle><circle cx="18" cy="88" r="4"></circle><circle cx="36" cy="88" r="4"></circle><circle cx="54" cy="88" r="4"></circle><circle cx="72" cy="88" r="4"></circle><circle cx="90" cy="88" r="4"></circle><circle cx="108" cy="88" r="4"></circle><circle cx="126" cy="88" r="4"></circle>
+<circle cx="0" cy="100" r="4"></circle><circle cx="18" cy="100" r="4"></circle><circle cx="36" cy="100" r="4"></circle><circle cx="54" cy="100" r="4"></circle><circle cx="72" cy="100" r="4"></circle><circle cx="90" cy="100" r="4"></circle><circle cx="108" cy="100" r="4"></circle><circle cx="126" cy="100" r="4"></circle>
+</g>
+<!-- podobieństwo: columns -->
+<g transform="translate(240,25)">
+<circle cx="0" cy="0" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="-5"></rect><circle cx="36" cy="0" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="-5"></rect><circle cx="72" cy="0" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="-5"></rect>
+<circle cx="0" cy="20" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="15"></rect><circle cx="36" cy="20" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="15"></rect><circle cx="72" cy="20" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="15"></rect>
+<circle cx="0" cy="40" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="35"></rect><circle cx="36" cy="40" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="35"></rect><circle cx="72" cy="40" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="35"></rect>
+<circle cx="0" cy="60" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="55"></rect><circle cx="36" cy="60" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="55"></rect><circle cx="72" cy="60" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="55"></rect>
+<circle cx="0" cy="80" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="75"></rect><circle cx="36" cy="80" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="75"></rect><circle cx="72" cy="80" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="75"></rect>
+<circle cx="0" cy="100" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="13" y="95"></rect><circle cx="36" cy="100" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="49" y="95"></rect><circle cx="72" cy="100" r="5"></circle><rect fill="none" height="10" stroke="hsl(209 36% 36%)" stroke-width="1.6" width="10" x="85" y="95"></rect>
+</g>
+</g>
+<!-- dobra kontynuacja -->
+<g fill="none" stroke="hsl(209 36% 36%)" stroke-width="2.2" transform="translate(420,20)">
+<path d="M10,10 Q75,55 150,110"></path>
+<path d="M10,110 Q75,55 150,10"></path>
+</g>
+<g fill="#5c4f43" font-size="11" text-anchor="middle">
+<text x="83" y="145">bliskość: trzy pary wierszy</text>
+<text x="287" y="145">podobieństwo: kolumny</text>
+<text x="495" y="145">kontynuacja: dwie linie, nie dwa kąty</text>
+</g>
+</svg>
+<figcaption>Własne szkice ilustrujące trzy zasady Wertheimera, wzorowane na ryc. 2.11 B–D.</figcaption>
+</figure>
+</div>
+</details>
+<details class="block" open="">
+<summary>Wiersz 4: figura i tło</summary>
+<div class="inner">
+<p>Atomiści nie mogli wyróżnić ważniejszych elementów: skoro spostrzeżenie powstaje z kojarzenia wrażeń, żadne wrażenie nie jest uprzywilejowane (mogłoby to prowadzić do spostrzeżeń błędnych). Psychologia postaci — skoro spostrzeżenie jest pierwotne — mogła z góry wyodrębnić cechy różnej wagi. Kluczowe pojęcie: <strong>figura i tło</strong>. <span class="src">s. 58</span></p>
+<h4>Różnice według Edgara Rubina (1921), duńskiego psychologa</h4>
+<ol>
+<li>Figura ma <strong>kształt</strong>, tło jest bezkształtne.</li>
+<li>Tło wydaje się <strong>ciągnąć za figurą</strong> w sposób ciągły, a nie być przez nią przerwane.</li>
+<li>Figura wydaje się <strong>wysunięta ku przodowi</strong>, tło — z tyłu.</li>
+<li>Figura ma charakter <strong>rzeczy</strong>, tło — nieukształtowanego materiału.</li>
+<li>Figura silniej się narzuca, jest <strong>łatwiej zapamiętywana</strong> i wydaje się bardziej sensowna.</li>
+<li>Figura wydaje się <strong>jaśniejsza</strong> od tła.</li>
+</ol>
+<ul>
+<li>Przy bodźcach czarno-białych mamy tendencję do widzenia figury w części <strong>czarnej</strong>; znalezienie figury w części białej jest trudniejsze (ryc. 2.12).</li>
+<li>Figura i tło w słuchu: akompaniament jest tłem, melodia figurą; w rapie czy techno akompaniament staje się figurą.</li>
+<li><strong>Zamiana figury i tła</strong>: figury odwracalne, najbardziej znana to <strong>figura Rubina</strong> — waza albo dwa profile (ryc. 2.13). Podobne efekty uzyskano później w spostrzeganiu przedmiotów.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Wiersze 5–6: podstawy fizjologiczne, konstytutywne wrażenia i izomorfizm</summary>
+<div class="inner">
+<ul>
+<li>Atomiści uznawali pewne elementy za subiektywnie pierwotne, ale nie zajmowali się mechanizmami fizjologicznymi. Badania z lat 50. XX w. pokazały, że nie zawsze istnieją mechanizmy odpowiadające subiektywnie pierwotnym wrażeniom: kształt wydaje się pierwotny, a fizjologicznie rejestrowane są linie i kąty. Rejestrowanie każdego kształtu osobno byłoby nieekonomiczne. <span class="src">s. 59</span></li>
+<li>Jeszcze trudniej wskazać mechanizmy „spoiwa” spostrzeżenia. Częściowe rozwiązanie: sekwencje fazowe Hebba.</li>
+<li>Większość spostrzeżeń jest <strong>polisensoryczna</strong>, a badania to ignorują. <strong>Neisser (1976)</strong> sarkastycznie: 99,9% badań dotyczy spostrzegania jednozmysłowego, rzadkiego w życiu. Bliską osobę widzimy, słyszymy, czujemy jej dotyk i zapach; zasady kontynuacji czy styczności w czasie są tu absolutnie niewystarczające — m.in. dlatego, że osoba ta jest dla nas ważna.</li>
+<li>Asocjacjonizm nie odpowiada, które wrażenia są <strong>konstytutywne</strong>. Róża bez zapachu nadal jest różą — jakie cechy można „bezkarnie” odjąć?</li>
+<li>Błąd psychologii postaci — <span class="term">izomorfizm</span>: przekonanie, że w mózgu powstają obrazy przedmiotów o kształcie takim samym jak przedmioty. Nie potwierdzono tego empirycznie: przy spostrzeganiu koła pobudzenia w mózgu nie mają kształtu koła. Informacja jest kodowana przez neurony i zespoły komórek, których impulsy odczytujemy jako kształt.</li>
+</ul>
+<div class="key"><span class="label">Współczesne rozstrzygnięcie sporu</span><p>W różnych fazach spostrzegania relacja część–całość przedstawia się inaczej. W fazie <strong>rejestracji sensorycznej</strong> wrażenia są rejestrowane równolegle i niezależnie — <strong>triumfuje atomizm</strong>. Już w fazie <strong>wstępnej oceny emocjonalnej</strong> wygrywa <strong>całość</strong> (postać). Faza <strong>oceny semantycznej</strong> może zawierać elementy <strong>obu</strong> podejść. <span class="src">s. 59–60</span></p></div>
+</div>
+</details>
+</section>
+<!-- ============ 2.4 ============ -->
+<section class="chapter" id="r2-4">
+<div class="chapter-head"><span class="num">2.4</span><h2>Spostrzeganie jako proces kategoryzacji percepcyjnej</h2></div>
+<details class="block" open="">
+<summary>2.4.1 Kategoryzacja sensoryczna — detektory cech</summary>
+<div class="inner">
+<p>Informacje są kodowane przez <strong>detektory cech</strong> — komórki nerwowe wyspecjalizowane w odbiorze wybranych cech (barwa, wielkość, ruch, położenie w polu widzenia). Mogą być w narządach zmysłów lub na wyższych piętrach, łącznie z korą (fizjologia: Lindsay i Norman, 1984). Detektory różnią się między gatunkami. <span class="src">s. 60</span></p>
+<div class="cards">
+<div class="card"><h4>Żaba</h4><span class="yr">Lettvin, Maturana, McCulloch i Pitts, 1959</span><p>Cztery rodzaje detektorów w oku; dwa to <strong>detektory owadów</strong> (pokarm) i <strong>detektory bocianów</strong>. Reagują na proste właściwości: mały, szybko poruszający się, wypukły obiekt → impulsy rosną, gdy zbliża się do centrum pola → po przekroczeniu wartości krytycznej szybki ruch języka. <strong>Ruch jest warunkiem koniecznym</strong>: martwe owady nie interesowały żaby, dopóki ich sztucznie nie poruszono. Duży przesuwający się cień → ucieczka (także przed człowiekiem). Świat żaby: pokarm i zagrożenia.</p></div>
+<div class="card"><h4>Pająk</h4><span class="yr">Leontiew, 1962</span><p>Rejestruje <strong>drgania sieci</strong>; częstość drgań informuje o rodzaju zdobyczy (mucha brzęczy inaczej niż komar). Informacja wzrokowa jest dla niego niemal nieistotna. Przyłożony do sieci drgający kamerton — pająk szybko podbiega i oplata go nićmi.</p></div>
+<div class="card"><h4>Sowa</h4><span class="yr">s. 61</span><p>Reaguje na <strong>różnicę czasu</strong> dotarcia dźwięku do prawego i lewego ucha (słyszenie stereofoniczne). W nocy dobry wzrok nie wystarczy. Gdy dźwięki docierają jednocześnie, mysz jest przed dziobem. W eksperymentach ze słuchawkami dousznymi (działającymi w podczerwieni, bez kabli) manipulacja odstępem czasowym sterowała uderzeniem dzioba z dokładnością do <strong>1 cm</strong>.</p></div>
+</div>
+<p>Systemy lokalizacji pożywienia muszą być bardzo precyzyjne, ale spostrzeganie oparte na detektorach <strong>ogranicza liczbę informacji</strong>. Żaba nie podziwiałaby <em>Mglistego poranka</em> Sisleya — to nie ma dla niej wartości adaptacyjnej.</p>
+<h4>Detektory cech u człowieka</h4>
+<ul>
+<li><strong>Selfridge (1959), Pandemonium</strong> — ironiczna nazwa (chór demonów „wyjących” przy pobudzeniu; faktycznie rozprzestrzeniają się impulsy bioelektryczne). Do rozpoznawania kształtów wystarczą detektory linii poziomych, pionowych i ukośnych, kątów prostych i ostrych oraz krzywych otwartych (litera „c”) i zamkniętych („o”).</li>
+<li>Spostrzeganie linii ułatwia np. czytanie, ale najważniejsze adaptacyjnie są informacje od innych ludzi, zwłaszcza z <strong>twarzy</strong>. Spostrzeganie twarzy jest <strong>wieloetapowe</strong> (Bruce i Young, 1986); twarz komunikuje stany emocjonalne i pozwala planować zachowania. Niewielkie różnice w wyglądzie niosą ogromną ilość informacji (Yin, 1978).</li>
+</ul>
+<h4>Czy mamy detektory twarzy?</h4>
+<ul>
+<li>Na ludziach nie da się prowadzić badań jak na żabach (elektrody w nerwie wzrokowym). Badania są <strong>funkcjonalne</strong> (zmiany zdolności odbioru po długiej stymulacji) albo opierają się na danych klinicznych. <span class="src">s. 62</span></li>
+<li><strong>Adaptacja</strong>: jeśli po długiej ekspozycji twarz znika z pola widzenia w całości — detektor całej twarzy uległ zmęczeniu; jeśli znika partiami — działają detektory elementarne (np. nos jako kąt ostry). <strong>Pritchard (1969)</strong>: obraz profilu twarzy znikał partiami. Problem: bodziec sztuczny (rysunek profilu), a adaptacyjnie ważna jest twarz <em>en face</em>.</li>
+<li><strong>Noworodki</strong> dłużej patrzą na bodźce przypominające twarz niż na te same elementy ułożone inaczej. <strong>Carey (1981)</strong>: już <strong>9 minut po urodzeniu</strong> preferencja dla koła z dwiema kropkami (oczy) i kreską (usta); przy losowym rozmieszczeniu — brak preferencji. Podobnie u małp (twarze ludzkie i małpie).</li>
+<li>Twarz jest spostrzegana <strong>jako całość (Gestalt)</strong> — liczą się elementy i ich relacje przestrzenne. Dowód: duże trudności w rozpoznawaniu twarzy odwróconych do góry nogami, choć fragmenty umiemy obracać.</li>
+<li><strong>Sergent (1987)</strong> nie zakłada wrodzonych detektorów twarzy: mechanizmy kształtują się w pierwszych tygodniach życia i szybko osiągają wysoką sprawność, stając się odporne na trening. Przewaga <strong>prawej półkuli</strong> w spostrzeganiu i różnicowaniu twarzy; jej włókna ulegają wcześnie mielinizacji. Identyfikacja twarzy nie wymaga wielu szczegółów i odbywa się w centralnej, najostrzejszej części pola widzenia. <span class="src">s. 63</span></li>
+<li><strong>Automatyzm interpretacji ekspresji</strong> (ryc. 2.14, za: Seckel, 2000): na twarzy odwróconej o 180° popełniamy błędy w rozpoznawaniu emocji — twarz wydaje się pogodna (kąciki ust uniesione), a po odwróceniu widać, że to nie uśmiech. Wyjaśnienie: nauczyliśmy się rozpoznawać emocje na twarzach w normalnym położeniu; detektory cech działają automatycznie i nie radzą sobie z sytuacją niezwykłą.</li>
+<li><strong>Hodowcy psów</strong> mieli podobne trudności z odwróconymi „twarzami” psów (Diamond i Carey, 1986); mniej — osoby niezainteresowane psami, bo nie mają schematów relacji przestrzennych elementów „twarzy” psa (Murray, Young i Rhodes, 2000).</li>
+<li><strong>Tanaka i Farah (1993)</strong>: twarze przetwarzane są całościowo; w przypadku przedmiotów nieożywionych brak różnic między przetwarzaniem analitycznym a całościowym.</li>
+</ul>
+<div class="key"><span class="label">Podsumowanie — detektory</span><p>(a) wyodrębniają ze środowiska informacje <strong>ważne adaptacyjnie</strong>; (b) kodują je <strong>oszczędnie</strong>, co już na wstępie redukuje liczbę informacji. Wiedza o spostrzeganiu twarzy ma znaczenie praktyczne, np. przy identyfikacji przestępców.</p></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>2.4.2 Kategoryzacja w obrębie pamięci — schematy</summary>
+<div class="inner">
+<ul>
+<li>Pojęcie <span class="term">schematu</span> wprowadził <strong>Bartlett (1932)</strong>: uogólniona wiedza o wycinku środowiska, wynik wielokrotnych kontaktów z nim. <span class="src">s. 63</span></li>
+<li><strong>Neisser (1976)</strong>: schemat to część cyklu percepcyjnego — wewnętrzna wobec obserwatora, modyfikowana przez doświadczenie i specyficzna wobec tego, co spostrzegane. Przyjmuje informacje i sam jest przez nie zmieniany. Jest poznawczym punktem odniesienia dla danych zmysłowych; prawdopodobnie posługuje się językiem.</li>
+<li><strong>Skąd schematy u noworodka?</strong> Bez jakiegoś schematu nie „zrozumiałby” pierwszych informacji.</li>
+</ul>
+<h4>Rozwiązanie 1: wrodzone elementy (Neisser, 1976)</h4>
+<ul>
+<li>Małe dziecko ma wrodzony zestaw elementów percepcyjnych — narządy zmysłów i schematy nimi sterujące. Nie należy jednak przypisywać noworodkowi zbyt wiele: ludzie muszą się dowiadywać, jaki jest świat, i nigdy nie dowiedzą się wszystkiego; dzieci uczą się, jak szukać i rozpoznawać informacje. <span class="src">s. 64</span></li>
+<li>Wcześnie występują <strong>reakcja orientacyjna</strong> na nowe bodźce i <strong>poczucie stałości przedmiotu</strong>. <strong>Spelke (1982)</strong>: dziecko, któremu przykryto zabawkę pieluszką, „jest przekonane”, że przedmiot istnieje; jeśli po podniesieniu pieluszki go nie ma — jest bardzo zaskoczone. Zaskakuje je też, że części przedmiotu poruszają się niezależnie.</li>
+</ul>
+<h4>Rozwiązanie 2: prototypy (Posner i Keele, 1968, 1970)</h4>
+<ul>
+<li>Układy <strong>9 kropek</strong> na matrycy 30 × 30. Część układów tworzyła figurę (trójkąt) lub literę (F) — to <span class="term">prototypy</span>. Następnie modyfikowano je, przemieszczając kropki. Badanym pokazywano <strong>tylko modyfikacje</strong>, nigdy prototypu.</li>
+<li>Po nauczeniu się bezbłędnej klasyfikacji: test z bodźcami starymi, nowymi i prototypami. Poprawna klasyfikacja: <strong>87% starych, 67% nowych, 85% prototypów</strong>.</li>
+<li>Badani nigdy nie widzieli prototypu, a klasyfikowali go niemal tak dobrze jak znane bodźce — stworzyli <strong>sumaryczną reprezentację kategorii</strong>. W tym eksperymencie prototyp był <strong>średnią arytmetyczną</strong> egzemplarzy; w innych badaniach — <strong>obiektem modalnym</strong> (najczęstszym). Kiedy stosujemy który, badali Neumann (1974, 1977), Goldman i Homa (1977) oraz Strauss (1979). Więcej w rozdz. 8.</li>
+<li>Wniosek: schematy mogą mieć pochodzenie <strong>empiryczne</strong> — powstają przez uśrednianie złożonych układów bodźców albo wybór najpopularniejszego egzemplarza. <span class="src">s. 65</span></li>
+</ul>
+<p><strong>Połączenie obu:</strong> oprócz wrodzonych schematów Neissera (reakcja orientacyjna, stałość obiektu) istnieją schematy „uogólniania” (średnia lub wartość najczęstsza). Strauss (1979): prototypy pojawiają się już u <strong>dziesięciomiesięcznych</strong> niemowląt.</p>
+<ul>
+<li>U dorosłych schematy podlegają stałej modyfikacji; są podstawą rozpoznawania. Bodźce są znacznie bardziej zmienne niż schematy; względna stałość schematów pozwala rozpoznać bodźce pozornie niepodobne do wcześniejszych.</li>
+<li><strong>Paradoks (Hoffman, 2008)</strong>: schematy nie są dokładnymi reprezentacjami — ale to nie wada. Adaptacja wymaga <strong>plastyczności percepcyjnej</strong>, a nie wiernego kodowania. Po zakupach nasz samochód na parkingu wygląda inaczej (słońce, cienie, barwa w zachodzącym świetle), a mimo to łatwo go rozpoznajemy — właśnie dlatego, że schemat nie jest zbyt dokładny.</li>
+</ul>
+</div>
+</details>
+<details class="block" id="gotowosc" open="">
+<summary>2.4.3 Konfrontacja danych sensorycznych i pamięciowych — gotowość i obronność percepcyjna</summary>
+<div class="inner">
+<ul>
+<li>Dane sensoryczne to nie wierne odzwierciedlenie, lecz <strong>zakodowane komunikaty</strong> (kodowanie przez detektory cech). Do interpretacji wykorzystujemy dane pamięciowe. Idea spostrzegania jako <strong>konfrontacji danych sensorycznych z pamięciowymi</strong> pochodzi od <strong>Jerome’a S. Brunera (1978)</strong>. <span class="src">s. 65</span></li>
+<li>Ryc. 2.15: dane sensoryczne są <strong>standaryzowane przez detektory cech</strong>; schematy pamięciowe wyszukują cechy lub zbiory cech najlepiej pasujące do istniejących struktur. Gdy standaryzacja zostaje zakłócona — pojawiają się błędy rozpoznania (twarz odwrócona). Dane pamięciowe używają specyficznych kodów (Posner).</li>
+<li>Bruner: istotą spostrzegania jest <strong>rozpoznanie</strong> — określenie kategorii obiektu. Istota drapiąca w drzwi i zostawiająca mokre ślady to Azorek, pies, ssak, zwierzę; najczęściej użyjemy kategorii „Azorek” lub „pies”, rzadko „ssak” (więcej w rozdz. o pojęciach). <span class="src">s. 66</span></li>
+<li>Kategoria nie musi mieć nazwy, choć zwykle ma; nazwy ułatwiają rozpoznawanie i komunikację. W polszczyźnie brakuje nazw pewnych barw chromatycznych, a ludzie i tak grupują przedmioty według barwy.</li>
+<li>Rozpoznanie trwa: czas na <strong>przeszukiwanie pamięci</strong> (wybiórcze — nie wiemy, czego szukać, dopóki nie wiemy, co to jest) i na <strong>działalność translatorską</strong> — dane sensoryczne i pamięciowe są w różnych kodach, trzeba je przełożyć na wspólny język.</li>
+</ul>
+<details class="block ramka" id="ramka-2-1">
+<summary><span><span class="kind">Ramka 2.1</span>Badania Posnera nad kodami</span></summary>
+<div class="inner">
+<p>Posner, Boies, Eichelman i Taylor (1969): badanym pokazywano <strong>dwie litery</strong> — jednocześnie albo jedna po drugiej. Zadanie: czy litery są „takie same” czy „różne”. Przed serią informowano, jakie kryterium identyczności obowiązuje. <span class="src">s. 67–68</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Kryterium zgodności</th><th>Przykład „takie same”</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">fizyczne (identyczny wygląd)</td><td>AA, BB, aa</td></tr>
+<tr><td style="font-weight:400">nominalne (ta sama nazwa)</td><td>Aa, Bb</td></tr>
+<tr><td style="font-weight:400">oparte na regule (np. obie samogłoski)</td><td>AE, TB</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Przy kryterium nominalnym nie stosowano par AA/BB (zgodność fizyczna i nominalna naraz). Odpowiedź „takie same” dla AB lub ab była błędem.</li>
+<li>Reakcja: naciśnięcie klawisza; czas przy ekspozycji równoczesnej ok. <strong>400–500 ms</strong>.</li>
+<li><strong>Ekspozycja równoczesna</strong>: identyczność fizyczna szybsza niż nominalna (różnica ok. <strong>80 ms</strong>), nominalna szybsza niż oparta na regule. Przy kryterium nominalnym najpierw sprawdza się kształt; jeśli taki sam — koniec; jeśli różny — kolejna faza: czy nazwa jest taka sama.</li>
+<li><strong>Ekspozycja sekwencyjna</strong> (odstęp ≥ 2 s): wyniki się <strong>odwracają</strong> — dobór nominalny krótszy lub równy fizycznemu; szybciej oceniano parę Aa niż AA.</li>
+<li>Wyjaśnienie: przy ekspozycji równoczesnej porównujemy dwa obrazy wzrokowe; różne cechy fizyczne wymagają przekodowania na reprezentację werbalną. Przy sekwencyjnej obraz pierwszej litery zostaje po czasie przełożony na <strong>kod nominalny (werbalny)</strong> — przy kryterium fizycznym trzeba go z powrotem przełożyć na obraz, co zabiera czas.</li>
+<li>Model spostrzegania przedmiotów: dane pamięciowe mają zwykle postać <strong>abstrakcyjną, werbalną</strong> (z wiedzą kategorialną), a dane sensoryczne — postać sensoryczną. Odwołujemy się też do podręcznego magazynu pamięci wzrokowej (sensorycznej) z informacjami, które przed chwilą działały na zmysły.</li>
+<li>Przypis autora: niemal identyczny czas (75–80 ms) zajmuje przejście na inny poziom ogólności w decyzjach semantycznych — „czyżby jakaś stała?”.</li>
+</ul>
+</div>
+</details>
+<ul>
+<li>Najciekawiej, gdy kategoria i dane sensoryczne pokrywają się tylko częściowo, a wzorzec pasuje do kilku kategorii (figury wieloznaczne). Bruner: <span class="term">sprawdzanie dla potwierdzenia</span> — szukamy <strong>cech krytycznych</strong>, charakterystycznych tylko dla danej kategorii. Czy to prawdziwe jabłko, czy atrapa? Sprawdzamy nożem, czy da się usunąć skórkę; pomijamy barwę i kształt. <span class="src">s. 68</span></li>
+</ul>
+<div class="key"><span class="label">Gotowość percepcyjna</span><p>Łatwość wykorzystania określonej kategorii pamięciowej do danego materiału percepcyjnego. Zależy od aktualnego stanu organizmu i od dwóch grup czynników: <strong>zewnętrznych</strong> i <strong>wewnętrznych</strong>.</p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Czynniki zewnętrzne</th><th>Czynniki wewnętrzne (organizacja systemu kategorii)</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">
+<strong>Uczenie się prawdopodobieństwa</strong> wystąpienia obiektu. Typowy przykład: <span class="term">torowanie (priming)</span> — słowo „karabin” rozpoznamy łatwiej po słowie „broń”, nawet podprogowym.<br/><br/>
+<strong>1. Częstość uprzednich doświadczeń</strong> — wyższa gotowość kategorii, których egzemplarze często występowały.<br/><br/>
+<strong>2. Konsekwencje społeczne</strong> — wyższa gotowość kategorii używanych przez innych, zwłaszcza gdy sytuacja jest niejasna. W spostrzeganiu społecznym sprzyja to <strong>stereotypizacji i konformizmowi</strong>.
+          </td>
+<td style="font-weight:400;white-space:normal">
+<strong>1. Monopol</strong> — im mniej kategorii, tym silniejszy monopol i wyższa gotowość. Ludzie o tendencji do interpretacji czarno-białych lub dogmatyczni są niemal odporni na perswazję — zmiana kategorii na przeciwną mogłaby zburzyć cały system. Paranoicy mają dobrze zintegrowany system urojeń, więc zniekształcenia są u nich bardziej prawdopodobne niż w innych psychozach.<br/><br/>
+<strong>2. Integracja poznawcza</strong> — im silniej kategorie są powiązane z resztą wiedzy, tym wyższa gotowość. „Jabłko” (owoc, pokarm, część świata roślin…) jest dostępniejsze niż „kosmita”; obiekt X rozpoznamy jako jabłko, nawet jeśli to kosmita „jabłkopodobny”.<br/><br/>
+<strong>3. Konsekwencje motywacyjne</strong> — wyższa gotowość kategorii związanych z realizowanymi celami. Spostrzeganie nie jest bezstronne („różowe okulary”). Sygnały zagrożenia <strong>obniżają</strong> gotowość.
+          </td>
+</tr></tbody>
+</table></div>
+<h4>Konsekwencje społeczne — dwa przykłady <span class="src">s. 69–70</span></h4>
+<ul>
+<li><strong>Słuchowisko Orsona Wellesa (1938)</strong> o inwazji Marsjan wywołało panikę w USA. Nadano je, gdy ludzie wracali z pracy; większość nie słyszała zapowiedzi, że to słuchowisko. Wyglądając przez okno, widzieli więcej aut niż zwykle — sygnał do ucieczki. Wzrosła liczba wypadków, powstały korki. Przekład audycji nadany po latach w <strong>Ekwadorze</strong> też wywołał panikę, a nawet rozruchy.</li>
+<li><strong>Rozproszenie odpowiedzialności</strong> (Piliavin i in., 1993): im więcej świadków wypadku, tym mniejsza tendencja do pomocy. Ludzie patrzą na innych; skoro inni nie działają, interwencja wydaje się niekonieczna.</li>
+</ul>
+<div class="flag"><span class="label">Uwaga przy nauce</span>Podręcznik podaje „Harley i Latané, 1968”. Klasyczne badanie nad rozproszeniem odpowiedzialności to <strong>Darley i Latané (1968)</strong> — w podręczniku to najpewniej literówka. Na teście szukaj nazwiska Darley.</div>
+<h4>Obronność percepcyjna i subcepcja <span class="src">s. 70–71</span></h4>
+<ul>
+<li><span class="term">Obronność percepcyjna</span> — klasyczny przykład obniżonej gotowości: podwyższenie progu rozpoznawania materiału zagrażającego. Bruner i Postman (1947): czas ekspozycji potrzebny do rozpoznania słów nieprzyzwoitych był znacznie dłuższy niż dla neutralnych.</li>
+<li><strong>Zajonc</strong> (opis: Reykowski, 1974): zjawisko może dotyczyć <strong>wypowiadania</strong>, a nie spostrzegania — opór przed wypowiedzeniem takich słów przy eksperymentatorze.</li>
+<li><strong>McGinnies (1949)</strong>: podprogowa ekspozycja słów nieprzyzwoitych wywoływała silniejsze pobudzenie autonomiczne. Nie wiadomo jednak, czy chodziło o spostrzeżenie słów tabu, czy o hamowanie ich wypowiadania.</li>
+<li><strong>Lazarus i McCleary (1951)</strong>: sylaby bezsensowne warunkowano łagodnym prądem. Potem wszystkie eksponowano podprogowo i proszono o zgadywanie. Sylaby „elektryczne” wywoływały silniejsze pobudzenie autonomiczne, choć trafność zgadywania była w obu grupach identyczna → <span class="term">subcepcja</span>: różnicowanie bodźców na poziomie reakcji autonomicznych, bez udziału świadomości.</li>
+<li><strong>Perry (1999)</strong>: podobne wyniki dla materiału z osobistego doświadczenia — w wywiadach z dziećmi po traumatycznych przeżyciach, których dzieci nie pamiętały, rejestrowano wyraźny wzrost tętna (ramka 6.1).</li>
+</ul>
+<div class="key"><span class="label">Wnioski i funkcja adaptacyjna</span><p>Niezależnie od rozpoznania treści (ocena semantyczna) zachodzi ocena emocjonalna, widoczna jako pobudzenie fizjologiczne. Obronność i subcepcja dowodzą, że spostrzeganie składa się z <strong>niezależnych faz</strong>.</p><p>Blokowanie dostępu do treści zagrażających wydaje się nieadaptacyjne, a jednak nie zanikło w ewolucji. Funkcja: uruchamia procesy emocjonalne i <strong>przygotowuje organizm do energicznego działania</strong>. Orientacja emocjonalna jest <strong>szybsza, ale mniej precyzyjna</strong> niż orientacja poznawcza oparta na pełnym rozpoznaniu. Obronność percepcyjna to przejaw orientacji emocjonalnej. <span class="src">s. 71</span></p></div>
+<details class="block ramka" id="ramka-2-2">
+<summary><span><span class="kind">Ramka 2.2</span>Wpływ torowania na proces oceny automatycznej</span></summary>
+<div class="inner">
+<ul>
+<li><strong>Fazio, Jackson, Dunton i Williams (1995)</strong>: najpierw pokazywano zdjęcie twarzy białego lub czarnego człowieka, potem badani oceniali, czy przymiotnik na ekranie jest „dobry” czy „zły”. Mierzono czas reakcji. <span class="src">s. 69</span></li>
+<li>Hipoteza: gdy znak emocjonalny przymiotnika jest zgodny ze stereotypem, czas reakcji się skraca.</li>
+<li>Przymiotniki: pozytywne (np. „wspaniały”, „sympatyczny”), negatywne (np. „irytujący”, „wstrętny”) oraz niezwiązane ze stereotypami.</li>
+<li>Wynik zgodny z oczekiwaniami: po twarzy białej szybsze reakcje na przymiotniki pozytywne, po czarnej — na negatywne.</li>
+<li>Badanie ilustruje <strong>współdziałanie procesów poznawczych</strong> (aktywizacja stereotypu) i <strong>emocjonalnych</strong> (pobudzenie afektu) w regulacji prostego zachowania.</li>
+</ul>
+</div>
+</details>
+</div>
+</details>
+<details class="block" id="cykl" open="">
+<summary>2.4.4 Cykl percepcyjny Neissera i schematy eksploracyjne</summary>
+<div class="inner">
+<p>Ujęcie spostrzegania jako dopasowywania danych pomija dwa fakty. Zakłada, że (1) spostrzeganie jest <strong>reaktywne</strong> — reagujemy tylko na to, co już się zdarzyło; (2) to <strong>otoczenie</strong>, a nie człowiek, decyduje o tym, co jest spostrzegane. Oba założenia są wątpliwe. <span class="src">s. 71</span></p>
+<ul>
+<li><strong>Przykład z komarem</strong>: gdybyśmy tylko reagowali na ruchy komara, oczy zawsze zostawałyby w tyle, a obraz byłby nieostry. Pole najostrzejszego widzenia obejmuje zaledwie ok. <strong>1 minuty kątowej</strong>. <span class="src">s. 72</span></li>
+<li>Neisser: spostrzeganie ma <strong>charakter cykliczny</strong>; równoprawnymi częściami cyklu są <strong>pobieranie</strong> informacji i jej <strong>poszukiwanie</strong>. Poszukiwaniem kierują oczekiwania i hipotezy, powstające na podstawie schematów — które są też programami uzyskiwania informacji. Spostrzeganie jest elementem procesów sterujących zachowaniem.</li>
+</ul>
+<blockquote>Neisser (1976): spostrzeganie jest procesem konstrukcyjnym, ale to, co zostało skonstruowane, nie jest obrazem w świadomości podziwianym przez „wewnętrznego człowieka”. Obserwator w każdej chwili tworzy oczekiwania, które pozwalają przyjąć nowe informacje.</blockquote>
+<figure class="fig">
+<svg aria-label="Cykl percepcyjny: dostępna informacja w otoczeniu modyfikuje schemat pamięciowy; schemat kieruje eksploracją; eksploracja pobiera próbki z dostępnej informacji" role="img" viewbox="0 0 420 230">
+<defs><marker id="ar4" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="13" text-anchor="middle">
+<rect fill="hsl(209 40% 95%)" height="50" rx="8" stroke="hsl(209 33% 60%)" width="140" x="140" y="12"></rect>
+<text x="210" y="33">Dostępna informacja</text><text x="210" y="50">w otoczeniu</text>
+<rect fill="#fffdf9" height="50" rx="8" stroke="hsl(209 33% 60%)" width="130" x="20" y="160"></rect>
+<text x="85" y="182">Schemat</text><text x="85" y="199">pamięciowy</text>
+<rect fill="#fffdf9" height="50" rx="8" stroke="hsl(209 33% 60%)" width="130" x="270" y="160"></rect>
+<text x="335" y="190">Eksploracja</text>
+</g>
+<g fill="none" marker-end="url(#ar4)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="150" x2="100" y1="60" y2="156"></line>
+<line x1="152" x2="266" y1="185" y2="185"></line>
+<line x1="320" x2="268" y1="156" y2="62"></line>
+</g>
+<g fill="hsl(209 36% 36%)" font-size="11">
+<text x="70" y="105">modyfikuje</text>
+<text text-anchor="middle" x="210" y="178">kieruje</text>
+<text x="300" y="105">pobiera próbki</text>
+</g>
+</svg>
+<figcaption>Ryc. 2.17 (schemat, za: Neisser, 1978a). Cykl nie ma wyraźnego początku ani końca.</figcaption>
+</figure>
+<ul>
+<li><strong>Yarbus (1967)</strong>, ryc. 2.16: ten sam obraz, różne pytania („jaki jest status ekonomiczny postaci?”, „co robili przed przybyciem gościa?”, „jak byli ubrani?”) → różne trajektorie ruchów gałek ocznych, różne zbiory danych. Dlatego ludzie w tym samym obiektywnym otoczeniu żyją w <strong>różnych światach subiektywnych</strong>. <span class="src">s. 72–73</span></li>
+<li>Cykl może zacząć się w każdym miejscu: od <strong>odbioru informacji</strong> (jak w teoriach klasycznych), od <strong>schematu</strong> (szukanie borowików wymaga polisensorycznego schematu — goryczak wygląda „bardziej borowikowato”, ale jest gorzki: potrzebny test smakowy) albo od <strong>eksploracji</strong> (rozglądanie się może dostarczyć informacji o niebezpieczeństwie).</li>
+<li><strong>Początek u niemowlęcia</strong>: Neisser zakłada wrodzone schematy — ale nie wiedzę o świecie, tylko <span class="term">schematy eksploracyjne</span>, czyli schematy uzyskiwania informacji. Spostrzeganie jest wielozmysłowe: po odebraniu jednej informacji dziecko szuka innych.</li>
+</ul>
+<h4>Stefan Szuman, <em>Geneza przedmiotu</em> (1932)</h4>
+<ul>
+<li>Dziecko poznaje przedmiot w określonej sekwencji: najpierw <strong>telereceptorami</strong> (wzrok, słuch), na końcu <strong>kontaktoreceptorami</strong> (dotyk, smak). Obraz jest wielozmysłowy, a mniej wiarygodne dane (wzrokowe, słuchowe) dziecko weryfikuje bardziej wiarygodnymi. <span class="src">s. 74</span></li>
+<li>Obraz siatkówkowy jest odwrócony o 180°, a widzimy przedmioty w normalnym położeniu — mózg uczy się odwracać obraz dzięki danym <strong>dotykowym i kinestetycznym</strong>.</li>
+<li>Zaleta telereceptorów: sygnalizują bodźce z odległości, dając czas na przygotowanie reakcji.</li>
+<li>Neisser nie mógł znać prac Szumana (przekład angielski dopiero w 1995 r.), a powtórzył jego pomysł w innym kontekście (Maruszewski, 1995).</li>
+</ul>
+<h4>Schematy eksploracyjne: ruchy oczu i czytanie</h4>
+<ul>
+<li>„Obmacując” przedmiot wzrokiem, uczymy się jego właściwości i sekwencji ruchów (sekwencja fazowa Hebba). Precyzyjne sterowanie ruchami oczu utrzymuje obraz w polu najostrzejszego widzenia; trajektoria dostarcza informacji o kształcie (ruch po konturze).</li>
+<li>Przy <strong>czytaniu</strong> nie czytamy pojedynczych liter, lecz słowa i frazy. Oczy poruszają się <strong>skokowo</strong> (sakkady): przykładowe zdanie z podręcznika czytamy w czterech „taktach”. Sakkady muszą być precyzyjnie zaplanowane, inaczej słowa są czytane dwukrotnie albo „połykane”. Zaburzenia sterowania ruchami oczu mogą prowadzić do <strong>dysleksji</strong> (jedna z wielu możliwych przyczyn). <span class="src">s. 74–75</span></li>
+</ul>
+<h4>Psychologia reklamy</h4>
+<ul>
+<li>W Polsce zakazana jest reklama alkoholu, ale dozwolona reklama piwa <strong>bezalkoholowego</strong>. Napis „piwo bezalkoholowe” umieszczano <strong>pionowo</strong> i po lewej stronie ekranu. Schematy eksploracyjne każą nam czytać od lewej do prawej, nie z góry na dół (co jest łatwe np. dla Japończyków). Do tego informacja z lewej części pola widzenia trafia do prawej półkuli, niewyspecjalizowanej w czytaniu. Widz odbiera reklamę jako reklamę piwa po prostu. <span class="src">s. 75</span></li>
+<li><strong>Doliński (1999)</strong>: swobodnie przeglądając gazetę, zatrzymujemy wzrok w <strong>prawym górnym rogu</strong> — to miejsce na ważne informacje i zwykle najdroższe miejsce ogłoszeniowe.</li>
+<li><strong>Reguła kierunku wzroku</strong>: oko podąża tam, gdzie wskazuje palec lub spojrzenie osób w reklamie. Wykorzystuje się też kierunek ruchu oka wymuszony czytaniem (ryc. 2.18: czytając hasło reklamy okien, wzrok wędruje w stronę sylwetki kobiety — podtekst seksualny).</li>
+<li>Schematy eksploracyjne dotyczą też cech <strong>niedostępnych bezpośrednio</strong> — np. w <strong>atrybucji</strong> pytamy, dlaczego ktoś zachował się tak, a nie inaczej, co pozwala odkrywać intencje i przewidywać zachowanie. Cykl percepcyjny można rozwinąć w <strong>cykl poznawczy</strong> (Maruszewski, 1992).</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 2.5 ============ -->
+<section class="chapter" id="r2-5">
+<div class="chapter-head"><span class="num">2.5</span><h2>Ekologiczna koncepcja spostrzegania</h2></div>
+<details class="block" open="">
+<summary>2.5.1 Percepcja bezpośrednia i pośrednia</summary>
+<div class="inner">
+<p>Jeden z podstawowych problemów: czy świat poznajemy <strong>bezpośrednio</strong>, czy za pośrednictwem tworzonych przez siebie <strong>reprezentacji</strong> (ryc. 2.19)? <span class="src">s. 76</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>A: percepcja pośrednia (konstruktywizm)</th><th>B: percepcja bezpośrednia</th></tr></thead>
+<tbody>
+<tr>
+<td style="font-weight:400;white-space:normal">Świat → <strong>reprezentacja (zwykle schemat)</strong> → podmiot poznaje reprezentację</td>
+<td style="font-weight:400;white-space:normal">Uporządkowana informacja, uzyskiwana dzięki <strong>umiejętnościom percepcyjnym</strong> → podmiot poznaje bezpośrednio</td>
+</tr>
+<tr>
+<td style="font-weight:400;white-space:normal">Przyjmowane przez teorię przetwarzania informacji. Zwolennicy: <strong>Bruner, Gregory (1980), Rock (1983)</strong>. Zwane też koncepcją <span class="term">inteligentnego spostrzegania</span> — angażuje pamięć, myślenie, podejmowanie decyzji (procesy góra–dół).</td>
+<td style="font-weight:400;white-space:normal"><strong>James Gibson (1979)</strong>, rozwijana przez <strong>Eleanor Gibson (1991)</strong>. Brak schematów; informacja ze zmysłów jest wiernym odzwierciedleniem rzeczywistości.</td>
+</tr>
+<tr>
+<td style="font-weight:400;white-space:normal">Schematy zawierają uogólnioną wiedzę, więc nie dają wiernego obrazu. Reprezentacje są <strong>przezroczyste</strong> jak język — podmiot nie zdaje sobie sprawy, że poznaje reprezentacje, a nie świat.</td>
+<td style="font-weight:400;white-space:normal">Informacja z otoczenia jest wysoce specyficzna; nie trzeba odwoływać się do reprezentacji, które przez swój schematyczny charakter wprowadzają możliwość błędu. Zmysły ukształtowała ewolucja.</td>
+</tr>
+<tr>
+<td style="font-weight:400;white-space:normal"><span class="term">Homomorfizm</span>: różne bodźce mogą trafić do tej samej kategorii. Oszczędne, ale traci szczegóły.</td>
+<td style="font-weight:400;white-space:normal"><span class="term">Izomorfizm</span>: każdy bodziec tworzy odrębne spostrzeżenie.</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Trafność poznania dotyczy relacji między światem a schematem. Jeśli schematy są ogólne i sztywne — różnica duża; jeśli modyfikowane na bieżąco — niewielka. Schematy mogą być niedokładne, a mimo to mieć <strong>wartość adaptacyjną</strong>. <span class="src">s. 77</span></li>
+<li><strong>Problem eksploracji społecznej</strong>: kamień nie zmienia się, gdy badamy jego twardość; ludzie zmieniają zachowanie, gdy wiedzą, że są obiektem zainteresowania. Ryc. 2.20: prośba o napisanie listu i pytanie zwrotne „co on chce przez to osiągnąć?” — partnerzy muszą oddzielić trwałe właściwości drugiej osoby od motywów wywołanych interakcją. Jeszcze trudniej przy <strong>spostrzeganiu siebie</strong>.</li>
+<li>Ryc. 2.21: dwie bliskie kropki poniżej progu różnicowania widzimy jako krótką linię (homomorfizm), zwłaszcza gdy oczekujemy linii.</li>
+<li>Cały spór sprowadza się do pytania, czy możliwe jest <strong>poprawne spostrzeganie przy redukcji szczegółów</strong>. Konstruktywizm może kompensować niedokładność odwołaniem do wyższych procesów — np. wyszukując w pamięci szczegóły o danej osobie. <span class="src">s. 78</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>2.5.2 Percepcja bezpośrednia świata zewnętrznego (Gibson)</summary>
+<div class="inner">
+<ul>
+<li>Do organizmu dociera bogata, uporządkowana informacja — <span class="term">szyk optyczny</span> (<em>optic array</em>): światło o zróżnicowanej intensywności padające z różnych kierunków. Pozwala stworzyć wierny obraz świata bez danych pamięciowych. <span class="src">s. 78</span></li>
+<li><strong>Przykład z wahadłem</strong>: obraz wahadła przesuwa się na siatkówce tak samo, gdy wahadło się rusza, a głowa stoi, i gdy wahadło stoi, a my ruszamy głową. Mimo to łatwo odróżniamy te sytuacje — nawet w zaciemnionym pokoju bez wskazówek z tła. Umożliwia to <strong>aktywność motoryczna</strong>: gdy ruszamy głową, proprioceptory i kora otrzymują inne informacje. Nie trzeba schematu zegara; wystarczy informacja percepcyjna zawierająca elementy motoryczne. <span class="src">s. 79</span></li>
+<li>Informacja ma charakter <strong>kontekstowy</strong>; w laboratorium często go brak, a w środowisku naturalnym zawsze jest — stąd nazwa: <span class="term">teoria ekologiczna</span>.</li>
+<li><span class="term">Afordancje</span> (<em>affordances</em>) — akty lub zachowania, które umożliwiają pewne obiekty, miejsca lub zdarzenia (Michaels i Carello, 1985). Łóżko umożliwia spanie, stół — jedzenie i pisanie. Spostrzegamy to bezpośrednio, tak jak to, że stół ma nogi i jest z drewna. Dlatego nie wchodzimy w szybę wystawową i nie próbujemy chodzić po wodzie. Termin jest nieprzetłumaczalny; kalka „afordancja” jest niezręczna.</li>
+<li><span class="term">Niezmienniki (inwarianty)</span> — specyficzne układy cech, które pozostają stałe w zmieniających się warunkach. Nawiązanie do psychologii postaci: spostrzegamy struktury cech, a nie cechy — melodia zagrana w tonacji C i G to ta sama melodia. <span class="src">s. 79–80</span></li>
+</ul>
+<h4>Przykłady niezmienników</h4>
+<ul>
+<li><strong>Stosunek wielkości do odległości</strong> (ryc. 2.22): drzewa dalsze wydają się mniejsze, a widzimy je jako tej samej wielkości. Wielkość — z wielkości obrazu siatkówkowego; odległość — z napięcia <strong>mięśni rzęskowych</strong> regulujących krzywiznę soczewki. Gdy się zbliżamy, drzewa wypełniają coraz więcej pola widzenia, korony znikają, coraz lepiej widać liście.</li>
+<li><strong>Wklęsłość i wypukłość</strong>: kształty wklęsłe mają jaśniejszą część dolną i ciemniejszą górną, wypukłe — odwrotnie. Światło niemal zawsze pada z góry. Oświetlenie twarzy od dołu nadaje jej niesamowity wygląd — chwyt reżyserów filmów ekspresjonistycznych i fotografików.</li>
+<li><span class="term">Przepływ optyczny</span>: idąc korytarzem, elementy w centrum pola widzenia przesuwają się wolno, a ściany, sufit i podłoga szybko uciekają do tyłu. <span class="src">s. 80</span></li>
+</ul>
+<ul>
+<li>Gibson twierdził, że rozróżnienie na czuciową i ruchową część układu nerwowego to <strong>konwencja</strong> — funkcjonalnie są bardzo podobne.</li>
+<li>Spostrzeganie to nie tyle proces, ile <strong>umiejętność</strong> — nie zawsze wrodzona, może być wyuczona.</li>
+<li>Odbiór: entuzjastyczny (Michaels i Carello, 1981) albo powściągliwy (Ullman, 1980: pomysłowe intuicyjnie, ale wymaga dopracowania).</li>
+</ul>
+<div class="key"><span class="label">Kompromis konstruktywizm–percepcja bezpośrednia</span><p>Każda koncepcja opisuje <strong>inną fazę</strong> spostrzegania. Percepcja bezpośrednia — <strong>wczesne fazy</strong> (odbiór i porządkowanie bodźców); konstruktywizm — <strong>późniejsze fazy</strong> (interpretacja przez wcześniejsze struktury wiedzy) (Rochat, 1999).</p></div>
+<div class="flag"><span class="label">Uwaga przy nauce</span>W podręczniku przy definicji afordancji jest „Michaels i Corello, 1985”, a kilka akapitów dalej „Michaels i Carello, 1981”. Poprawna forma nazwiska to <strong>Carello</strong> (Claudia Carello).</div>
+</div>
+</details>
+<details class="block" open="">
+<summary>2.5.3 Percepcja bezpośrednia świata wewnętrznego — spostrzeganie własnych emocji</summary>
+<div class="inner">
+<ul>
+<li>Czy ujęcie Gibsona da się zastosować do stanów wewnętrznych? Analizę podjęli Maruszewski, Falkowski i Ścigała (1997); tu tylko spostrzeganie <strong>własnych</strong> emocji. <span class="src">s. 81</span></li>
+<li>Spostrzeganie emocji jest wielozmysłowe; obejmuje bodźce z wnętrza organizmu (pobudzenie narządów) i zewnętrzne (bodźce emotogenne, kontekst). Dostępu do własnych uczuć trzeba się <strong>nauczyć</strong> (Izard, 1984).</li>
+<li>Dostęp może być <strong>bezpośredni</strong> („wiem”, co czuję) albo <strong>pośredni</strong> — wnioskowanie z pobudzenia fizjologicznego lub mimiki. Damasio: informację niosą <strong>markery somatyczne</strong> — specyficzne układy aktywności neurohormonalnej (Damasio, 1999). Wnioskowanie może też dotyczyć reakcji innych: ktoś, kto podniósł głos, może z korekty zachowania rozmówcy wywnioskować, że zachował się emocjonalnie.</li>
+</ul>
+<h4>Wskaźniki emocji wewnętrznych (Buck, 1994)</h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Źródło danych</th><th>Co rejestruje</th><th>Dla kogo dostępne</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">(a) interoreceptory</td><td style="font-weight:400;white-space:normal">stan narządów wewnętrznych (przyspieszone bicie serca, ściskanie w dołku); zmiany zwykle automatyczne</td><td style="font-weight:400;white-space:normal">normalnie niedostępne innym</td></tr>
+<tr><td style="font-weight:400">(b) proprioceptory</td><td style="font-weight:400;white-space:normal">czucie mięśniowe: działania i reakcje ekspresyjne (mimika, pantomimika)</td><td style="font-weight:400;white-space:normal">bardziej dostępne innym niż samej jednostce; służą komunikacji</td></tr>
+<tr><td style="font-weight:400">(c) dane introspekcyjne</td><td style="font-weight:400;white-space:normal">subiektywny obraz emocji — <strong>uczucie</strong></td><td style="font-weight:400;white-space:normal">tylko dla jednostki</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Te rodzaje informacji podlegały różnym naciskom selekcyjnym, więc mogą być niezależne albo ściśle powiązane. Dlatego potrzebna jest <span class="term">edukacja emocjonalna</span> — uczymy się, jak reagować na uczucia i pragnienia w różnych kontekstach społecznych (Buck, 1994). <span class="src">s. 82</span></li>
+<li>U małego dziecka dominuje spostrzeganie <strong>emocji pierwotnych</strong>, dorosły korzysta z pełnego spektrum. Zbliżona koncepcja: Cacioppo, Berntson, Larsen, Poehlmann i Ito (2005).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Emocje pierwotne (Damasio, 1999)</th><th>Emocje wtórne</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">Zorganizowana z góry (<em>preorganized, prewired</em>) odpowiedź na dobrze zdefiniowaną klasę bodźców; <strong>wrodzone, automatyczne</strong>. Duży, szybko zbliżający się obiekt → strach (reakcje autonomiczne, ekspresyjne, neurochemiczne). U dorosłego dochodzi <strong>uczucie</strong> — uświadomienie związku między obiektem a stanem organizmu, co pozwala generalizować i nazwać pobudzenie objawem strachu.<br/><br/>Spostrzegane głównie dzięki <span class="term">aferentacji wstecznej</span> — rejestracji zmian w organizmie wywołanych bodźcem.</td>
+<td style="font-weight:400;white-space:normal">Bodźce nie aktywizują bezpośrednio struktur podkorowych, lecz struktury <strong>kory przedczołowej</strong>, które generują <strong>wyobrażenia</strong>; dopiero one — dzięki indywidualnemu doświadczeniu — aktywizują struktury podkorowe (ciało migdałowate). Wymaga refleksji (niekoniecznie świadomej), więcej stadiów, większych obszarów mózgu.<br/><br/>Dodatkowe źródło informacji: wyobrażenia, czyli <strong>psychiczna reprezentacja emocji</strong>; mogą wywołać emocję wtórną bez realnej sytuacji.</td>
+</tr></tbody>
+</table></div>
+<ul>
+<li>Wyobrażenia są dostępne introspekcyjnie, ale ich wpływ na struktury podkorowe jest automatyczny i nieświadomy. Autor przywołuje Rossiego (1995): wciąż daleko nam do zrozumienia przenoszenia informacji z poziomu semantycznego na somatyczny. <span class="src">s. 83</span></li>
+<li>Rozróżnienie świadome/nieświadome spostrzeganie emocji wiąże się z zaburzeniami po zdarzeniach traumatycznych (Ścigała i Maruszewski, 1999).</li>
+<li><strong>Wniosek</strong>: spostrzeganie emocji pierwotnych uruchamia mechanizmy opisane przez koncepcję percepcji bezpośredniej (niezmienniki, cechy krytyczne pozwalające szybko rozpoznać emocję i działać). Uczenie się spostrzegania emocji tworzy reprezentacje używane przy emocjach wtórnych. Analiza nie może abstrahować od danych neurobiologicznych (LeDoux, 2000).</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ UZUPEŁNIENIA Z SYLABUSA ============ -->
+<section class="chapter" id="r2-syl">
+<div class="chapter-head"><span class="num">+</span><h2>Uzupełnienia z sylabusa</h2></div>
+<details class="block" id="zludzenia" open="">
+<summary>Złudzenia i błędy percepcji — zestawienie z rozdziału</summary>
+<div class="inner">
+<p>Rozdział nie ma osobnego podrozdziału o złudzeniach. To zestawienie zjawisk rozsianych po tekście.</p>
+<div class="cards">
+<div class="card"><h4>Figury wieloznaczne</h4><p>Sześcian Neckera, schodki Schrödera, starsza/młodsza kobieta; ten sam znak jako 13 lub B. Argument przeciw atomizmowi. <a href="#r2-3">2.3</a></p></div>
+<div class="card"><h4>Figury odwracalne</h4><p>Waza Rubina — zamiana figury i tła. <a href="#r2-3">2.3</a></p></div>
+<div class="card"><h4>Wpływ kontekstu</h4><p>Czerwień na szarym vs czerwonym tle; szminka u blondynki i brunetki. <a href="#r2-3">2.3</a></p></div>
+<div class="card"><h4>Błędy stałości</h4><p>Dobieranie kształtu drzwi: wybór figury bliższej prostokątowi. Granice stałości barwy (lampy sodowe). <a href="#stalosci">2.1</a></p></div>
+<div class="card"><h4>Twarz odwrócona</h4><p>Błędy w odczytywaniu ekspresji twarzy odwróconej o 180° (ryc. 2.14). <a href="#r2-4">2.4.1</a></p></div>
+<div class="card"><h4>Homomorfizm</h4><p>Dwie kropki widziane jako linia; różne bodźce w jednej kategorii. <a href="#r2-5">2.5.1</a></p></div>
+<div class="card"><h4>Wklęsłe / wypukłe</h4><p>Płaskie płytki wydają się wypukłe lub wklęsłe przez układ światła i cienia. <a href="#r2-5">2.5.2</a></p></div>
+<div class="card"><h4>Gotowość i obronność</h4><p>Paranoiczne zniekształcenia, „różowe okulary”, obronność percepcyjna. <a href="#gotowosc">2.4.3</a></p></div>
+</div>
+<div class="flag"><span class="label">Do uzupełnienia</span>Klasyczne złudzenia geometryczne (np. Müllera-Lyera, Ponzo) nie są omawiane w rozdziale 2. Sylabus ćwiczeń zapowiada złudzenia percepcyjne na podstawie Nęcki i in. (2020, s. 259–266, 269–279, 291–297) — tam prawdopodobnie będą.</div>
+</div>
+</details>
+<details class="block" id="agnozje" open="">
+<summary>Deficyty percepcji: agnozje <span class="src">spoza rozdziału</span></summary>
+<div class="inner">
+<div class="flag"><span class="label">Źródło</span>Sylabus wymienia agnozje w wykładzie 2, ale <strong>rozdział 2 Maruszewskiego ich nie omawia</strong>. Poniżej krótka wiedza podręcznikowa spoza rozdziału — do porównania i uzupełnienia notatkami z wykładu.</div>
+<ul>
+<li><span class="term">Agnozja</span> — zaburzenie <strong>rozpoznawania</strong> bodźców przy zachowanej sprawności narządów zmysłów, uwagi i intelektu; wynika z uszkodzenia mózgu. Zwykle dotyczy jednej modalności.</li>
+<li><strong>Agnozja wzrokowa aperceptywna</strong> — zaburzone jest scalanie cech w spostrzeżenie: osoba widzi elementy, ale nie potrafi ich złożyć w kształt (np. nie przerysuje przedmiotu).</li>
+<li><strong>Agnozja wzrokowa asocjacyjna</strong> — spostrzeżenie powstaje (osoba potrafi przerysować przedmiot), ale nie łączy się z wiedzą o nim, więc przedmiot nie zostaje rozpoznany ani nazwany.</li>
+<li><strong>Prozopagnozja</strong> — niezdolność rozpoznawania znanych twarzy przy zachowanym rozpoznawaniu przedmiotów. Warto zestawić ze szczególnym statusem twarzy z 2.4.1.</li>
+<li>Inne modalności: agnozja <strong>słuchowa</strong> (rozpoznawanie dźwięków), agnozja <strong>dotykowa</strong> / astereognozja (rozpoznawanie przedmiotów dotykiem).</li>
+<li>Powiązanie z rozdziałem: podział aperceptywna/asocjacyjna odpowiada rozróżnieniu fazy tworzenia spostrzeżenia i fazy rozpoznania treści (kategoryzacji) z 2.2.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ KTO JEST KIM (ROZDZ. 2) ============ -->
+<section class="chapter" id="kto-2">
+<div class="chapter-head"><span class="num">✦</span><h2>Kto jest kim — rozdział 2</h2></div>
+<div class="cards">
+<div class="card"><h4>Hebb</h4><span class="yr">1969</span><p>Wrażenie jako aktywność dróg wstępujących; zespoły komórkowe i sekwencje fazowe.</p></div>
+<div class="card"><h4>Cannon</h4><span class="yr">1932</span><p>Reakcja „walcz albo uciekaj”.</p></div>
+<div class="card"><h4>LeDoux</h4><span class="yr">2000</span><p>Droga podkorowa: szybka, nieprecyzyjna ocena emocjonalna; pacjenci po komisurotomii.</p></div>
+<div class="card"><h4>Sperling</h4><span class="yr">1960</span><p>Pamięć sensoryczna (bufor).</p></div>
+<div class="card"><h4>Öhman</h4><span class="yr">1987</span><p>Ocena emocjonalna przed rozpoznaniem treści.</p></div>
+<div class="card"><h4>Bruner i Postman</h4><span class="yr">1947</span><p>Obronność percepcyjna — dłuższy czas rozpoznania słów wulgarnych.</p></div>
+<div class="card"><h4>Bruner</h4><span class="yr">1978</span><p>Spostrzeganie jako kategoryzacja; konfrontacja danych sensorycznych i pamięciowych; gotowość percepcyjna; sprawdzanie dla potwierdzenia.</p></div>
+<div class="card"><h4>S. Sternberg</h4><span class="yr">1969</span><p>Efekt wielkości zbioru, ok. 38 ms na element; przeszukiwanie sekwencyjne.</p></div>
+<div class="card"><h4>Townsend</h4><span class="yr">1971</span><p>Alternatywa: przeszukiwanie równoległe.</p></div>
+<div class="card"><h4>Wundt, Titchener</h4><span class="yr">XIX w.</span><p>Asocjacjonizm (atomizm).</p></div>
+<div class="card"><h4>Wertheimer, Koffka, Köhler</h4><span class="yr">XX w.</span><p>Psychologia postaci; zasady Wertheimera (1923).</p></div>
+<div class="card"><h4>Rubin</h4><span class="yr">1921</span><p>Figura i tło; waza Rubina.</p></div>
+<div class="card"><h4>Lettvin, Maturana, McCulloch, Pitts</h4><span class="yr">1959</span><p>Detektory owadów i bocianów u żaby.</p></div>
+<div class="card"><h4>Selfridge</h4><span class="yr">1959</span><p>Pandemonium — detektory linii, kątów i krzywych.</p></div>
+<div class="card"><h4>Bruce i Young</h4><span class="yr">1986</span><p>Wieloetapowe spostrzeganie twarzy.</p></div>
+<div class="card"><h4>Carey</h4><span class="yr">1981</span><p>Noworodki preferują bodźce twarzopodobne 9 minut po urodzeniu.</p></div>
+<div class="card"><h4>Sergent</h4><span class="yr">1987</span><p>Wczesne ukształtowanie mechanizmów twarzy; przewaga prawej półkuli.</p></div>
+<div class="card"><h4>Tanaka i Farah</h4><span class="yr">1993</span><p>Twarze przetwarzane całościowo.</p></div>
+<div class="card"><h4>Bartlett</h4><span class="yr">1932</span><p>Pojęcie schematu.</p></div>
+<div class="card"><h4>Spelke</h4><span class="yr">1982</span><p>Stałość przedmiotu u niemowląt.</p></div>
+<div class="card"><h4>Posner i Keele</h4><span class="yr">1968, 1970</span><p>Prototypy z układów kropek: 87% / 67% / 85%.</p></div>
+<div class="card"><h4>Posner, Boies, Eichelman, Taylor</h4><span class="yr">1969</span><p>Kody fizyczne i nominalne liter.</p></div>
+<div class="card"><h4>Lazarus i McCleary</h4><span class="yr">1951</span><p>Subcepcja.</p></div>
+<div class="card"><h4>Fazio i in.</h4><span class="yr">1995</span><p>Torowanie twarzą a automatyczna ocena przymiotników.</p></div>
+<div class="card"><h4>Neisser</h4><span class="yr">1976</span><p>Cykl percepcyjny, schematy eksploracyjne.</p></div>
+<div class="card"><h4>Yarbus</h4><span class="yr">1967</span><p>Ruchy oczu zależne od pytania.</p></div>
+<div class="card"><h4>Szuman</h4><span class="yr">1932</span><p><em>Geneza przedmiotu</em>: od telereceptorów do kontaktoreceptorów.</p></div>
+<div class="card"><h4>Doliński</h4><span class="yr">1999</span><p>Prawy górny róg strony w reklamie.</p></div>
+<div class="card"><h4>J. i E. Gibson</h4><span class="yr">1979, 1991</span><p>Percepcja bezpośrednia: szyk optyczny, afordancje, niezmienniki, przepływ optyczny.</p></div>
+<div class="card"><h4>Buck</h4><span class="yr">1994</span><p>Trzy źródła danych o własnych emocjach; edukacja emocjonalna.</p></div>
+<div class="card"><h4>Damasio</h4><span class="yr">1999</span><p>Emocje pierwotne i wtórne; markery somatyczne.</p></div>
+</div>
+</section>
+<!-- ============ PYTANIA (ROZDZ. 2) ============ -->
+<section class="chapter" id="pytania-2">
+<div class="chapter-head"><span class="num">?</span><h2>Pytania kontrolne — rozdział 2</h2></div>
+<p class="fiszki-link">Pytania sprawdzające <a href="fiszki.html">Fiszki</a></p>
+</section>
+</div>
+
+</div>
+
+<footer>
+  Wykłady: Maruszewski, T. (2017). <cite>Psychologia poznania. Umysł i świat</cite>. Gdańsk: GWP, rozdz. 1 (s. 13–41), 2 (s. 43–83) i 3 (s. 85–131).
+  Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN (skan s. 34–39).
+  Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
+</footer>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-1.html"><span>Poprzednia</span><b>Wykład 1</b><i>Czym zajmuje się psychologia poznawcza?</i></a><a class="next" href="wyklad-3.html"><span>Następna</span><b>Wykład 3</b><i>Natura i funkcje uwagi</i></a></nav></main>
+</div>
+<script>
+(function(){
+  var KEY_TAB='pp-tab', KEY_OPEN='pp-open';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function setTab(name,focus){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===name;
+      t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    document.querySelectorAll('.toc-panel').forEach(function(p){p.hidden=p.dataset.for!==name});
+    store(KEY_TAB,name);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){setTab(t.dataset.tab);window.scrollTo({top:0})});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];setTab(n.dataset.tab,true);e.preventDefault()}
+    });
+  });
+  function saveOpen(){
+    var ids=[].slice.call(document.querySelectorAll('details.unit[open]')).map(function(d){return d.id});
+    store(KEY_OPEN,ids.join(','));
+  }
+  document.querySelectorAll('details.unit').forEach(function(d){d.addEventListener('toggle',saveOpen)});
+  function reveal(el){
+    var panel=el.closest('.panel'); if(panel)setTab(panel.id==='panel-cw'?'cw':'wyk');
+    var p=el; while(p){ if(p.tagName==='DETAILS')p.open=true; p=p.parentElement; }
+    if(el.tagName==='DETAILS')el.open=true;
+    requestAnimationFrame(function(){el.scrollIntoView({block:'start'})});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a)return;
+    var t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); if(!t)return;
+    e.preventDefault(); reveal(t);
+    try{history.replaceState(null,'','#'+t.id)}catch(err){}
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.dataset.toggle==='open';
+      var panel=document.querySelector('.panel:not([hidden])');
+      panel.querySelectorAll('details').forEach(function(d){d.open=open});
+      document.getElementById('zaliczenie').open=false;
+    });
+  });
+  var saved=load(KEY_OPEN);
+  if(saved)saved.split(',').forEach(function(id){var d=document.getElementById(id);if(d&&d.classList.contains('unit'))d.open=true});
+  var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
+})();
+</script>
+<script data-back="./" data-back-label="Poznawcza" data-home="../" src="../assets/reader.js"></script></body>
+</html>

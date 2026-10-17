@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Wykład 3 · Psychologia poznawcza</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --ink:#2b2118;
+  --ink-soft:#5c4f43;
+  --rule:#e9e0d3;
+  --parchment:#f7f1e7;
+  /* Psychologia poznawcza — pastel dusty blue, H209 S33 L56 */
+  --accent:hsl(209 33% 56%);
+  --accent-deep:hsl(209 36% 36%);
+  --accent-tint:hsl(209 40% 95%);
+  --accent-line:hsl(209 33% 80%);
+  --warn:#9a6a1f;
+  --warn-tint:#fbf3e3;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7}
+a{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:3px}
+
+.page{display:grid;grid-template-columns:15rem minmax(0,46rem);gap:3.5rem;max-width:68rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+@media (max-width:900px){.page{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:1.75rem}}
+
+/* ——— Spis treści ——— */
+.toc{position:sticky;top:1.5rem;align-self:start;font-size:.92rem;line-height:1.45;max-height:calc(100vh - 3rem);overflow-y:auto;padding-right:.4rem}
+.toc .grp{font-family:var(--display);font-size:.95rem;color:var(--accent-deep);margin:1.1rem 0 .35rem}
+.toc h2{font-family:var(--display);font-weight:500;font-size:1.05rem;margin:0 0 .75rem}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent-line)}
+.toc li a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--ink-soft);text-decoration:none}
+.toc li a:hover{color:var(--accent-deep)}
+.toc li a b{font-weight:600;color:var(--accent-deep);margin-right:.35rem}
+.toc .tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+@media (max-width:900px){.toc{max-height:none;position:static;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;background:var(--parchment)}}
+
+button{font:inherit;font-size:.85rem;color:var(--accent-deep);background:var(--paper);border:1px solid var(--accent-line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--accent-tint)}
+
+/* ——— Nagłówek ——— */
+header.masthead{border-bottom:3px double var(--accent-line);padding-bottom:1.75rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
+.pill{display:inline-block;font-size:.82rem;padding:.2rem .75rem;border-radius:999px;background:var(--accent);color:#fff;letter-spacing:.01em}
+.pill.ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--accent-line)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.08;margin:0 0 .6rem;letter-spacing:-.01em}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:38rem}
+.source-line{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft)}
+.source-line cite{font-style:italic;color:var(--ink)}
+
+/* ——— Sekcje ——— */
+section.chapter{margin:0 0 3rem}
+.chapter-head{display:flex;align-items:baseline;gap:.9rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.chapter-head .num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--accent)}
+.chapter-head h2{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.2;margin:0}
+.src{display:inline-block;font-size:.78rem;color:var(--accent-deep);background:var(--accent-tint);border-radius:4px;padding:.05rem .45rem;margin-left:.3rem;white-space:nowrap;vertical-align:.1em}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;color:var(--accent-deep);font-size:.85rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--accent-line)}
+
+h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:1.6rem 0 .5rem}
+h4{font-family:var(--body);font-weight:600;font-size:1rem;margin:1.2rem 0 .3rem}
+p{margin:0 0 .9rem}
+ul,ol{margin:0 0 1rem;padding-left:1.35rem}
+li{margin:.25rem 0}
+strong{font-weight:600}
+.term{font-weight:600;color:var(--accent-deep)}
+
+/* ——— Rozwijane bloki ——— */
+details.block{border:1px solid var(--rule);border-radius:10px;background:var(--paper);margin:.9rem 0}
+details.block>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;font-family:var(--display);font-size:1.12rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+details.block>summary::-webkit-details-marker{display:none}
+details.block>summary::after{content:"+";font-family:var(--body);color:var(--accent);font-size:1.3rem;line-height:1}
+details.block[open]>summary::after{content:"–"}
+details.block[open]>summary{border-bottom:1px solid var(--rule)}
+details.block .inner{padding:.9rem 1.2rem .4rem}
+details.block.ramka{background:var(--parchment);border-color:#e3d6c3}
+details.block.ramka>summary .kind{font-family:var(--body);font-size:.8rem;color:var(--ink-soft);margin-right:.5rem}
+
+/* ——— Wyróżnienia ——— */
+.key{border-left:4px solid var(--accent);background:var(--accent-tint);padding:.85rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0 1.2rem}
+.key p:last-child{margin-bottom:0}
+.key .label{display:block;font-size:.82rem;color:var(--accent-deep);margin-bottom:.2rem}
+.flag{border-left:4px solid var(--warn);background:var(--warn-tint);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem}
+.flag .label{display:block;font-size:.82rem;color:var(--warn);margin-bottom:.15rem}
+blockquote{margin:1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--accent-line);font-style:italic;color:var(--ink-soft)}
+
+/* ——— Tabele ——— */
+.table-wrap{overflow-x:auto;margin:1rem 0 1.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;background:var(--accent-tint);color:var(--accent-deep)}
+td:last-child{font-weight:600;white-space:nowrap}
+
+/* ——— Karty postaci ——— */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.8rem;margin:1rem 0 1.5rem}
+.card{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:8px;padding:.8rem .95rem;font-size:.93rem;line-height:1.5}
+.card h4{margin:0 0 .15rem;font-family:var(--display);font-weight:500;font-size:1.05rem}
+.card .yr{font-size:.8rem;color:var(--accent-deep);display:block;margin-bottom:.35rem}
+.card p{margin:0}
+
+/* ——— Oś czasu ——— */
+.timeline{list-style:none;padding:0;margin:1rem 0 1.5rem;position:relative}
+.timeline::before{content:"";position:absolute;left:4.1rem;top:.4rem;bottom:.4rem;width:2px;background:var(--accent-line)}
+.timeline li{display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;margin:0 0 .75rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:3.82rem;top:.62rem;width:.62rem;height:.62rem;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .y{font-family:var(--display);font-weight:500;text-align:right;color:var(--accent-deep)}
+
+/* ——— Wykresy ——— */
+.fig{margin:1.2rem 0;padding:1rem 1rem .6rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.5}
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:640px){.fig-row{grid-template-columns:1fr}}
+
+/* ——— Pytania kontrolne ——— */
+details.q{border-bottom:1px solid var(--rule);padding:.25rem 0}
+details.q>summary{cursor:pointer;padding:.55rem 0;font-weight:600;list-style:none;display:grid;grid-template-columns:1.8rem 1fr;gap:.4rem}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary .n{color:var(--accent);font-family:var(--display)}
+details.q .a{padding:0 0 .8rem 2.2rem;font-size:.97rem}
+
+.syl{list-style:none;padding:0;margin:.4rem 0 0}
+.syl li{display:grid;grid-template-columns:1.4rem 1fr;gap:.3rem;margin:.35rem 0}
+.syl li::before{content:"✓";color:var(--accent-deep);font-weight:600}
+.syl a{font-size:.88rem;white-space:nowrap}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.6rem;margin:.6rem 0 1rem}
+.meta-grid div{border:1px solid var(--rule);border-radius:8px;padding:.55rem .75rem;font-size:.9rem;line-height:1.4}
+.meta-grid b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--accent-deep)}
+.part{margin:4.5rem 0 2.5rem;padding:2rem 0 1.5rem;border-top:3px double var(--accent-line);border-bottom:1px solid var(--rule)}
+.part .pills{margin-bottom:.8rem}
+.part-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin:0 0 .5rem}
+.phases .y{font-size:1.4rem}
+.part-cw{background:var(--accent-tint);border-top:6px solid var(--accent);border-bottom:none;border-radius:0 0 12px 12px;padding:1.6rem 1.4rem 1.4rem;margin-top:6rem}
+.part-cw+.part{margin-top:2rem}
+table.wide{min-width:46rem;font-size:.88rem}
+table.wide td:first-child{font-weight:600;white-space:normal;color:var(--ink)}
+table.wide td{font-weight:400;white-space:normal}
+.toc .grp.cw{border-top:1px solid var(--accent-line);padding-top:.9rem;margin-top:1.4rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+
+
+/* ——— Zakładki i zwijane tematy ——— */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;padding:.7rem 0;margin:0 0 1.4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.tabs [role=tab]{font-family:var(--display);font-size:1.05rem;padding:.45rem 1.2rem;border-radius:999px;border:1px solid var(--accent-line);color:var(--accent-deep);background:var(--paper)}
+.tabs [role=tab][aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .count{font-family:var(--body);font-size:.78rem;opacity:.8;margin-left:.25rem}
+.panel-hint{font-size:.92rem;color:var(--ink-soft);margin:0 0 1rem}
+.unit{border:1px solid var(--rule);border-radius:14px;background:var(--paper);margin:0 0 1rem;scroll-margin-top:5rem}
+.unit>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;border-radius:14px}
+.unit>summary::-webkit-details-marker{display:none}
+.unit>summary:hover{background:var(--accent-tint)}
+.unit[open]>summary{border-bottom:3px double var(--accent-line);border-radius:14px 14px 0 0}
+.unit .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.55rem}
+.unit-title{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,3.6vw,1.95rem);line-height:1.15;margin-bottom:.3rem}
+.unit-lede{display:block;color:var(--ink-soft);font-size:.98rem}
+.unit-toggle{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--accent-line);display:grid;place-items:center;color:var(--accent-deep);font-size:1.3rem;line-height:1}
+.unit-toggle::before{content:"+"}
+.unit[open] .unit-toggle::before{content:"–"}
+.unit-body{padding:1.6rem 1.3rem .4rem}
+.unit-cw{border-top:4px solid var(--accent)}
+@media (max-width:640px){.unit>summary{padding:1rem}.unit-body{padding:1.2rem .9rem .2rem}}
+.chapter,.block,.q{scroll-margin-top:5rem}
+.zal{margin-bottom:1.6rem}
+.toc .grp a{color:inherit;text-decoration:none}
+.toc .grp a:hover{color:var(--accent-deep)}
+mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color:inherit;padding:0 .08em}
+.note-hl{font-size:.88rem;color:var(--ink-soft)}
+.sdt td{white-space:normal}
+.sdt td.ok{background:hsl(150 30% 95%);color:hsl(150 32% 26%)}
+.sdt td.err{background:#fbf0e6;color:#8a4a1c}
+@media print{.tabs,.panel-hint{display:none}.panel[hidden]{display:block}.unit-toggle{display:none}}
+@media print{
+  .toc,.tools{display:none}
+  .page{display:block;padding:0}
+  details.block,details.q{break-inside:avoid}
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style></head>
+<body>
+<div class="page">
+
+<main><header class="st-hero"><p class="st-eyebrow">Wykład 3 · Maruszewski, rozdz. 3, s. 85–131</p><h1>Natura i funkcje uwagi</h1><p class="st-meta">Funkcje i mechanizmy uwagi, czujność, przeszukiwanie, filtry i zasoby, automatyzmy, refleksyjność, świadomość.</p></header>
+
+
+
+<div aria-labelledby="tab-wyk" class="panel" id="panel-wyk" role="tabpanel">
+
+
+
+<div class="unit-body" id="rozdzial-3">
+<section class="chapter" id="syl-3">
+<div class="chapter-head"><span class="num">§</span><h2>Wymagania z sylabusa</h2></div>
+<div class="key">
+<span class="label">Wykład 3: Natura i funkcje uwagi</span>
+<ul class="syl">
+<li><span>Mechanizm selekcji danych na różnych etapach przetwarzania informacji <a href="#r3-1">→ 3.1</a> <a href="#r3-3c">→ 3.3.3</a></span></li>
+<li><span>Zasada przetargu pomiędzy szybkością a poprawnością <a href="#r3-przetarg">→ spoza rozdziału</a></span></li>
+<li><span>Przeszukiwanie pola percepcyjnego <a href="#r3-3b">→ 3.3.2</a></span></li>
+<li><span>Czujność (detekcja sygnału) <a href="#r3-3a">→ 3.3.1</a></span></li>
+<li><span>Podzielność uwagi: paradygmat podwójnego zadania <a href="#r3-3d">→ 3.3.4</a></span></li>
+<li><span>Procesy automatyczne i kontrolowane <a href="#r3-5">→ 3.5</a> <a href="#r3-6">→ 3.6</a></span></li>
+<li><span>Neurobiologiczne podłoże procesów uwagi <a href="#r3-2">→ 3.2</a></span></li>
+<li><span>Uwaga a świadomość <a href="#r3-7">→ 3.7</a></span></li>
+</ul>
+</div>
+<p class="note-hl">Fragmenty <mark>zaznaczone tak</mark> to miejsca, które zakreśliłaś w swoim skanie.</p>
+</section>
+<section class="chapter" id="wstep-3">
+<div class="chapter-head"><span class="num">0</span><h2>Wstęp do rozdziału</h2></div>
+<ul>
+<li>Gdyby człowiek reagował na wszystkie bodźce, jego zachowanie byłoby chaotyczne. Uwaga pozwala <strong>selekcjonować bodźce</strong> i zarazem <strong>wybierać sposoby reagowania</strong>. Umysł pracuje pod mniejszym obciążeniem i może skupić się na sprawach najważniejszych. <span class="src">s. 85–86</span></li>
+<li><span class="term">Dystraktory</span> utrudniają to zadanie: odwracają uwagę od aktualnego działania.</li>
+<li>Uwaga decyduje też o <strong>ukierunkowaniu energii poznawczej</strong>: przy niektórych zadaniach zużywamy wszystkie zasoby na jeden cel. Więcej niż jedno zadanie naraz jest możliwe, gdy korzystamy z <strong>niezależnych zbiorów zasobów</strong> albo czynność jest <strong>zautomatyzowana</strong>.</li>
+<li>Czynności zautomatyzowane pochłaniają mniej wysiłku, ale prowadzą do błędów, gdy nagle zmienią się warunki. Zachowanie <strong>bezrefleksyjne</strong> („automatyczny pilot”) sprawdza się w sytuacjach powtarzalnych, zawodzi w nowych.</li>
+</ul>
+</section>
+<!-- ============ 3.1 ============ -->
+<section class="chapter" id="r3-1">
+<div class="chapter-head"><span class="num">3.1</span><h2>Czym jest uwaga i jakie pełni funkcje</h2></div>
+<ul>
+<li><strong>Pilot w kokpicie</strong>: setki wskaźników, widok za oknem, wieża kontrolna, drugi pilot, załoga, narząd równowagi (kanały półkoliste) konfrontowany ze wzrokiem. Gdy samolot zbliża się do <strong>ukośnej chmury</strong>, pilot widzi tylko chmurę, leci równolegle do niej i jest przekonany, że leci poziomo — gdy podstawa chmury jest nisko, ziemię widzi za późno (przykład Hanny Bednarek). Do tego zapachy, wibracje, myśli o racie kredytu. Liczba informacji <strong>przekracza możliwości ich przetworzenia</strong>. <span class="src">s. 87</span></li>
+<li><strong>Kierowca</strong>: mniej wskaźników — kluczowe (prędkość) i peryferyjne (stacja radiowa). Mogą działać <mark>bodźce rozpraszające uwagę, czyli dystraktory</mark>. Rozmowa przez telefon, także głośnomówiący, ponad dwukrotnie zwiększa częstość przeoczenia czerwonego światła (Strayer i Johnston, 2001; por. <a href="#ramka-1-6">ramka 1.6</a>).</li>
+<li><mark>Nawet w trakcie zwykłej rozmowy występuje znaczne zaangażowanie uwagi</mark>: słuchamy, przygotowujemy odpowiedź, ważymy konsekwencje, obserwujemy ekspresję rozmówcy. Ważymy wskaźniki trudne do kontroli: mniej liczy się uniesienie kącików ust, bardziej — mięśnie wokół oczu. <span class="src">s. 87–88</span></li>
+<li><mark>Mikroekspresje</mark> trwają zbyt krótko, by je świadomie zarejestrować, ale wpływają na ocenę drugiej osoby (Ohme, Niemczyk i Ulatowska, 2008; Ulatowska, 2009). <mark>Ekspresje są przetwarzane przeduwagowo</mark>, ale obciążają uwagę, gdy pojawiają się <mark>ze znaczną częstością i są zmienne</mark> (negocjacje, poker).</li>
+</ul>
+<div class="key">
+<span class="label">Dwie definicje do zapamiętania</span>
+<p><strong>William James (1890, s. 403)</strong>: uwaga <mark>„jest obejmowaniem w posiadanie przez umysł w jasnej i żywej postaci jednego z wielu możliwych obiektów pojawiających się w strumieniu myśli. Jej istotą jest skupienie czy koncentracja świadomości. Obejmuje ona oddzielenie się od pewnych rzeczy po to, aby efektywnie radzić sobie z innymi”</mark>. James wskazuje związek ze świadomością i <strong>aktywny</strong> charakter uwagi („obejmowanie w posiadanie”) — uwaga kontroluje całe życie psychiczne.</p>
+<p><strong>Nęcka, Orzechowski i Szymura (2006, s. 178)</strong>: <mark>„Uwaga to system odpowiedzialny za selekcję informacji i zapobieganie negatywnym skutkom przeładowania systemu poznawczego przez nadmiar danych”</mark>.</p>
+</div>
+<p>Uwaga <mark>ogranicza liczbę odbieranych bodźców</mark>, możliwość podejmowania wysiłku i wykonywania kilku czynności naraz. Niektóre czynności można jednak bezkarnie łączyć (chodzenie i żucie gumy). <span class="src">s. 88</span></p>
+<h3>Cztery funkcje uwagi</h3>
+<div class="cards">
+<div class="card"><h4>1. Selekcja</h4><p><mark>Selekcjonowanie bodźców docierających do jednostki.</mark></p></div>
+<div class="card"><h4>2. Ukierunkowanie</h4><p><mark>Ukierunkowanie procesów poznawczych.</mark></p></div>
+<div class="card"><h4>3. Wielkość zasobów</h4><p><mark>Określanie wielkości wykorzystywanych zasobów poznawczych, poświęcanych na realizację różnych zadań.</mark></p></div>
+<div class="card"><h4>4. Podtrzymywanie</h4><p><mark>Podtrzymywanie zaangażowania poznawczego podczas wykonywania różnych czynności.</mark></p></div>
+</div>
+<details class="block" open="">
+<summary>Funkcja 1: selekcja na trzech poziomach</summary>
+<div class="inner">
+<p>Funkcja selekcjonująca to rozwiązanie ewolucyjne. Reagowanie na bodźce bez znaczenia przystosowawczego to strata energii albo przeoczenie ważnego sygnału (zapatrzeni w trawę nie zauważymy furtki; reagując na każdy trzask w lesie, sparaliżuje nas strach). <mark>Bodźców jest zbyt wiele, abyśmy mogli prawidłowo na wszystkie zareagować. Dlatego też konieczne jest ich selekcjonowanie.</mark> <span class="src">s. 88–89</span></p>
+<p>Dawniejsze koncepcje wyróżniały <mark>trzy</mark> poziomy selekcji, oparte na <mark>magazynowym modelu pamięci</mark>: <mark>magazyn informacji sensorycznej, pamięć krótkotrwała i pamięć trwała</mark> (Waugh i Norman, 1965; Atkinson i Shiffrin, 1968). Przy przejściu między magazynami następuje <mark>selekcja</mark>. Dziś kwestionuje się jakościowe rozróżnienie STM i LTM: STM to zaktywizowana część LTM (Cowan, 1999). U Cowana <mark>proces selekcji</mark> to nie tyle eliminowanie zbędnych informacji, co <mark>aktywizowanie specyficznych informacji</mark> potrzebnych do zadania.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Poziom selekcji</th><th>Na czym polega</th></tr></thead>
+<tbody>
+<tr><td>1. Narządy zmysłów</td><td style="font-weight:400;white-space:normal"><mark>Pierwotna selekcja następuje na poziomie narządów zmysłowych.</mark> Nie odbieramy podczerwieni, ultrafioletu ani ultradźwięków. <mark>W samym narządzie zmysłowym również następuje selekcja</mark>: w oku jest ok. <strong>126 mln</strong> fotoreceptorów, a z oka wychodzi tylko ok. <strong>1 mln</strong> włókien nerwu wzrokowego (Gleitman, 1991). Bezpośrednią reprezentację w korze ma tylko ok. 130 tys. komórek z dołka centralnego każdej siatkówki. <mark>Wszystkie pozostałe informacje są łączone ze sobą, a efektem tego składania jest jakaś informacja stanowiąca ekstrakt tego, co docierało do siatkówki.</mark></td></tr>
+<tr><td>2. Procesy pamięciowe</td><td style="font-weight:400;white-space:normal"><mark>Drugi rodzaj selekcji występuje w procesach pamięciowych</mark> — przy przejściu z STM do LTM. Metafora „tramwaju ludożercy”: <mark>niektóre informacje w pamięci krótkotrwałej są zapominane bezpowrotnie</mark>. Do LTM nie trafiają: informacje doskonale znane (<mark>habituacja</mark> — za słaby potencjał pobudzenia; Cowan, 1995; 2001) oraz <mark>informacje całkowicie niezgodne z posiadaną wiedzą</mark>. Poza tym <mark>pamięć trwała nie jest w stanie odebrać wszystkich bodźców przesyłanych przez pamięć krótkotrwałą</mark> — ograniczeniem jest <mark>szybkość kodowania informacji w pamięci trwałej</mark>.</td></tr>
+<tr><td>3. Planowanie działania</td><td style="font-weight:400;white-space:normal"><mark>Wybór z pamięci trwałej informacji potrzebnych do planowania działania</mark> i przesłanie ich do <mark>pamięci operacyjnej</mark>, która kieruje działaniem (autor pisze tekst: wybiera wiedzę o uwadze i obsłudze komputera, a pomija np. rodzaj karty muzycznej). <mark>Selekcja ta wymuszona jest ograniczeniami pojemności pamięci operacyjnej</mark> — w danej chwili używamy tylko <mark>niewielkiej części z puli potencjalnie dostępnych informacji</mark>.</td></tr>
+</tbody>
+</table></div>
+<h4>Powolne kodowanie zdarzeń zaskakujących i traumatycznych</h4>
+<ul>
+<li><mark>Ograniczenia</mark> szybkości kodowania dotyczą <mark>informacji nowych</mark>, częściowo niezwiązanych z <mark>dotychczasową wiedzą</mark>, i <mark>informacji, z którymi jednostka nigdy się nie spotkała i które stanowią dla niej zaskoczenie</mark>. Najwyraźniej widać to przy zdarzeniach traumatycznych, zwłaszcza ze strony osób bliskich (Elliot, 1997). <span class="src">s. 90</span></li>
+<li>U wielu ofiar pojawia się <mark>amnezja funkcjonalna</mark>, a później <mark>odroczone przypominanie</mark>: <mark>ślady pamięciowe są kodowane niezwykle wolno</mark>.</li>
+<li><mark>Wagenaar</mark> (1986): przez kilka lat codziennie zapisywał dwa zdarzenia i ich znak emocjonalny, potem przez 6 lat sprawdzał pamięć. Zdarzenia <mark>bardzo nieprzyjemne</mark> były początkowo <mark>zapamiętywane gorzej</mark> niż przyjemne i neutralne, ale przez <strong>pierwsze 3 lata</strong> pamięć o nich się poprawiała; dopiero potem zaczęło się normalne zapominanie. Wyjaśnienie: <mark>bardzo wolne kodowanie zdarzeń nadzwyczaj nieprzyjemnych</mark>.</li>
+</ul>
+<h4>Wycieranie sztućców (Monsell, 1996)</h4>
+<p>Mężczyzna wycierał sztućce i odkładał je do szuflady. Żona poprosiła, by zostawił je na wierzchu — skończył wycierać i dopiero wtedy wyjął potrzebne. To <mark>zaburzenie uwagi</mark>: usłyszał prośbę, ale nie zmodyfikował programu. Wycieranie <mark>pochłaniało niemal wszystkie dostępne mu zasoby poznawcze</mark>. Była to czynność o <mark>charakterze balistycznym</mark> (jak lot pocisku — po rozpoczęciu musi się zakończyć). <mark>Taki charakter mają przede wszystkim czynności o wysokim stopniu automatyzacji</mark>, więc <mark>niemożliwe było modyfikowanie jej przebiegu</mark>. <span class="src">s. 90–91</span></p>
+</div>
+</details>
+<details class="block" open="">
+<summary>Funkcja 2: ukierunkowanie — centrum i peryferie pola uwagi</summary>
+<div class="inner">
+<p>Uwaga nie tylko oddziela ważne od nieważnego, ale <strong>poszukuje</strong> przydatnych informacji: <mark>procesy eksploracji percepcyjnej pozwalają wykrywać nowe informacje</mark> (por. <a href="#cykl">cykl percepcyjny, 2.4.4</a>). Pole uwagi dzielimy na <mark>część centralną i peryferyjną</mark>. <span class="src">s. 91</span></p>
+<div class="fig-row">
+<figure class="fig">
+<svg aria-label="Pole uwagi: centrum otoczone peryferiami" role="img" viewbox="0 0 220 170">
+<circle cx="110" cy="85" fill="hsl(209 33% 80%)" r="78"></circle>
+<circle cx="110" cy="85" fill="hsl(209 33% 56%)" r="40"></circle>
+<text fill="#fff" font-size="13" font-weight="600" text-anchor="middle" x="110" y="89">Centrum</text>
+<text fill="hsl(209 36% 26%)" font-size="12" text-anchor="middle" x="110" y="28">Peryferie</text>
+</svg>
+<figcaption>Ryc. 3.1 — podział pola uwagi.</figcaption>
+</figure>
+<div>
+<ul>
+<li><mark>Centrum</mark>: informacje bardzo <mark>wyraziste</mark>, <mark>potrafimy dostrzegać różne ich szczegóły</mark>.</li>
+<li><mark>Peryferie</mark>: informacje <mark>mniej wyraziste</mark>, czasem rejestrujemy tylko ich <mark>wystąpienie</mark>, a <mark>treść już nie jest nam dostępna</mark>.</li>
+<li>Metafora <strong>reflektora</strong>: wąski snop daje dokładny obraz małego fragmentu, rozlany — więcej informacji, ale płycej analizowanych.</li>
+</ul>
+</div>
+</div>
+<div class="key"><span class="label">Uwaga intensywna i ekstensywna — Alina Kolańczyk</span><p>(Kolańczyk, 1991; 1997; Szymura i Kolańczyk, 2006). <mark>Uwaga intensywna ma stosunkowo wąski zakres, ale pozwala na głębokie przetwarzanie informacji będących w jej zasięgu, natomiast uwaga ekstensywna ma zakres stosunkowo szeroki, ale przetwarzanie dostępnych jej informacji jest dość płytkie.</mark> Uwaga ekstensywna połączona z motywacją <mark>paratelicznej</mark> może stymulować twórczość.</p></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>Funkcja 3: ile zasobów — i jak je zwiększyć</summary>
+<div class="inner">
+<p><mark>Uwaga decyduje o tym, ile energii psychicznej poświęcimy na wykonanie pewnego zadania</mark> — <mark>większą lub mniejszą porcję energii</mark>, zależnie od ważności zadania. <span class="src">s. 91–92</span></p>
+<ul>
+<li>Jak ocenić ważność? <mark>Jedną z możliwości jest ocena własnego napięcia emocjonalnego</mark> wobec zadania. Ale silne napięcie lękowe skupia uwagę na nim samym, a nie na zadaniu (Szymura i Kolańczyk, 2006): <mark>procesom wzrostu zaangażowania uwagi może towarzyszyć przeniesienie centrum pola uwagi na inny obiekt</mark>.</li>
+<li>Ilość zasobów zależy też od: (1) <mark>wymagań zadania</mark> (zmiana pościeli &lt; sprawdzenie konta &lt; pisanie artykułu naukowego); (2) wielkości puli zasobów jednostki; (3) stopnia przeuczenia — zadania <mark>przeuczone</mark> wymagają <mark>niewielkiej puli zasobów</mark>, <mark>całkowicie nowe — dużej puli</mark>. Wytrawny kierowca może rozmawiać, początkujący nie.</li>
+<li>Metafora <mark>„przydzielania”</mark> zasobów: <mark>wszystkie dostępne zasoby poznawcze można np. skoncentrować na wykonywaniu jednego zadania</mark> — jak soczewka skupiająca promienie słońca albo laser.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Mechanizm zwiększania zasobów dla zadania</th><th>Koszt / ograniczenie</th></tr></thead>
+<tbody>
+<tr><td style="white-space:normal"><mark>Ogniskowanie: przejście od uwagi ekstensywnej do intensywnej</mark></td><td style="font-weight:400;white-space:normal">Mniejsza możliwość korzystania z dużej puli danych, które mogą być potrzebne do rozwiązania problemu.</td></tr>
+<tr><td style="white-space:normal"><mark>Zwiększenie zaangażowania bez zmiany rozmiarów puli danych</mark></td><td style="font-weight:400;white-space:normal">Istnieje kres zaangażowania. Można stymulować je z zewnątrz (kawa, środki pobudzające), ale i tak kres w końcu nastąpi. Wtedy warto przyznać, że problemu nie da się rozwiązać przy naszych zasobach.</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>Funkcja 4: podtrzymywanie zaangażowania — maszynista i „czuwak”</summary>
+<div class="inner">
+<p>Najbardziej podstawowa funkcja: <mark>podtrzymywanie zaangażowania poznawczego w ogóle</mark> — czasowa dynamika uwagi. Maszynista wykonuje monotonną pracę i może przeoczyć czerwone światło, bo „wyłączył się” na chwilę. W kabinie montuje się <strong>„czuwak”</strong>: co pewien czas zapala się lampka i trzeba nacisnąć przycisk; brak reakcji → sygnał dźwiękowy → automatyczne hamulce. <span class="src">s. 88, 92–93</span></p>
+<p>Oczywista zależność: długotrwałe wykonywanie monotonnej <mark>czynności powoduje spadek koncentracji uwagi</mark>. Inne zależności są kontrintuicyjne — ramka 3.1.</p>
+</div>
+</details>
+<details class="block ramka" id="ramka-3-1">
+<summary><span><span class="kind">Ramka 3.1</span><mark>Mrugnięcie uwagi</mark> i <mark>ślepota na powtórzenia</mark></span></summary>
+<div class="inner">
+<p>Oba zjawiska bada się szybką ekspozycją sekwencyjną: bodźce trwają kilkadziesiąt ms, przerwy kilkanaście ms. <span class="src">s. 93</span></p>
+<h4>Mrugnięcie uwagi (<em>attentional blink</em>)</h4>
+<ul>
+<li>Dwa zadania, każde polega na <mark>wykryciu pewnego bodźca</mark>: biała litera na ciemnym tle to <mark>litera-cel</mark>, litera P to <mark>sonda</mark>.</li>
+<li>Sonda tuż po literze-celu — wykrywana bez trudu. Sonda na pozycjach <strong>2–6 po celu</strong> (ok. <strong>100–450 ms</strong>) — ludzie jej nie wykrywają.</li>
+<li><mark>Po zaangażowaniu uwagi w wykonanie jakiegoś zadania pojawiało się coś w rodzaju braku wrażliwości na inne aspekty bodźca</mark>, który <mark>nie pojawia się jednak natychmiast</mark>. Przypomina <mark>refrakcję</mark> włókna nerwowego. Antropomorficznie: <mark>uwaga z pewnym opóźnieniem zamykała oczy po odebraniu jakiegoś bodźca</mark> (Broadbent i Broadbent, 1987; Shapiro, 1994).</li>
+</ul>
+<h4>Ślepota na powtórzenia</h4>
+<ul>
+<li>Badani sygnalizują, że słowo się powtórzyło. Kłopot jest szczególnie wtedy, gdy <mark>drugie pojawienie się jakiegoś słowa nie następuje bezpośrednio po pierwszym</mark> (Kanwisher, 1987). Znane z korekty tekstu: <mark>trudno wykryć zbędne powtórzenie jakiegoś słowa</mark>.</li>
+</ul>
+<p>Nie wykazano, by oba zjawiska miały wspólny mechanizm, i nie wiadomo, jaką pełnią funkcję. Autor poleca film Rensinka z migającymi obrazami sceny, w którym trzeba wykryć zmianę — to inne zadanie, ale daje wyobrażenie o technice.</p>
+</div>
+</details>
+</section>
+<!-- ============ 3.2 ============ -->
+<section class="chapter" id="r3-2">
+<div class="chapter-head"><span class="num">3.2</span><h2>Fizjologiczne mechanizmy uwagi</h2></div>
+<details class="block" open="">
+<summary>3.2.1 <mark>Odruch orientacyjny</mark></summary>
+<div class="inner">
+<ul>
+<li>Polega na <mark>skierowaniu receptorów na źródło stymulacji</mark>, z <mark>aktywnością motoryczną</mark> ułatwiającą odbiór (Lewicki, 1960; Woodworth i Schlosberg, 1963; Sosnowski, 2000). Rośnie wrażliwość wszystkich receptorów — <mark>organizm otwiera się na dopływ nowej stymulacji</mark>; rośnie też <mark>poziom aktywacji organizmu</mark>. <span class="src">s. 94</span></li>
+<li><strong>Berlyne (1960)</strong>: odruch zależy od <mark>bodźców sygnałowych</mark> — niespodziewaność, złożoność, niepewność, niespójność, konflikt.</li>
+<li>Odruch <mark>ulega wygaszeniu</mark> po kilku wystąpieniach bodźca: szybko przy bodźcach prostych, po wielu powtórzeniach przy złożonych. Im więcej informacji niesie bodziec, tym dokładniej trzeba go przeanalizować.</li>
+<li><strong>Sokołow (1969)</strong>, dwa elementy: <mark>mechanizm modelujący z komparatorem</mark> (tworzy reprezentację bodźca i porównuje ją z wiedzą) i — przy niezgodności — <mark>włączany jest mechanizm wzmacniający</mark>, który odblokowuje wejście i uruchamia <mark>reakcję orientacyjną</mark>. Reakcja ta <mark>wpływa na przetwarzanie odebranych informacji</mark> (Ciarkowska, 1992) i <mark>przeciwstawiana jest reakcji obronnej</mark> (ograniczenie dopływu nieprzyjemnej stymulacji lub ucieczka).</li>
+<li><strong>John Lacey (1967)</strong> — dwa przeciwstawne mechanizmy: <mark>pobieranie informacji z otoczenia</mark> (np. przy zadaniach percepcyjnych) → <strong>zwolnienie</strong> akcji serca; <mark>odrzucanie stymulacji zewnętrznej i koncentrowanie się na bodźcach z wnętrza</mark> → <mark>przyspieszenie akcji serca</mark>. Z akcji serca można wnioskować, na czym skupiona jest uwaga.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>3.2.2 <mark>Indukcja ujemna</mark></summary>
+<div class="inner">
+<ul>
+<li><strong>Pawłow</strong>: <mark>pobudzenie</mark> w pewnej <mark>okolicy kory mózgowej wywołuje hamowanie w okolicach sąsiednich</mark>, więc pobudzenie jest <mark>zogniskowane, a nie rozlane</mark>. Na początku warunkowania pobudzenie jest rozlane — reakcja pojawia się <mark>nie tylko na właściwy bodziec, ale także na bodźce do niego podobne</mark> (<mark>generalizacja</mark>). Indukcję ujemną widać dopiero po wytworzeniu odruchu. <span class="src">s. 94–95</span></li>
+<li><mark>Uchtomski</mark> — <mark>dominanta</mark>: organizm koncentruje się na <mark>jednej reakcji, a reakcje alternatywne są niemal całkowicie zahamowane</mark>; ośrodek pobudzony „ściąga” inne pobudzenia.</li>
+<li>Bezpośrednie dowody: <mark>badania za pomocą pozytonowej tomografii emisyjnej</mark> (Nyberg i in., 1996) — okolice aktywne podczas wydobywania z pamięci epizodycznej hamowały regiony sąsiednie. Prawdopodobnie <mark>analogiczne zjawisko występuje także w przypadku uwagi</mark>.</li>
+</ul>
+<div class="key"><span class="label">Porównanie</span><p>Odruch orientacyjny = mechanizm <mark>uwagi niespecyficznej</mark> (nowe bodźce). <mark>Indukcja ujemna uruchamia uwagę specyficzną albo uwagę zogniskowaną.</mark></p></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>3.2.3 Aktywność układu siatkowatego i trójkąt LaBerge’a</summary>
+<div class="inner">
+<ul>
+<li>Układ siatkowaty to <mark>sieć włókien nerwowych oplatających okolice podkorowe</mark>, odpowiadająca za procesy <mark>zasilania</mark>. Włókna <mark>pobudzające i hamujące</mark>: <mark>noradrenergiczne, cholinergiczne, dopaminergiczne i serotonergiczne</mark>. Docierają do pól <mark>asocjacyjnych</mark> i <mark>pierwotnych pól sensorycznych</mark> (<mark>wzrokowych czy słuchowych</mark>) (Domańska, 1998). <span class="src">s. 95</span></li>
+<li>Część wstępująca, w <mark>okolicach wzgórza</mark>, pobudza wybiórczo okolice kory — raz uwrażliwia na bodźce słuchowe, raz na wzrokowe. <mark>Pozostałe</mark> części działają <mark>niespecyficznie, pobudzając różne okolice kory</mark> (Hoyenga i Hoyenga, 1988).</li>
+</ul>
+<h4><mark>LaBerge</mark> (1997; 1998)</h4>
+<p>Psychologicznie <mark>uwaga pojawia się wtedy, kiedy reprezentacja jakiegoś obiektu zostanie połączona z Ja</mark>. Mózgowo odpowiada jej <mark>trójkąt aktywności uwagowej</mark>, który realizuje trzy aspekty: <mark>ekspresję, mechanizm wzmacniania oraz mechanizm kontroli</mark>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspekt</th><th>Struktura</th><th>Rola</th></tr></thead>
+<tbody>
+<tr><td>Ekspresja</td><td style="font-weight:400;white-space:normal"><mark>przednie i tylne części kory mózgowej</mark></td><td style="font-weight:400;white-space:normal"><mark>spostrzeganie przedmiotów i ich właściwości, organizowanie i wykonywanie planów działania</mark>; dzięki niej <mark>kontaktujemy się ze światem zewnętrznym</mark></td></tr>
+<tr><td>Wzmacnianie</td><td style="font-weight:400;white-space:normal"><mark>neurony wzgórza</mark></td><td style="font-weight:400;white-space:normal"><mark>wybiórcze aktywizowanie różnych okolic kory</mark></td></tr>
+<tr><td>Kontrola</td><td style="font-weight:400;white-space:normal"><mark>sieci neuronalne w korze czołowej</mark></td><td style="font-weight:400;white-space:normal">kontrola uwagowa</td></tr>
+</tbody>
+</table></div>
+<figure class="fig">
+<svg aria-label="Trójkąt struktur uwagowych: płaty potyliczne z V1 i kora czołowa połączone ze wzgórzem; kodowanie spostrzeżenia, kodowanie działania, kontrola uwagowa, ekspresja uwagi" role="img" viewbox="0 0 520 230">
+<defs><marker id="ar5" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<path d="M60,130 C60,40 180,20 280,30 C400,30 470,70 470,130 C470,190 400,205 330,200 C290,215 230,215 190,200 C110,205 60,190 60,130 Z" fill="hsl(209 40% 95%)" stroke="hsl(209 33% 60%)" stroke-width="2"></path>
+<ellipse cx="270" cy="115" fill="#fffdf9" rx="34" ry="22" stroke="hsl(209 36% 36%)" stroke-width="1.6"></ellipse>
+<text fill="#2b2118" font-size="12" text-anchor="middle" x="270" y="119">wzgórze</text>
+<g fill="none" marker-end="url(#ar5)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="238" x2="80" y1="108" y2="80"></line>
+<line x1="304" x2="452" y1="115" y2="115"></line>
+<line x1="250" x2="200" y1="134" y2="196"></line>
+</g>
+<g fill="#2b2118" font-size="12">
+<text x="20" y="20">kodowanie spostrzeżenia</text>
+<text x="300" y="20">kodowanie działania</text>
+<text x="68" y="140">V1 (płaty potyliczne)</text>
+<text x="380" y="150">kontrola uwagowa</text>
+<text x="380" y="165">(płaty czołowe)</text>
+<text x="140" y="225">ekspresja uwagi</text>
+</g>
+</svg>
+<figcaption>Ryc. 3.2 (schemat, za: LaBerge, 1998) — trójkąt struktur uwagowych w mózgu.</figcaption>
+</figure>
+<ul>
+<li><mark>Bodźce wewnętrzne</mark> pobudzają część układu <mark>zlokalizowaną w płatach czołowych</mark>; informacje <mark>do płatów czołowych dochodzą ze zwojów podstawowych</mark> i <mark>dotyczą aktualnego stanu motywacyjnego organizmu</mark>. <mark>Bodźce zewnętrzne</mark> docierają do okolic <mark>sensorycznych kory</mark>. Gdy <mark>pobudzenia z płatów czołowych i okolic sensorycznych osiągną wystarczającą siłę, uruchamiany jest mechanizm ekspresji uwagi</mark> za pośrednictwem <mark>wzgórza</mark> (<em>thalamus</em>). <span class="src">s. 95–96</span></li>
+<li>Ograniczenie koncepcji fizjologicznych: analizują tylko wymiar nowości (<mark>bodźce nowe przyciągają uwagę</mark>). Tymczasem <mark>właściwości te mogą się zmieniać</mark> w trakcie czynności: lekarz przy diagnozie zwraca uwagę na <mark>wyrazistość</mark> objawów, a podczas operacji — na <mark>podobieństwo dysfunkcji do dysfunkcji występujących u innych pacjentów</mark>.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 3.3 ============ -->
+<section class="chapter" id="r3-3">
+<div class="chapter-head"><span class="num">3.3</span><h2>Podstawowe rodzaje zjawisk analizowanych w badaniach nad uwagą</h2></div>
+<p>Dwa podstawowe ujęcia: <mark>uwaga jako proces selekcji</mark> lub jako <mark>proces odpowiedzialny za gospodarowanie zasobami poznawczymi</mark> → <mark>teorie selekcji</mark> i <mark>teorie zasobów</mark>. Do tego <mark>czujność</mark> (<em>vigilance</em>), warunek zarówno selekcji, jak i gospodarowania zasobami, oraz <mark>detekcja sygnałów</mark> — <mark>szczególny przypadek selekcji</mark> z własną terminologią i zastosowaniami (Coombs, Daves i Tversky, 1977). <span class="src">s. 96</span></p>
+<div class="cards">
+<div class="card"><h4>Czujność i detekcja</h4><p>Wykrywanie rzadkich sygnałów w długim czasie. <a href="#r3-3a">3.3.1</a></p></div>
+<div class="card"><h4>Przeszukiwanie</h4><p>Aktywne szukanie bodźca: nie wiadomo, kiedy ani gdzie się pojawi. <a href="#r3-3b">3.3.2</a></p></div>
+<div class="card"><h4>Teorie selekcji</h4><p>Broadbent, Treisman. <a href="#r3-3c">3.3.3</a></p></div>
+<div class="card"><h4>Teorie zasobów</h4><p>Neisser, Kahneman, Gopher i Navon. <a href="#r3-3d">3.3.4</a></p></div>
+</div>
+</section>
+<section class="chapter" id="r3-3a">
+<div class="chapter-head"><span class="num">3.3.1</span><h2>Czujność i detekcja sygnałów</h2></div>
+<div class="key"><span class="label">Definicja</span><p>Czujność to <mark>zdolność lub stan, dzięki któremu jednostka potrafi w dłuższym okresie wykrywać bodźce specyficzne spośród wielu możliwych bodźców pojawiających się w jej środowisku</mark>. <span class="src">s. 96</span></p></div>
+<ul>
+<li>Wymaga pewnego poziomu aktywacji — to warunek <strong>konieczny, ale niewystarczający</strong>. Przy optymalnym pobudzeniu możemy nie wykryć bodźca krytycznego, bo długo działały monotonne bodźce albo oczekujemy, że bodziec się nie pojawi (zielone światło na przejściu → nie spodziewamy się samochodu).</li>
+<li><strong>Mackworth (1948)</strong>: tarcza zegara z sekundnikiem; trzeba nacisnąć klucz, gdy wskazówka przeskoczy o 2 sekundy. Po <strong>pół godzinie</strong> sprawność gwałtownie spadła — badani pomijali ok. <strong>25%</strong> podwójnych skoków. Przyczyną było <mark>nie tyle spadek wrażliwości badanych, ile wzrost ich wątpliwości dotyczących własnych obserwacji</mark>. <span class="src">s. 97</span></li>
+<li><strong>Parasuraman i Davies (1977)</strong>: przy <mark>długotrwałym wykonywaniu powtarzających się zadań detekcyjnych czujność się obniża</mark>. Czynnik krytyczny: duża częstość bodźców — powyżej <strong>24 na minutę</strong> spadek jest bardzo wyraźny.</li>
+<li><strong>Koelega, Brinkman, Hendriks i Verbaten (1989)</strong> <mark>stwierdzili, że spadek taki obserwuje się tylko wtedy, kiedy zadaniem badanych jest reagowanie na percepcyjne właściwości bodźców, takie jak spadek jasności, szybkość ruchu i tym podobne</mark>. Nie występuje w zadaniach „poznawczych”, wymagających kategoryzacji (np. pomiń cyfry, reaguj na litery).</li>
+</ul>
+<h3>Detekcja sygnałów <span class="src">s. 97–100</span></h3>
+<p>Operator radaru wnioskuje z błysków na ekranie, czy nadlatuje samolot wroga, czy to własny samolot albo latawiec z folią (ryc. 3.3). Lekarz ocenia, czy cień na zdjęciu to objaw choroby. Bodziec krytyczny może wystąpić albo nie. Możliwe są dwie reakcje: <mark>reakcja na sygnał</mark> (odpalenie rakiety, skierowanie na operację) albo <mark>reakcja negatywna</mark>, adekwatna, <mark>kiedy nie ma sygnału</mark>. Teoria detekcji sygnałów: Peterson, Birdsall i Fox (1954).</p>
+<h4><mark>Tabela 3.1 — Model sytuacji detekcji sygnałów (przykład operatora radaru)</mark></h4>
+<div class="table-wrap"><table class="sdt">
+<thead><tr><th>Interpretacja ↓ / rzeczywistość →</th><th>samolot wroga jest</th><th>samolotu wroga brak</th></tr></thead>
+<tbody>
+<tr><td>„nadlatuje samolot wroga”</td><td class="ok">prawidłowa detekcja (a)</td><td class="err">fałszywy alarm (b)</td></tr>
+<tr><td>„nie ma samolotu wroga”</td><td class="err">pominięcie (c)</td><td class="ok">prawidłowe odrzucenie (d)</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Teoria bada związek między <mark>częstością występowania poprawnych detekcji i fałszywych alarmów</mark>. Pozostałe reakcje to dopełnienie do jedności: poprawne detekcje 0,7 → pominięcia 0,3; fałszywe alarmy 0,2 → prawidłowe odrzucenia 0,8 (<mark>równe jedności pomniejszonej o częstość fałszywych alarmów</mark>).</li>
+<li>Krzywa relacji poprawnych detekcji do fałszywych alarmów to <mark>krzywa charakterystyki funkcjonowania obserwatora</mark> (Coombs, Daves i Tversky, 1977; Falkowski, 2000; przykłady u <mark>Falkowskiego</mark>).</li>
+<li><strong>Fakt nieintuicyjny</strong>: wzrost poprawnych detekcji nie zawsze idzie w parze ze spadkiem fałszywych alarmów. Przy <strong>czerniaku</strong> (groźny, szybko się rozwija) lekarz traktuje każdy objaw poważnie, więc rosną i poprawne detekcje, i fałszywe alarmy. Fałszywy alarm oznacza stres, ale szkoda jest mniejsza niż przy przeoczeniu nowotworu.</li>
+</ul>
+<h4>Trzy grupy czynników</h4>
+<div class="cards">
+<div class="card"><h4>1. Stosunek sygnału do szumu</h4><p><mark>Stosunek siły sygnału do siły szumu.</mark> Im większy, tym łatwiej odróżnić sygnał od szumu — chodzi o <mark>większą łatwość różnicowania</mark>. Ponadto <mark>silne sygnały łatwiej przyciągają uwagę obserwatora</mark>.</p></div>
+<div class="card"><h4>2. Macierz wypłat</h4><p><mark>Techniczne określenie czynników wpływających na motywacyjne konsekwencje podjęcia określonych decyzji.</mark> Choroba niegroźna, z którą organizm sam sobie poradzi → lekarz częściej mówi „zdrowy”, spadają poprawne detekcje i fałszywe alarmy. <mark>Nasza uwaga uzależniona jest od motywacji</mark>: inaczej wykrywamy bodźce <mark>bardzo ważne</mark>; gdy sprawa mniej istotna, <mark>niezareagowanie na jakiś bodziec nie pociąga za sobą poważnych konsekwencji negatywnych</mark>.</p></div>
+<div class="card"><h4>3. Oczekiwania</h4><p>Zależą od <mark>częstości występowania sygnałów w pewnych sytuacjach</mark> (środowisko narażone na UV → częstsze diagnozy czerniaka i fałszywe alarmy), ale mogą wynikać tylko z przekonań: w kraju ogarniętym psychozą strachu <mark>operatorzy częściej będą reagowali na błyski na ekranie radaru</mark>. Latem, gdy prasa pisze o opalaniu, pacjenci częściej zgłaszają zmiany skórne. Zwolennicy lustracji: <mark>wzrostowi liczby poprawnych detekcji będzie towarzyszył wzrost liczby fałszywych alarmów</mark>.</p></div>
+</div>
+<ul>
+<li>Sytuacje detekcyjne są też częste w życiu osobistym: w bliskim związku obserwujemy wskaźniki wierności, lojalności czy skłonności do manipulacji i trafiamy zarówno na <mark>prawidłowe reakcje detekcyjne, jak i na błędy</mark>. Fałszywy alarm może prowadzić do patologicznej zazdrości; pominięcie — do przeoczenia, że partner jest uczciwy i lojalny. <span class="src">s. 99</span></li>
+<li>Krytyka: <mark>teoria detekcji sygnałów pomijała ten wymiar i traktowała wszystkie sytuacje detekcyjne jako sytuacje identyczne</mark>, niezależnie od osobistego zaangażowania. Powód: najważniejszym kryterium jest dla badaczy <mark>możliwość dokonywania precyzyjnego pomiaru i manipulowania zmiennymi</mark>. <mark>Z tego względu możliwości aplikacyjne opisanych wcześniej badań — jakkolwiek potencjalnie są dość duże — rzadko bywają wykorzystywane w praktyce.</mark> <span class="src">s. 100</span></li>
+</ul>
+<div class="flag"><span class="label">Uwaga przy nauce</span>Podręcznik pisze „Coombs, <strong>Daves</strong> i Tversky, 1977”. Chodzi o Robyna <strong>Dawesa</strong> (Coombs, Dawes i Tversky, <em>Wprowadzenie do psychologii matematycznej</em>) — to najpewniej literówka.</div>
+</section>
+<section class="chapter" id="r3-3b">
+<div class="chapter-head"><span class="num">3.3.2</span><h2><mark>Przeszukiwanie</mark></h2></div>
+<p>Detekcja to wykrywanie bodźców w określonym miejscu (ekran radaru, organizm pacjenta). <mark>Przeszukiwanie zaś jest procesem aktywnym, ponieważ nie wiadomo, kiedy jakiś bodziec może wystąpić, nie wiadomo też, gdzie może on wystąpić.</mark> Przykłady: pirat drogowy wypatrujący patrolu, grzybiarz z „atlasem grzybów” w pamięci (schematy, a nie obrazy wszystkich grzybów). Sukces zależy od ostrości wzroku i od <strong>strategii przeszukiwania</strong>. <span class="src">s. 100</span></p>
+<ul>
+<li>Ważny czynnik: <mark>obecność dystraktorów</mark>, czyli <mark>bodźców odwracających uwagę</mark>. Szukanie ulubionego szamponu wśród kilkunastu tysięcy produktów i napisów „Promocja” jest bardzo trudne. Ryc. 3.4 (Solso, 2001): pogrubione krzyżyki silnie przyciągają uwagę, więc nie dostrzegamy odmiennych liter T w prawym dolnym rogu.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Rodzaj przeszukiwania</th><th>Przebieg</th><th>Przykład z grzybami</th></tr></thead>
+<tbody>
+<tr><td><mark>Wykrywanie pojedynczych cech</mark></td><td style="font-weight:400;white-space:normal">Najprostsze. Dystraktory nie przeszkadzają, chyba że są bardzo podobne pod względem cechy krytycznej (Sternberg, 1996).</td><td style="font-weight:400;white-space:normal">Tylko ciemnobrązowe kapelusze → znajdziemy głównie podgrzybki i część borowików; pominiemy kurki, kozaki, maślaki.</td></tr>
+<tr><td><mark>Koniunkcja cech</mark> („i”)</td><td style="font-weight:400;white-space:normal"><mark>Im większa liczba cech wchodzi w skład koniunkcji</mark>, tym trudniej. <mark>Efekt wielkości zbioru</mark>: im większy zbiór, tym więcej czasu. Uwaga to „<strong>klej</strong>” spajający cechy (Treisman, 1986). <mark>Proces łączenia cech przebiega w sposób sekwencyjny, dlatego też analiza większej liczby cech i obiektów pochłania więcej czasu.</mark></td><td style="font-weight:400;white-space:normal">Wypukły kapelusz <em>i</em> rurkowaty miąższ. Trzecia cecha (kolor) utrudnia: mniej grzybów spełnia wszystkie warunki, a silne dystraktory spełniają dwa z trzech (brązowe kamienie, liście).</td></tr>
+<tr><td>Reguły <mark>dysjunkcyjne</mark> („lub”)</td><td style="font-weight:400;white-space:normal"><mark>Nie pojawia się efekt wielkości zbioru — przeszukiwanie nie ma charakteru sekwencyjnego, lecz równoległy</mark>. Przebiega w sposób <mark>automatyczny</mark> (Solso, 2001). Częste w życiu, rzadko uwzględniane w modelach.</td><td style="font-weight:400;white-space:normal">Jadalne = rurkowaty miąższ <em>lub</em> pomarańczowe blaszki.</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li><mark>Nakayama</mark> (1990) pokazał słabość koncepcji Treisman: <mark>niektóre cechy łączymy ze sobą łatwiej niż inne</mark>. Szukanie dużych czerwonych kół wśród małych czerwonych, dużych zielonych i małych zielonych trwa tyle co szukanie czerwonych wśród niebieskich — koniunkcja barwy i wielkości jest równie łatwa jak jedna cecha. Niektóre zbiory cech są „naturalne” i łączą się bez wysiłku. <span class="src">s. 101</span></li>
+<li><strong>McLeod, Driver, Dienes i Crisp (1991)</strong>: dodanie <strong>ruchu</strong> raz ułatwia, raz utrudnia. Poruszające się O i X wśród liter znajdujemy szybciej, a poruszające się litery pochylone w prawo — wolniej. <span class="src">s. 102</span></li>
+<li>Teoria integracji cech Treisman okazała się zbyt prosta. Badania laboratoryjne pomijają, że <mark>w warunkach naturalnych występują również inne zasady łączenia elementów</mark>.</li>
+</ul>
+<div class="flag"><span class="label">Przypis autora</span>Reguła „wypukły kapelusz + rurkowaty miąższ” nie wyklucza np. goryczaka żółciowego czy borowika szatańskiego: <mark>świat grzybów — jak widać — jest bogatszy niż koncepcja przeszukiwania</mark>.</div>
+</section>
+<section class="chapter" id="r3-3c">
+<div class="chapter-head"><span class="num">3.3.3</span><h2><mark>Procesy selekcji — teorie selekcji uwagowej</mark></h2></div>
+<ul>
+<li>Założenie: <mark>uwaga działa na poziomie procesów percepcyjnych i tam już następuje selekcja informacji</mark>. Informacja, na którą nie zwracamy uwagi, nie zostaje spostrzeżona; umysł nie musi analizować wszystkiego. O tym, co zostanie odrzucone, decydują z góry określone właściwości <strong>fizyczne</strong> bodźców, bo są analizowane najwcześniej. <span class="src">s. 102</span></li>
+<li>Gdyby kryterium było znaczenie, <mark>właściwa selekcja następowałaby na podstawie analizy znaczenia tych informacji</mark> — ale wtedy <mark>traci się to</mark>, co jest podstawową funkcją uwagi: <mark>redukcję wysiłku poznawczego</mark>.</li>
+<li>Takie ujęcie jest mechaniczne i mało elastyczne. Bardziej wyrafinowane teorie przyjmują, że <mark>selekcja jest procesem przebiegającym online</mark>: <mark>w trakcie wykonywania czynności pobierane są próbki informacji i na podstawie tych próbek podejmowana jest decyzja</mark>, czy je <mark>odfiltrować</mark>, czy <mark>analizować</mark> dokładniej.</li>
+</ul>
+<details class="block" open="">
+<summary>3.3.3.1 Teoria filtra uwagowego Broadbenta</summary>
+<div class="inner">
+<p><mark>Broadbent</mark>, <em>Perception and communication</em> (<strong>1958</strong>) — jedna z pierwszych prób zastosowania teorii informacji i komunikacji w psychologii. Uwaga jest <strong>filtrem</strong> działającym jak <strong>zwrotnica</strong>: przepuszcza jedną grupę bodźców i blokuje drugą. <mark>Filtr działa na zasadzie „wszystko albo nic”</mark> — odbiór komunikatu 1 wyklucza komunikat 2 i odwrotnie. <span class="src">s. 102–103</span></p>
+<h4>Technika cieniowania</h4>
+<ul>
+<li><mark>Technika cieniowania</mark> (<em>shadowing</em>), odmiana <mark>słuchania dwuusznego</mark> (<em>dichotic listening</em>), opracowana przez <mark>Colina Cherry’ego</mark> (<strong>1953</strong>), zmodyfikowana przez Moraya (1959). Do uszu docierają <mark>dwa komunikaty, a uwaga ma być skierowana tylko na jeden</mark> — badany powtarza go słowo w słowo (jak tłumacz kabinowy, obok którego koleżanka opowiada o swoich kłopotach).</li>
+<li>Badani nie potrafili powtórzyć słów z ucha „nieśledzonego”, choć każde padło <strong>35 razy</strong>. Powtarzali tylko słowa z <mark>ostatnich 20 sekund</mark>. Rejestrowali za to cechy fizyczne: głośno czy cicho, kobieta czy mężczyzna.</li>
+<li>Wnioski: (1) <mark>informacje, na które nie zwracamy uwagi, przechowywane są przez 20 sekund</mark>; (2) <mark>ulegają wstępnej analizie ze względu na cechy fizyczne</mark>.</li>
+</ul>
+<figure class="fig">
+<svg aria-label="Model Broadbenta: narządy zmysłowe, pamięć krótkotrwała, filtr dokonujący selekcji, kanał o ograniczonej przepustowości, system programujący reakcję, efektory; magazyn dotychczasowych doświadczeń połączony z filtrem i kanałem" role="img" viewbox="0 0 640 200">
+<defs><marker id="ar6" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="11" text-anchor="middle">
+<rect fill="#fffdf9" height="46" rx="7" stroke="hsl(209 33% 60%)" width="88" x="6" y="40"></rect><text x="50" y="60">narządy</text><text x="50" y="74">zmysłowe</text>
+<rect fill="#fffdf9" height="46" rx="7" stroke="hsl(209 33% 60%)" width="96" x="112" y="40"></rect><text x="160" y="60">pamięć</text><text x="160" y="74">krótkotrwała</text>
+<rect fill="hsl(209 33% 56%)" height="58" rx="7" width="84" x="226" y="34"></rect><text fill="#fff" font-weight="600" x="268" y="58">filtr</text><text fill="#fff" x="268" y="73">selekcji</text>
+<rect fill="#fffdf9" height="46" rx="7" stroke="hsl(209 33% 60%)" width="104" x="328" y="40"></rect><text x="380" y="60">kanał o ogranicz.</text><text x="380" y="74">przepustowości</text>
+<rect fill="#fffdf9" height="46" rx="7" stroke="hsl(209 33% 60%)" width="96" x="450" y="40"></rect><text x="498" y="60">system progr.</text><text x="498" y="74">reakcję</text>
+<rect fill="#fffdf9" height="46" rx="7" stroke="hsl(209 33% 60%)" width="72" x="562" y="40"></rect><text x="598" y="67">efektory</text>
+<rect fill="hsl(209 40% 95%)" height="46" rx="7" stroke="hsl(209 33% 60%)" width="170" x="268" y="140"></rect><text x="353" y="160">magazyn dotychczasowych</text><text x="353" y="174">doświadczeń (LTM)</text>
+</g>
+<g fill="none" marker-end="url(#ar6)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="94" x2="110" y1="63" y2="63"></line><line x1="208" x2="224" y1="63" y2="63"></line><line x1="310" x2="326" y1="63" y2="63"></line>
+<line x1="432" x2="448" y1="63" y2="63"></line><line x1="546" x2="560" y1="63" y2="63"></line>
+<path d="M390,86 L390,138"></path><path d="M300,138 L280,94"></path>
+</g>
+<text fill="#5c4f43" font-size="10" x="130" y="120">ok. 20 s, analiza cech fizycznych</text>
+</svg>
+<figcaption>Ryc. 3.6 (schemat, za: Solso, 2001) — teoria uwagi Broadbenta. Selekcja następuje po kodowaniu zmysłowym i po przejściu przez pamięć krótkotrwałą.</figcaption>
+</figure>
+<ul>
+<li>Selekcja następuje <mark>po kodowaniu zmysłowym</mark> i <mark>po przejściu przez magazyn pamięci krótkotrwałej</mark>. Jest konieczna z powodu <mark>ograniczonej przepustowości</mark> kanału między STM a LTM. Cechy fizyczne nie podlegają selekcji. <span class="src">s. 103</span></li>
+<li>Słabość: filtr <mark>uwzględnia tylko fizyczne cechy bodźca</mark>, a nie znaczenie. Nie wyjaśnia <mark>efektu cocktail party</mark> — wychwytujemy własne imię wypowiedziane za plecami, choć słuchamy innej rozmowy. Trudno utrzymać, że filtr działa na zasadzie „wszystko albo nic”.</li>
+<li>Koncepcję filtra rozwinęła <mark>Anne Treisman</mark>, uczennica i współpracowniczka Broadbenta. <span class="src">s. 104</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>3.3.3.2 Teoria <mark>wielu filtrów uwagowych</mark> Treisman</summary>
+<div class="inner">
+<h4>Dowody, że selekcja uwzględnia znaczenie</h4>
+<ul>
+<li><strong>Treisman (1960; 1964a)</strong>: do lewego ucha „Obiecanki cacanki, dopóki się ucho nie urwie”, do prawego „Dopóty dzban wodę nosi, a głupiemu radość”. Badany powtarzający prawe ucho słyszy: <mark>„Dopóty dzban wodę nosi, dopóki się ucho nie urwie”</mark> — przeskok między uszami oparty na <mark>znaczeniu bodźca</mark>, jak w efekcie cocktail party. <span class="src">s. 104</span></li>
+<li><mark>Gray i Wedderburn (1960)</mark>: lewe ucho „Dear 5 Jane”, prawe „3 Aunt 4” → badani słyszeli <mark>„Dear Aunt Jane”</mark>. Selekcja według znaczenia, a nie według cech fizycznych (kierunku).</li>
+<li><mark>Treisman (1964b)</mark>: osoby dwujęzyczne słyszały ten sam komunikat w dwóch językach — mimo różnych danych percepcyjnych traktowały go jako identyczny, bo identyczne było znaczenie.</li>
+<li><mark>Przetwarzanie presemantyczne</mark> — <mark>Johnston i Heinz (1978)</mark>: znany tekst w uchu nieśledzonym trudniej zignorować. Działają <mark>pierwotne właściwości semantyczne</mark> (znany/nieznany). Metafora reflektora: przy <mark>materiale znanym</mark> <mark>reflektor oświetla szersze pole</mark>; przy słabo znanym <mark>światło jest bardziej skupione</mark> — wyraźniej, ale <mark>dostęp do mniejszej ilości</mark> informacji.</li>
+</ul>
+<h4>Model: kolejne fazy i priorytety</h4>
+<p>Treisman przyjęła kolejne fazy przetwarzania coraz bardziej złożonych właściwości. Po każdej następuje <mark>zatrzymanie przetwarzania, specyficzna reakcja albo kontynuacja</mark>. Filtrowanie przebiega na różnych poziomach, według różnych kryteriów — <mark>priorytetów</mark>. <span class="src">s. 105</span></p>
+<figure class="fig">
+<svg aria-label="Model Treisman: kanały sensoryczne, analiza właściwości fizycznych z możliwą reakcją, sprawdzanie stałych priorytetów (wysokie: działanie; niskie: dalej), sprawdzanie bieżących priorytetów (niskie: zignoruj; wysokie: analiza znaczenia)" role="img" viewbox="0 0 560 380">
+<defs><marker id="ar7" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="12" text-anchor="middle">
+<rect fill="#fffdf9" height="34" rx="7" stroke="hsl(209 33% 60%)" width="200" x="170" y="8"></rect><text x="270" y="30">kanały sensoryczne</text>
+<rect fill="hsl(209 40% 95%)" height="40" rx="7" stroke="hsl(209 33% 60%)" width="240" x="150" y="70"></rect><text x="270" y="88">analiza właściwości fizycznych</text><text fill="#5c4f43" font-size="10" x="270" y="102">(kto mówi, głośno czy cicho)</text>
+<rect fill="#fbf3e3" height="36" rx="7" stroke="#d9c49c" width="140" x="410" y="72"></rect><text font-size="11" x="480" y="88">zareaguj, jeśli adekwatne</text><text font-size="11" x="480" y="101">(krzyk → ucieczka)</text>
+<rect fill="hsl(209 40% 95%)" height="40" rx="7" stroke="hsl(209 33% 60%)" width="240" x="150" y="140"></rect><text x="270" y="158">sprawdzanie stałych priorytetów</text><text fill="#5c4f43" font-size="10" x="270" y="172">(interesy długofalowe, hierarchia wartości)</text>
+<rect fill="#fbf3e3" height="36" rx="7" stroke="#d9c49c" width="140" x="410" y="142"></rect><text font-size="11" x="480" y="158">wysokie → podejmij</text><text font-size="11" x="480" y="171">odpowiednie działanie</text>
+<rect fill="hsl(209 40% 95%)" height="40" rx="7" stroke="hsl(209 33% 60%)" width="240" x="150" y="214"></rect><text x="270" y="232">sprawdzanie bieżących priorytetów</text><text fill="#5c4f43" font-size="10" x="270" y="246">(wymogi zadania, nastrój, emocja)</text>
+<rect fill="#fffdf9" height="36" rx="7" stroke="hsl(209 33% 60%)" width="160" x="20" y="300"></rect><text x="100" y="323">niskie → zignoruj</text>
+<rect fill="hsl(209 33% 56%)" height="36" rx="7" width="200" x="330" y="300"></rect><text fill="#fff" font-weight="600" x="430" y="323">wysokie → analiza znaczenia</text>
+</g>
+<g fill="none" marker-end="url(#ar7)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="270" x2="270" y1="42" y2="68"></line>
+<line x1="390" x2="408" y1="90" y2="90"></line>
+<line x1="270" x2="270" y1="110" y2="138"></line>
+<line x1="390" x2="408" y1="160" y2="160"></line>
+<line x1="270" x2="270" y1="180" y2="212"></line>
+<line x1="220" x2="120" y1="254" y2="298"></line>
+<line x1="320" x2="410" y1="254" y2="298"></line>
+</g>
+<text fill="#5c4f43" font-size="10" x="282" y="200">niskie → porównuj dane sensoryczne z pamięciowymi</text>
+</svg>
+<figcaption>Ryc. 3.7 (schemat) — wieloetapowa selekcja według Treisman. W kolejnych fazach rośnie udział świadomości i analizy znaczenia.</figcaption>
+</figure>
+<ul>
+<li>Informacja z <mark>narządów zmysłowych</mark> jest najpierw analizowana fizycznie. Gdy cechy fizyczne są bardzo ważne (ktoś krzyczy) → <mark>odpowiednie działanie</mark>. Gdy nie — <mark>proces poszukiwania najlepszego dopasowania danych percepcyjnych do danych pamięciowych</mark>, czyli <mark>proces rozpoznawania</mark>, i sprawdzenie, czy bodziec jest ważny dla <mark>podstawowych interesów</mark> (potrzeby, hierarchia wartości). <span class="src">s. 105–106</span></li>
+<li><mark>Jeśli mało istotny z punktu widzenia interesów ogólnych</mark> → sprawdzenie interesów chwilowych. Mało ważny → <mark>zignorować</mark>; ważny → pełna <mark>analiza znaczenia</mark>. Faktycznie chodzi o <mark>interesy w dłuższej perspektywie czasowej</mark>, <mark>związane z wyznawaną hierarchią wartości</mark>, albo o interesy bieżące.</li>
+<li><mark>Wieloetapowość procesu uwagi</mark>: analiza semantyczna zachodzi bardzo szybko, gdy informacja jest ważna dla <mark>potrzeb i motywów</mark>. Fazy początkowe są <mark>automatyczne</mark>, późniejsze coraz bardziej <mark>uzależnione od świadomości oraz od analizy znaczenia bodźców</mark>.</li>
+<li>Każdy bodziec ma swój <strong>próg dostępu do uwagi</strong>; próg zmienia się pod wpływem oczekiwań („Pies ścigał, ujadając, miauczącego…” → łatwo rozpoznamy „kota”). To <mark>efekt torowania albo efekt poprzedzania</mark> (<em>priming</em>). Może mieć <mark>wartość ujemną</mark>: w tym zdaniu „hipopotam” zostałby rozpoznany trudniej.</li>
+<li>Priorytety to <mark>hierarchia motywów</mark>, u której podstaw leży <mark>hierarchia wartości</mark>. Koncepcja odchodzi od mechanistycznego ujęcia uwagi i od <mark>wyjaśniania zachowania za pomocą samych procesów poznawczych</mark>. Podobna idea 40 lat później: pamięć <mark>autobiograficzna</mark> (Conway i Pleydell-Pearce, 2000; Conway, Meares i Standard, 2004; por. <a href="#przetwarzanie">Ja robocze, 1.4</a>). <span class="src">s. 106</span></li>
+</ul>
+<div class="flag"><span class="label">Spoza rozdziału — do pytania kontrolnego 1</span>W literaturze model Broadbenta nazywa się teorią <strong>ścisłej selekcji</strong> (wczesnej, „wszystko albo nic”), a model Treisman — teorią <strong>osłabiania</strong> (<em>attenuation</em>): nieśledzony komunikat nie jest blokowany, tylko osłabiany, więc ważne treści (imię, sens) mogą przekroczyć próg. Maruszewski nie używa słowa „osłabianie”, ale pytanie kontrolne na końcu rozdziału go wymaga.</div>
+</div>
+</details>
+</section>
+<section class="chapter" id="r3-3d">
+<div class="chapter-head"><span class="num">3.3.4</span><h2>Alokacja zasobów uwagi — teorie zasobów</h2></div>
+<p><strong>Daniel Kahneman (1973)</strong>: <mark>teoria zasobów uwagi</mark> — w odróżnieniu od teorii selekcji wiąże uwagę z <mark>całością psychiki jednostki</mark>, a nie tylko z procesami poznawczymi. Mieści się w nurcie przetwarzania informacji, ale nawiązuje do ekologicznej teorii Gibsona. <span class="src">s. 106–107</span></p>
+<details class="block" open="">
+<summary>Neisser: krytyka filtrów i badanie z nałożonymi nagraniami</summary>
+<div class="inner">
+<ul>
+<li><mark>Neisser (1976)</mark>, badania z Robertem Becklenem (Neisser i Becklen, 1975), <mark>krytykuje teorie filtrów</mark> jako <mark>absurdalne z fizycznego i racjonalnego punktu widzenia</mark>. W <mark>teorii informacji i komunikacji</mark> filtr to urządzenie, przez które <mark>informacja docierająca do wejścia nie ma wpływu na wyjście, czyli na zachowanie</mark> — w tym sensie bylibyśmy filtrami promieni kosmicznych czy feromonów owadów. <span class="src">s. 107</span></li>
+<li><mark>Nie odfiltrowujemy docierających bodźców, ale pobieramy takie bodźce z otoczenia, które są nam potrzebne.</mark> Uwaga jest <mark>aktywna, nie pasywna</mark>; pobieraniem kierują schematy — wynika to z <mark>teorii cyklu percepcyjnego</mark> (<a href="#cykl">2.4.4</a>).</li>
+<li><strong>Kahneman (1973, s. 2)</strong>: główną funkcją terminu „uwaga” jest <mark>„dostarczenie etykiety dla pewnego mechanizmu wewnętrznego, który determinuje ważność bodźców, a tym samym uniemożliwia przewidywanie zachowania tylko i wyłącznie na podstawie samych bodźców”</mark>.</li>
+<li>Uwaga jest <mark>mechanizmem wybierającym bodźce, na które należy zareagować</mark> — ważne dla jednostki, a nie o z góry określonych cechach fizycznych. Nie reagujemy na wrzaski, ale na cichy szept, jeśli niesie ważną informację. To <mark>uwolnienie się od zdeterminowania zachowania przez same tylko właściwości bodźców</mark>.</li>
+</ul>
+<h4>Neisser i Becklen (1975)</h4>
+<ul>
+<li>Zamiast <mark>słuchania dwuusznego</mark> — zadanie wzrokowe: dwa <strong>nałożone nagrania</strong>, zabawa w „łapki” i trzy osoby grające w piłkę (ryc. 3.8). Badany śledzi jedno, ignoruje drugie i naciska klucz przy zdarzeniach (rzut, próba uderzenia). <span class="src">s. 107–108</span></li>
+<li>Przy 40 zdarzeniach na minutę poprawność przy nałożonych nagraniach była prawie taka sama jak przy jednym (błędy nie więcej niż <strong>3%</strong>) — już w pierwszej próbie, bez ćwiczenia. Śledzenie obu gier naraz znacznie pogarszało wynik.</li>
+<li>Nagrania nie różniły się modalnością ani lokalizacją, tylko <mark>wewnętrzną strukturą</mark>. <mark>Tylko w wypadku epizodu, na którym badani koncentrowali uwagę, angażowany był pełny cykl percepcyjny</mark>: oczekiwania oparte na <mark>istniejących schematach poznawczych</mark>, eksploracja, pobieranie informacji. Świadomie rejestrować = koncentrować uwagę = poświęcać zasoby.</li>
+<li>W pokrewnym filmie widzowie liczący podania piłki w grupie osób w bieli nie zauważali przechodzącej przez scenę kobiety z parasolem.</li>
+<li><mark>Dzięki uwadze jednostka pobrała pewne informacje ze środowiska i mogła je dokładnie zinterpretować.</mark> Pozostałe nie były pobierane, więc <mark>nie mogły być dokładniej analizowane</mark>. Przy dużej pojemności uwagi człowiek <mark>może pobierać z otoczenia informacje mniej ważne</mark> i szukać dla nich schematów, ale kosztem szybkości głównego zadania.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Kahneman: pojemność uwagi i polityka alokacji</summary>
+<div class="inner">
+<p>Pojemność uwagi to ilość zasobów poznawczych, które możemy poświęcić na problemy i zadania. Zależy od: <span class="src">s. 108–109</span></p>
+<div class="cards">
+<div class="card"><h4>1. Trudność zadania</h4><p><mark>Trudność zadania</mark>: łatwe — mało zasobów, trudne — dużo. Przy <mark>zadaniach łatwych</mark> możemy robić coś innego (liczyć koszt trzech kart po 27 zł i słuchać radia), ale nie przy wypełnianiu PIT-u.</p></div>
+<div class="card"><h4>2. Poziom pobudzenia</h4><p><mark>Poziom pobudzenia</mark>: wyższe pobudzenie = więcej zasobów; senni mają kłopot ze złożonymi zadaniami. <mark>Wysokość poziomu pobudzenia zależy od trudności zadania</mark> — to adaptacyjne.</p></div>
+<div class="card"><h4>3. Polityka alokacji</h4><p><mark>Polityka „alokacyjna” albo polityka inwestycyjna systemu poznawczego</mark>: człowiek wybiera, <mark>co będzie przedmiotem aktywności poznawczej</mark>. Wyjątek: zjawiska intruzywne w PTSD (Tallis, 1999; Maruszewski, 2000a).</p></div>
+</div>
+<h4>Co kształtuje politykę alokacji</h4>
+<ul>
+<li>(a) <mark>Chwilowe intencje czy stany motywacyjne</mark> — głodny zwraca uwagę na sklepy spożywcze, restauracje, bary.</li>
+<li>(b) <mark>Trwałe dyspozycje</mark> — dawniej: <mark>zainteresowania</mark>; też <mark>szczególne rodzaje zadań</mark> (miłośnicy parowozów, szarad, detektywi).</li>
+<li>(c) <mark>Ocena zapotrzebowania na zasoby umysłowe</mark> — proces kontrolny na poziomie <mark>metapoznania</mark>; przed czynnością (złożoność, podobieństwo do znanych) albo w trakcie (postępy, czy zaangażowanie wystarcza).</li>
+</ul>
+<figure class="fig">
+<svg aria-label="Model Kahnemana: determinanty pobudzenia, pobudzenie, dostępne zasoby uwagi, polityka alokacji zasobów pod wpływem trwałych dyspozycji, chwilowych intencji i oceny zapotrzebowania na zasoby; możliwe działania; działanie" role="img" viewbox="0 0 600 300">
+<defs><marker id="ar8" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="11.5" text-anchor="middle">
+<rect fill="#fffdf9" height="34" rx="7" stroke="hsl(209 33% 60%)" width="180" x="20" y="10"></rect><text x="110" y="31">determinanty pobudzenia</text>
+<rect fill="hsl(209 40% 95%)" height="34" rx="7" stroke="hsl(209 33% 60%)" width="180" x="20" y="70"></rect><text x="110" y="91">pobudzenie</text>
+<rect fill="hsl(209 40% 95%)" height="34" rx="7" stroke="hsl(209 33% 60%)" width="180" x="20" y="130"></rect><text x="110" y="151">dostępne zasoby uwagi</text>
+<rect fill="hsl(209 33% 56%)" height="34" rx="7" width="180" x="230" y="130"></rect><text fill="#fff" font-weight="600" x="320" y="151">polityka alokacji zasobów</text>
+<rect fill="#fbf3e3" height="30" rx="7" stroke="#d9c49c" width="160" x="430" y="70"></rect><text x="510" y="89">trwałe dyspozycje</text>
+<rect fill="#fbf3e3" height="30" rx="7" stroke="#d9c49c" width="160" x="430" y="130"></rect><text x="510" y="149">chwilowe intencje</text>
+<rect fill="#fbf3e3" height="40" rx="7" stroke="#d9c49c" width="160" x="430" y="190"></rect><text x="510" y="207">ocena zapotrzebowania</text><text x="510" y="221">na zasoby uwagi</text>
+<rect fill="#fffdf9" height="34" rx="7" stroke="hsl(209 33% 60%)" width="180" x="230" y="200"></rect><text x="320" y="221">możliwe działania</text>
+<rect fill="#fffdf9" height="34" rx="7" stroke="hsl(209 36% 36%)" width="180" x="230" y="256"></rect><text font-weight="600" x="320" y="277">działanie</text>
+</g>
+<g fill="none" marker-end="url(#ar8)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="110" x2="110" y1="44" y2="68"></line><line x1="110" x2="110" y1="104" y2="128"></line>
+<line x1="200" x2="228" y1="147" y2="147"></line>
+<line x1="430" x2="400" y1="88" y2="128"></line><line x1="430" x2="412" y1="145" y2="145"></line><line x1="430" x2="400" y1="205" y2="166"></line>
+<line x1="320" x2="320" y1="164" y2="198"></line><line x1="320" x2="320" y1="234" y2="254"></line>
+</g>
+</svg>
+<figcaption>Ryc. 3.9 (schemat, za: Kahneman, 1973, s. 10).</figcaption>
+</figure>
+</div>
+</details>
+<details class="block" id="r3-podwojne" open="">
+<summary>Podzielność uwagi: zadanie podwójne i pule zasobów</summary>
+<div class="inner">
+<ul>
+<li>Jednostka <mark>dysponuje jednym źródłem zasobów uwagi</mark>. Przy uwadze podzielnej (dwa zadania naraz) <mark>sprawność się zmniejsza</mark>. <mark>Zmniejszenie wysiłku na którymkolwiek zadaniu doprowadzi do utrzymania pierwotnej sprawności</mark> — wysiłek zmniejsza dobre opanowanie zadania. <span class="src">s. 109–110</span></li>
+<li><mark>Spelke, Hirst i Neisser (1976)</mark> — <mark>zadanie podwójne</mark>: ciche czytanie tekstu i jednoczesne pisanie dyktanda. Po <strong>6 tygodniach</strong> ćwiczeń: dyktando bez błędów, czytanie z pełnym zrozumieniem. Ludzie <mark>dysponują ograniczoną pulą zasobów uwagi</mark>; po ćwiczeniu zadania przestają ze sobą interferować.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Jedna pula zasobów (Kahneman)</th><th>Zasoby specyficzne dla modalności (Gopher i Navon, 1979)</th></tr></thead>
+<tbody>
+<tr>
+<td style="font-weight:400;white-space:normal"><mark>Teoria Kahnemana należy do teorii postulujących istnienie jednej puli zasobów uwagi</mark> (ryc. 3.10). Im więcej zasobów dla zadania 1, tym mniej dla zadania 2. Każde dodatkowe zadanie pogarsza ogólną sprawność.</td>
+<td style="font-weight:400;white-space:normal"><mark>Każda modalność ma swoją pulę zasobów</mark> (ryc. 3.11). Zaangażowanie wszystkich zasobów jednej modalności nie ogranicza drugiej; oba zadania mogą iść dobrze, <mark>jeśli nie angażują tych samych modalności</mark>.</td>
+</tr>
+<tr>
+<td style="font-weight:400;white-space:normal">Wyjaśnia, dlaczego ćwiczenie pozwala łączyć zadania (mniej zasobów → mniej konkurencji).</td>
+<td style="font-weight:400;white-space:normal">Wyjaśnia, dlaczego autor przy pierwszym prasowaniu koszuli (wzrok i dotyk) w pełni zrozumiał i zapamiętał dziennik radiowy (słuch) — choć prasowanie nie było zautomatyzowane.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="fig-row">
+<figure class="fig">
+<svg aria-label="Jedna pula: bodźce trafiają do jednej puli zasobów dzielonej między zadanie 1 i zadanie 2" role="img" viewbox="0 0 260 150">
+<rect fill="hsl(209 40% 95%)" height="60" rx="8" stroke="hsl(209 33% 60%)" width="220" x="20" y="20"></rect>
+<rect fill="hsl(209 33% 56%)" height="60" rx="8" width="150" x="20" y="20"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="95" y="55">zadanie 1</text>
+<text fill="hsl(209 36% 26%)" font-size="12" text-anchor="middle" x="205" y="55">zad. 2</text>
+<text fill="#5c4f43" font-size="11" text-anchor="middle" x="130" y="110">jedna wspólna pula zasobów</text>
+</svg>
+<figcaption>Ryc. 3.10 (schemat) — pojedyncza pula.</figcaption>
+</figure>
+<figure class="fig">
+<svg aria-label="Pule specyficzne: modalność 1 dla zadania 1 i oddzielna modalność 2 dla zadania 2" role="img" viewbox="0 0 260 150">
+<rect fill="hsl(209 33% 56%)" height="60" rx="8" width="102" x="20" y="20"></rect>
+<rect fill="hsl(209 33% 70%)" height="60" rx="8" width="102" x="138" y="20"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="71" y="48">modalność 1</text><text fill="#fff" font-size="11" text-anchor="middle" x="71" y="64">zadanie 1</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="189" y="48">modalność 2</text><text fill="#fff" font-size="11" text-anchor="middle" x="189" y="64">zadanie 2</text>
+<text fill="#5c4f43" font-size="11" text-anchor="middle" x="130" y="110">osobne pule — brak konkurencji</text>
+</svg>
+<figcaption>Ryc. 3.11 (schemat) — pule specyficzne dla modalności.</figcaption>
+</figure>
+</div>
+<ul>
+<li><mark>Teorie zasobów uwagi wyjaśniają zjawisko uwagi podzielnej przy zadaniach złożonych.</mark> Uwaga jest pod kontrolą jednostki, która decyduje, na czym skupić wysiłek — w teoriach filtra decydowały wymagania zadania i właściwości bodźca. Teorie zasobów są więc bardziej podmiotowe. <span class="src">s. 111</span></li>
+<li>Problem ogólny: <mark>skoro uwaga traktowana jest jako proces kontrolny w stosunku do innych procesów psychicznych, co kontroluje uwagę?</mark> Albo <mark>bieżące bodźce docierające ze środowiska</mark> (powrót do filtra), albo uwaga jest <mark>kontrolowana przez podmiot</mark> — ale wtedy pojawia się pytanie, <mark>czy hierarchia kolejnych systemów gdzieś się kończy</mark>, czy ciągnie w nieskończoność (por. <a href="#r1-5">homunkulus, 1.5</a>). <span class="src">s. 111–112</span></li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 3.4 ============ -->
+<section class="chapter" id="r3-4">
+<div class="chapter-head"><span class="num">3.4</span><h2>Dystraktory</h2></div>
+<ul>
+<li>Dystraktory to <mark>bodźce odwracające uwagę</mark>. Mogą pochodzić <mark>z zewnątrz</mark> albo jednostka <mark>niejako sama sobie je eksponuje</mark>. Większość badań dotyczy <mark>dystraktorów zewnętrznych</mark>, które <mark>nie są kontrolowane przez jednostkę, lecz przez badacza</mark>. <span class="src">s. 112</span></li>
+<li>Często <mark>sama jednostka zadaje sobie różne procesy, które mogą zakłócać jej aktywność poznawczą</mark>, zwykle nieintencjonalnie: zastanawiamy się, czy wykonamy zadanie mistrzowsko → przypominamy sobie porażki → nabieramy przekonania o niskich kompetencjach → mniej się staramy.</li>
+<li>Aktywność też może mieć <mark>charakter zewnętrzny</mark> (np. przepisywanie tekstu) albo <mark>wewnętrzny</mark> (rozważanie problemów, planowanie). Skrzyżowanie obu podziałów daje tabelę 3.2.</li>
+</ul>
+<h4><mark>Tabela 3.2 — Klasyfikacja dystraktorów w relacji do typu aktywności</mark></h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Dystraktor ↓ / czynność →</th><th>czynność zewnętrzna</th><th>czynność wewnętrzna</th></tr></thead>
+<tbody>
+<tr><td>zewnętrzny</td><td style="font-weight:400;white-space:normal">odgłos karetki zagłuszający rozmowę</td><td style="font-weight:400;white-space:normal">muzyka u sąsiada w czasie planowania referatu</td></tr>
+<tr><td>wewnętrzny</td><td style="font-weight:400;white-space:normal">myśli o nieprzyjemnym spotkaniu w czasie prowadzenia samochodu</td><td style="font-weight:400;white-space:normal">myśli o odrzuceniu w czasie pisania artykułu</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Badacze zajmują się głównie górnym wierszem: <mark>peryferyjnymi oddziaływaniami bodźców zewnętrznych</mark>, czyli <mark>uwagą selektywną i podzielną</mark>; rzadziej <mark>aktywnością zewnętrzną</mark> zakłócaną przez <mark>dystraktory wewnętrzne</mark>. <span class="src">s. 113</span></li>
+<li>Ostatnie pole (dystraktor wewnętrzny + czynność wewnętrzna) jest <mark>awersyjne</mark> dla badaczy (słaba kontrola zmiennych), a dla wielu ludzi to udręka: <mark>myśli intruzywne albo ruminacje</mark>.</li>
+</ul>
+<div class="cards">
+<div class="card"><h4>Myśli intruzywne</h4><p>Myśli i obrazy pojawiające się niezależnie od woli, natrętne, zwykle nieprzyjemne. Próby <mark>usunięcia</mark> dają <mark>efekt paradoksalny</mark> — jeszcze większą częstość, czyli <mark>efekt rykoszetu</mark> (Wegner, 1989; <a href="#ramka-3-2">ramka 3.2</a>). Spotyka się to w <mark>psychoterapii</mark>.</p></div>
+<div class="card"><h4>Ruminacje</h4><p><mark>„Przeżuwanie” pewnych myśli</mark> — wielokrotne powracanie do problemów. W przeciwieństwie do myśli intruzywnych <mark>nie mają charakteru przymusowego</mark>, choć stają się motywem przewodnim myślenia.</p></div>
+</div>
+<h4>Funkcja adaptacyjna myśli intruzywnych</h4>
+<ul>
+<li><mark>Tallis (1999)</mark>, w <mark>perspektywie ewolucjonistycznej</mark>: myśli intruzywne <mark>sprzyjają adaptacji</mark>, bo <mark>poszerzają repertuar czynności psychicznych oraz zachowań organizmu</mark>; pozwalają wyjść poza schematy i sprzyjają twórczości. Są dla rozwoju intelektualnego <mark>jak przypadkowe mutacje genów dla procesu ewolucji</mark>; ceną plastyczności jest <mark>„strumień piekła”</mark> (metafora D.H. Lawrence’a). <span class="src">s. 113</span></li>
+<li><mark>Barlow (1988)</mark>: zjawiska intruzywne to <mark>prymitywny system alarmowy</mark>, przygotowujący do <mark>działania zaradczego</mark>. Musi być <mark>niespecyficzny i niezawodny</mark>, bo przeoczenie sygnału bywa groźne — jak w teorii detekcji sygnałów, przy wysokich kosztach pominięcia lepiej o <mark>fałszywy alarm</mark>. Widać to w PTSD (alarmy od bodźców przypadkowo skojarzonych z traumą) i gdy <mark>dopływ stymulacji z zewnątrz jest wyraźnie zredukowany</mark> (wieczór, noc) — wtedy wielu ludzi szuka stymulacji, by <mark>odpędzić niepożądane myśli i obrazy</mark>. <span class="src">s. 113–114</span></li>
+<li>Problem „Ja myślę” vs „Pomyślało mi się” prowadzi do rozróżnienia czynności automatycznych i kontrolowanych (<a href="#r3-5">3.5</a>).</li>
+</ul>
+<details class="block ramka" id="ramka-3-2">
+<summary><span><span class="kind">Ramka 3.2</span><mark>Efekt rykoszetu — czyli niemyślenie o białych niedźwiedziach</mark></span></summary>
+<div class="inner">
+<blockquote>„Zniesienie tłumienia prowadzi do rykoszetu w zakresie ekspresji, a to wymaga coraz silniejszego tłumienia w celu wyeliminowania niepożądanych myśli. To silniejsze tłumienie z kolei daje jeszcze silniejszy rykoszet […]” (Wegner, 1989, s. 170).</blockquote>
+<ul>
+<li><strong>Wegner i in. (1987)</strong>: przez <mark>5 minut</mark> badani relacjonowali na głos wszystkie myśli, starając się <mark>nie myśleć o białych niedźwiedziach</mark>. W porównaniu z grupą kontrolną myśleli o nich znacznie częściej. <span class="src">s. 114</span></li>
+<li><strong>Wegner (1994)</strong> — <mark>dwa niezależne procesy kontroli myśli</mark>:
+          <ul>
+<li><mark>wykonawczy</mark> — <mark>poszukuje treści zgodnych</mark> z tym, o czym chcemy myśleć (czegoś, co odciągnie od niedźwiedzi); <mark>angażuje zasoby uwagowe</mark>;</li>
+<li><mark>monitorujący</mark> — szuka treści niezgodnych (szuka niedźwiedzi) i ostrzega przed utratą kontroli; zasobów nie angażuje.</li>
+</ul>
+          Przy niedoborze zasobów (inne myśli, stres) proces wykonawczy zawodzi, a monitorujący i tak znajduje niepożądane myśli. Dlatego unikanie wysiłku umysłowego sprawia, że <mark>pojawiają się niechciane myśli</mark>.</li>
+<li><strong>Wegner, Schneider, Carter i White (1987)</strong>: czy <mark>dołączenie zewnętrznego dystraktora</mark> zmniejszy częstość zakazanych myśli? Grupa 2 miała, gdy pojawi się niedźwiedź, natychmiast pomyśleć o <strong>czerwonym volkswagenie</strong>. Po 5 minutach myślała o niedźwiedziach rzadziej niż grupa 1 — działa <mark>„autodystrakcja”</mark>. Dlatego ludzie słuchają muzyki przy pracy: przeszkadza, ale <mark>chroni przed myślami intruzywnymi</mark>.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 3.5 ============ -->
+<section class="chapter" id="r3-5">
+<div class="chapter-head"><span class="num">3.5</span><h2>Czynności automatyczne i kontrolowane</h2></div>
+<p>Kolega pukał do drzwi, które chciał otworzyć od środka, i czekał na „Proszę”; ktoś podlewa sztuczne kwiaty. <mark>Istnieje wiele czynności wykonywanych poza świadomą kontrolą</mark> — nie tylko <mark>zjawiska intruzywne</mark>, ale też <mark>czynności bardzo dobrze opanowane</mark>, <mark>przeuczone</mark> (pisanie, prowadzenie samochodu). Rozróżnienie wprowadzili <mark>Posner i Snyder (1975)</mark> oraz <mark>Schneider i Shiffrin (1977)</mark>. <span class="src">s. 115</span></p>
+<h4><mark>Tabela 3.3 — Porównanie procesów automatycznych i kontrolowanych</mark></h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Procesy automatyczne</th><th>Procesy kontrolowane</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">nie angażują świadomości</td><td style="font-weight:400">angażują świadomość</td></tr>
+<tr><td style="font-weight:400">małe zapotrzebowanie na zasoby uwagi</td><td style="font-weight:400">duże zapotrzebowanie na zasoby uwagi</td></tr>
+<tr><td style="font-weight:400;white-space:normal">przebiegają równolegle — można wykonywać różne czynności naraz</td><td style="font-weight:400;white-space:normal">przebiegają sekwencyjnie — kolejna czynność po zakończeniu poprzedniej</td></tr>
+<tr><td style="font-weight:400">zadania dobrze znane i łatwe</td><td style="font-weight:400">zadania nowe i trudne</td></tr>
+<tr><td style="font-weight:400;white-space:normal">duża szybkość (dobre opanowanie, praca równoległa)</td><td style="font-weight:400;white-space:normal">mała szybkość (złożoność, słabe opanowanie, sekwencyjność)</td></tr>
+<tr><td style="font-weight:400">proste procesy poznawcze</td><td style="font-weight:400">złożone procesy poznawcze</td></tr>
+</tbody>
+</table></div>
+<details class="block" open="">
+<summary>Przetwarzanie przeduwagowe: Corteen i Wood (1972)</summary>
+<div class="inner">
+<ul>
+<li>Do procesów automatycznych należą <mark>procesy przetwarzania przeduwagowego</mark>. <span class="src">s. 115–116</span></li>
+<li><mark>Corteen i Wood (1972)</mark>: najpierw <mark>warunkowy odruch z negatywną emocją</mark> — nazwy miast łączono z lekkim prądem, co podnosiło przewodnictwo skóry (GSR). Potem <mark>słuchanie dwuuszne</mark>: badani powtarzali tekst z jednego ucha, a do drugiego trafiały słowa, wśród nich nazwy miast.</li>
+<li>Mimo poprawnego wykonania zadania nazwy miast wywoływały GSR, choć <mark>nie docierały do świadomości</mark>. Reakcję wywoływały też nazwy miast, które <strong>nie były</strong> wcześniej wzmacniane. Komunikaty, na które <mark>nie zwracamy uwagi</mark>, przechodzą więc nie tylko <mark>zdegradowaną analizę</mark> (oznakowanie emocjonalne), lecz <mark>także analizę znaczenia</mark>.</li>
+</ul>
+<div class="key"><span class="label"><mark>Generalizacja semantyczna</mark> — dwa mechanizmy</span><p>(1) <mark>Podczas warunkowania</mark> badany zorientował się, że prąd towarzyszy nazwom miast, więc <mark>w pamięci semantycznej wszystkie nazwy miast skojarzyły się w pewnym stopniu z szokiem</mark>. (2) Podczas słuchania dwuusznego nazwy niewzmacniane pobudzały reprezentacje w słowniku wewnętrznym, a <mark>aktywizacja rozprzestrzeniała się na pozycje sąsiednie semantycznie</mark>. Ten drugi mechanizm może działać <mark>bez udziału świadomości</mark>.</p></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>Podział nie jest dychotomiczny: Logan i Nęcka</summary>
+<div class="inner">
+<ul>
+<li><mark>Gordon Logan (1988)</mark>: podział automatyczne/kontrolowane to <mark>duże uproszczenie</mark>; obie grupy są niejednorodne. Do automatycznych należy <mark>efekt torowania percepcyjnego</mark> — <mark>ułatwienie spostrzegania wskutek odebrania wcześniej innego bodźca</mark>, którego <mark>nie można uświadomić</mark> ani świadomie zmienić. Wiązanie krawata jest automatyczne, ale z wysiłkiem można uświadomić sobie jego fazy. <span class="src">s. 116</span></li>
+<li><mark>Nęcka (2002)</mark>: cztery właściwości procesów automatycznych — <mark>nieodwołalność, balistyczny charakter, bezwysiłkowość i nieświadomość</mark> — wszystkie <mark>stopniowalne</mark>. Procesy przypominają raczej pociski samonaprowadzające (rakiety cruise) niż zwykłe pociski: <mark>mogą zmieniać swoje właściwości w czasie stosownie do warunków</mark>. Podział <mark>ma charakter ciągły</mark>.</li>
+<li><mark>Czynności kontrolowane mogą stać się czynnościami automatycznymi</mark> dzięki <mark>uczeniu się</mark> (przeuczeniu) — to inny rodzaj automatyzmu niż <mark>torowanie percepcyjne</mark>. Bywa też odwrotnie. <span class="src">s. 117</span></li>
+</ul>
+<h4>Dwie koncepcje automatyzacji</h4>
+<div class="table-wrap"><table>
+<thead><tr><th><mark>Integrowanie procedur</mark> (<mark>Anderson</mark>, 1983; <mark>LaBerge i Samuels</mark>, 1974)</th><th><mark>Teoria egzemplarzy</mark> (<mark>Gordon Logan</mark>, 1988)</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal"><mark>Automatyzacja jest procesem stopniowym</mark>: pisanie — linie proste → krzywe → kombinacje → litery → słowa → zwroty (podpis, formuły grzecznościowe). Komputer: szukanie liter → całe słowa → klawisze funkcyjne. Telegrafiści: kropki i kreski → słowa → zestawy słów, potrafili odtworzyć części. U dzieci pisanie automatyzuje się szybko i słabo poddaje kontroli, u dorosłych — wolniej i z większą kontrolą.</td>
+<td style="font-weight:400;white-space:normal">Uczenie się jest <mark>wkomponowane w kontekst wykonywania czynności</mark>: uczymy się modułów i <mark>wiążemy je ze specyficznymi bodźcami</mark> (jazda w różnych warunkach drogowych i pogodowych). Zachowania zautomatyzowane mogą więc być <mark>elastyczne</mark> — wbrew wcześniejszemu poglądowi, że automatyzmy są sztywne.</td>
+</tr></tbody>
+</table></div>
+</div>
+</details>
+<details class="block" open="">
+<summary>Tabela 3.4 — Błędy wynikające z działania procesów automatycznych</summary>
+<div class="inner">
+<p><mark>Procesy automatyczne ułatwiają nam funkcjonowanie poznawcze, ale mogą prowadzić do deficytów</mark> (za: Sternberg, 1996). <span class="src">s. 117–118</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rodzaj błędu</th><th>Na czym polega</th><th>Przykład</th></tr></thead>
+<tbody>
+<tr><td>Ześlizg</td><td style="font-weight:400;white-space:normal">rozpoczęcie czynności rutynowej sprawia, że kontrolę przejmują procesy automatyczne</td><td style="font-weight:400;white-space:normal">psycholog poszedł do sypialni przebrać się przed wyjściem i położył się do łóżka (podobnie William James)</td></tr>
+<tr><td>Ominięcia</td><td style="font-weight:400;white-space:normal">przerwanie czynności rutynowej → pominięcie pozostałych faz</td><td style="font-weight:400;white-space:normal">po telefonach od dziekana wyłączył komputer bez zapisania pliku</td></tr>
+<tr><td>Perseweracje</td><td style="font-weight:400;white-space:normal">powtarzanie części lub całości procedury</td><td style="font-weight:400;white-space:normal">przy naprawie urządzenia — wciąż te same ruchy</td></tr>
+<tr><td>Błąd opisu</td><td style="font-weight:400;white-space:normal">wewnętrzny opis działania prowadzi do wykonania go na złym obiekcie</td><td style="font-weight:400;white-space:normal">lody do pojemnika na chleb; pukanie do drzwi od wewnątrz własnego pokoju</td></tr>
+<tr><td>Błędy zależne od danych</td><td style="font-weight:400;white-space:normal">kontrolę przejmuje bieżąca informacja sensoryczna</td><td style="font-weight:400;white-space:normal">wybierając numer, dodała cenę sukienki, o której ktoś obok mówił</td></tr>
+<tr><td>Błędy asocjacyjne</td><td style="font-weight:400;white-space:normal">silne skojarzenie wyzwala niewłaściwą czynność rutynową</td><td style="font-weight:400;white-space:normal">„Proszę wejść!”, gdy dzwoni telefon</td></tr>
+<tr><td>Brak aktywacji</td><td style="font-weight:400;white-space:normal">zbyt słaba aktywacja, by dokończyć czynność</td><td style="font-weight:400;white-space:normal">idziemy do innego pokoju i zapominamy po co</td></tr>
+</tbody>
+</table></div>
+<p>Ryc. 3.12 (rysunek Andrzeja Mleczki): ilustracja <mark>błędu zależnego od danych albo błędu opisu</mark>.</p>
+</div>
+</details>
+<details class="block ramka" id="ramka-3-3">
+<summary><span><span class="kind">Ramka 3.3</span><mark>Efekt Stroopa</mark> i jego odmiany</span></summary>
+<div class="inner">
+<p>Technika <mark>Stroopa (1935)</mark> służy do badania procesów poznawczych i emocjonalnych, zwłaszcza tego, jak <mark>dzięki procesowi automatyzacji jednostka uczy się ignorować część komunikatów</mark> i reagować tylko na pozostałe. <span class="src">s. 118–122</span></p>
+<ul>
+<li>Zadanie: <mark>jak najszybciej odczytywać kolory, którymi wydrukowano słowa</mark>, ignorując ich treść. Słowo „niebieski” wydrukowane na czerwono → poprawna odpowiedź „czerwony”, ale automatyczne czytanie podsuwa „niebieski”. Badani <mark>muszą powstrzymywać reakcję automatyczną i reagować tylko na sensoryczne właściwości bodźca</mark>. Pojawia się <mark>interferencja</mark> — wolniejsze odpowiedzi i więcej błędów — czyli <mark>efekt Stroopa</mark>. Słabszy konflikt daje np. „niebo” wydrukowane na zielono.</li>
+<li>Ryc. 3.13 (Stroop, 1935): czytanie 100 kolorów trwało w warunku zgodności ok. 40–90 s (szczyt ok. 63 s), a w warunku interferencji ok. 60–170 s (szczyt ok. 110 s).</li>
+<li>Z ćwiczeniem badani byli coraz szybsi — po <strong>8 dniach</strong> dwukrotnie szybsi — aż wyniki się <mark>ustabilizowały</mark>. To także <mark>proces automatyzacji</mark>; umiejętność czytania nie zanikała.</li>
+</ul>
+<div class="key"><span class="label">Spór o interpretację</span><p><mark>Interpretacja odwołująca się do procesów automatycznych jest najbardziej popularna</mark>, ale podważyli ją <mark>Besner</mark> i współpracownicy (Besner, Stolz i Boutilier, 1997; Besner i Stolz, 1999). <mark>Eksponowano słowa oznaczające kolory</mark>: całe w jednym kolorze albo z jedną losową literą w innym kolorze. Zadanie: <mark>nazwać kolor widziany na monitorze</mark>. Jeśli czytanie całych słów jest automatyczne, interferencja powinna być jednakowa. Tymczasem <mark>wielkość interferencji była mniejsza w warunkach, kiedy w skład słowa wchodziła jedna litera kolorowa</mark>.</p></div>
+<h4>Odmiany zadania Stroopa</h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Odmiana</th><th>Na czym polega</th></tr></thead>
+<tbody>
+<tr><td><mark>Wersja liczbowa</mark></td><td style="font-weight:400;white-space:normal">Liczenie znaków w zestawach <mark>neutralnych i konfliktowych</mark> (tab. 3.5): KK, BBBB, KKKKK… vs 55, 3333, 66666… Zestawy neutralne liczy się szybciej.</td></tr>
+<tr><td>Położenie</td><td style="font-weight:400;white-space:normal">Konflikt <mark>między położeniem a słowem oznaczającym położenie</mark> (ryc. 3.14): słowo „góra” na dole prostokąta. Zgodne położenie podaje się szybciej.</td></tr>
+<tr><td><mark>„Zwierzęca”</mark></td><td style="font-weight:400;white-space:normal">Obrazki zwierząt z błędnymi podpisami (krowa „koń”, żyrafa „słoń”, panda „lew”). Trzeba nazwać zwierzę, ignorując napis — komunikat wielowarstwowy.</td></tr>
+<tr><td>Językowa</td><td style="font-weight:400;white-space:normal"><em>red</em> wydrukowane na zielono → <mark>efekt interferencji</mark> silny u biegle znających angielski, słaby u słabo znających; <mark>miara stopnia opanowania danego języka</mark> (Wodniecka, 2003). Efekt pojawia się głównie przy konflikcie <mark>między warstwą werbalną i obrazową</mark> (Bloem, Van Den Boogaard i La Heij, 2004).</td></tr>
+<tr><td>Emocjonalna</td><td style="font-weight:400;white-space:normal">Interferencja <mark>spowodowana treścią emocjonalną bodźców</mark>: osoba z arachnofobią wolniej nazywa kolory słów „sieć”, „pajęczyna”, „skorpion” niż „dom”, „pióro” (<mark>wydłużenie czasu reakcji</mark>). Przy realnym zagrożeniu efekt znika: Mathews i Sebastian (1993) — przy żywym wężu brak interferencji, bo realne zagrożenie liczy się bardziej niż konflikt poznawczy.</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Analogia w <mark>percepcji społecznej</mark>: wiele bodźców to <mark>bodźce złożone</mark>, których elementy są w konflikcie; perswazja może sprawić, że ludzie uwierzą, iż krowa jest koniem. <mark>Komunikaty dotyczące świata społecznego są bardziej wieloznaczne</mark>. Przykłady: „propaganda sukcesu” lat 70.; Korczak w <mark><em>Królu Maciusiu Pierwszym</em></mark> pisze o <mark>Ministerstwie Wojny</mark>, a nie „Obrony Narodowej”; doradcy <mark>Ronalda Reagana</mark> zamiast <mark>„wyścig zbrojeń”</mark> mówili <mark>„potrzeba przywrócenia marginesu bezpieczeństwa”</mark> (Cwalina i Falkowski, 2005). <span class="src">s. 121–122</span></li>
+<li><mark>Emocjonalny test Stroopa wykorzystywano jako pośredni wskaźnik postępów psychoterapii</mark>. Foa i in. (1991): kobiety po gwałcie nazywały kolory słów neutralnych i związanych z sytuacją („duszenie”, „ziemia”, „wstyd”); w miarę terapii efekt malał. Ostrożnie: <mark>jednak i tam mógł występować efekt automatyzacji, który mógł być błędnie przypisywany postępom psychoterapii</mark>. Przegląd: <mark>Williams, Mathews i McLeod (1996)</mark>.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 3.6 ============ -->
+<section class="chapter" id="r3-6">
+<div class="chapter-head"><span class="num">3.6</span><h2>Refleksyjność i bezrefleksyjność</h2></div>
+<p><mark>Teoria refleksyjności została sformułowana przez Ellen Langer</mark> (1978; 1993; Chanowitz i Langer, 1980). Nawiązuje do <mark>teorii kierowania zasobami uwagi</mark> i do rozróżnienia <mark>czynności automatycznych i kontrolowanych</mark>. <span class="src">s. 122–123</span></p>
+<ul>
+<li>Refleksyjność to <mark>adaptacyjne tworzenie kategorii, które dobrze określają zmieniającą się naturę otoczenia jednostki</mark>, zwłaszcza społecznego. Związek z czynnościami automatycznymi i kontrolowanymi polega na <mark>pozornym podobieństwie czynności automatycznych do stanu bezrefleksyjności, czynności kontrolowanych zaś — do stanu refleksyjności</mark>.</li>
+</ul>
+<blockquote>Langer (1993, s. 139): refleksyjność i bezrefleksyjność to <mark>„podstawowe stany organizmu jako całości (sposoby istnienia), które obejmują zarówno czynniki poznawcze, jak i afektywne. […] Refleksyjność uważam za swoiście manifestowany stan gotowości i żywej świadomości. Ogólnie refleksyjność przejawia się w aktywnym przetwarzaniu danych, odznaczających się poznawczym różnicowaniem: tworzeniem nowych kategorii i rozróżnień”</mark>.</blockquote>
+<ul>
+<li>Refleksyjność dotyczy osobowości <mark>jako całości</mark>. Tradycyjnie <mark>kontrola</mark> to <mark>„intencjonalne manipulowanie materiałem w celu uzyskania pożądanych wyników”</mark> (Chanowitz i Langer, 1980, s. 98); koncepcje automatyczne/kontrolowane <mark>koncentrują się na zewnętrznych objawach kontroli</mark>. U Langer kontrola obejmuje <mark>osiąganie pożądanych wyników w zmieniających się okolicznościach, lecz także zmiany Ja</mark>.</li>
+<li><mark>Poszukiwanie sensu</mark>, które prowadzi do odczucia piękna, jest <mark>czynnością refleksyjną</mark> — <mark>dokonujemy nowych rozróżnień albo wprowadzamy nowe kategoryzacje</mark>. Tablice „Sunrise Point” i „Sunset Point” w Wielkim Kanionie skłaniają do <mark>czynności bezrefleksyjnych</mark>: tłumy <mark>bezrefleksyjnie utrwalają te same widoki</mark>.</li>
+<li><mark>Dokonywanie rozróżnień i wprowadzanie nowych kategoryzacji jest możliwe w każdym momencie opanowania pewnej czynności</mark>, także dobrze opanowanej. Tej samej płyty można słuchać refleksyjnie (nowe elementy, wzruszenia) albo bezrefleksyjnie (oczekiwanie, że wszystko będzie jak poprzednio). Doświadczenie <mark>daje nam możliwość robienia tego na różne sposoby</mark>.</li>
+<li><mark>Kontrola</mark> nie polega na tym, by <mark>uzyskiwać powtarzalne efekty</mark>. To <mark>proces prowadzący do uzyskiwania efektów w zmieniającym się środowisku</mark>, <mark>interakcja między zmieniającym się środowiskiem a zmieniającym się Ja</mark>. George Mallory zapytany o Everest: „Bo on istnieje”; Chanowitz i Langer dopowiadają: „…a ja jestem tutaj”. Dla narciarza Yuichiro Miury ta sama góra była miejscem do zjazdu. W terminach <mark>Jamesa Gibsona</mark>: <mark>ten sam obiekt stanowi różne „afordancje” dla różnych osób</mark>, czyli <mark>różne możliwości do działania</mark> (<a href="#r2-5">2.5.2</a>). <span class="src">s. 123–124</span></li>
+</ul>
+<details class="block" open="">
+<summary>Przedwczesne związanie poznawcze</summary>
+<div class="inner">
+<ul>
+<li>Po utworzeniu kategorii funkcjonowanie się stabilizuje. <mark>W skrajnych przypadkach człowiek może zostać usidlony przez kategorie, które sobie wcześniej stworzył i poza które nie potrafi wyjść w żaden sposób.</mark> Nawet jednorazowy kontakt może prowadzić do <strong>przedwczesnego związania poznawczego</strong>, czyli <mark>sztywnego interpretowania informacji zaakceptowanych w sposób bezrefleksyjny</mark>. <span class="src">s. 124</span></li>
+<li>Przykład (Chanowitz i Langer, 1981): dziewczyna mimochodem słyszy, że ofiary przemocy seksualnej są „same sobie winne”. Jeśli przyjmie to bez refleksji, a sama stanie się ofiarą, może poczuć silną winę i nie zauważyć, że odpowiedzialny jest sprawca.</li>
+<li><mark>Przedwczesne związanie poznawcze może wynikać z jednorazowego kontaktu z jakąś informacją silnie angażującą emocjonalnie</mark> albo z wielokrotnego powtarzania (rodzice: „jeśli będziesz kłamał, zostaniesz złodziejem”). <mark>Uniemożliwia wykształcenie nowych sposobów reagowania</mark>; funkcjonowanie staje się <mark>balistyczne</mark> (Ścigała i Maruszewski, 1999): ludzie reagują według <mark>skryptu czy scenariusza</mark>.</li>
+</ul>
+</div>
+</details>
+<details class="block ramka" id="ramka-3-4">
+<summary><span><span class="kind">Ramka 3.4</span><mark>Konsekwencje bezrefleksyjności</mark></span></summary>
+<div class="inner">
+<ul>
+<li><mark>Chanowitz i Langer</mark> (1981): informacja przyjęta bezrefleksyjnie obniża wykonanie prostego zadania percepcyjnego (zależność od pola). Badani dowiadywali się o zaburzeniu percepcyjnym występującym u <strong>10%</strong> albo u <strong>80%</strong> populacji; grupa kontrolna nie dostała tej informacji. Połowę każdej grupy proszono, by zastanowiła się, jak by to było, gdyby sama miała to zaburzenie („myślenie”), połowę nie („niemyślenie”). Wszyscy dowiedzieli się potem, że mają to zaburzenie. <span class="src">s. 124–125</span></li>
+<li>Test niezależności od pola: ocena, czy linia jest pionowa, na tle przechylonej ramki w zaciemnionym pokoju (ramka to dystraktor); druga wersja — figury ukryte w tle.</li>
+</ul>
+<figure class="fig">
+<svg aria-label="Wyniki testu niezależności od pola: grupa 10 procent — myślenie około 23, niemyślenie około 13; grupa 80 procent — myślenie około 22, niemyślenie około 21; grupa kontrolna około 20" role="img" viewbox="0 0 420 220">
+<line stroke="#cfc3b2" x1="40" x2="410" y1="180" y2="180"></line>
+<g fill="#5c4f43" font-size="10" text-anchor="end"><text x="34" y="184">0</text><text x="34" y="112">12</text><text x="34" y="40">24</text></g>
+<line stroke="#eee5d8" x1="40" x2="410" y1="108" y2="108"></line><line stroke="#eee5d8" x1="40" x2="410" y1="36" y2="36"></line>
+<rect fill="hsl(209 36% 36%)" height="138" width="40" x="70" y="42"></rect>
+<rect fill="hsl(209 33% 72%)" height="78" width="40" x="114" y="102"></rect>
+<rect fill="hsl(209 36% 36%)" height="132" width="40" x="200" y="48"></rect>
+<rect fill="hsl(209 33% 72%)" height="126" width="40" x="244" y="54"></rect>
+<rect fill="#d9cfc1" height="120" width="40" x="330" y="60"></rect>
+<g fill="#2b2118" font-size="10" text-anchor="middle"><text x="90" y="36">~23</text><text x="134" y="96">~13</text><text x="220" y="42">~22</text><text x="264" y="48">~21</text><text x="350" y="54">~20</text></g>
+<g fill="#5c4f43" font-size="11" text-anchor="middle"><text x="112" y="198">10%</text><text x="242" y="198">80%</text><text x="350" y="198">kontrolna</text></g>
+<g fill="#5c4f43" font-size="10"><rect fill="hsl(209 36% 36%)" height="10" width="10" x="70" y="206"></rect><text x="84" y="215">myślenie</text><rect fill="hsl(209 33% 72%)" height="10" width="10" x="150" y="206"></rect><text x="164" y="215">niemyślenie</text></g>
+</svg>
+<figcaption>Ryc. 3.16 (schemat, za: Chanowitz i Langer, 1981) — wynik testu niezależności od pola, wyżej = lepiej; wartości przybliżone.</figcaption>
+</figure>
+<ul>
+<li>Wyraźne pogorszenie wystąpiło tylko w grupie „10%” bez zachęty do myślenia — tam działało <mark>bezrefleksyjne przetwarzanie informacji</mark>. Zachęcani do myślenia zmobilizowali się. W grupie „80%” myślenie niewiele zmieniało: badani uznali zaburzenie za swoją stałą cechę i mieli dość motywacji, by dobrze wykonać zadanie.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Skąd refleksyjność, jakie ma skutki i czym różni się od kontroli</summary>
+<div class="inner">
+<ul>
+<li>Czy refleksyjność wynika wyłącznie z <mark>wewnętrznego nastawienia jednostki</mark>, czy może być <mark>wyzwalana przez rozmaite czynniki zewnętrzne</mark>? <mark>Doliński</mark> i współpracownicy: bezrefleksyjność bywa skutkiem <mark>huśtawki emocjonalnej</mark> — nagłe ustanie źródła emocji (np. lęku) stawia umysł w stanie <mark>„między programami”</mark>, w którym <mark>dowolny bodziec może uruchomić w sposób bezrefleksyjny jakieś zachowanie</mark> (Doliński, 2003). <span class="src">s. 126</span></li>
+<li>Langer (1993): <mark>refleksyjność ma ważne konsekwencje dla zdrowia człowieka</mark>. Pozornie bezrefleksyjność jest korzystniejsza, bo pozwala <mark>uniknąć wysiłku poznawczego</mark> czy <mark>napięcia</mark>. Tymczasem w domu opieki pensjonariusze ćwiczący „uważność” (medytacja, zachęta do aktywnego stosunku do regulaminu) po 2 latach mieli <strong>czterokrotnie niższą śmiertelność</strong> niż grupa funkcjonująca „tradycyjnie”, podporządkowana regulaminowi.</li>
+<li>Różnica wobec automatyzmów: <mark>przetwarzanie automatyczne pojawia się zazwyczaj w przypadku przeuczenia, natomiast bezrefleksyjność może być efektem jednorazowej ekspozycji</mark>. Bezrefleksyjność nie oszczędza też wysiłku: niepowodzenia kosztują energię na radzenie sobie z emocjami, a nuda pochłania energię.</li>
+<li>Ewolucja pojęcia uwagi: <mark>uwaga nie jest izolowaną funkcją psychiczną, która wpływa tylko i wyłącznie na selekcjonowanie informacji docierających do człowieka ze świata zewnętrznego</mark>. Selekcjonuje też informacje z <mark>wnętrza</mark> i bywa zakłócana przez dystraktory <mark>wewnętrzne</mark>. <mark>Uwaga decyduje o działaniu całego systemu psychicznego</mark>, wiąże się z osobowością i wpływa na funkcjonowanie somatyczne (Langer; Salzberg i Kabat-Zinn, 1999 — medytacja w redukcji stresu).</li>
+</ul>
+</div>
+</details>
+<details class="block ramka" id="ramka-3-5">
+<summary><span><span class="kind">Ramka 3.5</span><mark>Udzielanie pomocy — bezrefleksyjne?</mark></span></summary>
+<div class="inner">
+<p><strong>Langer, Blank i Chanowitz (1978)</strong>: w bibliotece działa tylko jedna kserokopiarka, tworzy się kolejka. Współpracownik badaczy prosi o wpuszczenie jedną z trzech próśb: <span class="src">s. 127</span></p>
+<ol type="a">
+<li>„Przepraszam, czy mogę skorzystać z ksero?” — bez uzasadnienia;</li>
+<li>„… bo chcę zrobić odbitki?” — uzasadnienie <strong>tautologiczne</strong>;</li>
+<li>„… bo się spieszę?” — uzasadnienie rzeczywiste.</li>
+</ol>
+<p>Strukturalnie b i c są podobne (jest „bo”), semantycznie a i b (brak prawdziwego powodu). Zgoda zależała <mark>od rodzaju prośby oraz od wielkości prośby</mark>.</p>
+<figure class="fig">
+<svg aria-label="Procent osób wpuszczających: 5 stron — a około 60, b około 93, c około 94; 20 stron — a około 24, b około 24, c około 42" role="img" viewbox="0 0 420 220">
+<line stroke="#cfc3b2" x1="40" x2="410" y1="180" y2="180"></line>
+<g fill="#5c4f43" font-size="10" text-anchor="end"><text x="34" y="184">0</text><text x="34" y="112">50</text><text x="34" y="40">100</text></g>
+<line stroke="#eee5d8" x1="40" x2="410" y1="108" y2="108"></line><line stroke="#eee5d8" x1="40" x2="410" y1="36" y2="36"></line>
+<rect fill="hsl(209 36% 36%)" height="86" width="36" x="70" y="94"></rect><rect fill="hsl(209 33% 72%)" height="35" width="36" x="108" y="145"></rect>
+<rect fill="hsl(209 36% 36%)" height="134" width="36" x="190" y="46"></rect><rect fill="hsl(209 33% 72%)" height="35" width="36" x="228" y="145"></rect>
+<rect fill="hsl(209 36% 36%)" height="135" width="36" x="310" y="45"></rect><rect fill="hsl(209 33% 72%)" height="60" width="36" x="348" y="120"></rect>
+<g fill="#2b2118" font-size="10" text-anchor="middle"><text x="88" y="88">~60%</text><text x="126" y="139">~24%</text><text x="208" y="40">~93%</text><text x="246" y="139">~24%</text><text x="328" y="39">~94%</text><text x="366" y="114">~42%</text></g>
+<g fill="#5c4f43" font-size="11" text-anchor="middle"><text x="107" y="198">a) brak</text><text x="227" y="198">b) tautologia</text><text x="347" y="198">c) „spieszę się”</text></g>
+<g fill="#5c4f43" font-size="10"><rect fill="hsl(209 36% 36%)" height="10" width="10" x="70" y="206"></rect><text x="84" y="215">5 stron</text><rect fill="hsl(209 33% 72%)" height="10" width="10" x="150" y="206"></rect><text x="164" y="215">20 stron</text></g>
+</svg>
+<figcaption>Ryc. 3.17 (schemat) — odsetek osób zgadzających się na wpuszczenie; wartości przybliżone.</figcaption>
+</figure>
+<ul>
+<li><strong>Mała prośba</strong> (5 stron): b i c dają niemal tyle samo zgód — <mark>ważne było, że pojawiło się jakieś uzasadnienie</mark>. To <mark>przetwarzanie balistyczne</mark>, oparte na <mark>skrypcie</mark>.</li>
+<li><strong>Duża prośba</strong> (20 stron): zgód jest mniej, a ludzie <mark>reagują w sposób refleksyjny — uwzględniają nie tylko to, że pojawiło się jakieś uzasadnienie, ale biorą także pod uwagę jego jakość</mark>. Gdy zaangażowane są <mark>osobiste interesy</mark>, łatwiej wejść w <mark>stan refleksyjności</mark>.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ 3.7 ============ -->
+<section class="chapter" id="r3-7">
+<div class="chapter-head"><span class="num">3.7</span><h2>Uwaga a świadomość</h2></div>
+<ul>
+<li>Najprościej: <mark>kiedy coś znajduje się w centrum pola uwagi, to jednocześnie jest świadome</mark>. Ale świadomość nie pełni funkcji uwagi — nie selekcjonuje bodźców ani nie określa zaangażowania. Bardziej przypomina <mark>wewnętrzne oko przyglądające się procesom psychicznym</mark> albo <mark>strumień światła punktowego oświetlający fragment naszego życia psychicznego</mark>; nie kontroluje, lecz jest <mark>rejestratorem zdarzeń psychicznych</mark>. <span class="src">s. 126–128</span></li>
+<li>W psychologii <mark>introspekcyjnej</mark> uważano, że <mark>przez świadomość można poznać inne procesy psychiczne</mark>, a introspekcja (<mark>badanie świadomości</mark>) jest główną metodą. Mieczysław <mark>Kreutz</mark> (<em>Metody współczesnej psychologii</em>, 1962) bronił <mark>użyteczności introspekcji</mark>. Andrzej Lewicki (1965): najpierw trzeba poznać jej <mark>mechanizm psychologiczny</mark>; introspekcja nie jest peryskopem, <mark>jest metodą pośrednią</mark> (np. przez język), a jej wiarygodność trudno sprawdzić.</li>
+<li>Przełom: <mark>Ericsson i Simon</mark> (1980) — <mark>uświadamianie sobie własnych procesów psychicznych może zmieniać ich przebieg</mark>: czasem daje nowe rozwiązania, czasem zmienia intensywność (uświadomiona emocja słabnie — <mark>siła tej emocji maleje</mark> — albo przechodzi w inną). Przywrócili zainteresowanie świadomością i technikami głośnego myślenia.</li>
+</ul>
+<details class="block" open="">
+<summary>Teoria Bernarda Baarsa — świadomość jako teatr umysłu</summary>
+<div class="inner">
+<p>Teoria <mark>Bernarda Baarsa</mark> ma na celu <mark>wyjaśnienie procesu sterowania zachowaniem w długiej perspektywie czasowej</mark> (pamięć operacyjna działa w krótkiej). Uwagę „skupiamy”, „poświęcamy”, „kierujemy” (Baars, 1999), a <mark>świadomość można „mieć”, ale można ją też „stracić”</mark>. Świadomość nie selekcjonuje informacji, lecz <mark>daje do nich dostęp</mark>. <em>Reportability</em> („sprawozdawalność”) <mark>jest czymś więcej aniżeli zdolność do werbalizowania treści świadomości</mark> — artyści wyrażają ją przez obraz, muzykę, taniec. <span class="src">s. 128</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Plan funkcjonalny</th><th>Plan strukturalny</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">Główna funkcja: <mark>wymiana i rozprzestrzenianie informacji w całym systemie</mark> — <mark><em>brainweb</em></mark> (sieć podobna do internetu). Cel: optymalny przetarg między <mark>organizacją a elastycznością</mark>. Sytuacje dobrze znane wymagają organizacji, nowe — elastyczności, a większość jest częściowo nowa. <mark>Świadomość umożliwia osiągnięcie rozsądnego kompromisu między organizacją a elastycznością</mark> (Baars, 2003).</td>
+<td style="font-weight:400;white-space:normal"><mark>Świadomość od strony strukturalnej ma budowę wielopoziomową.</mark> Jej jądro to <mark>przestrzeń robocza o ograniczonej pojemności</mark> (podobna do ogniska uwagi). Przestrzeń robocza jest polem operacji, ale sama ich nie wykonuje; natomiast <mark>uwaga może zarządzać innymi procesami poznawczymi, może aktywizować jedne, hamować inne</mark>, podtrzymywać i blokować.</td>
+</tr></tbody>
+</table></div>
+<h4>Metafora teatru</h4>
+<ul>
+<li>Świadomość to <mark>jasno oświetlona scena, na której toczy się akcja</mark> (Baars, 1997). Widownia siedzi w cieniu; wygląd sceny zależy od autora, reżysera, scenografa, kostiumografa i operatora światła (uwaga?). <span class="src">s. 129</span></li>
+<li>Treści docierają przez <mark>moduły w korze sensorycznej</mark>, które <mark>oddziałują na siebie głównie hamująco</mark>, by na scenę nie trafiało za dużo naraz. <mark>Kora sensoryczna może być pobudzana zarówno przez informacje zewnętrzne, jak i przez informacje pochodzące z wnętrza systemu</mark> (np. pamięciowe).</li>
+<li>Informację z globalnej przestrzeni roboczej obrabiają <strong>systemy eksperckie</strong> — wyspecjalizowane grupy neuronów (rozpoznawanie wściekłości na twarzy, odpowiadanie na pytanie, korekta wypowiedzi). Przykład <mark>Nęcki</mark> (2002): „Piciu, przygotować ci coś do misia” — mówiący zdawał sobie sprawę z <mark>lapsusu językowego</mark>, ale nie zdołał <mark>zatrzymać już rozpoczętej odpowiedzi</mark>. Inne moduły rozpoznają układy linii (czytanie) czy kształty (<mark>percepcja ekologiczna</mark>).</li>
+<li>Systemów eksperckich mogą być tysiące, a nawet miliony. Tworzą koalicje, dzięki którym możemy <mark>wykonywać złożone zadania</mark> (notatki z czytanej książki), i rywalizują, <mark>hamując w ten sposób wykonywanie jakichś innych czynności</mark>. <mark>Działanie tych systemów może być modyfikowane przez bodźce zewnętrzne lub wewnętrzne.</mark></li>
+<li><mark>Efekty działania koalicji systemów eksperckich docierają do globalnej przestrzeni roboczej</mark>, która przypomina <mark>podium na dużej konferencji naukowej</mark>: grupy ekspertów walczą o mikrofon. Gdy pojawiają się nowe problemy, powstają nowe koalicje. <span class="src">s. 130</span></li>
+<li>Na zawartość przestrzeni wpływają <mark>czynniki nieświadome</mark>, działające za kulisami; <mark>Baars określa je mianem kontekstów</mark>. <mark>Reżyser to w terminologii psychologicznej procesy odpowiedzialne za sterowanie wrażeniem</mark> — sprawia, że w świadomości nie pojawiają się myśli i pragnienia nieakceptowane w kulturze, i ułatwia odgrywanie roli. <mark>Operator światła to proces odpowiedzialny za sterowanie uwagą</mark>: wąski snop na jeden fragment albo szeroki strumień — odpowiednik <mark>uwagi ekstensywnej i intensywnej</mark> u <mark>Aliny Kolańczyk</mark> (1997). <span class="src">s. 130–131</span></li>
+</ul>
+<figure class="fig">
+<svg aria-label="Świadomość jako teatr umysłu: u góry konteksty — reżyser, operator światła, konteksty lokalne; wejścia do globalnej przestrzeni roboczej — zmysły zewnętrzne, zmysły wewnętrzne, idee; globalna przestrzeń robocza ze świadomością w centrum i peryferiami; pamięć operacyjna; na dole wyspecjalizowane procesy nieświadome, czyli systemy eksperckie" role="img" viewbox="0 0 600 400">
+<defs><marker id="ar9" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="hsl(209 36% 36%)"></path></marker></defs>
+<g fill="#2b2118" font-size="11.5" text-anchor="middle">
+<rect fill="#fbf3e3" height="44" rx="8" stroke="#d9c49c" width="560" x="20" y="10"></rect>
+<text x="110" y="37">Reżyser</text><text x="300" y="30">Konteksty</text><text x="300" y="45">operator światła</text><text x="490" y="37">konteksty lokalne</text>
+<rect fill="#fffdf9" height="64" rx="8" stroke="hsl(209 33% 60%)" width="170" x="20" y="78"></rect><text x="105" y="100">zmysły zewnętrzne:</text><text font-size="10.5" x="105" y="115">wzrok, słuch, dotyk,</text><text font-size="10.5" x="105" y="129">smak itd.</text>
+<rect fill="#fffdf9" height="64" rx="8" stroke="hsl(209 33% 60%)" width="170" x="215" y="78"></rect><text x="300" y="96">zmysły wewnętrzne:</text><text font-size="10.5" x="300" y="110">wyobraźnia wzrokowa, mowa</text><text font-size="10.5" x="300" y="123">wewnętrzna, wyobrażone</text><text font-size="10.5" x="300" y="136">uczucia, sny</text>
+<rect fill="#fffdf9" height="64" rx="8" stroke="hsl(209 33% 60%)" width="170" x="410" y="78"></rect><text x="495" y="96">idee: abstrakcyjne</text><text font-size="10.5" x="495" y="110">konteksty, umysł, idee</text><text font-size="10.5" x="495" y="123">obrazowe i zwerbalizowane,</text><text font-size="10.5" x="495" y="136">intuicje</text>
+<rect fill="hsl(209 40% 95%)" height="108" rx="8" stroke="hsl(209 33% 60%)" width="560" x="20" y="166"></rect>
+<text font-size="11" x="80" y="214">globalna</text><text font-size="11" x="80" y="228">przestrzeń</text><text font-size="11" x="80" y="242">robocza</text>
+<ellipse cx="320" cy="220" fill="hsl(209 33% 72%)" rx="150" ry="44"></ellipse>
+<ellipse cx="320" cy="222" fill="#fffdf9" rx="72" ry="22" stroke="hsl(209 36% 36%)"></ellipse>
+<text fill="hsl(209 36% 20%)" font-size="10.5" x="320" y="190">peryferie</text><text font-weight="600" x="320" y="226">świadomość</text>
+<rect fill="#fffdf9" height="44" rx="8" stroke="hsl(209 33% 60%)" width="560" x="20" y="294"></rect>
+<text font-size="10.5" x="300" y="312">pamięć operacyjna: otrzymuje dane świadome, kontroluje mowę wewnętrzną,</text><text font-size="10.5" x="300" y="327">korzysta z wyobraźni przy zadaniach przestrzennych; pod kontrolą wolicjonalną</text>
+<text font-size="11.5" x="300" y="388">wyspecjalizowane procesy nieświadome (systemy eksperckie) — „widownia”</text>
+</g>
+<g fill="none" marker-end="url(#ar9)" stroke="hsl(209 36% 36%)" stroke-width="1.6">
+<line x1="105" x2="105" y1="142" y2="164"></line><line x1="300" x2="300" y1="142" y2="164"></line><line x1="495" x2="495" y1="142" y2="164"></line>
+<line x1="120" x2="170" y1="372" y2="340"></line><line x1="300" x2="300" y1="372" y2="340"></line><line x1="480" x2="430" y1="372" y2="340"></line>
+</g>
+</svg>
+<figcaption>Ryc. 3.18 (schemat) — świadomość jako teatr umysłu według Baarsa.</figcaption>
+</figure>
+<ul>
+<li>To <mark>koncepcja nietypowa we współczesnej psychologii poznawczej</mark>: wyjaśnia, jak działa cały <mark>system regulacji zachowania</mark>, nie tylko świadomość. Metaforyczny język ułatwia zrozumienie, ale utrudnia wyprowadzanie testowalnych hipotez. Dane empiryczne mają charakter <mark>neurobiologiczny i dotyczą głównie procesu dostarczania informacji przez korę sensoryczną do globalnej przestrzeni roboczej</mark>. <span class="src">s. 131</span></li>
+<li>Krytyka filozofów: <mark>Daniel Dennett</mark> (1978) — to powrót do <mark>kartezjańskiego teatru umysłu</mark> (u Kartezjusza informacje z całego umysłu zbiegały się w szyszynce, jak na scenie Baarsa).</li>
+<li>Zaleta: wyjaśnia zachowanie w dłuższej perspektywie czasowej, a nie tylko to, co dzieje się w laboratorium podczas eksperymentu.</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ PRZETARG ============ -->
+<section class="chapter" id="r3-przetarg">
+<div class="chapter-head"><span class="num">+</span><h2>Przetarg między szybkością a poprawnością</h2></div>
+<div class="flag"><span class="label">Spoza rozdziału — do potwierdzenia na wykładzie</span>Sylabus wymienia ten punkt, ale rozdział 3 Maruszewskiego go nie omawia. Poniżej krótka wiedza podręcznikowa.</div>
+<ul>
+<li><strong>Przetarg między szybkością a poprawnością</strong> (<em>speed–accuracy trade-off</em>, SAT): im szybciej odpowiadamy, tym więcej popełniamy błędów, a im staranniej unikamy błędów, tym wolniej reagujemy. Osoba badana sama, często nieświadomie, ustala ten kompromis.</li>
+<li>Wniosek metodologiczny: nie da się ocenić sprawności tylko po czasie reakcji albo tylko po liczbie błędów. Krótszy czas przy większej liczbie błędów może oznaczać zmianę strategii, a nie lepsze przetwarzanie. Por. <a href="#c1-cr">czas reakcji i błędy, ćwiczenia 1</a>.</li>
+<li>Na przetarg wpływają m.in. instrukcja („odpowiadaj jak najszybciej” vs „jak najdokładniej”), nagrody i kary oraz koszt błędu — podobnie jak <a href="#r3-3a">macierz wypłat</a> w detekcji sygnałów.</li>
+<li>Powiązania z rozdziałem: w <a href="#ramka-3-3">zadaniu Stroopa</a> interferencja przejawia się i wolniejszymi odpowiedziami, i większą liczbą błędów. U Mackwortha błędy wynikały z wątpliwości obserwatora, czyli z ustawienia kryterium decyzji, a nie ze spadku wrażliwości.</li>
+</ul>
+</section>
+<!-- ============ KTO JEST KIM ============ -->
+<section class="chapter" id="kto-3">
+<div class="chapter-head"><span class="num">✦</span><h2>Kto jest kim — rozdział 3</h2></div>
+<div class="cards">
+<div class="card"><h4>William James</h4><span class="yr">1890</span><p>Klasyczna definicja uwagi: „obejmowanie w posiadanie przez umysł”.</p></div>
+<div class="card"><h4>Nęcka, Orzechowski, Szymura</h4><span class="yr">2006</span><p>Uwaga jako system selekcji chroniący przed przeładowaniem.</p></div>
+<div class="card"><h4>Kolańczyk</h4><span class="yr">1991, 1997</span><p>Uwaga intensywna i ekstensywna.</p></div>
+<div class="card"><h4>Cowan</h4><span class="yr">1995–2001</span><p>STM jako zaktywizowana część LTM; selekcja jako aktywizowanie; habituacja.</p></div>
+<div class="card"><h4>Wagenaar</h4><span class="yr">1986</span><p>Pamiętnik: bardzo nieprzyjemne zdarzenia kodowane wolno.</p></div>
+<div class="card"><h4>Monsell</h4><span class="yr">1996</span><p>Wycieranie sztućców — balistyczny automatyzm.</p></div>
+<div class="card"><h4>Broadbent i Broadbent; Shapiro</h4><span class="yr">1987; 1994</span><p>Mrugnięcie uwagi.</p></div>
+<div class="card"><h4>Kanwisher</h4><span class="yr">1987</span><p>Ślepota na powtórzenia.</p></div>
+<div class="card"><h4>Sokołow</h4><span class="yr">1969</span><p>Odruch orientacyjny: komparator i mechanizm wzmacniający.</p></div>
+<div class="card"><h4>Berlyne</h4><span class="yr">1960</span><p>Bodźce sygnałowe wyzwalające odruch orientacyjny.</p></div>
+<div class="card"><h4>Lacey</h4><span class="yr">1967</span><p>Pobieranie vs odrzucanie informacji a akcja serca.</p></div>
+<div class="card"><h4>Pawłow; Uchtomski</h4><span class="yr">—</span><p>Indukcja ujemna; dominanta.</p></div>
+<div class="card"><h4>LaBerge</h4><span class="yr">1997, 1998</span><p>Trójkąt uwagowy: ekspresja, wzmacnianie (wzgórze), kontrola (kora czołowa).</p></div>
+<div class="card"><h4>Mackworth</h4><span class="yr">1948</span><p>Zegar z sekundnikiem: spadek czujności po 30 minutach.</p></div>
+<div class="card"><h4>Parasuraman i Davies</h4><span class="yr">1977</span><p>Czujność spada przy ponad 24 bodźcach na minutę.</p></div>
+<div class="card"><h4>Koelega i in.</h4><span class="yr">1989</span><p>Spadek czujności tylko przy zadaniach percepcyjnych.</p></div>
+<div class="card"><h4>Peterson, Birdsall, Fox</h4><span class="yr">1954</span><p>Teoria detekcji sygnałów.</p></div>
+<div class="card"><h4>Treisman</h4><span class="yr">1960–1986</span><p>Wiele filtrów, priorytety; uwaga jako „klej” cech.</p></div>
+<div class="card"><h4>Nakayama</h4><span class="yr">1990</span><p>Niektóre koniunkcje cech są „naturalne”.</p></div>
+<div class="card"><h4>Broadbent</h4><span class="yr">1958</span><p>Filtr „wszystko albo nic”.</p></div>
+<div class="card"><h4>Cherry; Moray</h4><span class="yr">1953; 1959</span><p>Cieniowanie, słuchanie dwuuszne.</p></div>
+<div class="card"><h4>Gray i Wedderburn</h4><span class="yr">1960</span><p>„Dear Aunt Jane” — selekcja według znaczenia.</p></div>
+<div class="card"><h4>Johnston i Heinz</h4><span class="yr">1978</span><p>Przetwarzanie presemantyczne; znany tekst trudniej zignorować.</p></div>
+<div class="card"><h4>Neisser i Becklen</h4><span class="yr">1975</span><p>Nałożone nagrania; krytyka filtrów.</p></div>
+<div class="card"><h4>Kahneman</h4><span class="yr">1973</span><p>Teoria zasobów: jedna pula, polityka alokacji.</p></div>
+<div class="card"><h4>Spelke, Hirst, Neisser</h4><span class="yr">1976</span><p>Zadanie podwójne: czytanie i dyktando.</p></div>
+<div class="card"><h4>Gopher i Navon</h4><span class="yr">1979</span><p>Zasoby specyficzne dla modalności.</p></div>
+<div class="card"><h4>Tallis; Barlow</h4><span class="yr">1999; 1988</span><p>Funkcja adaptacyjna myśli intruzywnych; system alarmowy.</p></div>
+<div class="card"><h4>Wegner</h4><span class="yr">1987–1994</span><p>Efekt rykoszetu; proces wykonawczy i monitorujący.</p></div>
+<div class="card"><h4>Posner i Snyder; Schneider i Shiffrin</h4><span class="yr">1975; 1977</span><p>Procesy automatyczne vs kontrolowane.</p></div>
+<div class="card"><h4>Corteen i Wood</h4><span class="yr">1972</span><p>GSR na nazwy miast; generalizacja semantyczna.</p></div>
+<div class="card"><h4>Logan</h4><span class="yr">1988</span><p>Teoria egzemplarzy automatyzacji.</p></div>
+<div class="card"><h4>Anderson; LaBerge i Samuels</h4><span class="yr">1983; 1974</span><p>Automatyzacja przez integrowanie procedur.</p></div>
+<div class="card"><h4>Stroop</h4><span class="yr">1935</span><p>Efekt Stroopa.</p></div>
+<div class="card"><h4>Besner i in.</h4><span class="yr">1997, 1999</span><p>Mniejsza interferencja przy jednej kolorowej literze.</p></div>
+<div class="card"><h4>Ellen Langer</h4><span class="yr">1978–1993</span><p>Refleksyjność i bezrefleksyjność.</p></div>
+<div class="card"><h4>Langer, Blank, Chanowitz</h4><span class="yr">1978</span><p>Kolejka do ksero.</p></div>
+<div class="card"><h4>Doliński</h4><span class="yr">2003</span><p>Huśtawka emocjonalna, stan „między programami”.</p></div>
+<div class="card"><h4>Ericsson i Simon</h4><span class="yr">1980</span><p>Uświadamianie procesów zmienia ich przebieg.</p></div>
+<div class="card"><h4>Baars</h4><span class="yr">1997–2003</span><p>Globalna przestrzeń robocza, teatr umysłu.</p></div>
+<div class="card"><h4>Dennett</h4><span class="yr">1978</span><p>Krytyka: kartezjański teatr umysłu.</p></div>
+</div>
+</section>
+<!-- ============ PYTANIA ============ -->
+<section class="chapter" id="pytania-3">
+<div class="chapter-head"><span class="num">?</span><h2>Pytania kontrolne — rozdział 3</h2></div>
+<p>Pytania z końca rozdziału (s. 131) i dwa dodatkowe z sylabusa.</p>
+<p class="fiszki-link">Pytania sprawdzające <a href="fiszki.html">Fiszki</a></p>
+</section>
+</div>
+</div>
+
+<footer>
+  Wykłady: Maruszewski, T. (2017). <cite>Psychologia poznania. Umysł i świat</cite>. Gdańsk: GWP, rozdz. 1 (s. 13–41), 2 (s. 43–83) i 3 (s. 85–131).
+  Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN (skan s. 34–39).
+  Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
+</footer>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-2.html"><span>Poprzednia</span><b>Wykład 2</b><i>W jaki sposób spostrzegamy świat?</i></a><a class="next" href="cwiczenia-1.html"><span>Następna</span><b>Ćwiczenia 1</b><i>Psychologia poznawcza w relacji do innych dziedzin</i></a></nav></main>
+</div>
+<script>
+(function(){
+  var KEY_TAB='pp-tab', KEY_OPEN='pp-open';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function setTab(name,focus){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===name;
+      t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    document.querySelectorAll('.toc-panel').forEach(function(p){p.hidden=p.dataset.for!==name});
+    store(KEY_TAB,name);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){setTab(t.dataset.tab);window.scrollTo({top:0})});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];setTab(n.dataset.tab,true);e.preventDefault()}
+    });
+  });
+  function saveOpen(){
+    var ids=[].slice.call(document.querySelectorAll('details.unit[open]')).map(function(d){return d.id});
+    store(KEY_OPEN,ids.join(','));
+  }
+  document.querySelectorAll('details.unit').forEach(function(d){d.addEventListener('toggle',saveOpen)});
+  function reveal(el){
+    var panel=el.closest('.panel'); if(panel)setTab(panel.id==='panel-cw'?'cw':'wyk');
+    var p=el; while(p){ if(p.tagName==='DETAILS')p.open=true; p=p.parentElement; }
+    if(el.tagName==='DETAILS')el.open=true;
+    requestAnimationFrame(function(){el.scrollIntoView({block:'start'})});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a)return;
+    var t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); if(!t)return;
+    e.preventDefault(); reveal(t);
+    try{history.replaceState(null,'','#'+t.id)}catch(err){}
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.dataset.toggle==='open';
+      var panel=document.querySelector('.panel:not([hidden])');
+      panel.querySelectorAll('details').forEach(function(d){d.open=open});
+      document.getElementById('zaliczenie').open=false;
+    });
+  });
+  var saved=load(KEY_OPEN);
+  if(saved)saved.split(',').forEach(function(id){var d=document.getElementById(id);if(d&&d.classList.contains('unit'))d.open=true});
+  var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
+})();
+</script>
+<script data-back="./" data-back-label="Poznawcza" data-home="../" src="../assets/reader.js"></script></body>
+</html>

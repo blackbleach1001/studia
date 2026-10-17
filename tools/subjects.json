@@ -1,0 +1,60 @@
+[
+ {"dir":"poznawcza","name":"Psychologia poznawcza","short":"Poznawcza","kind_label":"Wykład + Ćwiczenia","hsl":[209,33,56],
+  "meta":"Maruszewski · Sternberg · Nęcka i in.",
+  "units":[
+   {"key":"rozdzial-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Czym zajmuje się psychologia poznawcza?","src":"Maruszewski, rozdz. 1, s. 13–41","sub":"Procesy poznawcze, historia dziedziny, szerokie i wąskie ujęcie, paradygmat, poznanie społeczne.","sub_short":"Maruszewski, rozdz. 1"},
+   {"key":"rozdzial-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"W jaki sposób spostrzegamy świat?","src":"Maruszewski, rozdz. 2, s. 43–83","sub":"Fazy spostrzegania, spór atomizm–postać, kategoryzacja, cykl percepcyjny, percepcja bezpośrednia.","sub_short":"Maruszewski, rozdz. 2"},
+   {"key":"rozdzial-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Natura i funkcje uwagi","src":"Maruszewski, rozdz. 3, s. 85–131","sub":"Funkcje i mechanizmy uwagi, czujność, przeszukiwanie, filtry i zasoby, automatyzmy, refleksyjność, świadomość.","sub_short":"Maruszewski, rozdz. 3"},
+   {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Psychologia poznawcza w relacji do innych dziedzin","src":"Sternberg s. 23–31 · Nęcka i in. s. 33–36","sub":"Cele i metody badań, eksperyment, czas reakcji i błędy, kognitywistyka.","sub_short":"Sternberg · Nęcka i in."},
+   {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Zaliczenie przedmiotu","sub_short":"Punktacja i wymagania"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 39","href":"fiszki.html"},
+   {"kind":"quiz","title":"Powtórka","sub":"Test, fiszki, pytania otwarte","href":"powtorka.html"}
+  ],
+  "redirects":{"literatura.html":"./","literatura-fiszki.html":"fiszki.html"}
+ },
+ {"dir":"metodologia","name":"Podstawy metodologii i statystyki","short":"Metodologia","kind_label":"Wykład + Ćwiczenia","hsl":[150,26,44],
+  "meta":"Józefacka · Bedyńska i Cypryańska · Babbie",
+  "units":[
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia jako nauka empiryczna","src":"Józefacka t. 1, s. 9–17","sub_short":"Józefacka t. 1, s. 9–17"},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Konceptualizacja, operacjonalizacja, pomiar","src":"Józefacka t. 1, s. 64–72 · Babbie","sub_short":"Józefacka · Babbie"},
+   {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS"},
+   {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Jak zaliczyć przedmiot","sub_short":"Sylabus"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 56","href":"fiszki.html"},
+   {"kind":"quiz","title":"Trening","sub":"Test, pytania otwarte, fiszki","href":"trening.html"}
+  ],
+  "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}
+ },
+ {"dir":"kliniczna","name":"Psychologia kliniczna i zdrowia","short":"Kliniczna","kind_label":"Wykład + Ćwiczenia","hsl":[12,42,58],
+  "meta":"dr Agnieszka Mościcka-Teske",
+  "units":[
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Podstawy teoretyczne i modele zdrowia","src":"Cierpiałkowska, Sęk · Heszen-Celińska, Sęk","sub":"Patogeneza i salutogeneza, pojęcie zdrowia, modele i podejścia psychologii zdrowia.","sub_short":"Patogeneza, salutogeneza, modele zdrowia"},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Zastosowania psychologii klinicznej i zdrowia","src":"Heszen, Sęk","sub":"Styl życia, zachowania zdrowotne, prewencja, pacjent w systemie opieki zdrowotnej, stres.","sub_short":"Styl życia, prewencja, stres"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 40","href":"fiszki.html"}
+  ],
+  "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}
+ },
+ {"dir":"rozmowa","name":"Rozmowa psychologiczna","short":"Rozmowa","kind_label":"Projekt + Ćwiczenia","hsl":[345,32,60],
+  "meta":"Wywiad psychologiczny, t. 1–2",
+  "units":[
+   {"key":"zajecia-1","kind":"zaj","label":"Zajęcia 1","file":"zajecia-1.html","title":"Kontakt, kontrakt i etyka rozmowy","sub_short":"Geller i Król · Zalewski"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki · Zajęcia 1","sub":"Wejściówka · 14","href":"zajecia-1-fiszki.html"}
+  ]
+ },
+ {"dir":"praca","name":"Psychologia pracy i organizacji","short":"Praca i organizacja","kind_label":"Wykład + Ćwiczenia","hsl":[300,20,46],
+  "units":[
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Organizacja i motywacja do pracy","sub":"Organizacja i kontekst jej funkcjonowania · Motywacja do pracy","sub_short":"Organizacja, motywacja"},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Środowisko pracy i etyka w organizacji","sub":"Rola psychologa w organizacji · Organizacja pracy i środowisko pracy · Etyczny biznes (CSR)","sub_short":"Środowisko pracy, CSR, etyka"},
+   {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Sylabus w skrócie","sub_short":"Zaliczenie i literatura"}
+  ],
+  "redirects":{"notatki.html":"./"}
+ },
+ {"dir":"edukacja","name":"Psychologia edukacji","short":"Edukacja","kind_label":"Wykład + Ćwiczenia","hsl":[36,48,54],"units":[]}
+]

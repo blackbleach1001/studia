@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Wykład 2 · Podstawy metodologii i statystyki</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9; --ink:#2b2118; --ink-soft:#5a4a3c; --line:#e8dfd2;
+  --acc:hsl(150,26%,44%); --acc-dark:hsl(150,28%,30%);
+  --acc-soft:hsl(150,26%,93%); --acc-mid:hsl(150,24%,82%);
+  --warn:hsl(12,42%,58%); --warn-soft:hsl(12,50%,95%);
+  --gold:hsl(36,48%,54%); --gold-soft:hsl(36,60%,94%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 80px}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;color:var(--ink)}
+h1{font-size:2.1rem;margin:.2em 0 .1em}
+h2{font-size:1.45rem;margin:0}
+h3{font-size:1.1rem;margin:1.3em 0 .4em;color:var(--acc-dark)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-dark)}
+.sub{color:var(--ink-soft);font-style:italic;margin:0 0 18px}
+.dots{display:flex;gap:6px;margin:10px 0 18px}
+.dots span{width:14px;height:14px;border-radius:50%}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px}
+nav.toc a{font-size:.82rem;text-decoration:none;color:var(--acc-dark);background:var(--acc-soft);border:1px solid var(--acc-mid);padding:3px 10px;border-radius:99px}
+details.sec{scroll-margin-top:60px;border-top:2px solid var(--acc);margin:0 0 8px;padding:6px 0 4px}
+details.sec>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;padding:8px 0}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary .num{font-family:"Playfair Display",serif;color:var(--acc);font-size:1.3rem;min-width:1.6em}
+details.sec>summary::after{content:"＋";margin-left:auto;color:var(--acc)}
+details.sec[open]>summary::after{content:"−"}
+.tag{display:inline-block;font-size:.7rem;font-family:system-ui,sans-serif;letter-spacing:.04em;padding:1px 8px;border-radius:99px;vertical-align:middle;margin-left:4px;border:1px solid}
+.tag.w{color:var(--acc-dark);border-color:var(--acc-mid);background:var(--acc-soft)}
+.tag.j{color:hsl(36,50%,32%);border-color:hsl(36,48%,78%);background:var(--gold-soft)}
+.tag.s{color:hsl(12,40%,38%);border-color:hsl(12,42%,82%);background:var(--warn-soft)}
+.tag.c{color:var(--ink-soft);border-color:var(--line);background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:12px 14px}
+.card h4{margin:0 0 4px;font-family:"Playfair Display",serif;font-size:1.02rem}
+.card p{margin:0;font-size:.95rem}
+.card.warn{border-left-color:var(--warn)}
+.card.gold{border-left-color:var(--gold)}
+.big{font-family:"Playfair Display",serif;font-size:1.8rem;color:var(--acc-dark);line-height:1}
+.def{background:var(--acc-soft);border-left:4px solid var(--acc);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+.def b:first-child{color:var(--acc-dark)}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.95rem}
+.trap{background:var(--warn-soft);border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.95rem}
+.syl{font-family:"Source Serif 4",serif;background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:12px 0}
+.syl .line{border-top:1px dashed var(--ink-soft);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:10px 0}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Playfair Display",serif;color:var(--acc-dark);font-weight:500}
+.scroll{overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.flow span{background:#fff;border:1px solid var(--acc-mid);border-radius:6px;padding:4px 10px;font-size:.9rem}
+.flow i{color:var(--acc);font-style:normal}
+details.q{background:#fff;border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:0 14px}
+details.q>summary{cursor:pointer;padding:10px 0;font-weight:600}
+details.q>summary::marker{color:var(--acc)}
+details.q .a{padding:0 0 12px;border-top:1px dashed var(--line);padding-top:8px}
+ul{padding-left:1.2em}
+li{margin:.25em 0}
+.ok{color:var(--acc-dark);font-weight:600}
+.no{color:hsl(12,45%,45%);font-weight:600}
+footer{margin-top:40px;font-size:.82rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px}
+/* przełącznik części */
+.switch{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:8px 16px;justify-content:center}
+.switch a{flex:1;max-width:200px;white-space:nowrap;text-align:center;text-decoration:none;font-family:"Playfair Display",serif;font-size:.95rem;padding:6px 10px;border-radius:99px;border:1.5px solid var(--acc);color:var(--acc-dark)}
+.switch a.cw-btn{background:var(--acc-dark);color:#fff;border-color:var(--acc-dark)}
+.part{border-radius:12px;padding:18px 18px 14px;margin:30px 0 18px;scroll-margin-top:60px}
+.part .kicker{color:inherit;opacity:.8}
+.part h2{font-size:1.7rem;color:inherit;margin:.15em 0 .2em}
+.part p{margin:0;font-size:.92rem;opacity:.9}
+.part.wyk{background:var(--acc-soft);color:var(--acc-dark);border:1px solid var(--acc-mid)}
+.part.cwi{background:var(--acc-dark);color:#fff;margin-top:56px}
+.part.cwi::before{content:"✂ · · · · · · · · · · · · · · · · · · · · · · · · ·";display:block;color:var(--acc-dark);background:var(--paper);margin:-46px -18px 28px;font-size:.8rem;letter-spacing:.1em}
+.cw-zone details.sec{border-top:2px dashed var(--acc-dark)}
+.cw-zone details.sec>summary .num{color:#fff;background:var(--acc-dark);border-radius:6px;padding:0 6px;font-size:1rem;min-width:auto}
+.cw-zone nav.toc a{background:var(--acc-dark);color:#fff;border-color:var(--acc-dark)}
+.tag.b{color:hsl(209,35%,32%);border-color:hsl(209,33%,80%);background:hsl(209,40%,95%)}
+.tag.e{color:hsl(25,35%,32%);border-color:hsl(25,35%,80%);background:hsl(25,45%,95%)}
+code,.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.code{display:block;background:var(--ink);color:#f3ece2;border-radius:8px;padding:10px 14px;margin:8px 0;white-space:pre-wrap;line-height:1.5}
+.code .c{color:#a9c9b5}
+.path{font-family:system-ui,sans-serif;font-size:.82rem;background:var(--acc-soft);border:1px solid var(--acc-mid);border-radius:5px;padding:1px 6px;white-space:nowrap}
+@media print{details.sec{break-inside:avoid} nav.toc,.switch{display:none}}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style></head>
+<body>
+
+<div class="wrap"><header class="st-hero"><p class="st-eyebrow">Wykład 2 · Józefacka t. 1, s. 64–72 · Babbie</p><h1>Konceptualizacja, operacjonalizacja, pomiar</h1></header>
+
+
+
+
+
+
+
+<!-- 0 -->
+
+<!-- 1 -->
+
+<!-- 2 -->
+
+<!-- 3 -->
+
+<!-- 4 -->
+
+<!-- 5 -->
+
+<!-- 6 -->
+
+<!-- 7 -->
+
+<!-- 8 -->
+
+<!-- 9 -->
+
+<!-- 10 -->
+
+<!-- 11 -->
+
+<!-- ===================== ĆWICZENIA ===================== -->
+
+<!-- ===================== WYKŁAD 2 ===================== -->
+
+<div class="note"><b>Slajdów z wykładu 2 jeszcze tu nie ma.</b> Ta część powstała z obu lektur. Gdy prześlesz prezentację, dołożę jej treść i oznaczę ją tagiem <span class="tag w">W2</span>.</div>
+
+<div class="def" style="background:#fff">
+<b>Mapa wykładu w jednym zdaniu:</b> mamy niejasne pojęcie z języka potocznego → <b>konceptualizacja</b> nadaje mu ustalone znaczenie → <b>operacjonalizacja</b> mówi, jak je zmierzyć → <b>pomiar</b> daje liczby na określonej <b>skali</b> → oceniamy, czy pomiar jest <b>rzetelny</b> i <b>trafny</b>.
+<div class="flow" style="margin-top:8px"><span>Konceptualizacja</span><i>→</i><span>Definicja nominalna</span><i>→</i><span>Definicja operacyjna</span><i>→</i><span>Pomiar w świecie rzeczywistym</span></div>
+</div>
+<!-- D1 -->
+<details class="sec" id="d1">
+<summary><span class="num">2.1</span><h2>Mierzenie wszystkiego, co istnieje <span class="tag e">Babbie s. 140–144</span></h2></summary>
+<p>Teza Babbiego: badacze mogą mierzyć <b>wszystko, co istnieje</b>. Haczyk: większość zmiennych w naukach społecznych <b>nie istnieje</b> w taki sposób jak kamień czy drzewo. „Uprzedzenia”, „współczucie”, „sympatie partyjne” nie mają jednego „prawdziwego” znaczenia — to pojęcia, które sami stworzyliśmy.</p>
+<div class="grid">
+<div class="card"><h4>Koncepcja</h4><p>Obraz mentalny — „karta w szufladzie”, na której zbieramy wszystko, co kojarzymy z danym słowem. Twoja karta „współczucie” różni się od mojej.</p></div>
+<div class="card"><h4>Pojęcie (<i>concept</i>)</h4><p>Wynik konceptualizacji. Termin, który pozwala porozumieć się co do koncepcji. Kaplan: pojęcie to „rodzina koncepcji”.</p></div>
+<div class="card"><h4>Konstrukt</h4><p>Twór teoretyczny oparty na obserwacjach, ale nieobserwowalny ani bezpośrednio, ani pośrednio. Przykład: IQ.</p></div>
+</div>
+<h3>Trzy klasy rzeczy, które mierzymy (Kaplan, 1964)</h3>
+<div class="scroll"><table>
+<tr><th>Klasa</th><th>Opis</th><th>Przykład</th></tr>
+<tr><td><b>Bezpośrednio obserwowalne</b></td><td>Obserwujesz łatwo i wprost</td><td>Kolor jabłka, krzyżyk postawiony w kwestionariuszu</td></tr>
+<tr><td><b>Pośrednio obserwowalne</b></td><td>Wymagają bardziej złożonych obserwacji</td><td>Płeć z krzyżyka przy słowie „kobieta”; protokoły zebrań sprzed lat</td></tr>
+<tr><td><b>Konstrukty</b></td><td>Tworzymy je z wielu obserwacji</td><td>Inteligencja (IQ), uprzedzenie, współczucie</td></tr>
+</table></div>
+<div class="def"><b>Reifikacja</b> — traktowanie pojęcia jak rzeczy realnie istniejącej. Pułapka: zaczynamy szukać „prawdziwego” znaczenia uprzedzenia, choć to tylko uzgodniona etykieta.</div>
+<div class="note"><b>Czy więc konstruktów nie da się mierzyć?</b> Da się. Konstrukty nie istnieją jak drzewa, ale są <b>użyteczne</b>: porządkują, ułatwiają komunikację i przewidywanie. Mierzymy zjawiska rzeczywiste (zachowania, odpowiedzi), które konstrukt podsumowuje.</div>
+</details>
+<!-- D2 -->
+<details class="sec" id="d2">
+<summary><span class="num">2.2</span><h2>Konceptualizacja <span class="tag e">Babbie s. 144–153</span></h2></summary>
+<div class="def"><b>Konceptualizacja</b> — proces określania, co mamy na myśli, używając danego terminu w badaniu. Jej wynikiem jest szczególne, <b>uzgodnione na potrzeby badania</b> („robocze”) znaczenie pojęcia, opisane przez <b>wskaźniki</b> i <b>wymiary</b>.</div>
+<div class="grid">
+<div class="card"><h4>Wskaźnik</h4><p>Znak obecności lub nieobecności badanego pojęcia. Odwiedzanie szpitali dziecięcych w święta albo wkładanie ptaszków do gniazd to wskaźniki współczucia.</p></div>
+<div class="card"><h4>Wymiar</h4><p>Dający się wyszczególnić aspekt pojęcia. Współczucie: uczuciowe vs behawioralne; dla ludzi vs dla zwierząt; pomoc „po mojemu” vs „po ich myśli”; przebaczenie vs litość.</p></div>
+</div>
+<p style="font-size:.92rem">Przykład Babbiego: kobiety uzyskały średnio 6,5 wskaźnika współczucia, mężczyźni 3,2 → kobiety są „ogólnie bardziej współczujące”. Pełna konceptualizacja określa <b>i wymiary, i wskaźniki</b> dla każdego z nich.</p>
+<h3>Wzajemna wymienialność wskaźników</h3>
+<div class="def">Jeśli kilka różnych wskaźników reprezentuje w jakimś stopniu to samo pojęcie, wszystkie powinny zachowywać się tak, jak zachowywałoby się samo pojęcie. Kobiety bardziej współczujące na <b>każdym</b> ze 100 wskaźników → wniosek jest mocny, nawet jeśli nie zgadzamy się, który wskaźnik jest najlepszy. Jeśli wyniki różnią się między zestawami wskaźników, to pewnie mierzą one <b>różne wymiary</b>.</div>
+<div class="note"><span class="tag c">uzup.</span> To logika stojąca za skalami z ćwiczeń: SWLS ma 5 pozycji, bo każda jest jednym wskaźnikiem zadowolenia z życia. Średnia z nich jest pewniejsza niż pojedyncze pytanie.</div>
+<h3>Trzy rodzaje definicji (Hempel)</h3>
+<div class="grid">
+<div class="card warn"><h4>Realna</h4><p>Próba uchwycenia „zasadniczej natury” bytu. Prowadzi do <b>reifikacji</b> — bezużyteczna w rygorystycznym badaniu.</p></div>
+<div class="card"><h4>Nominalna</h4><p>Znaczenie po prostu <b>przypisane</b> terminowi, bez roszczeń do „prawdy”. Arbitralna, ale najlepiej, gdy oddaje konsensus.</p></div>
+<div class="card"><h4>Operacyjna</h4><p>Precyzyjnie określa, <b>jak</b> zmierzymy pojęcie — jakie działania (operacje) wykonamy. Daje maksimum jasności w danym badaniu.</p></div>
+</div>
+<p style="font-size:.92rem"><b>Przykład SSE</b> (status społeczno-ekonomiczny): nominalnie = kombinacja dochodu i wykształcenia; operacyjnie = odpowiedzi na dwa pytania („całkowity dochód rodziny w ostatnich 12 miesiącach?”, „poziom wykształcenia?”) pogrupowane w kategorie i połączone w jeden miernik.</p>
+<h3>Tworzenie ładu pojęciowego</h3>
+<ul>
+<li><b>„Lejek pojęciowy”</b> (Marshall i Rossman): zainteresowanie zawęża się od ogólnego („działalność społeczna”) do konkretnego („doświadczenia kształtujące rozwój jednostek oddanych działalności społecznej”).</li>
+<li>W badaniach jakościowych wyjaśnianie pojęć trwa podczas zbierania danych. <b>Krąg hermeneutyczny</b>: rozumienie części zmienia rozumienie całości i odwrotnie.</li>
+<li>W sondażach i eksperymentach konceptualizacja musi się zakończyć <b>przed</b> zbieraniem danych — bez gotowych pytań nie ruszysz.</li>
+</ul>
+<h3>Przykład: anomia</h3>
+<div class="flow"><span><b>Durkheim</b> (1897, <i>Samobójstwo</i>)<br/><small>cecha społeczeństw: brak norm</small></span><i>→</i><span><b>Merton</b> (1938)<br/><small>rozdźwięk między celami a uznanymi środkami</small></span><i>→</i><span><b>Powell</b><br/><small>anomia jako cecha jednostek</small></span><i>→</i><span><b>Srole</b> (1956)<br/><small>5 stwierdzeń „zgadzam się / nie zgadzam”</small></span></div>
+<p style="font-size:.92rem">Srole odróżnił <i>anomie</i> (stan społeczeństwa) od <i>anomia</i> (stan jednostki). Jego skala stała się probierzem dla innych badaczy.</p>
+<div class="note"><b>Lekcje z anomii:</b> (1) to wzorcowy przykład drogi od ogólnego pojęcia do operacjonalizacji; (2) operacjonalizacja nie jest rozwiązana raz na zawsze; (3) swoboda definiowania nie prowadzi do chaosu, bo badacze przejmują <b>standardowe mierniki</b>, które pozwalają porównywać badania.</div>
+<h3>Definicje w badaniach opisowych i wyjaśniających</h3>
+<div class="grid">
+<div class="card"><h4>Opis — definicja decyduje o wyniku</h4><p>Stopa bezrobocia zależy od tego, kogo liczysz do „ludności aktywnej zawodowo” (od 14 r.ż.? studenci? „szukał pracy w ostatnich 7 dniach”?). Ta sama rzeczywistość może dać 3% albo 9%.</p></div>
+<div class="card"><h4>Wyjaśnianie — definicja mniej groźna</h4><p>Przy 25 różnych definicjach konserwatyzmu starsi mogą okazać się bardziej konserwatywni niż młodsi według <b>każdej</b>. Spójne wzorce zależności przeżywają zmianę definicji.</p></div>
+</div>
+<div class="note"><b>Ramka P. Fisher — dlaczego nazwa zmiennej jest ważna:</b> „udział mieszkańców” w planowaniu miasta brzmi jasno, ale planiści zmierzyliby go zupełnie różnie (liczba osób na zebraniach, tematy poruszane, liczba listów…). Nazwa, definicja i miernik ewoluują razem — dobra nazwa mówi, co naprawdę mierzysz.</div>
+</details>
+<!-- D3 -->
+<details class="sec" id="d3">
+<summary><span class="num">2.3</span><h2>Wybory w procesie operacjonalizacji <span class="tag e">Babbie s. 153–156, 161–162</span></h2></summary>
+<div class="def"><b>Konceptualizacja</b> uściśla abstrakcyjne pojęcia. <b>Operacjonalizacja</b> tworzy konkretne procedury badawcze (operacje), które pozwalają obserwować empirycznie to, co pojęcie oznacza.</div>
+<div class="grid">
+<div class="card"><h4>Zakres zmienności</h4><p>Do jakiego stopnia łączyć wartości w kategorie? Dochód: wśród zwykłych ludzi wystarczy „100 000 USD i więcej”. Postawy wobec energii jądrowej: pytając tylko o poparcie, zgubisz połowę skali — przeciwników. Mierz cały zakres, który jest <b>istotny dla Twoich badań</b>.</p></div>
+<div class="card"><h4>Zmienność między skrajnościami</h4><p>Jak dokładnie różnicować wartości? Wiek 17 czy 18 lat ma znaczenie, gdy badasz głosowanie. Zasada: <b>jeśli nie wiesz, zbieraj szczegółowo</b> — „37 lat” zawsze możesz zgrupować w „po trzydziestce”, ale nie odwrotnie.</p></div>
+<div class="card"><h4>Uwaga na wymiary</h4><p>Korupcja w rządzie: czy ludzie sądzą, że rząd jest skorumpowany? Na ile? Co jest przyczyną? Co byliby gotowi zrobić? Ustal, które wymiary są dla Ciebie ważne, zanim ułożysz pytania.</p></div>
+</div>
+<h3>Wartości zmiennej muszą być…</h3>
+<div class="grid">
+<div class="card gold"><h4>Wyczerpujące</h4><p>Każdą obserwację da się zaklasyfikować. Sympatie partyjne: dodaj „inna” i „żadna partia nie jest mi bliska”.</p></div>
+<div class="card gold"><h4>Wzajemnie rozłączne</h4><p>Każda obserwacja trafia do <b>jednej</b> kategorii. Osoba pracująca i szukająca lepszej pracy: ustal regułę, np. „pracuje → zatrudniona”.</p></div>
+</div>
+<div class="note"><b>Operacjonalizacja trwa.</b> Zaczyna się w fazie planowania i trwa przez wszystkie fazy badania, łącznie z analizą. W badaniach terenowych uszczegóławia się ją w trakcie obserwacji. Badacz musi być gotowy przeformułować pojęcia i definicje.</div>
+<p style="font-size:.92rem">Babbie pokazuje 4 problemy z kilkoma operacjonalizacjami każdy (np. „Czy kobiety są bardziej skłonne do współczucia?” → hipotetyczne sytuacje w kwestionariuszu / eksperyment z „zagubionym” dzieckiem / członkostwo w organizacjach pomocowych). Wniosek: ten sam problem da się zbadać na wiele sposobów.</p>
+</details>
+<!-- D4 -->
+<details class="sec" id="d4" open="">
+<summary><span class="num">2.4</span><h2>Poziomy pomiaru (skale pomiarowe) <span class="tag j">Józefacka s. 64–72</span><span class="tag e">Babbie s. 156–160</span></h2></summary>
+<p>Józefacka zaczyna od „dziury w samolocie”. Można ją opisać przyczyną (po wypadnięciu podwozia / po kolizji), głębokością (płytka / średnia / bardzo głęboka) albo wymiarami w centymetrach. Każdy z tych opisów leży na innej <b>skali pomiarowej</b>.</p>
+<div class="grid">
+<div class="card"><h4>Skale jakościowe</h4><p>Nominalna, porządkowa</p></div>
+<div class="card"><h4>Skale ilościowe</h4><p>Interwałowa (przedziałowa), ilorazowa (stosunkowa)</p></div>
+</div>
+<h3>Nominalna</h3>
+<div class="def">Najbardziej podstawowy poziom. Klasyfikuje zjawisko za pomocą ustalonej <b>kategorii</b> → zmienna <b>kategorialna / jakościowa</b>. Najważniejsza cecha: <b>rozłączność</b> kategorii. Kategorie mówią tylko, czy obserwacje są <b>takie same czy różne</b>.</div>
+<ul>
+<li>Przykłady: płeć, zawód, wyznanie, miejsce urodzenia, kolor włosów, diagnoza aerofobii (tak/nie).</li>
+<li>2 kategorie = zmienna <b>dychotomiczna</b>; więcej = <b>politomiczna</b>. Dychotomiczna może być też porządkowa (np. wiek: przed 40. r.ż. / po 40. r.ż.).</li>
+<li>Możliwe operacje: liczebności i procenty (np. 60% osób ma awiofobię), porównanie „równe / różne”.</li>
+</ul>
+<div class="trap"><b>UWAGA!</b> W programie statystycznym zakodujesz kategorie cyframi (awiofobia = 1, brak = 0). Te cyfry <b>nie niosą informacji liczbowej</b> — to tylko nazwy, jak numer lotu. Średnia płci nie ma sensu.</div>
+<h3>Porządkowa</h3>
+<div class="def">Kategorie można <b>uszeregować</b> pod kątem nasilenia cechy. Liczby oznaczają <b>kolejność</b>, ale nie odległość. Inaczej: skala <b>rangowa</b>.</div>
+<ul>
+<li>Przykłady: głębokość dziury (płytka = 1, średnia = 2, bardzo głęboka = 3), stopień wojskowy, wykształcenie, klasa społeczna, religijność („niezbyt ważna” … „najważniejsza w życiu”), twardość minerałów.</li>
+<li>Babbie: grupy według wykształcenia możesz ustawić w rzędzie, ale nie ma znaczenia, czy stoją 2 m czy 200 m od siebie — odległości nic nie znaczą.</li>
+</ul>
+<h3>Interwałowa (przedziałowa)</h3>
+<div class="def">Mówi, <b>o ile</b> wyniki się różnią. Ma <b>jednostki</b> i <b>równe odstępy</b>, ale <b>nie ma zera bezwzględnego</b> — 0 nie oznacza braku cechy, możliwe są wartości ujemne.</div>
+<ul>
+<li>Temperatura w °C/°F: 80°F to nie „dwa razy goręcej” niż 40°F.</li>
+<li>IQ: różnica 100–110 = różnica 110–120, ale IQ 150 nie znaczy „o 50% inteligentniejszy” niż 100. Zero w teście nie oznacza braku inteligencji.</li>
+<li>Kwestionariusz lęku przed lataniem: 0 punktów to nie brak lęku, tylko niskie nasilenie.</li>
+<li>Typowa skala dla <b>konstruktów psychologicznych</b> mierzonych kwestionariuszami.</li>
+</ul>
+<h3>Ilorazowa (stosunkowa)</h3>
+<div class="def">Wszystko, co interwałowa, plus <b>zero bezwzględne</b> (0 = całkowity brak cechy, brak wartości ujemnych). Pozwala ocenić <b>stosunek</b>: <b>ile razy</b> więcej.</div>
+<ul>
+<li>Wymiary dziury w cm: 2×4 cm to połowa 2×8 cm; 0×0 cm = brak dziury.</li>
+<li>Wzrost, waga, prędkość, czas, temperatura w kelwinach, wiek, dochód, czas zamieszkiwania, liczba organizacji, liczba wizyt w kościele, liczba przyjaciół.</li>
+</ul>
+<h3>Podsumowanie</h3>
+<div class="scroll"><table>
+<tr><th>Skala</th><th>Kategorie</th><th>Rangi</th><th>Równe odstępy</th><th>Zero bezwzgl.</th><th>Pytanie</th><th>Co wolno powiedzieć</th></tr>
+<tr><td><b>Nominalna</b></td><td>✓</td><td></td><td></td><td></td><td>Kto? Co?</td><td>takie same / różne</td></tr>
+<tr><td><b>Porządkowa</b></td><td>✓</td><td>✓</td><td></td><td></td><td>Na której pozycji?</td><td>+ więcej / mniej</td></tr>
+<tr><td><b>Interwałowa</b></td><td>✓</td><td>✓</td><td>✓</td><td></td><td>O ile?</td><td>+ o ile więcej</td></tr>
+<tr><td><b>Ilorazowa</b></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>Ile razy?</td><td>+ ile razy więcej</td></tr>
+</table></div>
+<h3>Jak rozpoznać skalę — drzewko (Józefacka, ryc. 2.7)</h3>
+<div class="flow"><span>Czy dane da się uszeregować?</span><i>nie →</i><span><b>nominalna</b></span></div>
+<div class="flow"><span>tak, a odległości <b>nie</b> są równe</span><i>→</i><span><b>porządkowa</b></span></div>
+<div class="flow"><span>odległości są równe, ale brak zera absolutnego</span><i>→</i><span><b>interwałowa</b></span></div>
+<div class="flow"><span>jest zero absolutne (0 = całkowity brak)</span><i>→</i><span><b>ilorazowa</b></span></div>
+<div class="trap"><b>Rozbieżność w tabeli 2.5 Józefackiej.</b> Tabela przypisuje <b>średnią</b> wyłącznie skali stosunkowej, a interwałowej tylko częstości, dominantę i medianę. Standardowo (Stevens; także dalsza część kursu) średnia jest dozwolona już od skali <b>interwałowej</b> — tak liczy się średnie wyniki kwestionariuszy i IQ. Na egzaminie warto doprecyzować z prowadzącą, której wersji się trzyma.</div>
+<h3>Ciągłe i dyskretne</h3>
+<div class="grid">
+<div class="card"><h4>Ciągłe</h4><p>Na skali ilościowej, mogą przyjmować dowolne wartości, także niecałkowite: prędkość 959,5 km/h.</p></div>
+<div class="card"><h4>Dyskretne</h4><p>Tylko wartości całkowite: liczba dziur może wynosić 3, ale nie 5,5. Mogą wystąpić na każdej skali (liczba dziur jest ilorazowa).</p></div>
+</div>
+<h3>Implikacje poziomów pomiaru</h3>
+<ul>
+<li>Każda technika analizy wymaga <b>minimalnego</b> poziomu pomiaru. Średni wiek — tak (ilorazowa). Średnie wyznanie — nie (nominalna); można podać <b>modalną</b>.</li>
+<li>Zmienną z wyższego poziomu można traktować jak zmienną z niższego: wiek → młodzi / w średnim wieku / starsi (porządkowa) → urodzeni przed / po kryzysie (nominalna). Józefacka nazywa to <b>dyskretyzacją</b> lub <b>kategoryzacją</b> (np. wzrost stewardesy: niski / przeciętny / wysoki).</li>
+<li><b>Droga jest jednokierunkowa</b>: nie da się przekształcić zmiennej z niższego poziomu w wyższy.</li>
+<li>Gdy wątpisz, mierz na <b>najwyższym możliwym</b> poziomie — zachowasz najwięcej informacji. Jeśli wiesz, że wystarczą przedziały (20–29, 30–39), możesz pytać o przedziały.</li>
+</ul>
+</details>
+<!-- D5 -->
+<details class="sec" id="d5">
+<summary><span class="num">2.5</span><h2>Rangowanie i skala Likerta <span class="tag j">Józefacka, pola rozszerzające 9 i 10</span></h2></summary>
+<h3>Rangowanie proste</h3>
+<p>Czworo znajomych rozdziela punkty na miejsca wakacji. Najwięcej głosów = ranga 1.</p>
+<div class="scroll"><table>
+<tr><th>Oferta</th><th>Suma głosów</th><th>Ranga</th></tr>
+<tr><td>Morze</td><td>6</td><td>1</td></tr>
+<tr><td>Pustynia</td><td>5</td><td>2</td></tr>
+<tr><td>Góry</td><td>1</td><td>3</td></tr>
+</table></div>
+<h3>Rangi wiązane</h3>
+<p>Po dodaniu opcji „Miasto” dwie opcje mają tyle samo głosów. Wtedy dostają <b>średnią</b> z rang, które by zajęły:</p>
+<div class="scroll"><table>
+<tr><th>Oferta</th><th>Suma</th><th>Ranga wstępna</th><th>Ranga wiązana</th></tr>
+<tr><td>Morze</td><td>6</td><td>1</td><td>1,5</td></tr>
+<tr><td>Miasto</td><td>6</td><td>2</td><td>1,5  <small>(1 + 2) / 2</small></td></tr>
+<tr><td>Pustynia</td><td>3</td><td>3</td><td><b>3</b> (nie 2!)</td></tr>
+<tr><td>Góry</td><td>1</td><td>4</td><td>4</td></tr>
+</table></div>
+<div class="trap"><b>Pułapka:</b> po rangach wiązanych numeracja <b>przeskakuje</b> — następna obserwacja dostaje rangę zgodną z kolejnością wstępną (3), a nie kolejny numer (2). Rangi przydadzą się przy testach nieparametrycznych (U Manna-Whitneya, Wilcoxon — ćwiczenia 4–5).</div>
+<details class="q"><summary>Wyniki: 10, 8, 8, 8, 5 (od najwyższego). Nadaj rangi wiązane.</summary><div class="a">10 → 1. Trzy ósemki zajmują miejsca 2, 3, 4 → każda dostaje (2 + 3 + 4) / 3 = <b>3</b>. Piątka → <b>5</b>.</div></details>
+<h3>Zagadkowa skala Likerta</h3>
+<div class="def"><b>Skala Likerta</b> (Rensis Likert, 1932) — 5- lub 7-stopniowa kafeteria odpowiedzi, np. zdecydowanie się zgadzam / zgadzam się / nie mam zdania / nie zgadzam się / zdecydowanie się nie zgadzam. Odpowiedzi koduje się liczbami (0–4 lub 1–5), a potem sumuje lub uśrednia.</div>
+<div class="grid">
+<div class="card warn"><h4>Argument „przeciw” ilościowości</h4><p>Nie wiadomo, czy odległość „zdecydowanie się zgadzam” → „zgadzam się” jest taka sama jak „zgadzam się” → „trudno powiedzieć”. Odpowiedzi mają porządek, ale niekoniecznie równe odstępy.</p></div>
+<div class="card"><h4>Praktyka</h4><p>Sumę lub średnią z całego kwestionariusza albo podskali <b>traktuje się jako pomiar interwałowy</b>.</p></div>
+</div>
+<div class="trap"><b>Zapamiętaj:</b> odpowiedź na <b>pojedyncze pytanie</b> jest na skali <b>porządkowej</b> i nie wolno jej traktować w analizach jako ilościowej. Ilościowy jest dopiero <b>wskaźnik</b> (suma / średnia). <span class="tag c">uzup.</span> To dlatego na ćwiczeniach liczyliście SWLS_średnia, a nie analizowaliście pozycji osobno.</div>
+</details>
+<!-- D6 -->
+<details class="sec" id="d6">
+<summary><span class="num">2.6</span><h2>Wskaźniki proste i złożone <span class="tag e">Babbie s. 160–161</span></h2></summary>
+<div class="grid">
+<div class="card"><h4>Proste</h4><p>Wiele zmiennych ma oczywisty, prosty wskaźnik: płeć (jedna obserwacja / jedno pytanie), liczba mieszkańców kraju (rocznik statystyczny), liczba dzieci w rodzinie.</p></div>
+<div class="card"><h4>Złożone</h4><p>Gdy pojęcie ma wiele interpretacji, łączysz kilka obserwacji w jeden miernik. Przykład: „wyniki w nauce” → <b>GPA</b> — średnia punktów z ocen wszystkich egzaminów. Można też nadawać ocenom różne wagi.</p></div>
+</div>
+<p style="font-size:.92rem">Szerzej o miernikach złożonych: Babbie, rozdz. 6. To ta sama idea co wskaźnik z ćwiczeń 1: wiele pozycji → jedna liczba.</p>
+</details>
+<!-- D7 -->
+<details class="sec" id="d7" open="">
+<summary><span class="num">2.7</span><h2>Kryteria jakości pomiaru <span class="tag e">Babbie s. 162–169</span></h2></summary>
+<h3>Precyzja i poprawność</h3>
+<div class="grid">
+<div class="card"><h4>Precyzja</h4><p>Subtelność rozróżnień. „43 lata” jest precyzyjniejsze niż „po czterdziestce”. Nie zawsze potrzebna — dopasuj ją do celu badania.</p></div>
+<div class="card warn"><h4>Poprawność ≠ precyzja</h4><p>„Urodzona w Stowe w Vermoncie” jest precyzyjniejsze, ale <b>błędne</b>, jeśli urodziła się w Bostonie. „Urodzona w Nowej Anglii” jest mniej precyzyjne, ale poprawne.</p></div>
+</div>
+<h3>Rzetelność</h3>
+<div class="def"><b>Rzetelność</b> — dana technika, zastosowana wielokrotnie do tego samego obiektu, daje za każdym razem <b>ten sam wynik</b>. Waga łazienkowa jest rzetelniejsza niż zgadywanie wagi przez znajomych (70 kg vs 140 kg).</div>
+<div class="trap"><b>Rzetelność nie gwarantuje poprawności.</b> Waga przestawiona o 3 kg „w dół” za każdym razem pokaże ten sam — błędny — wynik. To <b>obciążenie</b> (Babbie, rozdz. 8).</div>
+<p>Skąd biorą się problemy z rzetelnością: pojedynczy obserwator (subiektywność), różni ankieterzy i koderzy, pytania, na które ludzie nie znają odpowiedzi („ile razy byłeś w kościele?”) albo które ich nie dotyczą.</p>
+<div class="scroll"><table>
+<tr><th>Metoda</th><th>Na czym polega</th><th>Przykład z Babbiego</th></tr>
+<tr><td><b>Test powtórny</b> (<i>test-retest</i>)</td><td>Ten sam pomiar więcej niż raz; bez powodu do zmian odpowiedzi powinny być takie same</td><td>HHA (Sacks i in., 1980): 207 osób, po 3 miesiącach tylko <b>15%</b> podało te same informacje. Jedna osoba „postarzała się” o 20 lat, matka „zmarła” albo „ożyła”</td></tr>
+<tr><td><b>Metoda połówkowa</b></td><td>Dzielisz pozycje na dwie losowe połowy; obie powinny tak samo klasyfikować badanych</td><td>10 pytań o uprzedzenia wobec kobiet → dwa zbiory po 5</td></tr>
+<tr><td><b>Ustalone mierniki</b></td><td>Używasz narzędzi, których rzetelność już wykazano</td><td>Skala anomii Srole'a. Ale uwaga: SAT czy MMPI też wymagały aktualizacji</td></tr>
+<tr><td><b>Rzetelność osób zatrudnionych</b></td><td>Kontrola ankieterów i koderów</td><td>Kontroler oddzwania do części respondentów; ten sam materiał kodują niezależnie dwie osoby</td></tr>
+</table></div>
+<div class="note"><span class="tag c">uzup.</span> Rzetelność połówkową i spójność pozycji w praktyce mierzy się <b>alfą Cronbacha</b> — stąd na ćwiczeniach podejrzanie niska alfa sygnalizuje nieodwrócone pozycje.</div>
+<h3>Trafność</h3>
+<div class="def"><b>Trafność</b> — w jakim zakresie miernik adekwatnie odzwierciedla prawdziwe (czyli <b>uzgodnione</b>) znaczenie pojęcia.</div>
+<div class="grid">
+<div class="card"><h4>Fasadowa</h4><p>Miernik „na pierwszy rzut oka” pasuje do pojęcia. Liczba skarg związkowych ma <i>coś</i> wspólnego z nastrojami robotników; liczba książek z biblioteki — nie.</p></div>
+<div class="card"><h4>Kryterialna (predykcyjna)</h4><p>Opiera się na kryterium zewnętrznym. Egzamin wstępny przewiduje sukces na studiach; test na prawo jazdy — późniejsze bezpieczeństwo. Religijność → chodzenie do kościoła.</p></div>
+<div class="card"><h4>Teoretyczna</h4><p>Miernik zachowuje się zgodnie z teorią w relacji do <b>innych zmiennych</b>. Satysfakcja z małżeństwa powinna wiązać się z wiernością; jeśli nie — trafność miernika jest wątpliwa.</p></div>
+<div class="card"><h4>Treściowa</h4><p>Miernik obejmuje <b>cały zakres znaczeń</b> pojęcia. Test z matematyki nie może sprawdzać tylko dodawania; miernik uprzedzeń — tylko uprzedzeń rasowych.</p></div>
+</div>
+<h3>Tarcza — rzetelność a trafność (rys. 5.2)</h3>
+<svg aria-label="Trzy tarcze: rzetelny ale nietrafny, trafny ale nierzetelny, trafny i rzetelny" role="img" style="width:100%;max-width:600px;display:block;margin:8px auto" viewbox="0 0 600 200">
+<g fill="none" stroke="#2b2118" stroke-width="1.2">
+<circle cx="100" cy="90" r="70"></circle><circle cx="100" cy="90" r="50"></circle><circle cx="100" cy="90" r="30"></circle>
+<circle cx="300" cy="90" r="70"></circle><circle cx="300" cy="90" r="50"></circle><circle cx="300" cy="90" r="30"></circle>
+<circle cx="500" cy="90" r="70"></circle><circle cx="500" cy="90" r="50"></circle><circle cx="500" cy="90" r="30"></circle></g>
+<g fill="#2b2118"><circle cx="100" cy="90" r="10"></circle><circle cx="300" cy="90" r="10"></circle><circle cx="500" cy="90" r="10"></circle></g>
+<g fill="hsl(12,42%,52%)">
+<circle cx="140" cy="48" r="3.5"></circle><circle cx="146" cy="54" r="3.5"></circle><circle cx="135" cy="56" r="3.5"></circle><circle cx="143" cy="44" r="3.5"></circle><circle cx="150" cy="47" r="3.5"></circle><circle cx="138" cy="62" r="3.5"></circle><circle cx="148" cy="60" r="3.5"></circle>
+<circle cx="268" cy="62" r="3.5"></circle><circle cx="335" cy="70" r="3.5"></circle><circle cx="290" cy="138" r="3.5"></circle><circle cx="332" cy="118" r="3.5"></circle><circle cx="262" cy="110" r="3.5"></circle><circle cx="305" cy="45" r="3.5"></circle><circle cx="345" cy="95" r="3.5"></circle>
+<circle cx="497" cy="86" r="3.5"></circle><circle cx="504" cy="92" r="3.5"></circle><circle cx="494" cy="95" r="3.5"></circle><circle cx="506" cy="84" r="3.5"></circle><circle cx="500" cy="98" r="3.5"></circle><circle cx="490" cy="88" r="3.5"></circle><circle cx="510" cy="96" r="3.5"></circle></g>
+<g fill="#2b2118" font-family="Source Serif 4, Georgia, serif" font-size="14" text-anchor="middle">
+<text x="100" y="185">rzetelny, nietrafny</text><text x="300" y="185">trafny, nierzetelny</text><text x="500" y="185">trafny i rzetelny</text></g>
+</svg>
+<p style="font-size:.92rem"><b>Rzetelność = mały rozrzut</b> (spójność), niezależnie od tego, gdzie trafiają strzały. <b>Trafność = strzały wokół celu.</b> Brak rzetelności to losowy rozrzut; brak trafności to systematyczne trafianie obok celu.</p>
+<h3>Kto decyduje, co jest trafne?</h3>
+<p>Trafność opiera się na uzgodnieniach — między badaczami, ale też z badanymi. Etnometodolodzy przypominają, że zachowania, które badaczowi wydają się irracjonalne, mogą mieć sens z perspektywy samych aktorów. Babbie: traktuj poważnie i kolegów, i badanych jako źródło znaczeń.</p>
+<h3>Napięcie między rzetelnością a trafnością</h3>
+<div class="grid">
+<div class="card"><h4>Liczenie skarg</h4><p>Bardziej <b>rzetelne</b> — policzysz drugi raz i wyjdzie tyle samo.</p></div>
+<div class="card"><h4>Obserwacja i rozmowy z robotnikami</h4><p>Bardziej <b>trafne</b> — lepiej oddają „bogactwo znaczeń” nastrojów.</p></div>
+</div>
+<div class="note">Techniki ilościowe (sondaże, eksperymenty) są zwykle <b>rzetelniejsze</b>, jakościowe (badania terenowe) — <b>trafniejsze</b>. Rozwiązanie Babbiego: jeśli nie ma zgody co do znaczenia pojęcia, <b>mierz je na kilka sposobów</b>; jeśli ma kilka wymiarów, zmierz je wszystkie.</div>
+</details>
+<!-- D8 -->
+<details class="sec" id="d8">
+<summary><span class="num">2.8</span><h2>Sprawdź się — wykład 2</h2></summary>
+<p class="fiszki-link">Pytania sprawdzające <a href="fiszki.html">Fiszki</a></p>
+</details>
+<footer>Źródła: slajdy W1 (dr E. Brygoła, 2026/27); slajdy C1 (T. Godlewski, 2026/27); sylabus przedmiotu 2026/2027; Józefacka, N. M., Kołek, M. F., Arciszewska-Leszczuk, A. (2023). <i>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</i> (s. 9–17, 64–72, 105–114). PWN; Babbie, E. (2003). Konceptualizacja, operacjonalizacja i pomiar. W: <i>Badania społeczne w praktyce</i> (s. 139–171). PWN; Bedyńska, S. (2013). Wprowadzanie danych i podstawy pracy z programem IBM SPSS Statistics; Standardowe sposoby tworzenia wskaźników zmiennych. W: S. Bedyńska, M. Cypryańska (red.), <i>Statystyczny drogowskaz 1</i> (s. 48–71, 114–131). Sedno.</footer>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-1.html"><span>Poprzednia</span><b>Wykład 1</b><i>Psychologia jako nauka empiryczna</i></a><a class="next" href="cwiczenia-1.html"><span>Następna</span><b>Ćwiczenia 1</b><i>Proces badawczy i baza danych w Jamovi</i></a></nav></div>
+<script data-back="./" data-back-label="Metodologia" data-home="../" src="../assets/reader.js"></script></body>
+</html>

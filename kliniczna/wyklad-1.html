@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Wykład 1 · Psychologia kliniczna i zdrowia</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --paper-alt:#fbf3e9;
+  --ink:#2b2118;
+  --ink-soft:#5c4a3a;
+  --ink-faint:#8a7768;
+  --accent:hsl(12,42%,58%);
+  --accent-dark:hsl(12,48%,40%);
+  --accent-deep:hsl(12,55%,28%);
+  --accent-light:hsl(12,55%,95%);
+  --accent-mid:hsl(12,45%,89%);
+  --accent-line:hsl(12,35%,78%);
+  --gold:hsl(38,55%,52%);
+  --sage:hsl(150,20%,45%);
+  --line:hsl(28,30%,85%);
+  --shadow: 0 1px 2px rgba(43,33,24,.04), 0 6px 18px rgba(43,33,24,.06);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at top left, hsla(12,55%,92%,0.5), transparent 55%),
+    radial-gradient(ellipse at bottom right, hsla(38,55%,90%,0.4), transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif;
+  line-height:1.65;
+  font-size:16.5px;
+}
+h1,h2,h3,h4{
+  font-family:'Playfair Display', Georgia, serif;
+  color:var(--accent-deep);
+  font-weight:700;
+  margin:0 0 .5em 0;
+  letter-spacing:.2px;
+}
+a{color:var(--accent-dark);}
+p{margin:.6em 0;}
+strong{color:var(--accent-deep);}
+em.term{font-style:italic;color:var(--accent-dark);}
+
+/* ===== HEADER ===== */
+header.banner{
+  position:relative;
+  padding:2.6rem 1.5rem 2.2rem;
+  text-align:center;
+  background:
+    linear-gradient(160deg, hsl(12,48%,63%), hsl(12,42%,55%) 55%, hsl(20,40%,50%));
+  color:#fffaf5;
+  overflow:hidden;
+}
+header.banner::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle at 15% 20%, rgba(255,255,255,.16) 0, transparent 40%),
+                     radial-gradient(circle at 85% 80%, rgba(255,255,255,.10) 0, transparent 45%);
+}
+header.banner .kicker{
+  position:relative;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:.78rem;
+  opacity:.88;
+  font-family:'Source Serif 4', serif;
+}
+header.banner h1{
+  position:relative;
+  color:#fffaf5;
+  font-size:2.3rem;
+  margin:.35em 0 .2em;
+  text-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+header.banner .sub{
+  position:relative;
+  font-size:1.02rem;
+  opacity:.95;
+  font-style:italic;
+  max-width:640px;
+  margin:0 auto;
+}
+header.banner .pills{
+  position:relative;
+  margin-top:1.1rem;
+  display:flex;
+  gap:.5rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+header.banner .pill{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  padding:.3rem .85rem;
+  border-radius:999px;
+  font-size:.82rem;
+  backdrop-filter:blur(2px);
+}
+
+/* ===== NAV ===== */
+nav.toc{
+  position:sticky; top:0; z-index:30;
+  background:hsla(38,40%,97%,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  padding:.55rem 1rem;
+  display:flex;
+  gap:.4rem;
+  overflow-x:auto;
+  scrollbar-width:thin;
+}
+nav.toc a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:var(--accent-deep);
+  font-size:.82rem;
+  padding:.4rem .75rem;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-family:'Source Serif 4';
+  font-weight:600;
+  transition:.15s;
+}
+nav.toc a:hover{background:var(--accent-mid); border-color:var(--accent-line);}
+
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 1.3rem 4rem;
+}
+
+section.block{
+  padding-top:2.6rem;
+  scroll-margin-top:3.4rem;
+}
+section.block > .eyebrow{
+  font-family:'Source Serif 4';
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.74rem;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:.3rem;
+}
+section.block > h2{
+  font-size:1.65rem;
+  border-bottom:2px solid var(--accent-mid);
+  padding-bottom:.4rem;
+}
+h3{font-size:1.22rem; color:var(--accent-dark); margin-top:1.6rem;}
+h4{font-size:1.02rem; color:var(--ink); font-family:'Source Serif 4'; font-weight:600; margin-top:1.1rem;}
+
+.lede{
+  font-size:1.04rem;
+  color:var(--ink-soft);
+  background:var(--accent-light);
+  border-left:4px solid var(--accent);
+  padding:.85rem 1.1rem;
+  border-radius:6px;
+  margin:1rem 0 1.4rem;
+}
+
+/* source tag */
+.src{
+  display:inline-block;
+  font-family:'Source Serif 4';
+  font-style:normal;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.3px;
+  color:var(--accent-deep);
+  background:var(--accent-mid);
+  border-radius:5px;
+  padding:.08rem .45rem;
+  margin-left:.35rem;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+.src.hz{background:hsl(150,25%,90%); color:hsl(150,35%,28%);}
+
+/* cards */
+.grid-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+  gap:.85rem;
+  margin:1.1rem 0;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-top:3px solid var(--accent);
+  border-radius:10px;
+  padding:.95rem 1.05rem;
+  box-shadow:var(--shadow);
+}
+.card h4{margin-top:0; color:var(--accent-deep);}
+.card p{font-size:.93rem; color:var(--ink-soft); margin:.4rem 0 0;}
+.card.sage{border-top-color:var(--sage);}
+.card.gold{border-top-color:var(--gold);}
+
+/* numbered list card */
+ul.tidy, ol.tidy{padding-left:1.25rem; margin:.5rem 0;}
+ul.tidy li, ol.tidy li{margin:.3rem 0;}
+
+/* blok rozszerzający */
+.blok{
+  background:var(--paper-alt);
+  border:1.5px solid var(--accent-line);
+  border-radius:8px;
+  padding:1rem 1.2rem;
+  margin:1.3rem 0;
+  position:relative;
+}
+.blok .label{
+  font-family:'Playfair Display';
+  font-weight:600;
+  font-style:italic;
+  color:var(--accent-dark);
+  font-size:.95rem;
+  margin-bottom:.3rem;
+  display:block;
+}
+.blok p{font-size:.93rem; margin:.4rem 0;}
+.blok .cite{font-size:.78rem; color:var(--ink-faint); margin-top:.5rem; text-align:right;}
+
+/* table */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:1rem 0;
+  font-size:.9rem;
+  background:var(--paper);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+th{
+  background:var(--accent);
+  color:#fffaf5;
+  text-align:left;
+  padding:.55rem .7rem;
+  font-family:'Source Serif 4';
+  font-weight:600;
+}
+td{padding:.5rem .7rem; border-bottom:1px solid var(--line);}
+tr:nth-child(even) td{background:var(--accent-light);}
+caption{caption-side:top; text-align:left; font-style:italic; color:var(--ink-faint); font-size:.85rem; margin-bottom:.3rem;}
+
+/* diagram frame */
+.diagram{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1rem;
+  margin:1.3rem 0;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.diagram .cap{font-size:.82rem; color:var(--ink-faint); font-style:italic; margin-top:.5rem;}
+.diagram svg{max-width:100%; height:auto;}
+
+/* details self-test */
+details.q{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  margin:.6rem 0;
+  padding:.65rem .9rem;
+}
+details.q summary{
+  cursor:pointer;
+  font-weight:600;
+  color:var(--accent-deep);
+  font-family:'Source Serif 4';
+  list-style:none;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary::before{content:"▸ "; color:var(--gold);}
+details.q[open] summary::before{content:"▾ ";}
+details.q .ans{margin-top:.55rem; padding-top:.55rem; border-top:1px dashed var(--line); font-size:.94rem; color:var(--ink-soft);}
+
+/* glossary */
+.glossary{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:.7rem;
+}
+.gterm{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:.7rem .9rem;
+}
+.gterm dt{font-weight:700; color:var(--accent-deep); font-family:'Playfair Display'; font-size:.98rem;}
+.gterm dd{margin:.25rem 0 0; font-size:.88rem; color:var(--ink-soft);}
+
+footer{
+  text-align:center;
+  padding:2rem 1rem 3rem;
+  color:var(--ink-faint);
+  font-size:.82rem;
+  font-style:italic;
+}
+
+/* people badge */
+.figure-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--accent-mid); color:var(--accent-deep);
+  border-radius:999px; padding:.15rem .65rem .15rem .4rem;
+  font-size:.82rem; font-weight:600; margin:.15rem .3rem .15rem 0;
+}
+.figure-badge .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);}
+
+hr.sep{border:none; border-top:1px dashed var(--line); margin:2rem 0;}
+
+/* ===== PENDING (z Wykładu 2) ===== */
+.pending{
+  font-size:.88rem;
+  color:var(--accent-dark);
+  background:hsl(38,65%,95%);
+  border:1px dashed var(--gold);
+  border-radius:8px;
+  padding:.6rem .9rem;
+  margin:.8rem 0;
+}
+blockquote{border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;}
+
+/* ===== DIVIDER MIĘDZY WYKŁADAMI ===== */
+.wyklad-divider{
+  text-align:center;
+  margin:3.4rem 0 1.6rem;
+  position:relative;
+}
+.wyklad-divider::before{
+  content:"";
+  position:absolute; top:50%; left:0; right:0;
+  height:1px;
+  background:var(--line);
+}
+.wyklad-divider span{
+  background:var(--paper);
+  position:relative; z-index:1;
+  padding:0 1.1rem;
+  font-family:'Playfair Display', Georgia, serif;
+  font-weight:700;
+  font-style:italic;
+  color:var(--accent-deep);
+  font-size:1.25rem;
+  letter-spacing:.5px;
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:12;--st-s:42%;--st-l:58%}</style></head>
+<body>
+
+
+<main><header class="st-hero"><p class="st-eyebrow">Wykład 1 · Cierpiałkowska, Sęk · Heszen-Celińska, Sęk</p><h1>Podstawy teoretyczne i modele zdrowia</h1><p class="st-meta">Patogeneza i salutogeneza, pojęcie zdrowia, modele i podejścia psychologii zdrowia.</p></header>
+<!-- ============ W1: WPROWADZENIE ============ -->
+<section class="block" id="wprowadzenie">
+<div class="eyebrow">Punkt wyjścia</div>
+<h2>Czego dotyczą te notatki?</h2>
+<div class="pending" style="border-color:var(--accent-line);background:var(--accent-light);color:var(--ink-soft);">Notatki łączą <strong>Wykład 1</strong> (podstawy teoretyczne psychologii klinicznej, patogeneza/salutogeneza, pojęcie i modele zdrowia) oraz <strong>Wykład 2</strong> (zastosowania psychologii klinicznej i zdrowia: styl życia, zachowania zdrowotne, promocja i prewencja, relacja pacjent–system, wprowadzenie do stresu) w jeden ciągły dokument.</div>
+<div class="lede">
+    Zgodnie z sylabusem, pierwszy wykład obejmuje dwa powiązane ze sobą tematy: <strong>(1a)</strong> podstawy psychologii klinicznej i zdrowia wraz z rolą teorii i modeli oraz orientacją patogenetyczną i salutogenetyczną, a także <strong>(1b)</strong> koncepcje i pojęcie zdrowia oraz modele stosowane w psychologii zdrowia. Poniższe notatki łączą treści obu podręczników tematycznie (a nie rozdział po rozdziale), ponieważ oba źródła w dużej mierze opisują tę samą oś teoretyczną — spór i komplementarność ujęcia patogenetycznego z salutogenetycznym.
+  </div>
+<div class="grid-cards">
+<div class="card">
+<h4>Cierpiałkowska, Sęk (2016)<br/><span style="font-size:.85rem;font-weight:400;color:var(--ink-faint);">Psychologia kliniczna</span></h4>
+<p>Część 1, rozdział 2: <em>Teoretyczne i metodologiczne podstawy psychologii klinicznej</em> (s. 37–49). Rola teorii i modeli, orientacja patogenetyczna i salutogenetyczna, model Antonovsky'ego.</p>
+</div>
+<div class="card sage">
+<h4>Heszen-Celińska, Sęk (2020)<br/><span style="font-size:.85rem;font-weight:400;color:var(--ink-faint);">Psychologia zdrowia</span></h4>
+<p>Rozdziały 3, 4 i 5 (s. 33–74): koncepcje zdrowia, modele stosowane w psychologii zdrowia oraz pogłębione podejście salutogenetyczne wraz z weryfikacją empiryczną.</p>
+</div>
+<div class="card gold">
+<h4>Prezentacja z wykładu<br/><span style="font-size:.85rem;font-weight:400;color:var(--ink-faint);">dr A. Mościcka-Teske, zima 2026</span></h4>
+<p>Kontekst psychologii w medycynie, geneza i tezy modelu biomedycznego, teoria systemów Bertalanffy'ego, konsumeryzm, poszerzony model wymiarów zdrowia i koło jakości życia.</p>
+</div>
+</div>
+<p style="font-size:.9rem;color:var(--ink-faint);">Egzamin z wykładu: sprawdzian z pytaniami zamkniętymi (60 pkt, próg zaliczenia 31 pkt). Definicje, listy czynników i nazwiska autorów mają tu realną wartość punktową — dlatego w notatkach wyróżniono je osobno.</p>
+</section>
+<!-- ============ W1: PODSTAWY TEORETYCZNE ============ -->
+<section class="block" id="podstawy">
+<div class="eyebrow">1a · Cierpiałkowska, Sęk — r. 2.1–2.2</div>
+<h2>Podstawy teoretyczne psychologii klinicznej</h2>
+<h3>Dlaczego psychologia w medycynie? Kontekst historyczny</h3>
+<p>
+    Miejsce psychologii w opiece zdrowotnej wynika z kilku procesów zachodzących w medycynie od połowy XX wieku:
+  </p>
+<div class="grid-cards">
+<div class="card">
+<h4>Rewolucja epidemiologiczna</h4>
+<p>Zmiana obrazu chorób i przyczyn zgonów od połowy XX w. W krajach rozwiniętych podstawową przyczyną zgonów stały się <strong>choroby przewlekłe</strong> (układu krążenia, nowotworowe, udary) i wypadki — nie choroby zakaźne.</p>
+</div>
+<div class="card">
+<h4>Rola czynników psychospołecznych</h4>
+<p>W chorobach chronicznych (w porównaniu z zakaźnymi) czynniki psychospołeczne odgrywają znacznie większą rolę — działają zarówno na poziomie <strong>etiologii</strong>, jak i przebiegu choroby, leczenia i rehabilitacji. Udział czynników psychologicznych jako współprzyczyn chorób chronicznych i zgonów szacuje się na <strong>ok. 50%</strong> (Sęk, Heszen, 2020).</p>
+</div>
+<div class="card">
+<h4>Koszty inwazyjności i specjalizacji</h4>
+<p>Inwazyjne metody diagnostyczne i terapeutyczne są źródłem obciążenia psychicznego pacjentów; postępująca specjalizacja w medycynie zaburza holistyczne spojrzenie na problemy pacjenta.</p>
+</div>
+<div class="card">
+<h4>Presja na profilaktykę i podmiotowość</h4>
+<p>Wysokie koszty opieki zdrowotnej i niewydolność systemów wymuszają większy nacisk na <strong>profilaktykę</strong>. Rośnie też świadomość zdrowotna społeczeństwa i pragnienie <strong>podmiotowego uczestnictwa</strong> pacjenta w procesie terapeutycznym.</p>
+</div>
+</div>
+<p style="font-size:.9rem;color:var(--ink-faint);">(Sęk, Heszen, 2020)</p>
+<h3>2.1 Dlaczego podstawy teoretyczne mają znaczenie</h3>
+<p>
+    Rozwój psychologii klinicznej przebiegał pod wyraźnym wpływem różnych nurtów uprawiania psychologii jako nauki, dlatego wiedza teoretyczna tej dziedziny jest wyjątkowo różnorodna — zarówno pod względem formalnym, jak i treściowym. Autorzy zajmujący się poziomem naukowości koncepcji psychologicznych zgodnie twierdzą, że w psychologii klinicznej uprawnione jest współistnienie różnych podejść teoretycznych (Paszkiewicz, 1983; Zamiara, 1974).
+  </p>
+<p>
+    Do najbardziej podstawowej wiedzy psychologicznej należą <strong>teorie psychologiczne</strong>, nazywane też koncepcjami człowieka lub teoriami zachowania i zjawisk psychicznych. Tworzą one spójne zbiory podejść, które przyjęto określać terminami: <em class="term">psychologiczna wiedza paradygmatyczna</em>, <em class="term">kierunki psychologii</em> lub <em class="term">orientacje w psychologii</em>. Mieszczą się w nich teorie z nurtu psychodynamicznego, behawioralno-poznawczego, fenomenologiczno-egzystencjalnego, interakcyjno-społecznego oraz systemowego (a coraz częściej wymienia się też podejście socjobiologiczne). Poszczególne orientacje różnią się przyjmowanymi założeniami co do natury człowieka, uwarunkowań zachowania i mechanizmów zmiany.
+  </p>
+<div class="blok">
+<span class="label">Blok rozszerzający 2.1 · Kryteria poziomu naukowości teorii</span>
+<p>Za: Oleś (2003, s. 32), na podstawie McAdamsa (1994) — siedem kryteriów oceny wartości naukowej teorii psychologicznej:</p>
+<ol class="tidy">
+<li><strong>wszechstronność</strong> — teoria obejmuje szeroki zakres zjawisk;</li>
+<li><strong>prostota</strong> — w prosty sposób wyjaśnia zjawiska;</li>
+<li><strong>spójność</strong> — nie zawiera elementów wzajemnie sprzecznych;</li>
+<li><strong>testowalność</strong> — z teorii można wyprowadzić hipotezy podlegające weryfikacji;</li>
+<li><strong>trafność empiryczna</strong> — większość wyprowadzonych hipotez znajduje potwierdzenie;</li>
+<li><strong>użyteczność</strong> — teoria ma wartość aplikacyjną, pozwala tworzyć programy działań;</li>
+<li><strong>twórczość</strong> — teoria ma moc heurystyczną, prowadzi do nowych pytań i odkryć.</li>
+</ol>
+</div>
+<h3>2.2.1 Rola modeli w psychologii klinicznej</h3>
+<p>
+    Pojęcie <em class="term">modelu</em> bywa używane w wielu znaczeniach. Z perspektywy badacza i praktyka można wyodrębnić trzy typy modeli:
+  </p>
+<div class="grid-cards">
+<div class="card">
+<h4>1. Modele tworzenia wiedzy naukowej</h4>
+<p>Dotyczą sposobu ujmowania zjawisk klinicznych — np. podejście patogenetyczne vs. salutogenetyczne, model potraumatycznego wzrostu.</p>
+</div>
+<div class="card">
+<h4>2. Modele rozumienia diagnostycznego</h4>
+<p>Wyodrębniane ze względu na sposób tworzenia założeń dla myślenia i działania diagnostycznego.</p>
+</div>
+<div class="card">
+<h4>3. Modele aktywności praktycznej</h4>
+<p>Odnoszą się do form pomocy psychologicznej (interwencja kryzysowa, doradztwo, terapia) lub sposobu pełnienia roli zawodowej (model lidera zespołu, model konsultanta).</p>
+</div>
+</div>
+<p>
+    W metodologii nauk modelom nominalnym i (niektórym) realnym przypisuje się rolę tworzenia układu założeń dla opisu i wyjaśniania problemów — upraszczają one i ujednolicają sposób rozumienia zjawisk. <strong>Model nominalny</strong> to konstrukt teoretyczny zakładający pewien sposób rozumienia natury zjawiska (bez pełnej weryfikacji empirycznej), natomiast <strong>model realny</strong> został sprawdzony — w całości lub części — w badaniach empirycznych. Za przykład modelu realnego uznaje się <strong>model salutogenezy Aarona Antonovsky'ego</strong> (1987, 1995), dzięki jego wielokrotnej weryfikacji empirycznej.
+  </p>
+<p>
+    W psychologii klinicznej powstają też tzw. <em class="term">metamodele</em> — łączące wiedzę z różnych dziedzin nauki, np. model transteoretyczny terapii czy model socjoekologiczny zdrowia. W budowaniu modeli wykorzystuje się również <em class="term">metafory heurystyczne</em> (np. metafora góry lodowej albo mandali zdrowia) — pozwalają one, dzięki analogii, spojrzeć na zjawisko z nowej perspektywy, choć nie zawsze sprzyjają tworzeniu pojęć możliwych do operacjonalizowania i zbadania empirycznie.
+  </p>
+<h3>2.2.2 Różne sposoby ujmowania psychologii klinicznej</h3>
+<p>
+    W badaniach i podręcznikach psychologii klinicznej problematykę przedstawia się zwykle w perspektywie wybranej grupy zjawisk — np. społeczna psychologia kliniczna (pod red. H. Sęk, 2000) koncentrowała się na społecznych problemach klinicznych, wykorzystując wiedzę z psychologii społecznej do opisu zdrowia, zaburzeń i interwencji uwzględniających relacje, role społeczne oraz kontekst społeczno-kulturowy.
+  </p>
+</section>
+<!-- ============ W1: PATOGENEZA / SALUTOGENEZA ============ -->
+<section class="block" id="pato-saluto">
+<div class="eyebrow">1a · Cierpiałkowska/Sęk r. 2.3  +  Heszen-Celińska/Sęk r. 5</div>
+<h2>Orientacja patogenetyczna i salutogenetyczna</h2>
+<p class="lede">
+    To centralna oś teoretyczna Wykładu 1. Obie orientacje odpowiadają na inne pytanie o tę samą oś „zdrowie–choroba”: patogeneza pyta, <strong>co powoduje chorobę</strong>, salutogeneza — <strong>co utrzymuje i przywraca zdrowie</strong>. Współcześnie traktuje się je jako podejścia <strong>komplementarne</strong>, a nie konkurencyjne.
+  </p>
+<div class="blok">
+<span class="label">Antonovsky (1979/1987/2005) · centralne pojęcia obu orientacji</span>
+<p><strong>Orientacja patogenetyczna</strong> → centralne pojęcie: <em>choroba i jej leczenie</em>.</p>
+<p><strong>Perspektywa salutogenetyczna, prozdrowotna</strong> → centralne pojęcie: <em>zdrowie</em>.</p>
+<p class="cite">Antonovsky, A. (2005). <em>Rozwikłanie tajemnicy zdrowia. Jak radzić sobie ze stresem i nie zachorować</em>.</p>
+</div>
+<h3>Podejście patogenetyczne</h3>
+<p>
+    W podejściu patogenetycznym dominuje pytanie o przyczynę choroby i czynniki warunkujące zaburzenia strukturalne i funkcjonalne narządów ciała, struktur i funkcji psychicznych oraz systemów społecznych. W klasycznej wersji analizowano szczegółowo <em class="term">etiopatogenezę</em> i <em class="term">patomechanizm</em> poszczególnych, dobrze wyodrębnionych chorób (znana przyczyna, specyficzny patomechanizm, zespół objawów, przebieg, rokowanie i konsekwencje). Odkrycie czynników chorobotwórczych umożliwiło podział chorób na zakaźne, urazy, zatrucia, metaboliczne i cywilizacyjne, ostre i przewlekłe, a także skuteczne, przyczynowe leczenie.
+  </p>
+<p>W psychopatologii i psychiatrii najczęściej wyodrębnia się cztery kategorie czynników patogennych (Sęk, 2008b, s. 40):</p>
+<table>
+<tr><th>Rodzaj czynnika</th><th>Charakterystyka</th></tr>
+<tr><td><strong>psychogenne</strong></td><td>związane z kształtowaniem się zaburzeń, zaburzeniem procesów regulacji, hamujące rozwój struktur osobowości</td></tr>
+<tr><td><strong>egzogenne</strong></td><td>związane ze środowiskiem rodzinnym i pozarodzinnym, warunkami socjalizacji, sytuacjami trudnymi, stresowymi lub urazowymi</td></tr>
+<tr><td><strong>somatogenne</strong></td><td>czynniki patogenne chorób somatycznych i ich korelaty zaburzające funkcje układu nerwowego (zakaźne, toksyczne, metaboliczne)</td></tr>
+<tr><td><strong>endogenne</strong></td><td>predyspozycja genetyczna i cechy konstytucjonalne — cechy temperamentu, właściwości układów fizjologicznych, w tym OUN</td></tr>
+</table>
+<p>
+    W naukach medycznych dominuje ujmowanie zdrowia i choroby jako kategorii <strong>rozłącznych</strong> (za założeniami kartezjańskimi) — powstanie choroby wyklucza zdrowie. To <strong>model biomedyczny</strong>, dziś uważany za redukcjonistyczny (rozwinięcie tego modelu — patrz część o modelach zdrowia).
+  </p>
+<h4>Koncepcja homeostazy w ujęciu patogenetycznym</h4>
+<p>
+    U podstaw podejścia patogenetycznego leży koncepcja <strong>homeostazy</strong> organizmu i choroby jako konsekwencji jej zakłóceń. Paradygmat ten zakłada, że normalnym stanem organizmu ludzkiego jest homeostaza, ulegająca okazjonalnym zaburzeniom przez czynniki mikrobiologiczne, fizyczne, chemiczne i/lub psychospołeczne (stresory). Proces przywracania homeostazy uruchamia mechanizmy regulacyjne — neuropsychologiczne, immunologiczne i endokrynologiczne. Gdy są one nieadekwatne, rezultatem jest choroba, a terapia zmierza do wzmocnienia, rozszerzenia lub zastąpienia tych mechanizmów. Zdrowie utożsamiane jest tu z brakiem choroby, a przedmiotem badań staje się rozpoznawanie i identyfikowanie czynników ryzyka.
+  </p>
+<div class="blok">
+<span class="label">Ograniczenia podejścia patogenetycznego</span>
+<ul class="tidy" style="margin:0;">
+<li>myślenie dychotomiczne „chory–zdrowy” i powoływanie odrębnych struktur instytucjonalnych dla grup zdrowych i chorych;</li>
+<li>zawężanie poszukiwań badawczych do odnajdywania patogenezy i patomechanizmu leżącego u podstaw danej choroby;</li>
+<li>koncentracja na indywidualnym przypadku i grupach podwyższonego ryzyka, przy jednoczesnym pomijaniu przypadków dewiacyjnych, niepotwierdzających sprawdzonych hipotez;</li>
+<li>jednoznaczne określanie stresu jako zjawiska wyłącznie negatywnego.</li>
+</ul>
+</div>
+<p>
+    W tym ujęciu choroba (proces chorobowy) i zaburzenia są wynikiem uaktywnienia się <em class="term">podatności</em> w sytuacji działania stresu psychospołecznego. Podatność (wrażliwość) jest wyznaczana przez predyspozycje jednostki — biologiczne, psychologiczne i społeczno-kulturowe. Stresory (sytuacje trudne, codzienne obciążenia, krytyczne wydarzenia życiowe — ujmowane tu jako <em>patogeny</em>) nie są samodzielną przyczyną zaburzeń: dopiero działając w interakcji z podatnością (skazą, diatezą) powodują ich powstanie. To model <strong>„podatność–stres”</strong> (diateza–stres), integrujący czynniki biologiczne, psychiczne i środowiskowo-kulturowe (Carson, Butcher, Mineka, 2003; Cierpiałkowska, 2004; Seligman i in., 2003).
+  </p>
+<h3>Podejście salutogenetyczne</h3>
+<div class="blok">
+<span class="label">Blok rozszerzający 2.2 · Kontekst odkrycia stresu i salutogenezy</span>
+<p><span class="figure-badge"><span class="dot"></span>Hans Selye</span> (1963, s. 17–55) jako student medycyny zauważył w 1925 r., że pacjenci cierpiący na różne choroby mają nierzadko podobne, niespecyficzne objawy. Swój punkt widzenia sformułował w 1936 r. w artykule w piśmie <em>Nature</em>, opisując zjawisko nieswoistej reakcji przystosowawczej ustroju na różnorodne, uciążliwe czynniki (tzw. zespół ogólnej adaptacji).</p>
+<p><span class="figure-badge"><span class="dot"></span>Aaron Antonovsky</span> (1979) w badaniach nad przystosowaniem kobiet do klimakterium zauważył, że 29% badanych, które przeżyły ekstremalny stres (np. obóz koncentracyjny), mimo to zachowało dobry stan zdrowia psychicznego i fizycznego. Zamiast skupiać się na 71% osób z objawami zaburzeń, postawił przełomowe pytanie: <em>„Dlaczego ludzie, mimo oddziaływania wielu stresorów (patogenów), zachowują zdrowie lub — w razie choroby — szybko do niego powracają?”</em>. Tak narodził się <strong>model salutogenezy</strong>.</p>
+</div>
+<div class="blok">
+<span class="label">Odwrócenie punktu wyjścia</span>
+<p>
+      O ile podejście patogenetyczne zakłada, że normalnym stanem organizmu jest <strong>homeostaza</strong> (zakłócana przez stresory), o tyle podejście salutogenetyczne opiera się na założeniu, że normalnym stanem organizmu jest <strong>nieporządek, zakłócenie homeostazy</strong>. Osiągnięcie idealnego stanu zdrowia jest fikcją — każdy człowiek jest ulokowany „gdzieś” na kontinuum między pełnym, idealnym zdrowiem a poważną, zagrażającą życiu chorobą.
+    </p>
+<p>Zamiast pytać „co wywołuje chorobę?”, badacz salutogenetyczny pyta wprost: <strong>„Co ułatwia człowiekowi bycie bardziej zdrowym?”</strong></p>
+</div>
+<p>
+    W modelu salutogenetycznym zakłada się, że człowiek, spotykając się z wszechobecnymi stresorami, dostraja się do tych wyzwań, aby zachować dynamiczną równowagę procesów życiowych na optymalnym dla funkcjonowania poziomie. Zdrowie jest więc <strong>procesem</strong> stałego reagowania na wymagania w celu zachowania lub przywracania pewnego poziomu równowagi wewnętrznej.
+  </p>
+<p>
+    Antonovsky (1979) wprowadził wymiar zdrowia i choroby jako <strong>kontinuum</strong>, stosując skrót <em>health ease</em> (HE) — <em>dis ease</em> (DE):
+  </p>
+<div class="diagram">
+<svg viewbox="0 0 560 90" xmlns="http://www.w3.org/2000/svg">
+<line stroke="var(--accent)" stroke-linecap="round" stroke-width="4" x1="40" x2="520" y1="45" y2="45"></line>
+<circle cx="40" cy="45" fill="var(--sage)" r="7"></circle>
+<circle cx="520" cy="45" fill="var(--accent-deep)" r="7"></circle>
+<text fill="var(--sage)" font-family="Source Serif 4" font-size="15" font-weight="600" text-anchor="middle" x="40" y="25">HE</text>
+<text fill="var(--ink-soft)" font-family="Source Serif 4" font-size="11" text-anchor="start" x="40" y="70">pełne zdrowie (health ease)</text>
+<text fill="var(--accent-deep)" font-family="Source Serif 4" font-size="15" font-weight="600" text-anchor="middle" x="520" y="25">DE</text>
+<text fill="var(--ink-soft)" font-family="Source Serif 4" font-size="11" text-anchor="end" x="520" y="70">głęboka choroba (dis-ease)</text>
+<circle cx="290" cy="45" fill="var(--gold)" r="6"></circle>
+<text fill="var(--gold)" font-family="Source Serif 4" font-size="11" text-anchor="middle" x="290" y="25">poziom zdrowia jednostki X</text>
+</svg>
+<div class="cap">Kontinuum zdrowie–choroba wg Antonovsky'ego (1979, 1995). Lewy biegun (HE) oznacza pełny dobrostan fizyczny, psychiczny i społeczny; prawy biegun (DE) — stan choroby zagrażającej życiu. Jednostka zajmuje zawsze pewien punkt pośredni.</div>
+</div>
+<h4>Cztery filary modelu salutogenetycznego</h4>
+<div class="grid-cards">
+<div class="card sage"><h4>Uogólnione zasoby odpornościowe</h4><p><em>generalised resistance resources</em> (GRR)</p></div>
+<div class="card sage"><h4>Stresory</h4><p>wymagania, dla których nie ma gotowej reakcji adaptacyjnej</p></div>
+<div class="card sage"><h4>Poczucie koherencji</h4><p><em>sense of coherence</em> (SOC) — „klucz zdrowia”</p></div>
+<div class="card sage"><h4>Styl życia</h4><p>najsłabiej rozwinięty element modelu</p></div>
+</div>
+<h4>Uogólnione zasoby odpornościowe (GRR)</h4>
+<p>Antonovsky (1979, 1987, 1995) wyróżnił dwie grupy zasobów:</p>
+<ol class="tidy">
+<li><strong>Właściwości jednostki:</strong>
+<ul class="tidy">
+<li>biologiczne — genetyczne, konstytucjonalne, immunologiczne, biochemiczne;</li>
+<li>psychologiczne — cechy poznawcze (wiedza, intelekt), cechy osobowości, poczucie tożsamości, poczucie kontroli i sprawstwa, poczucie uczestnictwa, zaangażowania i zobowiązania oraz wyuczone strategie radzenia sobie;</li>
+</ul>
+</li>
+<li><strong>Cechy społeczno-kulturowe:</strong> cechy grupy i więzi, wsparcie społeczne, stabilność kulturowa, religia, filozofia, sztuka.</li>
+</ol>
+<p>
+    Zasoby odpornościowe mogą mieć charakter wrodzony (dziedziczony), ale wiele z nich powstaje w toku socjalizacji i rozwoju ontogenetycznego. Zasoby warunkują <strong>ocenę stresorów</strong> — funkcjonalnie polegają na możliwości unikania stresorów i takim usprawnianiu radzenia sobie z wymaganiami, by zapobiegać przekształceniu się napięcia w stres.
+  </p>
+<h4>Stresory</h4>
+<p>
+    Antonovsky (1995, s. 42) zdefiniował <em class="term">stresor</em> jako wymaganie, dla którego nie ma gotowej ani zautomatyzowanej reakcji adaptacyjnej. Stresory powodują stan napięcia, ale nie muszą przeradzać się w stres i emocje negatywne — mogą też mobilizować, wyzwalać energię i wzmacniać odporność („Salutogeneza stwarza możliwość rehabilitacji stresorów w życiu człowieka”, Antonovsky, 1995, s. 25).
+  </p>
+<p>Antonovsky wyróżnił m.in. następujące typy stresorów:</p>
+<ul class="tidy">
+<li>psychospołeczne i fizyczno-biologiczne;</li>
+<li>krótkotrwałe (ostre) i przewlekle działające;</li>
+<li>codzienne, drobne uciążliwości (<em>daily hassles</em>) oraz znaczące wydarzenia zmiany życiowej (<em>stressful life events</em>) — traumatyczne, katastroficzne, związane z agresją społeczną, kryzysami rozwojowymi, wydarzeniami historycznymi i interpersonalnymi.
+    </li>
+</ul>
+<p>
+    Istotna jest subiektywna ocena wydarzenia i posiadanie kompetencji tworzenia nowych sposobów funkcjonowania w obliczu stresora — te same wydarzenia mogą być <strong>potencjalnie dwuwartościowe</strong>: pozytywne, negatywne lub ambiwalentne. Do <em>załamania zdrowia</em> dochodzi, gdy energia własna i dostępne zasoby są niewystarczające wobec wymagań — wówczas napięcie przeradza się w stres i objawy zaburzeń.
+  </p>
+<h4>Poczucie koherencji (SOC) — „klucz zdrowia”</h4>
+<p>
+    Poczucie koherencji zostało najpierw (1979) określone jako ogólna orientacja wyrażająca stopień, w jakim człowiek ma trwałe, choć dynamiczne przekonanie o przewidywalności świata wewnętrznego i zewnętrznego oraz o tym, że sprawy przyjmą pomyślny obrót, jakiego można się spodziewać na podstawie rozsądnych przesłanek. W późniejszych pracach (1987, 1995) Antonovsky sprecyzował je jako zmienną trójskładnikową:
+  </p>
+<blockquote style="border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;">
+    „Globalna orientacja człowieka wyrażająca stopień, w jakim ma on dojmujące, trwałe, choć dynamiczne poczucie pewności, że: (1) bodźce napływające ze środowiska wewnętrznego i zewnętrznego mają charakter ustrukturyzowany, przewidywalny i wytłumaczalny; (2) dostępne są środki, które pozwolą sprostać wymaganiom, jakie stawiają te bodźce; (3) wymagania te są wyzwaniem wartym wysiłku i zaangażowania” (Antonovsky, 1987, s. 19; 1995, s. 34).
+  </blockquote>
+<div class="grid-cards">
+<div class="card">
+<h4>Poczucie zrozumiałości<br/><span style="font-weight:400;font-size:.8rem;color:var(--ink-faint);">comprehensibility — komponent poznawczy</span></h4>
+<p>Stopień, w jakim człowiek spostrzega napływające informacje jako uporządkowane, spójne, dające się zrozumieć i którym można nadać znaczenie.</p>
+</div>
+<div class="card">
+<h4>Poczucie zaradności<br/><span style="font-weight:400;font-size:.8rem;color:var(--ink-faint);">manageability — komponent instrumentalny</span></h4>
+<p>Przekonanie, że dostępne są zasoby zaradcze (własne lub zewnętrzne — wsparcie, autorytety), dzięki czemu człowiek nie czuje się bezradny ani ofiarą zdarzeń.</p>
+</div>
+<div class="card">
+<h4>Poczucie sensowności<br/><span style="font-weight:400;font-size:.8rem;color:var(--ink-faint);">meaningfulness — komponent motywacyjno-emocjonalny</span></h4>
+<p>Stopień, w jakim człowiek czuje, że życie ma sens, a wymagania warte są zaangażowania i wysiłku. Zdaniem Antonovsky'ego — <strong>najważniejszy</strong> ze składników.</p>
+</div>
+</div>
+<p>
+    Komponenty pozostają w związku: najważniejsze jest poczucie sensowności — jeśli jest silne, pozostałe elementy mają tendencję wzrostową; jeśli jest słabe, cały zespół przejawia tendencję spadkową. Poczucie zaradności i sensowności jest zbliżone do dwóch wymiarów dobrostanu psychicznego wg Carol Ryff (por. sekcja o modelach zdrowia).
+  </p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 620 300" xmlns="http://www.w3.org/2000/svg">
+<!-- resources column -->
+<rect fill="var(--accent-mid)" height="34" rx="6" stroke="var(--accent-line)" width="150" x="10" y="15"></rect>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="85" y="36">psychospołeczne zasoby</text>
+<rect fill="var(--accent-mid)" height="34" rx="6" stroke="var(--accent-line)" width="150" x="10" y="60"></rect>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="85" y="81">ogólne zasoby odpornościowe</text>
+<rect fill="var(--accent-mid)" height="34" rx="6" stroke="var(--accent-line)" width="150" x="10" y="105"></rect>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="85" y="126">genetyczne / biologiczne zasoby</text>
+<!-- arrow to ocena stresorow -->
+<path d="M165 75 H 220" marker-end="url(#arrow)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="var(--paper)" height="40" rx="6" stroke="var(--accent)" stroke-width="1.5" width="120" x="222" y="55"></rect>
+<text fill="var(--ink)" font-size="11" text-anchor="middle" x="282" y="79">ocena stresorów</text>
+<path d="M342 75 H 400" marker-end="url(#arrow)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="var(--paper)" height="40" rx="6" stroke="var(--accent)" stroke-width="1.5" width="120" x="402" y="55"></rect>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="462" y="72">stresory</text>
+<text fill="var(--ink-faint)" font-size="9" text-anchor="middle" x="462" y="86">endogenne / egzogenne</text>
+<path d="M282 95 V 140" marker-end="url(#arrow)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="var(--paper)" height="36" rx="6" stroke="var(--gold)" stroke-width="1.5" width="120" x="222" y="142"></rect>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="282" y="164">stres / napięcie</text>
+<path d="M282 178 V 215" marker-end="url(#arrow)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="var(--paper)" height="36" rx="6" stroke="var(--sage)" stroke-width="1.5" width="140" x="212" y="217"></rect>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="282" y="239">radzenie sobie</text>
+<!-- SOC oval -->
+<ellipse cx="90" cy="240" fill="hsl(38,60%,92%)" rx="80" ry="36" stroke="var(--gold)" stroke-width="2"></ellipse>
+<text fill="var(--accent-deep)" font-size="13" font-weight="700" text-anchor="middle" x="90" y="236">SOC</text>
+<text fill="var(--ink-soft)" font-size="9.5" text-anchor="middle" x="90" y="252">zrozumiałość · zaradność · sensowność</text>
+<path d="M170 235 H 210" marker-end="url(#arrowg)" stroke="var(--gold)" stroke-width="2"></path>
+<!-- outcomes -->
+<path d="M352 235 H 400" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="hsl(150,25%,92%)" height="30" rx="6" stroke="var(--sage)" width="130" x="402" y="205"></rect>
+<text fill="hsl(150,35%,25%)" font-size="11" text-anchor="middle" x="467" y="224">zdrowie (HE)</text>
+<rect fill="hsl(12,45%,92%)" height="30" rx="6" stroke="var(--accent)" width="130" x="402" y="243"></rect>
+<text fill="var(--accent-deep)" font-size="11" text-anchor="middle" x="467" y="262">choroba (DE)</text>
+<path d="M462 178 L 467 205" stroke="var(--ink-faint)" stroke-width="1.5"></path>
+<path d="M462 178 L 467 243" stroke="var(--ink-faint)" stroke-width="1.5"></path>
+<!-- context bottom -->
+<rect fill="var(--paper-alt)" height="20" rx="4" stroke="var(--line)" width="520" x="10" y="278"></rect>
+<text fill="var(--ink-faint)" font-size="9.5" text-anchor="middle" x="270" y="292">kontekst historyczny, polityczny, ekonomiczny, społeczno-kulturowy</text>
+<defs>
+<marker id="arrow" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--ink-faint)"></path></marker>
+<marker id="arrowg" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--gold)"></path></marker>
+</defs>
+</svg>
+<div class="cap">Rycina 2.1 / 5.2 (uproszczony schemat) · Model salutogenezy wg Antonovsky'ego (1979, s. 184–185; Sęk, 2001c, 2005a). Zasoby wpływają na ocenę stresorów; nieskuteczne radzenie sobie prowadzi do stresu i choroby, skuteczne — do zdrowia. Centralnym mechanizmem sterującym jest poczucie koherencji.</div>
+</div>
+<h3>Komplementarność patogenezy i salutogenezy</h3>
+<p>
+    Zdaniem Antonovsky'ego (1995) oba podejścia są względem siebie <strong>komplementarne</strong>, a nie konkurencyjne — błędem byłoby dzielenie nakładów badawczych i diagnostycznych tylko na jedno z nich. Gdy celem diagnozy jest wyjaśnienie przyczyn choroby, psycholog kliniczny koncentruje się na patogenach, stresorach i podatności usposabiającej do zaburzeń, analizując zakłócone funkcje regulujące zachowanie (procesy poznawcze, emocjonalne, oceniające świat i siebie) oraz antyzdrowotny styl życia. Model salutogenetyczny służy natomiast wyjaśnianiu genezy i ochronie zdrowia oraz zasobów psychicznych.
+  </p>
+<h4>Czy możliwa jest integracja obu podejść?</h4>
+<p>
+    Próby integracji podejmowano od początku XXI w. (Cierpiałkowska, Sęk, 2002). Zwrócono uwagę, że nadmierna koncentracja na jednym krańcu wymiaru „zdrowie–choroba” może prowadzić do szkodliwych ograniczeń — np. przesadne skupienie na zachowaniach zdrowotnych może prowadzić do patologii odżywiania, a koncentracja wyłącznie na patogenach może pomijać potencjały i zasoby zdrowotne. Bardziej złożony sposób integracji przedstawia rycina 2.2, wykorzystująca i uzupełniająca model „podatność–stres” o odporność.
+  </p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+<rect fill="hsl(38,60%,90%)" height="34" rx="6" stroke="var(--gold)" width="240" x="200" y="10"></rect>
+<text fill="var(--accent-deep)" font-size="11.5" font-weight="600" text-anchor="middle" x="320" y="31">Wymagania, zadania życiowe, stresory</text>
+<rect fill="hsl(12,45%,92%)" height="36" rx="6" stroke="var(--accent)" width="180" x="10" y="70"></rect>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="88">Czynniki ryzyka: genetyczne,</text>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="100">konstytucjonalne, biologiczne</text>
+<rect fill="hsl(150,25%,92%)" height="36" rx="6" stroke="var(--sage)" width="180" x="450" y="70"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="88">Zasoby odpornościowe: genetyczne,</text>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="100">konstytucjonalne, biologiczne</text>
+<rect fill="hsl(12,45%,92%)" height="36" rx="6" stroke="var(--accent)" width="180" x="10" y="130"></rect>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="148">Czynniki ryzyka psychologiczne:</text>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="160">sytuacja ↔ osobowość</text>
+<rect fill="hsl(150,25%,92%)" height="36" rx="6" stroke="var(--sage)" width="180" x="450" y="130"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="148">Zasoby odpornościowe psychologiczne:</text>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="160">osobowość ↔ zachowanie</text>
+<rect fill="hsl(12,45%,92%)" height="36" rx="6" stroke="var(--accent)" width="180" x="10" y="190"></rect>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="208">Czynniki ryzyka ekologiczne,</text>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="100" y="220">społeczno-kulturowe</text>
+<rect fill="hsl(150,25%,92%)" height="36" rx="6" stroke="var(--sage)" width="180" x="450" y="190"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="208">Zasoby odpornościowe ekologiczne,</text>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="540" y="220">społeczno-kulturowe</text>
+<rect fill="var(--paper)" height="46" rx="8" stroke="var(--accent-deep)" stroke-width="2" width="230" x="205" y="140"></rect>
+<text fill="var(--ink)" font-size="10.5" font-weight="600" text-anchor="middle" x="320" y="160">Równoważenie wymagań i zasobów</text>
+<text fill="var(--ink-faint)" font-size="9.5" text-anchor="middle" x="320" y="175">słabe SOC ←→ silne SOC</text>
+<path d="M320 44 V 138" marker-end="url(#arrow2)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<path d="M190 88 H 205" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M190 148 H 205" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M190 208 H 205" stroke="var(--accent)" stroke-width="1.5"></path>
+<path d="M450 88 H 435" stroke="var(--sage)" stroke-width="1.5"></path>
+<path d="M450 148 H 435" stroke="var(--sage)" stroke-width="1.5"></path>
+<path d="M450 208 H 435" stroke="var(--sage)" stroke-width="1.5"></path>
+<path d="M250 186 L 150 260" marker-end="url(#arrow2)" stroke="var(--accent-deep)" stroke-width="2"></path>
+<path d="M390 186 L 490 260" marker-end="url(#arrow2)" stroke="var(--accent-deep)" stroke-width="2"></path>
+<text fill="var(--accent-deep)" font-size="12" font-weight="700" text-anchor="middle" x="115" y="280">CIERPIENIE / CHOROBA</text>
+<text fill="hsl(150,35%,25%)" font-size="12" font-weight="700" text-anchor="middle" x="525" y="280">DOBROSTAN / ZDROWIE</text>
+<defs><marker id="arrow2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--accent-deep)"></path></marker></defs>
+</svg>
+<div class="cap">Rycina 2.2 · Interakcja czynników ryzyka i zasobów odpornościowych w procesach osiągania zdrowia i zapobiegania patologii (na podstawie: Sęk, 2008a; Cierpiałkowska, Sęk, 2006). Poziom SOC decyduje o sposobie równoważenia wymagań i zasobów.</div>
+</div>
+<h3>Pogłębienie: czynniki komplementarne wg ujęcia pato- i salutogenetycznego</h3>
+<p>Heszen-Celińska i Sęk (r. 5, tab. 5.1) zestawiają czynniki ważne dla zdrowia i choroby z obu perspektyw — pokazuje to, jak podejścia się uzupełniają:</p>
+<table>
+<caption>Tabela 5.1 · Czynniki ważne dla zdrowia i choroby — komplementarność ujęć</caption>
+<tr><th>Rodzaj czynników</th><th>Ujęcie patogenetyczne</th><th>Ujęcie salutogenetyczne</th></tr>
+<tr><td>emocjonalne</td><td>emocje negatywne, zalegające</td><td>emocje pozytywne, nadzieja, optymizm</td></tr>
+<tr><td>poznawcze</td><td>zewnętrzna lokalizacja poczucia kontroli</td><td>poczucie własnej skuteczności</td></tr>
+<tr><td>motywacyjne</td><td>brak koncentracji na własnym zdrowiu lub nadmierna koncentracja</td><td>umiarkowane zainteresowanie własnym zdrowiem</td></tr>
+<tr><td>behawioralne</td><td>zachowania ryzykowne dla zdrowia</td><td>zachowania prozdrowotne, zdrowy styl życia</td></tr>
+<tr><td>osobowościowe</td><td>wzór zachowania A (WZA)</td><td>poczucie koherencji</td></tr>
+<tr><td>sytuacyjne</td><td>ryzykowne pole życiowe</td><td>zdrowe pole życiowe</td></tr>
+</table>
+<h3>Zachowania zdrowotne — styl życia (5.2.4)</h3>
+<p>
+    To element modelu salutogenetycznego opracowany najsłabiej. Antonovsky (1979), zgodnie z rozwijającym się nurtem medycyny behawioralnej, uważał, że poziom zdrowia zależy od zachowań związanych ze zdrowiem, jednak jako socjolog był przeciwny przerzucaniu na styl życia całej odpowiedzialności za zdrowie. Twierdził, że należy ukierunkować uwagę na te zachowania, dzięki którym człowiek tworzy warunki sprzyjające doświadczaniu i utrzymywaniu zasobów oraz poczucia koherencji.
+  </p>
+<h3>Wybrane wyniki weryfikacji empirycznej modelu (r. 5.3)</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>SOC a poziom zdrowia</h4>
+<p>Subiektywna ocena zdrowia wiąże się pozytywnie z poczuciem koherencji zarówno u młodzieży, jak i dorosłych. SOC koreluje odwrotnie proporcjonalnie z lękiem i depresją (od –0,50 do –0,76, p &lt; 0,001) — jeden z najsilniej i najczęściej potwierdzanych związków w literaturze.</p>
+</div>
+<div class="card">
+<h4>SOC a zasoby</h4>
+<p>SOC koreluje ze wszystkimi skalami dobrostanu psychicznego wg Ryff. Osoby o silnym SOC oceniają wydarzenia życiowe i bodźce zewnętrzne jako mniej stresujące; różnica jest istotnie silniejsza niż sam efekt stresu.</p>
+</div>
+<div class="card">
+<h4>Weryfikacja modelu jako całości</h4>
+<p>Pasikowski (2000) przetestował cztery modele równań strukturalnych — model IV najlepiej oddawał strukturę zależności między zmiennymi modelu salutogenetycznego.</p>
+</div>
+<div class="card">
+<h4>Badania podłużne i eksperymentalne</h4>
+<p>Gruszczyńska (2001) — u studentów w sytuacji stresu egzaminacyjnego SOC działał zarówno efektem głównym, jak i buforowym. Badania nad rozwojem SOC u młodzieży (Frączek, Zwoliński, 1999) wykazały wpływ relacji rodzinnych: bezpośredni u chłopców (ojciec), pośredni u dziewcząt (matka).</p>
+</div>
+</div>
+<h3>Od medycyny naprawczej do medycyny pozytywnej</h3>
+<blockquote style="border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;">
+    „Medycyna najpierw zajęła się człowiekiem chorym, potem zagrożonym, wreszcie zdrowym” — M. Demel, twórca polskiej szkoły edukacji zdrowotnej.
+  </blockquote>
+<div class="grid-cards">
+<div class="card"><h4>Era medycyny naprawczej</h4><p>Koncentracja na leczeniu już istniejącej choroby (odpowiada podejściu patogenetycznemu).</p></div>
+<div class="card gold"><h4>Era medycyny zapobiegawczej</h4><p>Oparta na strachu i zakazach — unikanie czynników ryzyka.</p></div>
+<div class="card sage"><h4>Era medycyny pozytywnej</h4><p>Uczy, jak żyć — odpowiada podejściu salutogenetycznemu i promocji zdrowia.</p></div>
+</div>
+<p>Ten kierunek zmian znajduje odzwierciedlenie w strategii WHO <em>„Health for all”</em>:</p>
+<ul class="tidy">
+<li><strong>dodanie lat do życia</strong> — wydłużanie długości życia;</li>
+<li><strong>dodanie zdrowia do życia</strong> — troska o jakość życia (<em>wellbeing</em>);</li>
+<li><strong>dodanie życia do lat</strong> — troska o sens życia (<em>productive life</em>).</li>
+</ul>
+</section>
+<!-- ============ W1: POJĘCIE ZDROWIA ============ -->
+<section class="block" id="pojecie-zdrowia">
+<div class="eyebrow">1b · Heszen-Celińska, Sęk — rozdział 3</div>
+<h2>Koncepcje i pojęcie zdrowia w psychologii</h2>
+<h3>3.1 Co to jest zdrowie? Sześć ujęć</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>1. Zdrowie jako brak objawów choroby i cierpienia</h4>
+<p>Najbardziej zdroworozsądkowe, potoczne ujęcie — zdrowie to stan braku choroby i dolegliwości. Dominuje w wypowiedziach osób niezwiązanych zawodowo z medycyną.</p>
+</div>
+<div class="card gold">
+<h4>2. Zdrowie jako dobrostan biopsychospołeczny</h4>
+<p><strong>WHO (1946):</strong> „stan pełnego dobrostanu fizycznego (<em>well-being</em>), psychicznego i społecznego, a nie tylko brak choroby lub niepełnosprawności”. Definicja szersza niż biomedyczna, wciąż najszerzej cytowana — mimo krytyki jej idealizmu (dobrostan „pełny” bywa nieosiągalny).</p>
+</div>
+<div class="card">
+<h4>3. Zdrowie jako potencjał i właściwości człowieka</h4>
+<p>Zdrowie jako <em>dyspozycja</em> umożliwiająca adaptacyjne funkcjonowanie w danym kontekście środowiskowym (Słońska, Misiuna, 1993) — kategoria rozwojowo-funkcjonalna.</p>
+</div>
+<div class="card">
+<h4>4. Zdrowie jako proces</h4>
+<p>Ujęcie Antonovsky'ego — zdrowie i choroba to bieguny jednego wymiaru (kontinuum), nie kategorie rozłączne. Zdrowie nie jest stanem stałym ani zasobem, lecz procesem przemieszczania się w continuum.</p>
+</div>
+<div class="card">
+<h4>5. Zdrowie jako wartość</h4>
+<p>Zdrowie może być wartością <strong>autoteliczną</strong> (cel sam w sobie) lub <strong>instrumentalną</strong> (środek do innych celów, np. kariery). To rozróżnienie ma znaczenie przy konfliktach wartości (np. praca a zdrowie).</p>
+</div>
+<div class="card">
+<h4>6. Ujęcia profesjonalne a myślenie potoczne</h4>
+<p>Badania (Herzlich, 1973; Sęk, 1997) pokazują, że wszystkie powyższe ujęcia pojawiają się także w wypowiedziach osób bez wykształcenia medycznego/psychologicznego — nie są to więc wyłącznie akademickie konstrukty.</p>
+</div>
+</div>
+<div class="blok">
+<span class="label">Blok rozszerzający 3.1 · Zdrowie jako wartość — badanie wśród pracowników (1987)</span>
+<p>Sondaż wśród ok. 1000 pracowników pięciu zakładów przemysłowych: 72,5% uznało zdrowie za „najważniejszą rzecz w życiu”, kolejne 21,6% — za „ważną sprawę” (mniej ważną niż inne). Tylko ok. 6% deklarowało, że zdrowie nie jest dla nich zbyt ważne. Ponad 70% badanych uznało zdrowie za wartość autoteliczną, stawianą na czele hierarchii wartości.</p>
+<p class="cite">na podstawie: Puchalski, 1997</p>
+</div>
+<div class="blok">
+<span class="label">Blok rozszerzający 3.2 · Pojęcie zdrowia w wypowiedziach studentów psychologii SWPS</span>
+<p>Badanie ankietowe (roczniki 2012–2014, ok. 73 osoby, przeważnie kobiety 21–23 lata) na pytanie otwarte „Co to jest zdrowie?”. Najczęstsza kategoria: <strong>dobrostan</strong> (51% wypowiedzi — niemal połowa odnosiła się jedynie do dwóch dziedzin: fizycznej i psychicznej, tylko 2 osoby uwzględniły aspekt społeczny); zdrowie jako <strong>proces</strong> (16%); zdrowie <strong>behawioralne</strong> — jako stan umysłu i ciała (16%); zdrowie jako <strong>brak choroby</strong> (7%).</p>
+</div>
+<h3>3.2 Ogólne tendencje w ujmowaniu zdrowia</h3>
+<ul class="tidy">
+<li><strong>Poszerzanie zakresu pojęciowego</strong> — od definicji WHO (dziedzina psychiczna i społeczna) po współczesne włączanie wymiaru <strong>duchowego</strong>. Innym przykładem poszerzenia jest termin <em>zdrowie behawioralne</em> (J. Matarazzo, 1980) — zachowanie sprzyjające zdrowiu, podejmowane z własnej inicjatywy.</li>
+<li><strong>Akcentowanie zmienności zdrowia</strong> — szczególnie widoczne w ujęciach procesualnych; zmienność to atrybut każdego procesu i potencjału.</li>
+<li><strong>Przypisywanie człowiekowi odpowiedzialności za własne zdrowie</strong> — korzenie w psychologii humanistycznej (nurt podmiotowy); rewolucja wobec tradycyjnej medycyny, delegującej odpowiedzialność na lekarza.</li>
+<li><strong>Wyróżnienie zdrowia obiektywnego i subiektywnego</strong> — zdrowie obiektywne to ocena medyczna (świadectwo istnienia choroby); zdrowie subiektywne to percepcja własna, zwana też poczuciem zdrowia lub dobrostanem. Obie oceny są ze sobą skorelowane, lecz nietożsame.</li>
+</ul>
+<p>
+    Jedną z nowszych, integrujących definicji zdrowia psychicznego zaproponował <strong>S. Galderisi i in. (2017)</strong>: „zdrowie psychiczne jest dynamicznym stanem wewnętrznej równowagi, która umożliwia osobom wykorzystanie ich umiejętności w harmonii z uniwersalnymi wartościami społecznymi”. Podkreśla się przy tym, że elementy równoważenia są istotne, ale niekoniecznie obowiązkowe jednocześnie — mogą występować w różnych układach w zależności od okresu rozwojowego.
+  </p>
+<h3>3.3 Zmiany poziomu zdrowia w ciągu życia</h3>
+<p>Trudno wskazać jeden, jednoznaczny kierunek zmian zdrowia z wiekiem — zależy on od dziedziny zdrowia:</p>
+<div class="grid-cards">
+<div class="card">
+<h4>Zdrowie biologiczne</h4>
+<p>Starzenie biologiczne zaczyna się praktycznie od narodzin; sprawność fizyczna stopniowo maleje, rośnie prawdopodobieństwo chorób somatycznych. Po 80. r.ż. typowe są: spadek zdolności funkcjonalnych, ogólna słabowitość, niejasne dolegliwości, współwystępowanie wielu chorób. Zjawisko <em>kompresji chorobowości</em> — wydłużeniu życia towarzyszy wzrost liczby lat przeżytych bez inwalidztwa. Osoby starsze oceniają własne zdrowie lepiej, niż wynikałoby to z danych medycznych („zdrowie względne”, ocena wobec normy wiekowej).</p>
+</div>
+<div class="card">
+<h4>Zdrowie psychiczne</h4>
+<p>Brak wyraźnego związku liniowego z wiekiem — różne zaburzenia mają różny „szczyt” zachorowań (nadpobudliwość psychoruchowa — dzieciństwo; schizofrenia — szczyt ok. 24. r.ż. u mężczyzn; demencja — późny wiek). Satysfakcja z życia zwykle wykazuje zależność krzywoliniową z wiekiem — najniższa u młodych, wzrasta, kulminuje ok. 60–79 r.ż.</p>
+</div>
+<div class="card">
+<h4>Zdrowie społeczne</h4>
+<p>Wg klasycznego ujęcia T. Parsonsa (1969) — choroba to niemożność pełnienia ról społecznych. Miarą zdrowia społecznego jest poziom wywiązywania się z ról i satysfakcja z ich pełnienia. C. Keyes (1998) stworzył pojęcie <em>dobrostanu społecznego</em> (5 elementów: akceptacja społeczna, koherencja społeczna, aktualizacja społeczna, wkład społeczny, integracja społeczna).</p>
+</div>
+<div class="card">
+<h4>Zdrowie duchowe</h4>
+<p>Stosunkowo młody obszar zainteresowań (od lat 80. XX w.; WHO zaproponowało uznanie go za wymiar zdrowia w 1998 r.). Istotą duchowości jest <em>transcendencja</em> — aktywność wykraczająca poza granice aktualnie doświadczanego Ja. Zasoby duchowe rosną wraz z wiekiem oraz pod wpływem wydarzeń krytycznych (np. choroba onkologiczna może przyspieszać rozwój duchowy).</p>
+</div>
+</div>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+<circle cx="200" cy="120" fill="hsla(12,45%,75%,0.35)" r="95" stroke="var(--accent)" stroke-width="1.5"></circle>
+<circle cx="200" cy="200" fill="hsla(38,55%,72%,0.35)" r="95" stroke="var(--gold)" stroke-width="1.5"></circle>
+<circle cx="130" cy="160" fill="hsla(150,25%,68%,0.32)" r="95" stroke="var(--sage)" stroke-width="1.5"></circle>
+<circle cx="270" cy="160" fill="hsla(12,15%,55%,0.22)" r="95" stroke="hsl(12,15%,45%)" stroke-width="1.5"></circle>
+<text fill="var(--accent-deep)" font-size="13" font-weight="600" text-anchor="middle" x="200" y="68">Duchowa</text>
+<text fill="hsl(38,60%,32%)" font-size="13" font-weight="600" text-anchor="middle" x="200" y="255">Społeczna</text>
+<text fill="hsl(150,35%,25%)" font-size="13" font-weight="600" text-anchor="middle" x="72" y="165">Psychiczna</text>
+<text fill="hsl(12,15%,32%)" font-size="13" font-weight="600" text-anchor="middle" x="330" y="165">Fizyczna</text>
+</svg>
+<div class="cap">Rycina 3.2 · Cztery dziedziny (wymiary) zdrowia. Dziedziny nie są od siebie niezależne — częściowo nakładają się na siebie i wzajemnie na siebie oddziałują.</div>
+</div>
+<h3>Poszerzony holistyczny model zdrowia (z wykładu)</h3>
+<p>
+    Wykład przedstawia bardziej rozbudowaną, sześcioelementową wersję modelu wymiarów zdrowia — osadzoną dodatkowo w kontekście zdrowia społeczeństwa i środowiska:
+  </p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+<circle cx="190" cy="190" fill="none" r="175" stroke="var(--line)" stroke-dasharray="2 4" stroke-width="10"></circle>
+<text fill="var(--ink-faint)" font-size="10.5" text-anchor="middle" x="190" y="30">zdrowie środowiskowe / zdrowie społeczeństwa</text>
+<g opacity="0.85">
+<circle cx="190" cy="120" fill="hsla(12,45%,80%,0.35)" r="62" stroke="var(--accent)"></circle>
+<circle cx="255" cy="160" fill="hsla(38,55%,75%,0.35)" r="62" stroke="var(--gold)"></circle>
+<circle cx="230" cy="235" fill="hsla(150,25%,70%,0.35)" r="62" stroke="var(--sage)"></circle>
+<circle cx="150" cy="235" fill="hsla(12,15%,55%,0.28)" r="62" stroke="hsl(12,15%,42%)"></circle>
+<circle cx="125" cy="160" fill="hsla(280,20%,75%,0.30)" r="62" stroke="hsl(280,25%,55%)"></circle>
+</g>
+<text fill="var(--accent-deep)" font-size="11" font-weight="600" text-anchor="middle" x="190" y="90">fizyczne</text>
+<text fill="hsl(38,60%,30%)" font-size="11" font-weight="600" text-anchor="middle" x="270" y="140">psychiczne</text>
+<text fill="hsl(150,35%,25%)" font-size="11" font-weight="600" text-anchor="middle" x="245" y="270">społeczne</text>
+<text fill="hsl(12,15%,30%)" font-size="11" font-weight="600" text-anchor="middle" x="150" y="270">seksualne</text>
+<text fill="hsl(280,30%,35%)" font-size="11" font-weight="600" text-anchor="middle" x="95" y="140">duchowe</text>
+<text fill="var(--ink)" font-size="10" font-style="italic" text-anchor="middle" x="190" y="205">emocjonalne</text>
+</svg>
+<div class="cap">Ryc. 1.3 · Holistyczny model zdrowia (Simovska i in., 2006). Sześć nakładających się dziedzin zdrowia jednostki, osadzonych w szerszym kontekście zdrowia społeczeństwa i środowiska.</div>
+</div>
+<p>Wykład rozbija dziedzinę psychiczną na dwie składowe i dodaje osobny wymiar seksualny:</p>
+<div class="grid-cards">
+<div class="card">
+<h4>Zdrowie fizyczne</h4>
+<p>Prawidłowe funkcjonowanie organizmu, wszystkich jego układów i narządów.</p>
+</div>
+<div class="card">
+<h4>Zdrowie psychiczne — umysłowe</h4>
+<p>Zdolność do jasnego, logicznego myślenia.</p>
+</div>
+<div class="card">
+<h4>Zdrowie psychiczne — emocjonalne</h4>
+<p>Zdolność rozpoznawania własnych uczuć i wyrażania ich w odpowiedni sposób; umiejętność radzenia sobie ze stresem, napięciem, depresją, lękiem.</p>
+</div>
+<div class="card">
+<h4>Zdrowie społeczne</h4>
+<p>Zdolność do utrzymywania prawidłowych relacji z innymi ludźmi i pełnienia ról społecznych.</p>
+</div>
+<div class="card">
+<h4>Zdrowie duchowe</h4>
+<p>U jednych związane z wiarą i praktykami religijnymi, u innych z osobistym „credo”, zasadami i sposobami utrzymania wewnętrznego spokoju.</p>
+</div>
+<div class="card">
+<h4>Zdrowie seksualne</h4>
+<p>Zespół biologicznych, emocjonalnych, intelektualnych i społecznych aspektów życia seksualnego, ważnych dla pozytywnego rozwoju osobowości, komunikacji i miłości (WHO, 2001).</p>
+</div>
+</div>
+<h3>3.4 Zdrowie a pojęcia bliskoznaczne</h3>
+<h4>Zdrowie a szczęście i dobrostan</h4>
+<p>
+    Klasyczną analizę relacji zdrowia i szczęścia przeprowadził <strong>Władysław Tatarkiewicz</strong> (2018). Nie utożsamiał on zdrowia ze szczęściem, ale zauważał, że pojęcia te są bardzo podobne w swej formalnej strukturze — oba wielowymiarowe, oba można pojmować jako stan przejściowy (poczucie dobrostanu w danej chwili) lub jako stały układ czynności (dyspozycja). Tatarkiewicz uznawał zdrowie za jedno z dóbr człowieka, ale nie jedyne — może ono mieć różne przedmiotowe odniesienia („być zdrowym na różne sposoby”).
+  </p>
+<h4>Zdrowie a jakość życia</h4>
+<p>
+    Pojęcie jakości życia ma szerszy zakres niż zdrowie i bywa z nim mylone. Można je ujmować obiektywnie (warunki życia i działania — środowisko fizyczne, materialne, społeczno-kulturowe) lub subiektywnie (ocena i wartościowanie różnych sfer życia — kategoria poznawcza: satysfakcja, lub emocjonalno-przeżyciowa: zadowolenie). Model I. B. Wilsona i P. D. Cleary'ego opisuje jakość życia uwarunkowaną zdrowiem jako łańcuch: cechy biologiczne → percepcja objawów → funkcjonowanie (fizyczne, psychiczne, społeczne) → ogólna ocena zdrowia → ogólna jakość życia.
+  </p>
+<table>
+<caption>Tabela 3.2 · Obiektywny i subiektywny aspekt jakości życia (na podstawie: Sęk, 1993)</caption>
+<tr><th>Warunki życia</th><th>Subiektywna ocena — pozytywna</th><th>Subiektywna ocena — negatywna</th></tr>
+<tr><td>korzystne</td><td>A. zadowolenie uzasadnione</td><td>B. dylemat niezadowolenia</td></tr>
+<tr><td>niekorzystne</td><td>C. paradoks zadowolenia</td><td>D. niezadowolenie uzasadnione</td></tr>
+</table>
+<p style="font-size:.9rem;color:var(--ink-faint);">Pole C (paradoks zadowolenia) tłumaczy się zdolnością do pozytywnej reinterpretacji trudnej sytuacji zdrowotnej („opracowanie psychiczne”); pole B (dylemat niezadowolenia) pokazuje, że obiektywnie dobre warunki nie gwarantują satysfakcji, jeśli brakuje wewnętrznych zasobów oceny.</p>
+<h4>Wyznaczniki jakości życia — model ośmioskładnikowy</h4>
+<p>Uzupełniający, bardziej rozbudowany operacyjnie model jakości życia z wykładu (Jarema, 1995; Tobiasz-Adamczyk, 1999; Opara, 2000; Oleś, 2002):</p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+<g id="petals">
+<ellipse cx="230" cy="90" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)"></ellipse>
+<ellipse cx="345" cy="140" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(45 345 140)"></ellipse>
+<ellipse cx="385" cy="255" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(90 385 255)"></ellipse>
+<ellipse cx="345" cy="370" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(135 345 370)"></ellipse>
+<ellipse cx="230" cy="420" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(180 230 420)"></ellipse>
+<ellipse cx="115" cy="370" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(-135 115 370)"></ellipse>
+<ellipse cx="75" cy="255" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(-90 75 255)"></ellipse>
+<ellipse cx="115" cy="140" fill="hsl(190,35%,88%)" rx="70" ry="46" stroke="hsl(190,30%,65%)" transform="rotate(-45 115 140)"></ellipse>
+</g>
+<text fill="hsl(195,45%,25%)" font-size="10" font-weight="600" text-anchor="middle" x="230" y="86">DOBROSTAN</text>
+<text fill="hsl(195,45%,25%)" font-size="10" font-weight="600" text-anchor="middle" x="230" y="99">FIZYCZNY</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="345" y="120">DOBROSTAN</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="345" y="133">FUNKCJONALNY</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="385" y="250">DOBROSTAN</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="385" y="263">EMOCJONALNY</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="345" y="365">DOBROSTAN</text>
+<text fill="hsl(195,45%,25%)" font-size="9.5" font-weight="600" text-anchor="middle" x="345" y="378">RODZINNY</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="230" y="415">F-CJONOWANIE</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="230" y="428">SPOŁECZNE</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="115" y="365">SATYSFAKCJA</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="115" y="378">Z LECZENIA</text>
+<text fill="hsl(195,45%,25%)" font-size="8.7" font-weight="600" text-anchor="middle" x="75" y="248">F-CJONOWANIE CIAŁA</text>
+<text fill="hsl(195,45%,25%)" font-size="8.7" font-weight="600" text-anchor="middle" x="75" y="261">(seks, życie intymne)</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="115" y="133">F-CJONOWANIE</text>
+<text fill="hsl(195,45%,25%)" font-size="9" font-weight="600" text-anchor="middle" x="115" y="146">POZNAWCZE</text>
+<circle cx="230" cy="255" fill="var(--paper)" r="80" stroke="var(--accent-deep)" stroke-width="2.5"></circle>
+<text fill="var(--accent-deep)" font-size="15" font-weight="700" text-anchor="middle" x="230" y="250">JAKOŚĆ</text>
+<text fill="var(--accent-deep)" font-size="15" font-weight="700" text-anchor="middle" x="230" y="268">ŻYCIA</text>
+</svg>
+<div class="cap">Osiem wyznaczników jakości życia (Jarema, 1995; Tobiasz-Adamczyk, 1999; Opara, 2000; Oleś, 2002) — poza sferą fizyczną, emocjonalną i poznawczą uwzględnia też wymiar rodzinny, satysfakcję z leczenia oraz funkcjonowanie ciała (życie seksualne i intymne) — obszary pomijane w klasycznym modelu Wilsona-Cleary'ego powyżej.</div>
+</div>
+</section>
+<!-- ============ W1: MODELE ZDROWIA ============ -->
+<section class="block" id="modele-zdrowia">
+<div class="eyebrow">1b · Heszen-Celińska, Sęk — rozdział 4</div>
+<h2>Modele i podejścia stosowane w psychologii zdrowia</h2>
+<h3>4.1 Model biomedyczny</h3>
+<p>
+    Obowiązywał w naukach medycznych XX wieku. Opiera się na <strong>dualizmie kartezjańskim</strong> (rozdzielenie ciała i psychiki) — ciało traktowane jak maszyna, którą się naprawia (usuwa niedziałające części, niszczy elementy obce). Zdrowie i choroba są kategoriami <strong>rozłącznymi</strong>: albo jest się zdrowym, albo chorym, bez stanów pośrednich. Odpowiedzialność za zdrowie i chorobę spoczywa na lekarzu-profesjonaliście; od pacjenta oczekuje się podporządkowania zaleceniom, nie aktywności prozdrowotnej.
+  </p>
+<p>
+    Model ten ma cechy <strong>redukcjonistyczne</strong> — koncentruje się na strukturze i funkcjach ciała oraz czynnikach genetycznych, co utrudnia całościowe ujęcie człowieka. Sprzyja jednak rozwojowi genetyki molekularnej i nowoczesnych, precyzyjnych metod leczenia. Nie należy go całkowicie odrzucać (groziłoby to odwrotną skrajnością — nadmiernym „psychologizmem”) — jego mocną stroną jest precyzyjny, obiektywny pomiar procesów biologicznych.
+  </p>
+<h4>Geneza modelu biomedycznego (BMM)</h4>
+<ul class="tidy">
+<li><span class="figure-badge"><span class="dot"></span>Kartezjusz</span> — dualizm duszy i ciała jako filozoficzny fundament modelu;</li>
+<li><strong>redukcjonizm</strong> — założenie, że zjawiska chorobowe można sprowadzić do pojęć z zakresu nauk ścisłych;</li>
+<li>odkrycia z zakresu mikrobiologii — <span class="figure-badge"><span class="dot"></span>Pasteur, 1862</span><span class="figure-badge"><span class="dot"></span>Koch, 1876</span> — teoria zarazków ugruntowała myślenie o chorobie jako procesie czysto biologicznym, wywoływanym przez konkretny czynnik.</li>
+</ul>
+<blockquote style="border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;">
+    „Ciało traktowane jest jak maszyna, którą naprawia się poprzez wymianę popsutych części, albo też usunięcie czegoś, co doprowadziło do awarii” — David McClelland, 1985.
+  </blockquote>
+<h4>Sześć tez modelu biomedycznego</h4>
+<ol class="tidy">
+<li>Choroby i ich symptomy mają źródło w nieprawidłowościach w obrębie struktur ciała (zmiany biochemiczne).</li>
+<li>Choroba powoduje wystąpienie symptomów. Pewne czynniki mogą oddziaływać na konsekwencje choroby, ale nie są związane z samym jej rozwojem ani sposobem, w jaki się przejawia.</li>
+<li>Zdrowie definiowane jest jako <strong>nieobecność choroby</strong>.</li>
+<li>Zjawiska psychologiczne i stany psychiczne nie są związane z funkcjami ciała.</li>
+<li>Pacjent jest „ofiarą nieszczęśliwego trafu” i nie ponosi odpowiedzialności za pojawienie się choroby ani jej przebieg.</li>
+<li>Pacjent jest przedmiotem oddziaływań profesjonalistów — wymagana jest od niego pełna gotowość do wypełniania ich zaleceń.</li>
+</ol>
+<p style="font-size:.9rem;color:var(--ink-faint);">(Sęk, Heszen, 2020)</p>
+<h3>4.2 Model biopsychospołeczny i holistyczno-funkcjonalny</h3>
+<p>
+    Zaproponowany przez <strong>George'a L. Engla</strong> (1977, 1980) jako odpowiedź na niewystarczalność modelu biomedycznego. Uwzględnia — obok czynników biologicznych — także <strong>psychologiczne i społeczne</strong>, traktując je jako pozostające we wzajemnej interakcji. Przyjmuje (za medycyną psychosomatyczną) stanowisko <strong>holistyczne</strong> — ciało i psychika stanowią integralną całość, a pełne zrozumienie choroby wymaga uwzględnienia kontekstu, w jakim żyje pacjent.
+  </p>
+<p>
+    Współczesną wersję tego modelu określa się jako <strong>model holistyczno-funkcjonalny</strong> — akcentuje on funkcję zdrowia w kształtowaniu relacji między zasobami człowieka a wymaganiami środowiska. Zdrowie jest tu procesem dynamicznego równoważenia, wyróżnia się rolę świadomej aktywności podmiotu (człowiek może się zdrowiu <em>uczyć</em>, może je <em>promować</em>, <em>ochraniać</em> i <em>uczestniczyć</em> w leczeniu). To podejście umożliwia edukację zdrowotną i partycypację pacjenta.
+  </p>
+<div class="blok">
+<span class="label">Rycina 4.1 · Struktura przekonań zdrowotnych (Sęk i in., 1992; Sęk, 1997a)</span>
+<p>W badaniu reprezentatywnej próby 500 osób skonstruowano skalę 20 twierdzeń: po 10 z modelu biomedycznego (BM) i holistyczno-funkcjonalnego (HF), np. „Problem zdrowia i choroby to sprawa specjalistów, lekarzy i służby zdrowia” (BM) vs. „Człowiek poprzez swoje zachowanie ma duży wpływ na zdrowie” (HF). Wynik: badani <strong>akceptowali wszystkie twierdzenia HF</strong>, natomiast odrzucali te twierdzenia BM, które wyrażały <strong>brak wpływu i kontroli</strong> jednostki nad własnym zdrowiem — akceptowali za to twierdzenia BM odnoszące się do naturalnych, biologicznych właściwości zdrowia. Wniosek: oba modele współwystępują w świadomości potocznej, w różnym nasileniu.</p>
+</div>
+<h4>BPSM jako teoria systemów</h4>
+<p>
+    Model biopsychospołeczny opiera się na <strong>ogólnej teorii systemów</strong> (Bertalanffy, 1968): zjawiska naturalne tworzą hierarchię systemów, z których każdy jest jednocześnie częścią większego systemu i zbiorem systemów podrzędnych. Systemy są zorientowane na określony cel i dążą do uzyskania równowagi funkcjonalnej.
+  </p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 620 130" xmlns="http://www.w3.org/2000/svg">
+<g fill="var(--ink)" font-size="10" text-anchor="middle">
+<text x="35" y="40">cząsteczka</text>
+<text x="105" y="40">organella</text>
+<text x="170" y="40">komórka</text>
+<text x="230" y="40">tkanka</text>
+<text x="280" y="40">organ</text>
+<text x="350" y="40">system nerwowy</text>
+<text x="430" y="40">osoba</text>
+</g>
+<g fill="var(--accent-deep)" font-size="10" text-anchor="middle">
+<text x="490" y="40">małżeństwo</text>
+</g>
+<path d="M15 55 H605" stroke="var(--accent-line)" stroke-width="2"></path>
+<g fill="var(--ink-soft)" font-size="9.5" text-anchor="middle">
+<text x="70" y="80">społeczność lokalna</text>
+<text x="220" y="80">kultura / subkultura</text>
+<text x="370" y="80">społeczeństwo — naród</text>
+<text x="500" y="80">ludzkość</text>
+<text x="580" y="80">biosfera</text>
+</g>
+<text fill="var(--ink-faint)" font-size="9" font-style="italic" text-anchor="middle" x="430" y="115">rosnący poziom złożoności systemów →</text>
+<circle cx="430" cy="30" fill="var(--gold)" r="4"></circle>
+<text fill="var(--gold)" font-size="8.5" text-anchor="middle" x="430" y="18">centralny poziom: osoba</text>
+</svg>
+<div class="cap">Hierarchia systemów naturalnych wg ogólnej teorii systemów (Bertalanffy, 1968; Engel, 1977) — od poziomu molekularnego po biosferę. Osoba (pacjent) jest jednocześnie systemem złożonym z podsystemów biologicznych i podsystemem systemów społecznych.</div>
+</div>
+<blockquote style="border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;">
+    „Trzeba brać pod uwagę pacjenta, społeczny kontekst, w którym on żyje, systemy komplementarne tworzone przez społeczeństwo do radzenia sobie ze skutkami chorób, aby dobrze zrozumieć czynniki wpływające na powstawanie chorób i rozwijać w sposób racjonalny sposoby terapii, jak i systemy opieki zdrowotnej” — George Engel.
+  </blockquote>
+<p>
+    Model biopsychospołeczny jest zarówno <strong>filozofią opieki klinicznej</strong>, jak i <strong>praktycznym przewodnikiem klinicznym</strong>. Filozoficznie — to sposób rozumienia, jak wiele struktur (od społecznych po molekularne) oddziałuje na cierpienie i chorobę. Praktycznie — to sposób rozumienia subiektywnego doświadczenia pacjenta jako czynnika decydującego o prawidłowej diagnozie, spodziewanych efektach leczenia i jakości opieki medycznej (Bolton, 2023; Borell-Carrió i in., 2004).
+  </p>
+<h4>Założenia BPSM</h4>
+<ul class="tidy">
+<li>Właściwa diagnoza biomedyczna jest częścią procesu leczniczego.</li>
+<li><strong>Patologia</strong> („proces chorobowy”) wymaga diagnozy biomedycznej i dotyczy narządu, układu. Natomiast <strong>choroba</strong> dotyka całego człowieka, jego najbliższe otoczenie i grupę społeczną.</li>
+<li>Klinicysta zajmuje się leczeniem chorób, więc w jego spektrum zainteresowania zawiera się również człowiek i jego otoczenie.</li>
+<li>Ważnym elementem pracy klinicysty jest dopuszczenie do głosu pacjenta — uznanie jego spojrzenia na zdrowie i chorobę oraz umożliwienie mu wyrażenia trosk, niepokojów i oczekiwań.</li>
+</ul>
+<div class="blok">
+<span class="label">Ilustracja kontrastu · Holistyczne a biomedyczne podejście do porodu</span>
+<table style="margin:.3rem 0 0;">
+<tr><th>Podejście holistyczne</th><th>Podejście biomedyczne</th></tr>
+<tr><td>Poród jest naturalnym i normalnym procesem.</td><td>Poród jest sytuacją kryzysową wymagającą zarządzania dla utrzymania bezpieczeństwa.</td></tr>
+<tr><td>Leki i narzędzia wykorzystywane są jedynie, gdy zachodzi taka potrzeba.</td><td>Leki i narzędzia są niezbędne dla zabezpieczenia prawidłowego porodu.</td></tr>
+<tr><td>Instynkt i emocje są składowymi procesu narodzin.</td><td>Poród jest procesem fizycznym, który można kontrolować za pomocą leków lub interwencji.</td></tr>
+<tr><td>Poród zawiera komponenty seksualne i duchowe.</td><td>Duchowość i seksualność nie są uwzględniane.</td></tr>
+<tr><td>Ciąża i urodzenie dziecka są wyrazem zdrowia.</td><td>Ciąża i poród to okres podwyższonego ryzyka wymagający asysty medycznej.</td></tr>
+<tr><td>Ciało kobiety wie, jak rodzić — kobieta ma kontrolę.</td><td>Personel medyczny jest niezbędny dla prawidłowego wyniku ciąży — to on ma kontrolę.</td></tr>
+<tr><td>Świadoma kobieta ze wsparciem emocjonalnym i fizycznym może rodzić komfortowo, z niewielkim wsparciem farmakologicznym.</td><td>Poród naturalny jest „barbarzyństwem” — analgezja i anestezja są konieczne.</td></tr>
+<tr><td>Koncentracja na pięknie i mocy aktu narodzin.</td><td>Koncentracja na patologii.</td></tr>
+</table>
+<p style="font-size:.85rem; margin-top:.5rem;">Przykład dobrze pokazuje, że oba modele to nie tylko abstrakcyjne teorie — realnie kształtują praktykę medyczną i doświadczenie pacjenta w tej samej sytuacji klinicznej.</p>
+</div>
+<h4>Nowe tendencje: konsumeryzm</h4>
+<p>Obok modelu biomedycznego i BPSM, we współczesnej opiece zdrowotnej coraz silniej obecny jest <strong>konsumeryzm</strong>:</p>
+<ul class="tidy">
+<li>traktowanie pacjenta jako <strong>klienta</strong>, w pełni świadomego swych potrzeb zdrowotnych i odpowiedzialnego za własne zdrowie;</li>
+<li>podkreślane jest znaczenie <strong>wyborów</strong> dokonywanych przez pacjenta-klienta;</li>
+<li>opieka zdrowotna nie różni się od innych usług oferowanych na rynku;</li>
+<li>nacisk na <strong>satysfakcję</strong> ze świadczonych usług.</li>
+</ul>
+<table>
+<caption>Modele opieki zdrowotnej — porównanie założeń i konsekwencji dla psychologii</caption>
+<tr><th>Model</th><th>Założenie</th><th>Kryteria oceny opieki</th><th>Wymagania wobec psychologii</th></tr>
+<tr><td><strong>Dualizm biomedyczny</strong></td><td>Chorobę somatyczną analizuje się bez uwzględnienia czynników psychologicznych</td><td>Choroba somatyczna bez związku ze „stanem ducha”; usuwanie patologii</td><td>Upewnić się, że pacjent stosuje się do zaleceń lekarskich</td></tr>
+<tr><td><strong>BPSM</strong></td><td>Istnieje interakcja pomiędzy somą a psyche</td><td>Łagodzenie lub zwalczanie choroby; praca nad lepszym przystosowaniem pacjenta; zaspokojenie potrzeb psychicznych</td><td>Rozpoznać potrzeby psychiczne; analizować interakcję czynników psychologicznych i biologicznych w etiologii i leczeniu; terapia psychologiczna</td></tr>
+<tr><td><strong>Konsumeryzm</strong></td><td>Za stan zdrowia odpowiada jednostka; pacjent określa swoje potrzeby i bierze bezpośrednią odpowiedzialność</td><td>Satysfakcja pacjenta</td><td>Pomoc w odzyskaniu kontroli; pomoc w rozpoznaniu potrzeb; ocena i wzmacnianie satysfakcji</td></tr>
+</table>
+<h3>4.3 Model socjoekologiczny (mandala zdrowia)</h3>
+<p>
+    Powstał w ramach socjologii zdrowia w latach 70. XX w., w odpowiedzi na potrzeby ruchu promocji zdrowia. Jest bardziej złożony niż model holistyczno-funkcjonalny — akcentuje <strong>systemowość i hierarchię</strong> powiązanych ze sobą podsystemów. Posługuje się metaforą <em>mandali</em> — figury symbolizującej wszechświat, nawiązującej też do rysunków Leonarda da Vinci.
+  </p>
+<p>
+    Nowością tego modelu są <strong>pola zdrowia</strong>, zapożyczone z raportu zespołu Marca Lalonde'a <em>„Zdrowie Kanadyjczyków”</em> (oryginalnie: zachowania, środowisko, służba zdrowia, czynniki genetyczne). W późniejszych wersjach (Karski, 1994; Słońska, 1994) pola te określono jako:
+  </p>
+<ul class="tidy">
+<li><strong>czynniki biologiczne</strong> — bagaż genetyczny, system immunologiczny, cechy biochemiczne, fizjologiczne, anatomiczne;</li>
+<li><strong>zachowania</strong> człowieka związane ze zdrowiem — pro- i antyzdrowotne;</li>
+<li><strong>środowisko fizyczne</strong> — warunki mieszkaniowe, cechy otoczenia, siedliska aktywności;</li>
+<li><strong>środowisko społeczno-kulturowe</strong>.</li>
+</ul>
+<p>Do mandali dodano też krąg <strong>rodziny</strong> — jako pośredniczące ogniwo między jednostką a „polami zdrowia” oraz instytucjami zdrowotnymi.</p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<circle cx="200" cy="200" fill="none" r="185" stroke="var(--line)" stroke-width="1.5"></circle>
+<text fill="var(--ink-faint)" font-size="11" text-anchor="middle" x="200" y="24">biosfera</text>
+<circle cx="200" cy="200" fill="none" r="150" stroke="var(--accent-line)" stroke-width="1.5"></circle>
+<text fill="var(--ink-faint)" font-size="11" text-anchor="middle" x="200" y="58">kultura</text>
+<circle cx="200" cy="200" fill="hsla(12,40%,88%,0.4)" r="112" stroke="var(--accent)" stroke-width="1.5"></circle>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="200" y="98">środowisko psycho-społ. i ekonomiczne</text>
+<circle cx="200" cy="200" fill="hsla(38,55%,85%,0.5)" r="76" stroke="var(--gold)" stroke-width="1.5"></circle>
+<text fill="hsl(38,60%,30%)" font-size="10" text-anchor="middle" x="200" y="134">styl życia</text>
+<circle cx="200" cy="200" fill="var(--paper)" r="44" stroke="var(--sage)" stroke-width="1.8"></circle>
+<text fill="hsl(150,35%,25%)" font-size="11" text-anchor="middle" x="200" y="192">ciało / intelekt</text>
+<text fill="var(--ink-faint)" font-size="9.5" text-anchor="middle" x="200" y="206">(człowiek)</text>
+<text fill="var(--ink-soft)" font-size="9.5" text-anchor="middle" x="90" y="205">biologia</text>
+<text fill="var(--ink-soft)" font-size="9.5" text-anchor="middle" x="312" y="205">środowisko fizyczne</text>
+<text fill="var(--ink-soft)" font-size="9.5" text-anchor="middle" x="200" y="345">system medyczno-społeczny opieki nad chorym</text>
+</svg>
+<div class="cap">Rycina 4.2 · Mandala zdrowia — model ekosystemu człowieka (na podstawie: Hancock, City of Toronto Dept. of Public Health, za: Słońska, 1994). Człowiek jako centralny podsystem otoczony kolejnymi, coraz szerszymi kręgami wpływu.</div>
+</div>
+<h3>4.4 Model dobrostanu psychicznego (Carol Ryff)</h3>
+<p>
+    Powstał na przełomie XX i XXI w. w nurcie psychologii pozytywnej (Seligman, 2000; Keyes, 2002). <strong>Carol Ryff</strong> (1989) nawiązała do klasycznego ujęcia <strong>Marii Jahody</strong> (1958, <em>Current Concepts of Positive Mental Health</em>) — naukowej odpowiedzi na definicję WHO z 1948 r. Jahoda wyodrębniła sześć kryteriów zdrowia psychicznego: pozytywną postawę wobec „Ja”, zdolność do rozwoju i samorealizacji, integrację, autonomię, realistyczne postrzeganie rzeczywistości, radzenie sobie z wymaganiami otoczenia.
+  </p>
+<p>Na tej podstawie Ryff (1989) zaproponowała <strong>sześć komponentów dobrostanu psychicznego</strong>:</p>
+<div class="grid-cards">
+<div class="card gold"><h4>Samoakceptacja</h4></div>
+<div class="card gold"><h4>Pozytywne relacje z ludźmi</h4></div>
+<div class="card gold"><h4>Autonomia</h4></div>
+<div class="card gold"><h4>Radzenie sobie z otoczeniem</h4></div>
+<div class="card gold"><h4>Cel życiowy</h4></div>
+<div class="card gold"><h4>Osobisty rozwój</h4></div>
+</div>
+<p>Podejście to nazywa się <strong>integracyjnym</strong>, ponieważ łączy tradycje wielu autorów osobowości i rozwoju wokół filozoficznej idei <strong>eudajmonii Arystotelesa</strong>:</p>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(210,190)">
+<circle fill="none" r="150" stroke="var(--accent-line)" stroke-width="1.5"></circle>
+<!-- 6 wedges -->
+<g stroke="var(--line)" stroke-width="1">
+<line x1="0" x2="0" y1="0" y2="-150"></line>
+<line x1="0" x2="130" y1="0" y2="-75"></line>
+<line x1="0" x2="130" y1="0" y2="75"></line>
+<line x1="0" x2="0" y1="0" y2="150"></line>
+<line x1="0" x2="-130" y1="0" y2="75"></line>
+<line x1="0" x2="-130" y1="0" y2="-75"></line>
+</g>
+<circle fill="var(--paper)" r="48" stroke="var(--accent-deep)" stroke-width="2"></circle>
+<text fill="var(--accent-deep)" font-size="10.5" font-weight="700" text-anchor="middle" y="-4">Komponenty</text>
+<text fill="var(--accent-deep)" font-size="10.5" font-weight="700" text-anchor="middle" y="10">well-being</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="0" y="-105">Cel życiowy</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="88" y="-52">Pozytywne relacje</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="88" y="52">Radzenie sobie z otoczeniem</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="0" y="112">Samoakceptacja</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="-88" y="52">Osobisty rozwój</text>
+<text fill="var(--ink)" font-size="10.5" text-anchor="middle" x="-88" y="-52">Autonomia</text>
+</g>
+<rect fill="var(--accent-light)" height="50" rx="6" stroke="var(--accent-line)" width="380" x="20" y="360"></rect>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="210" y="378">dojrzałość (Allport) · indywiduacja (Jung) · zdrowie psych. (Jahoda) · wola sensu (Frankl)</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="210" y="392">samoaktualizacja (Maslow) · tendencje życia (Bühler) · rozwój osobisty (Erikson) · osoba w pełni funkcjonująca (Rogers)</text>
+<text fill="var(--accent-deep)" font-size="9.5" font-style="italic" text-anchor="middle" x="210" y="405">Arystoteles — eudajmonia</text>
+</svg>
+<div class="cap">Rycina 4.3 · Model dobrostanu psychicznego (na podstawie: Ryff, 2017, s. 161).</div>
+</div>
+<p>
+    Ryff opracowała trafne i rzetelne narzędzie pomiaru — <strong>Kwestionariusz dobrostanu</strong>, przetłumaczony na ponad 30 języków (polska adaptacja pełna: 84 twierdzenia; istnieją też wersje skrócone, np. 18 lub 14 twierdzeń). <em>Psychological Well-Being Scale</em> koreluje ze wszystkimi skalami poczucia koherencji Antonovsky'ego. Struktura dobrostanu zmienia się w toku życia — u seniorów maleje poziom celów życiowych i osobistego rozwoju. Badania podłużne w programie <strong>MIDUS</strong> (<em>Midlife in the United States</em>) wykazały, że stabilny, wysoki dobrostan psychiczny wiąże się z lepszym samopoczuciem somatycznym, rzadszymi symptomami chorób przewlekłych oraz korzystniejszym profilem lipidowym (wyższy „dobry” cholesterol HDL, niższy poziom trójglicerydów).
+  </p>
+<p>
+    Współpraca Ryff z zespołem <strong>Coreya Keyesa</strong> doprowadziła do koncepcji <em>kompletnego zdrowia psychicznego</em> — złożonego z trzech aspektów: emocjonalnego (hedonistycznego), psychologicznego i społecznego (eudajmonistycznego). Powstał na tej podstawie kwestionariusz <strong>Mental Health Continuum (MHC-SF)</strong>, zaadaptowany też do warunków polskich (Karaś, Cieciuch, Keyes, 2014).
+  </p>
+<h3>Podsumowanie: cztery modele obok siebie</h3>
+<table>
+<tr><th>Model</th><th>Kluczowe założenie</th><th>Ograniczenie / wkład</th></tr>
+<tr><td><strong>Biomedyczny</strong></td><td>Zdrowie = brak dolegliwości cielesnych; zdrowie i choroba rozłączne</td><td>Redukcjonistyczny, ale precyzyjny diagnostycznie</td></tr>
+<tr><td><strong>Biopsychospołeczny / holistyczno-funkcjonalny</strong></td><td>Zdrowie jako proces równoważenia potrzeb człowieka i wymagań otoczenia; zdrowie–choroba na jednym kontinuum</td><td>Umożliwia edukację zdrowotną i partycypację pacjenta</td></tr>
+<tr><td><strong>Socjoekologiczny</strong></td><td>Wielopoziomowy, hierarchiczny system „pól zdrowia” (mandala)</td><td>Wartość heurystyczna dla promocji zdrowia; trudny do pełnej weryfikacji empirycznej</td></tr>
+<tr><td><strong>Dobrostanu psychicznego (Ryff)</strong></td><td>Sześć komponentów eudajmonistycznego dobrostanu</td><td>Dobrze zoperacjonalizowany, silnie powiązany z poczuciem koherencji</td></tr>
+</table>
+</section>
+
+<!-- ============ W2: ZAKRES ZASTOSOWAŃ ============ -->
+
+<!-- ============ W2: STYL ŻYCIA ============ -->
+
+<!-- ============ W2: ZACHOWANIA ZDROWOTNE ============ -->
+
+<!-- ============ W2: PROMOCJA I PREWENCJA ============ -->
+
+<!-- ============ W2: RELACJA PACJENT-SYSTEM ============ -->
+
+<!-- ============ W2: STRES - WPROWADZENIE ============ -->
+
+<!-- ============ POJĘCIA KLUCZOWE (ŁĄCZONE) ============ -->
+
+<!-- ============ SPRAWDŹ SIĘ (ŁĄCZONE) ============ -->
+
+<nav aria-label="Części przedmiotu" class="st-pager"><span></span><a class="next" href="wyklad-2.html"><span>Następna</span><b>Wykład 2</b><i>Zastosowania psychologii klinicznej i zdrowia</i></a></nav></main>
+<footer>
+  Notatki opracowane na podstawie: Cierpiałkowska, L., Sęk, H. (2016). <em>Psychologia kliniczna</em>. Warszawa: PWN (Cz. 1, r. 2)  ·  Heszen-Celińska, I., Sęk, H. (2020). <em>Psychologia zdrowia</em>. Wydanie nowe. Warszawa: PWN (r. 3, 4, 5)  ·  Heszen, I., Sęk, H. (2007). <em>Psychologia zdrowia</em>. Warszawa: PWN (r. 6 „Behawioralne uwarunkowania zdrowia i choroby”, r. 9 „Zdrowie i choroba w paradygmacie stresu psychologicznego”). Rozdziały o promocji/prewencji (Cierpiałkowska, Sęk, 2016, r. 30) i relacji pacjent–lekarz (Heszen-Celińska, Sęk, 2020, r. 15, 17) — do dołączenia po otrzymaniu tych fragmentów osobno.<br/>
+  Psychologia kliniczna i zdrowia · Wykłady 1–2 · dr Agnieszka Mościcka-Teske · SWPS Poznań, sem. 3
+</footer>
+<script data-back="./" data-back-label="Kliniczna" data-home="../" src="../assets/reader.js"></script></body>
+</html>

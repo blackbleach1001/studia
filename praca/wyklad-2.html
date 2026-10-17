@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Wykład 2 · Psychologia pracy i organizacji</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --paper:#fffdf9;
+    --ink:#2b2118;
+    --accent:hsl(300,20%,46%);
+    --accent-dark:hsl(300,28%,28%);
+    --accent-mid:hsl(300,22%,80%);
+    --accent-light:hsl(300,25%,95%);
+    --accent-pale:hsl(300,30%,97%);
+    --gold:#b08d57;
+    --shadow: 0 2px 10px rgba(43,33,24,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    line-height:1.65;
+    padding-bottom:60px;
+  }
+  h1,h2,h3,h4{
+    font-family:'Playfair Display', Georgia, serif;
+    color:var(--accent-dark);
+    margin-top:0;
+  }
+  header.banner{
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color:#fff8f2;
+    padding:38px 28px 30px;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  header.banner .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:2.5px;
+    font-size:12.5px;
+    opacity:0.85;
+  }
+  header.banner h1{
+    color:#fffaf4;
+    font-size:2.1rem;
+    margin:8px 0 6px;
+  }
+  header.banner .subtitle{
+    font-size:1rem;
+    opacity:0.92;
+  }
+  .wrap{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .sylabus-card{
+    background:var(--accent-pale);
+    border:1px solid var(--accent-mid);
+    border-radius:14px;
+    padding:22px 24px;
+    margin:-20px auto 32px;
+    box-shadow:var(--shadow);
+    position:relative;
+    z-index:2;
+  }
+  .sylabus-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;
+    margin-top:14px;
+  }
+  .sylabus-item{
+    background:var(--paper);
+    border:1px solid var(--accent-mid);
+    border-radius:10px;
+    padding:10px 14px;
+  }
+  .sylabus-item .label{
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .sylabus-item .value{
+    font-size:15px;
+    margin-top:2px;
+    font-weight:600;
+  }
+  .wyklad-divider{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:50px 0 26px;
+  }
+  .wyklad-divider .line{
+    flex:1;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent-mid), transparent);
+  }
+  .wyklad-divider .label{
+    font-family:'Playfair Display', serif;
+    font-weight:800;
+    font-size:1.5rem;
+    color:var(--accent-dark);
+    white-space:nowrap;
+  }
+  .wyklad-divider .sub{
+    font-size:13px;
+    color:var(--accent);
+    display:block;
+    text-align:center;
+    margin-top:-18px;
+    margin-bottom:10px;
+  }
+  section{ margin:38px 0; }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .section-title .num{
+    background:var(--accent);
+    color:#fff;
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .section-title h2{ font-size:1.5rem; margin:0; }
+  details{
+    background:#fff;
+    border:1px solid var(--accent-mid);
+    border-radius:12px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  summary{
+    cursor:pointer;
+    padding:14px 18px;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--accent-dark);
+    background:var(--accent-light);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";
+    font-size:20px;
+    color:var(--accent);
+    transition:transform 0.2s;
+  }
+  details[open] summary::after{ transform:rotate(45deg); }
+  .details-body{ padding:16px 20px 20px; }
+  .details-body ul{ margin:8px 0; padding-left:20px; }
+  .details-body li{ margin-bottom:5px; }
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin:14px 0;
+  }
+  .card{
+    background:var(--accent-pale);
+    border:1px solid var(--accent-mid);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .card h4{ font-size:1rem; margin:0 0 6px; color:var(--accent-dark); }
+  .card p, .card ul{ font-size:14.5px; margin:4px 0; }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:14.5px;
+  }
+  th, td{
+    border:1px solid var(--accent-mid);
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    background:var(--accent-light);
+    color:var(--accent-dark);
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    font-size:11px;
+    padding:2px 9px;
+    border-radius:20px;
+    margin-right:6px;
+    letter-spacing:0.3px;
+  }
+  .tag.gold{ background:var(--gold); }
+  .note-box{
+    border-left:4px solid var(--accent);
+    background:var(--accent-light);
+    padding:12px 16px;
+    border-radius:0 10px 10px 0;
+    font-size:14.5px;
+    margin:14px 0;
+  }
+  .quote-box{
+    text-align:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--accent-dark);
+    padding:20px;
+    border-top:1px solid var(--accent-mid);
+    border-bottom:1px solid var(--accent-mid);
+    margin:28px 0;
+  }
+  .timeline{
+    border-left:3px solid var(--accent-mid);
+    margin-left:10px;
+    padding-left:20px;
+  }
+  .timeline .t-item{ margin-bottom:16px; position:relative; }
+  .timeline .t-item::before{
+    content:"";
+    position:absolute;
+    left:-26px; top:4px;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+  .t-item .t-date{
+    font-weight:600;
+    color:var(--accent-dark);
+    font-family:'Playfair Display', serif;
+  }
+  .lit-list{
+    font-size:14px;
+    background:var(--accent-pale);
+    border-radius:12px;
+    padding:16px 20px;
+    border:1px solid var(--accent-mid);
+  }
+  .lit-list p{ margin:6px 0; }
+  .pyramid{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    margin:14px 0;
+  }
+  .pyramid div{
+    color:#fff;
+    text-align:center;
+    padding:10px;
+    font-size:13.5px;
+    border-radius:4px;
+  }
+  .pyramid .p1{ background:var(--accent-dark); width:100%; }
+  .pyramid .p2{ background:var(--accent); width:85%; align-self:center; }
+  .pyramid .p3{ background:hsl(300,20%,58%); width:70%; align-self:center; }
+  .pyramid .p4{ background:hsl(300,20%,68%); width:55%; align-self:center; color:var(--ink); }
+  .toc{
+    background:var(--accent-pale);
+    border:1px solid var(--accent-mid);
+    border-radius:14px;
+    padding:18px 22px;
+    margin:28px 0;
+    font-size:14.5px;
+  }
+  .toc h3{ margin:0 0 10px; font-size:1.05rem; }
+  .toc .toc-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .toc ul{ margin:4px 0; padding-left:18px; }
+  .toc li{ margin-bottom:3px; }
+  footer{
+    text-align:center;
+    color:var(--accent);
+    font-size:13px;
+    margin-top:50px;
+    opacity:0.8;
+  }
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:300;--st-s:20%;--st-l:46%}</style></head>
+<body>
+
+<div class="wrap"><header class="st-hero"><p class="st-eyebrow">Wykład 2</p><h1>Środowisko pracy i etyka w organizacji</h1><p class="st-meta">Rola psychologa w organizacji · Organizacja pracy i środowisko pracy · Etyczny biznes (CSR)</p></header>
+
+
+<!-- ======================= WYKŁAD 1 ======================= -->
+
+
+
+
+
+
+<!-- ======================= WYKŁAD 2 ======================= -->
+
+
+<section>
+<div class="section-title">
+<div class="num">1</div>
+<h2>Organizacja pracy i kształtowanie efektywnego środowiska pracy</h2>
+</div>
+<p style="font-size:14px;color:var(--accent);margin-top:-10px;">Od zagrożeń zdrowia somatycznego po zagrożenia dla zdrowia psychicznego i dobrostanu</p>
+<details>
+<summary>Zagrożenia psychospołeczne</summary>
+<div class="details-body">
+<p><strong>Definicja:</strong> wszystkie aspekty organizacji pracy, jej kontekstu i relacji społecznych, które mogą wywołać szkody psychiczne lub fizyczne u pracowników — m.in. przewlekły stres, choroby psychosomatyczne, wypalenie zawodowe, zaburzenia lękowe.</p>
+<div class="card-grid">
+<div class="card">
+<h4>Kryterium 1: Organizacja pracy</h4>
+<ul>
+<li><strong>Treść i obciążenie pracą</strong> — zbyt wiele zadań, nierealne terminy, złożone wymagania</li>
+<li><strong>Organizacja i autonomia</strong> — brak kontroli, sztywne procedury, ograniczony wpływ na decyzje</li>
+<li><strong>Rola w organizacji</strong> — konflikt ról, niejasny zakres obowiązków, sprzeczne oczekiwania</li>
+<li><strong>Równowaga i rozwój</strong> — ograniczone możliwości kariery, długie godziny pracy, konflikt życie–praca</li>
+</ul>
+</div>
+<div class="card">
+<h4>Kryterium 2: Relacje interpersonalne</h4>
+<ul>
+<li><strong>Relacje w zespole</strong> — słaba współpraca, konflikty, izolacja społeczna, nieprawidłowa komunikacja</li>
+<li><strong>Przemoc i mobbing</strong> — nękanie, przemoc werbalna, zastraszanie, wykluczenie z grupy</li>
+<li><strong>Wsparcie społeczne</strong> — brak wsparcia od kolegów, nieprzychylni przełożeni, słaba jakość przywództwa</li>
+<li><strong>Kultura organizacyjna</strong> — niesprawiedliwe traktowanie, brak uznania, toksyczne środowisko</li>
+</ul>
+</div>
+</div>
+<div class="note-box">Obie kategorie zagrożeń mogą prowadzić do przewlekłego stresu, wypalenia zawodowego, zaburzeń lękowych i problemów psychosomatycznych → konieczność monitorowania i profilaktyki.</div>
+</div>
+</details>
+<details>
+<summary>Obciążenie pracą umysłową</summary>
+<div class="details-body">
+<p><strong>Definicja:</strong> wszelkie koszty ponoszone przez osobę wykonującą pracę umysłową, prowadzące do efektów gorszej jakości. Zjawisko ma charakter <strong>transakcyjny</strong> — słabsze wykonanie zadania może oznaczać:</p>
+<ul>
+<li>brak możliwości lepszego wykonania</li>
+<li>brak motywacji — niezrozumienie celu, brak poczucia sensu</li>
+<li>gorszy stan zdrowia lub kondycję emocjonalną</li>
+</ul>
+<h4>Najczęściej wskazywane przyczyny — wysokie wymagania</h4>
+<ul>
+<li>Nadmiar zadań</li>
+<li>Różnorodność zadań</li>
+<li>Trudność zadań — intensywne wykorzystanie procesów poznawczych</li>
+<li>Presja czasu</li>
+<li>Niepewność dobrej ścieżki do celu</li>
+<li>Niepewność dobrego rezultatu</li>
+</ul>
+<h4>Skutki obciążenia pracą</h4>
+<table>
+<tr><th>Typ</th><th>Charakterystyka</th></tr>
+<tr><td><strong>Ostre</strong></td><td>Ujawniają się w trakcie wykonywania zadań lub zaraz po, trwają krótko, wpływają na wykonanie zadania</td></tr>
+<tr><td><strong>Chroniczne</strong></td><td>Ujawniają się po pewnym czasie, trwają długo, są "rozlane" — przenoszą się na inne zadania, obszary funkcjonowania i zdrowie</td></tr>
+</table>
+</div>
+</details>
+<details>
+<summary>Pomiar obciążenia pracą</summary>
+<div class="details-body">
+<div class="card-grid">
+<div class="card">
+<h4>Techniki subiektywne</h4>
+<ul>
+<li><strong>SWAT</strong> — subjective workload assessment technique</li>
+<li><strong>TLX</strong> — task load index: wymagania psychiczne, wymagania fizyczne, wymagania czasowe, ogólne wykonanie, wysiłek, poziom frustracji</li>
+</ul>
+</div>
+<div class="card">
+<h4>Techniki obiektywne</h4>
+<ul>
+<li><strong>Wykonanie pracy</strong> — pomiar zadania podstawowego (duże zróżnicowanie łatwości, np. pilot samolotu vs nauczyciel) lub zadania dodatkowego (zadania pamięciowe, ocena upływu czasu, czas reakcji — jakość ich wykonania świadczy o obciążeniu w zadaniu podstawowym)</li>
+<li><strong>Reakcje fizjologiczne</strong> — układ sercowo-naczyniowy (ciśnienie, tętno, widmo rytmu serca); układ nerwowy (EEG, średnica źrenic); zmiany hormonalne i immunologiczne (skład krwi, moczu)</li>
+</ul>
+</div>
+</div>
+<h4>Kryteria skutecznej oceny obciążenia pracą</h4>
+<table>
+<tr><th>Kryterium</th><th>Znaczenie</th></tr>
+<tr><td>Czułość</td><td>Dokładne różnicowanie poziomów obciążenia między zadaniami</td></tr>
+<tr><td>Diagnostyczność</td><td>Rozróżnianie odmiennych typów wymagań w ramach zadania</td></tr>
+<tr><td>Rozmiar zakłóceń</td><td>Stopień wpływu na wykonanie zadania</td></tr>
+<tr><td>Trafność</td><td>Stopień pomiaru tego, co należy/chcemy mierzyć</td></tr>
+<tr><td>Rzetelność</td><td>Dokładność i spójność — powtarzalność pomiaru</td></tr>
+<tr><td>Akceptowalność</td><td>Gotowość badanego do wykorzystania techniki, łatwość zastosowania, uniwersalność</td></tr>
+</table>
+</div>
+</details>
+<details>
+<summary>Automatyzacja i przydział zadań</summary>
+<div class="details-body">
+<p>Sposób na obniżenie obciążenia pracą człowieka (pracownik – system/automat/robot). Lęk przed utratą pracy na rzecz maszyn towarzyszy nam od co najmniej 200 lat.</p>
+<div class="card-grid">
+<div class="card">
+<h4>Zalety automatyzacji</h4>
+<ul>
+<li>Rozwój technologii — zadania niemożliwe do wykonania przez człowieka</li>
+<li>Wzrost dbałości o zdrowie — zadania niebezpieczne</li>
+<li>Odciążenie z zadań prostych, algorytmicznych</li>
+<li>Odciążenie z zadań obciążających pamięć i uwagę — automat zrobi to lepiej</li>
+</ul>
+</div>
+<div class="card">
+<h4>Wady automatyzacji</h4>
+<ul>
+<li>Utrata pełnej kontroli nad zadaniem</li>
+<li>Utrata pewności pracy</li>
+</ul>
+</div>
+</div>
+<h4>Rodzaje podziału zadań</h4>
+<ul>
+<li><strong>Statyczny podział</strong> — zaprogramowany odgórnie i niezmienny; zdefiniowane zadania dla człowieka i systemu</li>
+<li><strong>Dynamiczny przydział</strong> — niektóre lub wszystkie zadania może wykonać zarówno człowiek, jak i automat
+            <ul>
+<li><em>Przydział bezpośredni</em> — pracownik decyduje</li>
+<li><em>Przydział pośredni</em> — system/automat decyduje</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Wymagania środowiskowe i wymagania pracy</summary>
+<div class="details-body">
+<p>Praca wykonywana jest w określonym środowisku, które wpływa na obciążenie pracą i efektywność wykonywania zadań.</p>
+<div class="card-grid">
+<div class="card"><h4>Fizyczne</h4><p>Niekomfortowe warunki pracy; czynności wymagające ruchu i wysiłku fizycznego; brak ruchu</p></div>
+<div class="card"><h4>Poznawcze</h4><p>Angażowanie procesów poznawczych — prace umysłowe, stanowiska decyzyjne, ale też inne obszary pracy</p></div>
+<div class="card"><h4>Emocjonalne</h4><p>Negatywne stany emocjonalne — głównie w pracy opartej na opiece nad innymi, ale też wszędzie tam, gdzie praca wiąże się z ludźmi</p></div>
+</div>
+<div class="note-box">
+<strong>Wymagania pracy — zarządzanie celami (procesy sterownicze):</strong> bezustanne porównywanie wymagań (stanu docelowego) z aktualnym stanem; modyfikowanie działania, aż różnica zostanie zniwelowana lub osiągnie minimalny akceptowalny poziom — <strong>ujemne sprzężenie zwrotne</strong>.
+        </div>
+</div>
+</details>
+<details>
+<summary>Kompensacyjny model sterowania wg Hockeya</summary>
+<div class="details-body">
+<p>Model opisuje, jak pracownik reguluje wysiłek w odpowiedzi na obciążenie — poprzez dwie pętle regulacji: <strong>pętlę A</strong> (kontroler zadań — wykonanie zadania wobec obciążenia zewnętrznego) i <strong>pętlę B</strong> (sterownik nadzorczy — kontroler celów i wysiłku).</p>
+<table>
+<tr><th>Tryb</th><th>Kategoria Frankenhaeusera</th><th>Poziom wykonania</th><th>Stan psychofizjologiczny</th></tr>
+<tr>
+<td><strong>Zaangażowanie</strong></td>
+<td>Wysiłek i brak frustracji</td>
+<td>Wysoki</td>
+<td>Zwiększone wydzielanie A/NA; zmniejszone wydzielanie K; wysoki poziom czujności</td>
+</tr>
+<tr>
+<td><strong>Brak zaangażowania</strong></td>
+<td>Frustracja i brak wysiłku</td>
+<td>Nieakceptowalny</td>
+<td>Niewielkie zmiany, o ile nie pojawi się krytyka/poczucie winy (wtedy ↑K, niepokój, depresja)</td>
+</tr>
+<tr>
+<td><strong>Napięcie</strong></td>
+<td>Wysiłek i frustracja</td>
+<td>Akceptowalny</td>
+<td>Zwiększone wydzielanie A/NA/K; wzrost niepokoju/zmęczenia; negatywne efekty utrzymują się po zakończeniu pracy</td>
+</tr>
+</table>
+<p style="font-size:13px;color:var(--accent);">A = adrenalina, NA = noradrenalina, K = kortyzol</p>
+<div class="note-box">
+          Tryb napięcia wiąże się z dwoma strategiami: <strong>podtrzymywaniem priorytetu celu za wszelką cenę</strong> lub <strong>obniżeniem priorytetu celu / subiektywnym zmniejszeniem wymagań</strong>. Przeciwieństwem jest "wyzwanie" — entuzjazm i satysfakcja, "dobry dzień".
+        </div>
+</div>
+</details>
+<details>
+<summary>Wzorce utajonych ubytków</summary>
+<div class="details-body">
+<p><strong>Utajone ubytki</strong> — niekorzystne zmiany w funkcjonowaniu człowieka pojawiające się w sytuacjach wysokiego obciążenia pracą, presji czasu lub działania stresorów środowiskowych. Powstają w wyniku uruchomienia kompensacyjnych procesów sterowniczych (trybu napięcia), które chronią jakość wykonania zadania priorytetowego. Są "utajone", ponieważ na poziomie głównego rezultatu pracy efektywność pozostaje niezakłócona — kosztem ponoszą inne elementy systemu i zdolności adaptacyjne.</p>
+<h4>Cztery formy utajonych ubytków</h4>
+<div class="card-grid">
+<div class="card"><h4>Ubytki zadań dodatkowych</h4><p>Selektywne pogorszenie wykonania elementów o niższym priorytecie, zaniedbywanie czynności drugorzędnych, zawężenie uwagi</p></div>
+<div class="card"><h4>Zmiany strategii</h4><p>Uproszczone sposoby działania zmniejszające obciążenie pamięci roboczej i chroniące przed błędami, ale spowalniające pracę lub ograniczające wybór optymalnych rozwiązań</p></div>
+<div class="card"><h4>Koszty psychofizjologiczne</h4><p>Dodatkowy wysiłek umysłowy → napięcie psychiczne i aktywacja fizjologiczna (↑ciśnienie, ↑tętno, ↑hormony stresu)</p></div>
+<div class="card"><h4>Następstwa napięcia (efekty odroczone)</h4><p>Skutki po zakończeniu pracy — zmęczenie, trudności z odpoczynkiem, tendencja do wybierania mniej wymagających, ale bardziej ryzykownych strategii</p></div>
+</div>
+</div>
+</details>
+<details>
+<summary>Rzeczywistość a laboratorium</summary>
+<div class="details-body">
+<p>Ludzie lepiej radzą sobie w rzeczywistej pracy niż w laboratorium — obniżenie wykonania jest zazwyczaj niewielkie w porównaniu do zadań laboratoryjnych.</p>
+<table>
+<tr><th>Laboratorium</th><th>Praca</th></tr>
+<tr>
+<td>Zadania: banalne, wyizolowane, niewyuczone, krótkotrwałe</td>
+<td>Zadania: celowe, wśród innych ludzi, w cyklu zadań, często dobrze znane, długotrwałe</td>
+</tr>
+<tr>
+<td>Cel: wykonanie zadania przy maksymalnym zaangażowaniu</td>
+<td>Cel: wykonanie zadania i regulacja wysiłku</td>
+</tr>
+<tr>
+<td>Brak wpływu na sytuację</td>
+<td>Zazwyczaj jakiś wpływ na sytuację</td>
+</tr>
+</table>
+<div class="note-box">Duże obciążenie pracą i trudne warunki pracy wiążą się z pojawieniem się stresu, a ten wpływa na zdrowie somatyczne i psychiczne pracowników — jednak pamiętajmy o <strong>różnicach indywidualnych</strong>.</div>
+</div>
+</details>
+</section>
+<div class="quote-box">
+    "Z miękkich deklaracji i działań wizerunkowych CSR przekształciło się w mierzalne, strategiczne ramy zarządcze."
+  </div>
+<section>
+<div class="section-title">
+<div class="num">2</div>
+<h2>Etyczny biznes — Społeczna odpowiedzialność biznesu (CSR)</h2>
+</div>
+<details>
+<summary>Czym jest CSR?</summary>
+<div class="details-body">
+<p><strong>Corporate social responsibility</strong> — odpowiedzialność organizacji za wpływ jej decyzji i działań na społeczeństwo i środowisko. Dbałość o to, aby organizacja przyczyniała się do:</p>
+<ul>
+<li>zrównoważonego rozwoju otoczenia, w tym dobrobytu i zdrowia społeczeństwa</li>
+<li>uwzględniania oczekiwań interesariuszy</li>
+<li>zgodności z obowiązującym prawem i spójności z międzynarodowymi normami postępowania</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Historia CSR — oś czasu</summary>
+<div class="details-body">
+<div class="timeline">
+<div class="t-item"><div class="t-date">1926</div>Książka E. Lorda "The Fundamentals of Business Ethics"</div>
+<div class="t-item"><div class="t-date">1932</div>Harvard Law Review — debata A. Berle i E. Dodda o celach przedsiębiorstw</div>
+<div class="t-item"><div class="t-date">1953</div>Książka H. Bowena "Social Responsibilities of Businessman"</div>
+<div class="t-item"><div class="t-date">1999</div>Światowe Forum Ekonomiczne w Davos — formalna definicja CSR</div>
+<div class="t-item"><div class="t-date">2001</div>Komisja Europejska — "Zielona Księga" (konsultacje europejskie); Biała Księga 2002 — konkretne procedury</div>
+</div>
+</div>
+</details>
+<details>
+<summary>Modele liniowe vs nieliniowe CSR</summary>
+<div class="details-body">
+<div class="card-grid">
+<div class="card">
+<h4>Modele liniowe (ewolucyjne)</h4>
+<p>Organizacja przechodzi przez etapy angażowania się w CSR, uczy się, doskonali realizację strategii, poszerza/dołącza kolejne obszary.</p>
+</div>
+<div class="card">
+<h4>Modele nieliniowe</h4>
+<p>Organizacja może od razu realizować CSR w wielu obszarach równocześnie lub wybierać obszary realizacji strategii CSR.</p>
+</div>
+</div>
+<h4>Piramida Carrolla (1991) — model liniowy, "after profit obligation"</h4>
+<div class="pyramid">
+<div class="p1">Odpowiedzialność filantropijna [bycie dobrym obywatelem]</div>
+<div class="p2">Odpowiedzialność etyczna [działanie etyczne]</div>
+<div class="p3">Odpowiedzialność prawna [przestrzeganie prawa]</div>
+<div class="p4">Odpowiedzialność ekonomiczna [działalność przynosząca zysk]</div>
+</div>
+<p style="font-size:13px;">Sfery CSR — model nieliniowy Schwartza i Carrolla (2003): odpowiedzialność ekonomiczna, prawna, etyczna oraz ich przecięcia (et-ek, ek-pr, et-pr, et-ek-pr).</p>
+<h4>Odwrócona piramida "before profit obligation" — Kang i Wood (1995)</h4>
+<ul>
+<li>Model liniowy</li>
+<li>Wartości moralne i interesy społeczne — podstawa działalności organizacji</li>
+<li>Ekonomiczne profity są <strong>ostatnią</strong> konsekwencją działania organizacji</li>
+</ul>
+<h4>Trzy poziomy CSR</h4>
+<table>
+<tr><th>Poziom</th><th>Opis</th></tr>
+<tr><td><strong>Indywidualny</strong></td><td>Moralna odpowiedzialność jednostek w organizacji (zarząd, managerowie, pracownicy) — etyka jednostki</td></tr>
+<tr><td><strong>Organizacyjny</strong></td><td>Uczciwość organizacji wobec najbliższego otoczenia (interesariuszy) — polityka CSR</td></tr>
+<tr><td><strong>Instytucjonalny</strong></td><td>Odpowiedzialność ekonomiczna na rynku i w świecie biznesu</td></tr>
+</table>
+<h4>Model Van Merrewijka i Werre'a (2003) — liniowy</h4>
+<table>
+<tr><th>Etap</th><th>Charakterystyka</th></tr>
+<tr><td>Przed odpowiedzialność</td><td>Brak strategii CSR</td></tr>
+<tr><td>Dostosowanie</td><td>Kierowanie się obowiązkiem, prawem i regułami ekonomicznymi (norma)</td></tr>
+<tr><td>Zysk</td><td>Reagowanie na oczekiwania społeczne i pracowników</td></tr>
+<tr><td>Troska</td><td>Pozytywna dewiacja — wykraczanie poza normę</td></tr>
+<tr><td>Synergia</td><td>Zrównoważony rozwój — harmonia celów ekonomicznych, społecznych, ekologicznych</td></tr>
+<tr><td>Holizm</td><td>Nadrzędny cel: dobro wszelkich istot i świata</td></tr>
+</table>
+</div>
+</details>
+<details>
+<summary>Obszary CSR</summary>
+<div class="details-body">
+<div class="card-grid">
+<div class="card">
+<h4>Obszar zewnętrzny — relacje z otoczeniem</h4>
+<ul>
+<li>Relacje z inwestorami</li>
+<li>Relacje z klientami</li>
+<li>Relacje z otoczeniem produkcyjno-usługowym</li>
+<li>Relacje z otoczeniem publicznym — lokalną społecznością</li>
+</ul>
+</div>
+<div class="card">
+<h4>Obszar wewnętrzny — zarządzanie zasobami ludzkimi</h4>
+<ul>
+<li>Rekrutacja, zatrudnianie, adaptacja</li>
+<li>Motywowanie, awansowanie, wynagradzanie</li>
+<li>Partycypacja w decyzjach</li>
+<li>Relacje interpersonalne — pionowe i poziome</li>
+<li>Kodeksy etyczne</li>
+<li>Strategie profilaktyczne i radzenia sobie w trudnych sytuacjach (konflikty, mobbing)</li>
+</ul>
+</div>
+<div class="card">
+<h4>Inne obszary</h4>
+<p>Dbanie o środowisko naturalne — działania profilaktyczne i zaradcze w obszarze ochrony środowiska.</p>
+</div>
+</div>
+<div class="note-box">
+<strong>Forum Odpowiedzialnego Biznesu</strong> — organizacja typu think tank, rzecznik prowadzenia biznesu odpowiedzialnego społecznie i środowiskowo (odpowiedzialnybiznes.pl).
+        </div>
+</div>
+</details>
+<details>
+<summary>Nowsze zjawiska zmieniające podejście do CSR</summary>
+<div class="details-body">
+<div class="card-grid">
+<div class="card">
+<h4>Pojęcia zastępujące/redefiniujące CSR</h4>
+<p><strong>ESG</strong> (Environmental, Social, Governance) — najważniejszy następca CSR w praktyce rynkowej; przesuwa akcent z dobrowolnej filantropii na twarde, mierzalne wskaźniki i raportowanie.</p>
+<p><strong>Zrównoważony Rozwój Biznesu</strong> (Corporate Sustainability) — podejście holistyczne: obecna działalność nie może ograniczać możliwości rozwoju przyszłym pokoleniom; integruje zysk z ograniczeniami planetarnymi.</p>
+</div>
+<div class="card">
+<h4>Pojęcia rozwijające/pogłębiające CSR</h4>
+<ul>
+<li><strong>CSV</strong> (Creating Shared Value) — rozwiązywanie problemów społecznych generuje zysk finansowy; społeczeństwo i biznes wygrywają jednocześnie</li>
+<li><strong>Stakeholder Capitalism</strong> — odejście od prymatu akcjonariusza na rzecz długoterminowej wartości dla wszystkich grup interesariuszy</li>
+<li><strong>B-Corp</strong> — certyfikacja firm prawnie zobowiązanych do celów społecznych/środowiskowych na równi z zyskiem</li>
+<li><strong>Triple Bottom Line (3P)</strong> — People, Planet, Profit: ocena sukcesu firmy nie tylko finansowo, ale też wpływem na ludzi i planetę</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section>
+<div class="section-title">
+<div class="num">3</div>
+<h2>Zachowania nieetyczne w organizacji</h2>
+</div>
+<details>
+<summary>Typologia zachowań nieetycznych</summary>
+<div class="details-body">
+<table>
+<tr><th>Wobec kogo</th><th>Przykładowe zachowania</th></tr>
+<tr><td>Współpracownicy i podwładni</td><td>Przemoc psychologiczna — mobbing i bullying</td></tr>
+<tr><td>Klienci, kontrahenci</td><td>Nieuczciwa oferta i obsługa</td></tr>
+<tr><td>Społeczność lokalna</td><td>Nieuczciwe, uciążliwe korzystanie z przestrzeni społecznej i fizycznej</td></tr>
+<tr><td>Własna organizacja</td><td>Zachowania kontrproduktywne</td></tr>
+</table>
+</div>
+</details>
+<details>
+<summary>Mobbing</summary>
+<div class="details-body">
+<h4>Kryteria (Leymann, 1993)</h4>
+<ul>
+<li>Trwałość zachowań w czasie</li>
+<li>Powtarzalność zachowań</li>
+<li>Wrogie intencje mobbera</li>
+</ul>
+<h4>Fazy (Rode, 2000)</h4>
+<ol style="padding-left:20px;">
+<li>Pierwotne wydarzenie krytyczne</li>
+<li>Piętnowanie, stygmatyzacja</li>
+<li>Izolowanie</li>
+<li>Utrata pracy</li>
+</ol>
+<h4>Przyczyny mobbingu (Durniat, 2009)</h4>
+<div class="card-grid">
+<div class="card">
+<h4>Ofiara</h4>
+<ul>
+<li>Odmienność</li>
+<li>Niezależność</li>
+<li>Słabość roli</li>
+<li>Nadmierna aktywność, zaangażowanie</li>
+</ul>
+</div>
+<div class="card">
+<h4>Prześladowca</h4>
+<ul>
+<li>Autorytaryzm</li>
+<li>Zagrożona/słaba pozycja</li>
+<li>Konfliktowa postawa</li>
+</ul>
+</div>
+<div class="card">
+<h4>Organizacja</h4>
+<ul>
+<li>Rywalizacja</li>
+<li>Hermetyczność grupy</li>
+<li>Nieład, chaos organizacyjny</li>
+<li>Zagrożenie utraty pracy</li>
+</ul>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary>Zachowania kontrproduktywne</summary>
+<div class="details-body">
+<p>Najczęściej występujące:</p>
+<ul>
+<li>Brak rzetelności przy wykonywaniu obowiązków i poleceń</li>
+<li>Manipulacja czasem pracy</li>
+<li>Materialne działania na szkodę organizacji</li>
+<li>Niematerialne działania na szkodę organizacji</li>
+<li>Realizacja w godzinach pracy spraw niezwiązanych z obowiązkami zawodowymi</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Etyka indywidualna i jej uwarunkowania</summary>
+<div class="details-body">
+<p><strong>Etyka indywidualna</strong> — osobiste przekonania jednostki dotyczące zachowania słusznego i niesłusznego. Zachowanie etyczne mieści się w ogólnie przyjętych normach społecznych.</p>
+<p><strong>Czynniki kształtujące etykę indywidualną:</strong> wpływ rodziny, wpływ kolegów, doświadczenie życiowe, osobiste wartości, cechy osobowości, czynniki sytuacyjne.</p>
+<h4>Wielka Piątka a etyczność</h4>
+<table>
+<tr><th>Cecha</th><th>Związek z etycznością</th></tr>
+<tr><td>Neurotyczność</td><td>Liderzy nieetyczni w relacjach z pracownikami (zachowania obronne, konflikty)</td></tr>
+<tr><td>Ekstrawersja</td><td>Aktywność, towarzyskość, serdeczność</td></tr>
+<tr><td>Otwartość</td><td>Ciekawość, tolerancja na nowość</td></tr>
+<tr><td>Sumienność</td><td>Przestrzeganie zasad, wyznaczanie klarownych zasad etycznych, wytrwałość, odpowiedzialność, rozwaga</td></tr>
+<tr><td>Ugodowość</td><td>Troska o innych, taktowność, szczerość, sprawiedliwość — <em>ale cierpi efektywność kierownicza</em></td></tr>
+</table>
+<h4>Inne cechy istotne dla etyczności</h4>
+<ul>
+<li>Poczucie umiejscowienia kontroli</li>
+<li>Wrażliwość na sprawiedliwość</li>
+<li>Samoocena i poczucie własnej wartości</li>
+<li>Autorytaryzm i potrzeba dominacji — stereotypizacja, uprzedzenia</li>
+<li>Inteligencja emocjonalna i empatia</li>
+</ul>
+</div>
+</details>
+</section>
+<div class="note-box" style="text-align:center;font-size:15px;">
+<strong>Na podsumowanie:</strong> psycholog zajmujący się efektywnym funkcjonowaniem ludzi w kontekście pracy (z perspektywy organizacji i pracownika) powinien dążyć do: tworzenia pozytywnej organizacji, promowania CSR, budowania podmiotowych zasobów pracownika, wspierania drogi rozwoju zawodowego — co prowadzi do dobrostanu zawodowego: pozytywnych emocji w pracy, poczucia satysfakcji z pracy, poczucia sensu pracy.
+  </div>
+<section>
+<div class="section-title">
+<div class="num">📚</div>
+<h2>Literatura do wykładu 2</h2>
+</div>
+<div class="lit-list">
+<p><strong>Chmiel, N. (2007).</strong> Psychologia pracy i organizacji. GWP — <em>rozdz. 8: Obciążenie pracą i podział obowiązków; rozdz. 9: Środowisko pracy a wydajność pracownika</em></p>
+<p><strong>Chudzicka-Czupała, A. (2013).</strong> Etyczne zachowanie się człowieka w organizacji. Wyd. Uniwersytetu Śląskiego — <em>rozdz. 1: Indywidualne uwarunkowania zachowań etycznych w pracy; rozdz. 5: Zachowania nieetyczne w miejscu pracy: przejawy, ujawnianie i badanie</em></p>
+<p><strong>Rożnowski, B., Fortuna, P. (2020).</strong> Psychologia biznesu. PWN — <em>rozdz. 18: Społeczna odpowiedzialność biznesu</em></p>
+</div>
+</section>
+<footer>Psychologia pracy i organizacji · Wykład 1–2 · SWPS Poznań</footer>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-1.html"><span>Poprzednia</span><b>Wykład 1</b><i>Organizacja i motywacja do pracy</i></a><span></span></nav></div>
+<script data-back="./" data-back-label="Praca i organizacja" data-home="../" src="../assets/reader.js"></script></body>
+</html>

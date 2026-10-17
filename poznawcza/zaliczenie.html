@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Informacje · Psychologia poznawcza</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --ink:#2b2118;
+  --ink-soft:#5c4f43;
+  --rule:#e9e0d3;
+  --parchment:#f7f1e7;
+  /* Psychologia poznawcza — pastel dusty blue, H209 S33 L56 */
+  --accent:hsl(209 33% 56%);
+  --accent-deep:hsl(209 36% 36%);
+  --accent-tint:hsl(209 40% 95%);
+  --accent-line:hsl(209 33% 80%);
+  --warn:#9a6a1f;
+  --warn-tint:#fbf3e3;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7}
+a{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:3px}
+
+.page{display:grid;grid-template-columns:15rem minmax(0,46rem);gap:3.5rem;max-width:68rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+@media (max-width:900px){.page{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:1.75rem}}
+
+/* ——— Spis treści ——— */
+.toc{position:sticky;top:1.5rem;align-self:start;font-size:.92rem;line-height:1.45;max-height:calc(100vh - 3rem);overflow-y:auto;padding-right:.4rem}
+.toc .grp{font-family:var(--display);font-size:.95rem;color:var(--accent-deep);margin:1.1rem 0 .35rem}
+.toc h2{font-family:var(--display);font-weight:500;font-size:1.05rem;margin:0 0 .75rem}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent-line)}
+.toc li a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--ink-soft);text-decoration:none}
+.toc li a:hover{color:var(--accent-deep)}
+.toc li a b{font-weight:600;color:var(--accent-deep);margin-right:.35rem}
+.toc .tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+@media (max-width:900px){.toc{max-height:none;position:static;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;background:var(--parchment)}}
+
+button{font:inherit;font-size:.85rem;color:var(--accent-deep);background:var(--paper);border:1px solid var(--accent-line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--accent-tint)}
+
+/* ——— Nagłówek ——— */
+header.masthead{border-bottom:3px double var(--accent-line);padding-bottom:1.75rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
+.pill{display:inline-block;font-size:.82rem;padding:.2rem .75rem;border-radius:999px;background:var(--accent);color:#fff;letter-spacing:.01em}
+.pill.ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--accent-line)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.08;margin:0 0 .6rem;letter-spacing:-.01em}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:38rem}
+.source-line{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft)}
+.source-line cite{font-style:italic;color:var(--ink)}
+
+/* ——— Sekcje ——— */
+section.chapter{margin:0 0 3rem}
+.chapter-head{display:flex;align-items:baseline;gap:.9rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.chapter-head .num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--accent)}
+.chapter-head h2{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.2;margin:0}
+.src{display:inline-block;font-size:.78rem;color:var(--accent-deep);background:var(--accent-tint);border-radius:4px;padding:.05rem .45rem;margin-left:.3rem;white-space:nowrap;vertical-align:.1em}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;color:var(--accent-deep);font-size:.85rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--accent-line)}
+
+h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:1.6rem 0 .5rem}
+h4{font-family:var(--body);font-weight:600;font-size:1rem;margin:1.2rem 0 .3rem}
+p{margin:0 0 .9rem}
+ul,ol{margin:0 0 1rem;padding-left:1.35rem}
+li{margin:.25rem 0}
+strong{font-weight:600}
+.term{font-weight:600;color:var(--accent-deep)}
+
+/* ——— Rozwijane bloki ——— */
+details.block{border:1px solid var(--rule);border-radius:10px;background:var(--paper);margin:.9rem 0}
+details.block>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;font-family:var(--display);font-size:1.12rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+details.block>summary::-webkit-details-marker{display:none}
+details.block>summary::after{content:"+";font-family:var(--body);color:var(--accent);font-size:1.3rem;line-height:1}
+details.block[open]>summary::after{content:"–"}
+details.block[open]>summary{border-bottom:1px solid var(--rule)}
+details.block .inner{padding:.9rem 1.2rem .4rem}
+details.block.ramka{background:var(--parchment);border-color:#e3d6c3}
+details.block.ramka>summary .kind{font-family:var(--body);font-size:.8rem;color:var(--ink-soft);margin-right:.5rem}
+
+/* ——— Wyróżnienia ——— */
+.key{border-left:4px solid var(--accent);background:var(--accent-tint);padding:.85rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0 1.2rem}
+.key p:last-child{margin-bottom:0}
+.key .label{display:block;font-size:.82rem;color:var(--accent-deep);margin-bottom:.2rem}
+.flag{border-left:4px solid var(--warn);background:var(--warn-tint);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem}
+.flag .label{display:block;font-size:.82rem;color:var(--warn);margin-bottom:.15rem}
+blockquote{margin:1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--accent-line);font-style:italic;color:var(--ink-soft)}
+
+/* ——— Tabele ——— */
+.table-wrap{overflow-x:auto;margin:1rem 0 1.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;background:var(--accent-tint);color:var(--accent-deep)}
+td:last-child{font-weight:600;white-space:nowrap}
+
+/* ——— Karty postaci ——— */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.8rem;margin:1rem 0 1.5rem}
+.card{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:8px;padding:.8rem .95rem;font-size:.93rem;line-height:1.5}
+.card h4{margin:0 0 .15rem;font-family:var(--display);font-weight:500;font-size:1.05rem}
+.card .yr{font-size:.8rem;color:var(--accent-deep);display:block;margin-bottom:.35rem}
+.card p{margin:0}
+
+/* ——— Oś czasu ——— */
+.timeline{list-style:none;padding:0;margin:1rem 0 1.5rem;position:relative}
+.timeline::before{content:"";position:absolute;left:4.1rem;top:.4rem;bottom:.4rem;width:2px;background:var(--accent-line)}
+.timeline li{display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;margin:0 0 .75rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:3.82rem;top:.62rem;width:.62rem;height:.62rem;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .y{font-family:var(--display);font-weight:500;text-align:right;color:var(--accent-deep)}
+
+/* ——— Wykresy ——— */
+.fig{margin:1.2rem 0;padding:1rem 1rem .6rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.5}
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:640px){.fig-row{grid-template-columns:1fr}}
+
+/* ——— Pytania kontrolne ——— */
+details.q{border-bottom:1px solid var(--rule);padding:.25rem 0}
+details.q>summary{cursor:pointer;padding:.55rem 0;font-weight:600;list-style:none;display:grid;grid-template-columns:1.8rem 1fr;gap:.4rem}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary .n{color:var(--accent);font-family:var(--display)}
+details.q .a{padding:0 0 .8rem 2.2rem;font-size:.97rem}
+
+.syl{list-style:none;padding:0;margin:.4rem 0 0}
+.syl li{display:grid;grid-template-columns:1.4rem 1fr;gap:.3rem;margin:.35rem 0}
+.syl li::before{content:"✓";color:var(--accent-deep);font-weight:600}
+.syl a{font-size:.88rem;white-space:nowrap}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.6rem;margin:.6rem 0 1rem}
+.meta-grid div{border:1px solid var(--rule);border-radius:8px;padding:.55rem .75rem;font-size:.9rem;line-height:1.4}
+.meta-grid b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--accent-deep)}
+.part{margin:4.5rem 0 2.5rem;padding:2rem 0 1.5rem;border-top:3px double var(--accent-line);border-bottom:1px solid var(--rule)}
+.part .pills{margin-bottom:.8rem}
+.part-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin:0 0 .5rem}
+.phases .y{font-size:1.4rem}
+.part-cw{background:var(--accent-tint);border-top:6px solid var(--accent);border-bottom:none;border-radius:0 0 12px 12px;padding:1.6rem 1.4rem 1.4rem;margin-top:6rem}
+.part-cw+.part{margin-top:2rem}
+table.wide{min-width:46rem;font-size:.88rem}
+table.wide td:first-child{font-weight:600;white-space:normal;color:var(--ink)}
+table.wide td{font-weight:400;white-space:normal}
+.toc .grp.cw{border-top:1px solid var(--accent-line);padding-top:.9rem;margin-top:1.4rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+
+
+/* ——— Zakładki i zwijane tematy ——— */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;padding:.7rem 0;margin:0 0 1.4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.tabs [role=tab]{font-family:var(--display);font-size:1.05rem;padding:.45rem 1.2rem;border-radius:999px;border:1px solid var(--accent-line);color:var(--accent-deep);background:var(--paper)}
+.tabs [role=tab][aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .count{font-family:var(--body);font-size:.78rem;opacity:.8;margin-left:.25rem}
+.panel-hint{font-size:.92rem;color:var(--ink-soft);margin:0 0 1rem}
+.unit{border:1px solid var(--rule);border-radius:14px;background:var(--paper);margin:0 0 1rem;scroll-margin-top:5rem}
+.unit>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;border-radius:14px}
+.unit>summary::-webkit-details-marker{display:none}
+.unit>summary:hover{background:var(--accent-tint)}
+.unit[open]>summary{border-bottom:3px double var(--accent-line);border-radius:14px 14px 0 0}
+.unit .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.55rem}
+.unit-title{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,3.6vw,1.95rem);line-height:1.15;margin-bottom:.3rem}
+.unit-lede{display:block;color:var(--ink-soft);font-size:.98rem}
+.unit-toggle{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--accent-line);display:grid;place-items:center;color:var(--accent-deep);font-size:1.3rem;line-height:1}
+.unit-toggle::before{content:"+"}
+.unit[open] .unit-toggle::before{content:"–"}
+.unit-body{padding:1.6rem 1.3rem .4rem}
+.unit-cw{border-top:4px solid var(--accent)}
+@media (max-width:640px){.unit>summary{padding:1rem}.unit-body{padding:1.2rem .9rem .2rem}}
+.chapter,.block,.q{scroll-margin-top:5rem}
+.zal{margin-bottom:1.6rem}
+.toc .grp a{color:inherit;text-decoration:none}
+.toc .grp a:hover{color:var(--accent-deep)}
+mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color:inherit;padding:0 .08em}
+.note-hl{font-size:.88rem;color:var(--ink-soft)}
+.sdt td{white-space:normal}
+.sdt td.ok{background:hsl(150 30% 95%);color:hsl(150 32% 26%)}
+.sdt td.err{background:#fbf0e6;color:#8a4a1c}
+@media print{.tabs,.panel-hint{display:none}.panel[hidden]{display:block}.unit-toggle{display:none}}
+@media print{
+  .toc,.tools{display:none}
+  .page{display:block;padding:0}
+  details.block,details.q{break-inside:avoid}
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style></head>
+<body>
+<div class="page">
+
+<main><header class="st-hero"><p class="st-eyebrow">Informacje</p><h1>Zaliczenie przedmiotu</h1></header>
+
+<section class="chapter zal" id="sylabus">
+<details class="block" id="zaliczenie" open="">
+<summary>Zaliczenie przedmiotu</summary>
+<div class="inner">
+<p>6 ECTS; wykład 24 h, ćwiczenia 18 h. Trzeba zaliczyć <strong>każde</strong> zadanie. Ocena końcowa to procent sumy punktów (maks. 100).</p>
+<div class="meta-grid">
+<div><b>29 / 56</b>Test jednokrotnego wyboru: 26 pytań po 2 pkt + 4 po 1 pkt; wykłady, ćwiczenia i lektury</div>
+<div><b>12 / 24</b>Projekt zespołowy (3–4 osoby): eksperyment na zajęciach + raport w ciągu tygodnia</div>
+<div><b>10 / 20</b>Pięć wyjściówek na ćwiczeniach, po 4 pkt</div>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Procent</th><th>Ocena</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">od 90,50%</td><td>5,0</td></tr>
+<tr><td style="font-weight:400">80,50–90,49%</td><td>4,5</td></tr>
+<tr><td style="font-weight:400">70,50–80,49%</td><td>4,0</td></tr>
+<tr><td style="font-weight:400">60,50–70,49%</td><td>3,5</td></tr>
+<tr><td style="font-weight:400">50,50–60,49%</td><td>3,0</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Na ćwiczeniach dozwolona jedna nieobecność.</li>
+<li>Spóźniony raport: minus 2 pkt za każdy dzień. Nazwa pliku według wzoru z sylabusa.</li>
+<li>Raport generowany przez AI lub z nieistniejącymi źródłami = niezaliczenie zadania.</li>
+<li>Literatura obowiązkowa obowiązuje na egzaminie, nawet jeśli nie była szczegółowo omawiana.</li>
+</ul>
+</div>
+</details>
+</section>
+
+
+
+<footer>
+  Wykłady: Maruszewski, T. (2017). <cite>Psychologia poznania. Umysł i świat</cite>. Gdańsk: GWP, rozdz. 1 (s. 13–41), 2 (s. 43–83) i 3 (s. 85–131).
+  Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN (skan s. 34–39).
+  Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
+</footer>
+</main>
+</div>
+<script>
+(function(){
+  var KEY_TAB='pp-tab', KEY_OPEN='pp-open';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function setTab(name,focus){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===name;
+      t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    document.querySelectorAll('.toc-panel').forEach(function(p){p.hidden=p.dataset.for!==name});
+    store(KEY_TAB,name);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){setTab(t.dataset.tab);window.scrollTo({top:0})});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];setTab(n.dataset.tab,true);e.preventDefault()}
+    });
+  });
+  function saveOpen(){
+    var ids=[].slice.call(document.querySelectorAll('details.unit[open]')).map(function(d){return d.id});
+    store(KEY_OPEN,ids.join(','));
+  }
+  document.querySelectorAll('details.unit').forEach(function(d){d.addEventListener('toggle',saveOpen)});
+  function reveal(el){
+    var panel=el.closest('.panel'); if(panel)setTab(panel.id==='panel-cw'?'cw':'wyk');
+    var p=el; while(p){ if(p.tagName==='DETAILS')p.open=true; p=p.parentElement; }
+    if(el.tagName==='DETAILS')el.open=true;
+    requestAnimationFrame(function(){el.scrollIntoView({block:'start'})});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a)return;
+    var t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); if(!t)return;
+    e.preventDefault(); reveal(t);
+    try{history.replaceState(null,'','#'+t.id)}catch(err){}
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.dataset.toggle==='open';
+      var panel=document.querySelector('.panel:not([hidden])');
+      panel.querySelectorAll('details').forEach(function(d){d.open=open});
+      document.getElementById('zaliczenie').open=false;
+    });
+  });
+  var saved=load(KEY_OPEN);
+  if(saved)saved.split(',').forEach(function(id){var d=document.getElementById(id);if(d&&d.classList.contains('unit'))d.open=true});
+  var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
+})();
+</script>
+<script data-back="./" data-back-label="Poznawcza" data-home="../" src="../assets/reader.js"></script></body>
+</html>

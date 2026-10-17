@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Ćwiczenia 1 · Psychologia poznawcza</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --ink:#2b2118;
+  --ink-soft:#5c4f43;
+  --rule:#e9e0d3;
+  --parchment:#f7f1e7;
+  /* Psychologia poznawcza — pastel dusty blue, H209 S33 L56 */
+  --accent:hsl(209 33% 56%);
+  --accent-deep:hsl(209 36% 36%);
+  --accent-tint:hsl(209 40% 95%);
+  --accent-line:hsl(209 33% 80%);
+  --warn:#9a6a1f;
+  --warn-tint:#fbf3e3;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7}
+a{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:3px}
+
+.page{display:grid;grid-template-columns:15rem minmax(0,46rem);gap:3.5rem;max-width:68rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+@media (max-width:900px){.page{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:1.75rem}}
+
+/* ——— Spis treści ——— */
+.toc{position:sticky;top:1.5rem;align-self:start;font-size:.92rem;line-height:1.45;max-height:calc(100vh - 3rem);overflow-y:auto;padding-right:.4rem}
+.toc .grp{font-family:var(--display);font-size:.95rem;color:var(--accent-deep);margin:1.1rem 0 .35rem}
+.toc h2{font-family:var(--display);font-weight:500;font-size:1.05rem;margin:0 0 .75rem}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent-line)}
+.toc li a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--ink-soft);text-decoration:none}
+.toc li a:hover{color:var(--accent-deep)}
+.toc li a b{font-weight:600;color:var(--accent-deep);margin-right:.35rem}
+.toc .tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+@media (max-width:900px){.toc{max-height:none;position:static;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;background:var(--parchment)}}
+
+button{font:inherit;font-size:.85rem;color:var(--accent-deep);background:var(--paper);border:1px solid var(--accent-line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--accent-tint)}
+
+/* ——— Nagłówek ——— */
+header.masthead{border-bottom:3px double var(--accent-line);padding-bottom:1.75rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
+.pill{display:inline-block;font-size:.82rem;padding:.2rem .75rem;border-radius:999px;background:var(--accent);color:#fff;letter-spacing:.01em}
+.pill.ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--accent-line)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.08;margin:0 0 .6rem;letter-spacing:-.01em}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:38rem}
+.source-line{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft)}
+.source-line cite{font-style:italic;color:var(--ink)}
+
+/* ——— Sekcje ——— */
+section.chapter{margin:0 0 3rem}
+.chapter-head{display:flex;align-items:baseline;gap:.9rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.chapter-head .num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--accent)}
+.chapter-head h2{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.2;margin:0}
+.src{display:inline-block;font-size:.78rem;color:var(--accent-deep);background:var(--accent-tint);border-radius:4px;padding:.05rem .45rem;margin-left:.3rem;white-space:nowrap;vertical-align:.1em}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;color:var(--accent-deep);font-size:.85rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--accent-line)}
+
+h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:1.6rem 0 .5rem}
+h4{font-family:var(--body);font-weight:600;font-size:1rem;margin:1.2rem 0 .3rem}
+p{margin:0 0 .9rem}
+ul,ol{margin:0 0 1rem;padding-left:1.35rem}
+li{margin:.25rem 0}
+strong{font-weight:600}
+.term{font-weight:600;color:var(--accent-deep)}
+
+/* ——— Rozwijane bloki ——— */
+details.block{border:1px solid var(--rule);border-radius:10px;background:var(--paper);margin:.9rem 0}
+details.block>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;font-family:var(--display);font-size:1.12rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+details.block>summary::-webkit-details-marker{display:none}
+details.block>summary::after{content:"+";font-family:var(--body);color:var(--accent);font-size:1.3rem;line-height:1}
+details.block[open]>summary::after{content:"–"}
+details.block[open]>summary{border-bottom:1px solid var(--rule)}
+details.block .inner{padding:.9rem 1.2rem .4rem}
+details.block.ramka{background:var(--parchment);border-color:#e3d6c3}
+details.block.ramka>summary .kind{font-family:var(--body);font-size:.8rem;color:var(--ink-soft);margin-right:.5rem}
+
+/* ——— Wyróżnienia ——— */
+.key{border-left:4px solid var(--accent);background:var(--accent-tint);padding:.85rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0 1.2rem}
+.key p:last-child{margin-bottom:0}
+.key .label{display:block;font-size:.82rem;color:var(--accent-deep);margin-bottom:.2rem}
+.flag{border-left:4px solid var(--warn);background:var(--warn-tint);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem}
+.flag .label{display:block;font-size:.82rem;color:var(--warn);margin-bottom:.15rem}
+blockquote{margin:1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--accent-line);font-style:italic;color:var(--ink-soft)}
+
+/* ——— Tabele ——— */
+.table-wrap{overflow-x:auto;margin:1rem 0 1.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;background:var(--accent-tint);color:var(--accent-deep)}
+td:last-child{font-weight:600;white-space:nowrap}
+
+/* ——— Karty postaci ——— */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.8rem;margin:1rem 0 1.5rem}
+.card{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:8px;padding:.8rem .95rem;font-size:.93rem;line-height:1.5}
+.card h4{margin:0 0 .15rem;font-family:var(--display);font-weight:500;font-size:1.05rem}
+.card .yr{font-size:.8rem;color:var(--accent-deep);display:block;margin-bottom:.35rem}
+.card p{margin:0}
+
+/* ——— Oś czasu ——— */
+.timeline{list-style:none;padding:0;margin:1rem 0 1.5rem;position:relative}
+.timeline::before{content:"";position:absolute;left:4.1rem;top:.4rem;bottom:.4rem;width:2px;background:var(--accent-line)}
+.timeline li{display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;margin:0 0 .75rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:3.82rem;top:.62rem;width:.62rem;height:.62rem;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .y{font-family:var(--display);font-weight:500;text-align:right;color:var(--accent-deep)}
+
+/* ——— Wykresy ——— */
+.fig{margin:1.2rem 0;padding:1rem 1rem .6rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.5}
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:640px){.fig-row{grid-template-columns:1fr}}
+
+/* ——— Pytania kontrolne ——— */
+details.q{border-bottom:1px solid var(--rule);padding:.25rem 0}
+details.q>summary{cursor:pointer;padding:.55rem 0;font-weight:600;list-style:none;display:grid;grid-template-columns:1.8rem 1fr;gap:.4rem}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary .n{color:var(--accent);font-family:var(--display)}
+details.q .a{padding:0 0 .8rem 2.2rem;font-size:.97rem}
+
+.syl{list-style:none;padding:0;margin:.4rem 0 0}
+.syl li{display:grid;grid-template-columns:1.4rem 1fr;gap:.3rem;margin:.35rem 0}
+.syl li::before{content:"✓";color:var(--accent-deep);font-weight:600}
+.syl a{font-size:.88rem;white-space:nowrap}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.6rem;margin:.6rem 0 1rem}
+.meta-grid div{border:1px solid var(--rule);border-radius:8px;padding:.55rem .75rem;font-size:.9rem;line-height:1.4}
+.meta-grid b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--accent-deep)}
+.part{margin:4.5rem 0 2.5rem;padding:2rem 0 1.5rem;border-top:3px double var(--accent-line);border-bottom:1px solid var(--rule)}
+.part .pills{margin-bottom:.8rem}
+.part-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin:0 0 .5rem}
+.phases .y{font-size:1.4rem}
+.part-cw{background:var(--accent-tint);border-top:6px solid var(--accent);border-bottom:none;border-radius:0 0 12px 12px;padding:1.6rem 1.4rem 1.4rem;margin-top:6rem}
+.part-cw+.part{margin-top:2rem}
+table.wide{min-width:46rem;font-size:.88rem}
+table.wide td:first-child{font-weight:600;white-space:normal;color:var(--ink)}
+table.wide td{font-weight:400;white-space:normal}
+.toc .grp.cw{border-top:1px solid var(--accent-line);padding-top:.9rem;margin-top:1.4rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+
+
+/* ——— Zakładki i zwijane tematy ——— */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;padding:.7rem 0;margin:0 0 1.4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.tabs [role=tab]{font-family:var(--display);font-size:1.05rem;padding:.45rem 1.2rem;border-radius:999px;border:1px solid var(--accent-line);color:var(--accent-deep);background:var(--paper)}
+.tabs [role=tab][aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .count{font-family:var(--body);font-size:.78rem;opacity:.8;margin-left:.25rem}
+.panel-hint{font-size:.92rem;color:var(--ink-soft);margin:0 0 1rem}
+.unit{border:1px solid var(--rule);border-radius:14px;background:var(--paper);margin:0 0 1rem;scroll-margin-top:5rem}
+.unit>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;border-radius:14px}
+.unit>summary::-webkit-details-marker{display:none}
+.unit>summary:hover{background:var(--accent-tint)}
+.unit[open]>summary{border-bottom:3px double var(--accent-line);border-radius:14px 14px 0 0}
+.unit .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.55rem}
+.unit-title{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,3.6vw,1.95rem);line-height:1.15;margin-bottom:.3rem}
+.unit-lede{display:block;color:var(--ink-soft);font-size:.98rem}
+.unit-toggle{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--accent-line);display:grid;place-items:center;color:var(--accent-deep);font-size:1.3rem;line-height:1}
+.unit-toggle::before{content:"+"}
+.unit[open] .unit-toggle::before{content:"–"}
+.unit-body{padding:1.6rem 1.3rem .4rem}
+.unit-cw{border-top:4px solid var(--accent)}
+@media (max-width:640px){.unit>summary{padding:1rem}.unit-body{padding:1.2rem .9rem .2rem}}
+.chapter,.block,.q{scroll-margin-top:5rem}
+.zal{margin-bottom:1.6rem}
+.toc .grp a{color:inherit;text-decoration:none}
+.toc .grp a:hover{color:var(--accent-deep)}
+mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color:inherit;padding:0 .08em}
+.note-hl{font-size:.88rem;color:var(--ink-soft)}
+.sdt td{white-space:normal}
+.sdt td.ok{background:hsl(150 30% 95%);color:hsl(150 32% 26%)}
+.sdt td.err{background:#fbf0e6;color:#8a4a1c}
+@media print{.tabs,.panel-hint{display:none}.panel[hidden]{display:block}.unit-toggle{display:none}}
+@media print{
+  .toc,.tools{display:none}
+  .page{display:block;padding:0}
+  details.block,details.q{break-inside:avoid}
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style></head>
+<body>
+<div class="page">
+
+<main><header class="st-hero"><p class="st-eyebrow">Ćwiczenia 1 · Sternberg s. 23–31 · Nęcka i in. s. 33–36</p><h1>Psychologia poznawcza w relacji do innych dziedzin</h1><p class="st-meta">Cele i metody badań, eksperyment, czas reakcji i błędy, kognitywistyka.</p></header>
+
+
+
+
+<div aria-labelledby="tab-cw" class="panel" id="panel-cw" role="tabpanel">
+
+<div class="unit-body" id="cw-1">
+<section class="chapter" id="c1-syl">
+<div class="chapter-head"><span class="num">§</span><h2>Wymagania z sylabusa</h2></div>
+<div class="key">
+<span class="label">Ćwiczenia 1: Psychologia poznawcza w relacji do innych dziedzin psychologii</span>
+<ul class="syl">
+<li><span>Przegląd metod badających zjawiska poznawcze <a href="#c1-metody">→ Sternberg, tab. 1-1</a> <a href="#c1-allport">→ Nęcka, 4 grupy Allporta</a> <a href="#c1-porownanie">→ zestawienie</a></span></li>
+<li><span>Eksperyment jako podstawowa metoda: słabe i mocne strony <a href="#c1-eksperyment">→ Sternberg</a> <a href="#c1-allport">→ Nęcka</a></span></li>
+<li><span>Czas reakcji i liczba błędów jako wyznaczniki sprawności przetwarzania informacji <a href="#c1-cr">→ synteza</a></span></li>
+<li><span>Relacja do innych dziedzin <a href="#c1-dziedziny">→ kognitywistyka, sześciokąt</a> <a href="#c1-podsumowanie">→ Sternberg</a></span></li>
+</ul>
+</div>
+<div class="flag"><span class="label">Uwaga o skanie Nęcki</span>Sylabus podaje s. 33–36 (wyd. PWN 2020). Przesłany skan obejmuje <strong>s. 34–39</strong> i zaczyna się w połowie zdania o Piagecie, więc to najpewniej inne wydanie z przesuniętą paginacją. Strony 37–39 to podrozdział 1.2.3 o metodach, który dokładnie pasuje do tematu ćwiczeń, więc jest opracowany w całości. Strony 33 w skanie brak.</div>
+</section>
+<!-- ============ STERNBERG ============ -->
+<div class="divider">R. Sternberg, <em>Psychologia poznawcza</em>, WSiP 2001, s. 23–31</div>
+<section class="chapter" id="c1-cele">
+<div class="chapter-head"><span class="num">S1</span><h2>Cele badań psychologii poznawczej</h2></div>
+<p>Cele badań obejmują: <strong>zbieranie danych</strong>, ich <strong>analizę</strong>, <strong>budowanie teorii</strong>, <strong>formułowanie i sprawdzanie hipotez</strong>, a czasem także <strong>stosowanie wyników</strong> poza sytuacją badania. Badacze nie muszą z góry wiedzieć, co znajdą, ale zawsze koncentrują się na określonych zjawiskach (np. rozpoznawanie twarzy, nabywanie znawstwa). <span class="src">s. 23</span></p>
+<ul>
+<li><strong>Zbieranie danych</strong> to aspekt empiryczny nauki. Wnioski wyprowadza się czasem intuicyjnie, „pierwszym rzutem oka”, częściej — metodami statystycznymi.</li>
+<li>Sam opis nie wystarcza: psychologowie chcą wiedzieć, <strong>jak</strong> i <strong>dlaczego</strong>. Muszą rozumować od tego, co zaobserwowano, do tego, co można z tego wywnioskować.</li>
+</ul>
+<div class="cards">
+<div class="card"><h4>Teoria</h4><p>Zorganizowany zbiór twierdzeń wyjaśniających dotyczących danego zjawiska.</p></div>
+<div class="card"><h4>Hipoteza</h4><p>Wstępne twierdzenie o oczekiwanych konsekwencjach empirycznych teorii, np. o wynikach badań. Schemat: „Jeśli teoria jest prawdziwa, to zawsze gdy wystąpi X, rezultatem powinno być Y”.</p></div>
+<div class="card"><h4>Istotność statystyczna</h4><p>Mówi, jakie jest prawdopodobieństwo, że wyniki <strong>nie są jedynie efektem przypadkowej zmienności</strong> danych. Nawet gdy wyniki wyglądają na zgodne z hipotezą, trzeba je poddać analizie statystycznej.</p></div>
+</div>
+<p>Przykład: badamy, jak ludzie rozumieją teksty podręcznikowe. Wychodzimy od teorii, wyprowadzamy hipotezy o rozumieniu tekstów i sprawdzamy je eksperymentalnie. Wyniki uruchamiają <strong>nowy cykl</strong>: zbieranie danych → analiza → teoria → hipotezy → sprawdzanie. Poszczególne metody różnie realizują te cele, więc mają różne plusy i minusy.</p>
+</section>
+<section class="chapter" id="c1-metody">
+<div class="chapter-head"><span class="num">S2</span><h2>Specyficzne metody badawcze — tabela 1-1</h2></div>
+<p>Sześć metod: (a) kontrolowane eksperymenty laboratoryjne, (b) badania psychobiologiczne, (c) techniki samoopisowe, (d) studia przypadków, (e) obserwacje naturalistyczne, (f) symulacje komputerowe i sztuczna inteligencja. Każda ma zalety i wady. <span class="src">s. 23–25</span></p>
+<div class="table-wrap"><table class="wide">
+<thead><tr><th>Kryterium</th><th>Eksperyment lab.</th><th>Psycho­biologiczne</th><th>Samoopisy</th><th>Studia przypadków</th><th>Obserwacja natural.</th><th>Symulacje i SI</th></tr></thead>
+<tbody>
+<tr><td>Wnioskowanie przyczynowe: losowy przydział do grup</td><td>zwykle tak</td><td>na ogół nie</td><td>nie ma zastosowania</td><td>bardzo mało prawdopodobne</td><td>nie ma zastosowania</td><td>nie ma zastosowania</td></tr>
+<tr><td>Wnioskowanie przyczynowe: kontrola zmiennych niezależnych</td><td>zwykle tak</td><td>bardzo różnie, zależnie od techniki</td><td>raczej nie</td><td>bardzo mało prawdopodobne</td><td>nie</td><td>pełna kontrola zmiennych</td></tr>
+<tr><td>Wielkość prób</td><td>dowolna</td><td>często małe</td><td>raczej małe</td><td>prawie zawsze małe</td><td>raczej małe</td><td>nie ma zastosowania</td></tr>
+<tr><td>Reprezentatywność prób</td><td>mogą być reprezentatywne</td><td>często brak</td><td>mogą być reprezentatywne</td><td>nieprawdopodobna</td><td>tak*</td><td>nie ma zastosowania</td></tr>
+<tr><td>Trafność ekologiczna</td><td>niewykluczona; zależy od zadania i warunków</td><td>mało prawdopodobna, tylko w pewnych okolicznościach</td><td>możliwa</td><td>duża w odniesieniu do danego przypadku; mniejsza możliwość uogólniania</td><td>„próby mogą być reprezentatywne”*</td><td>nie ma zastosowania</td></tr>
+<tr><td>Informacje o różnicach indywidualnych</td><td>zwykle lekceważone</td><td>tak</td><td>tak</td><td>tak; bogate informacje o jednostkach</td><td>możliwe, ale nacisk na odmienności środowiskowe</td><td>nie ma zastosowania</td></tr>
+</tbody>
+</table></div>
+<div class="flag"><span class="label">Uwaga przy nauce</span>* W kolumnie „obserwacje naturalistyczne” polski skład tabeli wygląda na przesunięty: przy reprezentatywności stoi „Tak”, a przy trafności ekologicznej „Próby mogą być reprezentatywne”. Z tekstu (s. 28) wynika jasno, że obserwacja naturalistyczna ma <strong>dużą trafność ekologiczną</strong>. Na teście przyjmij tę interpretację.</div>
+<h3>Mocne i słabe strony, przykłady</h3>
+<details class="block" open="">
+<summary>Kontrolowane eksperymenty laboratoryjne</summary>
+<div class="inner">
+<p><strong>Opis:</strong> pobieranie próbek funkcjonowania w określonym czasie i miejscu.</p>
+<p><strong>Mocne:</strong> łatwość przeprowadzania badania, rejestrowania wyników i analiz statystycznych, więc metodę stosunkowo łatwo stosować na reprezentatywnych próbach; stosunkowo wysokie prawdopodobieństwo trafnych wniosków o zależnościach przyczynowych.</p>
+<p><strong>Słabe:</strong> nie zawsze możliwe uogólnianie wyników na inne zadania, czas i miejsce; rozbieżność między zachowaniem w realnym życiu a w laboratorium.</p>
+<p><strong>Przykład:</strong> <strong>Meyer i Schvaneveldt (1971)</strong> — bardzo krótka prezentacja dwóch szeregów liter (tworzących słowa albo nie); badani rozstrzygali np., czy litery tworzą sensowny wyraz albo czy wyraz należy do danej kategorii.</p>
+</div>
+</details>
+<details class="block">
+<summary>Badania psychobiologiczne</summary>
+<div class="inner">
+<p><strong>Opis:</strong> pośmiertne badanie mózgów zwierząt i ludzi oraz różne miary psychobiologiczne i techniki obrazowania.</p>
+<p><strong>Mocne:</strong> „twarde” wskaźniki funkcji poznawczych powiązane z aktywnością fizjologiczną; alternatywne podejście, niemożliwe innymi sposobami; mogą stworzyć możliwości oddziaływań wobec osób z poważnymi deficytami poznawczymi.</p>
+<p><strong>Słabe:</strong> mała dostępność dla większości badaczy; potrzebni odpowiedni badani i kosztowne wyposażenie; wiele badań opiera się na uszkodzonych mózgach ludzi lub zwierząt, więc uogólnianie na zdrowych bywa trudne.</p>
+<p><strong>Przykład:</strong> <strong>Warrington i Shallice</strong> (1972; Shallice i Warrington, 1970): lezje lewego płata ciemieniowego → poważne deficyty pamięci <strong>krótkotrwałej</strong> przy zachowanej długotrwałej; lezje w środkowych regionach skroniowych → odwrotnie: STM działa dobrze, LTM wykazuje znaczne deficyty (Shallice, 1979; Warrington, 1982).</p>
+</div>
+</details>
+<details class="block">
+<summary>Techniki samoopisowe (protokoły werbalne, samooceny, dzienniki)</summary>
+<div class="inner">
+<p><strong>Opis:</strong> zbieranie od badanych sprawozdań, w których — na bieżąco lub z pamięci — informują o własnych czynnościach poznawczych.</p>
+<p><strong>Mocne:</strong> dostęp do introspekcyjnego wglądu z punktu widzenia osoby badanej, nieosiągalnego innymi sposobami.</p>
+<p><strong>Słabe:</strong> brak dostępu do procesów <strong>poza świadomością</strong>. Protokoły werbalne i samooceny: zbieranie informacji może <strong>wpływać na relacjonowany proces</strong>. Odtworzenia pamięciowe: możliwe rozbieżności między rzeczywistym poznaniem a tym, co odtwarzane z pamięci.</p>
+<p><strong>Przykład:</strong> <strong>Kosslyn, Seger, Pani i Hillger (1990)</strong> — studenci przez tydzień prowadzili dzienniki wszystkich swoich wyobrażeń w każdej modalności zmysłowej.</p>
+</div>
+</details>
+<details class="block">
+<summary>Studia przypadków</summary>
+<div class="inner">
+<p><strong>Opis:</strong> intensywne badanie pojedynczych osób w celu wyprowadzania ogólnych konkluzji o zachowaniu.</p>
+<p><strong>Mocne:</strong> bogate, szczegółowe informacje o jednostce, w tym o jej dawnym i aktualnym środowisku; zastosowanie wobec grup nietypowych (osoby wybitnie utalentowane, ludzie z uszkodzeniami mózgu).</p>
+<p><strong>Słabe:</strong> wyniki nie odnoszą się do innych osób; mała i niereprezentatywna próba ogranicza uogólnianie na populację.</p>
+<p><strong>Przykład:</strong> <strong>Howard Gruber (1974/1981)</strong> — studium przypadku Karola Darwina, psychologiczny kontekst jego twórczości intelektualnej.</p>
+</div>
+</details>
+<details class="block">
+<summary>Obserwacje naturalistyczne</summary>
+<div class="inner">
+<p><strong>Opis:</strong> obserwowanie rzeczywistych sytuacji życiowych, np. w klasie szkolnej, w pracy, w domu.</p>
+<p><strong>Mocne:</strong> dostęp do bogatych informacji o środowisku, nieosiągalnych innymi sposobami.</p>
+<p><strong>Słabe:</strong> brak kontroli eksperymentalnej; obecność obserwatora może wpływać na zachowanie obserwowanej osoby.</p>
+<p><strong>Przykład:</strong> <strong>Michael Cole (Cole i in., 1971)</strong> — członkowie afrykańskiego plemienia Kepellów: jak ich rozumienie inteligencji ma się do zachodnich definicji i jak przyjęta w kulturze definicja wpływa na inteligentne zachowanie.</p>
+</div>
+</details>
+<details class="block">
+<summary>Symulacje komputerowe i sztuczna inteligencja</summary>
+<div class="inner">
+<p><strong>Opis:</strong> <em>symulacje</em> — komputery symulujące funkcjonowanie poznawcze człowieka przy różnych zadaniach; <em>sztuczna inteligencja</em> — inteligentnie działające komputery, niekoniecznie odtwarzające ludzkie funkcjonowanie.</p>
+<p><strong>Mocne:</strong> szeroka eksploracja możliwości modelowania; jednoznaczne stwierdzenie, czy hipotezy dokładnie przewidują wyniki; zastosowania praktyczne (roboty do niebezpiecznych zadań).</p>
+<p><strong>Słabe:</strong> ograniczenia sprzętu i oprogramowania; odmienność inteligencji człowieka i maszyny — nawet wyrafinowana symulacja może niedoskonale odwzorowywać ludzkie myślenie.</p>
+<p><strong>Przykłady:</strong> <strong>David Marr (1982)</strong> — szczegółowe obliczenia, symulacja percepcji wzrokowej i teoria oparta na modelach komputerowych. SI: programy grające po mistrzowsku w szachy, prawdopodobnie innymi procesami niż ludzie.</p>
+</div>
+</details>
+</section>
+<section class="chapter" id="c1-eksperyment">
+<div class="chapter-head"><span class="num">S3</span><h2>Eksperymenty dotyczące zachowania człowieka</h2></div>
+<div class="key"><span class="label">Logika eksperymentu</span><p>Eksperymentator kontroluje jak najwięcej aspektów sytuacji: <strong>manipuluje zmiennymi niezależnymi</strong>, <strong>kontroluje zmienne uboczne</strong> i obserwuje wpływ na <strong>zmienne zależne</strong> (rezultaty). Warunki: <strong>reprezentatywna próba</strong> z populacji, rygorystyczna kontrola warunków i <strong>losowe przydzielanie</strong> do grup eksperymentalnych i kontrolnych. Wtedy istotna statystycznie różnica między grupami pozwala wnosić o prawdopodobnym <strong>związku przyczynowym</strong>. <span class="src">s. 26</span></p></div>
+<p><strong>Przykład:</strong> czy głośne rozpraszające dźwięki wpływają na rozumienie czytanego tekstu? Losujemy próbę z populacji, losowo przydzielamy do grupy eksperymentalnej (z dźwiękami) i kontrolnej (bez). Mierzymy np. szybkość i trafność odpowiedzi na pytania o tekst i sprawdzamy istotność różnicy.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Zmienne zależne (co mierzymy)</th><th>Zmienne niezależne (czym manipulujemy lub co różnicuje)</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">Najczęściej <strong>miary poprawności</strong> (np. częstość błędów), <strong>czas reakcji</strong> albo oba naraz.</td>
+<td style="font-weight:400;white-space:normal"><strong>Właściwości sytuacji</strong> — np. obecność wskazówek przy rozwiązywaniu problemów.<br/><strong>Właściwości zadania</strong> — np. czy badany czyta, czy słyszy materiał.<br/><strong>Właściwości badanych</strong> — wiek, wykształcenie, wyniki testów.</td>
+</tr></tbody>
+</table></div>
+<h3>Badania korelacyjne</h3>
+<ul>
+<li>Właściwościami sytuacji i zadania można manipulować, ale <strong>właściwości osób nie da się losowo przydzielić</strong> (np. wieku przy badaniu wpływu starzenia się). Wtedy prowadzi się badania <span class="term">korelacyjne</span> — statystyczny związek między cechami, od <strong>−1</strong> (ujemna) przez <strong>0</strong> (brak) do <strong>+1</strong> (dodatnia). <span class="src">s. 26</span></li>
+<li>Przykłady: korelacja <strong>ujemna</strong> — zmęczenie a czujność; <strong>brak</strong> — inteligencja a długość płatków uszu; <strong>dodatnia</strong> — zasób słownika a rozumienie czytanego tekstu.</li>
+<li>Zaleta: nie wymagają losowego przydziału, więc są bardziej giętkie. Wada: <strong>nie dają podstaw do wnioskowania o związkach przyczynowych</strong> — stąd wielu psychologów poznawczych przedkłada dane eksperymentalne nad korelacyjne.</li>
+</ul>
+</section>
+<section class="chapter" id="c1-psychobio">
+<div class="chapter-head"><span class="num">S4</span><h2>Badania psychobiologiczne</h2></div>
+<p>Szukają związków między funkcjonowaniem poznawczym a procesami i strukturami mózgowymi. Trzy kategorie technik: <span class="src">s. 26–27</span></p>
+<ol>
+<li>badanie mózgu <em>post mortem</em> — powiązanie właściwości mózgu z funkcjonowaniem poznawczym przed śmiercią;</li>
+<li>badanie obrazu struktur lub aktywności mózgu u osób z określonymi <strong>deficytami poznawczymi</strong>;</li>
+<li>uzyskiwanie informacji o procesach mózgowych <strong>podczas aktywności poznawczej</strong>.</li>
+</ol>
+<ul>
+<li>Badania pośmiertne były źródłem wczesnej wiedzy o tym, jak <span class="term">lezje</span> (obszary uszkodzeń) wiążą się z deficytami. Dziś technologia pozwala badać osoby z deficytami <em>in vivo</em> (za życia).</li>
+<li>Badanie zwierząt (koty, małpy) — procedury neurochirurgiczne niemożliwe u ludzi (trudne, nieetyczne, niepraktyczne), np. mapy aktywności w korze podczas reagowania na bodźce wzrokowe.</li>
+<li>Wątpliwość: czy wyniki od zwierząt i ludzi z zaburzeniami można <strong>generalizować</strong> na osoby zdrowe? Jedna z odpowiedzi: współczesne obrazowanie pozwala badać dynamikę aktywności mózgu u zdrowych osób.</li>
+</ul>
+</section>
+<section class="chapter" id="c1-samoopis">
+<div class="chapter-head"><span class="num">S5</span><h2>Samoopisy, studia przypadków i obserwacja naturalistyczna</h2></div>
+<ul>
+<li>Eksperymenty i badania psychobiologiczne skupiają się na <strong>pojedynczych aspektach</strong> poznania. By uzyskać bogatsze informacje o myśleniu jednostek w szerszym spektrum sytuacji, stosuje się techniki samoopisowe, studia przypadków (pogłębione badania pojedynczych osób) i obserwację naturalistyczną (drobiazgowa analiza funkcjonowania w życiu codziennym). <span class="src">s. 27</span></li>
+</ul>
+<div class="key"><span class="label">Do zapamiętania</span><p>Eksperymenty są najbardziej użyteczne przy <strong>weryfikowaniu</strong> hipotez, a samoopisy, studia przypadków i obserwacja naturalistyczna — przy ich <strong>formułowaniu</strong>.</p></div>
+<h4>Rzetelność samoopisów</h4>
+<ul>
+<li>Zależy od rzetelności badanych. Dane z <strong>przypomnień</strong> (dzienniki, opisy retrospektywne, kwestionariusze) są — nawet przy pełnej prawdomówności — znacznie mniej rzetelne niż relacje zbierane <strong>w trakcie</strong> procesu, bo ludzie zapominają, co robili.</li>
+<li><span class="term">Protokoły werbalne</span> — badany podczas zadania (np. rozwiązywanie problemów, podejmowanie decyzji) głośno opisuje całe rozumowanie i wszystkie myśli („Bardziej podoba mi się mieszkanie z basenem, ale…”).</li>
+<li>Alternatywa: konkretne informacje o wybranych aspektach. W badaniach <strong>wglądu</strong> badani co <strong>15 sekund</strong> podawali liczbową ocenę, jak bardzo czują się bliscy rozwiązania.</li>
+<li>Ograniczenie: samo relacjonowanie może <strong>zmieniać</strong> procesy poznawcze (np. przy pamięci).</li>
+</ul>
+<details class="block ramka">
+<summary><span><span class="kind">Ćwiczenie z podręcznika</span>Trudności samoopisu — sznurowadło</span></summary>
+<div class="inner">
+<ol>
+<li>Bez patrzenia na buty opisz głośno wszystkie etapy zawiązywania sznurowadła.</li>
+<li>Przypomnij sobie na głos, co robiłaś w dniu ostatnich urodzin.</li>
+<li>Zawiąż sznurowadło, opisując głośno, co robisz. Czy widać różnicę między zadaniem 1 i 3?</li>
+<li>Opowiedz, jak uświadamiałaś sobie kolejne etapy wiązania lub wspomnienia urodzin. Czy umiesz opisać, jak informacje trafiały do świadomości? Czy wiesz, która część mózgu była aktywna? <span class="src">s. 28</span></li>
+</ol>
+</div>
+</details>
+<h4>Trafność ekologiczna</h4>
+<ul>
+<li>Studia przypadków (np. osoby szczególnie uzdolnione) i obserwacja naturalistyczna (np. pracownicy elektrowni atomowej) uzupełniają eksperymenty, bo mają większą <span class="term">trafność ekologiczną</span>. <strong>Ekologia</strong> to badanie interakcji między organizmem a środowiskiem. <span class="src">s. 28</span></li>
+<li>Procesy poznawcze obserwowane w jednych warunkach (laboratorium) nie zawsze są takie same jak w innych (wieża kontroli lotów, klasa szkolna).</li>
+</ul>
+</section>
+<section class="chapter" id="c1-si">
+<div class="chapter-head"><span class="num">S6</span><h2>Symulacje komputerowe i sztuczna inteligencja</h2></div>
+<ul>
+<li>Wpływ komputerów na psychologię poznawczą: <strong>pośredni</strong> — modele ludzkiego poznania oparte na przetwarzaniu informacji przez komputery; <strong>bezpośredni</strong> — symulacje komputerowe i badania nad SI. <span class="src">s. 28</span></li>
+<li><span class="term">Symulacje komputerowe</span>: komputer imituje funkcję człowieka — wykonanie zadania (manipulowanie przedmiotami w przestrzeni 3D) lub proces (rozpoznawanie wzorca). Niektórzy tworzą modele odwzorowujące <strong>całą architekturę umysłu</strong>, co budzi gorące dyskusje.</li>
+<li><span class="term">Sztuczna inteligencja</span>: systemy inteligentnie i efektywnie przetwarzające informacje — symulujące ludzkie poznanie lub osiągające inteligencję innymi procesami (wczesne programy szachowe). Granica bywa zamazana, gdy program ma jednocześnie symulować i maksymalizować efektywność.</li>
+</ul>
+<div class="key"><span class="label">Dwie kluczowe prawdy z modelowania</span><p>(1) Wiele zadań <strong>łatwych dla komputerów</strong> jest bardzo trudnych dla ludzi (szybkie pomnożenie 123456789 × 987654321). (2) Wiele zadań <strong>łatwych dla ludzi</strong> jest bardzo trudnych dla komputerów (rozpoznanie twarzy przyjaciela).</p></div>
+<p>Por. wykład: test Turinga i metafora komputerowa (<a href="#ramka-1-1">ramka 1.1</a>, <a href="#przetwarzanie">1.4</a>).</p>
+</section>
+<section class="chapter" id="c1-podsumowanie">
+<div class="chapter-head"><span class="num">S7</span><h2>Nauka poznawcza i współpraca z innymi dziedzinami</h2></div>
+<ul>
+<li><span class="term">Nauka poznawcza</span> — interdyscyplinarna dziedzina wykorzystująca idee i metody <strong>psychologii poznawczej, psychobiologii, sztucznej inteligencji, filozofii, lingwistyki i antropologii</strong>. <span class="src">s. 28–29</span></li>
+<li>Współpraca z innymi działami psychologii:
+      <ul>
+<li><strong>psychologowie społeczni</strong> — interdyscyplinarne badania nad <strong>poznaniem społecznym</strong>;</li>
+<li>badacze <strong>motywacji i emocji</strong>;</li>
+<li><strong>psychologowie inżynieryjni</strong> — rola czynników ludzkich w produkcji. Ten przykład ilustruje związek badań podstawowych z psychologią stosowaną.</li>
+</ul>
+</li>
+<li>Psychologowie poznawczy badają nie tylko percepcję, uczenie się, pamięć i myślenie, ale też zjawiska pozornie mniej związane z poznaniem, jak <strong>emocje i motywacja</strong>. Niemal każdy temat da się rozpatrywać z perspektywy poznawczej. <span class="src">s. 30</span></li>
+</ul>
+</section>
+<section class="chapter" id="c1-problemy">
+<div class="chapter-head"><span class="num">S8</span><h2>Kluczowe problemy psychologii poznawczej</h2></div>
+<p>Część problemów ma długą historię i wywodzi się z pytań filozoficznych, inne wynikają ze współczesnych badań. Najbardziej podstawowy dotyczy istoty umysłu: <strong>dziedziczność czy wychowanie</strong>? Jeśli ważniejsze są cechy wrodzone — badamy je; jeśli środowisko — badamy wpływ jego właściwości na poznanie. Pozostałe wiążą się z metodami: <span class="src">s. 29</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Problem (Sternberg)</th><th>Pytanie</th><th>Odpowiednik w notatkach z wykładu</th></tr></thead>
+<tbody>
+<tr><td>Dziedziczność czy wychowanie</td><td style="font-weight:400;white-space:normal">Co bardziej wpływa na poznanie?</td><td style="font-weight:400;white-space:normal"><a href="#dylematy">Wrodzone czy wyuczone?</a></td></tr>
+<tr><td>1. Racjonalizm czy empiryzm</td><td style="font-weight:400;white-space:normal">Odkrywać prawdy logicznym rozumowaniem z tego, co wiemy, czy obserwacją zmysłową?</td><td style="font-weight:400;white-space:normal">Kartezjusz i empiryści brytyjscy (<a href="#r1-2">1.2</a>)</td></tr>
+<tr><td>2. Struktury czy procesy</td><td style="font-weight:400;white-space:normal">Badać treść, właściwości i produkty umysłu czy procesy myślenia?</td><td style="font-weight:400;white-space:normal">Wąskie ujęcie: przetwarzanie informacji (<a href="#przetwarzanie">1.4</a>)</td></tr>
+<tr><td>3. Ogólność czy specyficzność</td><td style="font-weight:400;white-space:normal">Czy procesy są typowe dla jednej dziedziny treściowej, czy ogólne?</td><td style="font-weight:400;white-space:normal"><a href="#dylematy">Procesy uniwersalne czy zależne od przedmiotu?</a> (Ostrom vs poznanie społeczne)</td></tr>
+<tr><td>4. Trafność wnioskowania przyczynowego czy trafność ekologiczna</td><td style="font-weight:400;white-space:normal">Kontrolowane eksperymenty czy techniki naturalistyczne, kosztem kontroli?</td><td style="font-weight:400;white-space:normal"><a href="#dylematy">Laboratorium czy życie?</a> (Baddeley, Strayer i Johnston)</td></tr>
+<tr><td>5. Badania stosowane czy podstawowe</td><td style="font-weight:400;white-space:normal">Podstawowe procesy czy pomaganie ludziom w praktyce?</td><td style="font-weight:400;white-space:normal">Dwie drogi rozwoju (<a href="#r1-3">1.3</a>)</td></tr>
+</tbody>
+</table></div>
+<div class="key"><span class="label">Synteza zamiast skrajności</span><p>Choć pytania mają formę „czy–czy”, często bardziej użyteczna jest <strong>synteza</strong>: dziedziczność daje bazę dla cech myślenia, a środowisko kształtuje sposoby ich przejawiania; metody empiryczne służą zbieraniu danych i testowaniu hipotez, racjonalistyczne — interpretacji i budowaniu teorii. To, co dziś jest syntezą, jutro może okazać się stanowiskiem skrajnym, i odwrotnie.</p></div>
+</section>
+<section class="chapter" id="c1-historia">
+<div class="chapter-head"><span class="num">S9</span><h2>Streszczenie Sternberga: korzenie dziedziny</h2></div>
+<p>Według Sternberga psychologia poznawcza bada, jak ludzie spostrzegają, uczą się, zapamiętują informacje i myślą. <span class="src">s. 31</span></p>
+<ol class="timeline">
+<li><span class="y">Starożytność</span><span><strong>Platon</strong> — racjonalizm jako droga do prawdy; <strong>Arystoteles</strong> — empiryzm.</span></li>
+<li><span class="y">XVII–XIX w.</span><span><strong>Descartes</strong> rozwinął racjonalizm, <strong>Locke</strong> — empiryzm; <strong>Kant</strong> dokonał syntezy; <strong>Hegel</strong> wskazał dialektyczny charakter rozwoju idei.</span></li>
+<li><span class="y">XX w.</span><span><strong>Wundt</strong> — struktury umysłu (<em>strukturalizm</em>); <strong>James i Dewey</strong> — procesy umysłowe (<em>funkcjonalizm</em>); z tej dialektyki wyłonił się <em>asocjacjonizm</em> (<strong>Ebbinghaus, Thorndike</strong>).</span></li>
+<li><span class="y">Behawioryzm</span><span>Drogę utorowały skojarzenia i warunkowanie klasyczne <strong>Pawłowa</strong>; <strong>Watson i Skinner</strong> — tylko obserwowalne zachowania i ich efekty środowiskowe.</span></li>
+<li><span class="y">Przełom</span><span><strong>Tolman</strong> i późniejsi behawioryści dostrzegli rolę procesów poznawczych; psychologia poznawcza jako odrębna dyscyplina, z <strong>Neisserem</strong> w wiodącej roli.</span></li>
+</ol>
+<p>Inne dyscypliny: korzenie w <strong>filozofii i fizjologii</strong>; wkład lingwistyki (interakcja myślenia i języka), SI (jak ludzie przetwarzają informacje), psychologii biologicznej (fizjologiczne podstawy poznania) i antropologii (znaczenie kontekstu kulturowego).</p>
+<div class="flag"><span class="label">Powiązanie z wykładem</span>Sternberg nazywa <strong>strukturalizmem</strong> szkołę <strong>Wundta</strong>, czyli zgodnie z większością podręczników. Maruszewski w rozdziale 2 używa tego słowa dla psychologii postaci (<a href="#r2-3">2.3</a>). Na teście sprawdzaj kontekst pytania.</div>
+</section>
+<!-- ============ NĘCKA ============ -->
+<div class="divider">E. Nęcka, J. Orzechowski, B. Szymura, S. Wichary, <em>Psychologia poznawcza</em>, PWN, skan s. 34–39</div>
+<section class="chapter" id="c1-zrodla">
+<div class="chapter-head"><span class="num">N1</span><h2>Źródła podejścia poznawczego (koniec 1.2.1)</h2></div>
+<details class="block" open="">
+<summary>Piaget — prekursor podejścia poznawczego</summary>
+<div class="inner">
+<ul>
+<li>Rozwój poznawczy to nieustający ciąg <span class="term">asymilacji</span> i <span class="term">akomodacji</span> (dostosowania schematu); na podstawie starych schematów powstają nowe, lepiej dostosowane, bardziej złożone i wydajne. <span class="src">s. 34</span></li>
+<li>Rozwój wymaga <strong>własnej aktywności podmiotu</strong>: rozwijający się człowiek jest jak badacz — sam musi dojść do tego, że schematy stały się nieadekwatne i wymagają akomodacji. Tę myśl ma też <strong>George Kelly</strong>: człowiek jako „badacz z ulicy”.</li>
+<li><strong>Konstruktywistyczna natura poznania</strong>: człowiek nie tyle odbiera informacje, ile sam konstruuje wewnętrzny obraz świata. Reprezentacja jest zwykle tylko <strong>częściowo trafna</strong>, bo to samodzielna budowla, a nie bierne odbicie.</li>
+<li>Bez pojęć schematu poznawczego, aktywności podmiotu i konstruktywnego charakteru poznania trudno wyobrazić sobie współczesną psychologię poznawczą.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Inspiracje spoza psychologii</summary>
+<div class="inner">
+<ul>
+<li>Językoznawstwo <strong>Chomsky’ego</strong> (por. <a href="#r1-3">1.3</a>).</li>
+<li>Teoria informacji — <strong>Shannon i Weaver (1949)</strong>; cybernetyka — <strong>Wiener (1948)</strong>.</li>
+<li>Komputery: sterowanie eksperymentami i obliczanie wyników, a przede wszystkim <strong>komputerowa symulacja procesów poznawczych</strong>. Współczesna psychologia poznawcza łączy klasyczne badania empiryczne z modelowaniem komputerowym.</li>
+<li>Filozofia umysłu: <strong>Fodor (1975, 1983)</strong>, <strong>Dennett (1991)</strong>, <strong>Patricia Churchland (1986)</strong> — nowy impuls dla sporów o relację umysł–mózg; uwypuklenie problematyki <strong>świadomości</strong>, wyrugowanej z psychologii w okresie behawioryzmu.</li>
+</ul>
+</div>
+</details>
+</section>
+<section class="chapter" id="c1-dziedziny">
+<div class="chapter-head"><span class="num">N2</span><h2>Psychologia a inne dziedziny badań nad poznaniem (1.2.2)</h2></div>
+<div class="cards">
+<div class="card"><h4>Epistemologia</h4><span class="yr">Woleński, 2000–2003</span><p>Filozoficzna teoria poznania, najwcześniej rozwinięta: źródła i charakter wiedzy, teoria prawdy. Początkowo spekulatywna, z logiką i potocznymi obserwacjami; z czasem korzysta z fizjologii, psychologii, medycyny, językoznawstwa.</p></div>
+<div class="card"><h4>Filozofia umysłu</h4><span class="yr">Graham, 1998</span><p>Bada m.in. <strong>problem psychofizyczny</strong> — dawniej relacja ciało–dusza, dziś mózg–świadomość: jak mózg generuje świadome stany i jaka jest funkcja i pochodzenie <span class="term">qualiów</span> (jakościowo swoistych, subiektywnych stanów świadomości). <span class="src">s. 34–35</span></p></div>
+<div class="card"><h4>Sztuczna inteligencja</h4><span class="yr">od lat 50. XX w.</span><p>Systemy komputerowe do czynności poznawczych: najpierw dowodzenie twierdzeń i rozwiązywanie problemów, potem rozpoznawanie wzorców (<em>pattern recognition</em>). Dwie wersje — niżej.</p></div>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>SI w wersji pierwszej</th><th>SI w wersji drugiej</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:400;white-space:normal">Dziedzina nauk inżynieryjnych: inteligentne systemy do użytku w praktyce. Kryterium sukcesu: <strong>praktyczna użyteczność</strong>.</td>
+<td style="font-weight:400;white-space:normal">Systemy <strong>udatnie naśladujące procesy poznawcze ludzi</strong>. Kryterium: możliwość wykorzystania do badań podstawowych nad poznaniem. Bardzo bliskie <strong>modelowaniu komputerowemu</strong> — czwartej grupie metod wg Allporta (1996).</td>
+</tr></tbody>
+</table></div>
+<p>Por. Sternberg: symulacja vs SI (<a href="#c1-si">S6</a>) — to rozróżnienie pokrywa się z dwiema wersjami SI u Nęcki.</p>
+<h3>Kognitywistyka</h3>
+<ul>
+<li><span class="term">Kognitywistyka</span> (<em>cognitive science</em>) — interdyscyplinarna dziedzina badań nad poznaniem. Według <strong>raportu Sloan’a (1978)</strong> (Harnish, 2002) to próba syntezy problematyki <strong>sześciu dyscyplin</strong>: filozofii, psychologii, językoznawstwa, informatyki, antropologii i neuronauki (Bechtel i in., 1998). <span class="src">s. 35</span></li>
+<li>Do kognitywistyki wchodzi tylko <strong>część</strong> każdej dyscypliny. W filozofii poznaniem zajmują się epistemolodzy, logicy i filozofowie umysłu; w psychologii — psychologowie poznawczy, ale też neuropsycholodzy, psychofizjolodzy, psychologowie rozwojowi i społeczni.</li>
+<li>Antropologia ma trzy znaczenia (przypis): filozoficzna (refleksja nad naturą człowieka), biologiczna (człowiek jako gatunek, ewolucja <em>Homo sapiens</em>), kulturowa (społeczna). Częścią kognitywistyki jest głównie antropologia <strong>kulturowa</strong>, choć liczą się też ustalenia biologicznej o ewolucji mózgu.</li>
+</ul>
+<figure class="fig">
+<svg aria-label="Sześciokąt nauk kognitywnych: wierzchołki filozofia, językoznawstwo, antropologia, neuronauka, informatyka, psychologia; linie 1–11 łączą dyscypliny, przerywane linie oznaczają powiązania jeszcze nierozwinięte" role="img" viewbox="0 0 520 470">
+<g fill="none" stroke="#cfc3b2" stroke-dasharray="5 4" stroke-width="1.4">
+<line x1="260" x2="70" y1="45" y2="345"></line>
+<line x1="260" x2="450" y1="45" y2="345"></line>
+<line x1="260" x2="260" y1="45" y2="430"></line>
+<line x1="70" x2="450" y1="345" y2="345"></line>
+</g>
+<g fill="none" stroke="hsl(209 33% 56%)" stroke-width="2">
+<line x1="70" x2="260" y1="345" y2="430"></line>
+<line x1="450" x2="260" y1="140" y2="430"></line>
+<line x1="70" x2="260" y1="140" y2="430"></line>
+<line x1="70" x2="70" y1="140" y2="345"></line>
+<line x1="450" x2="70" y1="140" y2="345"></line>
+<line x1="70" x2="450" y1="140" y2="140"></line>
+<line x1="260" x2="70" y1="45" y2="140"></line>
+<line x1="260" x2="450" y1="45" y2="140"></line>
+<line x1="450" x2="450" y1="140" y2="345"></line>
+<line x1="70" x2="450" y1="140" y2="345"></line>
+<line x1="260" x2="450" y1="430" y2="345"></line>
+</g>
+<g fill="hsl(209 36% 30%)" font-size="12.5" font-weight="600" text-anchor="middle">
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="90" x="215" y="18"></rect><text x="260" y="34">filozofia</text>
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="120" x="390" y="118"></rect><text x="450" y="134">językoznawstwo</text>
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="110" x="395" y="352"></rect><text x="450" y="368">antropologia</text>
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="100" x="210" y="436"></rect><text x="260" y="452">neuronauka</text>
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="104" x="18" y="352"></rect><text x="70" y="368">informatyka</text>
+<rect fill="#fffdf9" height="22" rx="11" stroke="hsl(209 33% 56%)" width="104" x="18" y="118"></rect><text x="70" y="134">psychologia</text>
+</g>
+<g fill="#2b2118" font-size="12" text-anchor="middle">
+<g fill="#fffdf9" stroke="hsl(209 36% 36%)" stroke-width="1.4">
+<circle cx="165" cy="388" r="12"></circle><circle cx="355" cy="285" r="12"></circle><circle cx="165" cy="285" r="12"></circle>
+<circle cx="70" cy="243" r="12"></circle><circle cx="315" cy="215" r="12"></circle><circle cx="260" cy="140" r="12"></circle>
+<circle cx="165" cy="92" r="12"></circle><circle cx="355" cy="92" r="12"></circle><circle cx="450" cy="243" r="12"></circle>
+<circle cx="205" cy="215" r="12"></circle><circle cx="355" cy="388" r="12"></circle>
+</g>
+<text x="165" y="392">1</text><text x="355" y="289">2</text><text x="165" y="289">3</text>
+<text x="70" y="247">4</text><text x="315" y="219">5</text><text x="260" y="144">6</text>
+<text x="165" y="96">7</text><text x="355" y="96">8</text><text x="450" y="247">9</text>
+<text x="205" y="219">10</text><text x="355" y="392">11</text>
+</g>
+</svg>
+<figcaption>Ryc. 1.1 — sześciokąt nauk kognitywnych (za: Bechtel i in., 1998), schemat odtworzony. Linie ciągłe to istniejące powiązania badawcze, przerywane — powiązania słabo rozwinięte.</figcaption>
+</figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Linia</th><th>Dziedzina na styku</th><th>Łączy</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">1</td><td>cybernetyka</td><td style="font-weight:400">informatyka – neuronauka</td></tr>
+<tr><td style="font-weight:400">2</td><td>neurolingwistyka</td><td style="font-weight:400">językoznawstwo – neuronauka</td></tr>
+<tr><td style="font-weight:400">3</td><td>neuropsychologia</td><td style="font-weight:400">psychologia – neuronauka</td></tr>
+<tr><td style="font-weight:400">4</td><td>komputerowe symulacje procesów poznawczych</td><td style="font-weight:400">psychologia – informatyka</td></tr>
+<tr><td style="font-weight:400">5</td><td>lingwistyka „obliczeniowa”</td><td style="font-weight:400">językoznawstwo – informatyka</td></tr>
+<tr><td style="font-weight:400">6</td><td>psycholingwistyka</td><td style="font-weight:400">psychologia – językoznawstwo</td></tr>
+<tr><td style="font-weight:400">7</td><td>filozofia psychologii</td><td style="font-weight:400">filozofia – psychologia</td></tr>
+<tr><td style="font-weight:400">8</td><td>filozofia języka</td><td style="font-weight:400">filozofia – językoznawstwo</td></tr>
+<tr><td style="font-weight:400">9</td><td>lingwistyka antropologiczna</td><td style="font-weight:400">językoznawstwo – antropologia</td></tr>
+<tr><td style="font-weight:400">10</td><td>antropologia poznawcza</td><td style="font-weight:400">psychologia – antropologia</td></tr>
+<tr><td style="font-weight:400">11</td><td>badania nad ewolucją mózgu</td><td style="font-weight:400">neuronauka – antropologia</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Program kognitywistyki to nie uprawianie wszystkich dyscyplin naraz, lecz rozwijanie obszarów <strong>na ich styku</strong>. Najciekawsze perspektywy dają obszary łączące więcej niż dwie dyscypliny: na styku filozofii, psychologii i lingwistyki — natura języka; filozofii, psychologii i informatyki — modelowanie kontroli poznawczej i świadomości. <span class="src">s. 36</span></li>
+<li>Obecny stan kognitywistyki jest daleki od tego celu: każda dyscyplina wciąż ma swoją metodologię i dość specyficzny język (Duch, 1998). <span class="src">s. 37</span></li>
+</ul>
+</section>
+<section class="chapter" id="c1-allport">
+<div class="chapter-head"><span class="num">N3</span><h2>Metody badań nad poznaniem (1.2.3) — cztery grupy Allporta</h2></div>
+<p>Psychologowie poznawczy przyjmują różne orientacje metodologiczne. <strong>Allport (1996)</strong> wyróżnił cztery podstawowe grupy metod, a autorzy dodają piątą — obrazowanie pracy mózgu. <span class="src">s. 37–39</span></p>
+<details class="block" open="">
+<summary>1. Obserwacja</summary>
+<div class="inner">
+<ul>
+<li>Rejestracja zwykłych, codziennych, dobrze wyuczonych czynności poznawczych (mówienie na temat, słuchanie wypowiedzi, czytanie). Analizuje się głównie <strong>błędy</strong> popełniane podczas czynności.</li>
+<li>Wynik: raport o strukturze czynności (etapy), zaangażowanych procesach (np. uwaga selektywna, pamięć semantyczna) i źródłach błędów (dekoncentracja, brak dostępu do zasobów pamięci).</li>
+<li>Raport sporządzony przez badanego to <span class="term">samoopis</span> (<em>self-report</em>); najczęściej sporządza go niezależny badacz. Opis działania konkretnej osoby lub grupy (np. firmy) w warunkach naturalnych to <span class="term">studium przypadku</span> (<em>case study</em>).</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>2. Eksperyment laboratoryjny</summary>
+<div class="inner">
+<ul>
+<li>Zwykle z udziałem <strong>„naiwnych”</strong> badanych, bez specjalistycznej wiedzy; proste zadania poznawcze (porównywanie bodźców, decyzja, czy bodziec był wcześniej prezentowany).</li>
+<li>Warunki <strong>sztuczne</strong>, choć badacz stara się zbliżyć je do realnych; nienaturalne i uproszczone są też zadania. W zamian: <strong>dokładna kontrola przebiegu</strong>, w tym rodzaju bodźców i czasu ich prezentacji, oraz <strong>precyzyjna rejestracja reakcji</strong>, zwłaszcza czasu reakcji.</li>
+<li>Wskaźniki: przede wszystkim <strong>średni czas reakcji</strong> na udzielenie odpowiedzi; także inne wskaźniki <span class="term">chronometryczne</span> — maksymalny lub minimalny czas reakcji albo <strong>indywidualna zmienność</strong> czasu reagowania. Drugi wskaźnik: <strong>poprawność</strong> odpowiedzi, zwykle w procentach maksymalnego możliwego wyniku.</li>
+<li>Coraz częściej wzbogacany o dane neurobiologiczne (Sternberg, 1996), np. równoległa rejestracja <strong>EEG</strong>, czasu reakcji i błędów. <span class="src">s. 37–38</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>3. Badania kliniczne</summary>
+<div class="inner">
+<ul>
+<li>Pacjenci z upośledzeniem określonych zdolności po uszkodzeniu mózgu (wylew, uraz mechaniczny, operacja). To swoisty, niezaplanowany i okrutny <strong>„eksperyment natury”</strong> — zdrowej osobie nie można uszkodzić mózgu, by sprawdzić skutki. <span class="src">s. 38</span></li>
+<li>Pokazują rolę poszczególnych obszarów mózgu i działanie funkcji: proces widać dopiero wtedy, gdy przestaje działać.</li>
+<li>Przykład: obserwacje kliniczne wykazały, że <strong>pamięć krótkotrwała nie przekazuje danych do długotrwałej natychmiast</strong>, lecz z opóźnieniem — dzięki mechanizmowi w <strong>hipokampie</strong>.</li>
+<li>Odmiana: badania nad <strong>poznawczym starzeniem się</strong> — porównanie grupy seniorów z grupą kontrolną równoważną pod względem wieku (przy pacjentach) i wykształcenia. W badaniach pacjentów takie porównanie bywa trudne przez małą liczebność grup klinicznych.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>4. Symulacja komputerowa</summary>
+<div class="inner">
+<ul>
+<li>Modelowanie procesów w postaci klasycznego <strong>programu komputerowego</strong> lub <strong>sztucznej sieci neuropodobnej</strong>. Model to szczególna postać teorii procesu. Badacz porównuje wyniki systemu z zachowaniem człowieka; przy zgodności poziomu wykonania, a zwłaszcza liczby i rodzaju błędów, może uznać model za wierną symulację. <span class="src">s. 38</span></li>
+<li>Ryzyko: podobieństwo <strong>na wyjściu</strong> nie oznacza podobieństwa <strong>sposobu działania</strong> — ten sam efekt można uzyskać wieloma sposobami. Model przyjmuje się więc tylko z <strong>pewnym prawdopodobieństwem</strong>.</li>
+<li>Mimo to lepiej mieć prawdopodobną teorię procesu niż żadną. Zresztą klasyczne badania empiryczne też dają tylko wiedzę prawdopodobną, bo wnioskowanie o nieobserwowalnych procesach jest z natury ryzykowne. <span class="src">s. 39</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>+ Obrazowanie pracy mózgu (uzupełnienie autorów)</summary>
+<div class="inner">
+<ul>
+<li>Buckner i Petersen (1998). Dwie techniki: <strong>PET</strong> (pozytonowa tomografia emisyjna) — rejestracja poziomu <strong>ukrwienia</strong>; <strong>fMRI</strong> — rejestracja poziomu <strong>zużycia tlenu</strong> w obszarach mózgu. Wzrost przepływu krwi lub zużycia tlenu sygnalizuje wzmożoną aktywność.</li>
+<li>Możliwości: mózgowa lokalizacja funkcji; różnice między osobami lepiej i gorzej wykonującymi zadania, młodszymi i starszymi, zdrowymi i chorymi, mniej i bardziej inteligentnymi; weryfikacja konkurencyjnych modeli (np. różne zadania pamięciowe angażują różne obszary — pamięć nie jest jednolita).</li>
+<li>Wada: słaba <strong>rozdzielczość czasowa</strong> — kilka sekund w fMRI, aż ok. <strong>pół minuty</strong> w PET, a większość elementarnych procesów trwa krócej niż sekundę (przeczytanie słowa ok. <strong>500 ms</strong>).</li>
+</ul>
+<div class="flag"><span class="label">Porównaj z wykładem</span>Maruszewski (<a href="#ramka-1-2">ramka 1.2</a>) opisuje PET jako śledzenie metabolizmu związków znakowanych izotopami, a fMRI jako rejestrację zmian przepływu krwi. Nęcka przypisuje PET ukrwienie, a fMRI zużycie tlenu. Oba opisy dotyczą pośrednich, metaboliczno-hemodynamicznych wskaźników aktywności. Zgodne są we wnioskach: dobra lokalizacja, słaba rozdzielczość czasowa.</div>
+</div>
+</details>
+<div class="key"><span class="label">Wspólny mianownik wszystkich metod</span><p>Kluczem jest skrupulatna <strong>analiza poziomu wykonania zadania</strong>, czyli zachowania badanego, bo odzwierciedla jakość procesów przetwarzania informacji. Analiza musi być ilościowa i jakościowa. W obserwacji, eksperymencie i badaniach klinicznych jest jedynym efektem postępowania; w modelowaniu i neuroobrazowaniu dane behawioralne są <strong>niezbędnym elementem</strong> procedury. <span class="src">s. 39</span></p></div>
+</section>
+<!-- ============ SYNTEZA ============ -->
+<div class="divider">Synteza ćwiczeń 1</div>
+<section class="chapter" id="c1-porownanie">
+<div class="chapter-head"><span class="num">✦</span><h2>Metody: Sternberg a Allport (Nęcka)</h2></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Sternberg — 6 metod</th><th>Allport / Nęcka — 4 grupy + 1</th></tr></thead>
+<tbody>
+<tr><td>kontrolowane eksperymenty laboratoryjne</td><td style="font-weight:400">2. eksperyment laboratoryjny</td></tr>
+<tr><td>badania psychobiologiczne</td><td style="font-weight:400">3. badania kliniczne + obrazowanie pracy mózgu</td></tr>
+<tr><td>techniki samoopisowe</td><td style="font-weight:400">1. obserwacja (samoopis jako raport badanego)</td></tr>
+<tr><td>studia przypadków</td><td style="font-weight:400">1. obserwacja (studium przypadku)</td></tr>
+<tr><td>obserwacje naturalistyczne</td><td style="font-weight:400">1. obserwacja</td></tr>
+<tr><td>symulacje komputerowe i SI</td><td style="font-weight:400">4. symulacja komputerowa (bliska SI w wersji drugiej)</td></tr>
+</tbody>
+</table></div>
+<div class="cards">
+<div class="card"><h4>Mocne strony eksperymentu</h4><p>Kontrola zmiennych i losowy przydział → wnioskowanie przyczynowe. Precyzyjny pomiar czasu reakcji i poprawności. Łatwość analizy statystycznej, możliwość reprezentatywnych prób. Najlepszy do weryfikacji hipotez.</p></div>
+<div class="card"><h4>Słabe strony eksperymentu</h4><p>Sztuczne warunki i uproszczone zadania → ograniczona trafność ekologiczna i uogólnianie na inne zadania, czas i miejsce. Różnice indywidualne zwykle lekceważone. Właściwości osób nie da się losowo przydzielić (→ korelacja).</p></div>
+<div class="card"><h4>Kontrprzykłady z wykładu</h4><p>Sherry w Cambridge i płetwonurkowie Baddeleya, Strayer i Johnston (<a href="#r1-4">1.4</a>) — zachowanie w laboratorium różni się od naturalnego; Baddeley: badany chce „pomóc eksperymentatorowi”.</p></div>
+</div>
+</section>
+<section class="chapter" id="c1-cr">
+<div class="chapter-head"><span class="num">✦</span><h2>Czas reakcji i liczba błędów jako wyznaczniki sprawności przetwarzania</h2></div>
+<p>Punkt sylabusa, który obie lektury omawiają tylko krótko. Zebrałam tu, co mówią, i przykłady z całego materiału, w którym te miary są kluczowe.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Miara</th><th>Co mówi lektura</th><th>Przykład z materiału</th></tr></thead>
+<tbody>
+<tr><td>Średni czas reakcji</td><td style="font-weight:400;white-space:normal">Główny wskaźnik w eksperymencie: czas potrzebny osobie badanej na udzielenie odpowiedzi (Nęcka). Typowa zmienna zależna (Sternberg).</td><td style="font-weight:400;white-space:normal">S. Sternberg (1969): każdy dodatkowy element zbioru wydłuża decyzję o ok. 38 ms (<a href="#r2-2">2.2</a>); Posner: porównanie fizyczne liter o ok. 80 ms szybsze niż nominalne (<a href="#ramka-2-1">ramka 2.1</a>).</td></tr>
+<tr><td>Inne wskaźniki chronometryczne</td><td style="font-weight:400;white-space:normal">Minimalny i maksymalny czas reakcji, indywidualna (wewnątrzosobnicza) zmienność czasu reagowania (Nęcka).</td><td style="font-weight:400;white-space:normal">Wydłużony czas hamowania przy rozmowie telefonicznej (Strayer i Johnston, <a href="#ramka-1-6">ramka 1.6</a>).</td></tr>
+<tr><td>Poprawność / liczba błędów</td><td style="font-weight:400;white-space:normal">Wyrażana zwykle w procentach maksymalnego wyniku (Nęcka). Częstość błędów jako miara poprawności (Sternberg). W obserwacji i symulacji analizuje się też <strong>rodzaj</strong> błędów.</td><td style="font-weight:400;white-space:normal">Przeoczenia czerwonego światła: 2,7% vs ok. 7% przy rozmowie (<a href="#ramka-1-6">ramka 1.6</a>); prototypy Posnera i Keele: 87/67/85% (<a href="#r2-4">2.4.2</a>).</td></tr>
+<tr><td>Wskaźniki neurobiologiczne</td><td style="font-weight:400;white-space:normal">EEG rejestrowane równolegle z czasem reakcji i błędami (Nęcka).</td><td style="font-weight:400;white-space:normal">Potencjał N400, ok. 400 ms po bodźcu (<a href="#ramka-1-2">ramka 1.2</a>).</td></tr>
+</tbody>
+</table></div>
+<div class="flag"><span class="label">Spoza lektur — do potwierdzenia na zajęciach</span>Przy interpretacji obu miar razem pamiętaj o <strong>wymienności szybkości i poprawności</strong> (<em>speed–accuracy trade-off</em>): badany może przyspieszyć kosztem błędów albo zwolnić, by ich uniknąć. Dlatego sprawność ocenia się na podstawie obu wskaźników naraz. Ani Sternberg, ani Nęcka nie omawiają tego zjawiska w przesłanych fragmentach. Więcej: <a href="#r3-przetarg">wykład 3</a>.</div>
+</section>
+<section class="chapter" id="kto-c1">
+<div class="chapter-head"><span class="num">✦</span><h2>Kto jest kim — ćwiczenia 1</h2></div>
+<div class="cards">
+<div class="card"><h4>Meyer i Schvaneveldt</h4><span class="yr">1971</span><p>Eksperyment: decyzja, czy szereg liter tworzy wyraz.</p></div>
+<div class="card"><h4>Warrington i Shallice</h4><span class="yr">1970, 1972</span><p>Lezje ciemieniowe → deficyt STM; skroniowe → deficyt LTM.</p></div>
+<div class="card"><h4>Kosslyn i in.</h4><span class="yr">1990</span><p>Dzienniki wyobrażeń przez tydzień — samoopis.</p></div>
+<div class="card"><h4>Gruber</h4><span class="yr">1974/1981</span><p>Studium przypadku Darwina.</p></div>
+<div class="card"><h4>Cole i in.</h4><span class="yr">1971</span><p>Obserwacja naturalistyczna: rozumienie inteligencji u Kepellów.</p></div>
+<div class="card"><h4>Marr</h4><span class="yr">1982</span><p>Symulacja percepcji wzrokowej.</p></div>
+<div class="card"><h4>Piaget</h4><span class="yr">—</span><p>Asymilacja i akomodacja, aktywność podmiotu, konstruktywizm.</p></div>
+<div class="card"><h4>Kelly</h4><span class="yr">—</span><p>Człowiek jako „badacz z ulicy”.</p></div>
+<div class="card"><h4>Shannon i Weaver; Wiener</h4><span class="yr">1949; 1948</span><p>Teoria informacji; cybernetyka.</p></div>
+<div class="card"><h4>Fodor, Dennett, Churchland</h4><span class="yr">1975–1991</span><p>Filozofia umysłu: umysł–mózg, świadomość.</p></div>
+<div class="card"><h4>Raport Sloan’a</h4><span class="yr">1978</span><p>Kognitywistyka jako synteza sześciu dyscyplin.</p></div>
+<div class="card"><h4>Bechtel i in.</h4><span class="yr">1998</span><p>Sześciokąt nauk kognitywnych.</p></div>
+<div class="card"><h4>Allport</h4><span class="yr">1996</span><p>Cztery grupy metod: obserwacja, eksperyment, badania kliniczne, symulacja.</p></div>
+<div class="card"><h4>Buckner i Petersen</h4><span class="yr">1998</span><p>Obrazowanie pracy mózgu: PET, fMRI.</p></div>
+</div>
+</section>
+<section class="chapter" id="pytania-c1">
+<div class="chapter-head"><span class="num">?</span><h2>Pytania kontrolne — ćwiczenia 1</h2></div>
+<p>Pytania 1–6 odpowiadają streszczeniu Sternberga (s. 31), pozostałe — punktom sylabusa i tekstowi Nęcki. Dobre do przygotowania na wyjściówkę.</p>
+<p class="fiszki-link">Pytania sprawdzające <a href="fiszki.html">Fiszki</a></p>
+</section>
+</div>
+</div>
+<footer>
+  Wykłady: Maruszewski, T. (2017). <cite>Psychologia poznania. Umysł i świat</cite>. Gdańsk: GWP, rozdz. 1 (s. 13–41), 2 (s. 43–83) i 3 (s. 85–131).
+  Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN (skan s. 34–39).
+  Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
+</footer>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-3.html"><span>Poprzednia</span><b>Wykład 3</b><i>Natura i funkcje uwagi</i></a><span></span></nav></main>
+</div>
+<script>
+(function(){
+  var KEY_TAB='pp-tab', KEY_OPEN='pp-open';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function setTab(name,focus){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===name;
+      t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    document.querySelectorAll('.toc-panel').forEach(function(p){p.hidden=p.dataset.for!==name});
+    store(KEY_TAB,name);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){setTab(t.dataset.tab);window.scrollTo({top:0})});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];setTab(n.dataset.tab,true);e.preventDefault()}
+    });
+  });
+  function saveOpen(){
+    var ids=[].slice.call(document.querySelectorAll('details.unit[open]')).map(function(d){return d.id});
+    store(KEY_OPEN,ids.join(','));
+  }
+  document.querySelectorAll('details.unit').forEach(function(d){d.addEventListener('toggle',saveOpen)});
+  function reveal(el){
+    var panel=el.closest('.panel'); if(panel)setTab(panel.id==='panel-cw'?'cw':'wyk');
+    var p=el; while(p){ if(p.tagName==='DETAILS')p.open=true; p=p.parentElement; }
+    if(el.tagName==='DETAILS')el.open=true;
+    requestAnimationFrame(function(){el.scrollIntoView({block:'start'})});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a)return;
+    var t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); if(!t)return;
+    e.preventDefault(); reveal(t);
+    try{history.replaceState(null,'','#'+t.id)}catch(err){}
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.dataset.toggle==='open';
+      var panel=document.querySelector('.panel:not([hidden])');
+      panel.querySelectorAll('details').forEach(function(d){d.open=open});
+      document.getElementById('zaliczenie').open=false;
+    });
+  });
+  var saved=load(KEY_OPEN);
+  if(saved)saved.split(',').forEach(function(id){var d=document.getElementById(id);if(d&&d.classList.contains('unit'))d.open=true});
+  var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
+})();
+</script>
+<script data-back="./" data-back-label="Poznawcza" data-home="../" src="../assets/reader.js"></script></body>
+</html>

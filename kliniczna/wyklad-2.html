@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Wykład 2 · Psychologia kliniczna i zdrowia</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --paper-alt:#fbf3e9;
+  --ink:#2b2118;
+  --ink-soft:#5c4a3a;
+  --ink-faint:#8a7768;
+  --accent:hsl(12,42%,58%);
+  --accent-dark:hsl(12,48%,40%);
+  --accent-deep:hsl(12,55%,28%);
+  --accent-light:hsl(12,55%,95%);
+  --accent-mid:hsl(12,45%,89%);
+  --accent-line:hsl(12,35%,78%);
+  --gold:hsl(38,55%,52%);
+  --sage:hsl(150,20%,45%);
+  --line:hsl(28,30%,85%);
+  --shadow: 0 1px 2px rgba(43,33,24,.04), 0 6px 18px rgba(43,33,24,.06);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at top left, hsla(12,55%,92%,0.5), transparent 55%),
+    radial-gradient(ellipse at bottom right, hsla(38,55%,90%,0.4), transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif;
+  line-height:1.65;
+  font-size:16.5px;
+}
+h1,h2,h3,h4{
+  font-family:'Playfair Display', Georgia, serif;
+  color:var(--accent-deep);
+  font-weight:700;
+  margin:0 0 .5em 0;
+  letter-spacing:.2px;
+}
+a{color:var(--accent-dark);}
+p{margin:.6em 0;}
+strong{color:var(--accent-deep);}
+em.term{font-style:italic;color:var(--accent-dark);}
+
+/* ===== HEADER ===== */
+header.banner{
+  position:relative;
+  padding:2.6rem 1.5rem 2.2rem;
+  text-align:center;
+  background:
+    linear-gradient(160deg, hsl(12,48%,63%), hsl(12,42%,55%) 55%, hsl(20,40%,50%));
+  color:#fffaf5;
+  overflow:hidden;
+}
+header.banner::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle at 15% 20%, rgba(255,255,255,.16) 0, transparent 40%),
+                     radial-gradient(circle at 85% 80%, rgba(255,255,255,.10) 0, transparent 45%);
+}
+header.banner .kicker{
+  position:relative;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:.78rem;
+  opacity:.88;
+  font-family:'Source Serif 4', serif;
+}
+header.banner h1{
+  position:relative;
+  color:#fffaf5;
+  font-size:2.3rem;
+  margin:.35em 0 .2em;
+  text-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+header.banner .sub{
+  position:relative;
+  font-size:1.02rem;
+  opacity:.95;
+  font-style:italic;
+  max-width:640px;
+  margin:0 auto;
+}
+header.banner .pills{
+  position:relative;
+  margin-top:1.1rem;
+  display:flex;
+  gap:.5rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+header.banner .pill{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  padding:.3rem .85rem;
+  border-radius:999px;
+  font-size:.82rem;
+  backdrop-filter:blur(2px);
+}
+
+/* ===== NAV ===== */
+nav.toc{
+  position:sticky; top:0; z-index:30;
+  background:hsla(38,40%,97%,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  padding:.55rem 1rem;
+  display:flex;
+  gap:.4rem;
+  overflow-x:auto;
+  scrollbar-width:thin;
+}
+nav.toc a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:var(--accent-deep);
+  font-size:.82rem;
+  padding:.4rem .75rem;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-family:'Source Serif 4';
+  font-weight:600;
+  transition:.15s;
+}
+nav.toc a:hover{background:var(--accent-mid); border-color:var(--accent-line);}
+
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 1.3rem 4rem;
+}
+
+section.block{
+  padding-top:2.6rem;
+  scroll-margin-top:3.4rem;
+}
+section.block > .eyebrow{
+  font-family:'Source Serif 4';
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.74rem;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:.3rem;
+}
+section.block > h2{
+  font-size:1.65rem;
+  border-bottom:2px solid var(--accent-mid);
+  padding-bottom:.4rem;
+}
+h3{font-size:1.22rem; color:var(--accent-dark); margin-top:1.6rem;}
+h4{font-size:1.02rem; color:var(--ink); font-family:'Source Serif 4'; font-weight:600; margin-top:1.1rem;}
+
+.lede{
+  font-size:1.04rem;
+  color:var(--ink-soft);
+  background:var(--accent-light);
+  border-left:4px solid var(--accent);
+  padding:.85rem 1.1rem;
+  border-radius:6px;
+  margin:1rem 0 1.4rem;
+}
+
+/* source tag */
+.src{
+  display:inline-block;
+  font-family:'Source Serif 4';
+  font-style:normal;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.3px;
+  color:var(--accent-deep);
+  background:var(--accent-mid);
+  border-radius:5px;
+  padding:.08rem .45rem;
+  margin-left:.35rem;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+.src.hz{background:hsl(150,25%,90%); color:hsl(150,35%,28%);}
+
+/* cards */
+.grid-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+  gap:.85rem;
+  margin:1.1rem 0;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-top:3px solid var(--accent);
+  border-radius:10px;
+  padding:.95rem 1.05rem;
+  box-shadow:var(--shadow);
+}
+.card h4{margin-top:0; color:var(--accent-deep);}
+.card p{font-size:.93rem; color:var(--ink-soft); margin:.4rem 0 0;}
+.card.sage{border-top-color:var(--sage);}
+.card.gold{border-top-color:var(--gold);}
+
+/* numbered list card */
+ul.tidy, ol.tidy{padding-left:1.25rem; margin:.5rem 0;}
+ul.tidy li, ol.tidy li{margin:.3rem 0;}
+
+/* blok rozszerzający */
+.blok{
+  background:var(--paper-alt);
+  border:1.5px solid var(--accent-line);
+  border-radius:8px;
+  padding:1rem 1.2rem;
+  margin:1.3rem 0;
+  position:relative;
+}
+.blok .label{
+  font-family:'Playfair Display';
+  font-weight:600;
+  font-style:italic;
+  color:var(--accent-dark);
+  font-size:.95rem;
+  margin-bottom:.3rem;
+  display:block;
+}
+.blok p{font-size:.93rem; margin:.4rem 0;}
+.blok .cite{font-size:.78rem; color:var(--ink-faint); margin-top:.5rem; text-align:right;}
+
+/* table */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:1rem 0;
+  font-size:.9rem;
+  background:var(--paper);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+th{
+  background:var(--accent);
+  color:#fffaf5;
+  text-align:left;
+  padding:.55rem .7rem;
+  font-family:'Source Serif 4';
+  font-weight:600;
+}
+td{padding:.5rem .7rem; border-bottom:1px solid var(--line);}
+tr:nth-child(even) td{background:var(--accent-light);}
+caption{caption-side:top; text-align:left; font-style:italic; color:var(--ink-faint); font-size:.85rem; margin-bottom:.3rem;}
+
+/* diagram frame */
+.diagram{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1rem;
+  margin:1.3rem 0;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.diagram .cap{font-size:.82rem; color:var(--ink-faint); font-style:italic; margin-top:.5rem;}
+.diagram svg{max-width:100%; height:auto;}
+
+/* details self-test */
+details.q{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:8px;
+  margin:.6rem 0;
+  padding:.65rem .9rem;
+}
+details.q summary{
+  cursor:pointer;
+  font-weight:600;
+  color:var(--accent-deep);
+  font-family:'Source Serif 4';
+  list-style:none;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary::before{content:"▸ "; color:var(--gold);}
+details.q[open] summary::before{content:"▾ ";}
+details.q .ans{margin-top:.55rem; padding-top:.55rem; border-top:1px dashed var(--line); font-size:.94rem; color:var(--ink-soft);}
+
+/* glossary */
+.glossary{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:.7rem;
+}
+.gterm{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:.7rem .9rem;
+}
+.gterm dt{font-weight:700; color:var(--accent-deep); font-family:'Playfair Display'; font-size:.98rem;}
+.gterm dd{margin:.25rem 0 0; font-size:.88rem; color:var(--ink-soft);}
+
+footer{
+  text-align:center;
+  padding:2rem 1rem 3rem;
+  color:var(--ink-faint);
+  font-size:.82rem;
+  font-style:italic;
+}
+
+/* people badge */
+.figure-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--accent-mid); color:var(--accent-deep);
+  border-radius:999px; padding:.15rem .65rem .15rem .4rem;
+  font-size:.82rem; font-weight:600; margin:.15rem .3rem .15rem 0;
+}
+.figure-badge .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);}
+
+hr.sep{border:none; border-top:1px dashed var(--line); margin:2rem 0;}
+
+/* ===== PENDING (z Wykładu 2) ===== */
+.pending{
+  font-size:.88rem;
+  color:var(--accent-dark);
+  background:hsl(38,65%,95%);
+  border:1px dashed var(--gold);
+  border-radius:8px;
+  padding:.6rem .9rem;
+  margin:.8rem 0;
+}
+blockquote{border-left:3px solid var(--accent); margin:1rem 0; padding:.4rem 1rem; font-style:italic; color:var(--ink-soft); background:var(--accent-light); border-radius:0 6px 6px 0;}
+
+/* ===== DIVIDER MIĘDZY WYKŁADAMI ===== */
+.wyklad-divider{
+  text-align:center;
+  margin:3.4rem 0 1.6rem;
+  position:relative;
+}
+.wyklad-divider::before{
+  content:"";
+  position:absolute; top:50%; left:0; right:0;
+  height:1px;
+  background:var(--line);
+}
+.wyklad-divider span{
+  background:var(--paper);
+  position:relative; z-index:1;
+  padding:0 1.1rem;
+  font-family:'Playfair Display', Georgia, serif;
+  font-weight:700;
+  font-style:italic;
+  color:var(--accent-deep);
+  font-size:1.25rem;
+  letter-spacing:.5px;
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:12;--st-s:42%;--st-l:58%}</style></head>
+<body>
+
+
+<main><header class="st-hero"><p class="st-eyebrow">Wykład 2 · Heszen, Sęk</p><h1>Zastosowania psychologii klinicznej i zdrowia</h1><p class="st-meta">Styl życia, zachowania zdrowotne, prewencja, pacjent w systemie opieki zdrowotnej, stres.</p></header>
+<!-- ============ W1: WPROWADZENIE ============ -->
+
+<!-- ============ W1: PODSTAWY TEORETYCZNE ============ -->
+
+<!-- ============ W1: PATOGENEZA / SALUTOGENEZA ============ -->
+
+<!-- ============ W1: POJĘCIE ZDROWIA ============ -->
+
+<!-- ============ W1: MODELE ZDROWIA ============ -->
+
+
+<!-- ============ W2: ZAKRES ZASTOSOWAŃ ============ -->
+<section class="block" id="zakres-zastosowan">
+<div class="eyebrow">2a/2b · Dziedziny zastosowań psychologii klinicznej i zdrowia</div>
+<h2>Zakres zainteresowań psychologii zdrowia</h2>
+<div class="pending">
+    Sekcje „Styl życia”, „Zachowania zdrowotne” i „Stres — wprowadzenie” są uzupełnione pełną treścią z podręcznika <em>Psychologia zdrowia</em> (Heszen, Sęk, 2007, rozdziały 6 i 9). Sekcje „Promocja zdrowia i prewencja” oraz „Pacjent w systemie opieki zdrowotnej” wciąż opierają się głównie na prezentacji — mimo sprawdzenia już czterech różnych skanów obu podręczników (dwa wydania <em>Psychologii klinicznej</em> Cierpiałkowskiej/Sęk i dwa wydania <em>Psychologii zdrowia</em> Heszen-Celińskiej/Sęk) odpowiednie rozdziały (Cierpiałkowska, Sęk — rozdz. 30 „Promocja zdrowia i prewencja zaburzeń”; Heszen-Celińska, Sęk — rozdz. 15 „Psychologiczna problematyka kontaktu lekarz–pacjent” i rozdz. 17) każdorazowo wykraczały poza limit odczytu dużych plików PDF z Dysku Google. Jeśli masz te konkretne rozdziały jako osobne, mniejsze pliki (np. zdjęcia stron, jak przy literaturze do Wykładu 1) — podeślij, dokończymy tak jak resztę.
+  </div>
+<div class="grid-cards">
+<div class="card"><h4>Promowanie zdrowego stylu życia</h4></div>
+<div class="card"><h4>Metody leczenia chorób i zapobieganie chorobom</h4></div>
+<div class="card"><h4>Badania nad czynnikami ryzyka i czynnikami chroniącymi</h4></div>
+<div class="card"><h4>Analiza systemów opieki zdrowotnej</h4></div>
+<div class="card"><h4>Formułowanie polityki zdrowotnej</h4></div>
+</div>
+<h3>Psychologia zdrowia jako dziedzina — trzy filary</h3>
+<div class="grid-cards">
+<div class="card gold"><h4>Dział badań naukowych</h4></div>
+<div class="card gold"><h4>Zastosowania praktyczne</h4></div>
+<div class="card gold"><h4>Szkolenie i trening</h4></div>
+</div>
+<h3>Obszary zastosowań — pełna lista z wykładu</h3>
+<ul class="tidy">
+<li>Stres a występowanie i przebieg chorób</li>
+<li>Czynniki psychologiczne i społeczne a występowanie chorób</li>
+<li>Zachowania seksualne i ich wpływ na zdrowie i jakość życia</li>
+<li>Badania nad skutkami hospitalizacji</li>
+<li>Styl życia a zdrowie</li>
+<li>Metody walki z bólem</li>
+<li>Ocena psychologiczna pacjenta i doradztwo w sprawach psychologicznych</li>
+<li>Promocja zdrowia</li>
+<li>Terapia, poradnictwo i rehabilitacja jako metody wspomagające leczenie chorych somatycznie</li>
+<li>Psychoedukacja i szkolenia z zakresu psychospołecznych aspektów w leczeniu chorób i podtrzymywaniu zdrowia</li>
+</ul>
+<p style="font-size:.9rem;color:var(--ink-faint);">Lista ta w praktyce wyznacza strukturę reszty wykładu — kolejne sekcje tych notatek podążają za nią (styl życia i zachowania zdrowotne → promocja zdrowia i prewencja → relacja pacjent–system opieki → stres).</p>
+<h3>Przypomnienie: model biopsychospołeczny jako rama tych zastosowań</h3>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+<circle cx="210" cy="150" fill="var(--paper)" r="70" stroke="var(--accent-deep)" stroke-width="2.2"></circle>
+<text fill="var(--accent-deep)" font-size="15" font-weight="700" text-anchor="middle" x="210" y="145">ZDROWIE</text>
+<rect fill="hsl(12,45%,92%)" height="44" rx="8" stroke="var(--accent)" width="120" x="150" y="18"></rect>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="210" y="36">Czynniki</text>
+<text fill="var(--accent-deep)" font-size="10.5" text-anchor="middle" x="210" y="50">biologiczne</text>
+<rect fill="hsl(150,25%,92%)" height="44" rx="8" stroke="var(--sage)" width="130" x="20" y="210"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10.5" text-anchor="middle" x="85" y="228">Czynniki</text>
+<text fill="hsl(150,35%,25%)" font-size="10.5" text-anchor="middle" x="85" y="242">psychologiczne</text>
+<rect fill="hsl(38,60%,92%)" height="44" rx="8" stroke="var(--gold)" width="130" x="270" y="210"></rect>
+<text fill="hsl(38,60%,30%)" font-size="10.5" text-anchor="middle" x="335" y="228">Czynniki</text>
+<text fill="hsl(38,60%,30%)" font-size="10.5" text-anchor="middle" x="335" y="242">społeczne</text>
+<path d="M210 62 V 95" stroke="var(--accent)" stroke-width="2"></path>
+<path d="M110 220 L 160 195" stroke="var(--sage)" stroke-width="2"></path>
+<path d="M310 220 L 260 195" stroke="var(--gold)" stroke-width="2"></path>
+</svg>
+<div class="cap">Model biopsychospołeczny (BPSM) — wszystkie obszary zastosowań psychologii zdrowia wynikają z tego, że zdrowie jest wypadkową czynników biologicznych, psychologicznych i społecznych (rozwinięcie modelu: notatki do Wykładu 1).</div>
+</div>
+</section>
+<!-- ============ W2: STYL ŻYCIA ============ -->
+<section class="block" id="styl-zycia">
+<div class="eyebrow">Zastosowania · styl życia a zdrowie · Heszen, Sęk (2007), r. 6.5</div>
+<h2>Styl życia</h2>
+<h3>Ujęcie behawioralno-epidemiologiczne</h3>
+<p>
+    W nurcie badań medycznych i epidemiologii behawioralnej <em class="term">styl życia</em> oznacza luźno powiązany zespół zachowań (nawyków i czynności) charakterystyczny dla danej jednostki lub grupy (warstwy) społecznej i mający istotne znaczenie dla zdrowia. Na mocy obiektywnych badań w ramach programów prospektywnych ustala się zespoły zachowań szkodzące zdrowiu oraz służące jego ochronie i rozwojowi. W tym też znaczeniu użyto terminu „styl życia w polu zdrowia” w raporcie Lalonde'a.
+  </p>
+<blockquote>
+    „Luźno powiązany zespół zachowań (nawyków i czynności) charakterystyczny dla danej jednostki lub grupy (warstwy) społecznej i mający istotne znaczenie dla zdrowia” — Heszen, Sęk (2007, s. 103).
+  </blockquote>
+<p>W związku z tą czysto behawioralną definicją wyróżnia się:</p>
+<div class="grid-cards">
+<div class="card sage">
+<h4>Prozdrowotny styl życia</h4>
+<p>Prozdrowotna dieta, życie aktywne ruchowo, racjonalny wypoczynek, powstrzymywanie się od zachowań szkodliwych i radzenie sobie ze stresem.</p>
+</div>
+<div class="card">
+<h4>Antyzdrowotny styl życia</h4>
+<p>Np. styl życia typowy dla <strong>Wzoru Zachowania A</strong> — tendencja do rywalizacji, nastawienie na sukces zawodowy, pośpiech i korzystanie z używek. W epidemiologii behawioralnej mówi się w związku z tym o „chorobach ryzykownego stylu życia” (Eiland, Golanty, 1985).</p>
+</div>
+</div>
+<h3>Ujęcie socjologiczne</h3>
+<p>
+    W obrębie nauk społecznych (Gniazdowski, 1995; Ostrowska, 1997, 1999; Siciński, 1978, 2002) problematykę stylu życia uznaje się za znacznie bardziej złożoną. Styl życia jest tu:
+  </p>
+<ul class="tidy">
+<li><strong>odzwierciedleniem przynależności</strong> do warstwy społecznej;</li>
+<li><strong>wyrazem działania</strong> prawidłowości systemu społeczno-politycznego, gospodarczego i kulturowego;</li>
+<li>czymś, w czym <strong>człowiek reprezentuje wzory wpływów społecznych i wzory kultury</strong> (wzory spędzania wolnego czasu, wzory kulinarne, styl życia miejski/wiejski).</li>
+</ul>
+<p>
+    W nowszych studiach socjologicznych (Marody, 1997; Siciński, 2002) podkreśla się rolę <strong>indywidualnych wyborów</strong> konsumentów kultury — to raczej preferencje niż wyłącznie warstwa społeczna i poziom materialny określają wzory spędzania czasu wolnego czy wzory kulinarne. WHO definiuje styl życia jako sposób życia oparty na wzajemnym związku warunków życia z indywidualnymi wzorami zachowań zależnymi od czynników społeczno-kulturowych i cech indywidualnych.
+  </p>
+<p style="font-size:.9rem;color:var(--ink-faint);">Zastanawiające jest, że w części prac z zakresu socjologii medycyny mówi się niemal wyłącznie o prozdrowotnym stylu życia, pomijając problem stylu antyzdrowotnego lub ryzykownego (Ostrowska, 1999).</p>
+<h3>Definicja psychologiczna (synteza obu ujęć)</h3>
+<blockquote>
+    „Charakterystyczny dla jednostki system zachowań zdrowotnych uwarunkowanych cechami temperamentu, wiedzą, uogólnionymi poglądami i przekonaniami na temat świata, życia i własnej osoby, kompetencjami, systemem wartości i indywidualnymi doświadczeniami w zakresie zdrowia oraz zmiennymi społeczno-kulturowymi” — Sęk (2000, za: Heszen, Sęk, 2007, s. 107).
+  </blockquote>
+<p style="font-size:.9rem;color:var(--ink-faint);">Definicja ta łączy dwa poziomy stylu życia: <strong>społeczno-strukturalny</strong> (przynależność, wzory kulturowe, socjalizacja) i <strong>indywidualno-psychologiczny</strong> (temperament, wiedza, przekonania, wartości, doświadczenia). Styl życia związany ze zdrowiem może mieć charakter świadomego wyboru i <em class="term">autokreacji</em> (Gniazdowski, 1995; Sęk, 1999) — ale jest też pochodną doświadczeń takich jak bieda, bezrobocie czy warunki życia, dlatego promocja zdrowia nie może ograniczać się do samej edukacji zdrowotnej, lecz musi uwzględniać też tworzenie zdrowych warunków życia.</p>
+</section>
+<!-- ============ W2: ZACHOWANIA ZDROWOTNE ============ -->
+<section class="block" id="zachowania-zdrowotne">
+<div class="eyebrow">Zastosowania · styl życia a zdrowie · Heszen, Sęk (2007), r. 6.1–6.4</div>
+<h2>Zachowania zdrowotne</h2>
+<h3>Dlaczego temat zyskał na znaczeniu</h3>
+<p>
+    Narastanie chorób cywilizacyjnych (choroby układu krążenia, nowotwory, choroby metaboliczne, wypadki, urazy) skierowało uwagę badaczy na znaczenie zachowań człowieka dla zdrowia — był to też jeden z powodów wyodrębnienia się medycyny behawioralnej. Wieloletnie badania epidemiologiczne (prowadzony od 1948 r. <em>Framingham Heart Study</em>; międzynarodowe <em>Badanie Siedmiu Krajów</em> pod kierunkiem Keysa) wykazały, że niewłaściwa dieta, palenie tytoniu, ryzykowne picie alkoholu, brak aktywności fizycznej i nadmierne opalanie się istotnie zwiększają ryzyko chorób układu krążenia i nowotworowych — głównych przyczyn umieralności.
+  </p>
+<p>
+    Prospektywne badania <em>Alameda Study</em> (Kalifornia, 1965–1983) wykazały z kolei, że niepalenie, umiarkowane picie alkoholu, utrzymywanie właściwej masy ciała, aktywność ruchowa w czasie wolnym i 7–8 godzin snu pozytywnie korelują ze stanem zdrowia aktualnym i przewidywanym. Ten etap rozwoju nauk o zdrowiu bywa określany jako <strong>„druga rewolucja zdrowotna”</strong> (Gniazdowski, 1990).
+  </p>
+<h3>Trzy sposoby definiowania zachowań zdrowotnych</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>1. Definicja skutkowa (funkcjonalna)</h4>
+<p>Zachowanie wyróżnia jego <strong>funkcja względem zdrowia</strong> — korzystna lub niekorzystna (Dolińska-Zygmunt, 1996; Frączek, Stępień, 1997). Zachowania korzystne mogą promować zdrowie, zapobiegać chorobie lub sprzyjać zdrowieniu; niekorzystne mogą zdrowie niszczyć, zagrażać mu (zachowania ryzykowne) lub utrudniać zdrowienie.</p>
+</div>
+<div class="card">
+<h4>2. Definicja celowościowa</h4>
+<p>Zachowania zdrowotne to czynności <strong>celowo ukierunkowane na zdrowie</strong> — kluczową rolę odgrywa przekonanie człowieka o znaczeniu zachowania dla zdrowia (Heszen-Klemens, 1979; Gochman, 1988).</p>
+</div>
+<div class="card gold">
+<h4>3. Definicja celowościowo-funkcjonalna</h4>
+<p>Łączy oba podejścia, uwzględniając relację między typem wiedzy (subiektywna/obiektywna) a kierunkiem zależności (zachowanie→zdrowie lub zdrowie→zachowanie) — Puchalski (1990).</p>
+</div>
+</div>
+<p>Definicja przyjęta przez autorki podręcznika, oparta na podejściu celowościowo-funkcjonalnym:</p>
+<blockquote>
+    „Reaktywne, nawykowe i celowe formy aktywności człowieka, które pozostają na gruncie wiedzy obiektywnej i subiektywnego przekonania w istotnym, wzajemnym związku ze zdrowiem” — Sęk (2000, za: Heszen, Sęk, 2007, s. 99).
+  </blockquote>
+<p style="font-size:.9rem;color:var(--ink-faint);">Od tych zachowań zależy, jakie miejsce człowiek zajmuje w wymiarze zdrowie–choroba (Health ease–Disease, HE–DE, por. Antonovsky, 1979 — notatki do Wykładu 1).</p>
+<h3>Siedem kryteriów klasyfikacji zachowań zdrowotnych</h3>
+<ul class="tidy">
+<li>funkcja zachowania względem zdrowia — korzystna albo niekorzystna;</li>
+<li>poziom organizacji behawioralnej — nawyk lub czynność;</li>
+<li>poziom świadomości i cel zachowania;</li>
+<li>poziom zdrowia, w stosunku do którego się zachowanie podejmuje;</li>
+<li>zachowania wynikające z roli społecznej;</li>
+<li>treść zachowania i sfera życia;</li>
+<li>zachowania wynikające z roli nieprofesjonalnej i profesjonalnej.</li>
+</ul>
+<h3>Dwa rodzaje zachowań zdrowotnych wg poziomu organizacji</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>Zachowania nawykowe</h4>
+<p>Stabilne wzory zachowań prozdrowotnych i antyzdrowotnych, wynik procesów socjalizacyjnych i wpływów kulturowych — np. proste nawyki higieniczne (mycie rąk, zębów, ciała), nawyki żywieniowe kształtowane przez tradycję rodzinną i kuchnię regionalną.</p>
+</div>
+<div class="card">
+<h4>Zachowania celowe (intencjonalne)</h4>
+<p>Celowe czynności zdrowotne, pojawiające się najczęściej w toku rozwoju, gdy nowe role wyznaczają nowe zadania — np. świadome przygotowanie się do urodzenia dziecka, zmiana zachowań po diagnozie choroby. Intencjonalne zachowania <strong>antyzdrowotne</strong> są rzadkością — pojawiają się głównie, gdy zdrowie zajmuje bardzo niskie miejsce w indywidualnej hierarchii wartości.</p>
+</div>
+</div>
+<table>
+<caption>Tab. 6.3 · Podział zachowań zdrowotnych (Sęk, 2000, zmodyfikowane; za: Heszen, Sęk, 2007, s. 101)</caption>
+<tr><th>Kryterium podziału</th><th>Przykładowe kategorie</th></tr>
+<tr><td>Poziom świadomości i organizacji czynności</td><td>Nawyki (higiena) · Intencjonalne czynności (celowe praktyki zdrowotne)</td></tr>
+<tr><td>Stosunek do zdrowia, konsekwencje</td><td>Zachowania prozdrowotne (gimnastyka, relaks, sen) · Zachowania antyzdrowotne (palenie, nadużywanie alkoholu)</td></tr>
+<tr><td>Sytuacja zdrowotna</td><td>Zachowania w sytuacji zdrowia (badania kontrolne) · Zachowania w sytuacji choroby (zalecenia lekarskie)</td></tr>
+<tr><td>Rola nieprofesjonalna / profesjonalna</td><td>Zachowania rodzicielskie (karmienie piersią) · Medyczne zachowania personelu (komunikowanie diagnozy)</td></tr>
+<tr><td>Treść zachowania</td><td>Zachowania promocyjne (planowanie zdrowia) · Zachowania prewencyjne (bezpieczny seks)</td></tr>
+</table>
+<h3>„Wielka piątka” zachowań zdrowotnych — badania nad strukturą</h3>
+<p>
+    Badania nad strukturą zachowań zdrowotnych (analiza czynnikowa kwestionariusza Beckera, 1992, 82 pozycje) wykazały, że grupują się one wokół trzech czynników: <strong>zachowań prewencyjnych</strong> (dostosowanych do norm i oczekiwań), <strong>zdrowej diety i ruchu</strong> oraz <strong>relaksu, odpoczynku i higieny psychicznej</strong>. Do klasycznej „wielkiej piątki” zachowań zdrowotnych (Harris, Guten, 1979) współcześnie dołącza się też walkę ze stresem, zapobieganie wypadkom i prewencyjne zachowania seksualne (Steptoe, Wardle, 2004).
+  </p>
+<p style="font-size:.9rem;color:var(--ink-faint);">Ciekawostka z badań rodzinnych: małżonkowie są do siebie podobni w zachowaniach prewencyjnych, a dzieci (studentki i studenci) przejmują wzorce diety i aktywności fizycznej głównie od matek — związek z zachowaniami ojców okazał się zaskakująco słaby, zwłaszcza w przypadku córek.</p>
+<h3>Zachowania prozdrowotne vs. ryzykowne — ujęcie z wykładu</h3>
+<p style="font-size:.9rem;color:var(--ink-faint);">wg Hansen, Sundberg (2017)</p>
+<ul class="tidy">
+<li>aktywność fizyczna;</li>
+<li>prozdrowotne odżywianie;</li>
+<li>racjonalny wypoczynek;</li>
+<li>powstrzymanie się od zachowań szkodliwych (palenie tytoniu, picie alkoholu, ryzykowne zachowania seksualne);</li>
+<li>radzenie sobie ze stresem;</li>
+<li>dbanie o higienę osobistą;</li>
+<li>badania profilaktyczne.</li>
+</ul>
+<h3>Kilka faktów o zachowaniach prozdrowotnych</h3>
+<div class="grid-cards">
+<div class="card sage">
+<h4>14 lat dłuższego życia</h4>
+<p>Osoby utrzymujące pięć zdrowych nawyków — zdrowa dieta, regularna aktywność fizyczna, prawidłowa masa ciała, brak palenia, umiarkowane spożycie alkoholu — żyją średnio <strong>14 lat dłużej</strong> niż osoby niestosujące się do tych zasad (Wydział Zdrowia Publicznego Uniwersytetu Harvarda; Li i in., 2018).</p>
+</div>
+<div class="card">
+<h4>Dieta a hipokamp</h4>
+<p>Nawet kilka dni niezdrowej, wysokotłuszczowej diety może uszkodzić system pamięci w mózgu (hipokamp) — badania na myszach wykazały zaburzenia pracy neuronów prowadzące do problemów z pamięcią i „mgły mózgowej” (Landry i in., 2025).</p>
+</div>
+<div class="card">
+<h4>Sen a funkcje poznawcze</h4>
+<p>Podczas snu mózg oczyszcza się z toksyn i porządkuje połączenia neuronalne. Nawet niewielkie niedobory snu (np. 15 minut mniej) mogą upośledzać funkcje poznawcze, zwłaszcza u młodzieży (Ma i in., 2025).</p>
+</div>
+<div class="card gold">
+<h4>Rzucenie palenia — efekty natychmiastowe</h4>
+<p>Po 20 minutach tętno i ciśnienie krwi wracają do normy; po 24 godzinach spada ryzyko zawału; po 15 latach ryzyko raka płuc jest jak u osoby niepalącej (Cho i in., 2024; Cedzyńska, Przepiórka, 2023). Osoby, które rzuciły palenie, doświadczają też redukcji lęku i objawów depresji oraz poprawy samopoczucia psychicznego (Taylor i in., 2021).</p>
+</div>
+<div class="card sage">
+<h4>Aktywność fizyczna — ciało i umysł</h4>
+<p>Regularna aktywność fizyczna wzmacnia odporność i chroni przed nowotworami, chorobami serca i demencją, a także pomaga w walce ze stresem, lękiem i depresją (Choi i in., 2019; Ijang i in., 2026).</p>
+</div>
+<div class="card sage">
+<h4>Aktywność fizyczna a długowieczność</h4>
+<p>Biegacze wyczynowi żyją średnio o <strong>4,7 roku dłużej</strong> niż reszta populacji. Regularna aktywność fizyczna (niekoniecznie wyczynowa) może wydłużyć życie o 0,4 do 6,9 lat (Foulkes i in., 2024).</p>
+</div>
+</div>
+<h3>Nowe formy zachowań zdrowotnych</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>Gamifikacja</h4>
+<p>Wykorzystanie mechanizmów gry do motywowania do aktywności fizycznej — przykład z wykładu: gra lokalizacyjna Pokémon GO skłaniająca graczy do wyjścia i ruchu w terenie (Sęk i in., 2017; Sęk, Kaczmarek, Ziarko, 2017).</p>
+</div>
+<div class="card">
+<h4>Monitorowanie przez smartfon / smartwatch</h4>
+<p>Bieżące śledzenie aktywności, tętna, snu i innych parametrów zdrowotnych za pomocą urządzeń noszonych — nowa forma samoregulacji zachowań zdrowotnych (Sęk i in., 2017).</p>
+</div>
+</div>
+</section>
+<!-- ============ W2: PROMOCJA I PREWENCJA ============ -->
+<section class="block" id="prewencja">
+<div class="eyebrow">Zastosowania · promocja zdrowia i prewencja zagrożeń</div>
+<h2>Promocja zdrowia i prewencja zagrożeń</h2>
+<h3>Rodzaje prewencji — dwie klasyfikacje</h3>
+<table>
+<tr><th>Wg poziomów (WHO, 1957, 2000)</th><th>Wg odbiorców (Gordon, 1987; Mrazek, Haggerty, 1994)</th></tr>
+<tr><td>Pierwszorzędowa</td><td>Uniwersalna</td></tr>
+<tr><td>Drugorzędowa (wtórna)</td><td>Wskazująca</td></tr>
+<tr><td>Trzeciorzędowa</td><td>Selektywna</td></tr>
+</table>
+<p style="font-size:.85rem;color:var(--ink-faint);">Źródła: Szymańska, J. (2012). <em>Programy profilaktyczne. Podstawy profesjonalnej psychoprofilaktyki.</em> Warszawa: Ośrodek Rozwoju Edukacji.  ·  Ostaszewski, K. (2005). Nowe definicje poziomów profilaktyki. <em>Remedium</em>, nr 7/8, s. 149–150.</p>
+<div class="pending">Dokładne definicje poszczególnych poziomów i grup odbiorców (czym różni się prewencja uniwersalna od wskazującej itd.) uzupełnimy razem z literaturą — wykład sam w sobie podaje tu tylko nazwy klasyfikacji.</div>
+</section>
+<!-- ============ W2: RELACJA PACJENT-SYSTEM ============ -->
+<section class="block" id="relacja">
+<div class="eyebrow">Zastosowania · relacja pacjent–służba zdrowia</div>
+<h2>Pacjent w systemie opieki zdrowotnej</h2>
+<h3>Pacjent w sytuacji hospitalizacji</h3>
+<p>Hospitalizacja to sytuacja, która wyrywa pacjenta z codzienności i stawia przed nim szereg jednoczesnych wyzwań:</p>
+<div class="grid-cards">
+<div class="card"><h4>Problemy domowe</h4></div>
+<div class="card"><h4>Lęk przed poważną chorobą / obawa związana z operacją</h4></div>
+<div class="card"><h4>Nieznane otoczenie</h4></div>
+<div class="card"><h4>Utrata godności</h4></div>
+<div class="card"><h4>Utrata kontroli</h4></div>
+<div class="card"><h4>Brak wsparcia</h4></div>
+</div>
+<p style="font-size:.85rem;color:var(--ink-faint);">Makara-Studzińska (2017); Salmon (2002)</p>
+<h3>Na marginesie: autorytet personelu medycznego oczami pacjenta</h3>
+<ul class="tidy">
+<li><strong>Autorytet boski</strong> — lekarz postrzegany niemal jak nieomylna, nadrzędna instancja;</li>
+<li><strong>Autorytet eksperta</strong> — oparty na wiedzy i kompetencjach merytorycznych;</li>
+<li><strong>Autorytet terytorialny</strong> — wynikający z pozycji instytucjonalnej (bycia „u siebie” w szpitalu/gabinecie).</li>
+</ul>
+<h3>Relacja medyk–pacjent</h3>
+<ul class="tidy">
+<li>budowanie relacji terapeutycznej;</li>
+<li>pacjent jako partner w terapii;</li>
+<li>respektowanie zaleceń klinicystów.</li>
+</ul>
+<h4>Dwa typy oddziaływań w relacji terapeutycznej</h4>
+<div class="grid-cards">
+<div class="card">
+<h4>Oddziaływanie instrumentalne</h4>
+<p>Czynności, które ściśle wiążą się z leczeniem.</p>
+</div>
+<div class="card">
+<h4>Oddziaływanie ekspresywne</h4>
+<p>Czynności zaspokajające potrzeby psychologiczne pacjenta.</p>
+</div>
+</div>
+<p style="font-size:.85rem;color:var(--ink-faint);">Makara-Studzińska (2017); Stangierska, Horst-Sikorska (2007)</p>
+<h3>Znaczenie jakości relacji w leczeniu</h3>
+<div class="blok">
+<span class="label">Badanie: lekarze a przekazywanie trudnych informacji</span>
+<p>Wyższy poziom stresu (mierzony fizjologicznie) podczas przekazywania trudnych informacji występował u lekarzy z <strong>mniejszym doświadczeniem zawodowym</strong> oraz o <strong>wyższym poziomie zmęczenia</strong>. Słabsza efektywność komunikacji (w ocenie ekspertów) występowała u lekarzy z wyższym poziomem wypalenia zawodowego i bardziej zmęczonych.</p>
+<p class="cite">Brown i in., 2009</p>
+</div>
+<blockquote>
+    „Zwiększenie poziomu stosowania się do zaleceń wśród pacjentów miałoby większe znaczenie dla zdrowia ludzi niż jakikolwiek przełom w badaniach medycznych” — Haynes, 2001, za: WHO, 2003.
+  </blockquote>
+</section>
+<!-- ============ W2: STRES - WPROWADZENIE ============ -->
+<section class="block" id="stres-wstep">
+<div class="eyebrow">Zapowiedź tematu 3 · Stres psychologiczny · Heszen, Sęk (2007), r. 9.1</div>
+<h2>Stres i radzenie sobie ze stresem — wprowadzenie</h2>
+<p class="lede">Wykład kończy się wstępem do tematu stresu, który zostanie rozwinięty osobno (Wykład 3: fizjologiczne podstawy stresu, teoria zachowania zasobów Hobfolla, radzenie sobie). Poniżej — oprócz dwóch schematów z wykładu — pełniejsze definicje z literatury, które warto znać już teraz.</p>
+<h3>Geneza: od stresu biologicznego do psychologicznego</h3>
+<p>
+    Badania nad stresem w naukach medycznych wiążą się z osobą <span class="figure-badge"><span class="dot"></span>Hansa Selyego</span> — kanadyjskiego fizjologa pochodzenia węgierskiego, który terminem „stres” określił niespecyficzną reakcję organizmu na działanie bodźców szkodliwych (stresorów), nazwaną <strong>ogólnym zespołem adaptacyjnym</strong> (<em>General Adaptation Syndrome</em>, GAS), obejmującym trzy stadia: reakcji alarmowej, odporności (pełnego przystosowania) i wyczerpania (Selye, 1956/1960). Koncepcję tę krytykowano za niedostateczne uwzględnienie czynników psychologicznych — stąd potrzeba wyodrębnienia specyfiki <strong>stresu psychologicznego</strong>.
+  </p>
+<h3>Trzy nurty rozumienia stresu</h3>
+<div class="grid-cards">
+<div class="card">
+<h4>1. Stres jako sytuacja / bodziec</h4>
+<p>Stres utożsamiany z sytuacją, wydarzeniem zewnętrznym o określonych właściwościach („sytuacja trudna”). Problem: to samo wydarzenie bywa stresujące dla jednej osoby, a dla innej nie (np. wizyta u lekarza).</p>
+</div>
+<div class="card">
+<h4>2. Stres jako reakcja</h4>
+<p>Stres odnoszony do wewnętrznych reakcji człowieka, zwłaszcza emocjonalnych. Popularne w naukach medycznych, ale psychologowie uznają to ujęcie za jednostronne.</p>
+</div>
+<div class="card gold">
+<h4>3. Stres jako relacja (ujęcie dominujące)</h4>
+<p>Stres jako określona relacja między zasobami/możliwościami jednostki a adresowanymi do niej wymaganiami — zakłócenie lub zapowiedź zakłócenia równowagi między wymaganiami a możliwością ich spełnienia.</p>
+</div>
+</div>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 420 140" xmlns="http://www.w3.org/2000/svg">
+<rect fill="hsl(12,45%,92%)" height="50" rx="8" stroke="var(--accent)" width="160" x="10" y="20"></rect>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="90" y="40">wymagania obiektywne</text>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="90" y="54">lub w ocenie jednostki</text>
+<circle cx="210" cy="45" fill="hsl(38,65%,88%)" r="32" stroke="var(--gold)" stroke-width="2"></circle>
+<text fill="hsl(38,60%,28%)" font-size="12" font-weight="700" text-anchor="middle" x="210" y="50">STRES</text>
+<rect fill="hsl(150,25%,92%)" height="50" rx="8" stroke="var(--sage)" width="160" x="250" y="20"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="330" y="40">możliwości realne</text>
+<text fill="hsl(150,35%,25%)" font-size="10" text-anchor="middle" x="330" y="54">lub w ocenie jednostki</text>
+<path d="M170 45 H 178" stroke="var(--ink-faint)" stroke-width="2"></path>
+<path d="M242 45 H 250" stroke="var(--ink-faint)" stroke-width="2"></path>
+<text fill="var(--ink-faint)" font-size="10" font-style="italic" text-anchor="middle" x="210" y="105">brak równowagi, w obie strony, jest źródłem stresu</text>
+</svg>
+<div class="cap">Rys. 9.1 · Brak równowagi między wymaganiami a możliwościami jako źródło stresu (na podstawie: Strelau i in., 2005, za: Heszen, Sęk, 2007). Nierównowaga może polegać zarówno na zbyt małych możliwościach wobec wymagań, jak i na zbyt małych wymaganiach wobec możliwości jednostki.</div>
+</div>
+<h3>Poznawczo-transakcyjny paradygmat stresu Lazarusa i Folkman</h3>
+<p>
+<span class="figure-badge"><span class="dot"></span>Richard Lazarus</span> (Uniwersytet Kalifornijski w Berkeley) wraz z Susan Folkman opublikował w 1984 r. monografię <em>Stress, Appraisal, and Coping</em> — najpełniejszą i najczęściej cytowaną wersję swojej koncepcji. Centralnym pojęciem jest <strong>transakcja</strong>: jednostka i aktualny kontekst sytuacyjny nie tylko wzajemnie na siebie oddziałują, ale łączą się w całość o właściwościach niesprowadzalnych do sumy elementów składowych.
+  </p>
+<blockquote>
+    „Stres jest określoną relacją (<em>relationship</em>) osoby z otoczeniem, ocenianą przez osobę jako obciążająca lub przekraczająca jej zasoby i zagrażająca jej dobrostanowi” — Lazarus, Folkman (1984, s. 19).
+  </blockquote>
+<p style="font-size:.9rem;color:var(--ink-faint);">O uznaniu relacji za stresową rozstrzyga <strong>subiektywna ocena</strong> jej znaczenia przez osobę (podejście fenomenologiczno-poznawcze), nie właściwości obiektywne.</p>
+<h4>Ocena pierwotna — trzy możliwe oceny transakcji</h4>
+<table>
+<tr><th>Typ oceny</th><th>Charakterystyka</th><th>Towarzyszące emocje</th></tr>
+<tr><td><strong>Krzywda / strata</strong><br/><span style="font-size:.8rem;color:var(--ink-faint);">harm/loss</span></td><td>Już zaistniała szkoda — utrata wartościowych obiektów (samoocena, ocena społeczna, bliska osoba)</td><td>złość, żal, smutek</td></tr>
+<tr><td><strong>Zagrożenie</strong><br/><span style="font-size:.8rem;color:var(--ink-faint);">threat</span></td><td>Taka sama szkoda, ale dopiero antycypowana, jeszcze niezaistniała</td><td>strach, lęk, martwienie się</td></tr>
+<tr><td><strong>Wyzwanie</strong><br/><span style="font-size:.8rem;color:var(--ink-faint);">challenge</span></td><td>Antycypacja sytuacji, w której możliwe są zarówno szkody, jak i korzyści</td><td>mieszane — negatywne jak przy zagrożeniu, ale też nadzieja, zapał, podniecenie</td></tr>
+</table>
+<h4>Ocena wtórna i sprzężenie obu ocen</h4>
+<p>
+    Jeśli ocena pierwotna uzna relację za stresową, uruchamia to <strong>ocenę wtórną</strong> — dotyczącą możliwości podjęcia działania w celu usunięcia przyczyn stresu, złagodzenia jego skutków lub (w przypadku wyzwania) osiągnięcia korzyści. Ocena wtórna odnosi się więc zarówno do źródeł stresu, jak i do własnych zasobów. Oba procesy przebiegają równocześnie i są ze sobą sprzężone — np. optymistyczna ocena własnych możliwości działania może zmienić ocenę pierwotną z „zagrożenia” na „wyzwanie”, a ocena pesymistyczna działa odwrotnie. Punktem wyjścia aktywności ukierunkowanej na zmianę transakcji stresowej jest <strong>radzenie sobie</strong> (<em>coping</em>) — pełne rozwinięcie tego wątku na Wykładzie 3.
+  </p>
+<h3>Reakcja na stres — trzy poziomy</h3>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="160" cy="55" fill="hsl(210,40%,88%)" rx="130" ry="38" stroke="hsl(210,35%,55%)"></ellipse>
+<text fill="hsl(210,45%,28%)" font-size="11" font-weight="600" text-anchor="middle" x="160" y="51">Reakcja na poziomie</text>
+<text fill="hsl(210,45%,28%)" font-size="11" font-weight="600" text-anchor="middle" x="160" y="65">fizjologicznym</text>
+<ellipse cx="160" cy="135" fill="hsl(12,50%,86%)" rx="130" ry="38" stroke="var(--accent)"></ellipse>
+<text fill="var(--accent-deep)" font-size="11" font-weight="600" text-anchor="middle" x="160" y="125">Reakcja na poziomie</text>
+<text fill="var(--accent-deep)" font-size="10" text-anchor="middle" x="160" y="139">psychologicznym</text>
+<text fill="var(--ink-soft)" font-size="9" font-style="italic" text-anchor="middle" x="160" y="153">(emocje, procesy poznawcze)</text>
+<ellipse cx="160" cy="215" fill="hsl(45,70%,85%)" rx="130" ry="38" stroke="var(--gold)"></ellipse>
+<text fill="hsl(38,60%,28%)" font-size="11" font-weight="600" text-anchor="middle" x="160" y="211">Reakcja na poziomie</text>
+<text fill="hsl(38,60%,28%)" font-size="11" font-weight="600" text-anchor="middle" x="160" y="225">zachowania</text>
+<path d="M292 60 L 360 115" stroke="var(--ink-faint)" stroke-width="2"></path>
+<path d="M292 135 H 360" stroke="var(--ink-faint)" stroke-width="2"></path>
+<path d="M292 210 L 360 150" stroke="var(--ink-faint)" stroke-width="2"></path>
+<circle cx="430" cy="135" fill="var(--paper)" r="75" stroke="var(--accent-deep)" stroke-width="2.5"></circle>
+<text fill="var(--accent-deep)" font-size="13" font-weight="700" text-anchor="middle" x="430" y="130">Reakcja</text>
+<text fill="var(--accent-deep)" font-size="13" font-weight="700" text-anchor="middle" x="430" y="146">na stres</text>
+</svg>
+<div class="cap">Reakcja na stres integruje zmiany na trzech poziomach: fizjologicznym, psychologicznym (emocje i funkcje poznawcze) oraz zachowania.</div>
+</div>
+<h3>Transakcyjny model stresu (Lazarus, Folkman)</h3>
+<div class="diagram">
+<svg font-family="Source Serif 4" viewbox="0 0 760 320" xmlns="http://www.w3.org/2000/svg">
+<rect fill="hsl(45,55%,90%)" height="60" rx="6" stroke="var(--gold)" width="120" x="10" y="130"></rect>
+<text fill="var(--ink)" font-size="10" text-anchor="middle" x="70" y="153">Sytuacja</text>
+<text fill="var(--ink)" font-size="10" text-anchor="middle" x="70" y="166">obiektywna</text>
+<text fill="var(--accent-deep)" font-size="9.5" font-style="italic" text-anchor="middle" x="70" y="180">(stresor)</text>
+<path d="M130 160 H 180" marker-end="url(#a1)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="var(--paper)" height="80" rx="6" stroke="var(--line)" width="140" x="182" y="120"></rect>
+<text fill="var(--ink)" font-size="9.5" text-anchor="middle" x="252" y="148">Subiektywne spostrzeganie</text>
+<text fill="var(--ink)" font-size="9.5" text-anchor="middle" x="252" y="162">sytuacji jako</text>
+<text fill="var(--ink)" font-size="9.5" text-anchor="middle" x="252" y="176">stresogennej</text>
+<path d="M322 160 H 372" marker-end="url(#a1)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="hsl(12,45%,93%)" height="130" rx="6" stroke="var(--accent)" width="130" x="374" y="95"></rect>
+<text fill="var(--accent-deep)" font-size="10.5" font-weight="600" text-anchor="middle" x="439" y="118">Ocena pierwotna</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="439" y="140">rozpoznanie znaczenia:</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="439" y="156">krzywda / strata</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="439" y="170">zagrożenie</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="439" y="184">wyzwanie</text>
+<path d="M504 160 H 554" marker-end="url(#a1)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<rect fill="hsl(150,30%,93%)" height="130" rx="6" stroke="var(--sage)" width="130" x="556" y="95"></rect>
+<text fill="hsl(150,35%,25%)" font-size="10.5" font-weight="600" text-anchor="middle" x="621" y="118">Ocena wtórna</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="621" y="140">ocena możliwości</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="621" y="154">działania:</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="621" y="170">efekt dla stresora</text>
+<text fill="var(--ink-soft)" font-size="9" text-anchor="middle" x="621" y="184">własne możliwości</text>
+<ellipse cx="660" cy="40" fill="hsl(38,65%,88%)" rx="75" ry="28" stroke="var(--gold)"></ellipse>
+<text fill="hsl(38,60%,28%)" font-size="12" font-weight="700" text-anchor="middle" x="660" y="45">COPING</text>
+<path d="M621 225 V 260 H 700 V 68" fill="none" marker-end="url(#ag)" stroke="var(--gold)" stroke-width="1.5"></path>
+<rect fill="var(--paper)" height="55" rx="6" stroke="var(--accent-deep)" stroke-width="1.5" width="130" x="556" y="250"></rect>
+<text fill="var(--ink)" font-size="10" font-weight="600" text-anchor="middle" x="621" y="272">Sposób radzenia</text>
+<text fill="var(--ink)" font-size="10" font-weight="600" text-anchor="middle" x="621" y="285">sobie ze stresem</text>
+<path d="M621 225 V 250" marker-end="url(#a1)" stroke="var(--ink-faint)" stroke-width="2"></path>
+<path d="M556 277 H 374" stroke="var(--ink-faint)" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<text fill="var(--ink-faint)" font-size="8" text-anchor="middle" x="465" y="270">sprzężenie zwrotne do oceny</text>
+<defs>
+<marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--ink-faint)"></path></marker>
+<marker id="ag" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="var(--gold)"></path></marker>
+</defs>
+<text fill="var(--ink-faint)" font-size="9.5" text-anchor="middle" x="130" y="300">Konsekwencje:</text>
+<text fill="var(--sage)" font-size="10" font-weight="600" text-anchor="middle" x="130" y="314">Zdrowie</text>
+<text fill="var(--accent-deep)" font-size="10" font-weight="600" text-anchor="middle" x="230" y="314">/ Dystres</text>
+<path d="M556 290 H 400 Q 130 290 130 240 V 192" fill="none" marker-end="url(#a1)" stroke="var(--ink-faint)" stroke-width="1.5"></path>
+</svg>
+<div class="cap">Model transakcyjny stresu (Sęk, Heszen, 2020, na podstawie: Lazarus, Folkman, 1984) — stres powstaje w procesie oceny sytuacji (ocena pierwotna i wtórna), a sposób radzenia sobie (coping) prowadzi do konsekwencji w postaci zdrowia lub dystresu, z sprzężeniem zwrotnym do kolejnych ocen. Pełne rozwinięcie tego modelu — na Wykładzie 3.</div>
+</div>
+</section>
+<!-- ============ POJĘCIA KLUCZOWE (ŁĄCZONE) ============ -->
+<section class="block" id="pojecia">
+<div class="eyebrow">Do zapamiętania</div>
+<h2>Pojęcia kluczowe</h2>
+<p class="lede">Terminy z obu wykładów — Wykład 1 (podstawy teoretyczne, patogeneza/salutogeneza, pojęcie i modele zdrowia) oraz Wykład 2 (zastosowania, styl życia, zachowania zdrowotne, stres).</p>
+<dl class="glossary">
+<div class="gterm"><dt>Model (nominalny / realny)</dt><dd>Uproszczony układ założeń pozwalający opisać i wyjaśnić zjawisko; nominalny — teoretyczny, niepełnie zweryfikowany; realny — potwierdzony empirycznie (np. model salutogenezy).</dd></div>
+<div class="gterm"><dt>Orientacja / wiedza paradygmatyczna</dt><dd>Spójny zbiór teorii psychologicznych wyjaśniających naturę człowieka i mechanizmy zmiany (np. nurt psychodynamiczny, behawioralno-poznawczy).</dd></div>
+<div class="gterm"><dt>Podejście patogenetyczne</dt><dd>Koncentruje się na przyczynach choroby — etiopatogenezie, patomechanizmie, czynnikach chorobotwórczych.</dd></div>
+<div class="gterm"><dt>Podejście salutogenetyczne</dt><dd>Koncentruje się na czynnikach warunkujących utrzymanie i przywracanie zdrowia (Antonovsky, 1979).</dd></div>
+<div class="gterm"><dt>Model podatność–stres (diateza–stres)</dt><dd>Zaburzenie powstaje w wyniku interakcji indywidualnej podatności (skazy) z działaniem stresora.</dd></div>
+<div class="gterm"><dt>Uogólnione zasoby odpornościowe (GRR)</dt><dd>Biologiczne, psychologiczne i społeczno-kulturowe właściwości jednostki i grupy, warunkujące skuteczne radzenie sobie ze stresorami.</dd></div>
+<div class="gterm"><dt>Poczucie koherencji (SOC)</dt><dd>Trwała, dynamiczna orientacja życiowa składająca się z poczucia zrozumiałości, zaradności i sensowności — „klucz zdrowia” wg Antonovsky'ego.</dd></div>
+<div class="gterm"><dt>Kontinuum zdrowie–choroba (HE–DE)</dt><dd>Zdrowie i choroba jako bieguny jednego wymiaru, a nie kategorie rozłączne.</dd></div>
+<div class="gterm"><dt>Model biomedyczny</dt><dd>Dualizm ciała i psychiki; zdrowie = brak choroby; zdrowie i choroba rozłączne.</dd></div>
+<div class="gterm"><dt>Model biopsychospołeczny</dt><dd>G. Engel — zdrowie/choroba jako system interakcji czynników biologicznych, psychologicznych i społecznych.</dd></div>
+<div class="gterm"><dt>Model holistyczno-funkcjonalny</dt><dd>Zdrowie jako proces dynamicznego równoważenia potrzeb człowieka z wymaganiami środowiska.</dd></div>
+<div class="gterm"><dt>Model socjoekologiczny (mandala zdrowia)</dt><dd>Hierarchiczny system „pól zdrowia” (biologia, zachowania, środowisko fizyczne, środowisko społeczno-kulturowe) wokół jednostki.</dd></div>
+<div class="gterm"><dt>Pola zdrowia (Lalonde)</dt><dd>Cztery obszary determinujące zdrowie: zachowania, środowisko, służba zdrowia, czynniki genetyczne.</dd></div>
+<div class="gterm"><dt>Model dobrostanu psychicznego (Ryff)</dt><dd>Sześć komponentów: samoakceptacja, pozytywne relacje, autonomia, radzenie sobie z otoczeniem, cel życiowy, osobisty rozwój.</dd></div>
+<div class="gterm"><dt>Dobrostan hedonistyczny vs. eudajmonistyczny</dt><dd>Hedonistyczny — bilans emocji pozytywnych/negatywnych i satysfakcja z życia; eudajmonistyczny — pełne wykorzystanie potencjału i sensu (Arystoteles).</dd></div>
+<div class="gterm"><dt>Zdrowie behawioralne</dt><dd>J. Matarazzo (1980) — zachowania sprzyjające zdrowiu podejmowane z własnej inicjatywy jednostki lub grupy.</dd></div>
+<div class="gterm"><dt>Transcendencja</dt><dd>Istota duchowości — aktywność wykraczająca poza granice aktualnie doświadczanego Ja.</dd></div>
+<div class="gterm"><dt>Wartość autoteliczna vs. instrumentalna</dt><dd>Autoteliczna — ceniona sama w sobie; instrumentalna — jako środek do innych celów (np. zdrowie „dla kariery”).</dd></div>
+<div class="gterm"><dt>Homeostaza</dt><dd>Normalny, zrównoważony stan organizmu w ujęciu patogenetycznym; jego zakłócenie przez stresory prowadzi do choroby.</dd></div>
+<div class="gterm"><dt>Ogólna teoria systemów</dt><dd>Bertalanffy (1968) — zjawiska naturalne tworzą hierarchię systemów, z których każdy jest częścią większego systemu i zbiorem systemów podrzędnych; podstawa modelu biopsychospołecznego.</dd></div>
+<div class="gterm"><dt>Konsumeryzm (w opiece zdrowotnej)</dt><dd>Traktowanie pacjenta jako klienta odpowiedzialnego za własne zdrowie; nacisk na wybór i satysfakcję z usług.</dd></div>
+<div class="gterm"><dt>Zdrowie seksualne</dt><dd>Zespół biologicznych, emocjonalnych, intelektualnych i społecznych aspektów życia seksualnego ważnych dla rozwoju osobowości, komunikacji i miłości (WHO, 2001).</dd></div>
+<div class="gterm"><dt>Health for all (WHO)</dt><dd>Strategia obejmująca trzy cele: dodanie lat do życia, dodanie zdrowia do życia (wellbeing), dodanie życia do lat (sens życia, productive life).</dd></div>
+<div class="gterm"><dt>Styl życia</dt><dd>Luźno powiązany zespół zachowań (nawyków i czynności) charakterystyczny dla jednostki lub grupy społecznej, istotny dla zdrowia (Sęk, Heszen, 2020).</dd></div>
+<div class="gterm"><dt>Zachowania zdrowotne</dt><dd>Reaktywne, nawykowe i celowe formy aktywności pozostające w istotnym związku ze zdrowiem (Sęk, 2000). Dzielą się na nawykowe i celowe.</dd></div>
+<div class="gterm"><dt>Gamifikacja (w kontekście zdrowia)</dt><dd>Wykorzystanie mechanizmów gry do motywowania zachowań prozdrowotnych, np. aktywności fizycznej.</dd></div>
+<div class="gterm"><dt>Prewencja pierwszorzędowa / drugorzędowa / trzeciorzędowa</dt><dd>Klasyfikacja poziomów prewencji wg WHO (1957, 2000) — wg etapu, na którym interweniuje się w rozwój choroby.</dd></div>
+<div class="gterm"><dt>Prewencja uniwersalna / selektywna / wskazująca</dt><dd>Klasyfikacja prewencji wg grupy odbiorców (Gordon, 1987; Mrazek, Haggerty, 1994).</dd></div>
+<div class="gterm"><dt>Oddziaływanie instrumentalne vs. ekspresywne</dt><dd>Dwa typy działań w relacji terapeutycznej — instrumentalne wiążą się ściśle z leczeniem, ekspresywne zaspokajają potrzeby psychologiczne pacjenta.</dd></div>
+<div class="gterm"><dt>Autorytet boski / eksperta / terytorialny</dt><dd>Trzy sposoby postrzegania autorytetu personelu medycznego przez pacjenta.</dd></div>
+<div class="gterm"><dt>Ocena pierwotna / wtórna (Lazarus, Folkman)</dt><dd>Dwa etapy poznawczej oceny sytuacji stresowej — ocena znaczenia sytuacji (krzywda/strata, zagrożenie, wyzwanie) i ocena możliwości radzenia sobie.</dd></div>
+<div class="gterm"><dt>Coping</dt><dd>Sposób radzenia sobie ze stresem, kształtowany przez ocenę pierwotną i wtórną sytuacji; prowadzi do zdrowia lub dystresu.</dd></div>
+<div class="gterm"><dt>Definicja skutkowa (funkcjonalna) zachowań zdrowotnych</dt><dd>Zachowanie wyróżnia jego funkcja względem zdrowia — korzystna albo niekorzystna (Dolińska-Zygmunt, 1996).</dd></div>
+<div class="gterm"><dt>Definicja celowościowa zachowań zdrowotnych</dt><dd>Zachowania zdrowotne jako czynności celowo ukierunkowane na zdrowie, zależne od przekonań jednostki (Heszen-Klemens, 1979).</dd></div>
+<div class="gterm"><dt>Druga rewolucja zdrowotna</dt><dd>Określenie (Gniazdowski, 1990) etapu rozwoju nauk o zdrowiu zapoczątkowanego przez badania Alameda Study (1965–1983), które potwierdziły związek stylu życia ze stanem zdrowia.</dd></div>
+<div class="gterm"><dt>Wzór Zachowania A (WZA)</dt><dd>Antyzdrowotny styl życia charakteryzujący się tendencją do rywalizacji, nastawieniem na sukces zawodowy, pośpiechem i korzystaniem z używek.</dd></div>
+<div class="gterm"><dt>Ogólny zespół adaptacyjny (GAS)</dt><dd>Hans Selye — niespecyficzna reakcja organizmu na stresory, obejmująca stadium reakcji alarmowej, odporności i wyczerpania.</dd></div>
+<div class="gterm"><dt>Transakcja (w teorii stresu Lazarusa)</dt><dd>Wzajemne oddziaływanie jednostki i kontekstu sytuacyjnego, tworzące całość nieredukowalną do sumy elementów składowych.</dd></div>
+<div class="gterm"><dt>Ocena pierwotna: krzywda/strata, zagrożenie, wyzwanie</dt><dd>Trzy sposoby oceny transakcji stresowej w modelu Lazarusa i Folkman, każdy z charakterystycznym zestawem emocji.</dd></div>
+</dl>
+</section>
+<!-- ============ SPRAWDŹ SIĘ (ŁĄCZONE) ============ -->
+<section class="block" id="sprawdz-sie">
+<div class="eyebrow">Samosprawdzian</div>
+<h2>Sprawdź się</h2>
+<h3>Podstawy teoretyczne i patogeneza/salutogeneza</h3>
+<p class="fiszki-link">Pytania sprawdzające <a href="fiszki.html">Fiszki</a></p>
+<h3>Pojęcie zdrowia</h3>
+<h3>Modele zdrowia</h3>
+<h3>Treści z wykładu</h3>
+<h3>Zastosowania, prewencja i relacja pacjent–system (treści z wykładu)</h3>
+<h3>Treści z literatury (Heszen, Sęk, 2007)</h3>
+</section>
+<nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-1.html"><span>Poprzednia</span><b>Wykład 1</b><i>Podstawy teoretyczne i modele zdrowia</i></a><span></span></nav></main>
+<footer>
+  Notatki opracowane na podstawie: Cierpiałkowska, L., Sęk, H. (2016). <em>Psychologia kliniczna</em>. Warszawa: PWN (Cz. 1, r. 2)  ·  Heszen-Celińska, I., Sęk, H. (2020). <em>Psychologia zdrowia</em>. Wydanie nowe. Warszawa: PWN (r. 3, 4, 5)  ·  Heszen, I., Sęk, H. (2007). <em>Psychologia zdrowia</em>. Warszawa: PWN (r. 6 „Behawioralne uwarunkowania zdrowia i choroby”, r. 9 „Zdrowie i choroba w paradygmacie stresu psychologicznego”). Rozdziały o promocji/prewencji (Cierpiałkowska, Sęk, 2016, r. 30) i relacji pacjent–lekarz (Heszen-Celińska, Sęk, 2020, r. 15, 17) — do dołączenia po otrzymaniu tych fragmentów osobno.<br/>
+  Psychologia kliniczna i zdrowia · Wykłady 1–2 · dr Agnieszka Mościcka-Teske · SWPS Poznań, sem. 3
+</footer>
+<script data-back="./" data-back-label="Kliniczna" data-home="../" src="../assets/reader.js"></script></body>
+</html>
