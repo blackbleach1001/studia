@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Metodologia — trening</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9; --ink:#2b2118; --ink-soft:#5a4a3c; --line:#e8dfd2; --card:#ffffff;
+  --acc:hsl(150,26%,44%); --acc-dark:hsl(150,28%,30%); --acc-soft:hsl(150,26%,93%); --acc-mid:hsl(150,24%,82%);
+  --bad:hsl(12,45%,50%); --bad-soft:hsl(12,50%,95%); --gold:hsl(36,48%,54%); --gold-soft:hsl(36,60%,94%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:22px 16px 60px}
+h1{font-family:"Playfair Display",Georgia,serif;font-size:1.9rem;margin:.1em 0 .1em;line-height:1.15}
+.kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-dark)}
+.sub{color:var(--ink-soft);font-style:italic;margin:0 0 16px;font-size:.95rem}
+.tabs{display:flex;gap:6px;margin:0 0 12px;position:sticky;top:0;background:var(--paper);padding:8px 0;z-index:5;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;font-family:"Playfair Display",serif;font-size:1rem;padding:9px 8px;border-radius:99px;border:1.5px solid var(--acc);background:transparent;color:var(--acc-dark);cursor:pointer}
+.tabs button.on{background:var(--acc-dark);border-color:var(--acc-dark);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 16px;align-items:center}
+.chips .lbl{font-size:.78rem;color:var(--ink-soft);margin-right:2px}
+.chip{font-family:system-ui,sans-serif;font-size:.8rem;padding:4px 11px;border-radius:99px;border:1px solid var(--acc-mid);background:var(--acc-soft);color:var(--acc-dark);cursor:pointer}
+.chip.off{background:#fff;color:var(--ink-soft);border-color:var(--line);text-decoration:line-through}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;box-shadow:0 1px 0 rgba(43,33,24,.04)}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--ink-soft);font-family:system-ui,sans-serif;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+.bar{height:6px;background:var(--acc-soft);border-radius:99px;overflow:hidden;margin:0 0 16px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s}
+.tag{font-size:.7rem;font-family:system-ui,sans-serif;padding:1px 8px;border-radius:99px;border:1px solid var(--acc-mid);background:var(--acc-soft);color:var(--acc-dark)}
+.flag{font-size:.72rem;font-family:system-ui,sans-serif;padding:1px 8px;border-radius:99px;background:var(--gold-soft);border:1px solid hsl(36,48%,78%);color:hsl(36,50%,30%)}
+.q{font-family:"Playfair Display",serif;font-size:1.25rem;line-height:1.3;margin:0 0 16px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;font:inherit;font-size:1rem;padding:11px 14px;border-radius:9px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.opt:hover:not(:disabled){border-color:var(--acc)}
+.opt .k{font-family:system-ui,sans-serif;font-size:.8rem;font-weight:600;color:var(--acc-dark);background:var(--acc-soft);border-radius:5px;padding:1px 7px;margin-top:2px}
+.opt.ok{border-color:var(--acc);background:var(--acc-soft)}
+.opt.no{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.fb{margin-top:14px;padding:11px 14px;border-radius:0 9px 9px 0;font-size:.96rem}
+.fb.ok{background:var(--acc-soft);border-left:4px solid var(--acc)}
+.fb.no{background:var(--bad-soft);border-left:4px solid var(--bad)}
+.fb.flagnote{background:var(--gold-soft);border-left:4px solid var(--gold);margin-top:8px}
+.row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:system-ui,sans-serif;font-size:.9rem;padding:10px 16px;border-radius:99px;border:1.5px solid var(--acc-dark);background:var(--acc-dark);color:#fff;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--acc-dark)}
+.btn.warn{background:var(--bad);border-color:var(--bad)}
+.btn.mid{background:var(--gold);border-color:var(--gold)}
+.btn:disabled{opacity:.4;cursor:default}
+textarea{width:100%;min-height:110px;font:inherit;font-size:1rem;padding:10px 12px;border-radius:9px;border:1.5px solid var(--line);background:#fffefb;color:var(--ink);resize:vertical}
+textarea:focus{outline:none;border-color:var(--acc)}
+.model{margin-top:14px;background:var(--acc-soft);border-left:4px solid var(--acc);border-radius:0 9px 9px 0;padding:12px 14px}
+.model h4{margin:0 0 6px;font-family:"Playfair Display",serif;font-size:1rem;color:var(--acc-dark)}
+.model ul{margin:6px 0 0;padding-left:0;list-style:none}
+.model li{margin:4px 0;display:flex;gap:8px;align-items:flex-start}
+.model input{margin-top:5px;accent-color:var(--acc-dark)}
+.yours{margin-top:10px;font-size:.92rem;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:10px;white-space:pre-wrap}
+.card3d{perspective:1200px;cursor:pointer;margin:4px 0 0}
+.flip{position:relative;min-height:240px;transition:transform .45s;transform-style:preserve-3d}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:22px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--line);background:#fff}
+.face.back{transform:rotateY(180deg);background:var(--acc-soft);border-color:var(--acc-mid);text-align:left;align-items:stretch}
+.face .term{font-family:"Playfair Display",serif;font-size:1.55rem;line-height:1.25}
+.face .hint{position:absolute;bottom:10px;font-size:.75rem;color:var(--ink-soft);font-family:system-ui,sans-serif;left:0;right:0;text-align:center}
+.face .def{font-size:1.02rem}
+.summary{text-align:center}
+.big{font-family:"Playfair Display",serif;font-size:3rem;color:var(--acc-dark);line-height:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.stat{background:var(--acc-soft);border-radius:9px;padding:10px;text-align:center}
+.stat b{display:block;font-family:"Playfair Display",serif;font-size:1.5rem;color:var(--acc-dark)}
+.stat span{font-size:.78rem;font-family:system-ui,sans-serif;color:var(--ink-soft)}
+.review{text-align:left;margin-top:14px}
+.review div{border-top:1px dashed var(--line);padding:8px 0;font-size:.92rem}
+.small{font-size:.8rem;color:var(--ink-soft);font-family:system-ui,sans-serif}
+.kbd{font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);margin-top:12px;text-align:center}
+footer{margin-top:28px;font-size:.78rem;color:var(--ink-soft);text-align:center}
+@media (max-width:480px){.tabs button{font-size:.88rem;padding:8px 4px;white-space:nowrap}.q{font-size:1.12rem}.face .term{font-size:1.3rem}.stats{gap:6px}}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style></head>
+<body>
+<div class="wrap">
+<div class="kicker">Semestr 3 · Podstawy metodologii i statystyki</div>
+<h1>Trening: test, pytania otwarte, fiszki</h1>
+<p class="sub">W1 psychologia jako nauka · C1 proces badawczy i Jamovi · W2 konceptualizacja i pomiar · zasady zaliczenia</p>
+<div class="tabs" role="tablist">
+<button class="on" data-mode="test">Test</button>
+<button data-mode="open">Pytania otwarte</button>
+<button data-mode="cards">Fiszki</button>
+</div>
+<div class="chips" id="chips"></div>
+<div class="panel" id="panel"></div>
+<footer>Bank pytań oparty na: slajdach W1 (E. Brygoła) i C1 (T. Godlewski), Józefacka t. 1 (s. 9–17, 64–72, 105–114), Bedyńska rozdz. 2 i 4, Babbie rozdz. 5, sylabusie 2026/27. Postęp zapisuje się w tej przeglądarce.</footer>
+</div>
+<script>
+const PARTS={W1:"Wykład 1",C1:"Ćwiczenia 1",W2:"Wykład 2",ZAL:"Zaliczenie"};
+
+/* ---------- TEST: jednokrotny wybór ---------- */
+const MCQ=[
+{p:"ZAL",q:"Ile punktów trzeba zdobyć na egzaminie testowym, żeby go zaliczyć?",o:["21 z 40","20 z 40","25 z 40","Wystarczy suma 50,5% ze wszystkich elementów"],a:0,e:"Egzamin: 40 pkt, próg 21. Kolokwium praktyczne: 40 pkt, próg 20. Każdy element trzeba zaliczyć osobno."},
+{p:"ZAL",q:"Co się stanie, jeśli do zadania domowego nie dołączysz raportu z programu statystycznego?",o:["Punkty za zadanie nie zostaną przyznane","Dostaniesz połowę punktów","Odejmą 1 pkt za każdy dzień","Nic — raport jest dobrowolny"],a:0,e:"Sylabus: punkty liczą się tylko, jeśli w załączniku jest raport z programu z właściwymi analizami."},
+{p:"ZAL",q:"Jak liczy się spóźnienie z zadaniem domowym?",o:["−1 pkt za każdy dzień","Zadanie nie jest przyjmowane","−5 pkt jednorazowo","Spóźnienie nie wpływa na punkty"],a:0,e:"2 tygodnie na wykonanie, potem −1 pkt za każdy dzień spóźnienia. Każde zadanie musi mieć co najmniej 5/10 pkt."},
+
+{p:"W1",q:"Kto wprowadził zasadę falsyfikowalności?",o:["Karl Popper","Thomas Kuhn","Abraham Kaplan","Carl Hempel"],a:0,e:"Popper: musi istnieć możliwość wykazania, że hipoteza jest nieprawdziwa."},
+{p:"W1",q:"Indukcja to wnioskowanie…",o:["od szczegółu do ogółu","od ogółu do szczegółu","wyłącznie z aksjomatów","oparte na normach i powinnościach"],a:0,e:"Indukcja: wiele przypadków → uogólnienie. Problem: działa post factum, nie daje pewności."},
+{p:"W1",q:"Jaki jest główny problem dedukcji według wykładu?",o:["Logicznie poprawny wniosek bywa fałszywy, gdy przesłanki są fałszywe","Działa wyłącznie post factum","Wymaga zgromadzenia bardzo wielu obserwacji","Nie da się jej użyć w badaniach empirycznych"],a:0,e:"„Cały szkopuł” to prawdziwość przesłanek. Post factum i liczba obserwacji to problemy indukcji."},
+{p:"W1",q:"Który z poniższych NIE jest jednym z czterech celów naukowych psychologii?",o:["Ocena moralna zachowań","Opis","Przewidywanie","Aplikacja"],a:0,e:"Cele: opis, wyjaśnienie, przewidywanie, aplikacja."},
+{p:"W1",q:"Nauki formalne (np. matematyka) wychodzą od:",o:["aksjomatów i działają dedukcyjnie","obserwacji i hipotez","danych z badań","wariancji prób"],a:0,e:"Empiryczne wychodzą od wiedzy z badań lub założeń (nie aksjomatów) i weryfikują hipotezy przez obserwację."},
+{p:"W1",q:"Teoria strun została na wykładzie podana jako przykład:",o:["dedukcji niekompletnej","indukcji niekompletnej","teorii w pełni zweryfikowanej","paradygmatu psychologicznego"],a:0,e:"Spójna logicznie, ale jej kluczowe twierdzenia są niedostępne doświadczeniu → hipoteza, nie teoria empiryczna."},
+{p:"W1",q:"„Skamieniałości” Beringera (Vis Plastica) to przykład:",o:["indukcji niekompletnej","dedukcji niekompletnej","falsyfikacji","replikacji"],a:0,e:"Własna interpretacja obserwacji bez weryfikacji ani falsyfikacji."},
+{p:"W1",q:"Które twierdzenie jest falsyfikowalne?",o:["Przed egzaminem lęk zdających jest wyższy niż po egzaminie","Przed egzaminem energia umysłowa zdającego i egzaminatora łączą się w fuzję","Osoba przystępuje do egzaminu, gdy musi","Wszystko dzieje się z jakiegoś powodu"],a:0,e:"Lęk można zmierzyć przed i po. Jeśli po egzaminie nie będzie niższy, hipoteza upada."},
+{p:"W1",q:"Paradygmat to:",o:["zestaw pojęć i zależności między nimi, który zapoczątkowuje cykl badań","zbiór hipotez dotyczących jednego zjawiska","pojedyncza potwierdzona hipoteza","twierdzenie normatywne"],a:0,e:"Model teoretyczny to zbiór hipotez; postulat to twierdzenie normatywne."},
+{p:"W1",q:"Model teoretyczny to:",o:["zbiór hipotez dotyczących zjawiska i jego uwarunkowań i/lub konsekwencji","teoria, która przeszła falsyfikację","zestaw aksjomatów","definicja operacyjna zmiennej"],a:0,e:"Po weryfikacji i falsyfikacji: potwierdzony → teoria naukowa; odrzucony → nienaukowy."},
+{p:"W1",q:"Postulat to:",o:["twierdzenie normatywne — co powinno być","hipoteza sprawdzana empirycznie","prawo przyrody","wniosek z indukcji"],a:0,e:"Prawo jest nauką normatywną. Hipoteza ≠ założenie ≠ postulat."},
+{p:"W1",q:"Dlaczego przesłanki w psychologii nie mają statusu praw przyrody?",o:["Opierają się na wariancji prób i błędzie pomiaru albo są założeniem","Psychologia nie używa logiki","Bo psychologia jest nauką formalną","Bo nie wolno w niej stawiać hipotez"],a:0,e:"Dlatego wniosek z takich przesłanek jest hipotezą wymagającą weryfikacji."},
+{p:"W1",q:"Hipoteza: „Wrażliwość na cudze cierpienie warunkuje wypalenie zawodowe u pielęgniarek”. Co jest tu stałą?",o:["Zawód — pielęgniarki","Wrażliwość na cudze cierpienie","Wypalenie zawodowe","Nie ma stałej"],a:0,e:"Wszyscy badani są pielęgniarkami, więc w tym zbiorze zawód przyjmuje jedną wartość."},
+{p:"W1",q:"Zmienna to właściwość, która:",o:["przyjmuje co najmniej dwie wartości","przyjmuje dokładnie dwie wartości","jest zawsze liczbowa","nie zmienia się w populacji"],a:0,e:"Jeśli w badanym zbiorze ma jedną wartość, jest stałą."},
+{p:"W1",q:"Efekt Dunninga-Krugera to:",o:["przecenianie swoich umiejętności w dziedzinie, w której nie ma się kwalifikacji","preferowanie informacji zgodnych z poglądami","nieufność wobec nowych informacji","przecenianie redukcji ryzyka do zera"],a:0,e:"Pozostałe opcje: efekt potwierdzenia, błąd konserwatyzmu, błąd zerowego ryzyka."},
+{p:"W1",q:"Co według Józefackiej odróżnia naukę od pseudonauki?",o:["Prawdziwość przesłanek, na których opiera się wnioskowanie","Używanie słowa „badanie”","Formułowanie przewidywań","Liczba zwolenników"],a:0,e:"Pseudonauka też przewiduje i używa naukowego słownictwa, ale brak jej potwierdzonych faktów i sprawdzalnych hipotez."},
+{p:"W1",q:"Replikacja to:",o:["dokładne powtórzenie procedury badania, by sprawdzić, czy wynik się odtworzy","zebranie nowych danych na innym temacie","poprawienie błędów w bazie","opublikowanie wyników w drugim czasopiśmie"],a:0,e:"Dlatego opis metody musi być precyzyjny jak przepis."},
+{p:"W1",q:"Sceptycyzm naukowy w nadmiarze:",o:["blokuje rozwój nauki","otwiera drogę pseudonauce","jest zawsze pożądany","nie ma wpływu na naukę"],a:0,e:"Jak cukier w cieście: nadmiar blokuje rozwój, brak otwiera drogę pseudonauce."},
+
+{p:"C1",q:"Hipoteza ma formę:",o:["zdania twierdzącego","pytania","polecenia","definicji operacyjnej"],a:0,e:"Pytanie: czego chcemy się dowiedzieć. Hipoteza: czego się spodziewamy."},
+{p:"C1",q:"Który krok procesu badawczego następuje bezpośrednio po hipotezie?",o:["Zmienne (operacjonalizacja)","Zebranie danych","Test statystyczny","Wniosek"],a:0,e:"Pytanie → hipoteza → zmienne → dane → test → wynik → wniosek."},
+{p:"C1",q:"„Czy ekstrawertycy mają więcej bliskich znajomych niż introwertycy?” to pytanie o:",o:["różnice między grupami","związek dwóch zmiennych ilościowych","opis jednej zmiennej","rzetelność narzędzia"],a:0,e:"Dwie grupy porównywane pod względem liczby znajomych."},
+{p:"C1",q:"Odwróć odpowiedź 2 na skali 1–7.",o:["6","5","2","7"],a:0,e:"(1 + 7) − 2 = 6."},
+{p:"C1",q:"PSS ma skalę 0–4. Ile wynosi odwrócona odpowiedź 1?",o:["3","5","4","1"],a:0,e:"(0 + 4) − 1 = 3. Wzór „(liczba stopni + 1) − x” dałby 5 — błąd przy skali od zera."},
+{p:"C1",q:"Jaką formułę wpiszesz w Jamovi, żeby odwrócić SWLS3 (skala 1–7)?",o:["8 - $source","7 - $source","$source - 8","6 - $source"],a:0,e:"min + max = 8. $source to wartość ze zmiennej źródłowej."},
+{p:"C1",q:"W Jamovi liczysz MEAN(SWLS1, …, SWLS5). Osoba ma brak na jednej pozycji. Co dostanie domyślnie?",o:["Puste pole (brak wyniku)","Średnią z czterech odpowiedzi","Zero","Średnią z pięciu, z brakiem liczonym jako 0"],a:0,e:"Domyślnie Jamovi nie liczy przy brakach. ignore_missing=1 zmienia to zachowanie. SPSS liczy MEAN z ważnych."},
+{p:"C1",q:"W bazie danych:",o:["kolumna = zmienna, wiersz = obserwacja","kolumna = osoba, wiersz = zmienna","każdy pomiar tej samej osoby to nowy wiersz","każda skala to osobny plik"],a:0,e:"Jedna osoba = jeden wiersz, nawet przy pomiarze powtarzanym."},
+{p:"C1",q:"Wykształcenie (podstawowe / średnie / wyższe) to zmienna:",o:["porządkowa","nominalna","ilościowa","dychotomiczna"],a:0,e:"Kategorie mają kolejność, ale nie równe odstępy."},
+{p:"C1",q:"Co robisz z plikiem danych surowych?",o:["Zapisujesz w kilku miejscach i nigdy na nim nie pracujesz","Nadpisujesz go rekodowaniem","Usuwasz po utworzeniu wskaźników","Liczysz na nim analizy"],a:0,e:"Analizy robisz na kopii roboczej."},
+{p:"C1",q:"Dlaczego „Rekoduj na inne zmienne” jest bezpieczniejsze niż „na te same”?",o:["Bo zachowuje oryginalne odpowiedzi","Bo działa szybciej","Bo liczy alfę Cronbacha","Bo usuwa braki danych"],a:0,e:"„Na te same” nadpisuje dane surowe."},
+{p:"C1",q:"Skala odpowiedzi 1–5. Który kod najlepiej nadaje się na brak danych?",o:["9","0","3","5"],a:0,e:"Kod musi leżeć poza zakresem możliwych wartości."},
+{p:"C1",q:"Osoby z wysokimi dochodami częściej odmawiają podania dochodu. To mechanizm:",o:["MNAR","MCAR","MAR","listwise"],a:0,e:"Brak zależy od wartości samej zmiennej."},
+{p:"C1",q:"Mężczyźni częściej pomijają pytanie o lęk przed katastrofą. To mechanizm:",o:["MAR","MNAR","MCAR","replikacja"],a:0,e:"Brak zależy od innej zmiennej (płci), a nie od poziomu lęku."},
+{p:"C1",q:"Który mechanizm braków danych można sprawdzić testem statystycznym?",o:["MCAR","MAR","MNAR","Żaden"],a:0,e:"Tylko MCAR."},
+{p:"C1",q:"Co jest ryzykiem przy formule mean(sat1 to sat5r) w SPSS?",o:["Wejdą wszystkie zmienne leżące w bazie między sat1 a sat5r, także nieodwrócone","Formuła liczy tylko dwie zmienne","SPSS nie zna słowa „to”","Wynik zawsze będzie sumą"],a:0,e:"„to” bierze cały zakres kolumn w bazie."},
+{p:"C1",q:"Podejrzanie niska alfa Cronbacha najczęściej oznacza, że:",o:["pozycje odwrócone nie zostały zrekodowane","baza ma za dużo osób","skala ma za mało stopni","dane są na skali ilorazowej"],a:0,e:"Józefacka: nieodwrócona punktacja wychodzi w analizie rzetelności."},
+
+{p:"W2",q:"Traktowanie pojęcia (konstruktu) jak rzeczy realnie istniejącej to:",o:["reifikacja","operacjonalizacja","konceptualizacja","falsyfikacja"],a:0,e:"Babbie: pułapka szukania „prawdziwego” znaczenia uprzedzeń czy współczucia."},
+{p:"W2",q:"IQ w klasyfikacji Kaplana to przykład:",o:["konstruktu","przedmiotu bezpośrednio obserwowalnego","przedmiotu pośrednio obserwowalnego","definicji realnej"],a:0,e:"Konstruowany z odpowiedzi na wiele pytań; nikt nie obserwuje IQ bezpośrednio."},
+{p:"W2",q:"Która definicja prowadzi do reifikacji i jest bezużyteczna w badaniach?",o:["Realna","Nominalna","Operacyjna","Robocza"],a:0,e:"Realna próbuje uchwycić „zasadniczą naturę” bytu (Hempel)."},
+{p:"W2",q:"Właściwa kolejność to:",o:["konceptualizacja → definicja nominalna → definicja operacyjna → pomiar","definicja operacyjna → konceptualizacja → pomiar → definicja nominalna","pomiar → konceptualizacja → definicja nominalna → definicja operacyjna","definicja nominalna → pomiar → konceptualizacja → definicja operacyjna"],a:0,e:"Schemat Babbiego od ogólnego pojęcia do pomiaru."},
+{p:"W2",q:"Wskaźnik w ujęciu Babbiego to:",o:["znak obecności lub nieobecności badanego pojęcia","dający się wyszczególnić aspekt pojęcia","definicja nominalna","poziom pomiaru"],a:0,e:"Aspekt pojęcia to wymiar."},
+{p:"W2",q:"Wartości zmiennej muszą być:",o:["wyczerpujące i wzajemnie rozłączne","liczbowe i ciągłe","dychotomiczne","ilorazowe"],a:0,e:"Każda obserwacja ma swoją kategorię i tylko jedną."},
+{p:"W2",q:"Temperatura w stopniach Celsjusza jest mierzona na skali:",o:["interwałowej","ilorazowej","porządkowej","nominalnej"],a:0,e:"Równe odstępy, brak zera bezwzględnego (0°C nie oznacza braku temperatury)."},
+{p:"W2",q:"Liczba dzieci w rodzinie to zmienna:",o:["ilorazowa (dyskretna)","interwałowa (ciągła)","porządkowa","nominalna"],a:0,e:"Ma zero bezwzględne i tylko wartości całkowite."},
+{p:"W2",q:"Kolejność na mecie (pierwszy, drugi, trzeci) to skala:",o:["porządkowa","interwałowa","ilorazowa","nominalna"],a:0,e:"Wiemy, kto był przed kim, ale nie o ile."},
+{p:"W2",q:"Region pochodzenia (północny wschód, środkowy zachód…) to skala:",o:["nominalna","porządkowa","interwałowa","ilorazowa"],a:0,e:"Kategorie bez porządku."},
+{p:"W2",q:"Które pytanie odpowiada skali interwałowej?",o:["O ile?","Ile razy?","Kto? Co?","Na której pozycji?"],a:0,e:"Kto/co — nominalna; pozycja — porządkowa; ile razy — ilorazowa."},
+{p:"W2",q:"Zero bezwzględne ma skala:",o:["ilorazowa","interwałowa","porządkowa","każda skala ilościowa"],a:0,e:"0 = całkowity brak cechy, brak wartości ujemnych."},
+{p:"W2",q:"Odpowiedź na pojedyncze pytanie w skali Likerta jest na skali:",o:["porządkowej","interwałowej","ilorazowej","nominalnej"],a:0,e:"Jako interwałową traktuje się dopiero sumę lub średnią z całej skali."},
+{p:"W2",q:"Sumy głosów: Morze 6, Miasto 6, Pustynia 3, Góry 1. Jakie rangi wiązane?",o:["1,5 · 1,5 · 3 · 4","1 · 1 · 2 · 3","1,5 · 1,5 · 2 · 3","1 · 2 · 3 · 4"],a:0,e:"Remis dostaje średnią z rang (1 + 2)/2. Następna ranga to 3, nie 2."},
+{p:"W2",q:"Zmienna dychotomiczna to zmienna:",o:["o dwóch kategoriach","o trzech lub więcej kategoriach","ilorazowa","bez kategorii"],a:0,e:"Więcej kategorii — politomiczna."},
+{p:"W2",q:"Które przekształcenie poziomu pomiaru jest możliwe?",o:["Wiek w latach → młodzi / starsi","Młodzi / starsi → wiek w latach","Płeć → zmienna ilorazowa","Ranga → dokładny wynik"],a:0,e:"Tylko w dół — dyskretyzacja (kategoryzacja)."},
+{p:"W2",q:"Waga łazienkowa zawsze pokazuje o 3 kg za mało. Jest:",o:["rzetelna, ale nietrafna","trafna, ale nierzetelna","rzetelna i trafna","ani rzetelna, ani spójna"],a:0,e:"Ten sam wynik za każdym razem, ale systematycznie błędny (obciążenie)."},
+{p:"W2",q:"Ten sam kwestionariusz po 3 miesiącach dał zupełnie inne odpowiedzi (HHA). Którą metodą sprawdzano rzetelność?",o:["testu powtórnego","połówkową","trafności fasadowej","kryterialną"],a:0,e:"Tylko 15% badanych podało te same informacje."},
+{p:"W2",q:"Egzamin wstępny dobrze przewiduje późniejsze wyniki na studiach. To trafność:",o:["kryterialna (predykcyjna)","treściowa","fasadowa","teoretyczna"],a:0,e:"Opiera się na kryterium zewnętrznym."},
+{p:"W2",q:"Test z matematyki sprawdza tylko dodawanie. Jakiej trafności brakuje?",o:["treściowej","kryterialnej","fasadowej","teoretycznej"],a:0,e:"Nie obejmuje całego zakresu znaczeń pojęcia."},
+{p:"W2",q:"Miernik satysfakcji z małżeństwa nie wiąże się z wiernością, choć teoria tego wymaga. Co to podważa?",o:["trafność teoretyczną","trafność fasadową","rzetelność połówkową","precyzję"],a:0,e:"Miernik nie zachowuje się zgodnie z teorią w relacji do innych zmiennych."},
+{p:"W2",q:"Opis „urodzona w Stowe w Vermoncie” dla osoby urodzonej w Bostonie jest:",o:["precyzyjny, ale niepoprawny","poprawny, ale nieprecyzyjny","precyzyjny i poprawny","rzetelny i trafny"],a:0,e:"Precyzja ≠ poprawność."},
+{p:"W2",q:"Według Babbiego techniki ilościowe w porównaniu z jakościowymi są zwykle:",o:["bardziej rzetelne, mniej trafne","bardziej trafne, mniej rzetelne","bardziej rzetelne i bardziej trafne","mniej rzetelne i mniej trafne"],a:0,e:"Napięcie między rzetelnością a trafnością. Rozwiązanie: mierzyć pojęcie na kilka sposobów."},
+{p:"W2",q:"Twórcą socjologicznego pojęcia anomii jest:",o:["Émile Durkheim","Leo Srole","Robert Merton","Elwin Powell"],a:0,e:"Durkheim, Samobójstwo (1897). Merton je rozwinął, Srole zoperacjonalizował skalą 5 stwierdzeń."},
+{p:"W2",q:"Zasada wzajemnej wymienialności wskaźników mówi, że:",o:["różne wskaźniki tego samego pojęcia powinny dawać ten sam wzorzec wyników","każdy wskaźnik można zastąpić definicją realną","wskaźniki muszą być identyczne w każdym badaniu","wystarczy jeden wskaźnik na pojęcie"],a:0,e:"Jeśli wyniki się różnią, wskaźniki mierzą pewnie różne wymiary."},
+{p:"W2",q:"Według tabeli 2.5 Józefackiej średnią można policzyć dla skali:",o:["tylko stosunkowej (ilorazowej)","interwałowej i stosunkowej","każdej ilościowej i porządkowej","nominalnej"],a:0,f:"Pytanie niejednoznaczne. Tabela 2.5 przypisuje średnią tylko skali stosunkowej. W standardowym ujęciu (Stevens) średnia jest dozwolona już od skali interwałowej — tak liczy się średnie z kwestionariuszy i IQ. Na egzaminie dopytaj prowadzącą, której wersji się trzyma.",e:"Odpowiedź według dosłownej treści tabeli."}
+];
+
+/* ---------- PYTANIA OTWARTE ---------- */
+const OPEN=[
+{p:"W1",q:"Wyjaśnij różnicę między indukcją a dedukcją i podaj główny problem każdej z nich.",m:"Indukcja idzie od szczegółu do ogółu: z wielu przypadków uogólniamy. Dedukcja idzie od ogółu do szczegółu: z przesłanek wyprowadzamy wniosek.",k:["Indukcja: od szczegółu do ogółu","Problem indukcji: działa post factum, potrzeba wielu dowodów, brak pewności","Dedukcja: od ogółu do szczegółu, z przesłanek","Problem dedukcji: poprawny logicznie wniosek bywa fałszywy przy fałszywych przesłankach"]},
+{p:"W1",q:"Jak dedukcja i indukcja łączą się w badaniach empirycznych? Podaj przykłady z wykładu.",m:"Dedukcja: teoria → hipotezy → obserwacje (Eysenck). Indukcja: obserwacje → interpretacje → teoria (Wielka Piątka, Costa i McCrae). W praktyce przeplatają się w cyklu: teoria-matka rodzi teorie-córki.",k:["Dedukcja top-down: teoria → hipotezy → obserwacje","Indukcja bottom-up: obserwacje → interpretacje → teoria","Przykłady: Eysenck (dedukcja), Costa i McCrae (indukcja)","Cykl: obie metody się przeplatają"]},
+{p:"W1",q:"Czym różnią się nauki formalne od empirycznych? Dlaczego wniosek w psychologii jest hipotezą, a w fizyce nie musi nim być?",m:"Formalne wychodzą od aksjomatów i działają dedukcyjnie. Empiryczne wychodzą od wiedzy z badań lub założeń i weryfikują hipotezy obserwacją. Przesłanki w fizyce mają status praw przyrody, a w psychologii opierają się na wariancji prób i błędzie pomiaru albo są założeniem.",k:["Formalne: aksjomaty + wnioskowanie logiczne","Empiryczne: wiedza z badań / założenia + obserwacja","Fizyka: przesłanki = prawa przyrody","Psychologia: wariancja prób, błąd pomiaru lub założenie → wniosek to hipoteza"]},
+{p:"W1",q:"Na czym polega zasada falsyfikowalności? Podaj jedno twierdzenie falsyfikowalne i jedno niefalsyfikowalne.",m:"Popper: musi istnieć empiryczna możliwość wykazania, że hipoteza jest fałszywa. Falsyfikowalne: „lęk przed egzaminem jest wyższy niż po nim”. Niefalsyfikowalne: „energia umysłowa zdającego i egzaminatora łączy się w fuzję”.",k:["Autor: Karl Popper","Musi istnieć możliwość obalenia hipotezy","Przykład falsyfikowalny z mierzalnymi zmiennymi","Przykład niefalsyfikowalny bez możliwego pomiaru"]},
+{p:"W1",q:"Wymień i krótko opisz cztery cele naukowe psychologii.",m:"Opis (jak funkcjonuje człowiek), wyjaśnienie (przyczyny wewnętrzne i zewnętrzne), przewidywanie (co się stanie, gdy mechanizmy zadziałają), aplikacja (skuteczne oddziaływania w praktyce).",k:["Opis","Wyjaśnienie","Przewidywanie","Aplikacja"]},
+{p:"W1",q:"Wymień co najmniej pięć cech pseudonauki.",m:"Manipuluje wiedzą (anegdota, autorytet), jest niefalsyfikowalna, uproszczona i uogólniająca, wszechwiedząca, unika recenzji, czuje się prześladowana, czuje się wyjątkowa („wiedza tajemna”), agresywna, stagnuje, głosi obalone koncepcje, nie rozwiązuje problemów, ignoruje metodologię.",k:["Manipulacja wiedzą / anegdota zamiast danych","Niefalsyfikowalność","Uproszczenia, brak miejsca na niepewność","Unikanie recenzji, odrzucanie krytyki","Poczucie wyjątkowości lub prześladowania"]},
+{p:"W1",q:"W hipotezie „U osób adoptowanych poziom unikowego stylu przywiązania koreluje z satysfakcją z relacji romantycznej w dorosłości” wskaż zmienne i stałe.",m:"Zmienne: unikowy styl przywiązania, satysfakcja z relacji. Stałe: adopcja w dzieciństwie, dorosłość, pośrednio bycie w relacji romantycznej.",k:["Zmienna: unikowy styl przywiązania","Zmienna: satysfakcja z relacji","Stała: adopcja","Stała: dorosłość (i bycie w relacji)"],f:"Odpowiedź z mojej analizy ćwiczenia ze slajdu — sprawdź z prowadzącą."},
+{p:"W1",q:"Czym jest dowód anegdotyczny i dlaczego nie wystarcza w nauce?",m:"To pojedyncze doświadczenie własne lub cudze („mnie pomogło”). Może być inspiracją, ale nie dowodem. Zamiast niego potrzebna jest obserwacja systematyczna lub model eksperymentalny.",k:["Pojedyncze, przypadkowe doświadczenie","Inspiracja, nie dowód","Alternatywa: obserwacja systematyczna / eksperyment"]},
+
+{p:"C1",q:"Wymień kolejne kroki procesu badawczego.",m:"Pytanie badawcze → hipoteza → zmienne (operacjonalizacja) → zebranie danych → test statystyczny → wynik testu (istotność statystyczna) → wniosek (przyjęcie / odrzucenie hipotezy).",k:["Pytanie → hipoteza","Zmienne / operacjonalizacja","Zebranie danych","Test → wynik → wniosek"]},
+{p:"C1",q:"Sformułuj hipotezę do pytania „Czy jakość snu wiąże się z poziomem stresu?”, wskaż zmienne i ich poziom pomiaru.",m:"Im lepsza jakość snu, tym niższy poziom stresu. Zmienne: jakość snu i poziom stresu — obie ilościowe (np. wynik kwestionariusza).",k:["Zdanie twierdzące „im… tym…”","Zmienna: jakość snu","Zmienna: poziom stresu","Obie ilościowe"]},
+{p:"C1",q:"Czym są pozycje odwrócone, po co się je stosuje i jak je przeliczyć?",m:"To pozycje o przeciwnym sensie (np. „Nie lubię poznawać nowych osób” w skali ekstrawersji). Chronią przed potakiwaniem i nieuważnym czytaniem. Przelicza się je wzorem (min + max) − odpowiedź.",k:["Przeciwny sens względem mierzonej cechy","Cel: przeciw potakiwaniu, nieuważnemu czytaniu","Wzór: (min + max) − odpowiedź","Do wskaźnika wchodzi wersja R"]},
+{p:"C1",q:"Opisz krok po kroku, jak w Jamovi odwrócić pozycję i policzyć średnią skali SWLS.",m:"Dane → zaznacz SWLS3 → Przekształcenie → nazwa SWLS3R → zmienna źródłowa SWLS3 → Utwórz nowe przekształcenie → warunek 8 - $source → Enter. Potem Oblicz → SWLS_średnia = MEAN(SWLS1, SWLS2, SWLS3R, SWLS4, SWLS5).",k:["Dane → Przekształcenie","Nowa zmienna z „R”, zmienna źródłowa = oryginał","Formuła 8 - $source","Oblicz: MEAN z wersją R, argumenty po przecinku"]},
+{p:"C1",q:"Jakie pięć kroków przygotowania bazy (przed importem) pokazano na ćwiczeniach?",m:"Usunąć niepotrzebne kolumny (sygnatura czasowa, zgoda); usunąć obserwacje bez zgody; dodać kolumnę z numerem obserwacji; zamienić odpowiedzi nominalne na liczby; zmienić nagłówki na krótkie, zrozumiałe, bez spacji.",k:["Usunąć zbędne kolumny","Usunąć osoby bez zgody","Dodać ID","Zakodować odpowiedzi liczbami","Krótkie nagłówki bez spacji"]},
+{p:"C1",q:"Suma czy średnia jako wskaźnik? Kiedy którą wybrać?",m:"Średnia zwykle lepsza: nie zależy od liczby pozycji i łatwo ją interpretować w skali odpowiedzi. Przy brakach danych suma jest zaniżona. Suma sprawdza się przy krótkich skalach tak/nie (np. FCZ-KT). Bez braków obie dają te same wyniki analiz.",k:["Średnia: niezależna od liczby pozycji, łatwa interpretacja","Suma: zaniżona przy brakach","Suma: skale tak/nie","Bez braków — te same rezultaty analiz"]},
+{p:"C1",q:"Opisz trzy mechanizmy braków danych z przykładami.",m:"MCAR — braki całkowicie losowe (pilot na urlopie, sklejone kartki); najmniej szkodliwe, jedyne sprawdzalne testem. MAR — brak zależy od innej zmiennej (mężczyźni pomijają pytanie o lęk). MNAR — brak zależy od wartości samej zmiennej (wyniki pilotów z wysokim lękiem usunięte); najbardziej szkodliwe.",k:["MCAR: losowe, sprawdzalne testem","MAR: zależy od innej zmiennej","MNAR: zależy od wartości tej samej zmiennej","MNAR najgroźniejszy"]},
+{p:"C1",q:"Jakie błędy sprawdzasz przy czyszczeniu bazy?",m:"Zdublowane obserwacje (ID), wartości spoza zakresu (min/max, częstości), nieodwróconą punktację (niska alfa Cronbacha), podejrzane braki danych (przesunięcia przy wklejaniu), kilka wartości w jednej komórce.",k:["Duplikaty ID","Wartości spoza zakresu","Nieodwrócone pozycje","Podejrzane braki / kilka wartości w komórce"]},
+
+{p:"W2",q:"Czym różnią się koncepcja, pojęcie i konstrukt? Czym jest reifikacja?",m:"Koncepcja to prywatny obraz mentalny. Pojęcie to uzgodniony termin, „rodzina koncepcji” (Kaplan). Konstrukt to twór teoretyczny oparty na obserwacjach, ale nieobserwowalny bezpośrednio ani pośrednio (IQ). Reifikacja to traktowanie pojęcia jak realnie istniejącej rzeczy.",k:["Koncepcja: obraz mentalny","Pojęcie: uzgodniony termin","Konstrukt: nieobserwowalny twór teoretyczny","Reifikacja: pojęcie jako realna rzecz"]},
+{p:"W2",q:"Czym jest konceptualizacja? Wyjaśnij pojęcia wskaźnika i wymiaru na przykładzie.",m:"Konceptualizacja to określenie, co mamy na myśli, używając terminu w badaniu. Wskaźnik to znak obecności pojęcia (odwiedzanie szpitali dziecięcych → współczucie). Wymiar to aspekt pojęcia (współczucie uczuciowe vs behawioralne).",k:["Ustalenie roboczego znaczenia pojęcia","Wskaźnik: znak obecności/nieobecności","Wymiar: aspekt pojęcia","Przykład (np. współczucie)"]},
+{p:"W2",q:"Porównaj definicję realną, nominalną i operacyjną.",m:"Realna próbuje uchwycić „zasadniczą naturę” bytu i prowadzi do reifikacji. Nominalna przypisuje znaczenie bez roszczeń do prawdy. Operacyjna precyzyjnie mówi, jak zmierzymy pojęcie. Przykład SSE: nominalnie dochód + wykształcenie; operacyjnie dwa pytania pogrupowane i połączone w miernik.",k:["Realna → reifikacja, bezużyteczna","Nominalna: przypisane znaczenie","Operacyjna: procedura pomiaru","Przykład (np. SSE)"]},
+{p:"W2",q:"Dlaczego definicje są ważniejsze w badaniach opisowych niż wyjaśniających?",m:"W opisie wynik zależy wprost od definicji: stopa bezrobocia zmienia się zależnie od tego, kogo liczymy do ludności aktywnej zawodowo. W wyjaśnianiu wzorce zależności (starsi bardziej konserwatywni) zwykle utrzymują się przy różnych definicjach.",k:["Opis: definicja decyduje o wyniku","Przykład bezrobocia","Wyjaśnianie: wzorce trwałe przy zmianie definicji","Przykład konserwatyzmu"]},
+{p:"W2",q:"Opisz cztery poziomy pomiaru — cechy, przykład i jakie stwierdzenia każdy pozwala sformułować.",m:"Nominalna: tylko kategorie (płeć) — takie same / różne. Porządkowa: + kolejność (wykształcenie) — więcej / mniej. Interwałowa: + równe odstępy, brak zera bezwzględnego (°C, IQ) — o ile. Ilorazowa: + zero bezwzględne (wiek, dochód) — ile razy.",k:["Nominalna: kategorie, rozłączność","Porządkowa: kolejność bez równych odstępów","Interwałowa: równe odstępy, brak zera bezwzgl.","Ilorazowa: zero bezwzględne, stosunki"]},
+{p:"W2",q:"Jakie praktyczne implikacje ma poziom pomiaru dla planowania badania?",m:"Każda analiza wymaga minimalnego poziomu (średni wiek tak, średnie wyznanie nie — tylko modalna). Zmienną z wyższego poziomu można sprowadzić do niższego (dyskretyzacja), ale nie odwrotnie. Gdy wątpisz, mierz na najwyższym możliwym poziomie.",k:["Analizy wymagają minimalnego poziomu","Przekształcanie tylko w dół","Dyskretyzacja / kategoryzacja","Mierz na najwyższym możliwym poziomie"]},
+{p:"W2",q:"Dlaczego skalę Likerta nazywa się „zagadkową”?",m:"Odpowiedzi mają porządek, ale nie wiadomo, czy odstępy są równe — więc pojedyncze pytanie jest porządkowe. Sumę lub średnią z całej skali traktuje się jednak jako pomiar interwałowy.",k:["Porządek odpowiedzi","Niepewne równe odstępy","Pojedyncze pytanie = porządkowe","Suma/średnia skali = interwałowa"]},
+{p:"W2",q:"Czym różni się rzetelność od trafności? Wyjaśnij na przykładzie tarczy.",m:"Rzetelność: ta sama technika daje za każdym razem ten sam wynik (mały rozrzut). Trafność: miernik odzwierciedla uzgodnione znaczenie pojęcia (strzały wokół celu). Możliwe: rzetelny, ale nietrafny (skupione obok celu); trafny, ale nierzetelny (rozrzucone wokół celu); trafny i rzetelny.",k:["Rzetelność = spójność wyników","Trafność = mierzy to, co ma mierzyć","Rzetelny ≠ trafny (np. przestawiona waga)","Trzy tarcze"]},
+{p:"W2",q:"Wymień metody sprawdzania rzetelności z przykładami.",m:"Test powtórny (HHA: po 3 miesiącach tylko 15% tych samych odpowiedzi). Metoda połówkowa (10 pytań dzielonych na dwie piątki). Ustalone mierniki (skala Srole'a). Kontrola osób zatrudnionych (kontroler oddzwania, niezależne kodowanie).",k:["Test powtórny","Metoda połówkowa","Ustalone mierniki","Kontrola ankieterów i koderów"]},
+{p:"W2",q:"Wymień cztery rodzaje trafności i podaj przykład każdej.",m:"Fasadowa — miernik „na oko” pasuje (skargi a nastroje). Kryterialna/predykcyjna — przewiduje kryterium zewnętrzne (egzamin wstępny → sukces na studiach). Teoretyczna — zachowuje się zgodnie z teorią (satysfakcja z małżeństwa → wierność). Treściowa — obejmuje cały zakres pojęcia (matematyka to nie tylko dodawanie).",k:["Fasadowa","Kryterialna (predykcyjna)","Teoretyczna","Treściowa"]},
+{p:"W2",q:"Na czym polega napięcie między rzetelnością a trafnością i jak sobie z nim radzić?",m:"Proste, rzetelne mierniki (liczba skarg) zubażają bogactwo znaczeń pojęcia. Bogatsze metody (obserwacja, rozmowy) są trafniejsze, ale mniej rzetelne. Techniki ilościowe — rzetelniejsze, jakościowe — trafniejsze. Rozwiązanie: mierzyć pojęcie na kilka sposobów i wszystkie jego wymiary.",k:["Rzetelne mierniki zubażają znaczenie","Ilościowe rzetelniejsze, jakościowe trafniejsze","Mierzyć na kilka sposobów","Uwzględnić wszystkie wymiary"]}
+];
+
+/* ---------- FISZKI ---------- */
+const CARDS=[
+["W1","Falsyfikowalność","Musi istnieć empiryczna możliwość wykazania, że hipoteza jest fałszywa (K. Popper)."],
+["W1","Indukcja","Wnioskowanie od szczegółu do ogółu. Problem: działa post factum, nie daje pewności."],
+["W1","Dedukcja","Wnioskowanie od ogółu do szczegółu. Problem: przy fałszywych przesłankach poprawny logicznie wniosek bywa fałszywy."],
+["W1","Empiryzm","Zdobywanie wiedzy przez obserwację i doświadczenie."],
+["W1","Dowód anegdotyczny","Pojedyncze doświadczenie („mnie pomogło”). Inspiracja, nie dowód naukowy."],
+["W1","Aksjomat","Założenie przyjmowane bez dowodu; punkt wyjścia nauk formalnych."],
+["W1","Postulat","Twierdzenie normatywne — co powinno być."],
+["W1","Paradygmat","Zestaw pojęć i zależności między nimi, który zapoczątkowuje cykl badań w danym obszarze nauki."],
+["W1","Model teoretyczny","Zbiór hipotez dotyczących zjawiska i jego uwarunkowań i/lub konsekwencji."],
+["W1","Hipoteza","Najbardziej prawdopodobna odpowiedź na pytanie badawcze, oparta na dotychczasowej wiedzy lub założeniach."],
+["W1","Problem badawczy","Pytanie stawiane przed badaniem; obejmuje zmienne i rodzaj potencjalnego związku między nimi."],
+["W1","Zmienna","Właściwość przyjmująca co najmniej dwie wartości."],
+["W1","Stała","Właściwość, która w badanym zbiorze przyjmuje tylko jedną wartość."],
+["W1","Replikacja","Dokładne powtórzenie procedury badania, by sprawdzić, czy wynik się odtworzy."],
+["W1","Sceptycyzm naukowy","Rozsądne wątpienie w wiedzę. Nadmiar blokuje rozwój nauki, brak otwiera drogę pseudonauce."],
+["W1","Efekt potwierdzenia","Preferowanie informacji zgodnych z dotychczasowymi poglądami."],
+["W1","Efekt Dunninga-Krugera","Przecenianie swoich umiejętności w dziedzinie, w której nie ma się kwalifikacji."],
+["W1","Błąd konserwatyzmu","Preferowanie wcześniej posiadanych informacji, nieufność wobec nowych."],
+["W1","Błąd zerowego ryzyka","Przecenianie redukcji ryzyka do zera, często bez oceny ryzyka alternatyw."],
+["W1","Cele naukowe psychologii","Opis, wyjaśnienie, przewidywanie, aplikacja."],
+["W1","Przedmiot psychologii","Funkcjonowanie człowieka (zachowania, myśli, uczucia) oraz ich uwarunkowania i konsekwencje."],
+["W1","Indukcja niekompletna — przykład","J. Beringer, Vis Plastica: interpretacja „skamieniałości” bez weryfikacji."],
+["W1","Dedukcja niekompletna — przykład","Teoria strun: spójna logicznie, ale niesprawdzalna empirycznie."],
+
+["C1","Proces badawczy (7 kroków)","Pytanie → hipoteza → zmienne (operacjonalizacja) → dane → test statystyczny → wynik (istotność) → wniosek."],
+["C1","Pytanie badawcze vs hipoteza","Pytanie: czego chcemy się dowiedzieć. Hipoteza: czego się spodziewamy — zdanie twierdzące."],
+["C1","Operacjonalizacja (ćw.)","Dokładne określenie sposobu pomiaru zmiennej: jak to zmierzymy?"],
+["C1","Wskaźnik (ćw.)","Wartość liczbowa, którą przyjmuje zmienna."],
+["C1","Skala (kwestionariusz)","Zestaw pozycji, które razem mierzą konstrukt lub jego wymiar."],
+["C1","Pozycja odwrócona (R)","Pozycja o przeciwnym sensie; przed liczeniem wskaźnika trzeba ją odwrócić."],
+["C1","Wzór na odwracanie","PozR = (Odp_min + Odp_max) − Poz"],
+["C1","Klucz","Informuje o: skali odpowiedzi, pozycjach R, sumie/średniej, podskalach."],
+["C1","$source (Jamovi)","Wartość ze zmiennej źródłowej w przekształceniu, np. 8 - $source."],
+["C1","MEAN() w Jamovi przy brakach","Domyślnie puste pole. ignore_missing=1 pomija braki."],
+["C1","Baza danych","Tabela: kolumna = zmienna, wiersz = obserwacja (odpowiedzi jednej osoby)."],
+["C1","Plik .omv","Domyślny format zapisu bazy w Jamovi."],
+["C1","Dane surowe","Nieprzekształcone, prosto ze źródła. Przechowuj w kilku miejscach, nie pracuj na nich."],
+["C1","Dane robocze","Zakodowane, odwrócone, wyczyszczone, ze wskaźnikami — na nich liczysz."],
+["C1","Kafeteria","Zestaw możliwych odpowiedzi na pytanie; określa skalę (np. 5-stopniową)."],
+["C1","Kodowanie","Zamiana kategorii zmiennej nominalnej lub porządkowej na liczby, zawsze z legendą."],
+["C1","Kod braku danych","Wartość spoza zakresu skali (1–5 → 9; 1–10 → 99)."],
+["C1","Listwise","Usunięcie z analizy osób z niepełnymi danymi (osoba znika z analiz, nie z bazy)."],
+["C1","MCAR","Braki całkowicie losowe; najmniej szkodliwe; jedyne sprawdzalne testem."],
+["C1","MAR","Brak zależy od innej zmiennej (np. płci)."],
+["C1","MNAR","Brak zależy od wartości samej zmiennej; najbardziej szkodliwy."],
+["C1","Czeskie błędy","Przestawione znaki i literówki przy ręcznym wpisywaniu danych."],
+
+["W2","Koncepcja","Prywatny obraz mentalny — „karta w szufladzie”."],
+["W2","Pojęcie","Uzgodniony termin; „rodzina koncepcji” (Kaplan)."],
+["W2","Konstrukt","Twór teoretyczny oparty na obserwacjach, nieobserwowalny bezpośrednio ani pośrednio (np. IQ)."],
+["W2","Reifikacja","Traktowanie pojęcia jak rzeczy realnie istniejącej."],
+["W2","Konceptualizacja","Określenie, co mamy na myśli, używając terminu w badaniu (wskaźniki + wymiary)."],
+["W2","Wskaźnik (Babbie)","Znak obecności lub nieobecności badanego pojęcia."],
+["W2","Wymiar","Dający się wyszczególnić aspekt pojęcia."],
+["W2","Wzajemna wymienialność wskaźników","Różne wskaźniki tego samego pojęcia powinny dawać ten sam wzorzec wyników."],
+["W2","Definicja realna","Próba uchwycenia „zasadniczej natury” bytu; prowadzi do reifikacji."],
+["W2","Definicja nominalna","Znaczenie przypisane terminowi bez roszczeń do „prawdy”."],
+["W2","Definicja operacyjna","Precyzyjny opis, jak zmierzymy pojęcie."],
+["W2","Wyczerpujące + rozłączne","Każda obserwacja ma swoją kategorię (wyczerpujące) i tylko jedną (rozłączne)."],
+["W2","Skala nominalna","Tylko kategorie; takie same / różne. Np. płeć, region."],
+["W2","Skala porządkowa","Kategorie + kolejność; więcej / mniej. Np. wykształcenie, ranga. Inaczej: rangowa."],
+["W2","Skala interwałowa","Równe odstępy, jednostki, brak zera bezwzględnego; o ile. Np. °C, IQ."],
+["W2","Skala ilorazowa","Równe odstępy + zero bezwzględne; ile razy. Np. wiek, dochód, wzrost."],
+["W2","Zmienna dychotomiczna","Zmienna o dwóch kategoriach (więcej: politomiczna)."],
+["W2","Zmienna ciągła","Może przyjąć dowolną wartość, także ułamkową (prędkość 959,5 km/h)."],
+["W2","Zmienna dyskretna","Tylko wartości całkowite (liczba dziur, liczba dzieci)."],
+["W2","Dyskretyzacja","Sprowadzenie zmiennej do niższego poziomu (wiek → młodzi / starsi). Tylko w dół!"],
+["W2","Rangi wiązane","Remisy dostają średnią z rang, które by zajęły; kolejna ranga przeskakuje."],
+["W2","Skala Likerta","5–7-stopniowa skala zgody (Likert, 1932). Pojedyncze pytanie porządkowe, suma/średnia — interwałowa."],
+["W2","Precyzja","Subtelność rozróżnień („43 lata” vs „po czterdziestce”). ≠ poprawność."],
+["W2","Rzetelność","Ta sama technika daje za każdym razem ten sam wynik."],
+["W2","Trafność","Miernik adekwatnie odzwierciedla uzgodnione znaczenie pojęcia."],
+["W2","Test powtórny","Ten sam pomiar więcej niż raz; sprawdza stabilność odpowiedzi."],
+["W2","Metoda połówkowa","Podział pozycji na dwie połowy; obie powinny tak samo klasyfikować badanych."],
+["W2","Trafność fasadowa","Miernik „na pierwszy rzut oka” pasuje do pojęcia."],
+["W2","Trafność kryterialna","Miernik przewiduje kryterium zewnętrzne (inaczej: predykcyjna)."],
+["W2","Trafność teoretyczna","Miernik zachowuje się zgodnie z teorią w relacji do innych zmiennych."],
+["W2","Trafność treściowa","Miernik obejmuje cały zakres znaczeń pojęcia."],
+["W2","Anomia","Durkheim (1897): brak norm. Merton: rozdźwięk celów i środków. Srole (1956): skala 5 stwierdzeń."],
+["W2","Wskaźnik złożony","Jeden miernik z kilku obserwacji, np. GPA — średnia ocen."]
+];
+
+/* ---------- STAN ---------- */
+const KEY="metodo_trening_v1";
+let store={};
+try{store=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){store={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+store.parts=store.parts||{W1:true,C1:true,W2:true,ZAL:true};
+store.open=store.open||{};   // id -> 0/1/2
+store.cards=store.cards||{}; // id -> known bool
+let mode="test";
+
+const $=s=>document.querySelector(s);
+const panel=$("#panel");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const on=p=>store.parts[p];
+
+function chips(){
+  const c=$("#chips"); c.innerHTML='<span class="lbl">Zakres:</span>';
+  Object.keys(PARTS).forEach(p=>{
+    if(mode!=="test"&&p==="ZAL")return;
+    const b=document.createElement("button");b.className="chip"+(on(p)?"":" off");b.textContent=PARTS[p];
+    b.onclick=()=>{store.parts[p]=!store.parts[p];if(!Object.keys(PARTS).some(on))store.parts[p]=true;save();start();};
+    c.appendChild(b);
+  });
+}
+
+/* ---------- TRYB TEST ---------- */
+let T={};
+function startTest(pool){
+  const src=pool||MCQ.map((q,i)=>Object.assign({id:i},q)).filter(q=>on(q.p));
+  T={list:shuffle(src),i:0,score:0,wrong:[]};
+  renderTest();
+}
+function renderTest(){
+  if(!T.list.length){panel.innerHTML='<p>Brak pytań w wybranym zakresie.</p>';return;}
+  if(T.i>=T.list.length)return testSummary();
+  const q=T.list[T.i];
+  const order=shuffle(q.o.map((t,i)=>({t,i})));
+  panel.innerHTML=`<div class="meta"><span>Pytanie ${T.i+1} / ${T.list.length}</span><span><span class="tag">${PARTS[q.p]}</span> ${q.f?'<span class="flag">⚑ niejednoznaczne</span>':''}</span></div>
+  <div class="bar"><i style="width:${T.i/T.list.length*100}%"></i></div>
+  <p class="q">${esc(q.q)}</p><div class="opts">${order.map((o,k)=>`<button class="opt" data-i="${o.i}"><span class="k">${"ABCD"[k]}</span><span>${esc(o.t)}</span></button>`).join("")}</div><div id="fb"></div>`;
+  panel.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+}
+function answer(i){
+  const q=T.list[T.i]; if(T.done===T.i)return; T.done=T.i;
+  const ok=i===q.a; if(ok)T.score++; else T.wrong.push(q);
+  panel.querySelectorAll(".opt").forEach(b=>{b.disabled=true;const v=+b.dataset.i;if(v===q.a)b.classList.add("ok");else if(v===i)b.classList.add("no");});
+  $("#fb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Dobrze.":"Nie tym razem."}</b> ${esc(q.e)}</div>${q.f?`<div class="fb flagnote"><b>⚑ Uwaga:</b> ${esc(q.f)}</div>`:""}<div class="row"><button class="btn" id="nx">${T.i+1<T.list.length?"Dalej →":"Wynik"}</button></div>`;
+  $("#nx").onclick=()=>{T.i++;renderTest();}; $("#nx").focus();
+}
+function testSummary(){
+  const pct=Math.round(T.score/T.list.length*100);
+  const best=store.best||0; if(pct>best){store.best=pct;save();}
+  panel.innerHTML=`<div class="summary"><div class="small">Twój wynik</div><div class="big">${pct}%</div><p>${T.score} z ${T.list.length} poprawnych · próg egzaminu ≈ 52,5% (21/40)</p>
+  <p class="small">Najlepszy wynik w tej przeglądarce: ${Math.max(pct,best)}%</p></div>
+  <div class="row" style="justify-content:center">${T.wrong.length?'<button class="btn warn" id="rw">Powtórz błędne ('+T.wrong.length+')</button>':''}<button class="btn ghost" id="ag">Nowy test</button></div>
+  ${T.wrong.length?'<div class="review"><b>Do powtórki:</b>'+T.wrong.map(q=>`<div>${esc(q.q)}<br><span class="small">✓ ${esc(q.o[q.a])}</span></div>`).join("")+'</div>':''}`;
+  if($("#rw"))$("#rw").onclick=()=>startTest(T.wrong.slice());
+  $("#ag").onclick=()=>startTest();
+}
+
+/* ---------- TRYB OTWARTE ---------- */
+let O={};
+function startOpen(onlyWeak){
+  let src=OPEN.map((q,i)=>Object.assign({id:"o"+i},q)).filter(q=>on(q.p));
+  if(onlyWeak)src=src.filter(q=>store.open[q.id]!==2);
+  O={list:shuffle(src),i:0};
+  renderOpen();
+}
+function openCounts(){
+  const all=OPEN.map((q,i)=>({id:"o"+i,p:q.p})).filter(q=>on(q.p));
+  const c=[0,0,0];let seen=0;all.forEach(q=>{const v=store.open[q.id];if(v!==undefined){c[v]++;seen++;}});
+  return {all:all.length,c,seen};
+}
+function renderOpen(){
+  if(!O.list.length){const s=openCounts();panel.innerHTML=`<p>${s.all?"Wszystkie pytania w tym zakresie oznaczone jako opanowane. 🎉":"Brak pytań w wybranym zakresie."}</p><div class="row"><button class="btn ghost" id="ag">Wszystkie od nowa</button></div>`;$("#ag").onclick=()=>startOpen(false);return;}
+  if(O.i>=O.list.length)return openSummary();
+  const q=O.list[O.i];
+  panel.innerHTML=`<div class="meta"><span>Pytanie ${O.i+1} / ${O.list.length}</span><span><span class="tag">${PARTS[q.p]}</span> ${q.f?'<span class="flag">⚑ do sprawdzenia</span>':''}</span></div>
+  <div class="bar"><i style="width:${O.i/O.list.length*100}%"></i></div>
+  <p class="q">${esc(q.q)}</p>
+  <textarea id="ta" placeholder="Napisz odpowiedź własnymi słowami — albo powiedz ją na głos i odkryj wzór."></textarea>
+  <div class="row"><button class="btn" id="show">Pokaż wzorcową odpowiedź</button><button class="btn ghost" id="skip">Pomiń</button></div><div id="mo"></div>`;
+  $("#show").onclick=()=>revealOpen(q); $("#skip").onclick=()=>{O.i++;renderOpen();};
+}
+function revealOpen(q){
+  const mine=$("#ta").value.trim();
+  $("#show").disabled=true;$("#ta").readOnly=true;
+  $("#mo").innerHTML=`<div class="model"><h4>Wzorcowa odpowiedź</h4><p style="margin:0">${esc(q.m)}</p>
+  <h4 style="margin-top:12px">Zaznacz, co miałaś w swojej odpowiedzi:</h4><ul>${q.k.map((k,i)=>`<li><input type="checkbox" id="k${i}"><label for="k${i}">${esc(k)}</label></li>`).join("")}</ul></div>
+  ${q.f?`<div class="fb flagnote"><b>⚑</b> ${esc(q.f)}</div>`:""}
+  <div class="row"><button class="btn warn" data-g="0">Nie umiem</button><button class="btn mid" data-g="1">Częściowo</button><button class="btn" data-g="2">Umiem</button></div>`;
+  $("#mo").querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{store.open[q.id]=+b.dataset.g;save();O.i++;renderOpen();});
+}
+function openSummary(){
+  const s=openCounts();
+  panel.innerHTML=`<div class="summary"><div class="small">Runda zakończona</div><div class="big">${s.c[2]}/${s.all}</div><p>pytań oznaczonych jako „Umiem”</p></div>
+  <div class="stats"><div class="stat"><b>${s.c[2]}</b><span>umiem</span></div><div class="stat"><b>${s.c[1]}</b><span>częściowo</span></div><div class="stat"><b>${s.c[0]+(s.all-s.seen)}</b><span>nie umiem / bez oceny</span></div></div>
+  <div class="row" style="justify-content:center"><button class="btn warn" id="wk">Powtórz nieopanowane</button><button class="btn ghost" id="ag">Wszystkie od nowa</button></div>`;
+  $("#wk").onclick=()=>startOpen(true); $("#ag").onclick=()=>startOpen(false);
+}
+
+/* ---------- TRYB FISZKI ---------- */
+let F={};
+function startCards(onlyUnknown){
+  let src=CARDS.map((c,i)=>({id:"c"+i,p:c[0],t:c[1],d:c[2]})).filter(c=>on(c.p));
+  if(onlyUnknown)src=src.filter(c=>!store.cards[c.id]);
+  F={queue:shuffle(src),total:src.length,known:0,rev:store.rev||false};
+  renderCard();
+}
+function renderCard(){
+  if(!F.total){panel.innerHTML=`<p>Wszystkie fiszki w tym zakresie oznaczone jako znane. 🎉</p><div class="row"><button class="btn ghost" id="ag">Wszystkie od nowa</button></div>`;$("#ag").onclick=()=>startCards(false);return;}
+  if(!F.queue.length){
+    panel.innerHTML=`<div class="summary"><div class="small">Talia przerobiona</div><div class="big">${F.total}</div><p>fiszek — każda w końcu oznaczona jako „Znam”.</p></div><div class="row" style="justify-content:center"><button class="btn" id="un">Tylko nieznane z poprzednich sesji</button><button class="btn ghost" id="ag">Całą talię od nowa</button></div>`;
+    $("#un").onclick=()=>startCards(true);$("#ag").onclick=()=>{CARDS.forEach((c,i)=>{if(on(c[0]))delete store.cards["c"+i];});save();startCards(false);};return;}
+  const c=F.queue[0];
+  const front=F.rev?c.d:c.t, back=F.rev?c.t:c.d;
+  panel.innerHTML=`<div class="meta"><span>Zostało: ${F.queue.length} · znane: ${F.known}/${F.total}</span><span><span class="tag">${PARTS[c.p]}</span> <label class="small" style="cursor:pointer"><input type="checkbox" id="rv" ${F.rev?"checked":""}> odwrotnie</label></span></div>
+  <div class="bar"><i style="width:${F.known/F.total*100}%"></i></div>
+  <div class="card3d" id="cd"><div class="flip" id="fl"><div class="face"><div class="${F.rev?"def":"term"}">${esc(front)}</div><div class="hint">kliknij lub spacja, by odwrócić</div></div><div class="face back"><div class="small" style="margin-bottom:6px">${esc(front)}</div><div class="${F.rev?"term":"def"}">${esc(back)}</div></div></div></div>
+  <div class="row" style="justify-content:center"><button class="btn warn" id="ag">Powtórz ↺</button><button class="btn" id="ok">Znam ✓</button></div>
+  <div class="kbd">Spacja — odwróć · ← powtórz · → znam</div>`;
+  $("#cd").onclick=()=>$("#fl").classList.toggle("on");
+  $("#rv").onclick=e=>{e.stopPropagation();F.rev=e.target.checked;store.rev=F.rev;save();renderCard();};
+  $("#ok").onclick=()=>cardGrade(true); $("#ag").onclick=()=>cardGrade(false);
+}
+function cardGrade(known){
+  const c=F.queue.shift();
+  if(known){F.known++;store.cards[c.id]=true;}
+  else{store.cards[c.id]=false;const pos=Math.min(F.queue.length,3+Math.floor(Math.random()*3));F.queue.splice(pos,0,c);}
+  save();renderCard();
+}
+document.addEventListener("keydown",e=>{
+  if(mode!=="cards"||e.target.tagName==="TEXTAREA"||!$("#fl"))return;
+  if(e.code==="Space"){e.preventDefault();$("#fl").classList.toggle("on");}
+  else if(e.key==="ArrowRight")cardGrade(true);
+  else if(e.key==="ArrowLeft")cardGrade(false);
+});
+
+/* ---------- START ---------- */
+function start(){chips();if(mode==="test")startTest();else if(mode==="open")startOpen(false);else startCards(false);}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");mode=b.dataset.mode;start();
+});
+start();
+</script>
+<script data-home="../" src="../assets/reader.js"></script></body>
+</html>

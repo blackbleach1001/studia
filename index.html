@@ -53,10 +53,12 @@
 /* ===== Spis materiałów — nowy materiał = nowa pozycja w "items" ===== */
 var SUBJECTS = [
   { name: "Psychologia poznawcza", kind: "Wykład + Ćwiczenia", h: 209, s: "33%", l: "56%", items: [
-    { title: "Literatura do wykładów i ćwiczeń", meta: "Rozdziały podręcznika, oś czasu, kto jest kim", notes: "poznawcza/literatura.html", cards: "poznawcza/literatura-fiszki.html" }
+    { title: "Literatura do wykładów i ćwiczeń", meta: "Rozdziały podręcznika, oś czasu, kto jest kim", notes: "poznawcza/literatura.html", cards: "poznawcza/literatura-fiszki.html" },
+    { title: "Powtórka", meta: "Test jednokrotnego wyboru, fiszki, pytania otwarte", notes: "poznawcza/powtorka.html", label: "Otwórz" }
   ]},
   { name: "Podstawy metodologii i statystyki", kind: "Wykład + Ćwiczenia", h: 150, s: "26%", l: "44%", items: [
-    { title: "Wykłady i ćwiczenia", meta: "Nauka, hipotezy, zmienne, Jamovi i SPSS", notes: "metodologia/notatki.html", cards: "metodologia/notatki-fiszki.html" }
+    { title: "Wykłady i ćwiczenia", meta: "Nauka, hipotezy, zmienne, Jamovi i SPSS", notes: "metodologia/notatki.html", cards: "metodologia/notatki-fiszki.html" },
+    { title: "Trening", meta: "Test, pytania otwarte, fiszki", notes: "metodologia/trening.html", label: "Otwórz" }
   ]},
   { name: "Psychologia kliniczna i zdrowia", kind: "Wykład + Ćwiczenia", h: 12, s: "42%", l: "58%", items: [
     { title: "Wykłady 1–2", meta: "Patogeneza i salutogeneza, modele zdrowia, stres", notes: "kliniczna/notatki.html", cards: "kliniczna/notatki-fiszki.html" }
@@ -83,7 +85,7 @@ SUBJECTS.forEach(function (sub) {
         '<p class="item-title">' + esc(it.title) + "</p>" +
         (it.meta ? '<p class="item-meta">' + esc(it.meta) + "</p>" : "") +
         '<div class="item-links">' +
-          '<a class="main" href="' + it.notes + '">Notatki</a>' +
+          '<a class="main" href="' + it.notes + '">' + (it.label || "Notatki") + '</a>' +
           (it.cards ? '<a href="' + it.cards + '">Fiszki</a>' : "") +
         "</div></li>";
     }).join("") + "</ul>";

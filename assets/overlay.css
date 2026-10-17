@@ -6,7 +6,7 @@
 @import url("reader.css");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
-body, body *:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp){
+body, body :where(*:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp)){
   font-family:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif !important;
 }
 body h1, body h2, body h3, body h4,
