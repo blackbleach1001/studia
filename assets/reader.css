@@ -3,7 +3,6 @@
    spis treści, lektor, tryb skupienia.
    Zmienne --st-* nie kolidują ze stylami starszych materiałów.
    Kolor przedmiotu: --st-h, --st-s, --st-l na :root strony.
-   Tryb ciemny tylko na stronach z klasą html.st-themed.
    ========================================================= */
 :root{
   --st-h:345; --st-s:32%; --st-l:60%;
@@ -21,21 +20,6 @@
   --st-safe-l:env(safe-area-inset-left,0px);
   --st-safe-r:env(safe-area-inset-right,0px);
 }
-@media (prefers-color-scheme:dark){
-  html.st-themed{
-    --st-tint:hsl(var(--st-h),calc(var(--st-s) + 18%),72%);
-    --st-tint-soft:hsl(var(--st-h),18%,20%);
-    --st-paper:#1c1916; --st-ink:#f1ebe3; --st-ink-2:#c3b8ab; --st-ink-3:#93877a;
-    --st-sep:rgba(255,240,225,.14);
-    --st-bar:rgba(34,30,27,.74);
-    --st-bar-solid:#221e1b;
-    --st-elev:#2a2521;
-    --st-shadow:0 8px 30px rgba(0,0,0,.5);
-    --st-hl:hsl(45,60%,30%);
-    --st-hl-word:hsl(40,80%,42%);
-  }
-}
-
 /* ---------- pasek nawigacji (u góry) ---------- */
 .st-nav{
   position:sticky;top:0;z-index:45;

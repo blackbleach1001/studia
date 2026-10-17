@@ -1,7 +1,6 @@
 /* =========================================================
    Studia — wygląd materiałów (notatki, fiszki, strona główna)
    Atkinson Hyperlegible (tekst) + Playfair Display (nagłówki)
-   Strony z tym plikiem mają <html class="st-themed"> → tryb ciemny.
    ========================================================= */
 @import url("reader.css");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
@@ -21,10 +20,6 @@
   --ok:hsl(150,32%,32%);
   --measure:65ch;
 }
-@media (prefers-color-scheme:dark){
-  html.st-themed{color-scheme:dark;--paper-2:#26221e;--card:#24201c;--ok:hsl(150,30%,62%)}
-}
-
 *{box-sizing:border-box}
 /* Dynamic Type: Safari na iPadzie skaluje rem według rozmiaru tekstu z Ustawień */
 html{font:-apple-system-body;-webkit-text-size-adjust:100%;scroll-padding-top:64px;scroll-padding-bottom:150px}
@@ -141,4 +136,3 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
 }
 .seg button[aria-pressed="true"]{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px var(--line)}
 .deck-tools{align-items:center;justify-content:space-between}
-@media (prefers-color-scheme:dark){html.st-themed .seg button[aria-pressed="true"]{background:#3d3630}}

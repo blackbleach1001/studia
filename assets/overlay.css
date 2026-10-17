@@ -27,9 +27,9 @@ html{scroll-padding-bottom:140px}
 .fiszki-link{
   display:flex;flex-wrap:wrap;align-items:center;gap:10px;
   margin:12px 0;padding:12px 14px;border-radius:12px;
-  background:var(--st-accent-soft);border-left:4px solid var(--st-accent);
+  background:var(--st-tint-soft);border-left:4px solid var(--st-accent);
 }
 .fiszki-link a{
   display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;
-  background:var(--st-accent-deep);color:#fff !important;text-decoration:none;font-weight:700;
+  background:var(--st-tint);color:#fff !important;text-decoration:none;font-weight:700;
 }

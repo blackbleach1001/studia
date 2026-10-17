@@ -79,7 +79,7 @@ out.write_text(str(soup), encoding="utf-8")
 # ---------- strona z fiszkami ----------
 if cards:
     page = f"""<!doctype html>
-<html lang="pl" class="st-themed">
+<html lang="pl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
