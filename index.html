@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studia · Semestr 3</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Studia">
+<meta name="theme-color" content="#fffdf9">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/reader.css">
+<style>
+:root{--paper:#fffdf9;--paper-2:#f8f2ea;--ink:#2b2118;--ink-soft:#5c4d40;--line:#e6dccf;--accent:#8a6f5a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Source Serif 4",Georgia,serif}
+.wrap{max-width:960px;margin:0 auto;padding:44px 16px 96px}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0;line-height:1.2}
+header{border-bottom:2px solid var(--line);padding-bottom:20px;margin-bottom:28px}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+h1{font-size:2.4rem;margin:6px 0 4px}
+.sub{color:var(--ink-soft);font-style:italic}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.subject{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.subject .top{padding:16px 18px 12px;background:hsl(var(--h),var(--s),95%);border-bottom:3px solid hsl(var(--h),var(--s),var(--l))}
+.subject h2{font-size:1.2rem;color:hsl(var(--h),var(--s),30%)}
+.subject .kind{font-size:.78rem;color:var(--ink-soft);margin-top:2px}
+.subject ul{list-style:none;margin:0;padding:8px 10px 12px}
+.subject li a{display:block;padding:9px 10px;border-radius:9px;color:var(--ink);text-decoration:none}
+.subject li a:hover,.subject li a:focus-visible{background:hsl(var(--h),var(--s),95%)}
+.subject li .meta{display:block;font-size:.8rem;color:var(--ink-soft)}
+.subject .empty{padding:12px 20px 16px;color:var(--ink-soft);font-style:italic;font-size:.92rem}
+.tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;background:hsl(var(--h),var(--s),92%);color:hsl(var(--h),var(--s),30%)}
+footer{margin-top:48px;font-size:.85rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Psychologia SWPS · Semestr 3</div>
+    <h1>Studia</h1>
+    <div class="sub">Notatki i quizy w jednym miejscu.</div>
+  </header>
+
+  <main class="grid" id="subjects"></main>
+
+  <footer>Materiały własne. Bez skanów z podręczników.</footer>
+</div>
+
+<script>
+// ===== Spis materiałów =====
+// Nowy materiał = nowa pozycja w "items" odpowiedniego przedmiotu.
+var SUBJECTS = [
+  { name: "Psychologia poznawcza", kind: "Wykład + Ćwiczenia", h: 209, s: "33%", l: "56%", items: [] },
+  { name: "Podstawy metodologii i statystyki", kind: "Wykład + Ćwiczenia", h: 150, s: "26%", l: "44%", items: [] },
+  { name: "Psychologia kliniczna i zdrowia", kind: "Wykład + Ćwiczenia", h: 12, s: "42%", l: "58%", items: [] },
+  { name: "Rozmowa psychologiczna", kind: "Projekt + Ćwiczenia", h: 345, s: "32%", l: "60%", items: [
+    { title: "Zajęcia 1 · Kontakt, kontrakt i etyka rozmowy", meta: "Geller & Król · Zalewski", tag: "notatki + quiz", href: "rozmowa/zajecia-1.html" }
+  ]},
+  { name: "Psychologia edukacji", kind: "Wykład + Ćwiczenia", h: 36, s: "48%", l: "54%", items: [] },
+  { name: "Psychologia pracy i organizacji", kind: "Wykład + Ćwiczenia", h: 300, s: "20%", l: "46%", items: [] }
+];
+
+var root = document.getElementById("subjects");
+SUBJECTS.forEach(function (sub) {
+  var el = document.createElement("section");
+  el.className = "subject";
+  el.style.setProperty("--h", sub.h);
+  el.style.setProperty("--s", sub.s);
+  el.style.setProperty("--l", sub.l);
+  var html = '<div class="top"><h2>' + sub.name + '</h2><div class="kind">' + sub.kind + '</div></div>';
+  if (sub.items.length) {
+    html += "<ul>" + sub.items.map(function (it) {
+      return '<li><a href="' + it.href + '">' + it.title +
+        (it.tag ? '<span class="tag">' + it.tag + "</span>" : "") +
+        (it.meta ? '<span class="meta">' + it.meta + "</span>" : "") + "</a></li>";
+    }).join("") + "</ul>";
+  } else {
+    html += '<div class="empty">Jeszcze nic tu nie ma.</div>';
+  }
+  el.innerHTML = html;
+  root.appendChild(el);
+});
+</script>
+<script src="assets/reader.js" data-home="none"></script>
+</body>
+</html>

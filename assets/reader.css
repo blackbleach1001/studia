@@ -1,0 +1,35 @@
+/* Wspólne ustawienia czytania dla wszystkich materiałów */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap");
+
+.reader-bar{
+  position:fixed;right:14px;bottom:14px;z-index:50;
+  display:flex;gap:6px;padding:6px;
+  background:rgba(255,253,249,.94);backdrop-filter:blur(6px);
+  border:1px solid #e6dccf;border-radius:999px;
+  box-shadow:0 4px 18px rgba(43,33,24,.12);
+}
+.reader-bar a,.reader-bar button{
+  font:600 .85rem/1 "Source Serif 4",Georgia,serif;
+  color:#2b2118;background:transparent;border:0;border-radius:999px;
+  padding:9px 13px;cursor:pointer;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.reader-bar button[aria-pressed="true"]{background:var(--accent,#ba7889);color:#fff}
+
+/* Czcionka Atkinson Hyperlegible */
+body.atk, body.atk *:not(svg):not(svg *){
+  font-family:"Atkinson Hyperlegible",system-ui,sans-serif !important;
+}
+body.atk .reader-bar a, body.atk .reader-bar button{font-family:"Atkinson Hyperlegible",sans-serif !important}
+
+/* Tryb skupienia */
+body.focus{font-size:19px;line-height:1.75}
+body.focus .wrap{max-width:700px}
+body.focus .toc, body.focus .pills, body.focus .src, body.focus .sec-lead{display:none}
+body.focus .grid{grid-template-columns:1fr}
+body.focus .card p,body.focus .card li,body.focus table{font-size:1rem}
+body.focus details:not([open]){opacity:.72}
+body.focus details[open]{box-shadow:0 0 0 2px var(--accent,#ba7889)}
+body.focus .reader-bar{opacity:.85}
+
+@media print{.reader-bar{display:none}}

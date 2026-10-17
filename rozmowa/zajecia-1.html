@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rozmowa psychologiczna · Zajęcia 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fffdf9;
+  --paper-2:#f8f2ea;
+  --ink:#2b2118;
+  --ink-soft:#5c4d40;
+  --line:#e6dccf;
+  --rose:hsl(345,32%,60%);
+  --rose-deep:hsl(345,32%,38%);
+  --rose-soft:hsl(345,40%,94%);
+  --rose-mid:hsl(345,34%,86%);
+  --sage:hsl(150,26%,44%);
+  --sage-soft:hsl(150,26%,93%);
+  --honey:hsl(36,48%,54%);
+  --honey-soft:hsl(36,60%,93%);
+  --coral-soft:hsl(12,50%,94%);
+  --coral:hsl(12,42%,50%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.6;
+}
+.wrap{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+h1,h2,h3,h4{font-family:"Playfair Display",Georgia,serif;line-height:1.25;margin:0}
+h1{font-size:2.3rem;font-weight:700}
+h2{font-size:1.6rem;font-weight:600;margin:56px 0 6px;padding-top:8px}
+h3{font-size:1.15rem;font-weight:600;margin:0 0 6px}
+p{margin:.5em 0}
+ul,ol{margin:.4em 0;padding-left:1.3em}
+li{margin:.25em 0}
+em{color:var(--ink-soft)}
+strong{font-weight:600}
+
+/* header */
+.hero{border-bottom:2px solid var(--rose);padding-bottom:22px;margin-bottom:24px}
+.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-deep);font-weight:600}
+.hero h1{margin:6px 0 8px}
+.hero .sub{color:var(--ink-soft);font-style:italic}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-size:.78rem;padding:3px 11px;border-radius:999px;background:var(--rose-soft);color:var(--rose-deep);border:1px solid var(--rose-mid)}
+
+/* toc */
+.toc{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px 0}
+.toc ol{columns:2;column-gap:28px;margin:6px 0 0}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--rose)}
+.toc a:hover{color:var(--rose-deep)}
+@media (max-width:640px){.toc ol{columns:1}}
+
+.tools{display:flex;gap:8px;margin:10px 0 0}
+.tools button{font-family:inherit;font-size:.82rem;background:var(--paper);border:1px solid var(--rose-mid);color:var(--rose-deep);border-radius:999px;padding:4px 12px;cursor:pointer}
+.tools button:hover{background:var(--rose-soft)}
+
+/* section heading */
+.sec-num{display:inline-block;font-family:"Playfair Display",serif;color:var(--rose);margin-right:8px}
+.sec-lead{color:var(--ink-soft);margin:0 0 16px;font-style:italic}
+
+/* source tags */
+.src{display:inline-block;font-family:"Source Serif 4",serif;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:999px;vertical-align:middle;margin-left:6px}
+.src.gk{background:var(--rose-soft);color:var(--rose-deep);border:1px solid var(--rose-mid)}
+.src.za{background:var(--sage-soft);color:var(--sage);border:1px solid hsl(150,22%,82%)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--rose);border-radius:12px;padding:14px 16px}
+.card.sage{border-top-color:var(--sage)}
+.card.honey{border-top-color:var(--honey)}
+.card h3{font-size:1.02rem}
+.card p,.card li{font-size:.95rem}
+
+/* details */
+details{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden}
+details>summary{cursor:pointer;list-style:none;padding:12px 16px;font-family:"Playfair Display",serif;font-weight:600;font-size:1.05rem;display:flex;align-items:center;gap:10px}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";flex:0 0 auto;width:8px;height:8px;border-right:2px solid var(--rose-deep);border-bottom:2px solid var(--rose-deep);transform:rotate(-45deg);transition:transform .2s;margin-right:4px}
+details[open]>summary::before{transform:rotate(45deg)}
+details[open]>summary{border-bottom:1px solid var(--line);background:var(--rose-soft)}
+details .body{padding:12px 18px 16px}
+
+/* callouts */
+.key{background:var(--rose-soft);border-left:4px solid var(--rose);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0}
+.def{background:var(--paper-2);border:1px dashed var(--rose);border-radius:10px;padding:12px 16px;margin:12px 0}
+.def .lbl,.key .lbl,.warn .lbl,.proj .lbl{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--rose-deep);margin-bottom:2px}
+.warn{background:var(--coral-soft);border-left:4px solid var(--coral);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0}
+.warn .lbl{color:var(--coral)}
+.proj{background:var(--honey-soft);border-left:4px solid var(--honey);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0}
+.proj .lbl{color:hsl(36,48%,36%)}
+.ex{font-style:italic;color:var(--ink-soft)}
+q{quotes:"„" "”"}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.93rem;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+th,td{padding:8px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--rose-soft);font-family:"Playfair Display",serif;font-weight:600;color:var(--rose-deep)}
+tr:last-child td{border-bottom:none}
+.tbl-wrap{overflow-x:auto}
+
+/* spindle */
+.spindle{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:10px 0}
+.spindle svg{flex:0 0 auto}
+
+/* quiz */
+.quiz details>summary{font-family:"Source Serif 4",serif;font-weight:600;font-size:1rem}
+.quiz details>summary .qn{color:var(--rose);font-family:"Playfair Display",serif;margin-right:2px}
+.pts{font-size:.75rem;color:var(--ink-soft);font-weight:400;margin-left:auto;white-space:nowrap}
+
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-soft)}
+@media print{
+  details{break-inside:avoid}
+  .tools{display:none}
+}
+</style>
+<link rel="stylesheet" href="../assets/reader.css">
+<style>:root{--accent:hsl(345,32%,60%)}</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Rozmowa psychologiczna · Ćwiczenia · Zajęcia 1</div>
+  <h1>Kontakt, kontrakt i etyka rozmowy</h1>
+  <div class="sub">Temat 1: Wybór rozmówcy. Świadoma zgoda. Kontrakt. Etyczne aspekty rozmowy.</div>
+  <div class="pills">
+    <span class="pill">Wejściówka: pytania otwarte · 0–6 pkt</span>
+    <span class="pill">Geller &amp; Król — Kontakt interpersonalny w wywiadzie diagnostycznym (Wywiad t. 1)</span>
+    <span class="pill">Zalewski — Kontrakt (Wywiad t. 2, s. 102–115)</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>Spis treści</strong>
+  <ol>
+    <li><a href="#s0">Na jednej stronie</a></li>
+    <li><a href="#s1">Kontakt pełny a diagnostyczny</a></li>
+    <li><a href="#s2">Asymetria i lęki klienta</a></li>
+    <li><a href="#s3">Kontrakt — definicja i cechy</a></li>
+    <li><a href="#s4">Kodeksy etyczne i świadoma zgoda</a></li>
+    <li><a href="#s5">Kontrakt — aspekty psychologiczne</a></li>
+    <li><a href="#s6">Kontrakt diagnostyczny a terapeutyczny</a></li>
+    <li><a href="#s7">Nawiązywanie kontaktu</a></li>
+    <li><a href="#s8">Dynamika i podtrzymywanie kontaktu</a></li>
+    <li><a href="#s9">Kontakt pozorny</a></li>
+    <li><a href="#s10">Opór osoby badanej</a></li>
+    <li><a href="#s11">Przełożenie na projekt</a></li>
+    <li><a href="#s12">Trening do wejściówki</a></li>
+  </ol>
+  <div class="tools">
+    <button type="button" onclick="toggleAll(true)">Rozwiń wszystko</button>
+    <button type="button" onclick="toggleAll(false)">Zwiń wszystko</button>
+  </div>
+</nav>
+
+<!-- ============ 0 ============ -->
+<h2 id="s0"><span class="sec-num">0</span>Na jednej stronie</h2>
+<p class="sec-lead">Rdzeń obu tekstów — to, co trzeba umieć powiedzieć własnymi słowami.</p>
+<div class="grid">
+  <div class="card">
+    <h3>Kontakt diagnostyczny <span class="src gk">G&amp;K</span></h3>
+    <p>Takie warunki rozmowy, w których osoba badana <strong>może i chce</strong> mówić o ważnych, czasem intymnych sprawach. Różni się od pełnego kontaktu <strong>asymetrią komunikacji</strong> i <strong>asymetrią ról</strong>.</p>
+  </div>
+  <div class="card">
+    <h3>Diagnosta „na dwóch usługach” <span class="src gk">G&amp;K</span></h3>
+    <p>Na usługach <strong>osoby badanej</strong> (pomaga jej otwarcie mówić) i na usługach <strong>celu wywiadu</strong> (pilnuje, by rozmowa dotyczyła treści istotnych dla diagnozy).</p>
+  </div>
+  <div class="card">
+    <h3>Zasada wrzeciona <span class="src gk">G&amp;K</span></h3>
+    <p>Kontakt najgłębszy w <strong>środkowej fazie</strong>, spłycany ku końcowi — by osoba nie wychodziła z rozmowy w silnych negatywnych emocjach. Optymalny czas wywiadu ok. 50 min.</p>
+  </div>
+  <div class="card sage">
+    <h3>Kontrakt <span class="src za">Zalewski</span></h3>
+    <p>Umowa zawarta <strong>dobrowolnie</strong> przez dwie strony, ze <strong>świadomością</strong> ważnych okoliczności, z uwzględnieniem <strong>interesów</strong> obu (zyski i koszty), określająca czytelnie <strong>zobowiązania i prawa</strong>.</p>
+  </div>
+  <div class="card sage">
+    <h3>Po co kontrakt? <span class="src za">Zalewski</span></h3>
+    <p>Buduje <strong>podmiotową relację</strong>, równoważy asymetrię, wyjaśnia role i oczekiwania, zmniejsza lęk i opór, czyni klienta <strong>współodpowiedzialnym</strong>, eliminuje nieadekwatne oczekiwania.</p>
+  </div>
+  <div class="card honey">
+    <h3>Opór i kontakt pozorny <span class="src gk">G&amp;K</span></h3>
+    <p>Opór = świadome lub nieświadome unikanie penetracji obszaru treści. Kontakt pozorny = rozmowa formalnie poprawna, ale bez ujawnienia ważnych treści. Źródła: osoba badana, diagnosta, sama relacja.</p>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<h2 id="s1"><span class="sec-num">1</span>Kontakt pełny a diagnostyczny</h2>
+<p class="sec-lead">Czym jest „bycie w kontakcie” i co wyróżnia kontakt w sytuacji diagnozy.</p>
+
+<details open>
+<summary>Pełny kontakt interpersonalny <span class="src gk">G&amp;K 1.1</span></summary>
+<div class="body">
+  <div class="def"><span class="lbl">Definicja</span>Dobry kontakt to gotowość i możliwość <strong>pełnej, otwartej, dwustronnej</strong> komunikacji treści z pola świadomości — intelektualno-wyobrażeniowych, percepcyjnych i emocjonalnych. Zachowanie każdej osoby tworzy drugiej warunki, by mogła jak najpełniej <strong>wejść w kontakt sama ze sobą</strong>.</div>
+  <ul>
+    <li>Ważne: <strong>pozawerbalne, empatyczne i syntoniczne</strong> rozumienie strumienia przeżyć partnera; poczucie, że to, co się dzieje, jest ważne i ma walor <strong>intymności</strong>.</li>
+    <li>Nie jest stałą cechą relacji — nawet dobrze komunikujący się ludzie bywają w pełnym kontakcie tylko czasami.</li>
+    <li>Kiedy <strong>brak</strong> kontaktu: czyjś smutek jest niewidoczny dla drugiego; słuchający myśli o czymś innym; ktoś dyplomatycznie lawiruje; udaje zainteresowanie; narzuca poglądy/wydaje polecenia.</li>
+    <li>W praktyce psychologicznej pełny kontakt jest rzadki (głównie terapia, trening); psychologowie <strong>humanistyczni</strong> postulują, by każda relacja psycholog–pacjent się do niego zbliżała.</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Specyfika kontaktu diagnostycznego <span class="src gk">G&amp;K 1.2.1</span></summary>
+<div class="body">
+  <div class="tbl-wrap"><table>
+    <tr><th></th><th>Pełny kontakt</th><th>Kontakt diagnostyczny</th></tr>
+    <tr><td><strong>Uwaga</strong></td><td>na obu osobach i relacji</td><td>przede wszystkim na osobie badanej, mniej na relacji, sporadycznie na diagnoście → <strong>asymetria komunikacji</strong> (wprowadzona celowo)</td></tr>
+    <tr><td><strong>Role</strong></td><td>równorzędne</td><td><strong>asymetria ról</strong>: badany mówi, diagnosta słucha i ukierunkowuje tok wypowiedzi</td></tr>
+    <tr><td><strong>Tematy</strong></td><td>dowolne</td><td>diagnosta narzuca ramy tematyczne i sprawdza, czy rozmowa zbliża się do celu</td></tr>
+    <tr><td><strong>Ekspresja</strong></td><td>spontaniczna</td><td>diagnosta <strong>nieobłudny, ale powściągliwy</strong>; kontroluje ekspresję, nie zmienia postawy badanego, nie dzieli się (szerzej) własnymi doświadczeniami</td></tr>
+  </table></div>
+  <div class="key"><span class="lbl">Zapamiętaj</span>Mimo ograniczeń kontakt diagnostyczny zawiera wiele elementów pełnego kontaktu i jest jednym z czynników <strong>trafności diagnozy</strong>.</div>
+</div>
+</details>
+
+<details>
+<summary>Wskaźniki dobrego kontaktu diagnostycznego <span class="src gk">G&amp;K 1.2.2–1.2.3</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card">
+      <h3>Introspekcyjne — diagnosta</h3>
+      <ul><li>autentycznie zainteresowany, chce zrozumieć, a nie ocenić;</li><li>akceptuje treść każdej odpowiedzi;</li><li>ma poczucie, że rozumie osobę poznawczo i emocjonalnie.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Introspekcyjne — osoba badana</h3>
+      <ul><li>czuje akceptację i zainteresowanie;</li><li>ufa, że informacje nie zostaną użyte wbrew jej interesom;</li><li>czuje się rozumiana bez zniekształceń;</li><li>ma poczucie, że warto mówić i może <strong>bezkarnie</strong> odsłonić nawet kontrowersyjne fakty.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Behawioralne</h3>
+      <ul><li><strong>brak wyraźnego oporu</strong> (nie odmawia, nie milczy, nie odpowiada zdawkowo) — co nie znaczy, że bez niepokoju czy wstydu;</li><li><strong>adekwatność</strong> reakcji emocjonalnych do treści;</li><li><strong>wiarygodność</strong> informacji (np. „nigdy nie złościłam się na bliskich” → podejrzenie autoprezentacji);</li><li>proporcja informacji <strong>spontanicznych</strong> do wypytywanych — zachwianie w <em>obu</em> kierunkach to sygnał braku kontaktu.</li></ul>
+    </div>
+  </div>
+  <div class="def"><span class="lbl">Akceptacja ≠ aprobata (przypis)</span>Akceptacja diagnosty to przyjęcie, że skoro fakty, postawy i przeżycia wystąpiły, to <strong>mogły i miały prawo</strong> wystąpić — i próba zrozumienia ich znaczenia dla osoby. Diagnosta może uważać je za niesłuszne moralnie czy patogenne; nie popiera ich słuszności, nie ocenia, nie zmienia. Gdyby akceptował tylko to, co sam by zrobił — byłby dobrym diagnostą dla bardzo nielicznych.</div>
+</div>
+</details>
+
+<details>
+<summary>Kontakt a cel diagnozy <span class="src gk">G&amp;K 1.2.4</span></summary>
+<div class="body">
+  <ul>
+    <li>Model najpełniej realizuje się w <strong>wywiadzie klinicznym</strong> (punkt wyjścia terapii).</li>
+    <li>Przy węższych celach (przydatność zawodowa, wskazówki wychowawcze, porada, telefon zaufania — pobieżna, „wycinkowa” diagnoza) pożądana głębokość kontaktu jest <strong>mniejsza</strong>, a treści mniej intymne.</li>
+    <li>Niezależnie od zakresu: skuteczność diagnozy zależy od relacji, która <strong>wyzwala gotowość do współpracy</strong> i umożliwia szczere udzielanie informacji.</li>
+    <li>Przypis: jakość kontaktu liczy się też przy kwestionariuszach i testach projekcyjnych — lepszy kontakt = szczersze i głębsze odpowiedzi.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>Rola kontaktu — dla osoby badanej i dla diagnosty <span class="src gk">G&amp;K 1.3</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card">
+      <h3>Dla osoby badanej</h3>
+      <p>Tworzy obraz diagnosty: zainteresowanego jej przeżyciami, akceptującego, <strong>dyskretnego</strong>, chcącego pomóc (a przynajmniej nie zaszkodzić), rozumiejącego ludzi.</p>
+      <ul>
+        <li><strong>Zainteresowanie</strong> → koncentracja na sobie, poczucie ważności (i tendencje autoprezentacyjne).</li>
+        <li><strong>Akceptacja</strong> → otwartość; zrozumienie i akceptacja są silnie nagradzające (Rogers 1959); redukuje lęk przed oceną; skoro obcy akceptuje — fakty „nie są dziwaczne”.</li>
+        <li><strong>Dyskrecja</strong> → przełamuje obawę, że informacje zostaną użyte przeciw niej.</li>
+        <li><strong>Wiara w rozumienie</strong> → nadzieja na skuteczną pomoc, motywacja do precyzyjnego mówienia.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Dla diagnosty</h3>
+      <ul>
+        <li>Szczere informacje → trafna diagnoza; satysfakcja zawodowa i osobista; rośnie zainteresowanie badanym.</li>
+        <li><strong>Wczuwanie się</strong> chroni przed błędem „wiem, co powiesz, więc nie słucham” i przed chłodnym stawianiem hipotez, które się <strong>samopotwierdzają</strong> (Rosenthal, Rosnow 1968).</li>
+        <li><strong>Recypatia</strong> — własne reakcje emocjonalne diagnosty jako informacja, jak <em>otoczenie</em> reaguje na badanego (pomóc / szukać pomocy, zbliżyć się / oddalić, zgodzić się / oponować, atak / ucieczka). Może częściowo zastąpić wywiad z otoczeniem.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- ============ 2 ============ -->
+<h2 id="s2"><span class="sec-num">2</span>Asymetria relacji i lęki klienta</h2>
+<p class="sec-lead">Dlaczego pierwsze spotkanie z psychologiem budzi niepokój — i co z tym robi kontrakt.</p>
+
+<details open>
+<summary>Klient w obcym świecie <span class="src za">Zalewski 2</span></summary>
+<div class="body">
+  <ul>
+    <li>Lęki powstają <strong>przed</strong> wizytą — z wyobrażeń z literatury i filmów (psycholog z władzą, nieuważny, zamyślony, znudzony, szkodzący).</li>
+    <li>„<strong>Syndrom dentysty</strong>” — w gabinecie nagle „nic nie boli”; obawa, że psycholog orzeknie coś wiążącego.</li>
+    <li>Klient <strong>sprawdza</strong> psychologa i środowisko, szuka źródeł zagrożenia (Czabała 1997). Gabinet to obce terytorium, szczególnie dla przychodzących <strong>nie z własnej woli</strong> (np. uczniowie).</li>
+    <li>Diagnoza trwa zwykle 1–3 spotkania → <strong>przymierze</strong> trzeba budować od początku.</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Źródła asymetrii — psycholog ma większą siłę, bo… <span class="src za">Zalewski 2</span></summary>
+<div class="body">
+  <ol>
+    <li>jest na <strong>swoim terytorium</strong>;</li>
+    <li>ma <strong>wiedzę</strong>, której klient nie ma (i której nadaje magiczne znaczenie — „spadkobiercy czarowników, voo-doo, babć zielarek”);</li>
+    <li>jest w pozycji <strong>pytającego</strong> i nie ujawnia informacji o sobie;</li>
+    <li>klient ma rolę tego, kto ma <strong>problemy / jest oceniany</strong>, psycholog — „zdrowego specjalisty”;</li>
+    <li>klient przypisuje mu moc <strong>etykietowania</strong> raz na zawsze (np. IQ).</li>
+  </ol>
+  <div class="key"><span class="lbl">Wniosek</span>Relacja ma coś z relacji <strong>rodzic–dziecko</strong> → częściowa <strong>regresja</strong> klienta (dziecięce odczucia wobec władzy; A. Miller „Dramat udanego dziecka”). Osoba bez korzyści z diagnozy nie ma powodu współpracować → <strong>opór</strong>. Mówić o sobie chce ten, kto jest traktowany jak pełna osoba i sam decyduje — tej <strong>podmiotowej relacji</strong> służy kontrakt.</div>
+</div>
+</details>
+
+<!-- ============ 3 ============ -->
+<h2 id="s3"><span class="sec-num">3</span>Kontrakt — definicja i cechy</h2>
+
+<details open>
+<summary>Definicja i analogia handlowa <span class="src za">Zalewski 1, 3</span></summary>
+<div class="body">
+  <div class="def"><span class="lbl">Definicja</span>Kontrakt w diagnozie i terapii to — jak umowa handlowa — umowa zawarta <strong>dobrowolnie</strong> przez <strong>dwie strony</strong>, ze <strong>świadomością wszystkich ważnych okoliczności</strong>, z uwzględnieniem <strong>interesów obu stron</strong> (kto co zyskuje i jakie kto ponosi koszty), określająca czytelnie <strong>zobowiązania i prawa</strong> partnerów.</div>
+  <ul>
+    <li>Wszyscy muszą zyskać: wspólny cel, odpowiadające obu sposoby dążenia do niego, oszacowanie zysków i kosztów.</li>
+    <li><strong>Funkcja terapeutyczna</strong>: klient wie, czego chce (i czego <em>nie</em> osiągnie) i wierzy, że to możliwe → aktywnie korzysta z pomocy.</li>
+    <li>Psycholog: wykorzystuje przygotowanie, ma satysfakcję i gratyfikację finansową.</li>
+    <li>Dobrze zawarty kontrakt <strong>ułatwia</strong> pracę, źle zawarty — <strong>frustruje</strong> obie strony.</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Trzy cechy kontraktu <span class="src za">Zalewski 3</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card sage"><h3>Dwie strony</h3><p>Zawsze odnosi się do <strong>dostarczającego usługi</strong> i <strong>nabywcy</strong> usług.</p></div>
+    <div class="card sage"><h3>Wymiana</h3><p>Psycholog nie pomaga „za nic” — dostaje wynagrodzenie i satysfakcję (Makin, Cooper, Cox 2000). Stąd warto zawierać kontrakty z osobami, z którymi <strong>potrafimy i chcemy</strong> pracować.</p></div>
+    <div class="card sage"><h3>Negocjowalność</h3><p>Duża swoboda treści; można go <strong>zmieniać w trakcie</strong> za zgodą partnerów — częściej przy terapii niż diagnozie.</p></div>
+  </div>
+  <div class="warn"><span class="lbl">Uwaga</span>Oczekiwania, które pozostają <strong>niewypowiedziane</strong>, nie mogą być uzgodnione — prowadzą do rozczarowania obu stron (Armstrong 2000; Enright 1993).</div>
+</div>
+</details>
+
+<!-- ============ 4 ============ -->
+<h2 id="s4"><span class="sec-num">4</span>Kodeksy etyczne i świadoma zgoda</h2>
+<p class="sec-lead">Autor proponuje kontrakt jako <strong>odrębną i konieczną</strong> część relacji z klientem. Kodeksy PTP i APA tak go nie ujęły, ale kontrakt jest naturalnym następstwem ich zapisów.</p>
+
+<details open>
+<summary>Kodeks PTP (1991) — zasada ogólna <span class="src za">Zalewski 3.1</span></summary>
+<div class="body">
+  <ul>
+    <li>Psycholog <strong>każdorazowo uzgadnia</strong> z klientem <strong>cel i zakres</strong> oddziaływań oraz zasadnicze <strong>sposoby postępowania</strong>; ustalenia są wstępne i mogą się zmieniać.</li>
+    <li>Przy niezgodności dąży do wspólnego stanowiska; <strong>respektuje system wartości</strong> klienta i jego prawo do własnych decyzji, ale nie podejmuje interwencji niezgodnych z etyką.</li>
+    <li>Osoby zgłaszające się <strong>nie z własnej inicjatywy</strong> (dorośli i dzieci) mają być informowane o celu, metodach, wynikach i sposobie ich udostępnienia.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>APA 3.10 — świadoma zgoda i jej wyjątki <span class="src za">Zalewski 3.1–3.2.1</span></summary>
+<div class="body">
+  <ul>
+    <li><strong>3.10(a)</strong> Przy badaniach, terapii, poradnictwie, konsultacjach (także online) psycholog uzyskuje <strong>świadomą zgodę</strong> po poinformowaniu w sposób <strong>zrozumiały</strong> dla osoby. Bez zgody nie ma powodów ani praw do działania.</li>
+    <li><strong>3.10(c)</strong> Usługi <strong>nakazane przez sąd</strong> / prawnie: informuje o naturze działań, o tym, że są nakazane, i o <strong>granicach poufności</strong> — zanim zacznie. → obowiązek poinformowania, co i jak zostanie przekazane osobom trzecim.</li>
+    <li><strong>3.10(b)</strong> Osoby <strong>niezdolne</strong> do świadomej zgody (np. przymusowa hospitalizacja — PTP jej nie opisuje): (1) wyjaśnienia, (2) dążenie do <strong>akceptacji</strong> (<em>assent</em>), (3) uwzględnienie preferencji i interesów, (4) zgoda osoby uprawnionej, jeśli wymaga jej prawo.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>Psycholog jako praktyk — APA 10.01 <span class="src za">Zalewski 3.2</span></summary>
+<div class="body">
+  <ul>
+    <li><strong>(a)</strong> jak najwcześniej: natura i przebieg terapii, <strong>opłaty</strong>, udział osób trzecich, zasady i ograniczenia <strong>poufności</strong>, możliwość zadawania pytań;</li>
+    <li><strong>(b)</strong> leczenie bez ustalonych technik: dynamiczna natura, potencjalne <strong>ryzyko</strong>, <strong>alternatywy</strong>, dobrowolność;</li>
+    <li><strong>(c)</strong> terapeuta w szkoleniu: informacja o <strong>superwizji</strong> i imię i nazwisko superwizora.</li>
+  </ul>
+  <p>Naturalnie obejmuje to też przedstawianie <strong>stażystów</strong> i nauczycieli, na których polecenie studenci prowadzą badania.</p>
+  <div class="proj"><span class="lbl">Dla Ciebie</span>W projekcie jesteś <strong>studentką</strong> — powiedz rozmówcy, że rozmowa jest zadaniem na zajęcia i kto ją zobaczy (prowadząca) → kryterium 2 „Twoje kompetencje”.</div>
+</div>
+</details>
+
+<details>
+<summary>Psycholog jako badacz — PTP + APA 8.02, 8.03 <span class="src za">Zalewski 3.3</span></summary>
+<div class="body">
+  <p><strong>PTP:</strong> dobrowolność udziału + prawo do <strong>wycofania się w dowolnym momencie</strong>; poinformowanie o celu, przebiegu i aspektach, które mogą wpływać na gotowość; urządzenia rejestrujące lub obserwacja z ukrycia — <strong>bezwzględnie</strong> poinformować i uzyskać zgodę (dorośli i dzieci).</p>
+  <div class="grid">
+    <div class="card"><h3>APA 8.02(a) — 8 informacji</h3>
+      <ol><li>cel, czas trwania, procedury;</li><li>prawo odmowy i wycofania;</li><li>konsekwencje odmowy/wycofania;</li><li>czynniki wpływające na chęć udziału (ryzyko, dyskomfort, przykre efekty);</li><li>korzyści;</li><li>ograniczenia poufności;</li><li>zachęty do udziału;</li><li>osoby do kontaktu.</li></ol>
+    </div>
+    <div class="card"><h3>APA 8.02(b) — badania z eksperymentalnym leczeniem</h3>
+      <ol><li>eksperymentalny charakter terapii;</li><li>usługi (nie)dostępne dla grupy kontrolnej;</li><li>sposób przydziału do grup;</li><li>alternatywne formy leczenia;</li><li>wynagrodzenie / koszty.</li></ol>
+    </div>
+    <div class="card"><h3>APA 8.03 — nagrywanie</h3>
+      <p>Zgoda na nagranie głosu/obrazu, <strong>chyba że</strong>:</p>
+      <ol><li>obserwacja naturalna w miejscu publicznym, bez możliwości identyfikacji i szkody;</li><li>projekt wymaga nieświadomości nagrywania → zgoda w <strong>sesji odkłamującej</strong>.</li></ol>
+    </div>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Psycholog w organizacji — APA 9.03; zwolnienie ze zgody — APA 8.05 <span class="src za">Zalewski 3.4–3.5</span></summary>
+<div class="body">
+  <p>W Polsce brak takich standardów. <strong>APA 9.03(a)</strong> — świadoma zgoda na ocenę i diagnozę, <strong>chyba że</strong>:</p>
+  <ol><li>testowanie nakazane prawem lub regulacjami;</li><li>zgoda jest <strong>domyślna</strong> — rutynowe działania edukacyjne, instytucji, organizacji (np. rekrutacja);</li><li>celem jest ocena zdolności do podejmowania decyzji.</li></ol>
+  <p>Zgoda obejmuje: cel i sposoby oceny, opłaty, osoby trzecie, granice poufności, możliwość pytań. <strong>(b)</strong> osoby o wątpliwej zdolności do zgody i badane z mocy prawa — informować zrozumiałym językiem. <strong>(c)</strong> korzystając z interpretatorów — zgoda klienta, poufność, bezpieczeństwo testów, zaznaczanie ograniczeń danych.</p>
+  <div class="def"><span class="lbl">APA 8.05 — kiedy można odstąpić od zgody</span>Tylko gdy badanie z dużym prawdopodobieństwem <strong>nie przysporzy stresu ani szkody</strong> i dotyczy: (a) ćwiczeń i metod w naturalnym kształceniu lub (b) anonimowych kwestionariuszy, obserwacji naturalnych, badań archiwalnych — bez ryzyka odpowiedzialności karnej/cywilnej, szkody finansowej, zawodowej, dla reputacji, z zachowaniem tajemnicy.</div>
+</div>
+</details>
+
+<details>
+<summary>Słaba strona kodeksów <span class="src za">Zalewski 3.6</span></summary>
+<div class="body">
+  <ul>
+    <li>Łukaszewski (2000): kodeksy mogą <strong>pomniejszać osobistą odpowiedzialność</strong> — zachęcają do „odłączania” jej od Ja i przenoszenia na kodeks.</li>
+    <li>Analogia z Kohlbergiem: niższe stadium = przestrzeganie nakazów z lęku przed karą; dojrzałe = moralność oparta na <strong>własnym przekonaniu</strong>.</li>
+    <li>Psycholog, który wie, co robi, po co i dlaczego — zwykle nie musi radzić się kodeksów.</li>
+  </ul>
+</div>
+</details>
+
+<!-- ============ 5 ============ -->
+<h2 id="s5"><span class="sec-num">5</span>Kontrakt — aspekty psychologiczne</h2>
+
+<div class="grid">
+  <div class="card sage">
+    <h3>Oczekiwania w postaci historii <span class="src za">4.1</span></h3>
+    <p>Klient przychodzi „w dwóch częściach”: jedna chce współpracować, druga <strong>chroni</strong> informacje przed psychologiem-intruzem (Czabała 1997). Opór często wynika z <strong>niedbałości psychologa</strong> na pierwszych spotkaniach — dokładny kontrakt eliminuje jego większość (Enright 1993).</p>
+    <p>Klienci planują terapię dokładniej, niż sądzą terapeuci; mają gotową <strong>historię</strong>: co się stanie, w jakiej kolejności, jaki efekt, jakie role (Trzebiński 2002; niektórzy chcą np. ukarać psychologa — Horney). W kontrakcie jesteśmy bardziej <strong>dyrektywni</strong> i <strong>rewidujemy oczekiwania</strong>: co możemy zaproponować, a czego nie.</p>
+  </div>
+  <div class="card sage">
+    <h3>Jasna komunikacja <span class="src za">4.2</span></h3>
+    <p>Na początku każdego spotkania toczy się negocjacja: kto jest kim, jakim dyskursem rozmawiamy, jak przebiegnie relacja, co możliwe, jaki cel (Davies, Harré 2002). Kontrakt to moment <strong>jawnego ustalenia ról</strong> (psycholog pyta, klient opowiada), praw, obowiązków, korzyści, czasu, kosztów.</p>
+  </div>
+  <div class="card sage">
+    <h3>Podmiotowe traktowanie <span class="src za">4.3</span></h3>
+    <p>Pierwszy moment, gdy <strong>wprost</strong> mówimy, że traktujemy osobę jako samodzielną, odpowiedzialną, dokonującą wyborów: decyduje, ile powie, współodpowiada, decyduje o udziale. Pierwsze zręby <strong>środowiska wspierającego</strong> — ważne np. dla nastolatków podporządkowanych dorosłym.</p>
+    <p><strong>Dzieci (PTP):</strong> prawa nie mniejsze niż dorosłych; podstawą jest dobro dziecka; kontakt nie pod presją instytucji/dorosłych; przy naruszeniu dobra dziecka psycholog może odmówić współpracy i ma moralny obowiązek bronić jego praw.</p>
+  </div>
+  <div class="card sage">
+    <h3>Współodpowiedzialność <span class="src za">4.4</span></h3>
+    <p>Nie „mam problem, zrób coś” jak u lekarza — klient decyduje, ile i jak ważnych informacji poda, a więc o efekcie diagnozy (de Barbaro 2002).</p>
+  </div>
+</div>
+
+<details open>
+<summary>Psycholog nie jest wróżką <span class="src za">4.4.1</span></summary>
+<div class="body">
+  <ul>
+    <li>Klient zobaczy w nas „wróżkę” i jednocześnie będzie się tego bał → warto uświadomić, że <strong>nie przejrzymy go na wylot</strong>.</li>
+    <li>Klient ma <strong>prawo odmówić odpowiedzi bez podawania powodów</strong>; dowiemy się tylko tyle, ile sam powie.</li>
+    <li>Informacje z <strong>innych źródeł</strong> (rodzina, wywiad środowiskowy) — ustalić z klientem; w terapii rodzin pisemna zgoda (Trzebińska 1995).</li>
+    <li>„<strong>Fajerwerki</strong>” — ciekawość studentów tym, co niezwykłe. PTP: wnikanie w intymne sprawy tylko w zakresie wynikającym z <strong>celów pomocy</strong>.</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Dwóch ekspertów w jednym pokoju <span class="src za">4.4.2</span></summary>
+<div class="body">
+  <ul>
+    <li>Psycholog — ekspert od ogólnej wiedzy o osobowości; klient — ekspert <strong>„od siebie”</strong> (Czabała 1997; de Barbaro 1998). Sesja to współpraca ekspertów.</li>
+    <li>Mówimy, że interesuje nas, jak <strong>on</strong> doświadcza siebie i świata → nie musimy zgadywać („rozumiesz, jak to jest”); informujemy, co zrozumieliśmy (podstawa informacji zwrotnych). Tłumacząc nam, klient porządkuje wiedzę o sobie.</li>
+    <li>Psycholog sprawdza własne <strong>kwalifikacje i motywację</strong>. PTP: brak kwalifikacji lub wadliwa relacja → skierowanie do innego specjalisty.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>Zgoda na „interwencje” i manipulacja <span class="src za">4.5</span></summary>
+<div class="body">
+  <ul>
+    <li>PTP: informować o <strong>ryzyku</strong> metod i o <strong>alternatywach</strong> (także niepsychologicznych).</li>
+    <li>Terapie systemowe/strategiczne: interwencje mogą mieć skutki uboczne → zgoda i informacja o rodzaju i stopniu ryzyka (Rakowska 1998).</li>
+    <li><strong>Terapia jest zawsze manipulacją</strong> — można mówić klientowi o manipulacji i technikach; miarą korzyści/szkody jest efekt terapii. Także terapię rogeriańską ujawnia dokładny kontrakt (będę słuchał z empatią, nie będę oceniał, nie wezmę odpowiedzialności za twoje decyzje…) — klient poznaje nasze wartości i kierunek zmian i może się nie zgodzić.</li>
+    <li><strong>Diagnoza:</strong> krótki opis metod i ich wpływu na emocje.</li>
+    <li><strong>Badania (społeczne, dla firm, naukowe):</strong> opisać metody tak, by nie obniżyć wartości diagnostycznej, ale dać wyobrażenie wyniku i samopoczucia (<span class="ex">„może Pan być po badaniu bardziej zamyślony”</span>). Gdy uprzedzenie zmieniłoby wynik — zbadać emocje <strong>po</strong> badaniu. Podobnie przy szkoleniach aktywizujących emocje.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>Tajemnica zawodowa i jej wyjątki <span class="src za">4.6</span></summary>
+<div class="body">
+  <ul>
+    <li>Ochrona wypowiedzi klienta przed osobami trzecimi. Raport dla pracodawcy → powiedzieć, <strong>jakie informacje</strong> przekażemy; klient decyduje, czy je poda, nawet ze szkodą dla siebie. To odciążenie — nie „wyciągamy” informacji.</li>
+    <li>Wyjątek (PTP): ujawnienie tylko przy <strong>poważnym zagrożeniu bezpieczeństwa</strong> klienta lub innych; jeśli możliwe — omówić z doświadczonym, bezstronnym kolegą.</li>
+    <li>Rakowska: ochrona tajemnicy jest <strong>drugorzędna wobec ochrony życia i zdrowia</strong>. Przekazanie organom ścigania przy nadużyciach wobec dziecka lub osoby starszej; w Polsce — maltretowanie w rodzinie i nadużycia seksualne wobec dzieci.</li>
+  </ul>
+</div>
+</details>
+
+<!-- ============ 6 ============ -->
+<h2 id="s6"><span class="sec-num">6</span>Kontrakt diagnostyczny a kontrakt na terapię</h2>
+
+<div class="tbl-wrap"><table>
+  <tr><th></th><th>Kontrakt diagnostyczny</th><th>Kontrakt na terapię</th></tr>
+  <tr><td><strong>Czas</strong></td><td>krótki — diagnoza to 1–3 spotkania; wystarczy kilka zdań</td><td>negocjowany dłużej; sam w sobie jest <strong>częścią terapii</strong>; warto szczegółowo, jak w badaniach</td></tr>
+  <tr><td><strong>Cel</strong></td><td><strong>poznanie</strong> osoby bez prób zmieniania</td><td>aktywne działanie psychologa wywołujące <strong>zmiany</strong></td></tr>
+  <tr><td><strong>Treść</strong></td><td>cele i sposób rozmowy (max zysków klienta), czy problem nadaje się do terapii, dobór terapii, dostępni specjaliści, kto podlega terapii; uprawnienia psychologa, liczba spotkań, opłaty, kiedy informacja zwrotna, możliwe obciążenia emocjonalne; ewent. informacja pisemna</td><td>cele i sposoby adekwatne dla klienta (Czabała 1997); role i warunki pomocy; zwykle <strong>klient określa cel</strong>, psycholog mówi, czy może to zaoferować</td></tr>
+</table></div>
+
+<details open>
+<summary>Najważniejsze szczegóły <span class="src za">5–5.2</span></summary>
+<div class="body">
+  <ul>
+    <li>Każda szkoła terapii proponuje inny kontrakt, ale wszystkie wymagają jego zawarcia — to też wymóg kodeksu PTP. Większość szkół: <strong>osobny kontrakt na diagnozę i osobny na terapię</strong>.</li>
+    <li>Enright (1993): warto sprawdzić, czy psycholog jest dla klienta <strong>odpowiednią osobą</strong> — odmowa odpowiedzi bywa skutkiem przeniesień lub cech diagnosty.</li>
+    <li>Ofiary przemocy (interwencja kryzysowa): współpraca z lekarzem (obdukcja), z policją, szybkie elementy terapii — odreagowanie emocjonalne (Herman 1998).</li>
+    <li>Terapia krótkoterminowa: określenie celu szczególnie ważne (Sęk 1993); kontrakt to <strong>zasadniczy etap</strong>. Rodzinna: cel z każdym osobno, potem negocjowany z całą rodziną — już to ma znaczenie terapeutyczne (Kuijers, Leff, Lan 1997). Długoterminowa: cel szerszy (<span class="ex">„min. rok, koniec, gdy oboje uznamy zmianę za satysfakcjonującą”</span>).</li>
+    <li>Oczekiwania bywają nierealne i <strong>negatywnie sformułowane</strong> („żeby nie…”) → technika <strong>pozytywnych przeformułowań</strong> (Czabała 1997, s. 170).</li>
+    <li>Ważne cele kontraktu: <strong>wyeliminowanie nieadekwatnych oczekiwań</strong> i wyłączenie osób niewystarczająco zmotywowanych — w interesie i klienta (czas, pieniądze), i psychologa (praca z tymi, którzy chcą pomocy).</li>
+  </ul>
+</div>
+</details>
+
+<!-- ============ 7 ============ -->
+<h2 id="s7"><span class="sec-num">7</span>Nawiązywanie kontaktu</h2>
+<p class="sec-lead">Faza wstępna jest najtrudniejsza — działa najwięcej czynników wzmagających napięcie. Zadania diagnosty: <strong>zredukować lęk</strong> i <strong>wzbudzić motywację</strong>.</p>
+
+<details open>
+<summary>Pierwsze wrażenie <span class="src gk">1.5.1</span></summary>
+<div class="body">
+  <p><strong>Efekt halo</strong> — pierwsze wrażenie buduje obraz wykraczający poza dostrzeżone cechy i wpływa na interpretację dalszych faktów. Osoba badana od pierwszej chwili ma czuć, że jest <strong>głównym przedmiotem autentycznego zainteresowania</strong>. Spóźnianie się, kończenie własnej pracy, każenie czekać = lekceważenie; pełna uwaga i skupienie = dobre podwaliny.</p>
+</div>
+</details>
+
+<details open>
+<summary>Dystans psychologiczny <span class="src gk">1.5.2</span></summary>
+<div class="body">
+  <ul>
+    <li>Diagnosta ma być <strong>partnerem</strong>, nie osobą o wyższej pozycji (różnica pozycji zwiększa dystans). Formalnie jego pozycja jest wyższa — steruje rozmową, przekazuje normy — ale w tej roli może nawiązać głębszy kontakt, który wymaga podejścia partnerskiego: obie strony mają <strong>równe prawo do subiektywnego przeżywania świata</strong>.</li>
+    <li>Partnerstwa nie rozstrzyga <strong>intelektualna zgoda</strong> — poczucie wyższości ma głębsze, osobowościowe źródła → potrzebna uczciwa <strong>autoanaliza</strong> (ale nie pytanie „czy się nadaję?”; rozwój = „oswajanie” własnych problemów).</li>
+    <li><strong>Fizyczne wskaźniki dystansu:</strong> stoi/siedzi, wyżej/niżej, wygodny fotel za biurkiem vs twarde krzesło, duża odległość, brak kontaktu wzrokowego.</li>
+    <li>Cel: nie zniesienie dystansu, lecz utrzymanie go w <strong>optymalnych granicach</strong> (bez lęku).</li>
+    <li>Gdy badany się przedstawia — <strong>przedstawić się też</strong> i powiedzieć o swojej roli; rozmowa między osobami, nie „psychologiem” i „osobą badaną”.</li>
+    <li>Życzliwa uwaga, wygodne miejsce — ale nie traktować jak ciężko chorego; nie wpatrywać się (kojarzy się z przesłuchaniem).</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Pierwsze pytania — motywacja do współpracy <span class="src gk">1.5.3</span></summary>
+<div class="body">
+  <p>Pierwsze pytanie: <strong>ogólne, otwarte</strong>, o sprawach osobistych, ale <strong>niezagrażających</strong> — zwykle o ogólnej sytuacji życiowej.</p>
+  <p class="ex">„Proszę mi opowiedzieć o sobie.” · „Co skłoniło Pana/Panią do rozmowy z psychologiem?” · „Czy mógłby Pan opowiedzieć o swojej aktualnej sytuacji życiowej?”</p>
+  <p>Gdy działa ambiwalencja, obawa lub przymus — zadanie: <strong>wzbudzić zaufanie</strong>:</p>
+  <ul>
+    <li>zapewnić o dyskrecji — ale nie zawsze można (np. dobór zawodowy); wtedy rozproszyć obawę, że informacje zostaną użyte <strong>wbrew interesom</strong>;</li>
+    <li>uświadomić związek między tym, co powie, a możliwością pomocy;</li>
+    <li>przy niewierze w pomoc: kontakt może pomóc jej <strong>pomóc sobie samej</strong>.</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>Co utrudnia nawiązanie kontaktu <span class="src gk">1.5.4</span></summary>
+<div class="body">
+  <ul>
+    <li><strong>Ignorowanie praw dynamiki</strong> — np. zbyt szybkie przejście do pytań zagrażających.</li>
+    <li>Wypowiedzi zawierające (choćby ukrytą) <strong>ocenę/dezaprobatę</strong>: <span class="ex">„Dlaczego tak późno przychodzi Pan do psychologa?”</span>, <span class="ex">„Czy nie umiałby Pan wyrazić tego prościej?”</span> — liczy się też ton i kontekst.</li>
+    <li><strong>Nadmierna lub nienaturalna ekspresja</strong> pozytywnego nastawienia — ostentacyjna życzliwość (często maskująca obawy) budzi podejrzenia co do autentyczności.</li>
+    <li>Sposób nawiązania kontaktu tworzy <strong>obraz diagnosty</strong>: zagrożenie, cudotwórca, orędownik (Wallen 1964) → oczekiwania; gdy się nie spełnią, osoba czuje się oszukana i zrywa kontakt.</li>
+  </ul>
+  <div class="key"><span class="lbl">Sedno</span>Naprawdę liczą się: <strong>naturalność</strong>, koncentracja uwagi na rozmówcy (nie na sobie) i <strong>autentyzm akceptacji</strong>. Introspekcyjnie: wewnętrzne „przygotowanie się do zrozumienia”; behawioralnie — zakomunikowanie tej gotowości.</div>
+</div>
+</details>
+
+<!-- ============ 8 ============ -->
+<h2 id="s8"><span class="sec-num">8</span>Dynamika i podtrzymywanie kontaktu</h2>
+
+<details open>
+<summary>Dynamika kontaktu i zasada wrzeciona <span class="src gk">1.4</span></summary>
+<div class="body">
+  <div class="spindle">
+    <svg width="260" height="90" viewBox="0 0 260 90" aria-label="Zasada wrzeciona: głębokość kontaktu rośnie do środka rozmowy i maleje ku końcowi">
+      <path d="M10 45 Q130 -15 250 45 Q130 105 10 45 Z" fill="hsl(345,40%,94%)" stroke="hsl(345,32%,60%)" stroke-width="2"/>
+      <line x1="10" y1="45" x2="250" y2="45" stroke="hsl(345,32%,60%)" stroke-dasharray="3 4"/>
+      <text x="14" y="86" font-size="11" fill="#5c4d40" font-family="Source Serif 4, serif">początek</text>
+      <text x="108" y="86" font-size="11" fill="#5c4d40" font-family="Source Serif 4, serif">środek: najgłębiej</text>
+      <text x="216" y="86" font-size="11" fill="#5c4d40" font-family="Source Serif 4, serif">koniec</text>
+    </svg>
+    <p style="flex:1;min-width:220px">Kontakt to <strong>proces</strong>, nie „wszystko albo nic”. Ma tendencję do pogłębiania się, ale to tylko częściowo prawda — diagnosta powinien kierować się <strong>zasadą wrzeciona</strong>: najgłębiej w środkowej fazie, spłycanie ku końcowi, by koniec rozmowy nie zbiegł się z silnymi negatywnymi emocjami.</p>
+  </div>
+  <p><strong>Czynniki względnie niezależne od diagnosty:</strong></p>
+  <ul>
+    <li><strong>Stopień intymności</strong> (Derlega, Chaiken 1975): ujawnianie rośnie, po pewnym poziomie osoba na chwilę <strong>wycofuje się</strong> na płytszy poziom; cyklicznie, za każdym razem głębiej. Może wyglądać jak chwilowe pogorszenie kontaktu.</li>
+    <li><strong>„Stopa w drzwiach”</strong> (<em>foot in the door</em>) — potrzeba spójności: kto odpowiedział na mało zagrażające pytanie, trudniej odmówi na bardziej zagrażające → kolejne „przyczółki”.</li>
+    <li><strong>Czas</strong>: inna głębokość na początku, w środku i gdy wywiad się przedłuża; optimum ok. <strong>50 minut</strong>, potem kontakt słabnie.</li>
+  </ul>
+</div>
+</details>
+
+<details open>
+<summary>Techniki podtrzymywania kontaktu <span class="src gk">1.6</span></summary>
+<div class="body">
+  <p>Podtrzymywanie = ciągłe (choć niesystematyczne) sygnały <strong>akceptacji, zainteresowania i empatycznego zrozumienia</strong>. Początkujący bywa „rozszczepiony na dwie osoby” (prowadzącą i kontrolującą) — wrażenie nienaturalności mija z doświadczeniem.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Niewerbalne</h3>
+      <p>Ułożenie i pochylenie ciała, mimika, gesty, wyraz oczu — odbierane <strong>globalnie</strong>. Najlepsza nauka: informacja zwrotna o własnym zachowaniu od rozmówcy, a jeszcze lepiej od <strong>obserwatora</strong>.</p>
+    </div>
+    <div class="card">
+      <h3>Werbalne potwierdzenia</h3>
+      <p><span class="ex">Mhm, Tak, Aha; Rozumiem, co Pan ma na myśli.</span> Nadużywane lub schematyczne pogarszają kontakt (wrażenie schematu). Używane <strong>selektywnie</strong> działają jak <strong>wzmocnienie pozytywne</strong> — badany zaczyna eksponować „nagradzane” tematy (warunkowanie instrumentalne; Bandura 1969).</p>
+    </div>
+    <div class="card">
+      <h3>Prośba o rozwinięcie</h3>
+      <p>Gdy badany milknie i nie wie, o czym mówić: <span class="ex">„Czy może Pan coś więcej o tym opowiedzieć?”, „Czy jest coś jeszcze, co się z tym wiąże?”, „Jak się Pan wtedy czuł?”, „Czy działo się z Panem coś podobnego w innych sytuacjach?”</span></p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:14px">Parafraza ≠ interpretacja</h3>
+  <div class="def"><span class="lbl">Parafraza</span>Powtórzenie <strong>własnymi słowami</strong> wypowiedzi partnera (<span class="ex">„Powiedział Pan, że…”, „O ile dobrze zrozumiałem…”</span>). Służy kontaktowi. <strong>Interpretacja</strong> — dodaje sens od psychologa; w wywiadzie diagnostycznym raczej <strong>szkodliwa</strong>, bo wywiad ma dać materiał o tym, co myśli badany, a nie co psycholog o nim sądzi.</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Przykład (chemik)</th><th>Interpretacja</th><th>Parafraza</th></tr>
+    <tr><td>Lubi pracę i analizy, ale atmosfera to rywalizacja, plotki, szef to wykorzystuje; czuje się niepotrzebny.</td><td>„Lubi pan zawód, bo odpowiada panu samodzielne rozwiązywanie problemów… rywalizacja z mężczyznami jest zbyt zagrażająca. Nie umie pan walczyć i obawia się przegranej.”</td><td>„Jest pan zadowolony z zawodu… Źle się pan czuje w atmosferze plotek, obserwacji i rywalizacji. Ma pan wrażenie, że bardziej liczy się spryt niż praca. Czasem czuje się pan niepotrzebny.”</td></tr>
+  </table></div>
+  <p><strong>Funkcje parafrazy:</strong> komunikuje uważne słuchanie i chęć zrozumienia; pozwala sprawdzić, czy informacje nie zostały zniekształcone (obronna identyfikacja, projekcja); daje badanemu szansę <strong>sprostowania</strong>. Może kończyć się pytaniem (<span class="ex">„Czy mógłby Pan powiedzieć więcej o stosunkach z kolegami?”</span>) lub sprawdzeniem (<span class="ex">„Czy dobrze Pana zrozumiałem?”</span>). Lektura dodatkowa: Johnson (1985).</p>
+
+  <h3 style="margin-top:14px">Akceptacja uczuć i odzwierciedlanie uczuć</h3>
+  <ul>
+    <li><strong>Akceptacja i zrozumienie</strong> sposobu przeżywania: <span class="ex">„Rozumiem, że nie czuje się Pan dobrze w swojej pracy.”</span> — nie znaczy, że diagnosta sam czułby się tak samo ani że przeżywał podobnie.</li>
+    <li><strong>Odzwierciedlanie uczuć</strong> (Wallen 1964): <span class="ex">„Trudno Panu o tym mówić, prawda?”</span> — informuje o empatycznym zrozumieniu. Granica z <strong>klaryfikacją</strong> (uchwycenie głównego sensu i zwięzłe oddanie istoty) i interpretacją jest płynna → ryzyko zerwania kontaktu, gdy osoba nie jest gotowa przyjąć informacji sprzecznych z obrazem Ja.</li>
+    <li>Rada dla początkujących: odzwierciedlać tylko, gdy to <strong>prawie dokładne powtórzenie</strong> tego, co osoba już powiedziała lub wyraźnie okazuje; używać <strong>nieprecyzujących</strong> kategorii: zamiast <span class="ex">„Zbiera się panu na płacz, prawda?”</span> → <span class="ex">„Widzę, że jest panu z tym bardzo ciężko.”</span></li>
+  </ul>
+
+  <h3 style="margin-top:14px">Milczenie</h3>
+  <p>Trudne do analizy, ale bardzo istotne. Dla badanego może znaczyć brak zainteresowania, niezadowolenie, niepokój diagnosty — albo empatyczne zrozumienie i <strong>szacunek</strong> dla przeżywanych uczuć.</p>
+</div>
+</details>
+
+<!-- ============ 9 ============ -->
+<h2 id="s9"><span class="sec-num">9</span>Kontakt pozorny</h2>
+<p class="sec-lead">Rozmowa formalnie poprawna — ale ważne treści nie zostają poruszone. Efekt zawsze ten sam, niezależnie od źródła: badany świadomie lub nieświadomie nie udziela pewnych informacji.</p>
+
+<details open>
+<summary>Wskaźniki obserwacyjne i introspekcyjne <span class="src gk">1.7.1–1.7.2</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card honey">
+      <h3>Podejrzenie kontaktu pozornego, gdy…</h3>
+      <ol>
+        <li>informacje są <strong>konwencjonalne</strong>, wpisują osobę w powierzchowny stereotyp dla jej wieku i sytuacji;</li>
+        <li><strong>forma</strong> wypowiedzi nieadekwatna do treści;</li>
+        <li>rola diagnosty jest <strong>nadmierna</strong> (lakoniczne odpowiedzi, brak spontaniczności) lub <strong>znikoma</strong> (równie lekko i swobodnie o wszystkim);</li>
+        <li>we wszystkich wypowiedziach jest <strong>wspólny mianownik</strong>: korzystne światło, dążenie do aprobaty, bardzo spójny i logiczny system.</li>
+      </ol>
+    </div>
+    <div class="card honey">
+      <h3>Introspekcyjne (autoobserwacje diagnosty)</h3>
+      <ol>
+        <li>czuje się <strong>znudzony</strong> i mało zainteresowany (nie z powodu zmęczenia) — „nie dzieje się nic ważnego”;</li>
+        <li>ma wrażenie, że <strong>wie, co osoba za chwilę powie</strong>, wszystko zgodne z oczekiwaniami;</li>
+        <li>rozumie pojedyncze wypowiedzi, ale <strong>nie potrafi utworzyć całościowego obrazu</strong> (ostrożnie — zależy od doświadczenia, złożoności poznawczej, inteligencji).</li>
+      </ol>
+      <p>Żaden wskaźnik nie przesądza — każdy tylko zwiększa prawdopodobieństwo.</p>
+    </div>
+  </div>
+</div>
+</details>
+
+<details open>
+<summary>Trzy źródła kontaktu pozornego <span class="src gk">1.7.3–1.7.5</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card">
+      <h3>W relacji</h3>
+      <p>Badany nie zna wymagań „roli”, więc chętnie przyjmuje <strong>stereotyp relacji</strong> z życia (dwóch kolegów, rodzic–dziecko, podwładny–zwierzchnik, nauczyciel–uczeń, dwóch intelektualistów). Każdy kładzie nacisk na wymianę pewnego zakresu informacji:</p>
+      <ul>
+        <li>„kumplowska” → konflikt pokoleń tak, brak miłości rodziców — nie;</li>
+        <li>„dobry rodzic” → omijanie tematów jak z rodzicami (np. seksualność);</li>
+        <li>nauczyciel–uczeń → usprawiedliwianie się, chęć oceny/porady;</li>
+        <li>„intelektualiści” → poglądy i wartości zamiast „nierozsądnych” doznań.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>W diagnoście</h3>
+      <ul>
+        <li><strong>brak kompetencji</strong> — niepewny w roli wprowadza elementy życia codziennego;</li>
+        <li><strong>obawy przed intymnym kontaktem</strong> — omija peszące tematy, nieświadomie blokuje; aktywne zainteresowanie jednymi i brak potwierdzenia innych sygnalizuje oczekiwania;</li>
+        <li><strong>zbyt sztywny model teoretyczny</strong> — sugeruje tematy (np. wszystko z dzieciństwa) → „dowie się tego, co już wiedział”. Postulat: diagnosta jak <strong>tabula rasa</strong>;</li>
+        <li><strong>brak zainteresowania</strong> osobą (zmęczenie, efekt halo, uznanie jej za „szarą”) → pytania rutynowe, odpowiedzi konwencjonalne, błędne koło.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>W osobie badanej</h3>
+      <ul>
+        <li>świadome <strong>dążenie do zatajenia</strong> — przyszła z polecenia przełożonych, z presji rodziny; bez motywacji, podejrzliwa wobec dyskrecji, obawia się manipulacji;</li>
+        <li><strong>kierowanie wrażeniem</strong> — gdy od orzeczenia zależy praca, aspiracje, hospitalizacja, kara, prawa rodzicielskie;</li>
+        <li>przejście z kontaktu rzeczywistego w pozorny po dotarciu do tematów budzących <strong>opór</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- ============ 10 ============ -->
+<h2 id="s10"><span class="sec-num">10</span>Opór osoby badanej</h2>
+<div class="def"><span class="lbl">Definicja</span><strong>Opór</strong> — świadome lub nieświadome unikanie penetracji pewnego obszaru treściowego. Może być zakamuflowany (kontakt pozorny) albo jawny — aż do zerwania kontaktu. Badany <strong>ma prawo</strong> do oporu.</div>
+
+<details open>
+<summary>Przejawy oporu <span class="src gk">1.8.1</span></summary>
+<div class="body">
+  <div class="grid">
+    <div class="card">
+      <h3>Formy obronne („odsunięcie” zagrożenia)</h3>
+      <ul>
+        <li>przeciągające się <strong>milczenie</strong>;</li>
+        <li><strong>zmiana treści</strong> rozmowy (pytana o własne małżeństwo — mówi o domu rodzinnym);</li>
+        <li><strong>intelektualizacja</strong> — poglądy, jak „powinno być”, racjonalne uzasadnienia emocji, abstrakcyjne zasady, bezosobowo (<span class="ex">„Różnie to bywa, ludzie są tylko ludźmi…”</span>);</li>
+        <li>nagłe <strong>zmniejszenie głębokości i konkretności</strong>;</li>
+        <li><strong>zmiana sposobu mówienia</strong> — mniej swobodnie, mniej gramatycznie, dezintegracja;</li>
+        <li>forma <strong>somatyczna</strong> — złe samopoczucie, duszności, ból głowy; także pustka w głowie, zapominanie pytania. To nie aktorstwo, lecz mechanizmy obronne → <strong>materiał diagnostyczny</strong>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Atak</h3>
+      <ul>
+        <li>krytyka pytań (bezsensowne, bezczelne, źle postawione);</li>
+        <li>zarzuty: psycholog „zimny”, szufladkuje zamiast pomóc, pyta o oczywistości;</li>
+        <li>uznanie wywiadu za głupi, sztuczny, za długi;</li>
+        <li>łagodniej: <strong>przerzucanie uwagi</strong> na diagnostę („a co Pan o tym myśli?”, czy go nie nudzi, domaganie się ocen i rad).</li>
+      </ul>
+      <p>Przy pełnej świadomości: <strong>świadome kłamstwo</strong> lub <strong>otwarta odmowa</strong>.</p>
+    </div>
+  </div>
+</div>
+</details>
+
+<details open>
+<summary>Źródła oporu <span class="src gk">1.8.2</span></summary>
+<div class="body">
+  <p>Częsta reakcja diagnosty na opór: rozdrażnienie i złość — bo chce dotrzeć do tego, co ważne. Pamiętać: badany <strong>ma prawo</strong> do trudności z intymnymi treściami. Opór: <strong>wewnętrzny</strong> albo <strong>reakcja na zachowanie diagnosty</strong>.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Lęk i niepokój</h3>
+      <ul>
+        <li>temat jest napięciotwórczy → <strong>tłumienie</strong>: badany „wie, o czym wie, ale nie chce o tym wiedzieć”. May (1978): taka obrona przed rozpadem starych struktur poznawczych jest <strong>dowodem zdrowia</strong> — przestroga przed zbyt aktywnym atakowaniem obrony;</li>
+        <li>lęk przed <strong>ujawnieniem</strong> — o charakterze <strong>egzystencjalnym</strong>: tożsamość budowana na niedostępności świata wewnętrznego („ten, który ma tajemnicę”); opowiedzenie najgłębszych przeżyć = „pustka w środku”, bycie „nikim”;</li>
+        <li>lęk przed odkryciem w sobie czegoś <strong>nieznanego i strasznego</strong>;</li>
+        <li>„skoro wiedzą o mnie wszystko, mogą mną <strong>manipulować</strong>”.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Wstyd</h3>
+      <p>Zwykle <strong>słabszy</strong> opór, łatwiej go przełamać. Może wynikać z przekonania, że o pewnych sprawach się nie mówi, lub być związany z osobą diagnosty (płeć, wygląd, zachowanie). Diagnosta jako „<strong>lustro społeczne</strong>” — obawa przed nieakceptacją, karą, negatywnym obrazem siebie w jego oczach.</p>
+    </div>
+    <div class="card">
+      <h3>Poczucie winy</h3>
+      <p>Odpowiedź wymagałaby ujawnienia faktów stawiających w złym świetle <strong>bliskich</strong> → naruszenie normy społecznej, poczucie winy, także lęk i wstyd.</p>
+    </div>
+    <div class="card honey">
+      <h3>Postępowanie diagnosty</h3>
+      <ul>
+        <li>za <strong>szybkie</strong> przejście do zagrażających pytań;</li>
+        <li>pytania <strong>sugerujące</strong>, <strong>zamknięte</strong>, ubogie reakcje → podważają wiarę w bycie zrozumianym;</li>
+        <li><strong>oceny</strong>, nawet zdziwienie czy zaskoczenie → obawa nieakceptacji, spełnianie oczekiwań kosztem prawdy;</li>
+        <li><strong>wyłapywanie sprzeczności</strong> → presja spójności, unikanie świata emocji (gdzie logika nie obowiązuje);</li>
+        <li>zbyt mocny <strong>nacisk</strong> (męczące milczenie, natrętne domaganie się odpowiedzi) → <strong>reaktancja</strong>;</li>
+        <li><strong>specjalistyczny język</strong> narzucający kategorie (potrzeby, motywy, mechanizmy obronne).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- ============ 11 ============ -->
+<h2 id="s11"><span class="sec-num">11</span>Przełożenie na projekt</h2>
+<p class="sec-lead">Co z dzisiejszej literatury bezpośrednio punktuje w kryteriach oceny rozmowy (20–30 min, nagranie + transkrypt + raport).</p>
+
+<div class="grid">
+  <div class="card honey">
+    <h3>Kryterium 1 · Struktura (0–11)</h3>
+    <ul>
+      <li>przedstawienie się i wprowadzenie (partnerski dystans, info o roli);</li>
+      <li><strong>kontrakt</strong> — krótki, diagnostyczny, kilka zdań;</li>
+      <li>pierwsze pytanie ogólne, otwarte, niezagrażające;</li>
+      <li>podziękowanie na koniec.</li>
+    </ul>
+  </div>
+  <div class="card honey">
+    <h3>Kryterium 2 · Etyka (0–11)</h3>
+    <p>Na początku powiedz:</p>
+    <ul>
+      <li><strong>charakter</strong> i cel rozmowy, czas trwania;</li>
+      <li>swoje <strong>kompetencje</strong>: studentka, zadanie na zajęcia, kto zobaczy materiał;</li>
+      <li><strong>poufność</strong> i jej granice; <strong>dobrowolność</strong>, prawo odmowy odpowiedzi bez podawania powodów i przerwania w każdej chwili;</li>
+      <li>zgoda na rozmowę <strong>i na nagrywanie</strong> (APA 8.03);</li>
+      <li>możliwe obciążenie emocjonalne.</li>
+    </ul>
+    <p>W trakcie: podmiotowość, autonomia, samopoczucie, brak oceniania (akceptacja ≠ aprobata). Nie ujawniaj danych osobowych rozmówcy.</p>
+  </div>
+  <div class="card honey">
+    <h3>Kryterium 4 · Techniki (0–11)</h3>
+    <ul>
+      <li>prośby o rozwinięcie;</li>
+      <li><strong>parafrazy</strong> (nie interpretacje!);</li>
+      <li>klaryfikacje, odzwierciedlanie uczuć w nieprecyzujących kategoriach;</li>
+      <li>potwierdzenia werbalne — nie schematycznie.</li>
+    </ul>
+  </div>
+  <div class="card honey">
+    <h3>Kryterium 5 · Dynamika i asymetria (0–11)</h3>
+    <ul>
+      <li><strong>zasada wrzeciona</strong>: pogłębiaj, potem spłycaj;</li>
+      <li>rozpoznawaj <strong>opór i wycofanie</strong> (milczenie, intelektualizacja, spłycenie) — nie atakuj obrony;</li>
+      <li>utrzymuj <strong>asymetrię ról</strong> — nie zamieniaj rozmowy w „kumplowską”, nie opowiadaj o sobie.</li>
+    </ul>
+  </div>
+  <div class="card honey">
+    <h3>Kryterium 6 · Raport (0–11)</h3>
+    <p>Krytyczna analiza własnego prowadzenia: sprawdź wskaźniki <strong>kontaktu pozornego</strong> (konwencjonalne odpowiedzi, wspólny mianownik), proporcję treści spontanicznych/wypytywanych, własne reakcje (<strong>recypatia</strong>, znudzenie).</p>
+  </div>
+</div>
+
+<details>
+<summary>Szkic wprowadzenia + kontraktu do rozmowy (do przerobienia na własne słowa)</summary>
+<div class="body">
+  <p class="ex">„Dzień dobry, nazywam się … Jestem studentką psychologii na SWPS i ta rozmowa to część mojego zadania zaliczeniowego. Chciałabym porozmawiać z Panią o … — to potrwa ok. 20–30 minut.<br>
+  Nie jestem jeszcze psychologiem, a rozmowa nie jest diagnozą ani terapią. Chcę po prostu dowiedzieć się, jak Pani to przeżywa — to Pani jest tu ekspertką od siebie.<br>
+  Rozmowa jest dobrowolna. Może Pani nie odpowiadać na pytanie bez podawania powodu i przerwać w dowolnym momencie.<br>
+  Chciałabym ją nagrać. Nagranie i zapis zobaczy tylko moja prowadząca; nie podam Pani nazwiska ani danych, po których można Panią rozpoznać. Po zaliczeniu nagranie usunę.<br>
+  Niektóre pytania mogą dotyczyć spraw osobistych — jeśli coś będzie trudne, proszę powiedzieć.<br>
+  Czy ma Pani jakieś pytania? Czy zgadza się Pani na rozmowę i na nagrywanie?”</span></p>
+  <p>Elementy: charakter i cel · czas · kompetencje i ich granice · dwóch ekspertów · dobrowolność i prawo odmowy · nagrywanie i poufność · obciążenie emocjonalne · pytania klienta · zgoda.</p>
+</div>
+</details>
+
+<!-- ============ 12 ============ -->
+<h2 id="s12"><span class="sec-num">12</span>Trening do wejściówki</h2>
+<p class="sec-lead">Pytania otwarte w stylu wejściówki (0–6 pkt). Odpowiedz na głos lub na kartce, potem rozwiń wzorcową odpowiedź.</p>
+
+<div class="quiz">
+<details><summary><span class="qn">1.</span> Czym kontakt diagnostyczny różni się od pełnego kontaktu interpersonalnego? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Kontakt diagnostyczny to warunki, w których osoba badana może i chce mówić o ważnych, także intymnych sprawach. Różnice: (1) <strong>asymetria komunikacji</strong> — uwaga obu osób skupiona głównie na osobie badanej, mniej na relacji, sporadycznie na diagnoście (wprowadzona celowo); (2) <strong>asymetria ról</strong> — badany mówi, diagnosta słucha i ukierunkowuje tok, narzuca ramy tematyczne; w pełnym kontakcie tematy są dowolne. Diagnosta jest nieobłudny, ale powściągliwy, nie dzieli się swoimi doświadczeniami. Jest „na usługach osoby badanej” i „na usługach celu wywiadu”.</p></div></details>
+
+<details><summary><span class="qn">2.</span> Wymień introspekcyjne i behawioralne wskaźniki dobrego kontaktu diagnostycznego. <span class="pts">G&amp;K</span></summary><div class="body">
+<p><strong>Introspekcyjne:</strong> diagnosta autentycznie zainteresowany, chce zrozumieć, nie ocenić, akceptuje każdą odpowiedź, czuje, że rozumie poznawczo i emocjonalnie; badany czuje akceptację, zainteresowanie, ufa, że informacje nie zostaną użyte wbrew niemu, czuje się rozumiany bez zniekształceń i że może bezkarnie ujawnić kontrowersyjne treści. <strong>Behawioralne:</strong> brak wyraźnego oporu (nie odmawia, nie milczy, nie odpowiada zdawkowo), adekwatność emocji do treści, wiarygodność informacji, zrównoważona proporcja informacji spontanicznych i wypytywanych.</p></div></details>
+
+<details><summary><span class="qn">3.</span> Czym różni się akceptacja diagnosty od aprobaty? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Akceptacja to przyjęcie założenia, że skoro fakty, postawy i przeżycia wystąpiły, to mogły i miały prawo wystąpić, oraz próba zrozumienia ich znaczenia dla osoby — bez oceniania i zmieniania. Nie oznacza uznania ich za słuszne ani że diagnosta postąpiłby tak samo; może je uważać za moralnie niesłuszne lub patogenne. To akceptacja faktów, nie poparcie ich słuszności.</p></div></details>
+
+<details><summary><span class="qn">4.</span> Na czym polega zasada wrzeciona i jakie czynniki niezależne od diagnosty wpływają na dynamikę kontaktu? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Zasada wrzeciona: kontakt powinien być najgłębszy w środkowej fazie rozmowy i spłycać się ku jej końcowi, by koniec nie zbiegł się z silnymi negatywnymi emocjami po ujawnieniu trudnych treści. Czynniki: (1) <strong>stopień intymności</strong> — ujawnianie rośnie, potem chwilowe wycofanie na płytszy poziom, cyklicznie coraz głębiej (Derlega, Chaiken); (2) <strong>foot in the door</strong> — potrzeba spójności: po odpowiedzi na mało zagrażające pytanie trudniej odmówić na bardziej zagrażające; (3) <strong>czas</strong> — optymalnie ok. 50 min, potem kontakt słabnie.</p></div></details>
+
+<details><summary><span class="qn">5.</span> Czym parafraza różni się od interpretacji i jakie funkcje pełni parafraza? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Parafraza to powtórzenie własnymi słowami wypowiedzi rozmówcy, bez dodawania sensu; interpretacja dodaje wyjaśnienia i przyczyny od psychologa (np. „bo nie umie pan walczyć”). W wywiadzie diagnostycznym interpretacja bywa szkodliwa, bo wywiad ma dostarczać materiału o tym, co myśli badany. Funkcje parafrazy: komunikuje uważne słuchanie i chęć zrozumienia, pozwala sprawdzić, czy informacje nie zostały zniekształcone (obronna identyfikacja, projekcja), daje badanemu szansę sprostowania; może kończyć się pytaniem o rozwinięcie lub sprawdzeniem.</p></div></details>
+
+<details><summary><span class="qn">6.</span> Podaj wskaźniki kontaktu pozornego i jego źródła. <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Kontakt pozorny: formalnie poprawny, ale bez otwartego poruszania ważnych treści. Wskaźniki: informacje konwencjonalne/stereotypowe; forma nieadekwatna do treści; rola diagnosty nadmierna (lakoniczne odpowiedzi) lub znikoma (równie lekko o wszystkim); wspólny mianownik (korzystne światło, aprobata, zbyt spójny system). Introspekcyjne: znudzenie diagnosty, poczucie „wiem, co powie”, brak całościowego obrazu. Źródła: <strong>relacja</strong> (stereotypy ról: koledzy, rodzic–dziecko, nauczyciel–uczeń, intelektualiści), <strong>diagnosta</strong> (brak kompetencji, lęk przed intymnością, sztywny model teoretyczny, brak zainteresowania), <strong>osoba badana</strong> (dążenie do zatajenia, kierowanie wrażeniem, opór).</p></div></details>
+
+<details><summary><span class="qn">7.</span> Czym jest opór, jak się przejawia i jakie ma źródła? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Opór — świadome lub nieświadome unikanie penetracji obszaru treści. Przejawy obronne: milczenie, zmiana tematu, intelektualizacja, spłycenie i mniejsza konkretność, zmiana sposobu mówienia, objawy somatyczne; atak: krytyka pytań, zarzuty wobec psychologa, przerzucanie uwagi na niego; świadomie — kłamstwo lub odmowa. Źródła wewnętrzne: lęk (tłumienie, lęk egzystencjalny o tożsamość, przed odkryciem czegoś nieznanego, przed manipulacją), wstyd (diagnosta jako lustro społeczne), poczucie winy (ujawnianie spraw bliskich). Źródła w diagnoście: za szybkie zagrażające pytania, pytania sugerujące i zamknięte, oceny, wyłapywanie sprzeczności, nacisk (reaktancja), język specjalistyczny. Badany ma prawo do oporu.</p></div></details>
+
+<details><summary><span class="qn">8.</span> Podaj definicję kontraktu i jego trzy cechy. <span class="pts">Zalewski</span></summary><div class="body">
+<p>Kontrakt to (podobnie jak umowa handlowa) umowa zawarta dobrowolnie przez dwie strony, ze świadomością wszystkich ważnych okoliczności, z uwzględnieniem interesów obu stron (kto co zyskuje, kto ponosi jakie koszty), określająca czytelnie zobowiązania i prawa partnerów. Cechy: (1) odnosi się do <strong>dostarczającego usługi i nabywcy</strong>; (2) zawsze zawiera <strong>wymianę</strong> — psycholog dostaje wynagrodzenie i satysfakcję; (3) <strong>negocjowalność</strong> — można go zmieniać w trakcie za zgodą stron, częściej w terapii niż w diagnozie. Niewypowiedziane oczekiwania nie mogą być uzgodnione i prowadzą do rozczarowania.</p></div></details>
+
+<details><summary><span class="qn">9.</span> Skąd bierze się asymetria w relacji psycholog–klient i jaką rolę pełni wobec niej kontrakt? <span class="pts">Zalewski</span></summary><div class="body">
+<p>Psycholog jest na swoim terytorium, ma wiedzę, której klient nadaje magiczne znaczenie, zadaje pytania, nie ujawniając nic o sobie, ma pozycję „zdrowego specjalisty” wobec klienta „z problemami”, klient przypisuje mu moc etykietowania. Relacja przypomina rodzic–dziecko i sprzyja częściowej regresji oraz lękowym fantazjom. Osoba bez korzyści nie będzie współpracować (opór). Kontrakt buduje <strong>podmiotową relację</strong>: jawnie ustala role, prawa i obowiązki, zostawia decyzję o uczestnictwie i zakresie ujawnień, czyni klienta współodpowiedzialnym, rewiduje oczekiwania i redukuje lęk.</p></div></details>
+
+<details><summary><span class="qn">10.</span> Co mówią kodeksy PTP i APA o świadomej zgodzie? Kiedy można od niej odstąpić? <span class="pts">Zalewski</span></summary><div class="body">
+<p>PTP: psycholog każdorazowo uzgadnia cel, zakres i sposoby postępowania, respektuje wartości i decyzje klienta; osoby niezgłaszające się z własnej inicjatywy (także dzieci) informuje o celu, metodach, wynikach i ich udostępnieniu; w badaniach — dobrowolność, prawo wycofania, zgoda na nagrywanie. APA 3.10: świadoma zgoda po zrozumiałym poinformowaniu; przy nakazie sądu — informacja o nakazie i granicach poufności; osoby niezdolne do zgody — wyjaśnienie, dążenie do akceptacji (assent), interesy, zgoda uprawnionego. APA 8.02 wylicza informacje dla uczestników badań; 8.03 — zgoda na nagranie. Odstąpienie (APA 8.05): gdy brak stresu i szkody oraz ćwiczenia w naturalnym kształceniu lub anonimowe kwestionariusze, obserwacje naturalne, badania archiwalne; APA 9.03: ocena nakazana prawem, zgoda domyślna (rutyna organizacji, rekrutacja), ocena zdolności decyzyjnej.</p></div></details>
+
+<details><summary><span class="qn">11.</span> Wyjaśnij hasła: „psycholog nie jest wróżką” i „dwóch ekspertów w jednym pokoju”. <span class="pts">Zalewski</span></summary><div class="body">
+<p>Klient przypisuje psychologowi magiczne zdolności — chce w nim widzieć wróżkę, a zarazem się tego boi. Trzeba uświadomić, że nie przejrzymy go na wylot: dowiemy się tylko tyle, ile sam powie; ma prawo odmówić odpowiedzi bez podawania powodu. Informacje z innych źródeł ustalamy z klientem; w intymne sprawy wnikamy tylko w zakresie celów pomocy („fajerwerki”). Dwóch ekspertów: psycholog ma ogólną wiedzę o ludziach, klient jest ekspertem od siebie; sesja to ich współpraca — pytamy, jak on doświadcza świata, i informujemy, co zrozumieliśmy. Psycholog sprawdza też swoje kwalifikacje i motywację; jeśli ich brak, kieruje do innego specjalisty.</p></div></details>
+
+<details><summary><span class="qn">12.</span> Porównaj kontrakt diagnostyczny i kontrakt na terapię. <span class="pts">Zalewski</span></summary><div class="body">
+<p>Diagnostyczny: krótki (diagnoza 1–3 spotkania, kilka zdań), celem jest poznanie bez zmieniania; ustala cele i sposób rozmowy, czy problem wymaga terapii, jakiej, kto ma jej podlegać; psycholog przedstawia uprawnienia, liczbę spotkań, opłaty, termin informacji zwrotnej i możliwe obciążenia emocjonalne. Terapeutyczny: negocjowany dłużej, sam jest częścią terapii; celem jest aktywne wywołanie zmian; określa cele i sposoby, role i warunki pomocy; zwykle klient określa cel; w terapii krótkoterminowej to zasadniczy etap; nierealne lub negatywne oczekiwania zmienia się przez pozytywne przeformułowania. Oba eliminują nieadekwatne oczekiwania i osoby niezmotywowane.</p></div></details>
+
+<details><summary><span class="qn">13.</span> Kiedy psycholog może złamać tajemnicę zawodową? <span class="pts">Zalewski</span></summary><div class="body">
+<p>Według PTP — tylko przy poważnym zagrożeniu bezpieczeństwa klienta lub innych osób; decyzję warto omówić z doświadczonym, bezstronnym kolegą. Rakowska: tajemnica jest drugorzędna wobec ochrony życia i zdrowia; prawo wymaga przekazania informacji organom ścigania przy nadużyciach wobec dziecka lub osoby starszej (w Polsce m.in. maltretowanie w rodzinie, nadużycia seksualne wobec dzieci). Przy raporcie dla pracodawcy klienta informujemy wcześniej, jakie dane przekażemy — on decyduje, co powie.</p></div></details>
+
+<details><summary><span class="qn">14.</span> Jak nawiązywać kontakt na początku rozmowy i czego unikać? <span class="pts">G&amp;K</span></summary><div class="body">
+<p>Zadania: zredukować lęk i wzbudzić motywację. Pierwsze wrażenie (efekt halo) — od początku pełna, autentyczna uwaga, bez spóźniania i każenia czekać. Dystans: partnerstwo, przedstawić się i swoją rolę, nie siadać wyżej / za biurkiem, ale nie znosić dystansu całkiem — trzymać go w optymalnych granicach; nie wpatrywać się. Pierwsze pytanie ogólne, otwarte, osobiste, niezagrażające. Przy przymusie — budować zaufanie (dyskrecja lub zapewnienie, że informacje nie będą użyte wbrew interesom). Unikać: łamania dynamiki (za szybko trudne pytania), ocen i dezaprobaty, przesadnej, nienaturalnej życzliwości, budowania obrazu „cudotwórcy”.</p></div></details>
+</div>
+
+<footer>
+  Źródła: Geller, S., Król, M. (2005). Kontakt interpersonalny w wywiadzie diagnostycznym. W: K. Stemplewska-Żakowicz, K. Krejtz (red.), <em>Wywiad psychologiczny</em>, t. 1 (s. 7–27). PTP. · Zalewski, B. (2005). Kontrakt. W: K. Stemplewska-Żakowicz, K. Krejtz (red.), <em>Wywiad psychologiczny</em>, t. 2 (s. 102–115). PTP.<br>
+  Notatki obejmują strony dostępne w skanie (Zalewski do s. 115).
+</footer>
+
+</div>
+<script>
+function toggleAll(open){document.querySelectorAll('details').forEach(function(d){d.open=open;});}
+</script>
+<script src="../assets/reader.js" data-home="../"></script>
+</body>
+</html>
