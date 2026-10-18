@@ -92,7 +92,6 @@ if cards:
 <body>
 <div class="page">
 <header class="hero">
-  <p class="eyebrow">{subject}</p>
   <h1>Fiszki</h1>
   <p class="meta">{title} · {len(cards)} pytań</p>
 </header>

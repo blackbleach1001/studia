@@ -26,10 +26,9 @@ def finish(soup, subj, unit, units, container):
     podepnij nakładkę i pasek czytania z powrotem do strony przedmiotu."""
     # nagłówek części
     hero = BeautifulSoup(
-        f'<header class="st-hero"><p class="st-eyebrow">{esc(unit["label"])}'
-        + (f' · {esc(unit["src"])}' if unit.get("src") else "")
-        + f'</p><h1>{esc(unit["title"])}</h1>'
+        f'<header class="st-hero"><h1>{esc(unit["title"])}</h1>'
         + (f'<p class="st-meta">{esc(unit["sub"])}</p>' if unit.get("sub") else "")
+        + (f'<p class="st-meta st-src">{esc(unit["src"])}</p>' if unit.get("src") else "")
         + "</header>", "html.parser")
     container.insert(0, hero)
     if unit.get("sim"):
@@ -331,8 +330,8 @@ def build_index(subjects):
 <body>
 <div class="page hub">
   <header class="hero">
-    <p class="eyebrow">Psychologia SWPS · Semestr 3</p>
     <h1>Studia</h1>
+    <p class="meta">Psychologia SWPS · Semestr 3</p>
     <form class="search" role="search" onsubmit="return false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
       <input type="search" id="q" placeholder="Szukaj w notatkach" aria-label="Szukaj w notatkach" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
