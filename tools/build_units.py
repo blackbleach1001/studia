@@ -128,6 +128,8 @@ def build_poznawcza(subj):
 def build_metodologia(subj):
     units = subj["units"]
     for u in units:
+        if u.get("hand"):
+            continue          # strona pisana ręcznie (np. wyklad-3.html)
         soup = load("metodologia")
         wrap = soup.select_one("div.wrap")
         drop(soup.select_one("div.switch"))

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Fiszki · Metodologia, wykład 3</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=d07654dc" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<p class="eyebrow">Podstawy metodologii i statystyki</p>
+<h1>Fiszki</h1>
+<p class="meta">Wykład 3: statystyki opisowe i rozkład normalny · 36 pytań</p>
+</header>
+<main id="deck"></main>
+</div>
+<script id="cards" type="application/json">
+[
+{
+"q": "Po co opisuje się dane przed testowaniem hipotez?",
+"a": "<p>Żeby <strong>zapoznać się z danymi<\/strong>, sprawdzić <strong>równoliczność grup<\/strong>, wyłapać <strong>dewiantów<\/strong> (wyniki silnie odstające) i <strong>błędy wpisywania<\/strong>, zaplanować dalsze analizy i zaprezentować wyniki. Wstępny ogląd może też ujawnić błędy, które uniemożliwiają zaplanowane analizy.<\/p>",
+"src": "Po co opisywać dane",
+"id": "metodologia/wyklad-3-fiszki:e37b26db",
+"unit": "wyklad-3.html",
+"sec": "s1"
+},
+{
+"q": "Czy statystyki opisowe pozwalają wnioskować o populacji?",
+"a": "<p><strong>Nie.<\/strong> Służą do opisu danych w próbie. Mimo to nigdy nie zaczyna się analizy bez nich, bo chronią przed wieloma błędami.<\/p>",
+"src": "Po co opisywać dane",
+"id": "metodologia/wyklad-3-fiszki:e227ad17",
+"unit": "wyklad-3.html",
+"sec": "s1"
+},
+{
+"q": "Na jakie trzy grupy dzieli się statystyki opisowe?",
+"a": "<p>Miary <strong>tendencji centralnej<\/strong> (gdzie jest środek), miary <strong>rozproszenia<\/strong> (jak wyniki rozkładają się wokół środka) i miary <strong>kształtu rozkładu<\/strong> (skośność i kurtoza).<\/p>",
+"src": "Po co opisywać dane",
+"id": "metodologia/wyklad-3-fiszki:436c56af",
+"unit": "wyklad-3.html",
+"sec": "s1"
+},
+{
+"q": "Czym różni się „procent” od „procentu ważnych” w tabeli częstości?",
+"a": "<p><strong>Procent<\/strong> liczy się z całej próby <strong>razem z brakami danych<\/strong>, a <strong>procent ważnych<\/strong> bez braków. Przy 90 osobach i 3 brakach 27 osób to 30% albo 31% (z 87).<\/p>",
+"src": "Tabele częstości",
+"id": "metodologia/wyklad-3-fiszki:31275391",
+"unit": "wyklad-3.html",
+"sec": "s2"
+},
+{
+"q": "Dla jakich zmiennych procent skumulowany ma sens?",
+"a": "<p>Dla zmiennych co najmniej <strong>porządkowych<\/strong>, których kategorie da się sensownie uporządkować (np. wykształcenie). Dla zmiennej <strong>nominalnej<\/strong> (np. zwierzę) SPSS też go liczy, ale jest bezużyteczny.<\/p>",
+"src": "Tabele częstości",
+"id": "metodologia/wyklad-3-fiszki:fd1760a4",
+"unit": "wyklad-3.html",
+"sec": "s2"
+},
+{
+"q": "Do czego służy funkcja „Podziel na podzbiory” i o czym trzeba pamiętać?",
+"a": "<p>Sprawia, że kolejne operacje wykonują się <strong>osobno dla każdej kategorii<\/strong> wybranej zmiennej (np. grupy wiekowej). Działa w tle, więc trzeba ją <strong>wyłączyć<\/strong>, gdy nie jest już potrzebna.<\/p>",
+"src": "Tabele częstości",
+"id": "metodologia/wyklad-3-fiszki:e13cf6d8",
+"unit": "wyklad-3.html",
+"sec": "s2"
+},
+{
+"q": "Jaka jest kluczowa reguła sporządzania wykresów?",
+"a": "<p>Celem wykresu jest <strong>klarowna i jak najprostsza<\/strong> prezentacja danych. Lepiej oprzeć się pokusie wykresu imponującego graficznie, ale mało czytelnego.<\/p>",
+"src": "Wykresy",
+"id": "metodologia/wyklad-3-fiszki:e66f4867",
+"unit": "wyklad-3.html",
+"sec": "s3"
+},
+{
+"q": "Czym różni się wykres słupkowy od kołowego, jeśli chodzi o braki danych?",
+"a": "<p>Wykres <strong>słupkowy nie pokazuje<\/strong> braków danych, a <strong>kołowy pokazuje<\/strong>. Kołowy staje się nieczytelny przy bardzo wielu kategoriach.<\/p>",
+"src": "Wykresy",
+"id": "metodologia/wyklad-3-fiszki:694113cb",
+"unit": "wyklad-3.html",
+"sec": "s3"
+},
+{
+"q": "Co przedstawia pojedynczy słupek histogramu?",
+"a": "<p><strong>Przedział klasowy<\/strong>: grupę wyników o równej rozpiętości, nie pojedynczy wynik. Dzięki temu histogram nadaje się do zmiennych <strong>ilościowych<\/strong> o wielu wartościach.<\/p>",
+"src": "Wykresy",
+"id": "metodologia/wyklad-3-fiszki:d41cdb46",
+"unit": "wyklad-3.html",
+"sec": "s3"
+},
+{
+"q": "Czym różni się rozkład w próbie od rozkładu z próby?",
+"a": "<p><strong>W próbie<\/strong>: empiryczny rozkład wyników jednego badania, jedyny, którego właściwości można określić. <strong>Z próby<\/strong> (próbkowania): <strong>teoretyczny<\/strong> rozkład statystyki (np. średniej) z wielu hipotetycznych prób; pozwala określić precyzję i jest podstawą wnioskowania.<\/p>",
+"src": "Rozkład: w populacji, w próbie, z próby",
+"id": "metodologia/wyklad-3-fiszki:513e06c1",
+"unit": "wyklad-3.html",
+"sec": "s4"
+},
+{
+"q": "Czy zasada minimum 30 obserwacji jest sztywna?",
+"a": "<p><strong>Nie.<\/strong> Zależy od metody i od rozrzutu zmiennej w populacji: przy małym rozrzucie wystarczy nawet n = 15, przy dużym nawet 30 może być za mało. Powyżej około 30 błąd maleje już coraz wolniej.<\/p>",
+"src": "Rozkład: w populacji, w próbie, z próby",
+"id": "metodologia/wyklad-3-fiszki:de805c47",
+"unit": "wyklad-3.html",
+"sec": "s4"
+},
+{
+"q": "Czym różnią się klasyczne i pozycyjne miary tendencji centralnej?",
+"a": "<p><strong>Klasyczne<\/strong> (średnia arytmetyczna, ważona, geometryczna, harmoniczna) opierają się na wszystkich wynikach, więc są <strong>wrażliwe na obserwacje odstające<\/strong>. <strong>Pozycyjne<\/strong> (kwantyle, mediana, dominanta) wyznaczają tylko niektóre obserwacje, więc są na nie <strong>odporne<\/strong>.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:3811a11d",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Czym jest modalna i na jakiej skali można ją liczyć?",
+"a": "<p>To <strong>wartość najczęściej występująca<\/strong> (w SPSS: dominanta). Można ją liczyć na <strong>każdej skali<\/strong>. Może jej nie być albo może być kilka (zmienna dwumodalna); jeśli istnieje, jest zawsze wartością obserwowaną.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:fea12417",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Dlaczego modalną lepiej odczytać z tabeli częstości niż z wyniku SPSS?",
+"a": "<p>SPSS podaje <strong>zawsze jedną<\/strong> modalną, nawet gdy jest ich więcej.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:fccc69e9",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Jak wyznacza się medianę przy parzystej liczbie obserwacji?",
+"a": "<p>Jako <strong>średnią z dwóch wartości środkowych<\/strong> uporządkowanego zbioru. Dla 3 3 3 4 5 6 6 6 mediana wynosi 4,5, czyli wartość, której nie ma w zbiorze.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:c9d8effc",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Dla jakiej skali nie można liczyć mediany?",
+"a": "<p>Dla <strong>nominalnej<\/strong>, nawet jeśli kategoriom przypisano rosnące liczby (1 Polacy, 2 Niemcy, 3 Francuzi), bo kategorii nie da się uszeregować.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:9a2ee625",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Na ile części dzielą zbiór tercyle, kwartyle, kwintyle, decyle i percentyle?",
+"a": "<p>Tercyle na <strong>3<\/strong>, kwartyle na <strong>4<\/strong>, kwintyle na <strong>5<\/strong>, decyle na <strong>10<\/strong>, percentyle na <strong>100<\/strong>. Mediana to drugi kwartyl (Q<sub>2<\/sub>).<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:ca15d14e",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Co pokazuje przykład ocen Jasia i Stasia?",
+"a": "<p>Obaj mają te same <strong>Mo = 3, Me = 4, M = 3,81<\/strong>, choć oceny Jasia są bardziej zróżnicowane (rozstęp 4 wobec 2, SD 1,17 wobec 0,87). Same miary tendencji centralnej gubią informację, więc trzeba też liczyć <strong>miary rozproszenia<\/strong>.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:11585472",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Jak brzmi relacja Pearsona i kiedy ją stosować?",
+"a": "<p><strong>3Me = D + 2M<\/strong>. Tylko dla rozkładów <strong>symetrycznych<\/strong> lub o niewielkiej asymetrii.<\/p>",
+"src": "Miary tendencji centralnej",
+"id": "metodologia/wyklad-3-fiszki:917d738f",
+"unit": "wyklad-3.html",
+"sec": "s5"
+},
+{
+"q": "Co oznaczają elementy wykresu skrzynkowego?",
+"a": "<p>Gruba linia to <strong>mediana<\/strong>; krawędzie skrzynki to <strong>Q<sub>1<\/sub> i Q<sub>3<\/sub><\/strong> (50% wyników w środku); wąsy sięgają do <strong>1,5 rozstępu ćwiartkowego<\/strong>; <strong>kółka<\/strong> to obserwacje odstające (1,5–3 IQR od skrzynki), <strong>gwiazdki<\/strong> to skrajne (ponad 3 IQR).<\/p>",
+"src": "Obserwacje odstające",
+"id": "metodologia/wyklad-3-fiszki:2c6b5703",
+"unit": "wyklad-3.html",
+"sec": "s6"
+},
+{
+"q": "Kiedy wolno usunąć obserwację odstającą?",
+"a": "<p>Gdy jest się pewnym, że wartość jest nienaturalna lub wynika z <strong>błędu<\/strong> (pomiaru, przepisywania). <strong>Nigdy<\/strong> po to, by uzyskać wynik istotny statystycznie, bo to oszustwo.<\/p>",
+"src": "Obserwacje odstające",
+"id": "metodologia/wyklad-3-fiszki:472a6923",
+"unit": "wyklad-3.html",
+"sec": "s6"
+},
+{
+"q": "Czym różni się winsoryzacja od trymowania?",
+"a": "<p><strong>Winsoryzacja<\/strong> zastępuje skrajne wartości <strong>najbliższymi wartościami<\/strong> i zachowuje liczebność próby. <strong>Trymowanie<\/strong> skrajne wartości <strong>obcina<\/strong> i liczy statystykę na mniejszym zbiorze.<\/p>",
+"src": "Obserwacje odstające",
+"id": "metodologia/wyklad-3-fiszki:c757a145",
+"unit": "wyklad-3.html",
+"sec": "s6"
+},
+{
+"q": "Dlaczego zastępowanie wielu outlierów średnią jest złym pomysłem?",
+"a": "<p>Bo <strong>zaniża miary rozproszenia<\/strong>, a przez to zawyża statystyki testowe niektórych testów. Sprawdza się tylko przy niewielu obserwacjach odstających.<\/p>",
+"src": "Obserwacje odstające",
+"id": "metodologia/wyklad-3-fiszki:76f33195",
+"unit": "wyklad-3.html",
+"sec": "s6"
+},
+{
+"q": "Jaką miarę rozproszenia podać przy średniej, a jaką przy medianie?",
+"a": "<p>Przy <strong>średniej<\/strong> (rozkład symetryczny): <strong>odchylenie standardowe<\/strong> lub wariancję. Przy <strong>medianie<\/strong> (rozkład mocno skośny): <strong>rozstęp międzykwartylowy<\/strong> (IQR).<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:b096abf9",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Jak definiuje się wariancję i dlaczego podnosi się odchylenia do kwadratu?",
+"a": "<p>To <strong>suma kwadratów odchyleń od średniej<\/strong> podzielona przez <strong>n − 1<\/strong> (w próbie). Kwadraty są potrzebne, bo zwykłe odchylenia od średniej <strong>sumują się do zera<\/strong>.<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:0c9a448c",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Dlaczego w wariancji z próby dzieli się przez n − 1, a nie przez n?",
+"a": "<p>Bo próba to wycinek populacji, a nie wszystkie obserwacje: przez n dzieli się tylko przy całej, w pełni przebadanej populacji (σ²). W próbie (s²) mianownik to n − 1.<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:9b1372ee",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Dlaczego zamiast wariancji podaje się zwykle odchylenie standardowe?",
+"a": "<p>Wariancja jest w jednostkach <strong>podniesionych do kwadratu<\/strong> (np. „oceny do kwadratu”), co utrudnia interpretację. <strong>SD = √wariancji<\/strong> wraca do zwykłych jednostek pomiaru.<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:4b4ea1c0",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Do czego służy współczynnik zmienności i jak go liczyć?",
+"a": "<p><strong>V = SD / M · 100%<\/strong>. Pozwala porównać zmienność zmiennych o różnych średnich i jednostkach. Poniżej 25% to mała zmienność, 25–50% umiarkowana, 51–100% duża, powyżej 100% bardzo duża.<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:16ca3c35",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Czym jest rozstęp międzykwartylowy?",
+"a": "<p><strong>IQR = Q<sub>3<\/sub> − Q<sub>1<\/sub><\/strong>: szerokość przedziału zawierającego <strong>50% środkowych<\/strong> wartości. Pozycyjny odpowiednik SD, w jednostkach badanej cechy.<\/p>",
+"src": "Miary rozproszenia",
+"id": "metodologia/wyklad-3-fiszki:046e60e4",
+"unit": "wyklad-3.html",
+"sec": "s7"
+},
+{
+"q": "Jak brzmi reguła trzech sigm?",
+"a": "<p>W rozkładzie normalnym w przedziale <strong>M ± 1 SD<\/strong> mieści się około <strong>68,3%<\/strong> wyników, w <strong>± 2 SD<\/strong> około <strong>95,5%<\/strong>, a w <strong>± 3 SD<\/strong> około <strong>99,7%<\/strong>.<\/p>",
+"src": "Rozkład normalny i standaryzacja",
+"id": "metodologia/wyklad-3-fiszki:941559e5",
+"unit": "wyklad-3.html",
+"sec": "s8"
+},
+{
+"q": "Jak oblicza się wynik Z i co oznacza Z = 2?",
+"a": "<p><strong>Z = (x − M) / SD<\/strong>. Z = 2 oznacza wynik <strong>dwa odchylenia standardowe powyżej średniej<\/strong> (np. 6000 PLN przy M = 4000 i SD = 1000). Rozkład Z ma średnią 0 i SD 1.<\/p>",
+"src": "Rozkład normalny i standaryzacja",
+"id": "metodologia/wyklad-3-fiszki:31d32e01",
+"unit": "wyklad-3.html",
+"sec": "s8"
+},
+{
+"q": "Czym różni się odchylenie standardowe od błędu standardowego?",
+"a": "<p><strong>SD<\/strong> to miara <strong>rozproszenia<\/strong> wyników w jednej próbie (rozkład w próbie, miara opisowa). <strong>SE<\/strong> to miara <strong>precyzji<\/strong> oszacowania: o ile średnio myliłaby się średnia w kolejnych próbach (rozkład próbkowania). SE = √(var / n) = SD / √n.<\/p>",
+"src": "Błąd standardowy i przedział ufności",
+"id": "metodologia/wyklad-3-fiszki:b8429d59",
+"unit": "wyklad-3.html",
+"sec": "s9"
+},
+{
+"q": "Jak układają się M, Me i Mo w rozkładzie prawoskośnym i lewoskośnym?",
+"a": "<p><strong>Prawoskośny<\/strong> (skośność &gt; 0, dłuższe prawe ramię): Mo &lt; Me &lt; M, średnia zawyżona. <strong>Lewoskośny<\/strong> (skośność &lt; 0, dłuższe lewe ramię): M &lt; Me &lt; Mo, średnia zaniżona. Przy asymetrii lepiej opisywać dane miarami pozycyjnymi.<\/p>",
+"src": "Kształt rozkładu: skośność i kurtoza",
+"id": "metodologia/wyklad-3-fiszki:2f79c205",
+"unit": "wyklad-3.html",
+"sec": "s10"
+},
+{
+"q": "Co oznacza dodatnia i ujemna kurtoza?",
+"a": "<p><strong>Dodatnia<\/strong>: rozkład <strong>leptokurtyczny<\/strong>; według Józefackiej grubsze ogony i większa szansa outlierów (powyżej 2, czasem od 1,5, szukaj obserwacji odstających), według Drogowskazu silne skupienie wokół średniej. <strong>Ujemna<\/strong>: <strong>platykurtyczny<\/strong>; małe ogony, w zasadzie brak outlierów (Józefacka), duże rozproszenie wokół środka (Drogowskaz). Rozkład normalny: 0, mezokurtyczny.<\/p>",
+"src": "Kształt rozkładu: skośność i kurtoza",
+"id": "metodologia/wyklad-3-fiszki:de29cc8b",
+"unit": "wyklad-3.html",
+"sec": "s10"
+},
+{
+"q": "Jak interpretować wynik testu normalności rozkładu?",
+"a": "<p>Hipoteza zerowa zakłada <strong>zgodność z rozkładem normalnym<\/strong>. <strong>p &lt; 0,05<\/strong> oznacza, że rozkład istotnie odstaje od normalnego (wtedy nie stosuje się testów parametrycznych wymagających normalności); <strong>p &gt; 0,05<\/strong> to dobra wiadomość. Zapis: W(87) = 0,89; p &lt; 0,001.<\/p>",
+"src": "Testy normalności rozkładu",
+"id": "metodologia/wyklad-3-fiszki:99e93265",
+"unit": "wyklad-3.html",
+"sec": "s11"
+},
+{
+"q": "Kiedy stosuje się test Shapiro-Wilka, a kiedy Kołmogorowa-Smirnowa?",
+"a": "<p><strong>Drogowskaz:<\/strong> S-W poniżej 100 przypadków, K-S powyżej 100. <strong>Józefacka:<\/strong> S-W dla 3–5000 obserwacji, bezwzględnie poniżej 50; K-S ma niższą moc, więc tylko przy bardzo dużych próbach (n &gt; 2000). Przy n &gt; 100 oglądaj też histogram oraz skośność i kurtozę (przedział −2 do 2).<\/p>",
+"src": "Testy normalności rozkładu",
+"id": "metodologia/wyklad-3-fiszki:b4c3efb1",
+"unit": "wyklad-3.html",
+"sec": "s11"
+}
+]
+</script>
+<script src="../assets/srs.js?v=ae47686b"></script><script src="../assets/flashcards.js?v=75220739"></script>
+<script data-back="./" data-back-label="Metodologia" data-home="../" data-nofocus="" data-title="Fiszki" src="../assets/reader.js?v=279babbd"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Wykład 3 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=d07654dc" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<p class="eyebrow">Metodologia · Wykład 3</p>
+<h1>Opis danych: statystyki opisowe i rozkład normalny</h1>
+<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 148–156 i 197–233 · Bedyńska i Cypryańska, rozdz. 3, s. 83–111</p>
+<div class="links"><a class="btn" href="wyklad-3-fiszki.html">Fiszki · 36 pytań</a></div>
+</header>
+<main>
+<h2 id="s1">Po co opisywać dane</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> opis danych (tabele, wykresy, statystyki opisowe) robi się <strong>zawsze i przed</strong> testowaniem hipotez. Pozwala poznać dane, wyłapać błędy i dewiantów oraz sprawdzić, czy planowane analizy są w ogóle możliwe. Statystyki opisowe <strong>nie pozwalają wnioskować o populacji</strong>.</p>
+<details class="sec" open="">
+<summary>Cele opisu danych <span class="src">Bedyńska s. 84–85</span></summary>
+<div class="body">
+<p>Najpierw trzeba wiedzieć, <strong>po co</strong> stosuje się daną metodę; to, gdzie „klikać” w programie, jest sprawą drugorzędną. Spokojne obejrzenie zmiennych w tabelach i na wykresach pozwala:</p>
+<ul>
+<li><strong>zapoznać się z danymi</strong> przed właściwymi analizami statystycznymi,</li>
+<li>skontrolować, czy porównywane grupy są mniej więcej <strong>równoliczne</strong> (ważne założenie wielu testów),</li>
+<li>wyłapać <strong>dewiantów</strong>, czyli wyniki silnie odstające od typowych dla grupy (np. dochody jednego czy dwóch biznesmenów-milionerów w badaniu zarobków na wsi fałszują obraz „typowych zarobków”),</li>
+<li>znaleźć i usunąć <strong>błędy powstałe przy wpisywaniu</strong> danych,</li>
+<li>zaplanować dalsze kroki analizy i <strong>graficznie zaprezentować wyniki</strong>: dobry wykres czy tabela są często warte więcej niż tysiąc słów.</li>
+</ul>
+<p>Wstępny ogląd może też ujawnić <strong>błędy tak poważne</strong>, że uniemożliwiają zaplanowane analizy (np. przez błąd procedury komputerowej większość odpowiedzi się nie zapisała). Lepiej odkryć to wtedy, gdy jest jeszcze czas na szukanie innych metod.</p>
+<p>Przykład w rozdziale: fikcyjne badanie <strong>pamięci prospektywnej</strong> (pamiętania o zaplanowanych działaniach) u 90 osób w trzech grupach wiekowych (wczesna, średnia, późna dorosłość), po 15 kobiet i 15 mężczyzn w każdej. Badani przez półtorej godziny oglądali film przyrodniczy i naciskali przycisk, gdy pojawiał się czerwony samochód (6 razy). Mierzono też pojemność <strong>pamięci operacyjnej</strong> (skala 1–30), wykształcenie i posiadane zwierzę.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Statystyki opisowe a wnioskowanie <span class="src">Józefacka s. 197–201</span></summary>
+<div class="body">
+<p><strong>Statystyki opisowe</strong> to obszar statystyki zajmujący się szeroko pojętym <strong>opisem danych</strong>. Nie pozwalają uogólniać wyników na populację, ale <strong>nigdy nie zaczyna się analizy bez nich</strong>, bo chronią przed wieloma błędami. W Drogowskazie zdefiniowano je jako <strong>liczbowe charakterystyki rozkładu</strong> wartości zmiennej, które podsumowują dane za pomocą liczb.</p>
+<p>Każdy rozkład surowych danych ma unikatowe cechy:</p>
+<ul>
+<li>ściśle określony <strong>zakres wartości</strong> (w ruletce numery nie wyjdą poza 0–36),</li>
+<li>jeden lub kilka <strong>wierzchołków</strong> (lokalnych maksimów),</li>
+<li><strong>szerokość</strong>, czyli rozproszenie obserwacji wokół wierzchołków.</li>
+</ul>
+<p>Stąd trzy grupy miar: <strong>tendencji centralnej</strong> (gdzie jest środek), <strong>rozproszenia</strong> (dyspersji: jak wyniki rozkładają się wokół środka) i <strong>kształtu rozkładu</strong> (skośność i kurtoza: asymetria i obserwacje odstające).</p>
+<p>Przykład w podręczniku Józefackiej: analiza <em>post hoc</em> 1000 losowań ruletki (nawiązanie do Richarda Jareckiego) i porównanie czterech strategii obstawiania po 60 zł na turę za pomocą statystyk opisowych zmiennej „kwota wygranej”.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:e37b26db,metodologia/wyklad-3-fiszki:e227ad17,metodologia/wyklad-3-fiszki:436c56af" data-title="Po co opisywać dane" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<h2 id="s2">Tabele częstości</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> tabela częstości pokazuje <strong>liczebność</strong> każdej kategorii, <strong>procent</strong> z całej próby (z brakami danych), <strong>procent ważnych</strong> (bez braków) i <strong>procent skumulowany</strong>, który ma sens tylko od skali porządkowej wzwyż.</p>
+<details class="sec" open="">
+<summary>Kolumny tabeli częstości <span class="src">Bedyńska s. 86–88</span></summary>
+<div class="body">
+<p>Tabele to jeden z najbardziej podstawowych sposobów prezentacji danych. W SPSS: <strong>Analiza → Opis statystyczny → Częstości</strong>, z włączoną opcją <em>Pokaż tabele częstości</em>. Można zrobić kilka tabel naraz. Pierwsza tabela raportu podaje liczbę przypadków i braki danych.</p>
+<div class="tbl"><table>
+<tr><th>Kolumna</th><th>Co pokazuje</th><th>Przykład (wykształcenie, N = 90, 3 braki)</th></tr>
+<tr><td><strong>Częstość</strong></td><td>liczba osób w kategorii</td><td>27 osób z wykształceniem wyższym</td></tr>
+<tr><td><strong>Procent</strong></td><td>udział w całej grupie <strong>razem z brakami danych</strong></td><td>27 z 90 = 30%; braki to 3,3%</td></tr>
+<tr><td><strong>Procent ważnych</strong></td><td>udział <strong>bez braków danych</strong></td><td>27 z 87 = 31%</td></tr>
+<tr><td><strong>Procent skumulowany</strong></td><td>kolejno zsumowane procenty ważnych</td><td>69% ma wykształcenie podstawowe lub średnie</td></tr>
+</table></div>
+<p><strong>Procent skumulowany</strong> ma sens tylko dla zmiennych co najmniej <strong>porządkowych</strong>, gdy kategorie da się sensownie uporządkować. SPSS liczy go zawsze, także dla zmiennej <strong>nominalnej</strong> (np. zwierzę: kod „1” dla psa jest arbitralny), i wtedy jest bezużyteczny.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Wyłapywanie błędów i podział na podzbiory <span class="src">Bedyńska s. 88–89</span></summary>
+<div class="body">
+<p>Tabela częstości ułatwia znalezienie <strong>błędnych wpisów</strong>: wartość „11” bez etykiety w zmiennej płeć to najpewniej podwójnie wciśnięty klawisz. Trzeba ją znaleźć i poprawić na „1”, a czasem sprawdzić wszystkie dane, bo błąd mógł rozpocząć cały szereg błędnych wpisów.</p>
+<p><strong>Podziel na podzbiory</strong> (<em>Dane → Podziel na podzbiory → Porównaj grupy</em>) sprawia, że wszystkie kolejne operacje wykonują się osobno dla każdej kategorii wybranej zmiennej, np. grupy wiekowej. Pozwala to sprawdzić, czy w każdej grupie jest po 15 kobiet i mężczyzn. Funkcja działa w tle, więc trzeba ją <strong>wyłączyć</strong> (<em>Resetuj</em>), gdy przestaje być potrzebna.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:31275391,metodologia/wyklad-3-fiszki:fd1760a4,metodologia/wyklad-3-fiszki:e13cf6d8" data-title="Tabele częstości" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<h2 id="s3">Wykresy</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> celem wykresu jest <strong>klarowna i jak najprostsza</strong> prezentacja danych. <strong>Słupkowy</strong> i <strong>kołowy</strong> służą do zmiennych o niewielu kategoriach, a <strong>histogram</strong> do zmiennych ilościowych: każdy słupek to przedział klasowy o równej rozpiętości. Na histogramie widać obserwacje odstające jako „dziury w skarpecie”.</p>
+<details class="sec" open="">
+<summary>Słupkowy, kołowy, histogram <span class="src">Bedyńska s. 89–94</span></summary>
+<div class="body">
+<p><strong>Kluczowa reguła:</strong> wykres ma pomagać szybko zorientować się w wynikach, więc lepiej oprzeć się pokusie wykresu imponującego, ale mało czytelnego. Wykresy przydają się w fazie opisu, choć nie zawsze trafiają do raportu (czasem wystarczą tabele ze statystykami opisowymi).</p>
+<div class="tbl"><table>
+<tr><th>Wykres</th><th>Do czego</th><th>Uwagi</th></tr>
+<tr><td><strong>Słupkowy</strong></td><td>udział kategorii w całej grupie (np. ile osób ma wykształcenie wyższe)</td><td><strong>nie pokazuje braków danych</strong>; etykiety z liczebnościami dodaje się w Edytorze wykresów (<em>Pokaż opisy danych</em>)</td></tr>
+<tr><td><strong>Kołowy</strong></td><td>to samo co słupkowy</td><td><strong>pokazuje braki danych</strong>; przy bardzo wielu kategoriach (np. 50 krajów) staje się zupełnie nieczytelny</td></tr>
+<tr><td><strong>Histogram</strong></td><td>dane <strong>ilościowe</strong> o wielu wartościach (np. pamięć operacyjna 1–30)</td><td>na osi X wyniki, na osi Y liczba osób; słupek to <strong>przedział klasowy</strong> o równej rozpiętości, nie pojedynczy wynik; można dodać krzywą normalną</td></tr>
+</table></div>
+<p>Wykresów słupkowych i kołowych raczej <strong>nie robi się dla zmiennych dwukategorialnych</strong> (np. płeć), bo taką informację łatwo ogarnąć bez wykresu. Zmienna z bardzo wieloma kategoriami (operacyjna 1–30) na wykresie kołowym lub słupkowym byłaby nieczytelna, dlatego do niej służy histogram. Wykresy da się też zrobić osobno dla grup, łącząc je z <strong>podziałem na podzbiory</strong>.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Histogram a obserwacje odstające <span class="src">Józefacka s. 149–150</span></summary>
+<div class="body">
+<p><strong>Histogram</strong> pokazuje liczebność obserwacji w kolejnych przedziałach wartości i jest wygodnym sposobem wizualnego poznania <strong>rozkładu</strong>. Pozwala zauważyć <strong>obserwacje odstające</strong> (<em>outliers</em>): wyniki, które znacząco odbiegają od pozostałych. Zwykle na lewym lub prawym końcu histogramu tworzą się wtedy <strong>dziury między słupkami</strong>, „niczym w skarpecie”.</p>
+<p>Skrajne wartości mogą sprawić, że oszacowania nie odzwierciedlają realnych wyników. Dlatego przed analizami trzeba przeprowadzić <strong>eksplorację danych</strong>, choćby oglądając histogramy.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:e66f4867,metodologia/wyklad-3-fiszki:694113cb,metodologia/wyklad-3-fiszki:d41cdb46" data-title="Wykresy" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<h2 id="s4">Rozkład: w populacji, w próbie, z próby</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>rozkład w próbie</strong> (empiryczny) to wyniki jednego badania. <strong>Rozkład z próby</strong> (próbkowania) to teoretyczny rozkład statystyki, np. średniej, z wielu hipotetycznych prób, i to on jest podstawą wnioskowania. Zasada „minimum 30 obserwacji” <strong>nie jest sztywna</strong>.</p>
+<details class="sec" open="">
+<summary>Trzy rodzaje rozkładu <span class="src">Józefacka s. 151</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Rozkład</th><th>Co to jest</th><th>Przykład (oferty pracy statystyka)</th></tr>
+<tr><td><strong>W populacji</strong></td><td>wyniki całej populacji; w pełni poznawalny tylko dla skończonej, w całości przebadanej populacji; zwykle o <strong>nieznanym</strong> kształcie i parametrach</td><td>pensje ze wszystkich 702 ofert</td></tr>
+<tr><td><strong>W próbie</strong></td><td>wyniki pojedynczego badania; <strong>jedyny</strong>, którego właściwości można określić; rozkład <strong>empiryczny</strong></td><td>pensje z 30 wylosowanych ofert</td></tr>
+<tr><td><strong>Z próby</strong> (próbkowania)</td><td><strong>teoretyczny</strong> rozkład statystyki (np. średniej) z wielu prób z tej samej populacji; pozwala określić <strong>precyzję</strong> pomiaru</td><td>rozkład średnich pensji z wielokrotnie powtarzanych losowań po 30 ofert</td></tr>
+</table></div>
+<p>W podejściu klasycznym kluczowy dla wnioskowania jest <strong>rozkład próbkowania</strong>, bo większość badań opiera się na próbach, nie na populacjach. <strong>Rozkład empiryczny</strong> to „to, co jest” w danych, a <strong>teoretyczny</strong> to rozkład prawdopodobieństwa, który mówi, jakie powinny być szanse poszczególnych wartości w populacji. Przy statystykach opisowych pierwsze skrzypce gra rozkład w próbie, przy testach statystycznych rozkład próbkowania.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Ile obserwacji wystarczy <span class="src">Józefacka s. 148–149</span></summary>
+<div class="body">
+<p>Od około <strong>n = 30</strong> błąd oszacowania maleje coraz wolniej: zbadanie 50 zamiast 30 jednostek nie daje znacząco większej różnicy. Każda kolejna obserwacja przybliża jednak do prawdy o populacji (rośnie <strong>moc testów</strong>) i poszerza możliwości analizy.</p>
+<p>Zasada minimum 30 obserwacji <strong>nie jest sztywna</strong>. Zależy od tego, co się bada, jak dane będą analizowane i jak zmienna <strong>rozkłada się w populacji</strong>. Przy niewielkim rozrzucie wokół średniej nawet n = 15 może dać wystarczająco precyzyjny pomiar, a przy bardzo dużym rozrzucie nawet 30 obserwacji może być za mało. Z małymi próbami radzą sobie m.in. test <em>t</em> Studenta i dokładny test Fishera.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:513e06c1,metodologia/wyklad-3-fiszki:de805c47" data-title="Rozkład: w populacji, w próbie, z próby" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<h2 id="s5">Miary tendencji centralnej</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>średnia</strong> (M) opiera się na wszystkich wynikach, więc jest <strong>wrażliwa na obserwacje odstające</strong> i wymaga skali ilościowej. <strong>Mediana</strong> (Me) i <strong>modalna</strong> (Mo, dominanta) to miary <strong>pozycyjne</strong>, odporne na wartości skrajne. Mediana wymaga co najmniej skali porządkowej, modalną liczy się na każdej skali.</p>
+<details class="sec" open="">
+<summary>Miary klasyczne i pozycyjne <span class="src">Józefacka s. 201–204</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Rodzaj</th><th>Miary</th><th>Cechy</th></tr>
+<tr><td><strong>Klasyczne</strong></td><td>średnia arytmetyczna (M, μ); także ważona, geometryczna, harmoniczna</td><td>liczy się <strong>każda obserwacja</strong>, dlatego są bardzo <strong>wrażliwe na przypadki odstające</strong>, które zawyżają lub zaniżają wynik</td></tr>
+<tr><td><strong>Pozycyjne</strong></td><td>kwantyle (zwłaszcza mediana, Me), dominanta (D, Mo)</td><td>wynik określają tylko niektóre obserwacje, więc są <strong>niewrażliwe</strong> na obserwacje odstające</td></tr>
+</table></div>
+<p><strong>Średnia arytmetyczna</strong> to suma wszystkich wartości podzielona przez ich liczbę. Jest prosta i podawana w jednostkach badanej cechy. Niebezpieczne złudzenie to traktowanie jej jako panaceum: gdy w danych są obserwacje odstające (czasem wystarczy jedna), średnia przestaje wiarygodnie oddawać rzeczywistość, a na histogramie leży daleko od wierzchołka. Przykład ze zmienną numer pola w ruletce: średnia „13,5 pola” nie ma sensu, bo to tylko porządek pól.</p>
+<p><strong>Średnia trymowana</strong> to średnia policzona po obcięciu skrajnych obserwacji. W danych z kasyna średnie trymowane 10% były we wszystkich strategiach niższe od zwykłych, co wskazuje na <strong>asymetrię</strong> rozkładu. Jeśli obserwacji odstających nie ma, nie ma też podstaw do jej używania.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Przykład Jasia i Stasia <span class="src">Bedyńska s. 94–98</span></summary>
+<div class="body">
+<p>Oceny z polskiego (11 ocen każdy); w przykładzie oceny potraktowano jak skalę ilościową, choć w istocie są porządkowe:</p>
+<div class="tbl"><table>
+<tr><th></th><th>Oceny</th><th>Mo</th><th>Me</th><th>M</th><th>Rozstęp</th><th>Wariancja</th><th>SD</th></tr>
+<tr><td><strong>Jaś</strong></td><td>2 3 3 3 3 4 4 4 5 5 6</td><td>3</td><td>4</td><td>3,81</td><td>4</td><td>1,364</td><td>1,17</td></tr>
+<tr><td><strong>Staś</strong></td><td>3 3 3 3 3 4 4 4 5 5 5</td><td>3</td><td>4</td><td>3,81</td><td>2</td><td>0,763</td><td>0,87</td></tr>
+</table></div>
+<p>Obaj mają <strong>identyczne miary tendencji centralnej</strong>, choć ich oceny się różnią: same miary tendencji centralnej gubią część informacji. Dopiero <strong>miary rozproszenia</strong> pokazują, że oceny Jasia są bardziej zróżnicowane. Warto więc liczyć wszystkie miary i oglądać dane na wykresach i w tabelach.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Modalna (dominanta) <span class="src">Bedyńska s. 95 · Józefacka s. 215–217</span></summary>
+<div class="body">
+<div class="def"><strong>Modalna</strong> (Mo; w SPSS i u Józefackiej <strong>dominanta</strong>, D, moda) to <strong>wartość najczęściej występująca</strong> w zbiorze.</div>
+<ul>
+<li>Dwie wartości równie częste: zmienna <strong>dwumodalna</strong>.</li>
+<li>Gdy każda wartość występuje raz (1 2 3 4 5 6 7), modalnej <strong>nie ma</strong> i staje się bezużyteczna.</li>
+<li>Jeśli istnieje, jest zawsze <strong>wartością obserwowaną</strong> w zbiorze (w przeciwieństwie do mediany i średniej).</li>
+<li>Można ją liczyć na <strong>każdej skali</strong>; najczęściej używa się jej dla skal <strong>nominalnych i porządkowych</strong>. Na skalach interwałowych i ilorazowych liczy się ją mniej chętnie, bo są ciągłe, chyba że wartości są dyskretne (np. wygrane w ruletce: −60, −20, 60, 90 zł).</li>
+<li>SPSS podaje <strong>zawsze jedną</strong> modalną, nawet gdy jest ich więcej, dlatego wygodniej odczytać ją samodzielnie z <strong>tabeli częstości</strong>.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Mediana i kwantyle <span class="src">Bedyńska s. 95–96 · Józefacka s. 210–215</span></summary>
+<div class="body">
+<div class="def"><strong>Mediana</strong> (Me, Mdn) to wartość <strong>dzieląca uporządkowany zbiór na pół</strong>: 50% obserwacji jest mniejszych lub równych, reszta większa. Jest to kwantyl rzędu 50, czyli <strong>drugi kwartyl</strong> (Q<sub>2</sub>).</div>
+<p>Dane trzeba najpierw <strong>uporządkować</strong> od najmniejszej do największej. Przy nieparzystej liczbie obserwacji mediana to wartość środkowa (u Jasia „4”: po 5 ocen z każdej strony). Przy parzystej to <strong>średnia z dwóch środkowych</strong>: dla 3 3 3 4 5 6 6 6 mediana wynosi 4,5, czyli wartość, której w zbiorze nie ma. Medianę liczy się na wszystkich skalach <strong>oprócz nominalnej</strong>, nawet jeśli kategoriom przypisano rosnące liczby (1 Polacy, 2 Niemcy, 3 Francuzi).</p>
+<p><strong>Kwantyl rzędu X</strong> to liczba, poniżej której lub na której poziomie znajduje się X% obserwacji. Kwantyle dzielą zbiór na części: <strong>tercyle</strong> na 3, <strong>kwartyle</strong> na 4, <strong>kwintyle</strong> na 5, <strong>decyle</strong> na 10, <strong>percentyle</strong> na 100. Punktów podziału jest zawsze o jeden mniej niż części.</p>
+<ul>
+<li><strong>Q<sub>1</sub></strong> (kwantyl rzędu 25): 25% wyników jest mniejszych lub równych, 75% większych.</li>
+<li><strong>Q<sub>3</sub></strong> (kwantyl rzędu 75): 75% wyników jest mniejszych lub równych, 25% większych.</li>
+</ul>
+<p><strong>Percentyl</strong> na świadectwie maturalnym: „wynik taki sam lub niższy uzyskało Y% zdających”. 72% z matematyki przy 98 percentylu oznacza miejsce w 2% najlepszych zdających.</p>
+<p><strong>Obliczanie u Józefackiej:</strong> przy 1000 obserwacjach Q<sub>1</sub> to 250., mediana 500., a Q<sub>3</sub> 750. obserwacja w uporządkowanym zbiorze. Przy nieparzystej liczbie obserwacji kwantyl to średnia z obserwacji wyznaczającej podział i sąsiedniej, np. mediana z 999 obserwacji to średnia z 499. i 500.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Relacja Pearsona <span class="src">Józefacka s. 217–218</span></summary>
+<div class="body">
+<p>Karl Pearson podał zależność między średnią, medianą i dominantą, z której przy znajomości dwóch miar można policzyć trzecią:</p>
+<div class="def"><strong>3Me = D + 2M</strong></div>
+<p>Wzór stosuje się tylko do rozkładów <strong>symetrycznych</strong> (jak normalny) lub o niewielkiej asymetrii. Tendencja centralna wskazuje tylko położenie środka i nic nie mówi o tym, jak wokół niego rozkładają się wyniki, stąd potrzeba miar rozproszenia.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:3811a11d,metodologia/wyklad-3-fiszki:fea12417,metodologia/wyklad-3-fiszki:fccc69e9,metodologia/wyklad-3-fiszki:c9d8effc,metodologia/wyklad-3-fiszki:9a2ee625,metodologia/wyklad-3-fiszki:ca15d14e,metodologia/wyklad-3-fiszki:11585472,metodologia/wyklad-3-fiszki:917d738f" data-title="Miary tendencji centralnej" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>8 pytań</span></span></button></div>
+<h2 id="s6">Obserwacje odstające</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> obserwacje odstające zaburzają szacowanie średniej, rozstępu i statystyk testowych. Wykrywa się je na <strong>histogramie</strong>, <strong>wykresie skrzynkowym</strong> i w <strong>wynikach Z</strong> (±2, wyraźnie ±3 SD). Usuwa się je tylko wtedy, gdy są błędem, i <strong>nigdy</strong> po to, by uzyskać istotny wynik.</p>
+<details class="sec" open="">
+<summary>Wykres skrzynkowy <span class="src">Bedyńska s. 96–97 · Józefacka s. 206–207</span></summary>
+<div class="body">
+<p>Wykres skrzynkowy (<em>box plot</em>, ramka-wąsy) opiera się na miarach pozycyjnych. W SPSS powstaje automatycznie w module <strong>Eksploracja</strong>.</p>
+<div class="tbl"><table>
+<tr><th>Element</th><th>Znaczenie</th></tr>
+<tr><td>gruba linia w środku</td><td><strong>mediana</strong> (Q<sub>2</sub>)</td></tr>
+<tr><td>dolna i górna krawędź skrzynki</td><td><strong>Q<sub>1</sub> i Q<sub>3</sub></strong>; między nimi mieści się 50% wyników, a ich odległość to <strong>rozstęp ćwiartkowy</strong></td></tr>
+<tr><td>wąsy</td><td>obserwacje w granicach <strong>1,5 rozstępu ćwiartkowego</strong> od skrzynki (najniższy i najwyższy wynik, który nie jest outlierem)</td></tr>
+<tr><td>kółka</td><td><strong>obserwacje odstające</strong>: 1,5–3 rozstępy ćwiartkowe od skrzynki</td></tr>
+<tr><td>gwiazdki</td><td><strong>obserwacje skrajne</strong> (ekstremalne): ponad 3 rozstępy ćwiartkowe od skrzynki</td></tr>
+</table></div>
+<p>Numery przy symbolach to numery przypadków w zbiorze danych. Inna metoda: przeliczyć wyniki na <strong>skalę Z</strong> i sprawdzić, które odchylają się od średniej o co najmniej <strong>2 lub 3 SD</strong> (te drugie są wyraźnie nietypowe). Działa to najlepiej przy rozkładzie normalnym lub zbliżonym.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Jak sobie z nimi radzić <span class="src">Józefacka s. 207–209</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Sposób</th><th>Kiedy i z jakim kosztem</th></tr>
+<tr><td><strong>Usunięcie</strong></td><td>najprostsze, ale nie zawsze najlepsze; tylko gdy wartości są nienaturalne, mało prawdopodobne lub wynikają z <strong>błędu</strong> (np. przy przepisywaniu). Usuwane przypadki powinny być rozmieszczone losowo i niezwiązane z innymi cechami. Usuwanie po to, by uzyskać wynik istotny, to <strong>oszustwo</strong>.</td></tr>
+<tr><td><strong>Zastąpienie średnią</strong></td><td>skuteczne tylko przy niewielu outlierach; przy wielu <strong>zaniża miary rozproszenia</strong> i zawyża statystyki testowe</td></tr>
+<tr><td><strong>Winsoryzacja</strong></td><td>skrajne wartości zastępuje się <strong>najbliższymi wartościami</strong>; liczebność próby się nie zmienia, a miary rozproszenia nie są sztucznie zaniżane</td></tr>
+<tr><td><strong>Trymowanie</strong></td><td>skrajne wartości się <strong>obcina</strong> i statystykę liczy na mniejszym zbiorze</td></tr>
+<tr><td><strong>Miary pozycyjne</strong></td><td>mediana, dominanta, kwantyle zamiast miar klasycznych, bo są odporne na outliery</td></tr>
+</table></div>
+<p><strong>Trzy kroki winsoryzacji i trymowania:</strong> (1) upewnij się, że wartość odstająca nie jest błędem pomiaru lub wpisywania; (2) zdecyduj, jaki procent danych zostaje nienaruszony (winsoryzacja po 5% z każdego ogona zostawia 90%, po 10% zostawia 80%); (3) zastąp skrajne wartości najbliższymi (winsoryzacja) albo je obetnij (trymowanie).</p>
+<p><strong>Przykład:</strong> 0, 1, 12, 14, 16, 18, 19, 21, 24, 26, 29, 32, 33, 35, 39, 40, 41, 44, 99, 125; M = 33,40. Po winsoryzacji 20% (po dwie wartości z każdego ogona): 12, 12, 12, 14 … 44, 44, 44. Po trymowaniu: 12, 14 … 41, 44 (16 wartości).</p>
+<div class="note">Podręcznik podaje średnią winsoryzowaną 24,95 i trymowaną 24,61. Z wypisanych liczb wychodzi 555 / 20 = 27,75 i 443 / 16 ≈ 27,69. Obie średnie wyraźnie spadają względem 33,40.</div>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:2c6b5703,metodologia/wyklad-3-fiszki:472a6923,metodologia/wyklad-3-fiszki:c757a145,metodologia/wyklad-3-fiszki:76f33195" data-title="Obserwacje odstające" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<h2 id="s7">Miary rozproszenia</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> rozproszenie dobiera się do miary środka: przy <strong>średniej</strong> podaje się <strong>SD</strong> (lub wariancję), przy <strong>medianie</strong> <strong>rozstęp międzykwartylowy</strong> (IQR). Wariancja to suma kwadratów odchyleń od średniej podzielona przez <strong>n − 1</strong>; SD to jej pierwiastek. Do porównywania zmienności różnych zmiennych służy <strong>współczynnik zmienności</strong>.</p>
+<details class="sec" open="">
+<summary>Rozstęp <span class="src">Bedyńska s. 98 · Józefacka s. 218–219</span></summary>
+<div class="body">
+<p>Miary rozproszenia (rozrzutu, dyspersji) mówią, na ile wyniki są rozproszone wokół „środka”, czyli o zmienności danych. Rozstęp, wariancję i SD liczy się według Drogowskazu tylko dla <strong>skal ilościowych</strong>; Józefacka dopuszcza rozstęp także dla danych porządkowych.</p>
+<div class="def"><strong>Rozstęp</strong> to różnica między <strong>wartością maksymalną a minimalną</strong>: maksymalny zakres wahań cechy.</div>
+<p>Jaś: 6 − 2 = 4; Staś: 5 − 3 = 2. Rozstęp przydaje się do szybkiego <strong>wyłapania błędów</strong>: jeśli oceny są na skali 2–6, a rozstęp wynosi 20, coś źle wpisano. Nienaturalnie duży rozstęp może też wskazywać na obserwacje odstające. Rozstęp można policzyć niezależnie od kształtu rozkładu.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Wariancja i odchylenie standardowe <span class="src">Bedyńska s. 98–99 · Józefacka s. 219–224</span></summary>
+<div class="body">
+<div class="def"><strong>Wariancja</strong> (var, s², σ²) to <strong>suma kwadratów odchyleń</strong> wyników od średniej podzielona przez <strong>liczbę wyników minus 1</strong> (w próbie) albo przez liczbę wyników (w całej populacji).</div>
+<p><strong>Dlaczego kwadraty:</strong> zwykłe odchylenia od średniej sumują się do <strong>zera</strong>, bo ujemne znoszą dodatnie. Po podniesieniu do kwadratu suma staje się dodatnia.</p>
+<p><strong>Dlaczego n − 1:</strong> s² liczy się z próby, a σ² z całej populacji. W próbie nie widzi się wszystkich, populacja zawsze mogłaby się powiększyć, więc w mianowniku odejmuje się 1. W praktyce częstsza jest wersja z n − 1.</p>
+<p><strong>Jaś:</strong> suma kwadratów odchyleń od 3,81 = 13,64; 13,64 / (11 − 1) = <strong>1,364</strong> „oceny do kwadratu”. Wariancja jest w jednostkach <strong>podniesionych do kwadratu</strong>, co utrudnia interpretację.</p>
+<div class="def"><strong>Odchylenie standardowe</strong> (SD, s, σ) = <strong>√wariancji</strong>. Jest w zwykłych jednostkach pomiaru; im większe, tym większe rozproszenie wokół średniej.</div>
+<p>Mała wariancja oznacza, że średnia <strong>dobrze przybliża</strong> wartość cechy; duża, że średnia niedokładnie oddaje rozkład. Kasyno, strategia 1: suma kwadratów 3 320 190, var = 3 320 190 / 999 = <strong>3323,51</strong>, SD = <strong>57,65 zł</strong>. SD można tu traktować jako wskaźnik ryzyka. Ograniczenie: SD trudno interpretować bez kontekstu i <strong>porównywać między zmiennymi</strong>.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Współczynnik zmienności <span class="src">Józefacka s. 224–225</span></summary>
+<div class="body">
+<div class="def"><strong>Klasyczny współczynnik zmienności</strong> V = SD / M · 100%.</div>
+<p>Pozwala porównać zmienność, gdy średnie i jednostki są różne. Znajomy grał po 20 zł ze średnią wygraną 0,54 zł i SD = 20 zł: SD niższe niż w strategiach po 60 zł, ale V = 3703,70% wobec 1161,33% w strategii 3.</p>
+<div class="tbl"><table>
+<tr><th>V</th><th>Interpretacja</th></tr>
+<tr><td>poniżej 25%</td><td>mała zmienność</td></tr>
+<tr><td>25–50%</td><td>umiarkowana</td></tr>
+<tr><td>51–100%</td><td>duża</td></tr>
+<tr><td>powyżej 100%</td><td>bardzo duża</td></tr>
+</table></div>
+</div>
+</details>
+<details class="sec">
+<summary>Rozstęp międzykwartylowy <span class="src">Józefacka s. 226–228</span></summary>
+<div class="body">
+<div class="def"><strong>Rozstęp międzykwartylowy</strong> (IQR, rozstęp ćwiartkowy) = <strong>Q<sub>3</sub> − Q<sub>1</sub></strong>: szerokość przedziału zawierającego <strong>50% środkowych</strong> wartości.</div>
+<p>Używa się go, gdy tendencję centralną opisuje się <strong>medianą</strong>, nie średnią. Jest pozycyjnym odpowiednikiem SD przy rozkładzie normalnym i ma jednostki badanej cechy. Im szerszy, tym większe rozproszenie wokół środka.</p>
+<p><strong>Pozycyjny współczynnik zmienności</strong> (V<sub>p</sub>) ma tę samą interpretację co klasyczny: V<sub>p</sub> = IQR / (2·Me) · 100%, czyli (Q<sub>3</sub> − Q<sub>1</sub>) / 2 odniesione do mediany. Jest <strong>bardziej wiarygodny</strong> od klasycznego, gdy z danymi jest coś „nie tak” (skośność, wartości nietypowe).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:b096abf9,metodologia/wyklad-3-fiszki:0c9a448c,metodologia/wyklad-3-fiszki:9b1372ee,metodologia/wyklad-3-fiszki:4b4ea1c0,metodologia/wyklad-3-fiszki:16ca3c35,metodologia/wyklad-3-fiszki:046e60e4" data-title="Miary rozproszenia" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
+<h2 id="s8">Rozkład normalny i standaryzacja</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> rozkład normalny (krzywa Gaussa) jest <strong>symetryczny</strong>, ze średnią w środku: po 50% wyników z każdej strony. Według <strong>reguły trzech sigm</strong> w ±1 SD mieści się 68,3%, w ±2 SD 95,5%, a w ±3 SD 99,7% wyników. <strong>Standaryzacja</strong> Z = (x − M) / SD zamienia dowolny rozkład normalny na rozkład o średniej 0 i SD 1.</p>
+<details class="sec" open="">
+<summary>Własności rozkładu normalnego <span class="src">Józefacka s. 154–156 · Bedyńska s. 103–104</span></summary>
+<div class="body">
+<p>Rozkład próbkowania jest względnie stały i przyjmuje formę <strong>rozkładu normalnego</strong>; założenie to opiera się na <strong>Centralnym Twierdzeniu Granicznym</strong>. Klasyczny rozkład normalny ma <strong>niezmienne właściwości matematyczne</strong>, więc można ustalić prawdopodobieństwo dla dowolnego obszaru pod krzywą.</p>
+<ul>
+<li><strong>Średnia</strong> leży centralnie, a SD opisuje rozproszenie.</li>
+<li>Rozkład jest <strong>symetryczny</strong>: 50% szans na wartość mniejszą od średniej i 50% na większą, bo całe pole pod krzywą to 100%.</li>
+<li>Drogowskaz: u podstaw statystyki leży przekonanie, że zmienne ilościowe w populacji mają rozkład normalny. Najwięcej jest przypadków średnich, mniej bardzo niskich i bardzo wysokich (wzrost: najwięcej osób około 170 cm).</li>
+<li>Wiele testów <strong>parametrycznych</strong> wymaga normalności rozkładu zmiennych ilościowych.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Reguła trzech sigm</th><th>Odsetek wyników</th></tr>
+<tr><td>M ± 1 SD</td><td><strong>68,3%</strong></td></tr>
+<tr><td>M ± 2 SD</td><td><strong>95,5%</strong></td></tr>
+<tr><td>M ± 3 SD</td><td><strong>99,7%</strong></td></tr>
+</table></div>
+<p>Wartości równe lub większe od M + 3 SD mają prawdopodobieństwo około 0,1% (tak samo poniżej M − 3 SD). Przykład: pensje z 30 ofert, M = 6000 zł, SD = 1618,85 zł, więc około 68,3% kwot mieści się między <strong>4311,15 a 7618,85 zł</strong>. Przedział podaje się w parze: średnia ± odchylenie.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Standaryzacja Z <span class="src">Józefacka s. 155–156 · Bedyńska s. 99–101</span></summary>
+<div class="body">
+<p>Zmienne ilościowe mają różne zakresy (zarobki w PLN, lata nauki), więc trudno porównywać wyniki. Rozwiązaniem jest odniesienie wyniku do średniej w jednostkach SD.</p>
+<div class="def"><strong>Z = (x − M) / SD</strong>; x to wynik surowy, M średnia w próbie, SD odchylenie standardowe.</div>
+<p>Osoba zarabiająca 6000 PLN przy M = 4000 i SD = 1000 ma <strong>Z = 2</strong>: dwa odchylenia standardowe powyżej średniej. Osoba zarabiająca 3000 ma <strong>Z = −1</strong>.</p>
+<p><strong>Standardowy rozkład normalny</strong> (rozkład Z) ma średnią <strong>0</strong> i SD <strong>1</strong> niezależnie od pierwotnych jednostek. Każdej wartości z rozkładu normalnego o znanej średniej i SD można przypisać wartość Z i obliczyć prawdopodobieństwo jej wylosowania. W SPSS: <em>Analiza → Opis statystyczny → Statystyki opisowe</em>, opcja <em>Zapisz standaryzowane wartości jako zmienne</em>; powstaje nowa zmienna z przedrostkiem Z (np. Zoperacyjna).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:941559e5,metodologia/wyklad-3-fiszki:31d32e01" data-title="Rozkład normalny i standaryzacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<h2 id="s9">Błąd standardowy i przedział ufności</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>SD</strong> opisuje rozproszenie wyników <strong>w jednej próbie</strong>. <strong>Błąd standardowy</strong> (SE = √(var / n)) mówi, o ile średnio myliłoby się oszacowanie średniej w kolejnych próbach, czyli o <strong>precyzji</strong>. SE dotyczy rozkładu próbkowania i służy do przedziałów ufności.</p>
+<details class="sec" open="">
+<summary>SD a SE <span class="src">Józefacka s. 152–154</span></summary>
+<div class="body">
+<p>Najlepszą miarą precyzji jest <strong>średni błąd pomiaru</strong>, czyli <strong>błąd standardowy</strong>: średnia różnica między prawdziwą wartością parametru a wartościami z wielu analogicznych, hipotetycznych pomiarów. Dokładnie nie da się go określić, bo prawdziwy parametr jest nieznany, a zwykle robi się jedno badanie. Liczy się więc <strong>szacunkowy</strong> błąd standardowy z wariancji i liczebności próby.</p>
+<div class="def"><strong>SE = √(wariancja / n)</strong>, równoważnie SD / √n.</div>
+<p><strong>Przykład:</strong> 30 ofert, M = 6000 zł, wariancja = 2 620 675,32, więc SE = <strong>295,56 zł</strong>. Tyle średnio myliłoby się oszacowanie przeciętnej pensji w kolejnych badaniach na próbach n = 30.</p>
+<div class="tbl"><table>
+<tr><th></th><th>Odchylenie standardowe (SD)</th><th>Błąd standardowy (SE)</th></tr>
+<tr><td>Czego dotyczy</td><td><strong>rozproszenia</strong> (zmienności) wyników w próbie lub populacji</td><td><strong>precyzji</strong>: jak wyniki w próbach różnią się od szacowanego wyniku w populacji</td></tr>
+<tr><td>Rozkład</td><td>w próbie (empiryczny) lub w populacji</td><td><strong>z próby</strong> (próbkowania)</td></tr>
+<tr><td>Rola</td><td>miara <strong>opisowa</strong></td><td>podstawa <strong>przedziałów ufności</strong> i wnioskowania</td></tr>
+<tr><td>Przykład</td><td>1618,85 zł → 68,3% pensji: 4311,15–7618,85 zł</td><td>295,56 zł → 95% przedział ufności dla średniej: <strong>5420,70–6679,30 zł</strong></td></tr>
+</table></div>
+<p>Oba zakresy są zupełnie inne, bo to dwie różne miary. Prawdziwa średnia z 702 ofert (5720,80 zł) mieści się w przedziale ufności, który można uznać za jeden z 95% przedziałów zawierających prawdziwy parametr. SD i SE bywają mylone przez wspólny przymiotnik „standardowy” i przez to, że SE liczy się z SD.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:b8429d59" data-title="Błąd standardowy i przedział ufności" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div>
+<h2 id="s10">Kształt rozkładu: skośność i kurtoza</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> dla rozkładu normalnego <strong>skośność = 0</strong> i <strong>kurtoza = 0</strong>. Przy skośności <strong>dodatniej</strong> (prawoskośny) M &gt; Me &gt; Mo, a przy <strong>ujemnej</strong> (lewoskośny) M &lt; Me &lt; Mo. Kurtoza dodatnia oznacza rozkład <strong>leptokurtyczny</strong>, ujemna <strong>platykurtyczny</strong>. Podręczniki różnie opisują, co kurtoza mierzy.</p>
+<details class="sec" open="">
+<summary>Skośność <span class="src">Bedyńska s. 104–105 · Józefacka s. 228–230</span></summary>
+<div class="body">
+<p><strong>Skośność</strong> to miara <strong>asymetrii</strong> rozkładu: jej kierunku i wielkości. Wartość centralna to 0.</p>
+<div class="tbl"><table>
+<tr><th>Rozkład</th><th>Skośność</th><th>Wygląd</th><th>Miary środka</th></tr>
+<tr><td><strong>Prawoskośny</strong> (dodatnio skośny)</td><td>&gt; 0</td><td>dłuższe <strong>prawe</strong> ramię; wyniki niskie częstsze niż wysokie; na wykresie skrzynkowym wydłużony <strong>górny</strong> wąs</td><td>Mo &lt; Me &lt; <strong>M</strong> (średnia zawyżona)</td></tr>
+<tr><td><strong>Symetryczny</strong></td><td>0</td><td>oba ramiona równe</td><td>M = Me = Mo</td></tr>
+<tr><td><strong>Lewoskośny</strong> (ujemnie skośny)</td><td>&lt; 0</td><td>dłuższe <strong>lewe</strong> ramię; wydłużony <strong>dolny</strong> wąs</td><td><strong>M</strong> &lt; Me &lt; Mo (średnia zaniżona)</td></tr>
+</table></div>
+<p>Przy asymetrycznym rozkładzie lepiej opisywać dane <strong>miarami pozycyjnymi</strong>. Testy parametryczne cenią symetryczne rozkłady; na mocno skośnych danych grozi zwiększony błąd i źle wyznaczony poziom istotności. Według Józefackiej przy skośności w przedziale <strong>od −2 do 2</strong> można spokojnie stosować testy parametryczne. Poza nim potrzebne są metody nieparametryczne lub transformacja danych, chyba że próba jest odpowiednio duża.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Kurtoza <span class="src">Bedyńska s. 104–107 · Józefacka s. 230–231</span></summary>
+<div class="body">
+<p><strong>Kurtoza</strong> (współczynnik ekscesu) ma dla rozkładu normalnego wartość <strong>0</strong> i nie ma górnej ani dolnej granicy.</p>
+<div class="tbl"><table>
+<tr><th>Rozkład</th><th>Kurtoza</th><th>Drogowskaz (Bedyńska)</th><th>Józefacka</th></tr>
+<tr><td><strong>Leptokurtyczny</strong></td><td>&gt; 0</td><td>wyniki <strong>silnie skupione</strong> wokół średniej, brakuje wartości oddalonych; skrzynka „krótka” i zwarta</td><td>„ogony” <strong>większe</strong> niż w normalnym, większe prawdopodobieństwo wartości krańcowych; powyżej 2 (czasem już od 1,5) szukaj obserwacji odstających</td></tr>
+<tr><td><strong>Mezokurtyczny</strong></td><td>0</td><td>rozkład normalny</td><td>prawdopodobieństwo outlierów jak w rozkładzie normalnym</td></tr>
+<tr><td><strong>Platykurtyczny</strong></td><td>&lt; 0</td><td><strong>duże rozproszenie</strong> wokół wartości centralnej; duża skrzynka i długie wąsy</td><td>ogony znacznie mniejsze lub brak; w zasadzie wyklucza obserwacje odstające</td></tr>
+</table></div>
+<p>Józefacka podkreśla, że wbrew powszechnej opinii kurtoza <strong>nie jest miarą wysmukłości</strong> ani szerokości rozkładu i nie mierzy rozproszenia wokół średniej (od tego są wariancja, SD i IQR). Informuje o <strong>ogonach rozkładu</strong> i o <strong>obecności obserwacji odstających</strong>. Drogowskaz opisuje ją jako stopień skupienia wyników wokół wartości centralnej.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Co sugeruje kształt <span class="src">Bedyńska s. 107–108</span></summary>
+<div class="body">
+<p>SPSS podaje współczynniki skośności i kurtozy oraz ich <strong>błędy standardowe</strong>. Statystycy nie są zgodni, kiedy uznać rozkład za skośny czy leptokurtyczny. Jedna z często polecanych metod: <strong>współczynnik podzielony przez jego błąd standardowy</strong>; wynik powyżej 2 lub poniżej −2 daje podstawy, by uznać rozkład za odstający od normalności.</p>
+<ul>
+<li>Rozkład <strong>skośny</strong> często sugeruje, że w danych ukryły się <strong>przypadki skrajne</strong>; ich zlokalizowanie i usunięcie może zmniejszyć skośność.</li>
+<li>Rozkład <strong>lepto- lub platykurtyczny</strong> sugeruje, że prawdopodobnie <strong>źle dobrano próbę</strong> (np. przy leptokurtycznym wszystkie wyniki są skupione wokół średniej i brakuje osób bardziej od niej oddalonych).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:2f79c205,metodologia/wyklad-3-fiszki:de29cc8b" data-title="Kształt rozkładu: skośność i kurtoza" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<h2 id="s11">Testy normalności rozkładu</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>hipoteza zerowa</strong> testu normalności mówi, że rozkład jest zgodny z normalnym, więc <strong>p &gt; 0,05</strong> jest tu dobrą wiadomością. Najpierw robi się test (Shapiro-Wilka albo Kołmogorowa-Smirnowa), a gdy wyjdzie istotny, skośność i kurtoza pokazują, na czym polega odstępstwo. Podręczniki podają <strong>różne progi</strong> wyboru testu.</p>
+<details class="sec" open="">
+<summary>Shapiro-Wilk i Kołmogorow-Smirnow <span class="src">Bedyńska s. 108–110 · Józefacka s. 232</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th></th><th>Drogowskaz (Bedyńska)</th><th>Józefacka</th></tr>
+<tr><td><strong>Shapiro-Wilk</strong> (S-W)</td><td>próby <strong>mniejsze niż 100</strong></td><td>próby od <strong>3 do 5000</strong>; bezwzględnie przy n &lt; 50, bo ma wtedy znacznie większą moc</td></tr>
+<tr><td><strong>Kołmogorow-Smirnow</strong> (K-S)</td><td>próby <strong>większe niż 100</strong></td><td>znacząco niższa moc niż S-W, więc tylko przy dużych próbach (zwykle <strong>n &gt; 2000</strong>); sprawdza dopasowanie do dowolnego rozkładu o znanych parametrach</td></tr>
+<tr><td><strong>Duże próby</strong></td><td>—</td><td>przy n &gt; 100 testy wychodzą istotne nawet przy drobnych odstępstwach, więc obejrzyj też <strong>histogram</strong> oraz skośność i kurtozę; mieszczą się w <strong>−2 do 2</strong>, to odstępstwo nie powinno sprawiać problemów</td></tr>
+</table></div>
+<p><strong>Reguła:</strong> istotność testu <strong>mniejsza od 0,05</strong> oznacza, że rozkład <strong>odstaje kształtem</strong> od normalnego i nie należy stosować testów parametrycznych wymagających normalności zmiennej zależnej. Liczebność dotyczy <strong>grupy, w której analizuje się rozkład</strong>, a nie całej próby: testy parametryczne wymagają normalności zmiennej zależnej <strong>w każdej kategorii</strong> zmiennej niezależnej.</p>
+<p>W SPSS: <em>Eksploracja → Wykresy → Wykresy normalności z testami</em>. SPSS liczy testy nawet dla zmiennych nominalnych i porządkowych (zwierzę, wykształcenie), więc trzeba podchodzić do wyników krytycznie; podobnie z <strong>średnią</strong> dla zmiennej porządkowej w Eksploracji.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Zapis wyniku i kolejność kroków <span class="src">Bedyńska s. 109–111</span></summary>
+<div class="body">
+<p>Zmienna operacyjna (n = 87, próba poniżej 100, więc S-W):</p>
+<div class="def"><strong>W(87) = 0,89; p &lt; 0,001</strong> (Shapiro-Wilk) · <strong>D(87) = 0,17; p &lt; 0,001</strong> (Kołmogorow-Smirnow)</div>
+<p>Przy trzech zerach po przecinku zapisuje się p &lt; 0,001. Kolejność: (1) test normalności; (2) jeśli istotny, skośność i kurtoza wskazują, na czym polega „problem”; (3) analizy powtarza się osobno dla każdej grupy.</p>
+<p><strong>Podsumowanie rozdziału:</strong> zawsze dąży się do jak największej <strong>klarowności</strong>. Prosty wykres słupkowy powie więcej niż efektowne, kolorowe „dziwadło”. Część opisująca osoby badane (liczebność grup, płeć, M i SD wieku, sposób rekrutacji, tabela M i SD zmiennych w grupach) to niezbędny element każdego raportu empirycznego.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:99e93265,metodologia/wyklad-3-fiszki:b4c3efb1" data-title="Testy normalności rozkładu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<h2 id="s12">Zestawienie: która miara kiedy</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> skala i kształt rozkładu wyznaczają miarę środka, a miara środka wyznacza miarę rozproszenia. Rozkład symetryczny i skala ilościowa: <strong>M ± SD</strong>. Asymetria, outliery lub skala porządkowa: <strong>Me i IQR</strong>. Skala nominalna: <strong>Mo</strong>.</p>
+<details class="sec" open="">
+<summary>Miary a skale pomiarowe <span class="src">Bedyńska s. 94–103 · Józefacka s. 201–228</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Miara</th><th>Najniższa skala</th><th>Odporna na outliery</th><th>Uwagi</th></tr>
+<tr><td>Modalna (Mo, D)</td><td>nominalna</td><td>tak</td><td>może nie istnieć lub być ich kilka</td></tr>
+<tr><td>Mediana (Me)</td><td>porządkowa</td><td>tak</td><td>przy asymetrii i outlierach</td></tr>
+<tr><td>Kwantyle, IQR, V<sub>p</sub></td><td>porządkowa</td><td>tak</td><td>w parze z medianą</td></tr>
+<tr><td>Rozstęp</td><td>porządkowa (Józefacka) / ilościowa (Bedyńska)</td><td>nie</td><td>wykrywa błędy wpisu</td></tr>
+<tr><td>Średnia (M)</td><td>ilościowa</td><td>nie</td><td>przy rozkładzie symetrycznym</td></tr>
+<tr><td>Wariancja, SD, V</td><td>ilościowa</td><td>nie</td><td>w parze ze średnią</td></tr>
+<tr><td>Skośność, kurtoza</td><td>ilościowa</td><td>—</td><td>opis odstępstwa od normalności</td></tr>
+</table></div>
+<p><strong>Gdzie liczyć w SPSS:</strong> <em>Częstości → Statystyki</em> daje swobodny wybór miar, w tym kwantyli. <em>Eksploracja</em> liczy od razu miary tendencji centralnej, rozproszenia, skośność, kurtozę i wykres skrzynkowy; zmienna na <em>Liście czynników</em> daje wyniki osobno dla grup.</p>
+</div>
+</details>
+<footer class="sources">
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 148–156, 197–233). Wydawnictwo Naukowe PWN.</p>
+<p>Albiński, R. i Elczewski, A. (2013). Opis i prezentacja danych: tabele, wykresy i statystyki opisowe. W: S. Bedyńska i M. Cypryańska (red.), <em>Statystyczny drogowskaz 1</em> (s. 83–111). Sedno.</p>
+</footer>
+<div class="st-check unit"><button data-check="metodologia/wyklad-3-fiszki:e37b26db,metodologia/wyklad-3-fiszki:e227ad17,metodologia/wyklad-3-fiszki:436c56af,metodologia/wyklad-3-fiszki:31275391,metodologia/wyklad-3-fiszki:fd1760a4,metodologia/wyklad-3-fiszki:e13cf6d8,metodologia/wyklad-3-fiszki:e66f4867,metodologia/wyklad-3-fiszki:694113cb,metodologia/wyklad-3-fiszki:d41cdb46,metodologia/wyklad-3-fiszki:513e06c1,metodologia/wyklad-3-fiszki:de805c47,metodologia/wyklad-3-fiszki:3811a11d,metodologia/wyklad-3-fiszki:fea12417,metodologia/wyklad-3-fiszki:fccc69e9,metodologia/wyklad-3-fiszki:c9d8effc,metodologia/wyklad-3-fiszki:9a2ee625,metodologia/wyklad-3-fiszki:ca15d14e,metodologia/wyklad-3-fiszki:11585472,metodologia/wyklad-3-fiszki:917d738f,metodologia/wyklad-3-fiszki:2c6b5703,metodologia/wyklad-3-fiszki:472a6923,metodologia/wyklad-3-fiszki:c757a145,metodologia/wyklad-3-fiszki:76f33195,metodologia/wyklad-3-fiszki:b096abf9,metodologia/wyklad-3-fiszki:0c9a448c,metodologia/wyklad-3-fiszki:9b1372ee,metodologia/wyklad-3-fiszki:4b4ea1c0,metodologia/wyklad-3-fiszki:16ca3c35,metodologia/wyklad-3-fiszki:046e60e4,metodologia/wyklad-3-fiszki:941559e5,metodologia/wyklad-3-fiszki:31d32e01,metodologia/wyklad-3-fiszki:b8429d59,metodologia/wyklad-3-fiszki:2f79c205,metodologia/wyklad-3-fiszki:de29cc8b,metodologia/wyklad-3-fiszki:99e93265,metodologia/wyklad-3-fiszki:b4c3efb1" data-title="Wykład 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>36 pytań</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="cwiczenia-1.html"><span>Poprzednia</span><b>Ćwiczenia 1</b><i>Proces badawczy i baza danych w Jamovi</i></a><span></span></nav>
+</main>
+</div>
+<script src="../assets/srs.js?v=ae47686b"></script><script src="../assets/flashcards.js?v=75220739"></script><script src="cards.js?v=806f1084"></script><script src="../assets/check.js?v=6528702b"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 3" src="../assets/reader.js?v=279babbd"></script>
+</body>
+</html>
