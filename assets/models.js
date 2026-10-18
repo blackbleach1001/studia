@@ -20,6 +20,18 @@
   data.models.forEach(function (m) {
     m.links.forEach(function (l) { (inc[l.to] = inc[l.to] || []).push({ from: m.id, rel: l.rel }); });
   });
+  // para opisana w obie strony: zostaje tylko powiązanie przychodzące (np. „krytykuje”), bez dublowania
+  data.models.forEach(function (m) {
+    m.links = m.links.filter(function (l) {
+      var back = byId[l.to] && byId[l.to].links.filter(function (k) { return k.to === m.id; })[0];
+      if (!back || l.rel !== "alternatywa") return true;
+      return back.rel === "alternatywa" && m.id < l.to;
+    });
+  });
+  inc = {};
+  data.models.forEach(function (m) {
+    m.links.forEach(function (l) { (inc[l.to] = inc[l.to] || []).push({ from: m.id, rel: l.rel }); });
+  });
   function gcol(m) { return PAL[gIdx[m.g] % PAL.length]; }
   function el(tag, attrs, html) {
     var e = document.createElement(tag);
@@ -64,7 +76,7 @@
   // chronologia
   var tl = document.getElementById("mm-time-list");
   if (tl) {
-    data.models.filter(function (m) { return m.yr; }).slice().sort(function (a, b) { return parseInt(a.yr, 10) - parseInt(b.yr, 10); }).forEach(function (m) {
+    data.models.filter(function (m) { return m.yr; }).slice().sort(function (a, b) { return (a.ys || parseInt(a.yr, 10)) - (b.ys || parseInt(b.yr, 10)); }).forEach(function (m) {
       var li = el("li", { style: "--g:" + gcol(m) });
       var b = el("button", { type: "button", "data-id": m.id, "aria-pressed": "false", style: "--g:" + gcol(m) },
         '<span class="y">' + esc(m.yr) + '</span><span><span class="n">' + esc(m.name) + '</span> <span class="w">' + esc(m.who) + "</span></span>");
