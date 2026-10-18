@@ -2,7 +2,7 @@
    Studia — wygląd materiałów (notatki, fiszki, strona główna)
    Atkinson Hyperlegible (tekst) + Playfair Display (nagłówki)
    ========================================================= */
-@import url("reader.css?v=5774ca84");
+@import url("reader.css?v=58452a29");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 :root{
@@ -142,3 +142,16 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
 .today-box>summary::after{transform:rotate(135deg);transition:transform .2s}
 .today-box[open]>summary::after{transform:rotate(-45deg)}
 .today-box .ios-list.inner{border-radius:0;box-shadow:none;border-top:.5px solid var(--line)}
+
+/* strona główna: wyszukiwanie i „Czytaj dalej” */
+.search{position:relative;margin:14px 0 0}
+.search svg{position:absolute;left:12px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--ink-mute);pointer-events:none}
+.search input{width:100%;box-sizing:border-box;font:inherit;font-size:1.0625rem;color:var(--ink);background:var(--card);border:0;border-radius:12px;padding:11px 14px 11px 38px;min-height:44px;box-shadow:0 0 0 .5px var(--line);-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--ink-mute);opacity:1}
+.search input:focus{outline:none;box-shadow:0 0 0 2px var(--tint)}
+.row.hit{align-items:flex-start}
+.row.hit .ic{margin-top:2px}
+.row.hit::after{align-self:center}
+.row .x{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.875rem;color:var(--ink-soft);line-height:1.4;margin-top:4px}
+.row mark{background:var(--tint-soft);color:inherit;border-radius:3px;padding:0 1px}
+.group.resume .row .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

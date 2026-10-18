@@ -300,9 +300,6 @@ def build_index(subjects):
         if n("wyk"): parts.append(rng("Wykład", "Wykłady", n("wyk")))
         if n("cw"): parts.append(rng("Ćwiczenia", "Ćwiczenia", n("cw")))
         if n("zaj"): parts.append(rng("Zajęcia", "Zajęcia", n("zaj")))
-        if subj.get("sims"): parts.append("Symulacje")
-        if subj.get("models"): parts.append("Modele")
-        parts += [p["title"].split(" · ")[0] for p in subj.get("practice", [])]
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
             rows.append(f'<li {style}><a class="row" href="{subj["dir"]}/"><span class="ic">{book}</span>'
@@ -336,14 +333,21 @@ def build_index(subjects):
   <header class="hero">
     <p class="eyebrow">Psychologia SWPS · Semestr 3</p>
     <h1>Studia</h1>
+    <form class="search" role="search" onsubmit="return false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input type="search" id="q" placeholder="Szukaj w notatkach" aria-label="Szukaj w notatkach" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+    </form>
   </header>
   <main>
+    <section class="group results" id="results" hidden><h2 id="results-h">Wyniki</h2><ul class="ios-list" id="results-list"></ul></section>
     <section class="group"><h2>Przedmioty</h2><ul class="ios-list">{"".join(rows)}</ul></section>
   </main>
 </div>
 <script src="assets/srs.js"></script>
 <script src="assets/cards-index.js"></script>
 <script src="assets/today.js" data-root=""></script>
+<script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
+<script src="assets/home.js" data-index="assets/search-index.js"></script>
 </body>
 </html>
 """

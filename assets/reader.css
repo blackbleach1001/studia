@@ -227,3 +227,7 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-check.unit b,.st-check.unit span,.st-check.unit svg{color:#fff}
 .st-panel .st-deck{padding:4px 16px 12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .st-panel.tall{max-height:88vh}
+
+/* trafienie z wyszukiwarki */
+mark.st-hit{background:hsl(44,92%,74%);color:inherit;border-radius:3px;padding:0 1px;transition:background-color 1.2s}
+mark.st-hit.fade{background:transparent}

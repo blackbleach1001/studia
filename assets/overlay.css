@@ -3,7 +3,7 @@
    Ujednolica czytanie bez zmiany treści: Atkinson w tekście,
    Playfair w nagłówkach, linia ok. 65 znaków, wyrównanie do lewej.
    ========================================================= */
-@import url("reader.css?v=5774ca84");
+@import url("reader.css?v=58452a29");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 body, body :where(*:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp)){
