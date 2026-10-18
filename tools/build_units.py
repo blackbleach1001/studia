@@ -38,6 +38,12 @@ def finish(soup, subj, unit, units, container):
             f'<span><b>Zobacz to w symulacjach</b><span class="s">Kliknij i obserwuj, jak zmieniają się dane</span></span></a>',
             "html.parser")
         container.insert(1, link)
+    if unit.get("models"):
+        link = BeautifulSoup(
+            f'<a class="sim-link" href="{unit["models"]}"><span class="ic">{ICONS["models"]}</span>'
+            f'<span><b>Mapa modeli i teorii</b><span class="s">Wszystkie koncepcje z wykładu i powiązania między nimi</span></span></a>',
+            "html.parser")
+        container.insert(2 if unit.get("sim") else 1, link)
     # przejścia
     seq = [u for u in units if u["kind"] != "info"]
     i = seq.index(unit) if unit in seq else None
@@ -213,6 +219,7 @@ ICONS = {
     "cards": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
     "quiz": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>',
     "sim": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M7 15l4-5 3 3 5-7"/><circle cx="19" cy="6" r="1.2" fill="currentColor"/></svg>',
+    "models": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.3 7l7.3.1M7.2 8.2l3.7 7.6M16.9 9.3l-3.7 6.6"/></svg>',
     "info": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
 }
 
@@ -231,6 +238,9 @@ def hub(subj):
     sims = subj.get("sims", [])
     if sims:
         groups.append(("Symulacje", "".join(row(m["href"], "sim", f'{m["label"]} · Symulacje', m.get("title", "")) for m in sims)))
+    mods = subj.get("models", [])
+    if mods:
+        groups.append(("Modele", "".join(row(m["href"], "models", f'{m["label"]} · Mapa modeli', m.get("title", "")) for m in mods)))
     extra = subj.get("practice", [])
     if extra:
         groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
@@ -289,6 +299,7 @@ def build_index(subjects):
         if n("cw"): parts.append(rng("Ćwiczenia", "Ćwiczenia", n("cw")))
         if n("zaj"): parts.append(rng("Zajęcia", "Zajęcia", n("zaj")))
         if subj.get("sims"): parts.append("Symulacje")
+        if subj.get("models"): parts.append("Modele")
         parts += [p["title"].split(" · ")[0] for p in subj.get("practice", [])]
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
@@ -357,6 +368,19 @@ def fix_crosslinks(subj):
 
 # ------------------------------------------------------------------
 SUBJECTS = json.loads((ROOT / "tools" / "subjects.json").read_text(encoding="utf-8"))
+# mapy modeli (tools/src/modele/*.json) — link w części i grupa „Modele” na stronie przedmiotu
+for _f in sorted((SRC / "modele").glob("*.json")):
+    _d = json.loads(_f.read_text(encoding="utf-8"))
+    for _s in SUBJECTS:
+        if _s["dir"] != _d["dir"]:
+            continue
+        for _u in _s["units"]:
+            if _u["key"] == _d["unit"]:
+                _u["models"] = _d["file"]
+for _s in SUBJECTS:
+    _m = [{"label": u["label"], "title": u["title"], "href": u["models"]} for u in _s["units"] if u.get("models")]
+    if _m:
+        _s["models"] = _m
 BUILDERS = {"poznawcza": build_poznawcza, "metodologia": build_metodologia,
             "kliniczna": build_kliniczna, "praca": build_praca}
 

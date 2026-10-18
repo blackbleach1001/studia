@@ -1,0 +1,92 @@
+/* =========================================================
+   Studia — mapy modeli i koncepcji
+   Mapa grup → wybrany model → szczegóły i powiązania
+   ========================================================= */
+.page.mm-page{max-width:1100px}
+.mm-page .st-hero .st-meta{max-width:65ch}
+
+.mm-wrap{display:grid;gap:18px;align-items:start}
+.mm-wrap>*{min-width:0}
+@media (min-width:1000px){
+  .mm-wrap{grid-template-columns:minmax(0,1fr) 380px}
+  .mm-detail{position:sticky;top:68px;max-height:calc(100vh - 84px);overflow:auto}
+}
+
+/* ——— mapa ——— */
+.mm-map{position:relative;background:var(--card);border-radius:18px;box-shadow:0 0 0 .5px var(--line);padding:16px}
+.mm-core{
+  display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:12px 14px;border-radius:14px;
+  background:var(--tint);color:#fff;
+}
+.mm-core b{font:700 1.25rem/1.2 "Playfair Display",Georgia,serif;display:block}
+.mm-core span{font-size:.875rem;opacity:.9;display:block;line-height:1.35}
+.mm-groups{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));position:relative;z-index:1}
+.mm-group{border-radius:14px;padding:10px 10px 8px;background:var(--paper);box-shadow:inset 0 0 0 .5px var(--line);border-top:4px solid hsl(var(--g))}
+.mm-group h3{font:700 .8125rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:hsl(var(--g));margin:0 2px 2px}
+.mm-group p{font-size:.8125rem;color:var(--ink-mute);margin:0 2px 8px;line-height:1.35}
+.mm-group ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.mm-node{
+  display:block;width:100%;text-align:left;cursor:pointer;border:0;border-radius:10px;padding:8px 10px;
+  background:var(--card);box-shadow:0 0 0 .5px var(--line),0 1px 2px rgba(43,33,24,.06);
+  font:700 .9375rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--ink);
+  -webkit-tap-highlight-color:transparent;transition:opacity .2s,box-shadow .2s,background .2s;
+}
+.mm-node small{display:block;font-weight:400;font-size:.8125rem;color:var(--ink-mute);margin-top:2px}
+.mm-node:focus-visible{outline:2px solid var(--tint);outline-offset:2px}
+.mm-node[aria-pressed="true"]{background:hsl(var(--g));color:#fff;box-shadow:0 2px 8px rgba(43,33,24,.18)}
+.mm-node[aria-pressed="true"] small{color:rgba(255,255,255,.85)}
+.mm-node.rel{box-shadow:0 0 0 2px hsl(var(--g))}
+.mm-map.focus .mm-node:not([aria-pressed="true"]):not(.rel){opacity:.42}
+.mm-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+.mm-lines path{fill:none;stroke-width:2.2;stroke-linecap:round}
+.mm-lines circle{stroke:var(--card);stroke-width:2}
+.mm-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 2px 0;font-size:.8125rem;color:var(--ink-mute)}
+.mm-legend i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+
+/* ——— szczegóły ——— */
+.mm-detail{background:var(--card);border-radius:18px;box-shadow:0 0 0 .5px var(--line);padding:16px 18px 18px}
+.mm-detail .eyebrow{font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:hsl(var(--g));text-transform:uppercase;letter-spacing:.03em;margin:0 0 4px}
+.mm-detail h2{font-size:1.5rem;margin:0 0 2px}
+.mm-detail .who{color:var(--ink-mute);font-size:.9375rem;margin:0 0 12px}
+.mm-detail .gist{font-size:1.0625rem;line-height:1.5;margin:0 0 14px;padding:10px 12px;border-radius:12px;background:var(--tint-soft);box-shadow:inset 3px 0 0 hsl(var(--g))}
+.mm-detail h4{font:700 .8125rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--ink-mute);margin:14px 0 6px}
+.mm-detail ul.pts{margin:0;padding-left:1.1em}
+.mm-detail ul.pts li{margin:0 0 5px;line-height:1.45}
+.mm-detail .study{background:var(--paper-2);border-radius:12px;padding:10px 12px;font-size:.9375rem;line-height:1.45}
+.mm-detail .warn{background:#fbf3e3;border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.45;margin-top:10px}
+.mm-detail .warn b{color:#8a5a12}
+.mm-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
+.mm-flow li{padding:6px 9px;border-radius:9px;background:var(--paper);box-shadow:inset 0 0 0 .5px var(--line);font-size:.875rem;line-height:1.3}
+.mm-flow li.k{background:hsl(var(--g));color:#fff;box-shadow:none}
+.mm-flow li.arr{background:none;box-shadow:none;padding:0 1px;color:var(--ink-mute)}
+.mm-rels{display:flex;flex-direction:column;gap:6px}
+.mm-rel{
+  display:flex;gap:8px;align-items:baseline;text-align:left;border:0;background:var(--paper);cursor:pointer;
+  border-radius:10px;padding:7px 10px;box-shadow:inset 0 0 0 .5px var(--line);font:inherit;font-size:.9rem;color:var(--ink);
+}
+.mm-rel em{font-style:normal;font-weight:700;font-size:.75rem;flex:0 0 auto;padding:1px 7px;border-radius:7px;color:#fff}
+.mm-open{display:inline-block;margin-top:14px;font-weight:700;color:var(--tint);text-decoration:none}
+.mm-back{display:none;float:right;margin:0 0 6px 10px;border:0;background:none;color:var(--tint);font:700 .875rem "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;padding:0}
+@media (max-width:999px){.mm-back{display:inline-block}.mm-lines{display:none}.mm-groups>.mm-detail{grid-column:1/-1;box-shadow:0 0 0 1.5px hsl(var(--g)),0 4px 14px rgba(43,33,24,.1)}}
+
+/* ——— chronologia ——— */
+.mm-time{margin:26px 0 0}
+.mm-time h2,.mm-compare h2{font-size:1.375rem;margin:0 0 4px}
+.mm-time p.q,.mm-compare p.q{color:var(--ink-soft);margin:0 0 12px;max-width:65ch}
+.mm-tl{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.mm-tl li{position:relative}
+.mm-tl li::before{content:"";position:absolute;left:-20px;top:13px;width:10px;height:10px;border-radius:50%;background:hsl(var(--g));box-shadow:0 0 0 2px var(--paper)}
+.mm-tl button{display:flex;gap:12px;align-items:baseline;width:100%;text-align:left;border:0;background:none;cursor:pointer;padding:6px 8px;border-radius:10px;font:inherit;color:var(--ink)}
+.mm-tl button:hover,.mm-tl button[aria-pressed="true"]{background:var(--tint-soft)}
+.mm-tl .y{flex:0 0 4.6em;font-weight:700;font-variant-numeric:tabular-nums;color:hsl(var(--g))}
+.mm-tl .n{font-weight:700}
+.mm-tl .w{color:var(--ink-mute);font-size:.875rem}
+
+/* ——— zestawienia ——— */
+.mm-compare{margin:30px 0 0}
+.mm-compare .tw{overflow-x:auto;background:var(--card);border-radius:14px;box-shadow:0 0 0 .5px var(--line);margin:0 0 18px}
+.mm-compare table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9375rem}
+.mm-compare th,.mm-compare td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:.5px solid var(--line);line-height:1.4}
+.mm-compare thead th{background:var(--paper-2)}
+.mm-compare tbody th{font-weight:700;color:var(--ink-soft);width:22%}
+.mm-compare caption{caption-side:top;text-align:left;font:700 1rem "Atkinson Hyperlegible",system-ui,sans-serif;padding:12px 12px 4px;color:var(--ink)}
