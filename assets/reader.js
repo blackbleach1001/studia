@@ -92,6 +92,42 @@
     next: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32l-7.25-5.5A.8.8 0 0 0 13 6.5zM3 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32L4.25 5.84A.8.8 0 0 0 3 6.5z"/></svg>'
   };
 
+
+  /* ---------- arkusze: przeciągnij w dół, aby zamknąć; fokus zostaje w arkuszu ---------- */
+  window.StudiaSheet = function (sheetEl, onClose) {
+    var panel = sheetEl.querySelector(".st-panel"), startY = null, dy = 0, t0 = 0;
+    function scrollerAtTop(target) {
+      var sc = target.closest(".st-panel ol, .st-panel .st-deck");
+      return !sc || sc.scrollTop <= 0;
+    }
+    panel.addEventListener("touchstart", function (e) {
+      if (!scrollerAtTop(e.target)) return;
+      startY = e.touches[0].clientY; dy = 0; t0 = Date.now(); panel.classList.add("dragging");
+    }, { passive: true });
+    panel.addEventListener("touchmove", function (e) {
+      if (startY == null) return;
+      dy = Math.max(0, e.touches[0].clientY - startY);
+      if (dy > 0) panel.style.transform = "translateY(" + dy + "px)";
+    }, { passive: true });
+    function end() {
+      if (startY == null) return;
+      panel.classList.remove("dragging");
+      var fast = dy > 40 && (Date.now() - t0) < 250;
+      panel.style.transform = "";
+      if (dy > 120 || fast) onClose();
+      startY = null; dy = 0;
+    }
+    panel.addEventListener("touchend", end); panel.addEventListener("touchcancel", end);
+    sheetEl.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || sheetEl.hidden) return;
+      var f = Array.prototype.filter.call(panel.querySelectorAll("a[href], button:not([disabled]), [tabindex='0']"), function (x) { return x.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  };
+
   /* ---------- pasek nawigacji u góry: wstecz + tytuł po przewinięciu ---------- */
   var BACK = (script && script.dataset.back) || HOME;
   var BACK_LABEL = (script && script.dataset.backLabel) || "Studia";
@@ -130,7 +166,7 @@
       '<div class="st-scrim" data-close></div>' +
       '<section class="st-panel" role="dialog" aria-modal="true" aria-labelledby="st-toc-t">' +
         '<div class="st-grab" aria-hidden="true"></div>' +
-        '<header><h2 id="st-toc-t">Spis treści</h2><button type="button" data-close>Gotowe</button></header>' +
+        '<header><h2 id="st-toc-t">Spis treści</h2><button type="button" data-close>Zamknij</button></header>' +
         "<ol></ol>" +
       "</section>";
     document.body.appendChild(sheet);
@@ -156,6 +192,7 @@
       h.scrollIntoView({ block: "start" });
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) closeToc(); });
+    window.StudiaSheet(sheet, function () { closeToc(); });
   }
   var lastFocus = null;
   function reachable(h) {

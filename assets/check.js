@@ -41,4 +41,6 @@
     if (!sheet.hidden && e.target.closest("[data-x]")) close();
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) close(); });
+  // reader.js ładuje się po tym pliku — podpinamy po wczytaniu strony
+  document.addEventListener("DOMContentLoaded", function () { if (window.StudiaSheet) window.StudiaSheet(sheet, close); });
 })();

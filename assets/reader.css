@@ -9,7 +9,7 @@
   --st-accent:hsl(var(--st-h),var(--st-s),var(--st-l));
   --st-tint:hsl(var(--st-h),calc(var(--st-s) + 8%),36%);      /* kolor akcji (tint) */
   --st-tint-soft:hsl(var(--st-h),40%,94%);
-  --st-paper:#fffdf9; --st-ink:#2b2118; --st-ink-2:#5c4d40; --st-ink-3:#8a7b6e;
+  --st-paper:#fffdf9; --st-ink:#2b2118; --st-ink-2:#5c4d40; --st-ink-3:#6f6255;
   --st-sep:rgba(60,45,30,.14);
   --st-bar:rgba(255,253,249,.78);
   --st-bar-solid:#fffdf9;
@@ -98,7 +98,10 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (min-width:700px){.st-sheet{align-items:center}.st-panel{border-radius:16px;max-height:70vh}}
-.st-grab{width:36px;height:5px;border-radius:3px;background:var(--st-sep);margin:8px auto 0}
+.st-grab{width:36px;height:5px;border-radius:3px;background:rgba(60,45,30,.28);margin:8px auto 0}
+.st-panel{touch-action:pan-y;transition:transform .25s ease}
+.st-panel.dragging{transition:none}
+.st-panel header{cursor:grab}
 .st-panel header{display:flex;align-items:center;padding:6px 8px 6px 20px;border-bottom:.5px solid var(--st-sep)}
 .st-panel header h2{flex:1;margin:0;font:700 1.0625rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif !important;color:var(--st-ink)}
 .st-panel header button{min-height:44px;padding:0 12px;border:0;background:transparent;color:var(--st-tint);font:600 1.0625rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer}
@@ -137,14 +140,15 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
   [data-block],.st-title,.dock-bar button{transition:none}
 }
 @media (prefers-contrast:more){
-  :root{--st-sep:rgba(40,30,20,.45)}
+  :root{--st-sep:rgba(40,30,20,.45);--st-ink-2:#3d3229;--st-ink-3:#4f4338;--st-tint:hsl(var(--st-h),calc(var(--st-s) + 8%),26%)}
   body.focus [data-block]{opacity:.55}
 }
 @media print{.dock,.st-nav,.st-sheet{display:none !important}}
 
 /* ---------- nagłówek części (wykład / ćwiczenia) ---------- */
 .st-hero{padding:14px 0 18px;margin:0 0 18px;border-bottom:.5px solid var(--st-sep)}
-.st-hero .st-eyebrow{margin:0 0 6px;font:700 .8125rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif !important;color:var(--st-tint);max-width:none}
+.st-hero .st-eyebrow{margin:0 0 6px;font:700 .8125rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif !important;color:var(--st-ink-2);max-width:none;display:flex;align-items:center;gap:8px}
+.st-hero .st-eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--st-accent);flex:0 0 auto}
 .st-hero h1{margin:0 0 8px;font:700 2.1rem/1.15 "Playfair Display",Georgia,serif !important;color:var(--st-ink);letter-spacing:-.005em}
 .st-hero .st-meta{margin:0;color:var(--st-ink-2);font-size:1rem;line-height:1.5;max-width:65ch}
 

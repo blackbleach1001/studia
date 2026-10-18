@@ -67,6 +67,7 @@ def finish(soup, subj, unit, units, container):
     sc["data-home"] = "../"
     sc["data-back"] = "./"
     sc["data-back-label"] = subj["short"]
+    sc["data-title"] = unit["label"] if unit["kind"] != "info" else "Informacje"
     soup.body.append(sc)
     # przycisk fiszek wskazuje nową stronę fiszek
     for a in soup.select(".fiszki-link a"):
@@ -265,7 +266,6 @@ def hub(subj):
 <body>
 <div class="page hub">
   <header class="hero">
-    <p class="eyebrow">{esc(subj["kind_label"])}</p>
     <h1>{esc(subj["name"])}</h1>
     {f'<p class="meta">{esc(subj["meta"])}</p>' if subj.get("meta") else ""}
   </header>

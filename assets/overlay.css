@@ -3,7 +3,7 @@
    Ujednolica czytanie bez zmiany treści: Atkinson w tekście,
    Playfair w nagłówkach, linia ok. 65 znaków, wyrównanie do lewej.
    ========================================================= */
-@import url("reader.css?v=0ebe83b0");
+@import url("reader.css?v=5774ca84");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 body, body :where(*:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp)){
@@ -13,7 +13,10 @@ body h1, body h2, body h3, body h4,
 body h1 *, body h2 *, body h3 *, body h4 *{
   font-family:"Playfair Display",Georgia,serif !important;
 }
-body{font-size:18px;line-height:1.65;-webkit-text-size-adjust:100%}
+html{font:-apple-system-body}
+body{font-size:1.0625rem;line-height:1.65;-webkit-text-size-adjust:100%}
+/* tekst skaluje się z rozmiarem tekstu w Ustawieniach iPada */
+body :is(main,.wrap) :is(p,li,dd){font-size:max(1rem,1em) !important}
 body p, body li, body dd, body blockquote{
   text-align:left !important;hyphens:manual !important;
   max-width:65ch;
