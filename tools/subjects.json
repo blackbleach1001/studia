@@ -10,7 +10,7 @@
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Zaliczenie przedmiotu","sub_short":"Punktacja i wymagania"}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 56","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 69","href":"fiszki.html"},
    {"kind":"quiz","title":"Powtórka","sub":"Test, fiszki, pytania otwarte","href":"powtorka.html"}
   ],
   "redirects":{"literatura.html":"./","literatura-fiszki.html":"fiszki.html"}
