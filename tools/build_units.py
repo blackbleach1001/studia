@@ -84,6 +84,10 @@ def build_poznawcza(subj):
     for u in units:
         soup = load("poznawcza")
         drop(soup.select_one(".page > nav.toc"), soup.select_one("header.masthead"), soup.select_one("div.tabs"))
+        # bez spisu treści strona ma jedną kolumnę (inaczej treść trafia do wąskiej kolumny spisu)
+        fix = soup.new_tag("style")
+        fix.string = ".page{grid-template-columns:minmax(0,1fr);max-width:50rem}"
+        soup.head.append(fix)
         main = soup.select_one("main")
         sylabus = soup.find(id="sylabus")
         for hint in soup.select(".panel-hint"):
@@ -332,6 +336,25 @@ def build_index(subjects):
 """
     (ROOT / "index.html").write_text(page, encoding="utf-8")
 
+def fix_crosslinks(subj):
+    """Odsyłacze #id prowadzące do innej części przedmiotu → plik.html#id."""
+    files = [u["file"] for u in subj["units"]]
+    pages = {f: (ROOT / subj["dir"] / f).read_text(encoding="utf-8") for f in files if (ROOT / subj["dir"] / f).exists()}
+    owner = {}
+    for f, t in pages.items():
+        for i in re.findall(r'id="([^"]+)"', t):
+            owner.setdefault(i, f)
+    for f, t in pages.items():
+        own = set(re.findall(r'id="([^"]+)"', t))
+        def sub(m):
+            target = m.group(1)
+            if target in own or target not in owner:
+                return m.group(0)
+            return f'href="{owner[target]}#{target}"'
+        n = re.sub(r'href="#([^"]+)"', sub, t)
+        if n != t:
+            (ROOT / subj["dir"] / f).write_text(n, encoding="utf-8")
+
 # ------------------------------------------------------------------
 SUBJECTS = json.loads((ROOT / "tools" / "subjects.json").read_text(encoding="utf-8"))
 BUILDERS = {"poznawcza": build_poznawcza, "metodologia": build_metodologia,
@@ -341,6 +364,7 @@ if __name__ == "__main__":
     for subj in SUBJECTS:
         if subj["dir"] in BUILDERS:
             BUILDERS[subj["dir"]](subj)
+            fix_crosslinks(subj)
         if subj["units"]:
             hub(subj)
         for old, new in subj.get("redirects", {}).items():

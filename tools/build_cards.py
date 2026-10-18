@@ -24,7 +24,7 @@ DECKS = [
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s8", 5: "s8", 6: "s9", 7: "s10", 8: "s3",
                 9: "s2", 10: "s4", 11: "s5", 12: "s6", 13: "s5", 14: "s7"}},
     {"dir": "poznawcza", "file": "fiszki.html",
-     "unit_by_src": [(r"rozdział 2", "wyklad-2.html"), (r"rozdział 3", "wyklad-3.html"),
+     "unit_by_src": [(r"rozdział 2", "wyklad-2.html"), (r"rozdział 3", "wyklad-3.html"), (r"rozdział [45]", "wyklad-4.html"),
                      (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "metodologia", "file": "fiszki.html",
      "unit_by_src": [(r"wykład 2", "wyklad-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},

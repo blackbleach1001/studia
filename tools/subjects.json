@@ -5,11 +5,12 @@
    {"key":"rozdzial-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Czym zajmuje się psychologia poznawcza?","src":"Maruszewski, rozdz. 1, s. 13–41","sub":"Procesy poznawcze, historia dziedziny, szerokie i wąskie ujęcie, paradygmat, poznanie społeczne.","sub_short":"Maruszewski, rozdz. 1"},
    {"key":"rozdzial-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"W jaki sposób spostrzegamy świat?","src":"Maruszewski, rozdz. 2, s. 43–83","sub":"Fazy spostrzegania, spór atomizm–postać, kategoryzacja, cykl percepcyjny, percepcja bezpośrednia.","sub_short":"Maruszewski, rozdz. 2"},
    {"key":"rozdzial-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Natura i funkcje uwagi","src":"Maruszewski, rozdz. 3, s. 85–131","sub":"Funkcje i mechanizmy uwagi, czujność, przeszukiwanie, filtry i zasoby, automatyzmy, refleksyjność, świadomość.","sub_short":"Maruszewski, rozdz. 3"},
+   {"key":"rozdzial-4","kind":"wyk","label":"Wykład 4","file":"wyklad-4.html","title":"Rozumienie pamięci — zdolność czy proces?","src":"Maruszewski, rozdz. 4–5, s. 133–221","sub":"Fazy pamięci, magazyny, rodzaje pamięci, pamięć operacyjna, zapamiętywanie, przechowanie, odtwarzanie, zapominanie.","sub_short":"Maruszewski, rozdz. 4–5"},
    {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Psychologia poznawcza w relacji do innych dziedzin","src":"Sternberg s. 23–31 · Nęcka i in. s. 33–36","sub":"Cele i metody badań, eksperyment, czas reakcji i błędy, kognitywistyka.","sub_short":"Sternberg · Nęcka i in."},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Zaliczenie przedmiotu","sub_short":"Punktacja i wymagania"}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 39","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 56","href":"fiszki.html"},
    {"kind":"quiz","title":"Powtórka","sub":"Test, fiszki, pytania otwarte","href":"powtorka.html"}
   ],
   "redirects":{"literatura.html":"./","literatura-fiszki.html":"fiszki.html"}
