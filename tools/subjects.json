@@ -61,5 +61,13 @@
   ],
   "redirects":{"notatki.html":"./"}
  },
- {"dir":"edukacja","name":"Psychologia edukacji","short":"Edukacja","kind_label":"Wykład + Ćwiczenia","hsl":[36,48,54],"units":[]}
+ {"dir":"edukacja","name":"Psychologia edukacji","short":"Edukacja","kind_label":"Wykład + Ćwiczenia","hsl":[36,48,54],
+  "meta":"Bednarek (red.) · Psychologia edukacyjna",
+  "units":[
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia edukacyjna jako specjalność psychologiczna","src":"Bednarek, rozdz. 1, s. 3–16","sub":"Terminologia, dyscypliny pokrewne, modele teoretyczne i ramy praktyczne, podejście pragmatyczne.","sub_short":"Bednarek, rozdz. 1"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 19","href":"fiszki.html"}
+  ]
+ }
 ]
