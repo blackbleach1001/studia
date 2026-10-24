@@ -79,6 +79,13 @@
     return due.concat(fresh);
   }
 
+  /* tylko powtórki (fiszki już widziane), bez nowych — nowe przychodzą z czytania notatek */
+  function reviewList(ids) {
+    var due = ids.filter(function (id) { return !isNew(id) && isDue(id); });
+    due.sort(function (a, b) { return get(a).d < get(b).d ? -1 : 1; });
+    return due;
+  }
+
   function stats(ids) {
     var mastered = 0, seen = 0, next = null, t = today();
     ids.forEach(function (id) {
@@ -103,6 +110,6 @@
 
   window.SRS = {
     today: today, grade: grade, get: get, isNew: isNew, isDue: isDue,
-    dueList: dueList, stats: stats, label: label, steps: STEPS.slice(), newPerDay: NEW_PER_DAY
+    dueList: dueList, reviewList: reviewList, stats: stats, label: label, steps: STEPS.slice(), newPerDay: NEW_PER_DAY, masteredBox: MASTERED_BOX
   };
 })();

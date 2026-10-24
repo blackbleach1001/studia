@@ -2,7 +2,7 @@
    Studia — wygląd materiałów (notatki, fiszki, strona główna)
    Atkinson Hyperlegible (tekst) + Playfair Display (nagłówki)
    ========================================================= */
-@import url("reader.css?v=2044f22f");
+@import url("reader.css?v=03d83b4b");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 :root{
@@ -134,14 +134,10 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   background:hsl(var(--sh),calc(var(--ss) + 8%),36%);color:#fff;font:700 .875rem/1 "Atkinson Hyperlegible",sans-serif;font-variant-numeric:tabular-nums;
 }
 .row.empty .ic{background:hsl(var(--sh),var(--ss),min(var(--sl),46%));color:#fff}
-/* powtórki na dziś — zwinięty wiersz pod przedmiotami */
-.group.today{margin-top:22px}
-.today-box{background:var(--card);border-radius:14px;box-shadow:0 0 0 .5px var(--line);overflow:hidden}
-.today-box>summary{list-style:none;cursor:pointer}
-.today-box>summary::-webkit-details-marker{display:none}
-.today-box>summary::after{transform:rotate(135deg);transition:transform .2s}
-.today-box[open]>summary::after{transform:rotate(-45deg)}
-.today-box .ios-list.inner{border-radius:0;box-shadow:none;border-top:.5px solid var(--line)}
+/* powtórki: rozgrzewka i sekcje z zaległymi pytaniami — pod listą przedmiotów */
+button.row{width:100%;border:0;background:transparent;font:inherit;text-align:left;cursor:pointer}
+.today .row.empty{justify-content:center;color:var(--tint);font-weight:700;padding-left:14px}
+.today .more::before{left:0}
 
 /* strona główna: wyszukiwanie i „Czytaj dalej” */
 .search{position:relative;margin:14px 0 0}

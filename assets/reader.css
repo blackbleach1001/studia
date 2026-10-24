@@ -211,6 +211,38 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-done{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 0 0 .5px var(--st-sep)}
 .st-done p{margin:0 0 10px;max-width:none}
 .st-done-t{font:700 1.125rem/1.3 "Atkinson Hyperlegible",sans-serif}
+.st-fcard-hint{margin:0 0 8px !important;color:var(--st-ink-3);font-size:.9375rem;max-width:none}
+/* pytanie zamknięte */
+.st-opts{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+.st-opt{
+  display:flex;align-items:flex-start;gap:12px;width:100%;min-height:50px;padding:12px 14px;text-align:left;
+  border:0;border-radius:12px;background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:400 1rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-opt:active{background:var(--st-tint-soft)}
+.st-opt .k{flex:0 0 auto;width:26px;height:26px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);font:700 .8125rem/1 "Atkinson Hyperlegible",sans-serif;color:var(--st-ink-2)}
+.st-opt .t{flex:1;min-width:0}
+.st-opt em{display:block;margin-top:4px;font-style:normal;font-weight:700;font-size:.875rem}
+.st-opt:disabled{cursor:default;opacity:1}
+.st-opt.ok{background:hsl(150,30%,93%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%)}
+.st-opt.ok .k{background:hsl(150,35%,32%);color:#fff;box-shadow:none}
+.st-opt.ok em{color:hsl(150,35%,26%)}
+.st-opt.no{background:hsl(4,70%,96%);box-shadow:inset 0 0 0 1.5px hsl(4,55%,48%)}
+.st-opt.no .k{background:hsl(4,55%,42%);color:#fff;box-shadow:none}
+.st-opt.no em{color:hsl(4,55%,36%)}
+.st-opt.off{color:var(--st-ink-3)}
+.st-fb{font-size:1rem}
+.st-fb.ok b{color:hsl(150,35%,26%)}
+.st-fb.no b{color:hsl(4,55%,36%)}
+/* podsumowanie: sekcje do przeczytania jeszcze raz */
+.st-miss-h{margin:14px 0 6px !important;font-weight:700}
+.st-miss{list-style:none;margin:0 0 14px;padding:0}
+.st-panel .st-miss li{margin:0 0 6px;border:0}
+.st-panel .st-miss a::after{display:none}
+.st-panel .st-miss a{display:block;padding:10px 12px;border-radius:12px;background:var(--st-tint-soft);text-decoration:none;color:var(--st-ink)}
+.st-miss a b{display:block;color:var(--st-tint)}
+.st-miss a span{display:block;font-size:.875rem;color:var(--st-ink-2)}
 
 /* przycisk „Sprawdź tę sekcję” */
 .st-check{margin:18px 0 6px;clear:both}

@@ -228,9 +228,23 @@ for deck in DECKS:
     ensure_scripts(fs, ["../assets/srs.js"], before="flashcards.js")
     fpath.write_text(str(fs), encoding="utf-8")
 
-    by_dir[d].extend({k: c[k] for k in ("id", "q", "a", "src")} for c in cards)
+    # u, s — wykład i sekcja (powtórki prowadzą do notatek, dystraktory z tego samego wykładu)
+    # o, e — opcjonalne pytanie zamknięte wpisane ręcznie w talii (o[0] = poprawna)
+    by_dir[d].extend({k: c[k] for k in ("id", "q", "a", "src", "o", "e") if c.get(k)} | {"u": c["unit"], "s": c.get("sec") or ""}
+                     for c in cards)
+    sec_index = []
+    for u in unit_files:
+        unit_meta = next((x for x in SUBJECTS[d]["units"] if x["file"] == u), {"label": "", "title": ""})
+        titles = {x["id"]: x["title"] for x in sections(soups[u])}
+        groups = defaultdict(list)
+        for c in cards:
+            if c["unit"] == u:
+                groups[c.get("sec") or ""].append(c["id"])
+        for s, ids in groups.items():
+            sec_index.append({"u": u, "s": s, "ul": unit_meta["label"],
+                              "t": titles.get(s) or unit_meta.get("title") or unit_meta["label"], "ids": ids})
     index.append({"deck": deck_name, "dir": d, "href": f'{d}/{deck["file"]}', "name": SUBJECTS[d]["name"],
-                  "short": SUBJECTS[d]["short"], "hsl": SUBJECTS[d]["hsl"], "ids": [c["id"] for c in cards]})
+                  "short": SUBJECTS[d]["short"], "hsl": SUBJECTS[d]["hsl"], "ids": [c["id"] for c in cards], "secs": sec_index})
     mapped = sum(1 for c in cards if c.get("sec"))
     print(f"{deck_name}: {len(cards)} fiszek, {mapped} przypisanych do sekcji")
 
