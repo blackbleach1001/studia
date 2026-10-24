@@ -36,7 +36,7 @@ DECKS = [
     {"dir": "metodologia", "file": "fiszki.html",
      "unit_by_src": [(r"wykład 2", "wyklad-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "kliniczna", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's2', 6: 's2', 7: 's2', 8: 's2', 9: 's3', 10: 's3', 11: 's4', 12: 's5', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's5', 18: 's6'}},
+     "manual": {1: 's2', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's3', 8: 's3', 9: 's4', 10: 's4', 11: 's1', 12: 's6', 13: 's6', 14: 's7', 15: 's7', 16: 's7', 17: 's7', 18: 's9', 19: 's1', 20: 's1', 21: 's1', 22: 's1', 23: 's3', 24: 's3', 25: 's3', 26: 's4', 27: 's4', 28: 's4', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's7', 34: 's7', 35: 's7', 36: 's8'}},
     {"dir": "kliniczna", "file": "fiszki.html",
      "unit_by_src": [(r"podstawy|pojęcie zdrowia|modele zdrowia", ["wyklad-1.html"]),
                      (r"zastosowania|Heszen, Sęk, 2007", ["wyklad-2.html"]),
