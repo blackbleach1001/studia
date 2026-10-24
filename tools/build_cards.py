@@ -37,6 +37,8 @@ DECKS = [
      "unit_by_src": [(r"wykład 2", "wyklad-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "kliniczna", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
      "manual": {1: 's2', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's3', 8: 's3', 9: 's4', 10: 's4', 11: 's1', 12: 's6', 13: 's6', 14: 's7', 15: 's7', 16: 's7', 17: 's7', 18: 's9', 19: 's1', 20: 's1', 21: 's1', 22: 's1', 23: 's3', 24: 's3', 25: 's3', 26: 's4', 27: 's4', 28: 's4', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's7', 34: 's7', 35: 's7', 36: 's8'}},
+    {"dir": "kliniczna", "file": "wyklad-2-dziedziny-fiszki.html", "units": ["wyklad-2-dziedziny.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's1', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's2', 14: 's2', 15: 's2', 16: 's2', 17: 's2', 18: 's3', 19: 's3', 20: 's3', 21: 's3', 22: 's3', 23: 's3', 24: 's3', 25: 's3', 26: 's4', 27: 's4', 28: 's4', 29: 's4', 30: 's4', 31: 's4', 32: 's4', 33: 's5', 34: 's5', 35: 's5', 36: 's5', 37: 's5', 38: 's5', 39: 's5', 40: 's5', 41: 's6', 42: 's6', 43: 's6', 44: 's6', 45: 's6', 46: 's6', 47: 's6', 48: 's6', 49: 's6', 50: 's6'}},
     {"dir": "kliniczna", "file": "fiszki.html",
      "unit_by_src": [(r"podstawy|pojęcie zdrowia|modele zdrowia", ["wyklad-1.html"]),
                      (r"zastosowania|Heszen, Sęk, 2007", ["wyklad-2.html"]),

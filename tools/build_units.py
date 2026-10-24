@@ -296,7 +296,7 @@ def build_index(subjects):
     rows = []
     for subj in subjects:
         h, s_, l = subj["hsl"]
-        n = lambda k: len([u for u in subj["units"] if u["kind"] == k])
+        n = lambda k: len([u for u in subj["units"] if u["kind"] == k and not u.get("extra")])
         parts = []
         if n("wyk"): parts.append(rng("Wykład", "Wykłady", n("wyk")))
         if n("cw"): parts.append(rng("Ćwiczenia", "Ćwiczenia", n("cw")))
