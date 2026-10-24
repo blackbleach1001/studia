@@ -224,6 +224,7 @@ ICONS = {
     "quiz": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>',
     "sim": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M7 15l4-5 3 3 5-7"/><circle cx="19" cy="6" r="1.2" fill="currentColor"/></svg>',
     "models": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.3 7l7.3.1M7.2 8.2l3.7 7.6M16.9 9.3l-3.7 6.6"/></svg>',
+    "cal": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
     "info": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
 }
 
@@ -253,8 +254,8 @@ def hub(subj):
     if extra:
         groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
     info = [u for u in subj["units"] if u["kind"] == "info"]
-    if info:
-        groups.append(("Informacje", "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)))
+    groups.append(("Informacje", row(f'../plan.html?p={subj["dir"]}#przedmioty', "cal", "Plan i literatura", "Terminy zajęć, lektury, zaliczenie", alt=True)
+                   + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)))
     if not groups:
         groups.append(("Materiały", '<li><span class="row empty">Brak materiałów</span></li>'))
     body = "".join(f'<section class="group"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for g, rows in groups)
@@ -347,6 +348,7 @@ def build_index(subjects):
   </header>
   <main>
     <section class="group results" id="results" hidden><h2 id="results-h">Wyniki</h2><ul class="ios-list" id="results-list"></ul></section>
+    <section class="group plan-home"><h2>Plan</h2><ul class="ios-list"><li style="--sh:28;--ss:22%;--sl:45%"><a class="row" href="plan.html" id="plan-row"><span class="ic">{ICONS["cal"]}</span><span class="tx"><span class="t">Plan semestru</span><span class="s">Zajęcia, lektury i terminy zaliczeń</span></span></a></li></ul></section>
     <section class="group"><h2>Przedmioty</h2><ul class="ios-list">{"".join(rows)}</ul></section>
   </main>
 </div>
@@ -357,6 +359,8 @@ def build_index(subjects):
 <script src="assets/today.js" data-root=""></script>
 <script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
 <script src="assets/home.js" data-index="assets/search-index.js"></script>
+<script src="assets/plan-data.js"></script>
+<script src="assets/plan.js"></script>
 </body>
 </html>
 """
