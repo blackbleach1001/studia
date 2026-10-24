@@ -169,6 +169,8 @@ def build_metodologia(subj):
 def build_kliniczna(subj):
     units = subj["units"]
     for u in units:
+        if u.get("hand"):
+            continue
         soup = load("kliniczna")
         drop(soup.select_one("header.banner"), soup.select_one("body > nav.toc"))
         main = soup.select_one("main")

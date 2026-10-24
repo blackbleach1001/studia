@@ -39,10 +39,12 @@
   "meta":"dr Agnieszka Mościcka-Teske",
   "units":[
    {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Podstawy teoretyczne i modele zdrowia","src":"Cierpiałkowska, Sęk · Heszen-Celińska, Sęk","sub":"Patogeneza i salutogeneza, pojęcie zdrowia, modele i podejścia psychologii zdrowia.","sub_short":"Patogeneza, salutogeneza, modele zdrowia"},
-   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Zastosowania psychologii klinicznej i zdrowia","src":"Heszen, Sęk","sub":"Styl życia, zachowania zdrowotne, prewencja, pacjent w systemie opieki zdrowotnej, stres.","sub_short":"Styl życia, prewencja, stres"}
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Zastosowania psychologii klinicznej i zdrowia","src":"Heszen, Sęk","sub":"Styl życia, zachowania zdrowotne, prewencja, pacjent w systemie opieki zdrowotnej, stres.","sub_short":"Styl życia, prewencja, stres"},
+   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Stres psychologiczny: modele i radzenie sobie","src":"Slajdy W3a · Heszen-Celińska, Sęk (2020), r. 9","sub":"Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, style radzenia sobie, techniki relaksacyjne.","sub_short":"Modele stresu, radzenie sobie","hand":true}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 40","href":"fiszki.html"}
+   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 40","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Stres · 18","href":"wyklad-3-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}
  },
