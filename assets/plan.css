@@ -118,3 +118,8 @@
 .pl-pass b{display:block;font-size:.8125rem;text-transform:uppercase;letter-spacing:.02em;color:hsl(var(--sh),var(--ss),30%);margin-bottom:4px}
 .pl-pass p{margin:0;font-size:.9375rem;line-height:1.5}
 .pl-src{margin:36px 4px 0;font-size:.8125rem;color:var(--ink-mute);line-height:1.5}
+
+/* inna grupa (Rozmowa C1): zwinięta, wyszarzona */
+.pl-alt{margin:16px 0 0}
+.pl-alt>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--ink-mute)}
+.pl-alt[open]>*:not(summary){opacity:.55}

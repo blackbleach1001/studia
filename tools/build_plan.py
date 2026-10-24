@@ -49,17 +49,17 @@ for sec in SRC.select("section.sub"):
                 if TERM.search(x):
                     plan["exams"].append({"date": date, "subj": d, "text": x[0].upper() + x[1:]})
     plan["subjects"][d] = subj
-# Rozmowa: Twoja grupa (mgr Popa) ma inne zjazdy niż grupa C1 z planu — terminy z Notion.
-# Grupa C1 zostaje w zakładce Przedmioty jako plan z wydruku; resztę strony budują zajęcia z Popą.
+# Rozmowa: Twoja grupa C2 (mgr Popa) ma inne terminy niż grupa C1 z pliku planu — terminy z PDF planu zajęć.
+# Grupa C1 zostaje w zakładce Przedmioty jako zwinięta, wyszarzona opcja; resztę strony budują zajęcia z Popą.
 popa = json.loads((ROOT / "tools" / "src" / "rozmowa_popa.json").read_text(encoding="utf-8"))
 c1 = [s for s in plan["sessions"] if s["subj"] == "rozmowa"]
 for s in c1:
     s["grp"], s["alt"] = "c1", True
-for i, date in enumerate(popa["dates"]):
+for i, x in enumerate(popa["sessions"]):
     src = c1[i] if i < len(c1) else {"topic": "", "lit": []}
-    plan["sessions"].append({"subj": "rozmowa", "kind": "C", "n": str(i + 1), "grp": "popa", "date": date,
-                             "start": "", "end": "", "place": "", "topic": src["topic"], "lit": src["lit"]})
-    plan["exams"].append({"date": date, "subj": "rozmowa", "text": f'{popa["exam"]} {i + 1}', "grp": "popa"})
+    plan["sessions"].append({"subj": "rozmowa", "kind": "C", "n": str(i + 1), "grp": "popa", "date": x["date"],
+                             "start": x["start"], "end": x["end"], "place": x["place"], "topic": src["topic"], "lit": src["lit"]})
+    plan["exams"].append({"date": x["date"], "subj": "rozmowa", "text": f'{popa["exam"]} {i + 1}', "grp": "popa"})
 roz = plan["subjects"]["rozmowa"]
 roz["parts"][0]["grp"] = "c1"
 roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
@@ -108,7 +108,7 @@ plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for
 <div class="page plan">
   <header class="hero">
     <h1>Plan</h1>
-    <p class="meta">Semestr zimowy 2026/27 · grupy C1, C3, C5</p>
+    <p class="meta">Semestr zimowy 2026/27 · Twoje grupy: C2 (Rozmowa), C3, C5</p>
   </header>
   <main id="plan"><noscript>Plan wymaga JavaScriptu.</noscript></main>
 </div>

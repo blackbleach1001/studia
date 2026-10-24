@@ -230,8 +230,10 @@
       html += '<section class="pl-card subj" style="' + vars(d) + '"><h2><i class="dot"></i>' + esc(s.name) + '</h2><p class="pl-meta">' + esc(s.meta) + "</p>";
       s.parts.forEach(function (p) {
         var items = D.sessions.filter(function (x) { return x.subj === d && x.kind === p.kind && (!p.grp || x.grp === p.grp); });
-        html += '<h3 class="pl-h3">' + (p.kind === "W" ? "Wykłady" : (d === "rozmowa" ? "Zajęcia" : "Ćwiczenia")) + (p.grp === "popa" ? " · Twoja grupa" : p.grp === "c1" ? " · grupa C1" : "") + '</h3><p class="pl-who">' + esc(p.who) + (p.note ? " · " + esc(p.note) : "") + '</p><ul class="pl-list">' +
+        var block = '<h3 class="pl-h3">' + (p.kind === "W" ? "Wykłady" : (d === "rozmowa" ? "Zajęcia" : "Ćwiczenia")) + (p.grp === "popa" ? " · Twoja grupa (C2)" : p.grp === "c1" ? " · grupa C1" : "") + '</h3><p class="pl-who">' + esc(p.who) + (p.note ? " · " + esc(p.note) : "") + '</p><ul class="pl-list">' +
           items.map(function (x) { return session(x, { date: true }); }).join("") + "</ul>";
+        // inna grupa (C1 z pliku planu): zwinięta i wyszarzona, do podejrzenia
+        html += p.grp === "c1" ? '<details class="pl-alt"><summary>Pokaż terminy grupy C1</summary>' + block + "</details>" : block;
         (p.general || []).forEach(function (g) {
           html += '<details class="pl-gen"><summary>' + esc(g.h) + "</summary><ul class=\"pl-lit\">" + g.items.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>";
         });

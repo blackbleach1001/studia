@@ -1,6 +1,13 @@
 {
- "who": "mgr Aleksandra Popa · Twoja grupa · terminy z Notion (godziny i sale nie są tam podane)",
- "dates": ["2026-10-25", "2026-11-08", "2026-11-21", "2026-12-13", "2026-12-20", "2027-01-10"],
+ "who": "mgr Aleksandra Popa · grupa C2 (Twoja) · terminy z planu zajęć (wydruk 24.10.2026, PDF)",
+ "sessions": [
+  {"date": "2026-10-25", "start": "10:45", "end": "13:15", "place": "online"},
+  {"date": "2026-11-08", "start": "13:45", "end": "16:15", "place": "sala A.309"},
+  {"date": "2026-11-21", "start": "17:15", "end": "19:45", "place": "sala A.309"},
+  {"date": "2026-12-13", "start": "13:45", "end": "16:15", "place": "sala A.309"},
+  {"date": "2026-12-20", "start": "13:45", "end": "16:15", "place": "sala A.309"},
+  {"date": "2027-01-10", "start": "08:00", "end": "10:30", "place": "sala A.309"}
+ ],
  "exam": "Wejściówka z literatury tematu",
- "note": "5 wejściówek na 6 zajęć"
+ "note": "wejściówki wg Notion; w opisie przedmiotu: 5 wejściówek na 6 zajęć"
 }
