@@ -82,7 +82,7 @@
 .pl-task.is-late .pl-sub b{color:hsl(4,55%,40%)}
 .pl-task .pl-lit{margin:4px 0 0;color:var(--ink-soft);font-size:.9375rem}
 .pl-task.is-done .pl-lit{color:var(--ink-mute)}
-.pl-fold{margin-top:10px}
+.pl-h3 .pl-left{float:right;font-weight:400;text-transform:none;letter-spacing:0}
 .pl-task.is-done .pl-topic{color:var(--ink-mute);text-decoration:line-through}
 .pl-more-row button{width:100%;min-height:48px;border:0;background:transparent;color:var(--tint);font:700 .9375rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer}
 

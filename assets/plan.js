@@ -125,7 +125,7 @@
       '<button type="button" class="pl-chk" data-read="' + x.id + '" aria-pressed="' + d + '" aria-label="' + (d ? "Odznacz: " : "Przeczytane: ") + esc(META[x.subj].short + " " + kindName(x)) + '">' + CHECK + "</button>" +
       '<span class="pl-main"><span class="pl-sub"><i class="dot"></i>' + esc(META[x.subj].short) + " · " + esc(kindName(x)) + " · <b>" + esc(short(x.date)) + "</b></span>" +
       '<span class="pl-topic">' + esc(x.topic || "Temat nie podany") + "</span>" +
-      '<ul class="pl-lit">' + x.lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></span></li>";
+      '<span class="pl-place">' + x.lit.map(esc).join(" · ") + "</span></span></li>";
   }
   function more(id, list, limit, fn, label) {
     if (list.length <= limit || openAll[id]) return list.map(fn).join("");
@@ -152,20 +152,19 @@
       html += "</section>";
     }
 
-    // co przeczytać: kolejne zjazdy (bez bieżącego — jego literatura jest wyżej, w zajęciach)
-    var ahead = zs.filter(function (z) { return z.key > (next ? next.key : TODAY); });
-    html += '<section class="pl-sec"><h2>Do przeczytania</h2><p class="pl-meta">Literatura na kolejne zjazdy, zajęcia po kolei.</p>';
-    if (!ahead.length) html += '<p class="pl-empty">Brak kolejnych zjazdów.</p>';
-    ahead.forEach(function (z, i) {
-      var items = z.items.filter(function (x) { return x.lit && x.lit.length; });
+    // co przeczytać: tylko ten zjazd i kolejny — dalsze w zakładce Przedmioty
+    var two = zs.filter(function (z) { return z.items.some(function (x) { return !past(x); }); }).slice(0, 2);
+    html += '<section class="pl-sec"><h2>Do przeczytania</h2>';
+    two.forEach(function (z, i) {
+      var items = z.items.filter(function (x) { return !past(x) && x.lit && x.lit.length; });
       if (!items.length) return;
       var left = items.filter(function (x) { return !isRead(x); }).length;
-      var head = "Zjazd " + short(z.items[0].date) + (z.items[0].date !== z.items[z.items.length - 1].date ? " – " + short(z.items[z.items.length - 1].date) : "") +
-        " · " + (left ? "zostało " + left : "wszystko przeczytane");
-      if (i < 2 || openAll["z" + z.key]) html += '<h3 class="pl-h3">' + esc(head) + '</h3><ul class="pl-list">' + items.map(reading).join("") + "</ul>";
-      else html += '<ul class="pl-list pl-fold"><li class="pl-more-row"><button type="button" data-all="z' + z.key + '">' + esc(head) + "</button></li></ul>";
+      var d0 = z.items[0].date, d1 = z.items[z.items.length - 1].date;
+      html += '<h3 class="pl-h3">' + (i ? "Kolejny zjazd" : "Ten zjazd") + " · " + esc(short(d0) + (d0 !== d1 ? " – " + short(d1) : "")) +
+        '<span class="pl-left">' + (left ? "zostało " + left : "gotowe") + '</span></h3><ul class="pl-list">' + items.map(reading).join("") + "</ul>";
     });
-    html += '<p class="pl-foot">Odhaczenia zapisują się w tej przeglądarce.</p></section>';
+    if (!two.length) html += '<p class="pl-empty">Brak kolejnych zjazdów.</p>';
+    html += '<p class="pl-foot">Dalsze lektury: zakładka Przedmioty. Odhaczenia zapisują się w tej przeglądarce.</p></section>';
 
     var up = EX.filter(function (e) { return on(e) && e.date >= TODAY; });
     if (up.length) html += '<section class="pl-sec"><h2>Terminy</h2><ul class="pl-list">' + more("ex", up, 4, exam, "Pokaż jeszcze") + '</ul><p class="pl-foot">Zasady zaliczenia każdego przedmiotu: zakładka Przedmioty.</p></section>';
