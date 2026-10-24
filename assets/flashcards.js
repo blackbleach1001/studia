@@ -1,23 +1,22 @@
 /* =========================================================
    Studia — fiszki z powtórkami rozłożonymi w czasie (wymaga srs.js)
    window.StudiaDeck(el, cards, opts)
-     cards: [{ id, q, a, src, u?, s?, o?, e? }]
+     cards: [{ id, q, a, src, u?, s? }]
      opts.mode: "today" | "all" | "fixed"   (fixed = podana lista, bez przełącznika)
      opts.ids        — lista pytań w trybie fixed
-     opts.pool       — fiszki, z których losujemy błędne odpowiedzi (domyślnie cards)
-     opts.noRepeat   — błędne pytanie nie wraca w tej sesji (rozgrzewka)
+     opts.noRepeat   — błędne pytanie nie wraca w tej sesji (test)
      opts.linkFor(id) → { href, t } — podsumowanie linkuje do sekcji z błędnymi pytaniami
      opts.onClose, opts.closeLabel, opts.onMore, opts.moreLabel, opts.doneTitle, opts.onStep
-     opts.test       — test: zawsze pytania zamknięte, bez etykiet powtórek, wynik w procentach,
-                       opts.onRetry(błędne id), opts.onFinish(poprawne, wszystkie)
-   Pytanie zamknięte (wybór z 3–4 odpowiedzi): nowe i świeże fiszki (pudełko 0–1).
-   Dalej: przypomnij sobie i oceń (Umiem / Jeszcze raz).
+     opts.test       — test: bez etykiet powtórek, wynik w procentach,
+                       opts.onRetry(błędne id), opts.onFinish(punkty, wszystkie)
+   Odpowiedź z pamięci: najpierw przypominasz sobie odpowiedź, potem ją odsłaniasz.
+   Gdy odpowiedź ma co najmniej 2 pogrubione pojęcia, zaznaczasz, które były w Twojej
+   odpowiedzi (zaliczone od 60%); w przeciwnym razie: Umiem / Jeszcze raz.
    Strona z fiszkami: <script type="application/json" id="cards"> + <main id="deck">
    ========================================================= */
 (function () {
   "use strict";
   var SRS = window.SRS;
-  var MC_UNTIL_BOX = 2;           // od tego pudełka pytamy bez podpowiedzi
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function shuffled(a) {
@@ -25,34 +24,31 @@
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
-  function dirOf(id) { return id.split("/")[0]; }
+  var PASS = 0.6;                  // zaliczone, gdy pamiętasz co najmniej 60% kluczowych pojęć
 
-  /* krótka wersja odpowiedzi do pytania zamkniętego: pierwsze zdanie albo ~170 znaków */
-  var MAX = 170;
-  function brief(html) {
-    var t = String(html).replace(/<\/li>\s*(?=<li)/g, "; ").replace(/<\/?(p|li|div|br|ul|ol|tr|td|th)\b[^>]*>/g, " ").replace(/<[^>]+>/g, "")
-      .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
-      .replace(/\s+/g, " ").replace(/\s+([,.;:!?)])/g, "$1").trim();
-    if (t.length <= MAX) return t;
-    var re = /[.!?;](?=\s+[A-ZĄĆĘŁŃÓŚŹŻ(„])/g, m, cut = -1;
-    while ((m = re.exec(t))) { if (m.index >= 50 && m.index < MAX) cut = m.index + 1; if (m.index >= MAX) break; }
-    if (cut > 0) return t.slice(0, cut).replace(/;$/, ".");
-    var sp = t.lastIndexOf(" ", MAX);
-    return t.slice(0, sp > 60 ? sp : MAX).replace(/[,;:–—-]+$/, "") + "…";
+  /* kluczowe pojęcia odpowiedzi: pogrubienia (bez powtórzeń), najwyżej 8 */
+  function keyTerms(html) {
+    var out = [], seen = {}, re = /<(strong|b)>([\s\S]*?)<\/\1>/g, m;
+    while ((m = re.exec(html)) && out.length < 8) {
+      var x = m[2].replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").replace(/^[\s,.;:–—-]+|[\s,.;:–—-]+$/g, "");
+      var k = x.toLowerCase();
+      if (x.length < 2 || x.length > 70 || seen[k] || /^(tak|nie)$/i.test(x)) continue;
+      seen[k] = 1; out.push(x);
+    }
+    return out.length >= 2 ? out : null;
   }
 
   function StudiaDeck(el, cards, opts) {
     opts = opts || {};
     var byId = {}; cards.forEach(function (c) { byId[c.id] = c; });
-    var pool = opts.pool || cards;
     var ids = cards.map(function (c) { return c.id; });
     var mode = opts.mode || "today";
-    var queue = [], shown = false, done = 0, firstOk = 0, sessionTotal = 0;
+    var queue = [], shown = false, done = 0, firstOk = 0, points = 0, sessionTotal = 0;
     var cur = null, asked = {}, missed = [], finished = false;
 
     function build() {
       queue = mode === "today" ? SRS.dueList(ids) : ids.slice();
-      sessionTotal = queue.length; done = 0; firstOk = 0; shown = false; cur = null; asked = {}; missed = []; finished = false;
+      sessionTotal = queue.length; done = 0; firstOk = 0; points = 0; shown = false; cur = null; asked = {}; missed = []; finished = false;
       render();
     }
     function shuffle() {
@@ -60,33 +56,9 @@
       shown = false; cur = null; render();
     }
 
-    /* ---------- pytanie zamknięte ---------- */
-    function choices(c) {
-      if (c.o && c.o.length > 1) {
-        return shuffled(c.o.map(function (t, i) { return { t: t, ok: i === 0 }; }));
-      }
-      var right = brief(c.a), seen = {}; seen[right] = 1;
-      var same = [], near = [];
-      pool.forEach(function (x) {
-        if (x.id === c.id || dirOf(x.id) !== dirOf(c.id)) return;
-        if (c.u && x.u !== c.u) return;
-        var t = brief(x.a);
-        if (seen[t] || t.length < 12) return;
-        seen[t] = 1;
-        (c.s && x.s === c.s ? same : near).push(t);
-      });
-      // najpierw z innych sekcji tego wykładu: są z tego samego materiału, ale nie odpowiadają na to samo
-      var wrong = shuffled(near).concat(shuffled(same)).slice(0, 3);
-      if (wrong.length < 2) return null;
-      return shuffled([{ t: right, ok: true }].concat(wrong.map(function (t) { return { t: t, ok: false }; })));
-    }
     function current() {
       var id = queue[0];
-      if (!cur || cur.id !== id) {
-        var c = byId[id], box = (SRS.get(id) || { b: 0 }).b || 0;
-        var o = !asked[id] && (opts.test || box < MC_UNTIL_BOX) ? choices(c) : null;
-        cur = { id: id, kind: o ? "mc" : "recall", o: o, pick: -1 };
-      }
+      if (!cur || cur.id !== id) cur = { id: id, terms: keyTerms(byId[id].a), got: {} };
       return cur;
     }
 
@@ -133,9 +105,9 @@
       if (!queue.length) {
         var html = head() + '<div class="st-done">';
         if (mode === "fixed" && opts.test) {
-          if (opts.onFinish && !finished) { finished = true; opts.onFinish(firstOk, sessionTotal); }
-          html += '<p class="st-done-t">Wynik: ' + Math.round(100 * firstOk / Math.max(1, sessionTotal)) + "%</p>" +
-            "<p>" + firstOk + " z " + sessionTotal + " poprawnie.</p>" + missedHtml() +
+          if (opts.onFinish && !finished) { finished = true; opts.onFinish(points, sessionTotal); }
+          html += '<p class="st-done-t">Wynik: ' + Math.round(100 * points / Math.max(1, sessionTotal)) + "%</p>" +
+            "<p>Zaliczone pytania: " + firstOk + " z " + sessionTotal + ".</p>" + missedHtml() +
             '<div class="st-deck-tools">' +
               (missed.length && opts.onRetry ? '<button class="st-btn" type="button" data-a="retry">Powtórz błędne (' + missed.length + ")</button>" : "") +
               (opts.onMore ? '<button class="st-btn primary" type="button" data-a="more">' + esc(opts.moreLabel || "Nowy test") + "</button>" : "") +
@@ -164,46 +136,29 @@
       var top = '<p class="st-fcard-n"><span>' + (mode === "fixed" ? "Pytanie " + Math.min(done + 1, sessionTotal) + " z " + sessionTotal : (c.src || "")) + '</span>' + badge(id) + '</p>' +
         '<h2 class="st-fcard-q">' + c.q + '</h2>';
 
-      if (k.kind === "mc") {
-        var picked = k.pick >= 0, ok = picked && k.o[k.pick].ok;
-        el.innerHTML = head() +
-          '<article class="st-fcard" aria-live="polite">' + top +
-            '<div class="st-opts" role="group" aria-label="Odpowiedzi">' +
-            k.o.map(function (o, i) {
-              var cls = picked ? (o.ok ? " ok" : (i === k.pick ? " no" : " off")) : "";
-              var note = picked ? (o.ok ? '<em>Poprawna</em>' : (i === k.pick ? '<em>Twój wybór</em>' : "")) : "";
-              return '<button type="button" class="st-opt' + cls + '" data-a="pick" data-i="' + i + '"' + (picked ? " disabled" : "") + '>' +
-                '<span class="k" aria-hidden="true">' + "ABCD".charAt(i) + '</span><span class="t">' + esc(o.t) + note + "</span></button>";
-            }).join("") + "</div>" +
-            (picked ? '<div class="st-fcard-a" tabindex="-1"><p class="st-fb ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Dobrze." : "Nie tym razem.") + "</b>" +
-              (c.o && c.e ? " " + esc(c.e) : " Pełna odpowiedź:") + "</p>" + (c.o && c.e ? "" : c.a) + "</div>" : "") +
-          '</article>' +
-          '<div class="st-fcard-actions">' +
-            (picked ? '<button class="st-btn primary wide" type="button" data-a="next">' + (queue.length > 1 || (!ok && !opts.noRepeat) ? "Dalej" : "Zakończ") + "</button>"
-              : '<button class="st-btn wide" type="button" data-a="skip">Nie wiem</button>') +
-          '</div>';
-        if (picked) { var fa = el.querySelector(".st-fcard-a"); if (fa) fa.focus({ preventScroll: true }); }
-        return;
-      }
-
+      var terms = k.terms, nGot = Object.keys(k.got).length;
       el.innerHTML = head() +
         '<article class="st-fcard' + (shown ? "" : " can-reveal") + '"' + (shown ? "" : ' data-a="show"') + ' aria-live="polite">' + top +
-          (shown ? '<div class="st-fcard-a" tabindex="-1">' + c.a + '</div>'
-            : '<p class="st-fcard-hint">Przypomnij sobie odpowiedź, potem sprawdź.</p>') +
+          (shown ? '<div class="st-fcard-a" tabindex="-1">' + c.a + '</div>' +
+              (terms ? '<div class="st-terms"><p class="st-terms-h">Co było w Twojej odpowiedzi? <span>' + nGot + " z " + terms.length + "</span></p>" +
+                '<div class="st-chips">' + terms.map(function (x, i) {
+                  return '<button type="button" class="st-chip" data-a="term" data-i="' + i + '" aria-pressed="' + !!k.got[i] + '">' + esc(x) + "</button>";
+                }).join("") + "</div></div>" : "")
+            : '<p class="st-fcard-hint">Odpowiedz z pamięci: na głos, w myślach albo na kartce. Potem sprawdź.</p>') +
         '</article>' +
         '<div class="st-fcard-actions">' +
-          (shown
-            ? '<button class="st-btn" type="button" data-a="again">Jeszcze raz</button>' +
-              '<button class="st-btn primary" type="button" data-a="know">Umiem</button>'
-            : '<button class="st-btn primary wide" type="button" data-a="show">Pokaż odpowiedź</button>') +
+          (!shown ? '<button class="st-btn primary wide" type="button" data-a="show">Pokaż odpowiedź</button>'
+            : terms ? '<button class="st-btn primary wide" type="button" data-a="score">' + (nGot ? "Dalej" : "Nic nie pamiętam") + "</button>"
+            : '<button class="st-btn" type="button" data-a="again">Jeszcze raz</button>' +
+              '<button class="st-btn primary" type="button" data-a="know">Umiem</button>') +
         '</div>';
-      if (shown) { var a = el.querySelector(".st-fcard-a"); if (a) a.focus({ preventScroll: true }); }
+      if (shown && !terms) { var a = el.querySelector(".st-fcard-a"); if (a) a.focus({ preventScroll: true }); }
     }
 
-    function grade(ok) {
+    function grade(ok, credit) {
       var id = queue[0];
       SRS.grade(id, ok);
-      if (!asked[id]) { if (ok) firstOk += 1; else missed.push(id); }
+      if (!asked[id]) { points += credit == null ? (ok ? 1 : 0) : credit; if (ok) firstOk += 1; else missed.push(id); }
       asked[id] = true;
     }
     function advance(ok) {
@@ -220,14 +175,16 @@
       if (a === "show") { shown = true; render(); }
       else if (a === "know") { grade(true); advance(true); }
       else if (a === "again") { grade(false); advance(false); }
-      else if (a === "pick" || a === "skip") {
-        if (!cur || cur.pick >= 0) return;
-        cur.pick = a === "skip" ? cur.o.map(function (o) { return o.ok; }).indexOf(true) : +b.dataset.i;
-        var ok = a === "pick" && cur.o[cur.pick].ok;
-        cur.ok = ok;
-        grade(ok); render();
+      else if (a === "term") {
+        var i = +b.dataset.i;
+        if (cur.got[i]) delete cur.got[i]; else cur.got[i] = true;
+        render();
+        var nb = el.querySelector('[data-a="term"][data-i="' + i + '"]'); if (nb) nb.focus({ preventScroll: true });
       }
-      else if (a === "next") { advance(cur && cur.ok); }
+      else if (a === "score") {
+        var credit = Object.keys(cur.got).length / cur.terms.length, ok = credit >= PASS;
+        grade(ok, credit); advance(ok);
+      }
       else if (a === "shuffle") shuffle();
       else if (a === "today" || a === "all") { if (mode !== a) { mode = a; build(); } }
       else if (a === "restart") build();
@@ -240,7 +197,6 @@
     build();
     return { rebuild: build };
   }
-  StudiaDeck.brief = brief;
   window.StudiaDeck = StudiaDeck;
 
   /* strona z fiszkami */

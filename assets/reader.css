@@ -212,29 +212,19 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-done p{margin:0 0 10px;max-width:none}
 .st-done-t{font:700 1.125rem/1.3 "Atkinson Hyperlegible",sans-serif}
 .st-fcard-hint{margin:0 0 8px !important;color:var(--st-ink-3);font-size:.9375rem;max-width:none}
-/* pytanie zamknięte */
-.st-opts{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
-.st-opt{
-  display:flex;align-items:flex-start;gap:12px;width:100%;min-height:50px;padding:12px 14px;text-align:left;
-  border:0;border-radius:12px;background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
-  font:400 1rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+/* odpowiedź z pamięci: które kluczowe pojęcia były w odpowiedzi */
+.st-terms{margin:4px 0 6px;padding-top:12px;border-top:.5px solid var(--st-sep)}
+.st-terms-h{display:flex;justify-content:space-between;gap:10px;margin:0 0 10px !important;font-weight:700;max-width:none}
+.st-terms-h span{font-weight:400;color:var(--st-ink-2);font-variant-numeric:tabular-nums}
+.st-chips{display:flex;flex-wrap:wrap;gap:8px}
+.st-chip{
+  display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 14px;border:0;border-radius:20px;text-align:left;
+  background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:600 .9375rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
-.st-opt:active{background:var(--st-tint-soft)}
-.st-opt .k{flex:0 0 auto;width:26px;height:26px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;
-  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);font:700 .8125rem/1 "Atkinson Hyperlegible",sans-serif;color:var(--st-ink-2)}
-.st-opt .t{flex:1;min-width:0}
-.st-opt em{display:block;margin-top:4px;font-style:normal;font-weight:700;font-size:.875rem}
-.st-opt:disabled{cursor:default;opacity:1}
-.st-opt.ok{background:hsl(150,30%,93%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%)}
-.st-opt.ok .k{background:hsl(150,35%,32%);color:#fff;box-shadow:none}
-.st-opt.ok em{color:hsl(150,35%,26%)}
-.st-opt.no{background:hsl(4,70%,96%);box-shadow:inset 0 0 0 1.5px hsl(4,55%,48%)}
-.st-opt.no .k{background:hsl(4,55%,42%);color:#fff;box-shadow:none}
-.st-opt.no em{color:hsl(4,55%,36%)}
-.st-opt.off{color:var(--st-ink-3)}
-.st-fb{font-size:1rem}
-.st-fb.ok b{color:hsl(150,35%,26%)}
-.st-fb.no b{color:hsl(4,55%,36%)}
+.st-chip::before{content:"";width:16px;height:16px;flex:0 0 auto;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--st-ink-3)}
+.st-chip[aria-pressed="true"]{background:hsl(150,30%,92%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%);color:hsl(150,35%,22%)}
+.st-chip[aria-pressed="true"]::before{box-shadow:none;background:hsl(150,35%,32%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat}
 /* test: wybór zakresu */
 .st-test-h{margin:18px 0 8px !important;font:700 .875rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--st-ink-3)}
 .st-scopes{display:flex;flex-direction:column;gap:8px}
