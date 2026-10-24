@@ -1,8 +1,8 @@
 /* =========================================================
    Studia — plan semestru (plan.html). Dane: assets/plan-data.js (window.STUDIA_PLAN).
-   Zakładki: Teraz (najbliższy zjazd, co zrobić, zaliczenia) · Kalendarz · Przedmioty.
-   Filtr przedmiotu: ?p=<katalog>. Odhaczone zadania: localStorage studia-plan-v1
-   (tylko w tej przeglądarce; stan wyjściowy — z Notion).
+   Zakładki: Teraz (najbliższy zjazd, co przeczytać na kolejne zajęcia, terminy) · Kalendarz · Przedmioty.
+   Źródło: plan zajęć i literatura (tools/src/plan_zajec.html).
+   Filtr przedmiotu: ?p=<katalog>. „Przeczytane”: localStorage studia-plan-v1 (tylko w tej przeglądarce).
    ========================================================= */
 (function () {
   "use strict";
@@ -57,28 +57,27 @@
     if (nx && sub) {
       sub.textContent = (live(nx) ? "Teraz: " : "Następne: " + short(nx.date) + ", " + nx.start + " · ") +
         META[nx.subj].short + " · " + kindName(nx).toLowerCase() + (nx.place === "online" ? " · online" : "") +
-        (ne ? " · zaliczenie " + rel(ne.date) : "");
+        (ne && days(TODAY, ne.date) <= 14 ? " · " + ne.text.toLowerCase() + " " + rel(ne.date) : "");
     }
     return;
   }
   if (!root) return;
 
   /* ---------- stan ---------- */
-  var store = { done: {} };
-  try { store = JSON.parse(localStorage.getItem(KEY) || "null") || store; store.done = store.done || {}; } catch (e) {}
+  var store = { read: {} };
+  try { store = JSON.parse(localStorage.getItem(KEY) || "null") || store; store.read = store.read || {}; } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
-  function isDone(t) { return t.id in store.done ? store.done[t.id] : t.done; }
+  function isRead(x) { return !!store.read[x.id]; }
 
   var q = new URLSearchParams(location.search);
   var subj = META[q.get("p")] ? q.get("p") : "";
   var tab = /^#(kalendarz|przedmioty)$/.test(location.hash) ? location.hash.slice(1) : (subj ? "przedmioty" : "teraz");
-  var openAll = {}, recent = {};          // recent: odhaczone teraz — zostają na liście (przekreślone)
+  var openAll = {};
   function on(x) { return !subj || x.subj === subj; }
 
-  var SES = D.sessions, EX = D.exams, TASKS = D.tasks;
+  var SES = D.sessions, EX = D.exams;
   var exByDay = {};
   EX.forEach(function (e) { (exByDay[e.date] = exByDay[e.date] || []).push(e); });
-  function isFree(s) { return D.free.some(function (r) { return s >= r[0] && s <= r[1]; }); }
 
   /* zjazdy: zajęcia pogrupowane po weekendach (klucz = sobota) */
   function weekendOf(s) { var d = parse(s).getDay(); return d === 0 ? add(s, -1) : d === 6 ? s : add(s, 6 - d); }
@@ -99,7 +98,7 @@
     var exs = (exByDay[x.date] || []).filter(function (e) { return e.subj === x.subj; });
     var st = live(x) ? '<span class="pl-tag live">Teraz</span>' : past(x) ? '<span class="pl-tag done">Zakończone</span>' : "";
     var body = "";
-    if (x.lit && x.lit.length) body += '<p class="pl-k">Literatura</p><ul class="pl-lit">' + x.lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>";
+    if (x.lit && x.lit.length) body += '<p class="pl-k">Literatura' + (x.litAll ? " (wspólna dla wszystkich ćwiczeń)" : "") + '</p><ul class="pl-lit">' + x.lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>";
     if (x.note) body += '<p class="pl-warn">' + WARN + "<span>" + esc(x.note) + "</span></p>";
     if (x.href) body += '<a class="pl-link" href="' + esc(x.href) + '">Notatki: ' + esc(kindName(x)) + " →</a>";
     return '<li class="pl-ses' + (past(x) ? " is-past" : "") + '" style="' + vars(x.subj) + '">' +
@@ -115,19 +114,18 @@
     var d = parse(e.date), n = days(TODAY, e.date);
     return '<li class="pl-ex' + (n < 0 ? " is-past" : "") + '" style="' + vars(e.subj) + '">' +
       '<span class="pl-day"><b>' + d.getDate() + "</b><i>" + MON[d.getMonth()].slice(0, 3) + "</i></span>" +
-      '<span class="pl-main"><span class="pl-sub"><i class="dot"></i>' + esc(META[e.subj].short) + " · " + esc(e.type) + "</span>" +
+      '<span class="pl-main"><span class="pl-sub"><i class="dot"></i>' + esc(META[e.subj].short) + "</span>" +
       '<span class="pl-topic">' + esc(e.text) + "</span>" +
-      '<span class="pl-place">' + esc(short(e.date)) + " · " + esc(rel(e.date)) + "</span>" +
-      (e.flag ? '<span class="pl-warn">' + WARN + "<span>" + esc(e.flag) + "</span></span>" : "") + "</span></li>";
+      '<span class="pl-place">' + esc(short(e.date)) + " · " + esc(rel(e.date)) + "</span></span></li>";
   }
-  function task(t) {
-    var d = isDone(t), n = days(TODAY, t.date);
-    var when = n < 0 ? "termin minął " + short(t.date) : "do " + short(t.date) + (n <= 2 ? " · " + rel(t.date) : "");
-    return '<li class="pl-task' + (d ? " is-done" : "") + (n < 0 && !d ? " is-late" : "") + '" style="' + vars(t.subj) + '">' +
-      '<button type="button" class="pl-chk" data-task="' + t.id + '" aria-pressed="' + d + '" aria-label="' + (d ? "Odznacz: " : "Zrobione: ") + esc(t.title) + '">' + CHECK + "</button>" +
-      '<span class="pl-main"><span class="pl-topic">' + esc(t.title) + "</span>" +
-      '<span class="pl-sub"><i class="dot"></i>' + esc(META[t.subj].short) + " · " + esc(t.type) + " · <b>" + esc(when) + "</b></span>" +
-      (t.lit ? '<span class="pl-place">' + esc(t.lit) + "</span>" : "") + "</span></li>";
+  /* lektura na konkretne zajęcia, do odhaczenia */
+  function reading(x) {
+    var d = isRead(x);
+    return '<li class="pl-task' + (d ? " is-done" : "") + '" style="' + vars(x.subj) + '">' +
+      '<button type="button" class="pl-chk" data-read="' + x.id + '" aria-pressed="' + d + '" aria-label="' + (d ? "Odznacz: " : "Przeczytane: ") + esc(META[x.subj].short + " " + kindName(x)) + '">' + CHECK + "</button>" +
+      '<span class="pl-main"><span class="pl-sub"><i class="dot"></i>' + esc(META[x.subj].short) + " · " + esc(kindName(x)) + " · <b>" + esc(short(x.date)) + "</b></span>" +
+      '<span class="pl-topic">' + esc(x.topic || "Temat nie podany") + "</span>" +
+      '<ul class="pl-lit">' + x.lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></span></li>";
   }
   function more(id, list, limit, fn, label) {
     if (list.length <= limit || openAll[id]) return list.map(fn).join("");
@@ -154,20 +152,23 @@
       html += "</section>";
     }
 
-    var open = TASKS.filter(function (t) { return on(t) && (!isDone(t) || recent[t.id]); });
-    var late = open.filter(function (t) { return t.date < TODAY; });
-    var week = open.filter(function (t) { return t.date >= TODAY && t.date <= add(TODAY, 6); });
-    var later = open.filter(function (t) { return t.date > add(TODAY, 6); });
-    var doneN = TASKS.filter(function (t) { return on(t) && isDone(t); }).length;
-    html += '<section class="pl-sec"><h2>Do zrobienia</h2>';
-    if (!open.some(function (t) { return !isDone(t); })) html += '<p class="pl-empty">Wszystko odhaczone.</p>';
-    if (late.length) html += '<h3 class="pl-h3 late">Zaległe · ' + late.length + '</h3><ul class="pl-list">' + more("late", late, 4, task, "Pokaż jeszcze") + "</ul>";
-    if (week.length) html += '<h3 class="pl-h3">Najbliższe 7 dni · ' + week.length + '</h3><ul class="pl-list">' + week.map(task).join("") + "</ul>";
-    if (later.length) html += '<h3 class="pl-h3">Później</h3><ul class="pl-list">' + more("later", later, 3, task, "Pokaż jeszcze") + "</ul>";
-    html += '<p class="pl-foot">Zrobione: ' + doneN + ". Zadania z „Planu nauki” w Notion; odhaczenia zapisują się w tej przeglądarce.</p></section>";
+    // co przeczytać: kolejne zjazdy (bez bieżącego — jego literatura jest wyżej, w zajęciach)
+    var ahead = zs.filter(function (z) { return z.key > (next ? next.key : TODAY); });
+    html += '<section class="pl-sec"><h2>Do przeczytania</h2><p class="pl-meta">Literatura na kolejne zjazdy, zajęcia po kolei.</p>';
+    if (!ahead.length) html += '<p class="pl-empty">Brak kolejnych zjazdów.</p>';
+    ahead.forEach(function (z, i) {
+      var items = z.items.filter(function (x) { return x.lit && x.lit.length; });
+      if (!items.length) return;
+      var left = items.filter(function (x) { return !isRead(x); }).length;
+      var head = "Zjazd " + short(z.items[0].date) + (z.items[0].date !== z.items[z.items.length - 1].date ? " – " + short(z.items[z.items.length - 1].date) : "") +
+        " · " + (left ? "zostało " + left : "wszystko przeczytane");
+      if (i < 2 || openAll["z" + z.key]) html += '<h3 class="pl-h3">' + esc(head) + '</h3><ul class="pl-list">' + items.map(reading).join("") + "</ul>";
+      else html += '<ul class="pl-list pl-fold"><li class="pl-more-row"><button type="button" data-all="z' + z.key + '">' + esc(head) + "</button></li></ul>";
+    });
+    html += '<p class="pl-foot">Odhaczenia zapisują się w tej przeglądarce.</p></section>';
 
     var up = EX.filter(function (e) { return on(e) && e.date >= TODAY; });
-    if (up.length) html += '<section class="pl-sec"><h2>Zaliczenia</h2><ul class="pl-list">' + more("ex", up, 4, exam, "Pokaż jeszcze") + "</ul></section>";
+    if (up.length) html += '<section class="pl-sec"><h2>Terminy</h2><ul class="pl-list">' + more("ex", up, 4, exam, "Pokaż jeszcze") + '</ul><p class="pl-foot">Zasady zaliczenia każdego przedmiotu: zakładka Przedmioty.</p></section>';
     return html;
   }
 
@@ -201,21 +202,18 @@
       var ex = (exByDay[s] || []).filter(on);
       var subs = [];
       ses.forEach(function (x) { if (subs.indexOf(x.subj) < 0) subs.push(x.subj); });
-      var label = long(s) + (ses.length ? ": " + ses.length + " " + pl(ses.length, "zajęcia", "zajęcia", "zajęć") : "") + (ex.length ? ", " + ex.length + " " + pl(ex.length, "zaliczenie", "zaliczenia", "zaliczeń") : "") + (isFree(s) ? ", wolne" : "");
-      html += '<button type="button" data-day="' + s + '" class="' + [s === TODAY ? "today" : "", s === picked ? "sel" : "", isFree(s) ? "free" : "", s < TODAY ? "past" : "", ses.length ? "has" : ""].join(" ") + '" aria-label="' + esc(label) + '" aria-pressed="' + (s === picked) + '">' +
+      var label = long(s) + (ses.length ? ": " + ses.length + " " + pl(ses.length, "zajęcia", "zajęcia", "zajęć") : "") + (ex.length ? ", " + ex.map(function (e) { return e.text.toLowerCase(); }).join(", ") : "") ;
+      html += '<button type="button" data-day="' + s + '" class="' + [s === TODAY ? "today" : "", s === picked ? "sel" : "", s < TODAY ? "past" : "", ses.length ? "has" : ""].join(" ") + '" aria-label="' + esc(label) + '" aria-pressed="' + (s === picked) + '">' +
         "<b>" + d + "</b><span class=\"dots\">" + subs.slice(0, 3).map(function (x) { return '<i style="' + vars(x) + '"></i>'; }).join("") + (ex.length ? '<i class="exm"></i>' : "") + "</span></button>";
     }
-    html += '</div><p class="pl-legend"><span><i class="lg-dot"></i>zajęcia</span><span><i class="lg-ex"></i>zaliczenie</span><span><i class="lg-free"></i>wolne</span></p></section>';
+    html += '</div><p class="pl-legend"><span><i class="lg-dot"></i>zajęcia</span><span><i class="lg-ex"></i>kolokwium / termin</span></p></section>';
 
     var ses = SES.filter(function (x) { return on(x) && x.date === picked; });
     var ex = (exByDay[picked] || []).filter(on);
-    var tk = TASKS.filter(function (t) { return on(t) && t.date === picked; });
     html += '<section class="pl-sec"><h2>' + esc(long(picked)) + "</h2>";
-    if (isFree(picked)) html += '<p class="pl-meta">Wolny weekend · czas na powtórki i lektury</p>';
-    if (!ses.length && !ex.length && !tk.length) html += '<p class="pl-empty">Nic zaplanowanego.</p>';
+    if (!ses.length && !ex.length) html += '<p class="pl-empty">Nic zaplanowanego.</p>';
     if (ses.length) html += '<ul class="pl-list">' + ses.map(function (x) { return session(x); }).join("") + "</ul>";
-    if (ex.length) html += '<h3 class="pl-h3">Zaliczenia</h3><ul class="pl-list">' + ex.map(exam).join("") + "</ul>";
-    if (tk.length) html += '<h3 class="pl-h3">Do zrobienia na ten dzień</h3><ul class="pl-list">' + tk.map(task).join("") + "</ul>";
+    if (ex.length) html += '<h3 class="pl-h3">Terminy</h3><ul class="pl-list">' + ex.map(exam).join("") + "</ul>";
     html += "</section>";
     return html;
   }
@@ -252,7 +250,7 @@
     }).join("") + "</div>";
     var body = tab === "kalendarz" ? viewCal() : tab === "przedmioty" ? viewSubj() : viewNow();
     root.innerHTML = tabs + chips + body +
-      '<footer class="pl-src"><p>Stan z Notion: ' + esc(D.synced.split("-").reverse().join(".")) + ". " + esc(D.source) + "</p></footer>";
+      '<footer class="pl-src"><p>' + esc(D.intro) + "</p><p>" + esc(D.source) + "</p></footer>";
   }
 
   root.addEventListener("click", function (e) {
@@ -264,10 +262,11 @@
     } else if (b.hasAttribute("data-subj")) {
       subj = b.dataset.subj; picked = null; render();
       try { history.replaceState(null, "", location.pathname + (subj ? "?p=" + subj : "") + location.hash); } catch (er) {}
-    } else if (b.dataset.task) {
-      var t = TASKS.filter(function (x) { return x.id === b.dataset.task; })[0];
-      store.done[t.id] = !isDone(t); recent[t.id] = true; save(); render();
-      var nb = root.querySelector('[data-task="' + t.id + '"]'); if (nb) nb.focus({ preventScroll: true });
+    } else if (b.dataset.read) {
+      var id = b.dataset.read;
+      if (store.read[id]) delete store.read[id]; else store.read[id] = true;
+      save(); render();
+      var nb = root.querySelector('[data-read="' + id + '"]'); if (nb) nb.focus({ preventScroll: true });
     } else if (b.dataset.all) { openAll[b.dataset.all] = true; render(); }
     else if (b.hasAttribute("data-month") && b.dataset.month) { month = b.dataset.month; picked = null; render(); }
     else if (b.dataset.day) { picked = b.dataset.day; render(); var p = root.querySelector(".pl-cal + .pl-sec"); if (p && p.getBoundingClientRect().top > innerHeight * .7) p.scrollIntoView({ block: "start", behavior: "smooth" }); }

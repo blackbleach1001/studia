@@ -1,18 +1,58 @@
 #!/usr/bin/env python3
-"""Plan semestru: tools/src/plan.json → assets/plan-data.js + plan.html.
+"""Plan semestru: tools/src/plan_zajec.html (plan zajęć i literatura) → assets/plan-data.js + plan.html.
 
-plan.json: zajęcia z planu (wydruk 24.10.2026) z literaturą, terminy zaliczeń
-i „Plan nauki” z Notion (co na kiedy przeczytać lub powtórzyć).
+Jedyne źródło to plik planu: daty, sale, tematy, literatura do każdych zajęć,
+zasady zaliczenia. Terminy kolokwiów i prac są wyciągane z opisów zajęć.
 Zajęcia, do których są notatki na stronie, dostają link (subjects.json → units).
 
 Uruchom:  python3 tools/build_plan.py
 """
 import hashlib, json, re
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
 SUBJ = {s["dir"]: s for s in json.loads((ROOT / "tools" / "subjects.json").read_text(encoding="utf-8"))}
-plan = json.loads((ROOT / "tools" / "src" / "plan.json").read_text(encoding="utf-8"))
+SRC = BeautifulSoup((ROOT / "tools" / "src" / "plan_zajec.html").read_text(encoding="utf-8"), "html.parser")
+DIRS = {"pozn": "poznawcza", "ppio": "praca", "edu": "edukacja", "klin": "kliniczna", "met": "metodologia", "roz": "rozmowa"}
+TERM = re.compile(r"kolokwium|termin|losowanie", re.I)
+
+def text(el):
+    return el.get_text(" ", strip=True) if el else ""
+
+plan = {"subjects": {}, "sessions": [], "exams": []}
+for sec in SRC.select("section.sub"):
+    d = DIRS[sec["id"]]
+    subj = {"name": text(sec.h2), "meta": text(sec.select_one(".meta")),
+            "pass": text(sec.select_one(".box")).replace("Zaliczenie:", "").strip(), "parts": []}
+    for card in sec.select(".card"):
+        kind = "W" if text(card.h3) == "Wykłady" else "C"
+        rows = card.select(".dates li")
+        lits = [{"h": text(h4), "items": [text(li) for li in h4.find_next_sibling("ul").select("li")]}
+                for h4 in card.select(".lit h4")]
+        # literatura po kolei do zajęć; nadmiarowa (lub wspólna dla wszystkich zajęć) — osobno
+        per = lits[:len(rows)] if len(lits) >= len(rows) else []
+        subj["parts"].append({"kind": kind, "who": text(card.select_one(".who")), "general": lits[len(per):]})
+        for i, li in enumerate(rows):
+            m = re.match(r"(\d\d)\.(\d\d)\.(\d{4})", text(li.select_one(".d")))
+            date = f"{m[3]}-{m[2]}-{m[1]}"
+            tm, place = [x.strip() for x in text(li.select_one(".r")).split("·")]
+            start, end = tm.split("–")
+            parts = [x.strip() for x in text(li.select_one(".t")).split(" · ")]
+            topic = " · ".join([parts[0]] + [x for x in parts[1:] if not TERM.search(x)])
+            s = {"subj": d, "kind": kind, "n": text(li.select_one(".n")), "date": date, "start": start, "end": end,
+                 "place": place, "topic": topic, "lit": per[i]["items"] if per else []}
+            if not per and lits:                      # jedna lista na wszystkie zajęcia (kliniczna, ćwiczenia)
+                s["lit"], s["litAll"] = lits[0]["items"], True
+            plan["sessions"].append(s)
+            for x in parts[1:]:
+                if TERM.search(x):
+                    plan["exams"].append({"date": date, "subj": d, "text": x[0].upper() + x[1:]})
+    plan["subjects"][d] = subj
+plan["sessions"].sort(key=lambda s: (s["date"], s["start"]))
+plan["exams"].sort(key=lambda e: e["date"])
+plan["source"] = text(SRC.footer)
+plan["intro"] = " ".join(text(p) for p in SRC.header.select("p"))
 
 def unit_href(s):
     """Zajęcia → plik notatek, jeśli istnieje (Wykład N / Ćwiczenia N / Zajęcia N)."""
@@ -27,9 +67,9 @@ for s in plan["sessions"]:
     h = unit_href(s)
     if h:
         s["href"] = h
-# stały identyfikator zadania: odhaczenie w przeglądarce przetrwa zmiany kolejności
-for t in plan["tasks"]:
-    t["id"] = hashlib.sha1((t["date"] + t["subj"] + t["title"]).encode()).hexdigest()[:8]
+# stały identyfikator zajęć: „przeczytane” w przeglądarce przetrwa zmiany planu
+for s in plan["sessions"]:
+    s["id"] = hashlib.sha1((s["subj"] + s["kind"] + s["n"]).encode()).hexdigest()[:8]
 plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for d, s in SUBJ.items()}
 
 (ROOT / "assets" / "plan-data.js").write_text(
@@ -62,4 +102,4 @@ plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for
 </body>
 </html>
 """, encoding="utf-8")
-print(f'plan: {len(plan["sessions"])} zajęć, {len(plan["exams"])} zaliczeń, {len(plan["tasks"])} zadań')
+print(f'plan: {len(plan["sessions"])} zajęć, {len(plan["exams"])} terminów')
