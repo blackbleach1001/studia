@@ -8,6 +8,8 @@
      opts.noRepeat   — błędne pytanie nie wraca w tej sesji (rozgrzewka)
      opts.linkFor(id) → { href, t } — podsumowanie linkuje do sekcji z błędnymi pytaniami
      opts.onClose, opts.closeLabel, opts.onMore, opts.moreLabel, opts.doneTitle, opts.onStep
+     opts.test       — test: zawsze pytania zamknięte, bez etykiet powtórek, wynik w procentach,
+                       opts.onRetry(błędne id), opts.onFinish(poprawne, wszystkie)
    Pytanie zamknięte (wybór z 3–4 odpowiedzi): nowe i świeże fiszki (pudełko 0–1).
    Dalej: przypomnij sobie i oceń (Umiem / Jeszcze raz).
    Strona z fiszkami: <script type="application/json" id="cards"> + <main id="deck">
@@ -46,11 +48,11 @@
     var ids = cards.map(function (c) { return c.id; });
     var mode = opts.mode || "today";
     var queue = [], shown = false, done = 0, firstOk = 0, sessionTotal = 0;
-    var cur = null, asked = {}, missed = [];
+    var cur = null, asked = {}, missed = [], finished = false;
 
     function build() {
       queue = mode === "today" ? SRS.dueList(ids) : ids.slice();
-      sessionTotal = queue.length; done = 0; firstOk = 0; shown = false; cur = null; asked = {}; missed = [];
+      sessionTotal = queue.length; done = 0; firstOk = 0; shown = false; cur = null; asked = {}; missed = []; finished = false;
       render();
     }
     function shuffle() {
@@ -82,7 +84,7 @@
       var id = queue[0];
       if (!cur || cur.id !== id) {
         var c = byId[id], box = (SRS.get(id) || { b: 0 }).b || 0;
-        var o = !asked[id] && box < MC_UNTIL_BOX ? choices(c) : null;
+        var o = !asked[id] && (opts.test || box < MC_UNTIL_BOX) ? choices(c) : null;
         cur = { id: id, kind: o ? "mc" : "recall", o: o, pick: -1 };
       }
       return cur;
@@ -108,6 +110,7 @@
     }
 
     function badge(id) {
+      if (opts.test) return "";
       var c = SRS.get(id);
       if (!c) return '<span class="st-tag new">Nowa</span>';
       if (c.d <= SRS.today()) return '<span class="st-tag">Powtórka</span>';
@@ -129,7 +132,15 @@
     function render() {
       if (!queue.length) {
         var html = head() + '<div class="st-done">';
-        if (mode === "fixed") {
+        if (mode === "fixed" && opts.test) {
+          if (opts.onFinish && !finished) { finished = true; opts.onFinish(firstOk, sessionTotal); }
+          html += '<p class="st-done-t">Wynik: ' + Math.round(100 * firstOk / Math.max(1, sessionTotal)) + "%</p>" +
+            "<p>" + firstOk + " z " + sessionTotal + " poprawnie.</p>" + missedHtml() +
+            '<div class="st-deck-tools">' +
+              (missed.length && opts.onRetry ? '<button class="st-btn" type="button" data-a="retry">Powtórz błędne (' + missed.length + ")</button>" : "") +
+              (opts.onMore ? '<button class="st-btn primary" type="button" data-a="more">' + esc(opts.moreLabel || "Nowy test") + "</button>" : "") +
+            "</div>";
+        } else if (mode === "fixed") {
           html += '<p class="st-done-t">' + esc(opts.doneTitle || "Sprawdzone") + '</p><p>' +
             (firstOk === sessionTotal ? "Wszystko za pierwszym razem: " + firstOk + " z " + sessionTotal + "."
               : "Za pierwszym razem: " + firstOk + " z " + sessionTotal + ".") +
@@ -222,6 +233,7 @@
       else if (a === "restart") build();
       else if (a === "close" && opts.onClose) opts.onClose();
       else if (a === "more" && opts.onMore) opts.onMore();
+      else if (a === "retry" && opts.onRetry) opts.onRetry(missed.slice());
     });
 
     if (mode === "fixed" && opts.ids) { ids = opts.ids.filter(function (i) { return byId[i]; }); }

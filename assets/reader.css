@@ -235,6 +235,19 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-fb{font-size:1rem}
 .st-fb.ok b{color:hsl(150,35%,26%)}
 .st-fb.no b{color:hsl(4,55%,36%)}
+/* test: wybór zakresu */
+.st-test-h{margin:18px 0 8px !important;font:700 .875rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--st-ink-3)}
+.st-scopes{display:flex;flex-direction:column;gap:8px}
+.st-scope{
+  display:block;width:100%;padding:12px 14px;text-align:left;border:0;border-radius:12px;background:#fff;
+  box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);font:400 1rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-scope .t{display:block;font-weight:700}
+.st-scope .s{display:block;font-size:.875rem;color:var(--st-ink-2);margin-top:2px}
+.st-scope[aria-checked="true"]{background:var(--st-tint-soft);box-shadow:inset 0 0 0 2px var(--st-tint)}
+.st-scope[aria-checked="true"] .t{color:var(--st-tint)}
+.st-deck > .st-fcard-actions{margin-top:20px}
 /* podsumowanie: sekcje do przeczytania jeszcze raz */
 .st-miss-h{margin:14px 0 6px !important;font-weight:700}
 .st-miss{list-style:none;margin:0 0 14px;padding:0}

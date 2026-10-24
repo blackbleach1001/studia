@@ -3,8 +3,7 @@
    Powtórka prowadzi do notatek: link otwiera sekcję i jej zaległe pytania (check.js, #powtorka-…).
    Liczą się tylko pytania już widziane — nowe przychodzą z czytania („Sprawdź tę sekcję”).
    Rozgrzewka: 5 pytań — najpierw zaległe, potem z ostatnio czytanych wykładów.
-   Strona główna: grupa pod listą przedmiotów. Strona przedmiotu: sekcje tego przedmiotu
-   i licznik przy wierszach z fiszkami.
+   Strona główna: grupa pod listą przedmiotów. Strona przedmiotu: sekcje tego przedmiotu.
    Wymaga: srs.js, cards-index.js; do rozgrzewki flashcards.js i check.js.
    data-root = ścieżka do katalogu głównego, data-subject = katalog przedmiotu.
    ========================================================= */
@@ -37,22 +36,6 @@
     return root + x.dir + "/" + x.u + (review ? "#powtorka" + (x.s ? "-" + encodeURIComponent(x.s) : "") : (x.s ? "#" + x.s : ""));
   }
   function where(x) { return x.short + " · " + x.ul; }
-
-  /* ---------- strona przedmiotu: licznik przy wierszu z fiszkami ---------- */
-  if (here) {
-    IDX.filter(function (d) { return d.dir === here; }).forEach(function (d) {
-      var s = SRS.stats(d.ids), file = d.href.split("/").pop();
-      var a = document.querySelector('.ios-list a.row[href="' + file + '"]');
-      if (!a) return;
-      var sub = a.querySelector(".s");
-      if (sub) sub.textContent = (s.due ? "Na dziś: " + s.due : "Na dziś gotowe") + " · opanowane " + s.mastered + " z " + s.total;
-      if (s.due) {
-        var b = document.createElement("span");
-        b.className = "badge"; b.textContent = s.due; b.setAttribute("aria-label", s.due + " do powtórki");
-        a.appendChild(b);
-      }
-    });
-  }
 
   /* ---------- ostatnio czytane wykłady (reader.js: studia-recent) ---------- */
   function recentUnits() {

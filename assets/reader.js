@@ -460,7 +460,7 @@
   var file = parts.pop() || "", dir = parts.pop() || "";
   var here = dir + "/" + file;
   var isUnit = !!(script && !script.hasAttribute("data-nofocus") &&
-    document.querySelector(".st-pager, [data-check], details.sec, .unit-body") && /\.html$/.test(file) && !/fiszki|trening|powtorka|sym-|modele/.test(file));
+    document.querySelector(".st-pager, [data-check], details.sec, .unit-body") && /\.html$/.test(file) && !/fiszki|trening|powtorka|test|sym-|modele/.test(file));
 
   function fold(ch) { var c = ch.toLowerCase(); if (c === "ł") return "l"; var n = c.normalize ? c.normalize("NFD").charAt(0) : c; return n.length === 1 ? n : c; }
   function norm(s) { var o = ""; for (var i = 0; i < s.length; i++) o += fold(s.charAt(i)); return o; }

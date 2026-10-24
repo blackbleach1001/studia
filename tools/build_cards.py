@@ -218,6 +218,10 @@ for deck in DECKS:
             footer.insert_before(whole)
         else:
             (soup.select_one("main") or soup.body).append(whole)
+        # linki „Fiszki · N pytań” w notatkach prowadzą do testu z tego materiału
+        for a in soup.select('.fiszki-link a, a[href$="fiszki.html"]'):
+            a["href"] = f"test.html#{u}"
+            a.string = "Test z tego materiału"
         ensure_scripts(soup, ["../assets/srs.js", "../assets/flashcards.js", "cards.js", "../assets/check.js"], before="reader.js")
         (ROOT / d / u).write_text(str(soup), encoding="utf-8")
 
@@ -251,6 +255,39 @@ for deck in DECKS:
 for d, all_cards in by_dir.items():
     (ROOT / d / "cards.js").write_text(
         "window.STUDIA_CARDS=" + json.dumps(all_cards, ensure_ascii=False) + ";\n", encoding="utf-8")
+    # test z przedmiotu (zamiast osobnych stron z fiszkami na stronie przedmiotu)
+    subj = SUBJECTS[d]
+    h, s, l = subj["hsl"]
+    units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] != "info"]
+    (ROOT / d / "test.html").write_text(f"""<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Test · {subj["name"]}</title>
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/study.css">
+<style>:root{{--st-h:{h};--st-s:{s}%;--st-l:{l}%}}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Test</h1>
+<p class="meta">{subj["name"]} · {len(all_cards)} {pl_q(len(all_cards))}</p>
+</header>
+<main id="test"></main>
+</div>
+<script id="test-units" type="application/json">{json.dumps(units, ensure_ascii=False)}</script>
+<script src="../assets/srs.js"></script>
+<script src="../assets/cards-index.js"></script>
+<script src="../assets/flashcards.js"></script>
+<script src="cards.js"></script>
+<script src="../assets/test.js"></script>
+<script src="../assets/reader.js" data-home="../" data-back="./" data-back-label="{subj["short"]}" data-title="Test" data-nodock></script>
+</body>
+</html>
+""", encoding="utf-8")
 
 (ROOT / "assets" / "cards-index.js").write_text(
     "window.STUDIA_INDEX=" + json.dumps(index, ensure_ascii=False) + ";\n", encoding="utf-8")

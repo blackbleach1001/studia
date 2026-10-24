@@ -246,6 +246,10 @@ def hub(subj):
     if mods:
         groups.append(("Modele", "".join(row(m["href"], "models", f'{m["label"]} · Mapa modeli', m.get("title", "")) for m in mods)))
     extra = subj.get("practice", [])
+    if any(p["kind"] == "cards" for p in extra):
+        # talie fiszek zastępuje jeden test (tools/build_cards.py tworzy test.html)
+        extra = [{"kind": "quiz", "title": "Test", "sub": "Wybierz wykład, wynik na koniec", "href": "test.html"}] + \
+                [p for p in extra if p["kind"] != "cards"]
     if extra:
         groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
     info = [u for u in subj["units"] if u["kind"] == "info"]
