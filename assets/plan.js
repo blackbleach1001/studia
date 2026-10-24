@@ -33,8 +33,9 @@
     return n + " dni temu";
   }
   function at(s, hm) { var d = parse(s), p = hm.split(":"); d.setHours(+p[0], +p[1]); return d; }
-  function past(x) { return at(x.date, x.end) < NOW; }
-  function live(x) { return at(x.date, x.start) <= NOW && NOW <= at(x.date, x.end); }
+  // bez godziny (zajęcia z Notion): zajęcia trwają cały dzień, nigdy „Teraz”
+  function past(x) { return at(x.date, x.end || "23:59") < NOW; }
+  function live(x) { return !!x.start && at(x.date, x.start) <= NOW && NOW <= at(x.date, x.end); }
 
   /* ---------- pomocnicze ---------- */
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -51,11 +52,11 @@
   /* ---------- strona główna: wiersz „Plan semestru” z najbliższymi zajęciami ---------- */
   var homeRow = document.getElementById("plan-row");
   if (homeRow && !root) {
-    var nx = D.sessions.filter(function (x) { return !past(x); })[0];
+    var nx = D.sessions.filter(function (x) { return !x.alt && !past(x); })[0];
     var ne = D.exams.filter(function (e) { return e.date >= TODAY; })[0];
     var sub = homeRow.querySelector(".s");
     if (nx && sub) {
-      sub.textContent = (live(nx) ? "Teraz: " : "Następne: " + short(nx.date) + ", " + nx.start + " · ") +
+      sub.textContent = (live(nx) ? "Teraz: " : "Następne: " + short(nx.date) + (nx.start ? ", " + nx.start : "") + " · ") +
         META[nx.subj].short + " · " + kindName(nx).toLowerCase() + (nx.place === "online" ? " · online" : "") +
         (ne && days(TODAY, ne.date) <= 14 ? " · " + ne.text.toLowerCase() + " " + rel(ne.date) : "");
     }
@@ -75,7 +76,8 @@
   var openAll = {};
   function on(x) { return !subj || x.subj === subj; }
 
-  var SES = D.sessions, EX = D.exams;
+  // alt: zajęcia innej grupy (Rozmowa C1 z wydruku) — tylko w zakładce Przedmioty
+  var SES = D.sessions.filter(function (x) { return !x.alt; }), EX = D.exams;
   var exByDay = {};
   EX.forEach(function (e) { (exByDay[e.date] = exByDay[e.date] || []).push(e); });
 
@@ -88,6 +90,8 @@
     return out;
   }
   function mode(items) {
+    var unk = items.filter(function (x) { return !x.place; }).length;
+    if (unk) return unk === items.length ? "miejsce: brak w Notion" : "część zajęć bez sali w Notion";
     var onl = items.filter(function (x) { return x.place === "online"; }).length;
     return onl === items.length ? "online" : onl ? "online i na uczelni" : "na uczelni";
   }
@@ -95,7 +99,7 @@
   /* ---------- kawałki widoku ---------- */
   function session(x, opts) {
     opts = opts || {};
-    var exs = (exByDay[x.date] || []).filter(function (e) { return e.subj === x.subj; });
+    var exs = (exByDay[x.date] || []).filter(function (e) { return e.subj === x.subj && (!e.grp || e.grp === x.grp); });
     var st = live(x) ? '<span class="pl-tag live">Teraz</span>' : past(x) ? '<span class="pl-tag done">Zakończone</span>' : "";
     var body = "";
     if (x.lit && x.lit.length) body += '<p class="pl-k">Literatura' + (x.litAll ? " (wspólna dla wszystkich ćwiczeń)" : "") + '</p><ul class="pl-lit">' + x.lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>";
@@ -103,11 +107,11 @@
     if (x.href) body += '<a class="pl-link" href="' + esc(x.href) + '">Notatki: ' + esc(kindName(x)) + " →</a>";
     return '<li class="pl-ses' + (past(x) ? " is-past" : "") + '" style="' + vars(x.subj) + '">' +
       '<details' + (opts.open ? " open" : "") + '><summary>' +
-        '<span class="pl-time">' + (opts.date ? '<b>' + esc(short(x.date)) + "</b>" : "") + esc(x.start) + "<i>" + esc(x.end) + "</i></span>" +
+        '<span class="pl-time">' + (opts.date ? '<b>' + esc(short(x.date)) + "</b>" : "") + (x.start ? esc(x.start) + "<i>" + esc(x.end) + "</i>" : "<i>godz. —</i>") + "</span>" +
         '<span class="pl-main"><span class="pl-sub"><i class="dot"></i>' + esc(META[x.subj].short) + " · " + esc(kindName(x)) + "</span>" +
         '<span class="pl-topic">' + esc(x.topic || "Temat nie podany") + "</span>" +
-        '<span class="pl-place">' + esc(x.place === "online" ? "Online" : x.place.replace("sala", "Sala")) + st +
-          exs.map(function (e) { return '<span class="pl-tag ex">' + esc(e.type) + "</span>"; }).join("") + "</span></span>" +
+        '<span class="pl-place">' + esc(x.place === "online" ? "Online" : x.place ? x.place.replace("sala", "Sala") : "Godzina i sala: brak w Notion") + st +
+          exs.map(function (e) { return '<span class="pl-tag ex">' + esc(e.text) + "</span>"; }).join("") + "</span></span>" +
       "</summary>" + (body ? '<div class="pl-more">' + body + "</div>" : "") + "</details></li>";
   }
   function exam(e) {
@@ -225,8 +229,8 @@
       var s = D.subjects[d];
       html += '<section class="pl-card subj" style="' + vars(d) + '"><h2><i class="dot"></i>' + esc(s.name) + '</h2><p class="pl-meta">' + esc(s.meta) + "</p>";
       s.parts.forEach(function (p) {
-        var items = SES.filter(function (x) { return x.subj === d && x.kind === p.kind; });
-        html += '<h3 class="pl-h3">' + (p.kind === "W" ? "Wykłady" : (d === "rozmowa" ? "Zajęcia" : "Ćwiczenia")) + '</h3><p class="pl-who">' + esc(p.who) + '</p><ul class="pl-list">' +
+        var items = D.sessions.filter(function (x) { return x.subj === d && x.kind === p.kind && (!p.grp || x.grp === p.grp); });
+        html += '<h3 class="pl-h3">' + (p.kind === "W" ? "Wykłady" : (d === "rozmowa" ? "Zajęcia" : "Ćwiczenia")) + (p.grp === "popa" ? " · Twoja grupa" : p.grp === "c1" ? " · grupa C1" : "") + '</h3><p class="pl-who">' + esc(p.who) + (p.note ? " · " + esc(p.note) : "") + '</p><ul class="pl-list">' +
           items.map(function (x) { return session(x, { date: true }); }).join("") + "</ul>";
         (p.general || []).forEach(function (g) {
           html += '<details class="pl-gen"><summary>' + esc(g.h) + "</summary><ul class=\"pl-lit\">" + g.items.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>";

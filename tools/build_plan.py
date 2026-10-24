@@ -49,6 +49,22 @@ for sec in SRC.select("section.sub"):
                 if TERM.search(x):
                     plan["exams"].append({"date": date, "subj": d, "text": x[0].upper() + x[1:]})
     plan["subjects"][d] = subj
+# Rozmowa: Twoja grupa (mgr Popa) ma inne zjazdy niż grupa C1 z planu — terminy z Notion.
+# Grupa C1 zostaje w zakładce Przedmioty jako plan z wydruku; resztę strony budują zajęcia z Popą.
+popa = json.loads((ROOT / "tools" / "src" / "rozmowa_popa.json").read_text(encoding="utf-8"))
+c1 = [s for s in plan["sessions"] if s["subj"] == "rozmowa"]
+for s in c1:
+    s["grp"], s["alt"] = "c1", True
+for i, date in enumerate(popa["dates"]):
+    src = c1[i] if i < len(c1) else {"topic": "", "lit": []}
+    plan["sessions"].append({"subj": "rozmowa", "kind": "C", "n": str(i + 1), "grp": "popa", "date": date,
+                             "start": "", "end": "", "place": "", "topic": src["topic"], "lit": src["lit"]})
+    plan["exams"].append({"date": date, "subj": "rozmowa", "text": f'{popa["exam"]} {i + 1}', "grp": "popa"})
+roz = plan["subjects"]["rozmowa"]
+roz["parts"][0]["grp"] = "c1"
+roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
+roz["parts"].insert(0, {"kind": "C", "grp": "popa", "who": popa["who"], "note": popa["note"], "general": []})
+plan["exams"].sort(key=lambda e: e["date"])
 plan["sessions"].sort(key=lambda s: (s["date"], s["start"]))
 plan["exams"].sort(key=lambda e: e["date"])
 plan["source"] = text(SRC.footer)
@@ -69,7 +85,7 @@ for s in plan["sessions"]:
         s["href"] = h
 # stały identyfikator zajęć: „przeczytane” w przeglądarce przetrwa zmiany planu
 for s in plan["sessions"]:
-    s["id"] = hashlib.sha1((s["subj"] + s["kind"] + s["n"]).encode()).hexdigest()[:8]
+    s["id"] = hashlib.sha1((s["subj"] + s["kind"] + s["n"] + ("" if s.get("grp", "c1") == "c1" else s["grp"])).encode()).hexdigest()[:8]
 plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for d, s in SUBJ.items()}
 
 (ROOT / "assets" / "plan-data.js").write_text(
