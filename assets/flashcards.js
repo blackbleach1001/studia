@@ -1,7 +1,7 @@
 /* =========================================================
    Studia — fiszki z powtórkami rozłożonymi w czasie (wymaga srs.js)
    window.StudiaDeck(el, cards, opts)
-     cards: [{ id, q, a, src, u?, s? }]
+     cards: [{ id, q, a, src, k?, u?, s? }]   k — kluczowe punkty odpowiedzi
      opts.mode: "today" | "all" | "fixed"   (fixed = podana lista, bez przełącznika)
      opts.ids        — lista pytań w trybie fixed
      opts.noRepeat   — błędne pytanie nie wraca w tej sesji (test)
@@ -10,8 +10,8 @@
      opts.test       — test: bez etykiet powtórek, wynik w procentach,
                        opts.onRetry(błędne id), opts.onFinish(punkty, wszystkie)
    Odpowiedź z pamięci: najpierw przypominasz sobie odpowiedź, potem ją odsłaniasz.
-   Gdy odpowiedź ma co najmniej 2 pogrubione pojęcia, zaznaczasz, które były w Twojej
-   odpowiedzi (zaliczone od 60%); w przeciwnym razie: Umiem / Jeszcze raz.
+   Potem zaznaczasz, które kluczowe punkty (k; bez nich — pogrubienia) były w Twojej
+   odpowiedzi; zaliczone od 60%. Bez punktów: Umiem / Jeszcze raz.
    Strona z fiszkami: <script type="application/json" id="cards"> + <main id="deck">
    ========================================================= */
 (function () {
@@ -58,7 +58,7 @@
 
     function current() {
       var id = queue[0];
-      if (!cur || cur.id !== id) cur = { id: id, terms: keyTerms(byId[id].a), got: {} };
+      if (!cur || cur.id !== id) { var c = byId[id]; cur = { id: id, terms: c.k && c.k.length ? c.k : keyTerms(c.a), got: {} }; }
       return cur;
     }
 

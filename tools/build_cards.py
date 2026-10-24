@@ -233,8 +233,8 @@ for deck in DECKS:
     fpath.write_text(str(fs), encoding="utf-8")
 
     # u, s — wykład i sekcja (powtórki prowadzą do notatek, dystraktory z tego samego wykładu)
-    # o, e — opcjonalne pytanie zamknięte wpisane ręcznie w talii (o[0] = poprawna)
-    by_dir[d].extend({k: c[k] for k in ("id", "q", "a", "src", "o", "e") if c.get(k)} | {"u": c["unit"], "s": c.get("sec") or ""}
+    # k — kluczowe punkty odpowiedzi (wpisane w talii): po odsłonięciu zaznaczasz, które pamiętałaś/eś
+    by_dir[d].extend({k: c[k] for k in ("id", "q", "a", "src", "k") if c.get(k)} | {"u": c["unit"], "s": c.get("sec") or ""}
                      for c in cards)
     sec_index = []
     for u in unit_files:

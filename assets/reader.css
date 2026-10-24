@@ -218,7 +218,7 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-terms-h span{font-weight:400;color:var(--st-ink-2);font-variant-numeric:tabular-nums}
 .st-chips{display:flex;flex-wrap:wrap;gap:8px}
 .st-chip{
-  display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 14px;border:0;border-radius:20px;text-align:left;
+  display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 14px;border:0;border-radius:14px;text-align:left;
   background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
   font:600 .9375rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
