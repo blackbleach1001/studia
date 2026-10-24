@@ -10,8 +10,7 @@
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Zaliczenie przedmiotu","sub_short":"Punktacja i wymagania"}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 69","href":"fiszki.html"},
-   {"kind":"quiz","title":"Powtórka","sub":"Test, fiszki, pytania otwarte","href":"powtorka.html"}
+   {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 69","href":"fiszki.html"}
   ],
   "redirects":{"literatura.html":"./","literatura-fiszki.html":"fiszki.html"}
  },
@@ -30,8 +29,7 @@
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 67","href":"fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Statystyki opisowe · 36","href":"wyklad-3-fiszki.html"},
-   {"kind":"quiz","title":"Trening","sub":"Test, pytania otwarte, fiszki","href":"trening.html"}
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Statystyki opisowe · 36","href":"wyklad-3-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}
  },

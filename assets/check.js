@@ -1,11 +1,8 @@
 /* =========================================================
-   Studia — arkusz z pytaniami („Sprawdź tę sekcję”, powtórki, rozgrzewka).
+   Studia — arkusz z pytaniami („Sprawdź tę sekcję”).
    Wymaga: srs.js, flashcards.js. Odpowiedzi trafiają do planu powtórek.
    window.StudiaQuiz.open({ cards, ids, title, opener?, deck? })  — deck = dodatkowe opcje StudiaDeck
-   Strona notatek (window.STUDIA_CARDS):
-     przyciski [data-check] otwierają pytania z sekcji;
-     adres …#powtorka-<sekcja> (z listy powtórek) przewija do sekcji i otwiera jej zaległe pytania,
-     …#powtorka — pytania z całego wykładu, które nie należą do żadnej sekcji.
+   Strona notatek (window.STUDIA_CARDS): przyciski [data-check] otwierają pytania z sekcji.
    ========================================================= */
 (function () {
   "use strict";
@@ -61,36 +58,4 @@
     e.preventDefault();
     open({ cards: cards, ids: idsOf(b), title: b.getAttribute("data-title"), opener: b });
   });
-
-  /* wejście z listy powtórek: przewiń do sekcji i otwórz jej zaległe pytania */
-  function review() {
-    var m = /^#powtorka(?:-(.+))?$/.exec(location.hash);
-    if (!m) return;
-    var sid = m[1] ? decodeURIComponent(m[1]) : "", target, btn, ids;
-    if (sid) {
-      target = document.getElementById(sid);
-      btn = target && (target.querySelector(".st-check:not(.unit) button") ||
-        // sekcja bez kontenera: przycisk stoi za nagłówkiem, przed następnym h2
-        (function () { for (var n = target.nextElementSibling; n && n.tagName !== "H2"; n = n.nextElementSibling) { if (n.matches(".st-check:not(.unit)")) return n.querySelector("button"); } return null; })());
-      ids = btn ? idsOf(btn) : [];
-    } else {
-      btn = document.querySelector(".st-check.unit button");
-      var inSec = {};
-      document.querySelectorAll(".st-check:not(.unit) button").forEach(function (b) { idsOf(b).forEach(function (i) { inSec[i] = 1; }); });
-      ids = btn ? idsOf(btn).filter(function (i) { return !inSec[i]; }) : [];
-      target = btn;
-    }
-    try { history.replaceState(null, "", location.pathname + location.search + (sid ? "#" + sid : "")); } catch (e) {}
-    if (!target) return;
-    for (var d = target.closest("details") || (target.tagName === "DETAILS" ? target : null); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
-    if (target.tagName === "DETAILS") target.open = true;
-    target.scrollIntoView({ block: "start" });
-    var due = window.SRS.reviewList(ids);
-    if (!due.length) return;
-    open({ cards: cards, ids: due, opener: btn,
-      title: sid ? "Powtórka: " + (btn.getAttribute("data-title") || "") : "Powtórka z wykładu",
-      deck: { doneTitle: "Powtórka gotowa", closeLabel: "Czytaj tę sekcję" } });
-  }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", review);
-  else review();
 })();

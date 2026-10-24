@@ -542,11 +542,4 @@
   window.addEventListener("pagehide", save);
   document.addEventListener("visibilitychange", function () { if (document.hidden) save(); });
   save();
-
-  // 4) ostatnio czytane wykłady — z nich rozgrzewka (today.js) bierze pytania
-  try {
-    var recent = (JSON.parse(localStorage.getItem("studia-recent") || "[]") || []).filter(function (r) { return r && r.h !== here; });
-    recent.unshift({ h: here, ts: Date.now() });
-    localStorage.setItem("studia-recent", JSON.stringify(recent.slice(0, 5)));
-  } catch (e) {}
 })();

@@ -134,10 +134,6 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   background:hsl(var(--sh),calc(var(--ss) + 8%),36%);color:#fff;font:700 .875rem/1 "Atkinson Hyperlegible",sans-serif;font-variant-numeric:tabular-nums;
 }
 .row.empty .ic{background:hsl(var(--sh),var(--ss),min(var(--sl),46%));color:#fff}
-/* powtórki: rozgrzewka i sekcje z zaległymi pytaniami — pod listą przedmiotów */
-button.row{width:100%;border:0;background:transparent;font:inherit;text-align:left;cursor:pointer}
-.today .row.empty{justify-content:center;color:var(--tint);font-weight:700;padding-left:14px}
-.today .more::before{left:0}
 
 /* strona główna: wyszukiwanie i „Czytaj dalej” */
 .search{position:relative;margin:14px 0 0}

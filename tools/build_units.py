@@ -279,11 +279,6 @@ def hub(subj):
   </header>
   <main>{body}</main>
 </div>
-<script src="../assets/srs.js"></script>
-<script src="../assets/cards-index.js"></script>
-<script src="../assets/flashcards.js"></script>
-<script src="../assets/check.js"></script>
-<script src="../assets/today.js" data-root="../" data-subject="{subj["dir"]}"></script>
 <script src="../assets/reader.js" data-home="../" data-nodock data-title="{esc(subj["short"])}"></script>
 </body>
 </html>
@@ -352,11 +347,6 @@ def build_index(subjects):
     <section class="group"><h2>Przedmioty</h2><ul class="ios-list">{"".join(rows)}</ul></section>
   </main>
 </div>
-<script src="assets/srs.js"></script>
-<script src="assets/cards-index.js"></script>
-<script src="assets/flashcards.js"></script>
-<script src="assets/check.js"></script>
-<script src="assets/today.js" data-root=""></script>
 <script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
 <script src="assets/home.js" data-index="assets/search-index.js"></script>
 <script src="assets/plan-data.js"></script>
