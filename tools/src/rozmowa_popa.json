@@ -1,13 +1,53 @@
 {
  "who": "mgr Aleksandra Popa · grupa C2 (Twoja) · terminy z planu zajęć (wydruk 24.10.2026, PDF)",
  "sessions": [
-  {"date": "2026-10-25", "start": "10:45", "end": "13:15", "place": "online"},
-  {"date": "2026-11-08", "start": "13:45", "end": "16:15", "place": "sala A.309"},
-  {"date": "2026-11-21", "start": "17:15", "end": "19:45", "place": "sala A.309"},
-  {"date": "2026-12-13", "start": "13:45", "end": "16:15", "place": "sala A.309"},
-  {"date": "2026-12-20", "start": "13:45", "end": "16:15", "place": "sala A.309"},
-  {"date": "2027-01-10", "start": "08:00", "end": "10:30", "place": "sala A.309"}
+  {
+   "date": "2026-10-25",
+   "start": "10:45",
+   "end": "13:15",
+   "place": "online"
+  },
+  {
+   "date": "2026-11-08",
+   "start": "13:45",
+   "end": "16:15",
+   "place": "sala A.309",
+   "exam": "Wejściówka: 2 pytania otwarte z literatury (Engel-Bernatowicz, Romanowska)"
+  },
+  {
+   "date": "2026-11-21",
+   "start": "17:15",
+   "end": "19:45",
+   "place": "sala A.309",
+   "exam": "Wejściówka: 2 pytania otwarte z literatury (Ustjan)"
+  },
+  {
+   "date": "2026-12-13",
+   "start": "13:45",
+   "end": "16:15",
+   "place": "sala A.309",
+   "exam": "Wejściówka: 2 pytania otwarte z literatury (Stemplewska-Żakowicz)"
+  },
+  {
+   "date": "2026-12-20",
+   "start": "13:45",
+   "end": "16:15",
+   "place": "sala A.309",
+   "exam": "Wejściówka: 2 pytania otwarte z literatury (Grzesiak-Feldman)",
+   "topic": "Interpretacja rozmowy · informacje zwrotne (ostatnie zajęcia)",
+   "lit_extra": 6
+  }
  ],
- "exam": "Wejściówka z literatury tematu",
- "note": "wejściówki wg Notion; w opisie przedmiotu: 5 wejściówek na 6 zajęć"
+ "exams": [
+  {
+   "date": "2027-01-10",
+   "text": "Projekt: termin oddania nagrania, transkryptu i raportu (niedziela)"
+  },
+  {
+   "date": "2027-01-31",
+   "text": "Projekt: ocena prac do końca stycznia"
+  }
+ ],
+ "note": "5 zajęć, ostatnie 20.12; wejściówki od 2. zajęć, na każdych 2 pytania otwarte z literatury; raport do niedzieli 10.01.2027, ocena do końca stycznia",
+ "pass": "Wejściówki od 2. zajęć (8.11, 21.11, 13.12, 20.12): na każdej 2 pytania otwarte z literatury · projekt: 20–30-minutowa rozmowa + nagranie, transkrypt i raport (min. 36/70), termin: niedziela 10.01.2027, ocena do końca stycznia, −2 pkt za dzień opóźnienia. Dozwolona 1 nieobecność. W projekcie nie wolno bezkrytycznie używać AI. (Według sylabusa: wejściówki po 0–6 pkt.)"
 }

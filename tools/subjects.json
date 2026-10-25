@@ -51,10 +51,16 @@
  {"dir":"rozmowa","name":"Rozmowa psychologiczna","short":"Rozmowa","kind_label":"Projekt + Ćwiczenia","hsl":[345,32,60],
   "meta":"Wywiad psychologiczny, t. 1–2",
   "units":[
-   {"key":"zajecia-1","kind":"zaj","label":"Zajęcia 1","file":"zajecia-1.html","title":"Kontakt, kontrakt i etyka rozmowy","sub_short":"Geller i Król · Zalewski"}
+   {"key":"zajecia-1","kind":"zaj","label":"Zajęcia 1","file":"zajecia-1.html","title":"Kontakt, kontrakt i etyka rozmowy","sub_short":"Geller i Król · Zalewski","hand":true},
+   {"key":"zajecia-2","kind":"zaj","label":"Zajęcia 2","file":"zajecia-2.html","title":"Budowanie kontaktu i praca z oporem","sub_short":"Engel-Bernatowicz · Romanowska · 8.11","hand":true},
+   {"key":"zajecia-3","kind":"zaj","label":"Zajęcia 3","file":"zajecia-3.html","title":"Pytania i inne instrumenty konwersacyjne","sub_short":"Ustjan · 21.11","hand":true},
+   {"key":"zajecia-4","kind":"zaj","label":"Zajęcia 4","file":"zajecia-4.html","title":"Planowanie rozmowy i operacjonalizacja","sub_short":"Stemplewska-Żakowicz · 13.12","hand":true},
+   {"key":"zajecia-5","kind":"zaj","label":"Zajęcia 5","file":"zajecia-5.html","title":"Interpretacja rozmowy i informacje zwrotne","sub_short":"Grzesiak-Feldman · Zalewski · 20.12","hand":true},
+   {"key":"projekt","kind":"info","label":"Projekt","file":"projekt.html","title":"Projekt: rozmowa, transkrypt i raport","sub_short":"Kryteria, wzór raportu, transkrypcja · raport do 10.01","hand":true}
   ],
+  "test_lengths":[2,10,0],
   "practice":[
-   {"kind":"cards","title":"Fiszki · Zajęcia 1","sub":"Wejściówka · 14","href":"zajecia-1-fiszki.html"}
+   {"kind":"cards","title":"Pytania do wejściówek","sub":"2 pytania otwarte z literatury","href":"zajecia-1-fiszki.html"}
   ]
  },
  {"dir":"praca","name":"Psychologia pracy i organizacji","short":"Praca i organizacja","kind_label":"Wykład + Ćwiczenia","hsl":[300,20,46],

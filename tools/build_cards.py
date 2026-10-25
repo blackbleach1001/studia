@@ -23,6 +23,14 @@ DECKS = [
     {"dir": "rozmowa", "file": "zajecia-1-fiszki.html", "units": ["zajecia-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s8", 5: "s8", 6: "s9", 7: "s10", 8: "s3",
                 9: "s2", 10: "s4", 11: "s5", 12: "s6", 13: "s5", 14: "s7"}},
+    {"dir": "rozmowa", "file": "zajecia-2-fiszki.html", "units": ["zajecia-2.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's4', 8: 's5', 9: 's6', 10: 's7', 11: 's8', 12: 's9', 13: 's10'}},
+    {"dir": "rozmowa", "file": "zajecia-3-fiszki.html", "units": ["zajecia-3.html"],
+     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's4', 6: 's5', 7: 's5', 8: 's6', 9: 's6', 10: 's6', 11: 's6', 12: 's7', 13: 's7', 14: 's8', 15: 's8', 16: 's9'}},
+    {"dir": "rozmowa", "file": "zajecia-4-fiszki.html", "units": ["zajecia-4.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's3', 5: 's4', 6: 's5', 7: 's6', 8: 's6', 9: 's7', 10: 's7'}},
+    {"dir": "rozmowa", "file": "zajecia-5-fiszki.html", "units": ["zajecia-5.html"],
+     "manual": {1: 's2', 2: 's3', 3: 's4', 4: 's5', 5: 's6', 6: 's7', 7: 's7', 8: 's8', 9: 's9', 10: 's9', 11: 's9'}},
     {"dir": "edukacja", "file": "fiszki.html", "units": ["wyklad-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s1", 5: "s2", 6: "s2", 7: "s2", 8: "s2", 9: "s3", 10: "s3",
                 11: "s3", 12: "s4", 13: "s4", 14: "s5", 15: "s5", 16: "s6", 17: "s6", 18: "s6", 19: "s6"}},
@@ -261,6 +269,8 @@ for d, all_cards in by_dir.items():
     subj = SUBJECTS[d]
     h, s, l = subj["hsl"]
     units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] != "info"]
+    # długości testu: domyślnie 10/20/wszystkie; Rozmowa ma też 2 pytania jak na wejściówce
+    lens = f' data-lengths="{",".join(map(str, subj["test_lengths"]))}"' if subj.get("test_lengths") else ""
     (ROOT / d / "test.html").write_text(f"""<!doctype html>
 <html lang="pl">
 <head>
@@ -280,7 +290,7 @@ for d, all_cards in by_dir.items():
 </header>
 <main id="test"></main>
 </div>
-<script id="test-units" type="application/json">{json.dumps(units, ensure_ascii=False)}</script>
+<script id="test-units" type="application/json"{lens}>{json.dumps(units, ensure_ascii=False)}</script>
 <script src="../assets/srs.js"></script>
 <script src="../assets/cards-index.js"></script>
 <script src="../assets/flashcards.js"></script>

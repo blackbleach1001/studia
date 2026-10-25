@@ -238,6 +238,9 @@
           html += '<details class="pl-gen"><summary>' + esc(g.h) + "</summary><ul class=\"pl-lit\">" + g.items.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>";
         });
       });
+      // terminy poza zajęciami (np. oddanie projektu)
+      var free = EX.filter(function (e) { return e.subj === d && !D.sessions.some(function (x) { return x.subj === d && x.date === e.date && (!e.grp || e.grp === x.grp); }); });
+      if (free.length) html += '<h3 class="pl-h3">Terminy poza zajęciami</h3><ul class="pl-list">' + free.map(exam).join("") + "</ul>";
       html += '<div class="pl-pass"><b>Zaliczenie</b><p>' + esc(s.pass) + "</p></div>" +
         '<a class="pl-link" href="' + d + '/">Notatki z przedmiotu →</a></section>';
     });

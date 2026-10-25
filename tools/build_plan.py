@@ -55,12 +55,19 @@ popa = json.loads((ROOT / "tools" / "src" / "rozmowa_popa.json").read_text(encod
 c1 = [s for s in plan["sessions"] if s["subj"] == "rozmowa"]
 for s in c1:
     s["grp"], s["alt"] = "c1", True
+# u Popy 5 zajęć: lektura 6. tematu (informacje zwrotne) dołączona do ostatnich zajęć 20.12
 for i, x in enumerate(popa["sessions"]):
     src = c1[i] if i < len(c1) else {"topic": "", "lit": []}
+    lit = src["lit"] + (c1[x["lit_extra"] - 1]["lit"] if x.get("lit_extra") else [])
     plan["sessions"].append({"subj": "rozmowa", "kind": "C", "n": str(i + 1), "grp": "popa", "date": x["date"],
-                             "start": x["start"], "end": x["end"], "place": x["place"], "topic": src["topic"], "lit": src["lit"]})
-    plan["exams"].append({"date": x["date"], "subj": "rozmowa", "text": f'{popa["exam"]} {i + 1}', "grp": "popa"})
+                             "start": x["start"], "end": x["end"], "place": x["place"],
+                             "topic": x.get("topic") or src["topic"], "lit": lit})
+    if x.get("exam"):
+        plan["exams"].append({"date": x["date"], "subj": "rozmowa", "text": x["exam"], "grp": "popa"})
+for e in popa.get("exams", []):
+    plan["exams"].append({"date": e["date"], "subj": "rozmowa", "text": e["text"], "grp": "popa"})
 roz = plan["subjects"]["rozmowa"]
+roz["pass"] = popa.get("pass", roz["pass"])
 roz["parts"][0]["grp"] = "c1"
 roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
 roz["parts"].insert(0, {"kind": "C", "grp": "popa", "who": popa["who"], "note": popa["note"], "general": []})

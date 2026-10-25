@@ -14,6 +14,7 @@
   var dir = cards[0].id.split("/")[0];
   var KEY = "studia-test-v1";
   var LENGTHS = [10, 20, 0];            // 0 = wszystkie
+  if (data.getAttribute("data-lengths")) LENGTHS = data.getAttribute("data-lengths").split(",").map(Number);
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function plq(n) { return n === 1 ? "pytanie" : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "pytania" : "pytań"); }
@@ -49,9 +50,14 @@
   function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
   function best(scope) { return store[dir + ":" + scope]; }
 
-  var pickScope = decodeURIComponent((location.hash || "").slice(1));
+  /* test.html#zajecia-2.html:2 — zakres i liczba pytań (2 = próbna wejściówka) */
+  var hash = decodeURIComponent((location.hash || "").slice(1)).split(":");
+  var pickScope = hash[0];
   if (!scopes.some(function (s) { return s.key === pickScope; })) pickScope = "";
-  var pickLen = 10, wantLen = 10;
+  var pickLen = LENGTHS[0] === 2 ? 10 : LENGTHS[0];
+  if (hash[1] && LENGTHS.indexOf(+hash[1]) >= 0) pickLen = +hash[1];
+  if (LENGTHS.indexOf(pickLen) < 0) pickLen = LENGTHS[0];
+  var wantLen = pickLen;
 
   function setup() {
     var html = '<p class="st-test-h">Zakres</p><div class="st-scopes" role="radiogroup" aria-label="Zakres testu">';
@@ -66,7 +72,7 @@
     var lens = LENGTHS.filter(function (n) { return !n || n < total; });
     if (lens.indexOf(pickLen) < 0) pickLen = 0;
     lens.forEach(function (n) {
-      html += '<button type="button" data-len="' + n + '" aria-pressed="' + (n === pickLen) + '">' + (n || "Wszystkie (" + total + ")") + "</button>";
+      html += '<button type="button" data-len="' + n + '" aria-pressed="' + (n === pickLen) + '">' + (n === 2 ? "2 · jak na wejściówce" : n || "Wszystkie (" + total + ")") + "</button>";
     });
     html += '</div><div class="st-fcard-actions"><button class="st-btn primary wide" type="button" data-start>Zacznij test</button></div>';
     el.innerHTML = html;
