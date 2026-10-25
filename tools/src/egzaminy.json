@@ -1,0 +1,12 @@
+[
+ {"date":"2027-01-16","subj":"praca","termin":1,"with":"z 3 rokiem 5-letnich NST"},
+ {"date":"2027-01-30","subj":"poznawcza","termin":1,"time":"10:00","with":"z 2 rokiem 5-letnich NST"},
+ {"date":"2027-01-31","subj":"edukacja","termin":1,"with":"z 3 rokiem 5-letnich NST"},
+ {"date":"2027-02-06","subj":"metodologia","termin":1,"with":"z 2 rokiem 5-letnich NST"},
+ {"date":"2027-02-07","subj":"edukacja","termin":2,"with":"z 3 rokiem 5-letnich NST"},
+ {"date":"2027-02-07","subj":"praca","termin":2,"with":"z 3 rokiem 5-letnich NST"},
+ {"date":"2027-02-13","subj":"poznawcza","termin":2,"with":"osobno"},
+ {"date":"2027-02-14","subj":"kliniczna","termin":1,"with":"z 2 rokiem 5-letnich NST"},
+ {"date":"2027-02-20","subj":"metodologia","termin":2,"with":"osobno"},
+ {"date":"2027-02-21","subj":"kliniczna","termin":2,"with":"z 2 rokiem 5-letnich NST"}
+]

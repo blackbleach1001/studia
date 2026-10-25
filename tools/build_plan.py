@@ -71,6 +71,10 @@ roz["pass"] = popa.get("pass", roz["pass"])
 roz["parts"][0]["grp"] = "c1"
 roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
 roz["parts"].insert(0, {"kind": "C", "grp": "popa", "who": popa["who"], "note": popa["note"], "general": []})
+# sesja egzaminacyjna (zdjęcie harmonogramu egzaminów) — tools/src/egzaminy.json
+for e in json.loads((ROOT / "tools" / "src" / "egzaminy.json").read_text(encoding="utf-8")):
+    plan["exams"].append({"date": e["date"], "subj": e["subj"],
+                          "text": f'Egzamin – {e["termin"]}. termin' + (f' · godz. {e["time"]}' if e.get("time") else "") + f' ({e["with"]})'})
 plan["exams"].sort(key=lambda e: e["date"])
 plan["sessions"].sort(key=lambda s: (s["date"], s["start"]))
 plan["exams"].sort(key=lambda e: e["date"])
