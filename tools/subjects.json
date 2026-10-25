@@ -61,7 +61,11 @@
   "units":[
    {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Organizacja i motywacja do pracy","sub":"Organizacja i kontekst jej funkcjonowania · Motywacja do pracy","sub_short":"Organizacja, motywacja"},
    {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Środowisko pracy i etyka w organizacji","sub":"Rola psychologa w organizacji · Organizacja pracy i środowisko pracy · Etyczny biznes (CSR)","sub_short":"Środowisko pracy, CSR, etyka"},
+   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Zachowania konsumenckie i mechanizmy reklamy","src":"Slajdy, dr hab. A. Grochowska · Stasiuk, Maison (2014), r. 1–2 · Doliński (2003)","sub":"Model EKB, heurystyki, instynkty i ukryta motywacja, nastrój, iluzja odporności na reklamy, wartość marki, sieci skojarzeń, reklama natywna.","sub_short":"Konsument, reklama, marka","hand":true},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Sylabus w skrócie","sub_short":"Zaliczenie i literatura"}
+  ],
+  "practice":[
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Mechanizmy reklamy · 45","href":"wyklad-3-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./"}
  },

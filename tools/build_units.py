@@ -195,6 +195,8 @@ def build_kliniczna(subj):
 def build_praca(subj):
     units = subj["units"]
     for u in units:
+        if u.get("hand"):
+            continue          # strona pisana ręcznie (wyklad-3.html)
         soup = load("praca")
         drop(soup.select_one("header.banner"))
         wrap = soup.select_one("div.wrap")
