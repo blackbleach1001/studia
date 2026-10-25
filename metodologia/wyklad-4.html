@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Wykład 4 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=38668fca" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Modele badawcze: od pytania do testu</h1>
+<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 37–63 (proces badawczy) · Bedyńska i Cypryańska, s. 149–157 (chi-kwadrat), 160–192 (testy t), 198–221 (korelacja) · wykład 8.11</p>
+<div class="links"><a class="btn" href="test.html#wyklad-4.html">Test z tego materiału</a></div>
+</header>
+<main>
+<p class="tldr"><span class="lbl">Uwaga:</span> notatki obejmują przesłane fragmenty. Lektury z sylabusa T2 („Mapa statystycznych huncwotów”, s. 5–70) tu nie ma – po przesłaniu można ją dopisać.</p>
+<!-- 1 -->
+<h2 id="s1">Cel i problem badawczy</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> cel wyznacza wszystkie dalsze decyzje. Nauka ma cztery kierunki: <strong>opis, wyjaśnienie, predykcję i aplikację</strong>. Cel wynika z <strong>problemu badawczego</strong>, czyli luki w wiedzy, i trzeba go zawęzić do konkretnych zmiennych.</p>
+<details class="sec" open="">
+<summary>Cztery cele badań <span class="src">T1 s. 37–40</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Cel</th><th>Na czym polega</th><th>Typowe sformułowanie</th></tr>
+<tr><td><strong>Opis</strong></td><td>możliwie pełna charakterystyka zjawiska, bez pytania, od czego zależy (np. częstość klaskania po lądowaniu)</td><td>„celem był opis…”, „ocena częstotliwości…”</td></tr>
+<tr><td><strong>Wyjaśnienie</strong> (eksplikacja)</td><td>określenie przyczyn zjawiska; trudne, więc często pośrednio – przez opis współwystępowania czynników</td><td>„analiza związku…”, „wyjaśnienie mechanizmu…”</td></tr>
+<tr><td><strong>Predykcja</strong></td><td>przewidywanie zjawiska na podstawie innego czynnika (predyktora); najbardziej zbliża do zastosowań</td><td>„czy na podstawie X można przewidzieć Y”</td></tr>
+<tr><td><strong>Aplikacja</strong></td><td>zastosowanie wyników w praktyce, ocena skuteczności (badania stosowane)</td><td>„analiza skuteczności…”, „ocena przydatności X w Y”</td></tr>
+</table></div>
+<p>Cel może się zmieniać w trakcie: badanie predykcyjne bywa początkiem badania aplikacyjnego.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Problem badawczy i zawężanie celu <span class="src">T1 s. 39–41</span></summary>
+<div class="body">
+<p><strong>Problem badawczy</strong> to ograniczony obszar zagadnienia, w którym trzeba odpowiedzieć na ważne pytania: wymiar niewiedzy, luka w obserwacjach albo nowa perspektywa. Jego rozwiązanie ma wspierać rozwój dziedziny lub odbiorców.</p>
+<p>Cel trzeba <strong>uszczegółowić</strong> – w jednym projekcie nie zbada się wszystkich czynników lęku przed lataniem. Pomagają: przegląd literatury, systematyczna obserwacja, rozmowy z ekspertami, analiza z różnych perspektyw. Dobry cel wskazuje funkcję badania i <strong>co</strong> zostanie zbadane, np. „ocena związku między wielkością samolotu a poziomem lęku przed podróżą”. Precyzyjne pytanie to <strong>pytanie badawcze</strong>, a wstępna odpowiedź na nie – <strong>hipoteza</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:1ac6b571,metodologia/wyklad-4-fiszki:39086fe7" data-title="Cel i problem badawczy" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 2 -->
+<h2 id="s2">Pytania badawcze</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> dobre pytanie badawcze jest <strong>skoncentrowane, jasne, zwięzłe, wystarczająco złożone i dyskutowalne</strong>. Pomocne schematy: <strong>PICO</strong> (interwencje) i <strong>PFO</strong> (predykcja).</p>
+<details class="sec" open="">
+<summary>Cechy dobrego pytania <span class="src">T1 s. 42–44</span></summary>
+<div class="body">
+<ul>
+<li><strong>skoncentrowane</strong> na jednym problemie, możliwym do zbadania metodą naukową i dostępnymi środkami (nie: „Czy Bóg istnieje?”);</li>
+<li><strong>jasne</strong> – zrozumiałe dla odbiorcy;</li>
+<li><strong>zwięzłe</strong> – w najmniejszej potrzebnej liczbie słów;</li>
+<li><strong>wystarczająco złożone</strong> – nie da się odpowiedzieć „tak/nie” ani przed badaniem;</li>
+<li><strong>dyskutowalne</strong> – odpowiedź nie jest oczywistym faktem.</li>
+</ul>
+<p>Pytania formułuje się na początku projektu, nie po zebraniu danych (inaczej może się okazać, że dane nie dają odpowiedzi). Typy pytań odpowiadają typom hipotez: o <strong>różnicę</strong>, <strong>związek</strong> i <strong>wpływ</strong>.</p>
+</div>
+</details>
+<details class="sec">
+<summary>PICO i PFO <span class="src">T1 s. 44, pole 5</span></summary>
+<div class="body">
+<p><strong>PICO</strong> (badania aplikacyjne, skuteczność interwencji): <strong>P</strong>atient – kogo badamy (pasażerowie), <strong>I</strong>ntervention – interwencja („suchary” załogi), <strong>C</strong>omparison – z czym porównujemy (muzyka klasyczna), <strong>O</strong>utcome – wynik (poziom lęku). Pytanie: „Czy słuchanie sucharów skuteczniej obniża lęk w czasie turbulencji niż muzyka klasyczna?”.</p>
+<p><strong>PFO</strong> (badania predykcyjne): <strong>P</strong>opulation – piloci, <strong>F</strong>actors – kolor uniformu, <strong>O</strong>utcomes – zadowolenie z pracy. Pytanie: „Czy kolor uniformu pozwala przewidzieć zadowolenie z pracy pilotów?”.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:a66e1515,metodologia/wyklad-4-fiszki:4f15c0cc" data-title="Pytania badawcze" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 3 -->
+<h2 id="s3">Hipotezy badawcze</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> hipoteza to odpowiedź na pytanie badawcze w formie <strong>twierdzenia</strong>. Bywa <strong>kierunkowa lub niekierunkowa</strong> i dotyczy <strong>różnicy, związku albo wpływu</strong>. Hipotezy badawcze odróżnia się od statystycznych (H₀ i H₁).</p>
+<details class="sec" open="">
+<summary>Rodzaje i schematy zapisu <span class="src">T1 s. 45–47</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Typ</th><th>Kierunkowa</th><th>Niekierunkowa</th></tr>
+<tr><td><strong>Różnica</strong> (zjawisko w ≥2 stanach, spójnik „niż”)</td><td>Osoby oglądające „Katastrofy w przestworzach” mają <strong>wyższy</strong> lęk <strong>niż</strong> oglądające „Kuchenne rewolucje”.</td><td>Osoby oglądające… <strong>różnią się</strong> poziomem lęku od…</td></tr>
+<tr><td><strong>Związek</strong> (spójniki „im… tym…”)</td><td><strong>Im więcej</strong> dzieci na pokładzie, <strong>tym więcej</strong> alkoholu piją dorośli.</td><td><strong>Istnieje związek</strong> między liczbą dzieci a ilością alkoholu.</td></tr>
+<tr><td><strong>Wpływ</strong> (zmienna X wpływa na Y)</td><td>Zabawne komunikaty kapitana <strong>zwiększają</strong> poczucie bezpieczeństwa.</td><td>Częstość komunikatów <strong>wpływa</strong> na poczucie bezpieczeństwa.</td></tr>
+</table></div>
+<p>Hipotezy o wpływie wymagają <strong>eksperymentu</strong> (s5). Autorki BC zalecają, by hipotezy w miarę możliwości określały kierunek.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:c1bbd6f5,metodologia/wyklad-4-fiszki:6dca530c" data-title="Hipotezy badawcze" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 4 -->
+<h2 id="s4">Typy badań: kurs, wysokość, prędkość</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> badanie opisują trzy wymiary: <strong>podstawowe vs stosowane</strong>, <strong>laboratoryjne vs terenowe</strong>, <strong>ilościowe vs jakościowe</strong>.</p>
+<details class="sec" open="">
+<summary>Trzy podziały <span class="src">T1 s. 48–51</span></summary>
+<div class="body">
+<ul>
+<li><strong>Podstawowe</strong> – nowa wiedza o podstawach zjawisk bez nastawienia na zastosowanie (związek wielkości samolotu z lękiem). <strong>Stosowane</strong> (aplikacyjne) – nastawione na praktykę (skuteczność „sucharów”). Często podstawowe są wstępem do stosowanych.</li>
+<li><strong>Laboratoryjne</strong> – pełna kontrola warunków (symulator lotów), co umożliwia badanie wpływu; zarzut sztuczności. <strong>Terenowe</strong> – naturalne środowisko, lepsza kontekstowość, słabsza kontrola zmiennych zakłócających.</li>
+<li><strong>Ilościowe</strong> – liczbowe dane i analiza statystyczna (średnie z kwestionariusza). <strong>Jakościowe</strong> – dogłębna analiza treści (wywiady, studia przypadku, obserwacje), wyniki jako opis słowny, bez wnioskowania statystycznego. Główna różnica: sposób pomiaru.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Realizm sytuacyjny i eksperymentalny <span class="src">T1 s. 50, pole 7</span></summary>
+<div class="body">
+<p><strong>Realizm sytuacyjny</strong> (przyziemny): na ile sytuacja badania przypomina prawdziwe życie, wydaje się realna. <strong>Realizm eksperymentalny</strong>: na ile badani są naprawdę zaangażowani poznawczo, emocjonalnie i behawioralnie, co pozwala uogólniać efekty poza laboratorium. Pojęcia są często mylone.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:a0e819bb,metodologia/wyklad-4-fiszki:4ca5f506,metodologia/wyklad-4-fiszki:3adcf693" data-title="Typy badań: kurs, wysokość, prędkość" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- 5 -->
+<h2 id="s5">Model eksperymentalny</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> tylko eksperyment pozwala wnioskować o <strong>przyczynie i wpływie</strong>. Badacz <strong>manipuluje</strong> zmienną niezależną, mierzy zależną, <strong>losowo przydziela</strong> osoby do grup i kontroluje zmienne zakłócające. Wysoka trafność wewnętrzna, niższa zewnętrzna.</p>
+<details class="sec" open="">
+<summary>Zmienne w eksperymencie <span class="src">T1 s. 52–54</span></summary>
+<div class="body">
+<p class="def"><strong>Zmienna</strong> to dowolna cecha lub zjawisko, które może przyjmować co najmniej dwie wartości.</p>
+<ul>
+<li><strong>Zmienna zależna (ZZ, Y)</strong> – wyjaśniana; jej wartość jest nieznana przy planowaniu, zmienia się pod wpływem ZN (punkty na skali lęku).</li>
+<li><strong>Zmienna niezależna (ZN, X)</strong> – wyjaśniająca, grupująca; jej wartości (<strong>poziomy</strong>) ustala badacz (muzyka klasyczna vs żarty załogi).</li>
+</ul>
+<p>Rodzaje ZN <strong>manipulowanej</strong>: <strong>sytuacyjna</strong> (różne warunki zewnętrzne: muzyka vs żarty), <strong>zadaniowa</strong> (różne zadania: nucenie vs głębokie oddychanie), <strong>instruktażowa</strong> (ta sama technika, inna instrukcja: oddychać cały lot vs tylko w turbulencji). ZN <strong>podmiotowa</strong> to cecha osoby (płeć, wykształcenie) – nie da się nią manipulować ani randomizować.</p>
+</div>
+</details>
+<details class="sec" open="">
+<summary>Randomizacja, grupy, zmienne zakłócające <span class="src">T1 s. 54–58, pole 8</span></summary>
+<div class="body">
+<p><strong>Randomizacja</strong> to losowy przydział osób już włączonych do badania do grup: każdy ma tę samą szansę trafić do każdego warunku. Dzięki temu inne cechy rozkładają się losowo (przykład: bez losowania spóźnialscy, bardziej zestresowani, trafili do jednej grupy). Nie chroni w pełni – nierówny rozkład mimo losowania to <strong>błąd próbkowania</strong>. Nie mylić z <strong>doborem losowym</strong>, czyli losowym wyborem uczestników z populacji.</p>
+<p><strong>Grupa kontrolna</strong> – bez manipulacji ZN, pokazuje wyjściowy poziom ZZ; <strong>grupa eksperymentalna</strong> – z manipulacją. Eksperyment może mieć dwie grupy eksperymentalne, grupę kontrolną albo wiele grup; zwykle są mniej liczne niż w badaniach korelacyjnych.</p>
+<p><strong>Zmienna zakłócająca</strong> – jej efektu nie da się oddzielić od efektu ZN (dłuższa turbulencja w jednej grupie). Wtedy dane są <strong>nieinterpretowalne</strong>; można tylko lepiej zaplanować kolejne badanie.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Quasi-eksperyment <span class="src">T1 s. 57</span></summary>
+<div class="body">
+<p><strong>Quasi-eksperyment</strong> („jakby eksperyment”) ma strukturę eksperymentu, ale <strong>bez randomizacji</strong>: gdy ZN jest podmiotowa (kobiety i mężczyźni, wysoki i niski lęk) albo gdy względy organizacyjne nie pozwalają losować (całe grupy w instytucji). <strong>Nie uprawnia do wniosków o wpływie i przyczynowości</strong>; część badaczy zalicza go do modeli nieeksperymentalnych.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:d823b10c,metodologia/wyklad-4-fiszki:3efdd472,metodologia/wyklad-4-fiszki:74715ac8,metodologia/wyklad-4-fiszki:7b06cf0e,metodologia/wyklad-4-fiszki:bb579139" data-title="Model eksperymentalny" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>5 pytań</span></span></button></div>
+<!-- 6 -->
+<h2 id="s6">Model nieeksperymentalny (korelacyjny)</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> bada <strong>współwystępowanie</strong> zmiennych bez manipulacji. Zmienne mają równy status; można mówić o <strong>predyktorach</strong> i <strong>zmiennej kryterialnej</strong>, ale nie o przyczynie.</p>
+<details class="sec" open="">
+<summary>Badania korelacyjne <span class="src">T1 s. 58–60</span></summary>
+<div class="body">
+<p>Do modeli nieeksperymentalnych należą badania podłużne i poprzeczne, obserwacyjne, ankietowe i najczęściej <strong>korelacyjne</strong>. Pytają o typowe wartości zmiennych w populacji, różnice indywidualne i zmiany w czasie. Przydają się, gdy eksperyment jest niemożliwy praktycznie lub etycznie.</p>
+<p>Przykład: lęk w czasie turbulencji, poczucie humoru, zdolność do relaksacji, przekierowanie uwagi – mierzone kwestionariuszami. <strong>Predyktory</strong> (zmienne predykcyjne) to trzy ostatnie, <strong>zmienna kryterialna</strong> (objaśniana) – lęk. Kryterialna jest jedna, predyktorów może być wiele.</p>
+<p>Grupy mogą być bardzo liczne, nie ma podziału na eksperymentalną i kontrolną; zbiera się dane demograficzne, co pozwala sprawdzać związki w podgrupach (np. silniejszy u starszych). Wniosek: <strong>związek, nie przyczynowość</strong> – może to lęk wpływa na uwagę. Bardziej złożone modele pozwalają na prognozy.</p>
+</div>
+</details>
+<details class="sec" open="">
+<summary>Porównanie modeli <span class="src">T1 tab. 2.3</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th></th><th>Eksperymentalny</th><th>Nieeksperymentalny</th></tr>
+<tr><td><strong>Zmienne</strong></td><td>niezależna (manipulowana) i zależna</td><td>współtowarzyszące; predyktory i kryterialna</td></tr>
+<tr><td><strong>Grupy</strong></td><td>eksperymentalna i kontrolna, randomizacja, zwykle mniej osób</td><td>bez podziału, często bardzo liczne</td></tr>
+<tr><td><strong>Wnioski</strong></td><td>przyczynowo-skutkowe, wpływ</td><td>współwystępowanie, predykcja</td></tr>
+<tr><td><strong>Trafność</strong></td><td>wysoka wewnętrzna, niższa zewnętrzna</td><td>lepsze uogólnianie, brak wniosków o przyczynie</td></tr>
+</table></div>
+<p>Oba modele są szanowane; wybór zależy od celu, problemu i możliwości organizacyjnych.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:147e3a38,metodologia/wyklad-4-fiszki:dd8c6d8d" data-title="Model nieeksperymentalny (korelacyjny)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 7 -->
+<h2 id="s7">Operacjonalizacja zmiennych</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> konstrukty psychologiczne nie są bezpośrednio obserwowalne, więc trzeba je <strong>zoperacjonalizować</strong>: napisać <strong>definicję teoretyczną</strong> (co badam) i <strong>operacyjną</strong> (jak mierzę). Ta sama definicja teoretyczna może mieć różne definicje operacyjne.</p>
+<details class="sec" open="">
+<summary>Konstrukt, definicje, wskaźnik <span class="src">T1 s. 61–63</span></summary>
+<div class="body">
+<p><strong>Konstrukt psychologiczny</strong> (lęk, poczucie humoru) to pojęcie, którego nie da się w całości obserwować – widać tylko jego przejawy. <strong>Operacjonalizacja</strong> to łączenie pojęć ze sposobami pomiaru, przeniesienie pojęcia teoretycznego na grunt empiryczny („korytarz powietrzny” badania).</p>
+<ol>
+<li><strong>Definicja teoretyczna</strong> – szczegółowy opis konstruktu (np. czy chodzi o lęk stały, czy tylko w samolocie; fizjologia, myśli, zachowania?).</li>
+<li><strong>Definicja operacyjna</strong> – jak dokładnie zostanie zmierzony (kwestionariusz, aparatura, czas reakcji).</li>
+</ol>
+<p>Przykład: rozwiązywanie problemów (identyfikacja problemu, logiczne myślenie, panowanie nad emocjami). W eksperymencie z treningiem pilotów definicja operacyjna to <strong>liczba trafnych procedur</strong> w symulowanej awarii; w badaniu korelacyjnym ze stażem lotniczym – <strong>liczba punktów w teście</strong> sytuacyjnym.</p>
+<p><strong>Wskaźnik</strong> (w sensie metodologicznym) to to, co jawnie obserwujemy i co świadczy o konstrukcie (zachowanie w awarii jako wskaźnik umiejętności rozwiązywania problemów).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:fe54d1de" data-title="Operacjonalizacja zmiennych" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div>
+<!-- 8 -->
+<h2 id="s8">Korelacja r-Pearsona</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> korelacja to miara <strong>współzmienności</strong> dwóch zmiennych. <strong>r-Pearsona</strong> (skale ilościowe, związek liniowy) przyjmuje wartości od −1 do 1: znak to <strong>kierunek</strong>, wartość bezwzględna to <strong>siła</strong>. Zawsze rób <strong>wykres rozrzutu</strong>.</p>
+<details class="sec" open="">
+<summary>Kowariancja i r-Pearsona <span class="src">BC s. 198–203</span></summary>
+<div class="body">
+<p><strong>Kowariancja</strong>: suma iloczynów odchyleń od średnich obu zmiennych podzielona przez N − 1 (w przykładzie gry–refleks cov = 22/4 = 5,5). Pokazuje tylko <strong>kierunek</strong>; jest niewystandaryzowana, zależy od jednostek (godziny → minuty zmieniają wynik).</p>
+<p><strong>r-Pearsona</strong> to wystandaryzowana kowariancja: r = ΣZ<sub>x</sub>Z<sub>y</sub>/(N − 1) (w przykładzie r = 3,86/4 ≈ 0,97). Nie zależy od jednostek.</p>
+<div class="tbl"><table>
+<tr><th>|r|</th><th>Interpretacja</th></tr>
+<tr><td>0–0,30</td><td>brak lub bardzo słaba</td></tr>
+<tr><td>0,31–0,50</td><td>umiarkowana</td></tr>
+<tr><td>0,51–0,70</td><td>silna</td></tr>
+<tr><td>0,71–1</td><td>bardzo silna</td></tr>
+</table></div>
+<p><strong>Kierunek</strong>: dodatnia (wysokie z wysokimi: czas nauki i wynik), ujemna (wysokie z niskimi: godziny pracy i czas wolny), zerowa (brak związku liniowego). W praktyce cieszą korelacje od ok. 0,4–0,5, o ile są istotne.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Wykres rozrzutu, SPSS i zapis <span class="src">BC s. 203–214</span></summary>
+<div class="body">
+<p><strong>Wykres rozrzutu</strong>: każda osoba to punkt (X, Y). Linia dopasowania wyznaczana jest <strong>metodą najmniejszych kwadratów</strong> (minimalna suma kwadratów odległości punktów od linii). Dodatnia: od lewego dolnego do prawego górnego rogu; ujemna: od lewego górnego do prawego dolnego; słaba: punkty rozrzucone, linia płaska. Im bliżej linii punkty, tym dokładniejsza predykcja.</p>
+<p>SPSS: ANALIZA → KORELACJE → PARAMI (domyślnie Pearson); wynik to <strong>macierz korelacji</strong> z r, istotnością (p &lt; 0,05, by interpretować) i N (braki danych wyłączają obserwacje). Wykres: WYKRESY → TRADYCYJNE → ROZRZUTU/PUNKTOWY; przy wielu zmiennych wykres macierzowy.</p>
+<p><strong>Zapis</strong>: r = 0,79; p &lt; 0,001 (dwa miejsca po przecinku; p = 0,000 zapisujemy p &lt; 0,001). Potem interpretacja: istotny, silny, dodatni związek – im większe poczucie humoru, tym więcej znajomych, <strong>bez</strong> wniosku o przyczynie.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:0e037fcb,metodologia/wyklad-4-fiszki:7f3f39f3,metodologia/wyklad-4-fiszki:490173d4" data-title="Korelacja r-Pearsona" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- 9 -->
+<h2 id="s9">Pułapki korelacji i inne współczynniki</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> korelacja to <strong>nie przyczynowość</strong>; bywa <strong>pozorna</strong> (trzecia zmienna), <strong>krzywoliniowa</strong>, zniekształcona przez <strong>obserwację odstającą</strong> lub <strong>ograniczony zakres</strong>. Dla innych skal: Spearman, Kendall, phi, V Cramera, eta.</p>
+<details class="sec" open="">
+<summary>Pułapki <span class="src">BC s. 198–199, 214–218</span></summary>
+<div class="body">
+<ul>
+<li><strong>Korelacja ≠ przyczynowość</strong>: nie wiadomo, czy stres obniża wyniki, czy słabe wyniki zwiększają stres. Wyjątek: interpretacja oparta na teorii.</li>
+<li><strong>Korelacja pozorna</strong>: związek istnieje dzięki trzeciej zmiennej (towarzyskość i zadowolenie z życia przez liczbę znajomych; nici dentystyczne i golf przez zamożność krajów). Analiza mediacji pozwala to sprawdzić.</li>
+<li><strong>Kwartet Anscombe'a</strong>: cztery zbiory o tym samym r ≈ 0,82, a tylko jeden opisuje związek liniowy; inne to zależność <strong>krzywoliniowa</strong> (jak prawo Yerkesa-Dodsona), związek zniekształcony przez <strong>obserwację odstającą</strong> i brak związku z jednym skrajnym punktem.</li>
+<li><strong>Ograniczony zakres</strong> (restriction in range): związek nie jest jednakowy w całym zakresie zmiennej (pierwszy dzień po przykrym zdarzeniu bez spadku emocji osłabia całą korelację).</li>
+<li>Przy wielu zmiennych nie raportuj „wszystkiego, co wychodzi” – wybierz zmienne, co do których masz przewidywania.</li>
+</ul>
+</div>
+</details>
+<details class="sec" open="">
+<summary>Który współczynnik dla jakiej skali <span class="src">BC s. 218–220</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Skale</th><th>Współczynnik</th><th>Zakres</th></tr>
+<tr><td>dwie ilościowe</td><td><strong>r-Pearsona</strong></td><td>−1 do 1</td></tr>
+<tr><td>porządkowe</td><td><strong>rho Spearmana</strong>, <strong>tau-b Kendalla</strong></td><td>−1 do 1</td></tr>
+<tr><td>dwie nominalne dwukategorialne (2×2)</td><td><strong>phi</strong></td><td>−1 do 1</td></tr>
+<tr><td>nominalne o większej liczbie kategorii</td><td><strong>V Cramera</strong></td><td>0 do 1 (siła bez kierunku)</td></tr>
+<tr><td>ilościowa i nominalna</td><td><strong>eta</strong></td><td>0 do 1</td></tr>
+</table></div>
+<p>Phi i V Cramera liczy się w SPSS w TABELACH KRZYŻOWYCH → STATYSTYKI.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:8125aa8b,metodologia/wyklad-4-fiszki:c18a6570,metodologia/wyklad-4-fiszki:1895f570" data-title="Pułapki korelacji i inne współczynniki" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- 10 -->
+<h2 id="s10">Chi-kwadrat dla tabel krzyżowych</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> test <strong>chi-kwadrat niezależności</strong> sprawdza, czy dwie zmienne <strong>kategorialne</strong> są ze sobą związane, porównując liczebności <strong>obserwowane</strong> z <strong>oczekiwanymi</strong>. To, na czym polega związek, pokazują <strong>reszty standaryzowane</strong>.</p>
+<details class="sec" open="">
+<summary>Jak działa test <span class="src">BC s. 149–154</span></summary>
+<div class="body">
+<p>Przykład: płeć ucznia i posiadanie szachów (N = 4950). <strong>Liczebności oczekiwane</strong> to rozkład, jaki byłby, gdyby zmienne były niezależne: E = (suma wiersza × suma kolumny) / N. Chi-kwadrat sumuje (O − E)²/E.</p>
+<p><strong>Stopnie swobody</strong>: df = (liczba kategorii 1. zmiennej − 1) × (liczba kategorii 2. zmiennej − 1); dla 2×2 df = 1.</p>
+<p><strong>Zapis</strong>: χ²(1, N = 4950) = 63,50; p &lt; 0,001 → odrzucamy hipotezę o niezależności; chłopcy częściej dostają szachy.</p>
+<p>Inne wiersze raportu: <strong>poprawka na ciągłość (Yates)</strong> – tylko tabele 2×2; <strong>iloraz wiarygodności</strong> – „rzeczywisty” test, którego przybliżeniem jest chi-kwadrat Pearsona; <strong>dokładny test Fishera</strong> – 2×2, gdy N &lt; 30 lub liczebność oczekiwana w komórce &lt; 5; <strong>test związku liniowego</strong> – dla zmiennych ilościowych.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Reszty standaryzowane, siła związku, inne zastosowania <span class="src">BC s. 155–157</span></summary>
+<div class="body">
+<p>Istotny chi-kwadrat mówi, że „coś się dzieje”, ale nie co (jak interakcja w analizie wariancji). <strong>Reszta standaryzowana</strong> = (O − E)/√E; komórki z |reszta| &gt; <strong>1,96</strong> (ostrzej 2,58) istotnie odbiegają od oczekiwań.</p>
+<p>Siła związku: <strong>współczynnik kontyngencji</strong>, <strong>phi</strong> (2×2), <strong>V Cramera</strong> (większe tabele), <strong>iloraz szans</strong> (2×2; jeśli 95% przedział ufności zawiera 1 – brak związku).</p>
+<p>Chi-kwadrat służy też do sprawdzania <strong>założeń</strong> innych testów, np. równoliczności grup – wtedy pożądany jest wynik <strong>nieistotny</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:146d6058,metodologia/wyklad-4-fiszki:6460a044,metodologia/wyklad-4-fiszki:4ae53c4e" data-title="Chi-kwadrat dla tabel krzyżowych" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- 11 -->
+<h2 id="s11">Testy t-Studenta</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> test t porównuje <strong>dwie średnie</strong> (ZZ ilościowa, ZN dwuwartościowa). Trzy wersje: <strong>jedna próba</strong>, <strong>próby niezależne</strong>, <strong>próby zależne</strong>. Założenia: normalność, (dla niezależnych) jednorodność wariancji, podobna liczebność. Wielkość efektu: <strong>d Cohena</strong>.</p>
+<details class="sec" open="">
+<summary>Kiedy i który test t <span class="src">BC s. 160–165</span></summary>
+<div class="body">
+<p>Przykład badania: ocena obrazu przy informacji, że malowano go 3 godziny albo 3 miesiące (heurystyka wysiłku). Testu t używamy, gdy interesują nas <strong>różnice</strong>, porównujemy <strong>dwie</strong> średnie i ZZ jest <strong>ilościowa</strong>.</p>
+<ul>
+<li><strong>Próby niezależne</strong> – w grupach są różne osoby (ZN międzyobiektowa); ryzyko zakłóceń przez różnice indywidualne.</li>
+<li><strong>Próby zależne</strong> – te same osoby w obu warunkach (pomiar powtarzany, ZN wewnątrzobiektowa); mniej zakłóceń indywidualnych, ale efekt wprawy, wpływ pierwszego pomiaru na drugi, czasem absurdalność dla badanego; kontrola przez zmianę kolejności.</li>
+<li><strong>Jedna próba</strong> – średnia z próby porównana z wartością teoretyczną lub empiryczną (np. wskaźnik różnicy „Ja minus inni” porównany z 0 w badaniach optymizmu porównawczego).</li>
+</ul>
+</div>
+</details>
+<details class="sec" open="">
+<summary>Założenia, odporność, testy nieparametryczne <span class="src">BC s. 165–168</span></summary>
+<div class="body">
+<ul>
+<li><strong>Ilościowy poziom pomiaru</strong> ZZ – warunek konieczny (w psychologii skale Likerta traktuje się liberalnie jako ilościowe).</li>
+<li><strong>Normalność rozkładu</strong> – testy t są dość odporne, zwłaszcza przy N &gt; 30 i bez skrajnej skośności; i tak warto obejrzeć dane (wykres skrzynkowy, wyniki odstające).</li>
+<li><strong>Jednorodność wariancji</strong> (tylko próby niezależne) – sprawdza ją <strong>test Levene'a</strong>: nieistotny → wariancje jednorodne (górny wiersz raportu), istotny → niejednorodne (wiersz z poprawką).</li>
+<li><strong>Równoliczność</strong> grup – przy równych grupach test jest odporny na pojedyncze naruszenie; przy nierównych i złamanym założeniu – mniejsze zaufanie.</li>
+</ul>
+<p><strong>Odporność</strong>: test jest odporny, gdy wnioski są mało wrażliwe na niespełnienie założeń; test obciążony zwiększa ryzyko błędu I rodzaju (odrzucenie prawdziwej H₀) lub II rodzaju (przyjęcie fałszywej H₀).</p>
+<p>Gdy założenia zawodzą: <strong>test U Manna-Whitneya</strong> (zamiast t dla prób niezależnych) i <strong>test Wilcoxona</strong> (zamiast t dla prób zależnych); opierają się na <strong>rangach</strong>, wystarcza skala porządkowa, ale są bardziej <strong>konserwatywne</strong> (trudniej wykryć istniejącą różnicę), więc gdy można – wybieramy test parametryczny.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Kroki wnioskowania, d Cohena, zapis <span class="src">BC s. 168–192</span></summary>
+<div class="body">
+<ol>
+<li>Hipoteza badawcza → 2. dane → 3. <strong>H₀</strong> (brak różnicy) i <strong>H₁</strong> (różnica; muszą się wykluczać) → 4. zmienne i założenia → 5. wybór testu → 6. poziom istotności (zwykle p &lt; 0,05, umowny) → 7. obliczenie t i p → 8. zapis i wnioski.</li>
+</ol>
+<p>Wnioskowanie jest <strong>indukcyjne</strong> (z próby o populacji) i <strong>pośrednie</strong> (testujemy H₀, nie hipotezę badawczą). <strong>Wynik istotny</strong>: uzyskanie takiej różnicy przy prawdziwej H₀ jest bardzo mało prawdopodobne. t jest tym większe, im większa różnica średnich, mniejsze rozproszenie i większa próba.</p>
+<p><strong>d Cohena</strong> – wielkość efektu (istotność nie mówi o sile): <strong>0,20 mała, 0,50 średnia, 0,80 duża</strong>. Dla prób zależnych d = średnia różnic / SD różnic (w przykładzie 0,95/0,89 = 1,07 – duża).</p>
+<p><strong>Zapis</strong>: „Średnia ocen własnej towarzyskości (M = 4,95; SD = 1,47) była istotnie wyższa niż ocen przeciętnego studenta (M = 4,00; SD = 1,34), t(19) = 4,79; p &lt; 0,001; d = 1,07”. W raporcie nie wspomina się o H₀; zawsze podaje się statystyki uzasadniające wniosek. Jedna próba: t(19) = 2,97; p = 0,008 dla M = 0,95 vs 0. Df: jedna próba i zależne N − 1; niezależne N − 2 (np. t(48)).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:47e91351,metodologia/wyklad-4-fiszki:6b00f618,metodologia/wyklad-4-fiszki:a4a8ecf0,metodologia/wyklad-4-fiszki:cdd48b7d,metodologia/wyklad-4-fiszki:bb48064a,metodologia/wyklad-4-fiszki:46029441" data-title="Testy t-Studenta" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
+<!-- 12 -->
+<h2 id="s12">Zestawienie: który test kiedy</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> wybór zależy od <strong>pytania</strong> (różnica czy związek), <strong>skali</strong> zmiennych i tego, czy grupy są <strong>niezależne czy zależne</strong>.</p>
+<details class="sec" open="">
+<summary>Ściąga</summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Sytuacja</th><th>Test / miara</th></tr>
+<tr><td>związek dwóch zmiennych ilościowych</td><td>r-Pearsona (+ wykres rozrzutu)</td></tr>
+<tr><td>związek zmiennych porządkowych</td><td>rho Spearmana, tau-b Kendalla</td></tr>
+<tr><td>związek dwóch zmiennych nominalnych</td><td>chi-kwadrat; siła: phi (2×2), V Cramera</td></tr>
+<tr><td>średnia z próby vs wartość</td><td>t dla jednej próby</td></tr>
+<tr><td>dwie grupy różnych osób</td><td>t dla prób niezależnych (Levene) / U Manna-Whitneya</td></tr>
+<tr><td>te same osoby dwa razy</td><td>t dla prób zależnych / Wilcoxon</td></tr>
+<tr><td>siła różnicy średnich</td><td>d Cohena</td></tr>
+</table></div>
+</div>
+</details>
+<div class="st-check unit"><button data-check="metodologia/wyklad-4-fiszki:1ac6b571,metodologia/wyklad-4-fiszki:39086fe7,metodologia/wyklad-4-fiszki:a66e1515,metodologia/wyklad-4-fiszki:4f15c0cc,metodologia/wyklad-4-fiszki:c1bbd6f5,metodologia/wyklad-4-fiszki:6dca530c,metodologia/wyklad-4-fiszki:a0e819bb,metodologia/wyklad-4-fiszki:4ca5f506,metodologia/wyklad-4-fiszki:3adcf693,metodologia/wyklad-4-fiszki:d823b10c,metodologia/wyklad-4-fiszki:3efdd472,metodologia/wyklad-4-fiszki:74715ac8,metodologia/wyklad-4-fiszki:7b06cf0e,metodologia/wyklad-4-fiszki:bb579139,metodologia/wyklad-4-fiszki:147e3a38,metodologia/wyklad-4-fiszki:dd8c6d8d,metodologia/wyklad-4-fiszki:fe54d1de,metodologia/wyklad-4-fiszki:0e037fcb,metodologia/wyklad-4-fiszki:7f3f39f3,metodologia/wyklad-4-fiszki:490173d4,metodologia/wyklad-4-fiszki:8125aa8b,metodologia/wyklad-4-fiszki:c18a6570,metodologia/wyklad-4-fiszki:1895f570,metodologia/wyklad-4-fiszki:146d6058,metodologia/wyklad-4-fiszki:6460a044,metodologia/wyklad-4-fiszki:4ae53c4e,metodologia/wyklad-4-fiszki:47e91351,metodologia/wyklad-4-fiszki:6b00f618,metodologia/wyklad-4-fiszki:a4a8ecf0,metodologia/wyklad-4-fiszki:cdd48b7d,metodologia/wyklad-4-fiszki:bb48064a,metodologia/wyklad-4-fiszki:46029441" data-title="Wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>32 pytania</span></span></button></div><footer class="sources">
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 37–63). Wydawnictwo Naukowe PWN.</p>
+<p>Wnioskowanie statystyczne na danych jakościowych (s. 149–157); Testy t-Studenta i ich nieparametryczne odpowiedniki (s. 160–192); Ścibor-Rylski, M. Miary związku między zmiennymi – współczynniki korelacji (s. 198–221). W: S. Bedyńska i M. Cypryańska (red.) (2013), <em>Statystyczny drogowskaz 1</em>. Sedno.</p>
+</footer>
+</main>
+</div>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=068539fd"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 4" src="../assets/reader.js?v=5ef0fecc"></script>
+</body>
+</html>

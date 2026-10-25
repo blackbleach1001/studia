@@ -21,6 +21,7 @@
    {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Konceptualizacja, operacjonalizacja, pomiar","src":"Józefacka t. 1, s. 64–72 · Babbie · slajdy","sub_short":"Józefacka · Babbie · slajdy"},
    {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS","sim":"sym-cwiczenia-1.html"},
    {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Statystyki opisowe i rozkład normalny","src":"Józefacka t. 1, s. 148–156, 197–233 · Bedyńska i Cypryańska, s. 83–111","sub_short":"Miary, rozkład normalny, testy normalności","hand":true},
+   {"key":"wyklad-4","kind":"wyk","label":"Wykład 4","file":"wyklad-4.html","title":"Modele badawcze: od pytania do testu","src":"Józefacka t. 1, s. 37–63 · Bedyńska i Cypryańska, s. 149–157, 160–192, 198–221","sub_short":"Hipotezy, eksperyment vs korelacja, r-Pearsona, chi-kwadrat, testy t","hand":true},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Jak zaliczyć przedmiot","sub_short":"Sylabus"}
   ],
   "sims":[
