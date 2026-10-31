@@ -90,8 +90,10 @@ def unit_href(s):
             return f'{s["subj"]}/{u["file"]}'
     return None
 
+# ćwiczenia z tą samą lekturą co wykład → notatki z wykładu
+SAME_LIT = {("metodologia", "C", "2"): "metodologia/wyklad-3.html"}
 for s in plan["sessions"]:
-    h = unit_href(s)
+    h = unit_href(s) or SAME_LIT.get((s["subj"], s["kind"], re.sub(r"\D", "", s["n"])))
     if h:
         s["href"] = h
 # stały identyfikator zajęć: „przeczytane” w przeglądarce przetrwa zmiany planu
