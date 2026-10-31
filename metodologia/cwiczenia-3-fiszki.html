@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Pytania · Ćwiczenia 3 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=38668fca" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Pytania · Ćwiczenia 3</h1>
+<p class="meta">Korelacje i tabele krzyżowe · 14 pytań</p>
+</header>
+<main id="deck"></main>
+</div>
+<script id="cards" type="application/json">
+[
+{
+"src": "Józefacka i in., t. 1",
+"q": "Czym jest korelacja i czego uczy przykład bocianów i dzieci?",
+"a": "<p>Korelacja to sytuacja, w której dwie zmienne są ze sobą <strong>powiązane<\/strong> (współwystępują). Matthews znalazł istotną (p = 0,008) i silną korelację liczby bocianów i urodzeń w 17 krajach – to przykład mylenia <strong>współwystępowania z przyczynowością<\/strong> i <strong>korelacji pozornej<\/strong>: obie zmienne zależą od wielkości kraju (trzecia zmienna).<\/p>",
+"k": [
+"współwystępowanie dwóch zmiennych",
+"korelacja ≠ przyczynowość",
+"korelacja pozorna",
+"trzecia zmienna (wielkość kraju)"
+],
+"id": "metodologia/cwiczenia-3-fiszki:08e06f99",
+"unit": "cwiczenia-3.html",
+"sec": "s1"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jak oblicza się kowariancję i czym różni się od współczynnika korelacji?",
+"a": "<p>Kowariancja: średnie obu zmiennych → odchylenia wyników od średnich → iloczyny odchyleń → suma → podział przez N − 1. Mówi tylko o <strong>kierunku<\/strong> związku, nie o sile. Współczynnik r Pearsona liczy się tak samo po zamianie wyników na <strong>skalę Z<\/strong> – to wystandaryzowana kowariancja od −1 do +1, pokazująca kierunek i siłę.<\/p>",
+"k": [
+"kroki: odchylenia, iloczyny, suma, N − 1",
+"kowariancja – tylko kierunek",
+"r – po standaryzacji (Z)",
+"od −1 do +1"
+],
+"id": "metodologia/cwiczenia-3-fiszki:a13d8c87",
+"unit": "cwiczenia-3.html",
+"sec": "s2"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jak testuje się istotność korelacji i jak brzmią hipotezy?",
+"a": "<p>H₀: w populacji r = 0 (brak związku); H₁: r ≠ 0 (zwykle bezkierunkowo, test dwustronny). Statystykę opartą na rozkładzie <strong>t Studenta<\/strong> porównuje się z wartością krytyczną dla danych df i α. Test zależy od liczebności: przy dużej próbie nawet słaba korelacja może być istotna.<\/p>",
+"k": [
+"H₀: r = 0",
+"H₁: r ≠ 0",
+"rozkład t, df",
+"duża próba → istotne nawet słabe"
+],
+"id": "metodologia/cwiczenia-3-fiszki:1bf6df76",
+"unit": "cwiczenia-3.html",
+"sec": "s2"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Wymień założenia korelacji r Pearsona.",
+"a": "<p>Dwie zmienne <strong>ilościowe<\/strong>; dane <strong>sparowane<\/strong> (oba wyniki dla każdej obserwacji); obserwacje <strong>niezależne<\/strong> (różne osoby, nie powtarzane pomiary). Diagnostyka: <strong>prostoliniowość<\/strong>, brak (wpływowych) <strong>obserwacji odstających<\/strong>, <strong>normalność<\/strong> rozkładu próbkowania (ważna przy n &lt; 30).<\/p>",
+"k": [
+"dwie zmienne ilościowe",
+"dane sparowane",
+"niezależne obserwacje",
+"prostoliniowość",
+"odstające",
+"normalność przy n < 30"
+],
+"id": "metodologia/cwiczenia-3-fiszki:68946033",
+"unit": "cwiczenia-3.html",
+"sec": "s3"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Dlaczego dane z powtarzanych pomiarów tej samej osoby nie nadają się do korelacji r Pearsona?",
+"a": "<p>Łamią założenie <strong>niezależności obserwacji<\/strong>: wszystkie dane pochodzą z jednego źródła i są ze sobą powiązane. Dla takich danych lepszy jest test t lub ANOVA dla pomiarów powtarzanych.<\/p>",
+"k": [
+"niezależność obserwacji",
+"jedno źródło danych",
+"t / ANOVA dla pomiarów powtarzanych"
+],
+"id": "metodologia/cwiczenia-3-fiszki:61e76074",
+"unit": "cwiczenia-3.html",
+"sec": "s3"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jak odczytać kierunek i siłę związku z wykresu rozrzutu?",
+"a": "<p>Chmurę punktów zamyka się w elipsę: nachylona w prawo – korelacja <strong>dodatnia<\/strong>, w lewo – <strong>ujemna<\/strong>, bezkształtna chmura – brak związku. <strong>Im węższa elipsa, tym silniejszy związek<\/strong>; przy r = ±1 punkty leżą na prostej. Zerowa korelacja nie wyklucza związku <strong>nieliniowego<\/strong>.<\/p>",
+"k": [
+"elipsa w prawo – dodatnia",
+"w lewo – ujemna",
+"węższa – silniejsza",
+"r = 0 ≠ brak związku nieliniowego"
+],
+"id": "metodologia/cwiczenia-3-fiszki:de33aab0",
+"unit": "cwiczenia-3.html",
+"sec": "s3"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Czego uczą kwartet Anscombe'a i Datasaurus?",
+"a": "<p>Zbiory o identycznych średnich, wariancjach i korelacji (r = 0,816 u Anscombe'a; r = −0,06 dla Datasaurusa) mogą wyglądać zupełnie inaczej: związek liniowy, krzywoliniowy, z wpływową obserwacją odstającą albo korelacja pozorna tworzona przez jeden punkt. Bez <strong>wykresu rozrzutu<\/strong> nie da się poprawnie zinterpretować r.<\/p>",
+"k": [
+"te same statystyki, różne dane",
+"krzywoliniowość, odstające",
+"pozorna przez jeden punkt",
+"zawsze wykres rozrzutu"
+],
+"id": "metodologia/cwiczenia-3-fiszki:0e3e3d82",
+"unit": "cwiczenia-3.html",
+"sec": "s3"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jak krok po kroku zinterpretować wynik korelacji r Pearsona?",
+"a": "<p>1) <strong>p<\/strong>: czy związek jest istotny (p &lt; 0,05); jeśli nie – brak podstaw do odrzucenia H₀. 2) <strong>Wykres<\/strong>: liniowość, brak odstających. 3) <strong>Znak<\/strong> r: kierunek. 4) <strong>Wartość<\/strong> r: siła. 5) <strong>R²<\/strong>: procent wyjaśnionej zmienności. Na koniec ostrożnie z przyczynowością.<\/p>",
+"k": [
+"istotność p",
+"wykres rozrzutu",
+"kierunek ze znaku",
+"siła z wartości",
+"R²"
+],
+"id": "metodologia/cwiczenia-3-fiszki:e6e2c9b6",
+"unit": "cwiczenia-3.html",
+"sec": "s4"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jak interpretować siłę korelacji według Cohena i według Gignaca i Szodoraia?",
+"a": "<p><strong>Cohen (1988)<\/strong>: ok. 0,1–0,2 słaba, 0,3–0,5 umiarkowana, ≥ 0,6 silna. <strong>Gignac i Szodorai (2016)<\/strong>, na podstawie 708 korelacji z 199 metaanaliz (połowa poniżej 0,19, 95% poniżej 0,45): 0,10 słaba, 0,20 umiarkowana, 0,30 i więcej silna. Progi Cohena są dla psychologii zawyżone; warto znać standardy dziedziny.<\/p>",
+"k": [
+"Cohen: 0,1 / 0,3 / 0,6",
+"Gignac i Szodorai: 0,1 / 0,2 / 0,3",
+"metaanalizy: typowe korelacje niskie",
+"zależność od dziedziny"
+],
+"id": "metodologia/cwiczenia-3-fiszki:0a3de770",
+"unit": "cwiczenia-3.html",
+"sec": "s4"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Czym jest współczynnik determinacji i jak go interpretować?",
+"a": "<p>R² = r², zawsze dodatni. To część zmienności jednej zmiennej wyjaśniana zmiennością drugiej. Dla r = 0,76 → R² = 0,58: liczba książek wyjaśnia 58% zróżnicowania liczby myśli, 42% wyjaśniają inne czynniki. Błąd: traktowanie r = 0,76 jako „76%”.<\/p>",
+"k": [
+"R² = r²",
+"procent wyjaśnionej zmienności",
+"przykład 0,76 → 58%",
+"r to nie procent"
+],
+"id": "metodologia/cwiczenia-3-fiszki:92bf4d1b",
+"unit": "cwiczenia-3.html",
+"sec": "s4"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Jakie trzy warunki muszą być spełnione, by mówić o przyczynowości?",
+"a": "<p>1) Zmienne są ze sobą <strong>powiązane<\/strong> (korelacja). 2) <strong>Pierwszeństwo czasowe<\/strong> – przyczyna poprzedza skutek. 3) <strong>Kontrola trzeciej (zakłócającej) zmiennej<\/strong> – związku nie da się wyjaśnić inaczej. Badania korelacyjne zwykle spełniają tylko pierwszy warunek; przyczynowość wykazuje eksperyment.<\/p>",
+"k": [
+"związek",
+"pierwszeństwo czasowe",
+"kontrola trzeciej zmiennej",
+"eksperyment"
+],
+"id": "metodologia/cwiczenia-3-fiszki:ffc5fd8a",
+"unit": "cwiczenia-3.html",
+"sec": "s5"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Na czym polegają problem kierunkowości i problem trzeciej zmiennej?",
+"a": "<p><strong>Kierunkowość<\/strong>: z korelacji nie wiadomo, która zmienna wpływa na którą (książki → myśli czy myśli → książki?). <strong>Trzecia zmienna<\/strong>: związek może wynikać z czynnika wpływającego na obie (bociany i dzieci – wielkość kraju). W korelacji zmienne są równorzędne; kierunek można próbować badać korelacjami krzyżowymi (pomiary w kilku punktach czasu).<\/p>",
+"k": [
+"kierunkowość – co na co",
+"trzecia zmienna – wspólna przyczyna",
+"zmienne równorzędne",
+"korelacje krzyżowe"
+],
+"id": "metodologia/cwiczenia-3-fiszki:de835635",
+"unit": "cwiczenia-3.html",
+"sec": "s5"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Czym jest tabela krzyżowa i do czego służą sumy brzegowe?",
+"a": "<p><strong>Tabela krzyżowa<\/strong> (kontyngencji) przedstawia łączny rozkład dwóch lub więcej zmiennych jakościowych: kategorie jednej w wierszach, drugiej w kolumnach, liczebności w komórkach; wymiary R × C. <strong>Sumy brzegowe<\/strong> wierszy i kolumn pokazują rozkład każdej zmiennej osobno (który lokal sprzedał więcej, które cygara są popularniejsze); suma ogólna jest w prawym dolnym rogu.<\/p>",
+"k": [
+"łączny rozkład zmiennych jakościowych",
+"wiersze × kolumny, komórki",
+"sumy brzegowe – każda zmienna osobno",
+"suma ogólna"
+],
+"id": "metodologia/cwiczenia-3-fiszki:8247b32e",
+"unit": "cwiczenia-3.html",
+"sec": "s6"
+},
+{
+"src": "Józefacka i in., t. 1",
+"q": "Czym różnią się procenty z wierszy, z kolumn i z całości? Którą strategię wybrać?",
+"a": "<p><strong>Z kolumn<\/strong>: komórka / suma kolumny (suma w kolumnie = 100%). <strong>Z wierszy<\/strong>: komórka / suma wiersza (suma w wierszu = 100%). <strong>Z całości<\/strong>: komórka / suma ogólna – rzadko. Przyjmuje się <strong>jedną strategię<\/strong>, zależnie od tego, co jest zmienną niezależną; gdy porównywane grupy są w wierszach, najbardziej użyteczne są procenty z wierszy. Różnice rozstrzyga test chi-kwadrat.<\/p>",
+"k": [
+"z kolumn / z wierszy / z całości",
+"sumy = 100%",
+"jedna strategia",
+"grupy w wierszach → procenty z wierszy",
+"chi-kwadrat rozstrzyga"
+],
+"id": "metodologia/cwiczenia-3-fiszki:aa2c9a43",
+"unit": "cwiczenia-3.html",
+"sec": "s6"
+}
+]
+</script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script>
+<script data-back="./" data-back-label="Metodologia" data-home="../" data-nofocus="" data-title="Pytania" src="../assets/reader.js?v=5ef0fecc"></script>
+</body>
+</html>

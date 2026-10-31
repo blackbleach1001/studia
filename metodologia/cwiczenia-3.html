@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Ćwiczenia 3 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=38668fca" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Korelacje i tabele krzyżowe</h1>
+<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, rozdz. 8 (s. 340–361) i rozdz. 5 (s. 241–245) · ćwiczenia 22.11 · uzupełnienie: <a href="wyklad-4.html#s8">wykład 4</a> (Drogowskaz)</p>
+<div class="links"><a class="btn" href="test.html#cwiczenia-3.html">Test z tego materiału</a></div>
+</header>
+<main>
+<!-- 1 -->
+<h2 id="s1">Czym jest korelacja</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> korelacja (co-relation) to sytuacja, w której dwie zmienne są ze sobą <strong>powiązane</strong>. Korelacja r Pearsona zakłada związek <strong>prostoliniowy</strong> i dane <strong>sparowane</strong>: każda obserwacja ma wartość X i Y, czyli punkt na wykresie rozrzutu. <strong>Korelacja to nie przyczynowość.</strong></p>
+<details class="sec" open="">
+<summary>Idea i przestroga <span class="src">T1 s. 340–343, pole 35</span></summary>
+<div class="body">
+<p>Każda obserwacja (np. osoba) ma dwie wartości – X (oś pozioma) i Y (oś pionowa) – i jest punktem na <strong>wykresie rozrzutu</strong>. Na podstawie wielu par oblicza się <strong>współczynnik korelacji</strong>, a następnie sprawdza jego <strong>istotność</strong> testem.</p>
+<p><strong>Bociany i dzieci</strong> (Matthews): w 17 krajach Europy liczba bocianów istotnie korelowała z liczbą urodzeń (p = 0,008), a współczynnik był wysoki. To klasyczny przykład mylenia <strong>współwystępowania z przyczynowością</strong> i <strong>korelacji pozornej</strong>: nie uwzględniono wielkości kraju i liczby ludności – w większym kraju jest więcej i ludzi, i bocianów.</p>
+<p>Korelacja to miara <strong>wzajemnego</strong> związku; zmienne mogą być jednocześnie przyczynami i skutkami, a związek może zależeć od <strong>trzeciej zmiennej</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99" data-title="Czym jest korelacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div>
+<!-- 2 -->
+<h2 id="s2">Mechanizm: od kowariancji do testu</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> r Pearsona to <strong>wystandaryzowana kowariancja</strong> (od −1 do +1). Kowariancja mówi tylko o kierunku. Istotność r sprawdza się testem opartym na rozkładzie <strong>t Studenta</strong> z uwzględnieniem df – przy dużej próbie nawet słaba korelacja bywa istotna.</p>
+<details class="sec" open="">
+<summary>Kroki obliczania <span class="src">T1 pole 36</span></summary>
+<div class="body">
+<ol>
+<li>Średnie obu zmiennych.</li>
+<li>Odchylenie każdego wyniku od średniej – osobno dla X i Y.</li>
+<li>Iloczyn obu odchyleń dla każdej obserwacji.</li>
+<li>Suma iloczynów.</li>
+<li>Podział przez N − 1 (stopnie swobody) → <strong>kowariancja</strong> (w przykładzie 322,4 / 9 = 35,82).</li>
+</ol>
+<p>Kowariancja dodatnia mówi, że zmienne zmieniają się w tym samym kierunku, ale nie da się z niej odczytać <strong>siły</strong>. Współczynnik korelacji liczy się tak samo, tylko najpierw zamienia wyniki na <strong>skalę Z</strong>. Istotność: statystykę porównuje się z wartością krytyczną rozkładu t dla danych df i poziomu α.</p>
+<p><strong>Hipotezy</strong>: H₀ – w populacji r = 0 (brak związku); H₁ – r ≠ 0 (zwykle bezkierunkowa, testy dwustronne). Przykład: „liczba myśli o seksie jest tym większa, im więcej przeczytanych książek” (dodatnia) albo „tym mniejsza, im więcej obejrzanych seriali” (ujemna).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:a13d8c87,metodologia/cwiczenia-3-fiszki:1bf6df76" data-title="Mechanizm: od kowariancji do testu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 3 -->
+<h2 id="s3">Założenia korelacji r Pearsona</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> dwie zmienne <strong>ilościowe</strong>, dane <strong>sparowane</strong>, obserwacje <strong>niezależne</strong>; w diagnostyce: <strong>prostoliniowość</strong>, brak <strong>obserwacji odstających</strong>, <strong>normalność</strong> (ważna przy n &lt; 30). Wszystko sprawdza się na <strong>wykresie rozrzutu</strong>.</p>
+<details class="sec" open="">
+<summary>Lista założeń <span class="src">T1 s. 349–357</span></summary>
+<div class="body">
+<ul>
+<li><strong>Dwie zmienne na skali ilościowej.</strong></li>
+<li><strong>Dane sparowane</strong> – wyniki obu zmiennych dla każdej obserwacji; przy braku danych program wyklucza obserwację, więc N maleje.</li>
+<li><strong>Niezależność obserwacji</strong> – każda obserwacja to inna osoba. Dane od tej samej osoby z 5 lat nie spełniają założenia – lepszy t lub ANOVA dla pomiarów powtarzanych.</li>
+<li><strong>Prostoliniowość</strong> – zmianie jednej zmiennej towarzyszy przewidywalna zmiana drugiej o ustaloną wielkość. Inne związki (kwadratowe, logistyczne, sinusoidalne) wymagają innych metod.</li>
+<li><strong>Obserwacje odstające</strong> – zawyżają lub zaniżają r, zwłaszcza <strong>wpływowe</strong>.</li>
+<li><strong>Rozkład normalny</strong> (rozkładu próbkowania) – przy ponad 30 obserwacjach nie trzeba go bezwzględnie sprawdzać.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Odczytywanie wykresu rozrzutu <span class="src">T1 s. 351–355</span></summary>
+<div class="body">
+<p>Chmurę punktów zamyka się w <strong>elipsę</strong>: nachylona w prawo – korelacja <strong>dodatnia</strong> (obie zmienne rosną lub obie maleją; niższe wartości z niższymi to nadal korelacja dodatnia); w lewo – <strong>ujemna</strong> (godziny poza domem rosną, zadowolenie partnera spada); bezkształtna chmura – <strong>brak związku</strong>. <strong>Im węższa elipsa, tym silniejszy związek</strong>; przy r = ±1 punkty leżą na prostej.</p>
+<p>Uwaga: korelacja zerowa nie oznacza braku związku – może on być <strong>nieliniowy</strong>.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Kwartet Anscombe'a i Datasaurus <span class="src">T1 pole 37</span></summary>
+<div class="body">
+<p>Anscombe pokazał cztery zbiory o tych samych średnich (X = 9, Y = 7,5), wariancjach i r = 0,816, a zupełnie różnych wykresach: związek liniowy, <strong>krzywoliniowy</strong>, liniowy z jedną <strong>wpływową obserwacją odstającą</strong> i <strong>korelacja pozorna</strong>, którą tworzy jeden punkt. <strong>Datasaurus</strong> (142 punkty w kształcie dinozaura, r = −0,06) i jego „poplecznicy” (Matejka i Fitzmaurice) mają identyczne statystyki. Wniosek: <strong>bez wykresu rozrzutu nie da się poprawnie zinterpretować danych</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82" data-title="Założenia korelacji r Pearsona" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<!-- 4 -->
+<h2 id="s4">Interpretacja: istotność, siła, determinacja</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> najpierw <strong>p</strong> (czy związek istnieje), potem <strong>znak</strong> (kierunek), <strong>wartość r</strong> (siła) i <strong>R² = r²</strong> – jaki procent zmienności jednej zmiennej wyjaśnia druga. r = 0,76 <strong>nie</strong> znaczy „76%”.</p>
+<details class="sec" open="">
+<summary>Krok po kroku <span class="src">T1 s. 357–359</span></summary>
+<div class="body">
+<p>Przy α = 0,05: p = 0,693 → brak podstaw do odrzucenia H₀ (w próbie nie wykazano związku). p = 0,012 → związek istnieje. Następnie wykres (liniowość, brak odstających) i r = 0,76 → istotna, dodatnia, liniowa zależność: osoby czytające więcej książek mają więcej myśli o seksie.</p>
+<div class="tbl"><table>
+<tr><th>|r|</th><th>Cohen (1988)</th><th>Gignac i Szodorai (2016)</th></tr>
+<tr><td>słaba</td><td>0,1–0,2</td><td>ok. 0,10</td></tr>
+<tr><td>umiarkowana</td><td>0,3–0,5</td><td>ok. 0,20</td></tr>
+<tr><td>silna</td><td>≥ 0,6</td><td>≥ 0,30</td></tr>
+</table></div>
+<p>Gignac i Szodorai przeanalizowali 708 korelacji z 199 metaanaliz: połowa nie przekraczała r = 0,19, a 95% – r = 0,45. Progi Cohena są dla psychologii zawyżone; warto sprawdzić, jakie wartości są typowe w danej dziedzinie. (W wykładzie 4 jest jeszcze trzecia propozycja progów z Drogowskazu.)</p>
+<p class="def"><strong>Współczynnik determinacji R²</strong> = r² (zawsze dodatni): część zmienności jednej zmiennej wyjaśniana zmiennością drugiej. Dla r = 0,76 → R² = 0,58: liczba książek wyjaśnia 58% zróżnicowania liczby myśli, a 42% wyjaśniają inne czynniki. Przewidywanie konkretnych wartości to już <strong>regresja</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b" data-title="Interpretacja: istotność, siła, determinacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- 5 -->
+<h2 id="s5">Przyczynowość i trzecia zmienna</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> o przyczynie można mówić tylko przy trzech warunkach: <strong>związek</strong>, <strong>pierwszeństwo czasowe</strong> i <strong>kontrola trzeciej zmiennej</strong>. Badania korelacyjne zwykle spełniają tylko pierwszy.</p>
+<details class="sec" open="">
+<summary>Dwa problemy interpretacji <span class="src">T1 s. 360–361</span></summary>
+<div class="body">
+<p><strong>Problem kierunkowości</strong>: czy więcej książek → więcej myśli, czy więcej myśli → wizyta w księgarni? Związki przyczynowe wykazuje eksperyment (manipulacja ZN przy stałych pozostałych warunkach).</p>
+<p><strong>Warunki przyczynowości</strong>:</p>
+<ol>
+<li>zmienne są ze sobą <strong>powiązane</strong> (to pokazuje korelacja);</li>
+<li><strong>pierwszeństwo czasowe</strong> – przyczyna występuje przed skutkiem;</li>
+<li><strong>kontrola trzeciej (zakłócającej) zmiennej</strong> – związku nie da się wyjaśnić inaczej.</li>
+</ol>
+<p><strong>Problem trzeciej zmiennej</strong>: związek może wynikać z czynnika, który wpływa na obie zmienne (bociany i dzieci – wielkość kraju). W korelacji obie zmienne są równorzędne, nie ma zależnej i niezależnej. Kierunkowość można próbować badać metodą <strong>korelacji krzyżowych</strong> (pomiar obu zmiennych w kilku punktach czasu).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635" data-title="Przyczynowość i trzecia zmienna" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 6 -->
+<h2 id="s6">Tabele krzyżowe i procenty</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>tabela krzyżowa</strong> (kontyngencji) pokazuje łączny rozkład dwóch zmiennych jakościowych. <strong>Sumy brzegowe</strong> odpowiadają na pytania o każdą zmienną osobno, a <strong>procenty z wierszy lub kolumn</strong> pozwalają porównać kategorie. To podstawa testu <strong>chi-kwadrat</strong>.</p>
+<details class="sec" open="">
+<summary>Budowa tabeli <span class="src">T1 s. 241–242</span></summary>
+<div class="body">
+<p class="def"><strong>Tabela krzyżowa</strong> (kontyngencji, dwudzielcza, tabela liczebności) przedstawia łączny rozkład (liczebności lub procenty) dwóch lub więcej zmiennych jakościowych. Wymiary R × C: liczba wierszy (rows) × kolumn (columns), np. 2 × 3.</p>
+<p>Przykład: sprzedaż cygar z Dominikany, Hondurasu i Kuby w dwóch lokalach. W wierszach jedna zmienna nominalna (lokal), w kolumnach druga (kraj), w <strong>komórkach</strong> liczebności. <strong>Sumy brzegowe</strong> wierszy (ile sprzedał każdy lokal) i kolumn (ile cygar z każdego kraju) oraz <strong>suma ogólna</strong> w prawym dolnym rogu.</p>
+</div>
+</details>
+<details class="sec" open="">
+<summary>Procenty z wierszy, kolumn i całości <span class="src">T1 s. 243–245</span></summary>
+<div class="body">
+<ul>
+<li><strong>Procenty z kolumn</strong>: komórka / suma kolumny – np. jaki procent cygar dominikańskich sprzedano w każdym lokalu (ok. 80% w Zielonym Młynie). Suma w kolumnie = 100%.</li>
+<li><strong>Procenty z wierszy</strong>: komórka / suma wiersza – np. jaki procent sprzedaży Zielonego Młyna stanowią cygara z każdego kraju (prawie połowa to dominikańskie). Suma w wierszu = 100%.</li>
+<li><strong>Procenty z całości</strong>: komórka / suma ogólna – rzadko używane.</li>
+</ul>
+<p>Zasady: przyjąć <strong>jedną strategię</strong> (wiersze albo kolumny) zależnie od tego, co jest zmienną zależną, a co niezależną; gdy w wierszach są porównywane grupy (zmienna niezależna), najbardziej użyteczne są <strong>procenty z wierszy</strong>. Opisać tabelę („wartości procentowe odnoszą się do sum z wierszy”).</p>
+<p>Wrażenie, że rozkłady się różnią, jest subiektywne – rozstrzyga <strong>test chi-kwadrat niezależności</strong> (opisany w <a href="wyklad-4.html#s10">wykładzie 4</a>).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43" data-title="Tabele krzyżowe i procenty" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<div class="st-check unit"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99,metodologia/cwiczenia-3-fiszki:a13d8c87,metodologia/cwiczenia-3-fiszki:1bf6df76,metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82,metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b,metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635,metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43" data-title="Ćwiczenia 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź całe ćwiczenia</b><span>14 pytań</span></span></button></div><footer class="sources">
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 241–245, 340–361). Wydawnictwo Naukowe PWN.</p>
+</footer>
+</main>
+</div>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=a724b6d6"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Ćwiczenia 3" src="../assets/reader.js?v=5ef0fecc"></script>
+</body>
+</html>
