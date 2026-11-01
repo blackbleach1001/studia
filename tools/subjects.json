@@ -82,6 +82,9 @@
   "meta":"Bednarek (red.) · Psychologia edukacyjna",
   "units":[
    {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia edukacyjna jako specjalność psychologiczna","src":"Bednarek, rozdz. 1, s. 3–16","sub":"Terminologia, dyscypliny pokrewne, modele teoretyczne i ramy praktyczne, podejście pragmatyczne.","sub_short":"Bednarek, rozdz. 1"},
+   {"key":"wyklad-1-trusz","kind":"wyk","label":"Wykład 1 · lektura","file":"wyklad-1-trusz.html","title":"Efekt oczekiwań w szkole i rodzinie","src":"Trusz (2011)","sub_short":"Pigmalion, Golem, oczekiwania rodziców","hand":true,"extra":true},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Uczenie się i różnice indywidualne","src":"Ledzińska i Czerniawska · Budziszewska","sub_short":"Inteligencja, style poznawcze, osobowość, strategie uczenia się, funkcja promocyjna","hand":true},
+   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Psycholog we współczesnej szkole","src":"Sokołowska (2010)","sub_short":"Człowiek środka, ekspert, frontowy i gabinetowy, ekspertyzy","hand":true},
    {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Rola psychologa szkolnego i uczenie się społeczno-emocjonalne","src":"Katra s. 21–31 · Elias s. 137–155","sub":"Model roli psychologa szkolnego (Katra) i dziesięć zasad uczenia się poznawczego oraz społeczno-emocjonalnego (Elias).","sub_short":"Katra · Elias"}
   ],
   "practice":[
