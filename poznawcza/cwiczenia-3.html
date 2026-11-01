@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Ćwiczenia 3 · Psychologia poznawcza</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fffdf9;
+  --ink:#2b2118;
+  --ink-soft:#5c4f43;
+  --rule:#e9e0d3;
+  --parchment:#f7f1e7;
+  /* Psychologia poznawcza — pastel dusty blue, H209 S33 L56 */
+  --accent:hsl(209 33% 56%);
+  --accent-deep:hsl(209 36% 36%);
+  --accent-tint:hsl(209 40% 95%);
+  --accent-line:hsl(209 33% 80%);
+  --warn:#9a6a1f;
+  --warn-tint:#fbf3e3;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.7}
+a{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:3px}
+
+.page{display:grid;grid-template-columns:15rem minmax(0,46rem);gap:3.5rem;max-width:68rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+@media (max-width:900px){.page{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding-top:1.75rem}}
+
+/* ——— Spis treści ——— */
+.toc{position:sticky;top:1.5rem;align-self:start;font-size:.92rem;line-height:1.45;max-height:calc(100vh - 3rem);overflow-y:auto;padding-right:.4rem}
+.toc .grp{font-family:var(--display);font-size:.95rem;color:var(--accent-deep);margin:1.1rem 0 .35rem}
+.toc h2{font-family:var(--display);font-weight:500;font-size:1.05rem;margin:0 0 .75rem}
+.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent-line)}
+.toc li a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--ink-soft);text-decoration:none}
+.toc li a:hover{color:var(--accent-deep)}
+.toc li a b{font-weight:600;color:var(--accent-deep);margin-right:.35rem}
+.toc .tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+@media (max-width:900px){.toc{max-height:none;position:static;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;background:var(--parchment)}}
+
+button{font:inherit;font-size:.85rem;color:var(--accent-deep);background:var(--paper);border:1px solid var(--accent-line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--accent-tint)}
+
+/* ——— Nagłówek ——— */
+header.masthead{border-bottom:3px double var(--accent-line);padding-bottom:1.75rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.1rem}
+.pill{display:inline-block;font-size:.82rem;padding:.2rem .75rem;border-radius:999px;background:var(--accent);color:#fff;letter-spacing:.01em}
+.pill.ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--accent-line)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.08;margin:0 0 .6rem;letter-spacing:-.01em}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin:0;max-width:38rem}
+.source-line{margin-top:1.1rem;font-size:.9rem;color:var(--ink-soft)}
+.source-line cite{font-style:italic;color:var(--ink)}
+
+/* ——— Sekcje ——— */
+section.chapter{margin:0 0 3rem}
+.chapter-head{display:flex;align-items:baseline;gap:.9rem;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.chapter-head .num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--accent)}
+.chapter-head h2{font-family:var(--display);font-weight:500;font-size:1.65rem;line-height:1.2;margin:0}
+.src{display:inline-block;font-size:.78rem;color:var(--accent-deep);background:var(--accent-tint);border-radius:4px;padding:.05rem .45rem;margin-left:.3rem;white-space:nowrap;vertical-align:.1em}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.75rem 0 1rem;color:var(--accent-deep);font-size:.85rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--accent-line)}
+
+h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:1.6rem 0 .5rem}
+h4{font-family:var(--body);font-weight:600;font-size:1rem;margin:1.2rem 0 .3rem}
+p{margin:0 0 .9rem}
+ul,ol{margin:0 0 1rem;padding-left:1.35rem}
+li{margin:.25rem 0}
+strong{font-weight:600}
+.term{font-weight:600;color:var(--accent-deep)}
+
+/* ——— Rozwijane bloki ——— */
+details.block{border:1px solid var(--rule);border-radius:10px;background:var(--paper);margin:.9rem 0}
+details.block>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;font-family:var(--display);font-size:1.12rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+details.block>summary::-webkit-details-marker{display:none}
+details.block>summary::after{content:"+";font-family:var(--body);color:var(--accent);font-size:1.3rem;line-height:1}
+details.block[open]>summary::after{content:"–"}
+details.block[open]>summary{border-bottom:1px solid var(--rule)}
+details.block .inner{padding:.9rem 1.2rem .4rem}
+details.block.ramka{background:var(--parchment);border-color:#e3d6c3}
+details.block.ramka>summary .kind{font-family:var(--body);font-size:.8rem;color:var(--ink-soft);margin-right:.5rem}
+
+/* ——— Wyróżnienia ——— */
+.key{border-left:4px solid var(--accent);background:var(--accent-tint);padding:.85rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0 1.2rem}
+.key p:last-child{margin-bottom:0}
+.key .label{display:block;font-size:.82rem;color:var(--accent-deep);margin-bottom:.2rem}
+.flag{border-left:4px solid var(--warn);background:var(--warn-tint);padding:.7rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.95rem}
+.flag .label{display:block;font-size:.82rem;color:var(--warn);margin-bottom:.15rem}
+blockquote{margin:1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--accent-line);font-style:italic;color:var(--ink-soft)}
+
+/* ——— Tabele ——— */
+.table-wrap{overflow-x:auto;margin:1rem 0 1.3rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;background:var(--accent-tint);color:var(--accent-deep)}
+td:last-child{font-weight:600;white-space:nowrap}
+
+/* ——— Karty postaci ——— */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.8rem;margin:1rem 0 1.5rem}
+.card{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:8px;padding:.8rem .95rem;font-size:.93rem;line-height:1.5}
+.card h4{margin:0 0 .15rem;font-family:var(--display);font-weight:500;font-size:1.05rem}
+.card .yr{font-size:.8rem;color:var(--accent-deep);display:block;margin-bottom:.35rem}
+.card p{margin:0}
+
+/* ——— Oś czasu ——— */
+.timeline{list-style:none;padding:0;margin:1rem 0 1.5rem;position:relative}
+.timeline::before{content:"";position:absolute;left:4.1rem;top:.4rem;bottom:.4rem;width:2px;background:var(--accent-line)}
+.timeline li{display:grid;grid-template-columns:3.4rem 1fr;gap:1.4rem;margin:0 0 .75rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:3.82rem;top:.62rem;width:.62rem;height:.62rem;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.timeline .y{font-family:var(--display);font-weight:500;text-align:right;color:var(--accent-deep)}
+
+/* ——— Wykresy ——— */
+.fig{margin:1.2rem 0;padding:1rem 1rem .6rem;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.5}
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media (max-width:640px){.fig-row{grid-template-columns:1fr}}
+
+/* ——— Pytania kontrolne ——— */
+details.q{border-bottom:1px solid var(--rule);padding:.25rem 0}
+details.q>summary{cursor:pointer;padding:.55rem 0;font-weight:600;list-style:none;display:grid;grid-template-columns:1.8rem 1fr;gap:.4rem}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary .n{color:var(--accent);font-family:var(--display)}
+details.q .a{padding:0 0 .8rem 2.2rem;font-size:.97rem}
+
+.syl{list-style:none;padding:0;margin:.4rem 0 0}
+.syl li{display:grid;grid-template-columns:1.4rem 1fr;gap:.3rem;margin:.35rem 0}
+.syl li::before{content:"✓";color:var(--accent-deep);font-weight:600}
+.syl a{font-size:.88rem;white-space:nowrap}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.6rem;margin:.6rem 0 1rem}
+.meta-grid div{border:1px solid var(--rule);border-radius:8px;padding:.55rem .75rem;font-size:.9rem;line-height:1.4}
+.meta-grid b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;color:var(--accent-deep)}
+.part{margin:4.5rem 0 2.5rem;padding:2rem 0 1.5rem;border-top:3px double var(--accent-line);border-bottom:1px solid var(--rule)}
+.part .pills{margin-bottom:.8rem}
+.part-title{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin:0 0 .5rem}
+.phases .y{font-size:1.4rem}
+.part-cw{background:var(--accent-tint);border-top:6px solid var(--accent);border-bottom:none;border-radius:0 0 12px 12px;padding:1.6rem 1.4rem 1.4rem;margin-top:6rem}
+.part-cw+.part{margin-top:2rem}
+table.wide{min-width:46rem;font-size:.88rem}
+table.wide td:first-child{font-weight:600;white-space:normal;color:var(--ink)}
+table.wide td{font-weight:400;white-space:normal}
+.toc .grp.cw{border-top:1px solid var(--accent-line);padding-top:.9rem;margin-top:1.4rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink-soft)}
+
+
+/* ——— Zakładki i zwijane tematy ——— */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;padding:.7rem 0;margin:0 0 1.4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.tabs [role=tab]{font-family:var(--display);font-size:1.05rem;padding:.45rem 1.2rem;border-radius:999px;border:1px solid var(--accent-line);color:var(--accent-deep);background:var(--paper)}
+.tabs [role=tab][aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .count{font-family:var(--body);font-size:.78rem;opacity:.8;margin-left:.25rem}
+.panel-hint{font-size:.92rem;color:var(--ink-soft);margin:0 0 1rem}
+.unit{border:1px solid var(--rule);border-radius:14px;background:var(--paper);margin:0 0 1rem;scroll-margin-top:5rem}
+.unit>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1.2rem 1.3rem;border-radius:14px}
+.unit>summary::-webkit-details-marker{display:none}
+.unit>summary:hover{background:var(--accent-tint)}
+.unit[open]>summary{border-bottom:3px double var(--accent-line);border-radius:14px 14px 0 0}
+.unit .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.55rem}
+.unit-title{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,3.6vw,1.95rem);line-height:1.15;margin-bottom:.3rem}
+.unit-lede{display:block;color:var(--ink-soft);font-size:.98rem}
+.unit-toggle{width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--accent-line);display:grid;place-items:center;color:var(--accent-deep);font-size:1.3rem;line-height:1}
+.unit-toggle::before{content:"+"}
+.unit[open] .unit-toggle::before{content:"–"}
+.unit-body{padding:1.6rem 1.3rem .4rem}
+.unit-cw{border-top:4px solid var(--accent)}
+@media (max-width:640px){.unit>summary{padding:1rem}.unit-body{padding:1.2rem .9rem .2rem}}
+.chapter,.block,.q{scroll-margin-top:5rem}
+.zal{margin-bottom:1.6rem}
+.toc .grp a{color:inherit;text-decoration:none}
+.toc .grp a:hover{color:var(--accent-deep)}
+mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color:inherit;padding:0 .08em}
+.note-hl{font-size:.88rem;color:var(--ink-soft)}
+.sdt td{white-space:normal}
+.sdt td.ok{background:hsl(150 30% 95%);color:hsl(150 32% 26%)}
+.sdt td.err{background:#fbf0e6;color:#8a4a1c}
+@media print{.tabs,.panel-hint{display:none}.panel[hidden]{display:block}.unit-toggle{display:none}}
+@media print{
+  .toc,.tools{display:none}
+  .page{display:block;padding:0}
+  details.block,details.q{break-inside:avoid}
+}
+</style>
+<meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css?v=4483447e" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style><style>.page{grid-template-columns:minmax(0,1fr);max-width:50rem}</style></head>
+<body>
+<div class="page">
+<main><header class="st-hero"><h1>Uwaga i kontrola poznawcza</h1><p class="st-meta">Pięć aspektów uwagi, efekt Stroopa, automatyzacja, hamowanie, odporność na dystrakcję.</p><p class="st-meta st-src">Nęcka i in. s. 168–174, 223–225, 229–239, 243–246</p></header>
+<div aria-labelledby="tab-cw" class="panel" id="panel-cw" role="tabpanel">
+<div class="unit-body" id="cw-3">
+<section class="chapter" id="c3-syl">
+<div class="chapter-head"><span class="num">§</span><h2>Wymagania z sylabusa</h2></div>
+<div class="key">
+<span class="label">Ćwiczenia 3: uwaga — Nęcka, Orzechowski, Szymura, Wichary (2020), <em>Psychologia poznawcza</em>, PWN</span>
+<ul class="syl">
+<li><span>s. 168–174: istota uwagi i jej pięć aspektów <a href="#c3-istota">→ istota</a> <a href="#c3-aspekty">→ aspekty i paradygmaty</a></span></li>
+<li><span>s. 223–225: efekt Stroopa i jego odmiany <a href="#c3-stroop">→ Stroop</a></span></li>
+<li><span>s. 229–239: konsekwencje automatyzacji, hamowanie, hamowanie dominującej reakcji, odporność na dystrakcję <a href="#c3-automatyzacja">→ automatyzacja</a> <a href="#c3-hamowanie">→ hamowanie</a> <a href="#c3-dominujaca">→ sygnał stopu</a> <a href="#c3-dystrakcja">→ flankery, poprzedzanie negatywne</a></span></li>
+<li><span>s. 243–246: czy hamowanie jest jednorodne? (Nigg; Friedman i Miyake) <a href="#c3-rodzaje">→ rodzaje hamowania</a></span></li>
+</ul>
+</div>
+<div class="flag"><span class="label">Co jest w przesłanych plikach</span>Skany to wydanie PWN 2020, paginacja zgadza się z sylabusem. Plik z rozdziałem 6 obejmuje s. 213–246, więc dla kontekstu dodałam też paradygmat sygnału stopu (s. 222). Plik „NCKA_O1” to <strong>inne (starsze) wydanie</strong>, s. 266–276: funkcje zarządcze, Posner, Shallice, Baddeley. Tych stron nie ma w sylabusie ćwiczeń, więc są na końcu jako <a href="#c3-zarzadcze">dodatek</a>.</div>
+</section>
+<div class="divider">Nęcka i in. (2020), rozdz. 5 <em>Uwaga i świadomość</em>, s. 168–174</div>
+<section class="chapter" id="c3-istota">
+<div class="chapter-head"><span class="num">U1</span><h2>Czym jest uwaga</h2></div>
+<div class="cards">
+<div class="card"><h4>Uwaga</h4><p>System odpowiedzialny za <strong>selekcję informacji</strong> i zapobieganie negatywnym skutkom przeładowania systemu poznawczego nadmiarem danych.</p></div>
+<div class="card"><h4>Świadomość</h4><p>Zdawanie sobie przez podmiot sprawy z treści własnych procesów psychicznych (co spostrzega, o czym myśli, co czuje).</p></div>
+<div class="card"><h4>Selektywność</h4><p>Zróżnicowane przetwarzanie informacji pochodzących z wielu źródeł (Johnston i Dark, 1986). Funkcja stanowiąca o istocie uwagi.</p></div>
+</div>
+<p><strong>James (1890)</strong>: „każdy wie, czym jest uwaga: jest to posiadanie przez umysł w jasnej i żywej postaci jednego z wielu jednocześnie ujmowanych przedmiotów lub ciągów myśli”. Według Nęcki ta definicja zawiera <strong>trzy prawdy</strong>: <span class="src">s. 168</span></p>
+<ol>
+<li>Istotą uwagi jest <strong>selekcja</strong>: wybór jednego obiektu, źródła stymulacji albo tematu myślenia spośród wielu.</li>
+<li>Selekcja dotyczy zarówno <strong>spostrzegania</strong>, jak i <strong>„wyższych” procesów</strong> (myślenia), więc pozwala też kontrolować przebieg procesów intelektualnych.</li>
+<li>Uwaga ściśle wiąże się ze <strong>świadomością</strong>. Nie są tożsame, ale świadomość jest zawsze <strong>wynikiem</strong> działania uwagi: co jest świadome, przeszło wcześniej surową selekcję.</li>
+</ol>
+<p>Uwaga istnieje, bo umysł ma <strong>ograniczone możliwości przetwarzania</strong> (Duncan i Humphreys, 1989); sprawnie analizujemy naraz tylko niewielkie ilości informacji. Ma też sens ewolucyjny (Broadbent, 1958): organizm musi wyłowić z szumu bodźce ważne, np. zagrożenie albo pożywienie. W selekcji odróżnia się <span class="term">sygnały</span> (bodźce ważne), <span class="term">szum</span> (nieważne) i <span class="term">dystraktory</span> (zakłócające, podobne do sygnałów). <span class="src">s. 168–169</span></p>
+<div class="st-check"><button data-check="poznawcza/fiszki:2e4a33f0,poznawcza/fiszki:014f8523" data-title="Czym jest uwaga" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-aspekty">
+<div class="chapter-head"><span class="num">U2</span><h2>Pięć aspektów uwagi i ich paradygmaty</h2></div>
+<div class="table-wrap"><table class="wide">
+<thead><tr><th>Aspekt</th><th>Na czym polega</th><th>Klasyczny paradygmat</th><th>Kluczowy wynik</th></tr></thead>
+<tbody>
+<tr><td>1. Selekcja źródła informacji</td><td style="font-weight:400;white-space:normal">Kiedy, gdzie i jak wybieramy sygnały, odrzucając szum i dystraktory (Broadbent, 1957). Np. czytanie mimo rozmowy w pokoju.</td><td style="font-weight:400;white-space:normal"><strong>Dychotyczna prezentacja</strong> (Cherry, 1953): dwa komunikaty, po jednym do każdego ucha. <strong>Podążanie</strong> (<em>shadowing</em>; Broadbent, Moray, Treisman): wierne powtarzanie jednego komunikatu „jak cień”.</td><td style="font-weight:400;white-space:normal">Badani dobrze odtwarzają komunikat ważny, ale nic nie wiedzą o treści ignorowanego, nawet w jakim był języku. Rejestrują tylko cechy fizyczne (zmiana tonu, płeć spikera). Tak opisano <strong>efekt przyjęcia towarzyskiego</strong> (<em>cocktail party</em>).</td></tr>
+<tr><td>2. Przeszukiwanie pola percepcyjnego</td><td style="font-weight:400;white-space:normal">Odnajdywanie w polu bodźców o cechach wskazanych przez zasadę selekcji (np. zaznacz słowa na „m”, pomijając te na „n”). Badane tylko dla wzroku.</td><td style="font-weight:400;white-space:normal"><strong>Treisman i Gelade (1980)</strong>: szukanie po jednej cesze (<em>proste</em>: „zielona figura”) vs po koniunkcji cech (<em>koniunkcyjne</em>: „zielona i pozioma”).</td><td style="font-weight:400;white-space:normal">Proste jest <strong>równoległe</strong> (czas nie zależy od liczby elementów), koniunkcyjne — <strong>szeregowe</strong> i dłuższe. Ruch to cecha priorytetowa; położenie statyczne nie; kolor i głębia — warunkowo, gdy wyraziste. Im bardziej dystraktory podobne do sygnału, tym wolniej.</td></tr>
+<tr><td>3. Przedłużona koncentracja (czujność)</td><td style="font-weight:400;white-space:normal">Długotrwałe monitorowanie otoczenia w poszukiwaniu rzadkich sygnałów, np. żołnierz na warcie. Ograniczeniem jest spadek energii, nie nadmiar informacji.</td><td style="font-weight:400;white-space:normal"><strong>Test zegara Mackworth</strong> (1948, 1950): wskazówka skacze co 1 s, sygnałem jest rzadki „podwójny” skok; 2 h bez przerwy. Na nim wzorowane są <strong>testy ciągłego wykonania (CPT)</strong>: długie, z rzadkim sygnałem (p = 0,03–0,10), z płytką zasadą selekcji.</td><td style="font-weight:400;white-space:normal">Długo prawie bezbłędnie; błędy pojawiają się po ok. <strong>45 minutach</strong>. Gdy trafność nie spada, spadek widać w <strong>wydłużeniu czasu detekcji</strong> (Jerison, 1958).</td></tr>
+<tr><td>4. Podzielność uwagi</td><td style="font-weight:400;white-space:normal">Koncentracja na dwóch lub więcej źródłach, jednoczesne wykonywanie kilku czynności (słuchanie wykładu i notowanie). Pytanie: niezależne moduły czy wspólna, ograniczona pula zasobów (Kahneman, 1973)?</td><td style="font-weight:400;white-space:normal">Zmodyfikowane podążanie: śledzenie <strong>dwóch</strong> ważnych komunikatów (Ninio i Kahneman, 1974). Schemat <strong>„od łatwego do trudnego”</strong> (Hunt i Lansman, 1982): coraz trudniejsze matryce Ravena + zadanie doładowujące (dźwignia).</td><td style="font-weight:400;white-space:normal">Miarą podzielności jest „<strong>punkt załamania</strong>” na skali trudności zadania priorytetowego (im wyżej, tym większa podzielność) albo różnica wykonania w warunku podwójnym i pojedynczym. Korelacja r = 0,50–0,60 między warunkami pojedynczym i podwójnym (Lansman i in., 1983) przemawia za jednorodnym charakterem uwagi.</td></tr>
+<tr><td>5. Przerzutność uwagi</td><td style="font-weight:400;white-space:normal">Przełączanie się między zadaniami obsługiwanymi przez różne procesy, np. pisanie → telefon → pisanie. Wymaga zahamowania jednego procesu i uruchomienia innego, więc wiąże się z <strong>kosztami</strong>.</td><td style="font-weight:400;white-space:normal"><strong>Jersild (1927)</strong>: kolumny liczb; wersja jednorodna (tylko +6 albo tylko −3) vs mieszana (na zmianę +6 i −3).</td><td style="font-weight:400;white-space:normal">Wersja mieszana trwa dłużej i daje więcej błędów: to <strong>koszty przełączania</strong>. Zmniejszają je <strong>wskazówka</strong> o następnym zadaniu (Spector i Biedermann, 1976) i <strong>dłuższa przerwa</strong> między próbami (Allport i in., 1994); działają niezależnie.</td></tr>
+</tbody>
+</table></div>
+<p><span class="src">s. 169–174</span></p>
+<details class="block" open="">
+<summary>Ważne rozróżnienia</summary>
+<div class="inner">
+<ul>
+<li><strong>Przerzutność</strong> (<em>shifting</em>) to <strong>konstrukt teoretyczny</strong>: uwaga przerzuca się z obiektu na obiekt. <strong>Przełączanie się między zadaniami</strong> (<em>task switching</em>) to <strong>termin obserwacyjny</strong>: to człowiek przełącza się z zadania na zadanie.</li>
+<li>Badani mogą <strong>wymieniać koszty</strong>: brak różnicy w czasie nie znaczy braku kosztów, bo mogą się ujawnić w błędach (i odwrotnie).</li>
+<li>Wszystkie aspekty dotyczą jednego problemu: <strong>ograniczonej pojemności</strong> systemu. Selekcja źródła, przeszukiwanie i przedłużona koncentracja to <strong>redukcja nadmiaru bodźców</strong>; podzielność i przerzutność to <strong>kontrola nadmiaru możliwych reakcji</strong>. Uwaga jest więc wieloaspektowa, ale jednolita: jej funkcją jest selektywność (Driver, 2001; Nęcka, 1995).</li>
+<li>Aspekty mówią, <strong>co</strong> uwaga robi; teorie uwagi (od 5.2) — <strong>jak</strong> to robi.</li>
+</ul>
+</div>
+</details>
+<div class="st-check"><button data-check="poznawcza/fiszki:93e85a47,poznawcza/fiszki:5c815020,poznawcza/fiszki:94c79d34,poznawcza/fiszki:5702b577,poznawcza/fiszki:c4772dd8,poznawcza/fiszki:af6a9494,poznawcza/fiszki:edcdb59f" data-title="Pięć aspektów uwagi i ich paradygmaty" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>7 pytań</span></span></button></div></section>
+<section class="chapter" id="c3-filtr">
+<div class="chapter-head"><span class="num">U3</span><h2>Początek teorii: filtr uwagi (s. 174)</h2></div>
+<p>Najwcześniejsza koncepcja to <span class="term">filtr</span> (bramka): informacja w drodze od zmysłów do świadomości napotyka przeszkodę, która przepuszcza tylko jedno źródło. Reszta czeka „w poczekalni” (najwyżej kilka–kilkanaście sekund; Sperling, 1960) i szybko zanika, bo nie została przetworzona głębiej niż sensorycznie. <strong>Broadbent</strong> (1957, 1958): model w kształcie litery <strong>Y</strong> — dwa kanały sensoryczne zbiegają się w jeden kanał semantyczny; o przejściu decydują <strong>cechy fizyczne</strong> sygnału (zasada „wszystko albo nic”). Dlatego w dychotycznym słuchaniu badani rozpoznają płeć spikera, ale nie treść. <span class="src">s. 174–175</span></p>
+<div class="flag"><span class="label">Zakres</span>Sylabus kończy się na s. 174, czyli na wstępie do teorii uwagi. Pełne teorie (filtry, zasoby, przerzutność) omawiał <a href="wyklad-3.html#r3-1">wykład 3</a> na podstawie Maruszewskiego.</div>
+</section>
+<div class="divider">Nęcka i in. (2020), rozdz. 6 <em>Kontrola poznawcza</em>, s. 222–225, 229–239, 243–246</div>
+<section class="chapter" id="c3-stroop">
+<div class="chapter-head"><span class="num">K1</span><h2>Efekt Stroopa (paradygmat 6.2)</h2></div>
+<p>Jedno z najsłynniejszych zjawisk psychologii eksperymentalnej: <strong>utrudnienie w przetwarzaniu bodźców niespójnych</strong> (słowo „czerwony” napisane zielonym atramentem) w porównaniu ze spójnymi. Czytanie jest silnie zautomatyzowane, więc nazwanie koloru atramentu słowa niespójnego trwa znacznie dłużej. Popularny, bo jest silny, powtarzalny i wciąż nie do końca wyjaśniony. <span class="src">s. 223</span></p>
+<div class="cards">
+<div class="card"><h4>Miara</h4><p><strong>Efekt interferencji</strong> = średni czas nazwania koloru słowa niespójnego − czas dla słowa spójnego. Przy próbie o bardzo różnym tempie reagowania lepsza jest <strong>proporcja</strong> czasów.</p></div>
+<div class="card"><h4>Interpretacja</h4><p>Trzeba zahamować nawyk (czytanie), by wykonać czynność niewyuczoną (nazwanie koloru). <strong>Im mniejszy efekt, tym silniejsza kontrola poznawcza.</strong> W warunku spójnym wszyscy reagują podobnie; różnice indywidualne ujawnia warunek niespójny.</p></div>
+</div>
+<details class="block" open="">
+<summary>Trzy badania Stroopa (1935)</summary>
+<div class="inner">
+<ol>
+<li>Czytanie słów niespójnych vs czarnych: tylko <strong>+23 ms</strong>, efekt nieistotny.</li>
+<li>Nazywanie koloru atramentu słowa vs koloru prostokątów: <strong>+470 ms</strong> na bodziec — właściwy efekt Stroopa.</li>
+<li>8 dni praktyki nazywania kolorów zmniejszyło efekt o 336 ms, ale nadal był istotny. Wytrenowani badani pokazali <strong>odwrócony efekt Stroopa</strong>: czytanie słów niespójnych wolniejsze o 308 ms; zanikał w drugim postteście.</li>
+</ol>
+<p>Replikacja: MacLeod (1986), różnice do 80 ms. <span class="src">s. 224</span></p>
+</div>
+</details>
+<details class="block" open="">
+<summary>Odmiany zadania (MacLeod, 1991)</summary>
+<div class="inner">
+<ul>
+<li><strong>Emocjonalny</strong> — kolor słów lękowych (pająk, wąż) lub negatywnych (gwałt, choroba).</li>
+<li><strong>Rozproszony</strong> (Kahneman i Chajczyk, 1983) — kolor plamy obok słowa oznaczającego inny kolor.</li>
+<li><strong>Figuralny</strong> (Navon, 1977) — duża litera H zbudowana z małych K; nazwij małe, zignoruj dużą.</li>
+<li><strong>Kierunkowy</strong> — strzałka w górę, a reakcja klawiszem „w dół”.</li>
+<li><strong>Numeryczny</strong> — np. cztery piątki: podaj liczbę elementów, zignoruj znaczenie cyfr.</li>
+</ul>
+<p>Wszystkie dają interferencję, ale efekty <strong>nie korelują ze sobą</strong> (Shilling i in., 2002). Wielkość efektu zależy od biegłości językowej: <strong>odwrócone U</strong> — najmniejszy przy niskiej i wysokiej, największy przy przeciętnej (Tzelgov i Henik, 1995). <span class="src">s. 224–225</span></p>
+</div>
+</details>
+<details class="block" open="">
+<summary>Czy automatyzmy są balistyczne?</summary>
+<div class="inner">
+<ul>
+<li>Efekt Stroopa długo uznawano za dowód <strong>balistyczności</strong> automatyzmów (raz uruchomione, biegną do końca).</li>
+<li><strong>Logan</strong>: przy 20% bodźców konfliktowych efekt jest <strong>większy</strong> niż przy 80%. Łatwiej hamować, gdy jest ku temu wiele okazji, więc procesy automatyczne nie są całkowicie balistyczne. Działa to przy niewielkiej liczbie kolorów i tylko w języku ojczystym. <span class="src">s. 222, 225</span></li>
+<li>Wniosek Logana oraz Tzelgova i Henika: automatyczność i kontrola to <strong>dwa aspekty</strong> dobrze wyuczonego zachowania, a nie przeciwieństwa (jak u Shiffrina i Schneidera).</li>
+<li><strong>Chuderski i Smoleń (2016)</strong>: hybrydowy model obliczeniowy. Reakcje w zadaniu Stroopa wytwarza mały zestaw reguł produkcyjnych; kontrola polega na <strong>monitorowaniu konfliktu</strong> (proporcja reguł niezgodnych do wszystkich).</li>
+</ul>
+</div>
+</details>
+<div class="st-check"><button data-check="poznawcza/fiszki:60f8f6c5,poznawcza/fiszki:79461455,poznawcza/fiszki:bd409c0b,poznawcza/fiszki:5a05881b" data-title="Efekt Stroopa (paradygmat 6.2)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-automatyzacja">
+<div class="chapter-head"><span class="num">K2</span><h2>Automatyzacja: teoria Logana i jej konsekwencje</h2></div>
+<details class="block" open="">
+<summary>Teoria rywalizacji egzemplarzy (Logan, 1988) — końcówka</summary>
+<div class="inner">
+<ul>
+<li>Każde współwystąpienie bodźca i reakcji zwiększa wagę <strong>egzemplarza</strong> w pamięci; wprawa to wzrost wagi dominującego egzemplarza. Bodźce konfliktowe uruchamiają kilka rywalizujących ścieżek, stąd błędy. <span class="src">s. 228–229</span></li>
+<li>Nabywanie wprawy opisuje <strong>opadająca krzywa wykładnicza</strong>: duży przyrost na początku, mały na końcu. Np. w teście arytmetyczno-alfabetycznym (A+2=C?) czas rośnie najpierw o 400–500 ms na pozycję alfabetu, a pod koniec badani po prostu przywołują egzemplarze poprawnych równań.</li>
+<li>Automatyzmy pojawiają się tylko w odpowiedzi na <strong>specyficzne</strong> bodźce, więc transfer na inne bodźce nie powinien wystąpić (Logan, 1990).</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Pozytywne skutki automatyzacji (6.1.4)</summary>
+<div class="inner">
+<ul>
+<li>Uwolnienie zasobów, szybsze i poprawniejsze reagowanie, <strong>redukcja przetargu między szybkością a poprawnością</strong>. <span class="src">s. 229</span></li>
+<li><span class="term">Przetarg szybkość–poprawność</span> (<em>speed–accuracy trade-off</em>) występuje pod presją czasu (Snodgrass i in., 1967): nie da się mieć jednocześnie dobrej szybkości i poprawności. Płytka analiza = szybko, ale z błędami; głęboka = wolniej, ale poprawniej.</li>
+<li>Mechanizm: <strong>modele dyfuzyjne</strong> (Ratcliff) — akumulacja dowodów do progu jednej z reakcji. Bogacz i in. (2010): pod presją czasu rośnie <strong>podstawowa aktywacja</strong> kory motorycznej (szybciej do progu), a nie obniża się próg. Heitz i Schall (2012, małpy): wzrost aktywności bazowej + wzmocnienie sygnału i osłabienie szumu na etapie percepcji. <span class="src">s. 230</span></li>
+<li>Koszty pośpiechu to głównie <strong>błędy ominięcia</strong>, nie fałszywe alarmy (nawet u impulsywnych). Przy zgadywaniu &gt;80% decyzji jest negatywnych (Chun i Wolfe, 1996). Szymura i Słabosz (2002): przetarg malał z każdą kolejną próbą tego samego testu.</li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Negatywne skutki: deproceduralizacja i transfer negatywny</summary>
+<div class="inner">
+<p>Trzy stadia automatyzacji (Ackerman, 1988; Anderson, 1983): <span class="src">s. 231</span></p>
+<ol>
+<li><strong>Poznawcze</strong> — zrozumienie instrukcji, celu, wstępna procedura.</li>
+<li><strong>Asocjacyjne</strong> — trening jednorodny, <strong>proceduralizacja</strong>; skraca się czas i maleje liczba błędów.</li>
+<li><strong>Autonomiczne</strong> — reakcja biegnie bezwysiłkowo, jeden bodziec wyzwala długą sekwencję.</li>
+</ol>
+<p>Gdy wymagania choć trochę się zmienią, potrzebna jest <span class="term">deproceduralizacja</span>, a stąd błędy „automatycznego pilota”. <span class="term">Transfer negatywny</span>: dobrze wyuczona czynność utrudnia podobną, ale nie tożsamą. Woltz i in. (1996): po wyuczeniu reguł redukcji liczb badani byli wolniejsi od grupy kontrolnej, gdy reguły minimalnie zmieniono. U Szymury i Słabosz (2002) po zmianie wykonanie wróciło do poziomu stadium asocjacyjnego, a najwięcej tracili ci, którzy najszybciej się zautomatyzowali. Efekty transferu zależą od podobieństwa bodźców: Logan (1990) nie znalazł żadnego, Tzelgov (1999) — pozytywny. <span class="src">s. 231–232</span></p>
+<p><strong>Podsumowanie:</strong> automatyzacja może być narzędziem kontroli; automatyzacja i kontrola to dwa aspekty nabywania wprawy, a skutki pozytywne przeważają.</p>
+</div>
+</details>
+<div class="st-check"><button data-check="poznawcza/fiszki:37bd5175,poznawcza/fiszki:dfc38db6" data-title="Automatyzacja: teoria Logana i jej konsekwencje" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-hamowanie">
+<div class="chapter-head"><span class="num">K3</span><h2>Hamowanie: istota i funkcje (6.2.1)</h2></div>
+<div class="cards">
+<div class="card"><h4>Interferencja zasobowa</h4><p>Zakłócanie czynności przez inne czynności: automatyczne, gdy używają tych samych receptorów lub efektorów; nieautomatyczne, gdy rywalizują o ograniczoną pulę zasobów. Automatyzacja ją osłabia, ale nigdy nie usuwa (np. Stroop).</p></div>
+<div class="card"><h4>Hamowanie</h4><p>Mechanizm kontrolny wspomagający selekcję: <strong>utrudnia dostęp do informacji irrelewantnych</strong> i <strong>powstrzymuje niepożądaną aktywność</strong> neuronalną, mentalną lub behawioralną. Blokuje pobudki zewnętrzne (dystraktory) i wewnętrzne (impulsy, afekt, motywacja).</p></div>
+</div>
+<ul>
+<li>Kontrola interferencji to dziś <strong>jeden z rodzajów</strong> hamowania (Nigg, 2000); długo oba terminy stosowano zamiennie. <span class="src">s. 232–233</span></li>
+<li>Hamowanie jest <strong>niejednorodne</strong>: cztery wersje Stroopa (werbalna, figuralna, numeryczna, kierunkowa) korelowały tylko od 0,22 do −0,13 (Shilling i in., 2002).</li>
+<li>Trzy możliwe przyczyny braku korelacji (Friedman i Miyake, 2004): <strong>niska trafność</strong> (nie wiadomo, czy zadania naprawdę wymagają hamowania), <strong>niska stabilność</strong> (wyniki zależą od wprawy), <strong>brak czystej miary</strong> (wynik zależy od treści zadania). Jeśli narzędzia są dobre, mamy <strong>rodzinę</strong> mechanizmów hamowania.</li>
+<li>Przeciw: badania neuro lokalizują hamowanie w <strong>płatach czołowych</strong>. Kluczowy jest <strong>prawy dolny zakręt czołowy</strong> (IFG; Aron i in.) i jego połączenie z <strong>jądrem niskowzgórzowym</strong> (STN) w jądrach podstawy: to mózgowa sieć hamująca, której efekt jest globalny — spowalnia wszystkie możliwe w danej chwili reakcje (Wessel i Aron, 2017).</li>
+</ul>
+<div class="st-check"><button data-check="poznawcza/fiszki:4093febe" data-title="Hamowanie: istota i funkcje (6.2.1)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div></section>
+<section class="chapter" id="c3-dominujaca">
+<div class="chapter-head"><span class="num">K4</span><h2>Hamowanie dominującej reakcji: paradygmat sygnału stopu</h2></div>
+<details class="block" open="">
+<summary>Jak mierzy się SSRT (paradygmat 6.1, s. 222)</summary>
+<div class="inner">
+<p>Badany reaguje na strzałki w lewo/prawo; w <strong>20% prób</strong> po bodźcu pada dźwiękowy <strong>sygnał stopu</strong>. Opóźnienie sygnału startuje od 250 ms: po udanym zahamowaniu rośnie o 25 ms, po nieudanym maleje o 25 ms. Tak ustala się opóźnienie, przy którym szansa zahamowania wynosi 50%. <strong>SSRT</strong> (<em>stop signal reaction time</em>) = średni czas reakcji w zwykłych próbach − to opóźnienie. To czas <strong>reakcji mentalnej</strong> na sygnał stopu: <strong>im krótszy, tym skuteczniejsze hamowanie</strong>. Dobrze różnicuje ludzi; pogarsza się z wiekiem i w niektórych chorobach.</p>
+</div>
+</details>
+<details class="block" open="">
+<summary>De Jong, Coles i Logan (1995): trzy warunki</summary>
+<div class="inner">
+<div class="table-wrap"><table>
+<thead><tr><th>Warunek</th><th>Co trzeba zrobić</th><th>Wynik</th></tr></thead>
+<tbody>
+<tr><td>stop-ogólny</td><td style="font-weight:400;white-space:normal">po prostu powstrzymać reakcję</td><td style="font-weight:400;white-space:normal">najszybciej; wystarczą <strong>peryferyczne</strong> mechanizmy, które odcinają energię ruchu</td></tr>
+<tr><td>stop-zmiana</td><td style="font-weight:400;white-space:normal">zahamować i wykonać inną reakcję (np. nogą zamiast ręką)</td><td style="font-weight:400;white-space:normal">o 46 ms dłużej: koszt przerzutności po stronie <strong>centralnego</strong> systemu</td></tr>
+<tr><td>stop-selektywny</td><td style="font-weight:400;white-space:normal">zahamować tylko jedną z dwóch rąk</td><td style="font-weight:400;white-space:normal">najtrudniejszy: o 99 ms dłużej niż stop-ogólny; dominującą ręką o 44 ms szybciej</td></tr>
+</tbody>
+</table></div>
+<p>System <strong>centralny</strong> jest <strong>selektywny</strong> (decyduje, co i jak hamować), <strong>peryferyczny</strong> — <strong>nieselektywny</strong> (blokuje energię reakcji). Degradacja bodźca wydłużała zarówno reakcję, jak i zatrzymanie: czynność i jej zatrzymywanie zakłócają się nawzajem, choć słabiej niż dwa zadania jednoczesne (Logan i Burkell, 1986). <span class="src">s. 234–235</span></p>
+</div>
+</details>
+<details class="block" open="">
+<summary>Horstmann (2003): pisanie na maszynie</summary>
+<div class="inner">
+<p>Litera T = stukaj, H = przestań; manipulowano odstępem SOA. Zatrzymanie było skuteczniejsze, ale trwało dłużej (89 ms) przy krótkim SOA (100 ms). Hamowanie, jak każda czynność, podlega <span class="term">psychologicznemu okresowi refrakcji</span> (PRP): jeśli drugi bodziec pojawi się przed reakcją na pierwszy, reakcja na drugi się wydłuża. <strong>Wniosek:</strong> hamowanie dominującej reakcji jest procesem <strong>wysiłkowym i intencjonalnym</strong>. <span class="src">s. 235–236</span></p>
+</div>
+</details>
+<div class="st-check"><button data-check="poznawcza/fiszki:b6ff5338,poznawcza/fiszki:c6a5576b" data-title="Hamowanie dominującej reakcji: paradygmat sygnału stopu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-dystrakcja">
+<div class="chapter-head"><span class="num">K5</span><h2>Odporność na dystrakcję (6.2.3)</h2></div>
+<p>Dystraktory często są przetwarzane aż do poziomu znaczenia, a nawet selekcji reakcji. Francolini i Egeth (1980): przestrzenna separacja konfliktowych aspektów bodźca może zredukować efekt Stroopa i efekt flankerów. <span class="src">s. 236</span></p>
+<details class="block" open="">
+<summary>Test flankerów (Eriksen i Eriksen, 1974)</summary>
+<div class="inner">
+<ul>
+<li>Reakcja na literę w środku rzędu otoczoną <strong>flankerami</strong>; np. H i K = lewy klawisz, S i C = prawy. Warunki: flankery takie same (HHHHH), zgodne co do reakcji (KKHKK), niezgodne (SSHSS), podobne, niepodobne.</li>
+<li>Czas reakcji rośnie przy flankerach niezgodnych, tym bardziej, <strong>im są podobniejsze</strong> do sygnału i <strong>im bliżej</strong> niego stoją. Rozsunięcie liter zmniejsza efekt.</li>
+<li>Wskaźnik <strong>ERIK</strong>: różnica (niespójne − spójne) w warunku współwystępowania minus ta sama różnica w warunku separacji.</li>
+<li>Eriksenowie: efekt wynika z <strong>hamowania reakcji na dystraktor</strong>; EMG pokazuje aktywację mięśni nawet wtedy, gdy badany wie, że ma flanker ignorować (Eriksen i in., 1985). Friedman i Miyake widzą to inaczej (odporność na dystrakcję). <span class="src">s. 236–238</span></li>
+</ul>
+</div>
+</details>
+<details class="block" open="">
+<summary>Inne wyniki</summary>
+<div class="inner">
+<ul>
+<li><strong>Keren i in. (1977)</strong>, zadanie Posnera i Mitchella z dystraktorami: przetwarzanie dystraktorów można przerwać <strong>wcześnie</strong> (interferują tylko przy kryterium fizycznym „AA”) albo <strong>późno</strong> (na poziomie znaczenia, interferują przy wszystkich kryteriach).</li>
+<li><strong>Szymura (1999)</strong>, test DIVA: kto dobrze odrzuca dystraktory, przeszukuje pole <strong>równolegle</strong> i szybko; kto słabo — <strong>szeregowo</strong>, zależnie od liczby elementów.</li>
+<li><strong>Efekt tłumienia dystrakcji</strong> (Neill, 1977): w Stroopie bodziec N+1 ma kolor równy znaczeniu bodźca N; reakcja na wcześniej tłumiony aspekt jest wolniejsza. Nie ma go, gdy badani stawiają na szybkość; jest silniejszy, gdy stawiają na poprawność. Trwa do ok. 1000 ms. <span class="src">s. 238–239</span></li>
+</ul>
+</div>
+</details>
+<div class="cards">
+<div class="card"><h4>Poprzedzanie negatywne (paradygmat 6.3)</h4><p>Utrudnienie w przetwarzaniu bodźca docelowego wskutek wcześniejszego bodźca poprzedzającego (<strong>prymy</strong>): dłuższy czas reakcji lub więcej błędów, gdy to, co przed chwilą ignorowaliśmy, staje się sygnałem. Trwa 1000–1500 ms (Tipper), w badaniach Kossowskiej do 2000 ms, w szczególnych warunkach do 6000 ms.</p></div>
+<div class="card"><h4>Bilans</h4><p>Odporność na dystrakcję to ważny, ale <strong>ograniczony</strong> mechanizm. Kontrola interferencji przyspiesza przeszukiwanie pamięci i zmienia przeszukiwanie pola z szeregowego na równoległe, ale jej kosztem jest tłumienie dystrakcji, szkodliwe, gdy dystraktor staje się sygnałem.</p></div>
+</div>
+<div class="st-check"><button data-check="poznawcza/fiszki:65569ffa,poznawcza/fiszki:5b5bcc3b" data-title="Odporność na dystrakcję (6.2.3)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-rodzaje">
+<div class="chapter-head"><span class="num">K6</span><h2>Czy hamowanie jest konstruktem jednorodnym? (6.2.5)</h2></div>
+<p>Wcześniej (koniec 6.2.4): <strong>zapominanie z powodu przywoływania</strong> to raczej aktywne hamowanie niż bierne zapominanie. Velling i van Knippenberg (2004) pokazali to w zadaniu decyzji leksykalnej (o 32 ms dłużej dla niećwiczonych egzemplarzy ćwiczonych kategorii) i proponują nazwę „hamowanie przez przywoływanie”. Wspierają to fMRI (lewa brzuszno-boczna kora przedczołowa; Wimber i in., 2008) i EEG (wzrost mocy fal theta; Hanslmayr i in., 2010). <span class="src">s. 242–243</span></p>
+<details class="block" open="">
+<summary>Taksonomia Nigga (2000): sześć rodzajów</summary>
+<div class="inner">
+<ol>
+<li><strong>Kontrola interferencji</strong> — niedopuszczanie do interferencji konfliktowych bodźców lub reakcji.</li>
+<li><strong>Hamowanie percepcyjne</strong> — tłumienie odruchu sakkadowego.</li>
+<li><strong>Hamowanie poznawcze</strong> — tłumienie irrelewantnych reprezentacji umysłowych.</li>
+<li><strong>Hamowanie behawioralne</strong> — tłumienie zbędnych reakcji.</li>
+<li><strong>Hamowanie powrotu</strong> — uwaga nie wraca do miejsca poprzedniego bodźca.</li>
+<li><strong>Hamowanie uwagowe odruchu orientacyjnego</strong> — uwaga nie przekierowuje się do nowego bodźca.</li>
+</ol>
+<p>Trzy wymiary: <strong>automatyczność</strong> (wysiłkowe/bezwysiłkowe), <strong>poziom</strong> (poznawcze/behawioralne), <strong>aktywność</strong> (aktywne hamowanie/bierna odporność). Np. kontrola interferencji i hamowanie percepcyjne = bierne, wysiłkowe, płytkie; hamowanie powrotu i odruchu orientacyjnego = aktywne, bezwysiłkowe. <span class="src">s. 243</span></p>
+</div>
+</details>
+<details class="block" open="">
+<summary>Friedman i Miyake (2004): trzy rodzaje → w praktyce dwa</summary>
+<div class="inner">
+<div class="table-wrap"><table>
+<thead><tr><th>Rodzaj</th><th>Najlepszy test</th><th>Odpowiednik u Nigga</th></tr></thead>
+<tbody>
+<tr><td>Hamowanie dominującej reakcji</td><td style="font-weight:400;white-space:normal">zadanie Stroopa (0,55)</td><td style="font-weight:400;white-space:normal">cechy behawioralnego i percepcyjnego; aktywne, wysiłkowe, intencjonalne</td></tr>
+<tr><td>Odporność na dystrakcję</td><td style="font-weight:400;white-space:normal">Test flankerów (0,42)</td><td style="font-weight:400;white-space:normal">kontrola interferencji (bez hamowania w uwadze)</td></tr>
+<tr><td>Odporność na interferencję proaktywną</td><td style="font-weight:400;white-space:normal">zadanie Petersonów (słabe, 0,29); lepiej odpamiętywanie ze wskazówką Tolan i Tehan (0,47)</td><td style="font-weight:400;white-space:normal">hamowanie poznawcze, na trwałych reprezentacjach</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>Odporność na dystrakcję i hamowanie dominującej reakcji korelowały <strong>0,68</strong> — trudno je rozdzielić (oba zadania wymagają stłumienia reakcji i obrony przed dystrakcją). Interferencja proaktywna nie wiązała się z nimi (−0,03 i 0,18). <span class="src">s. 244</span></li>
+<li>W efekcie <strong>dwa czynniki</strong>: <strong>uwagowy</strong> (interferencja zasobowa) i <strong>pamięciowy</strong> (interferencja proaktywna).</li>
+<li>Połączony czynnik uwagowy wyjaśniał <strong>przerzutność</strong> niemal całkowicie (0,91), a poprzedzanie negatywne tylko słabo (0,19). Interferencja proaktywna nie wiązała się z żadnym z nich. <span class="src">s. 244–246</span></li>
+<li>Wniosek Nęcki: nie da się jednoznacznie rozstrzygnąć, czy hamowanie jest jednorodne.</li>
+</ul>
+</div>
+</details>
+<div class="st-check"><button data-check="poznawcza/fiszki:44f11c8b,poznawcza/fiszki:4aaedb7f" data-title="Czy hamowanie jest konstruktem jednorodnym? (6.2.5)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div></section>
+<section class="chapter" id="c3-zarzadcze">
+<div class="chapter-head"><span class="num">+</span><h2>Dodatek: funkcje zarządcze (plik NCKA_O1)</h2></div>
+<div class="flag"><span class="label">Poza stronami z sylabusa</span>Starsze wydanie, s. 266–276 (w wyd. 2020 to s. 246 i dalej). Przeczytaj, jeśli prowadząca do tego nawiąże.</div>
+<ul>
+<li><strong>Problem homunculusa</strong>: kto steruje systemem poznawczym? Psychologia odpowiada funkcjonalnie: to <strong>funkcje zarządcze</strong>, tradycyjnie lokalizowane w przednich płatach czołowych. Są niespecyficzne, ale ich uszkodzenie zakłóca wszystko (<strong>syndrom czołowy</strong>). Trudno je badać: nie da się badać nadzoru w oderwaniu od tego, co nadzorowane, a powtarzanie testów prowadzi do wprawy.</li>
+<li><strong>Miyake i in. (2000)</strong>: trzy odrębne, choć skorelowane funkcje, bez czynnika ogólnego: <strong>przerzutność</strong> (Wisconsin Card Sorting Test), <strong>hamowanie</strong> (Wieża z Hanoi), <strong>odświeżanie</strong> informacji w pamięci roboczej. Collette i Van der Linden (2002) dodają czwartą: <strong>koordynację czynności jednoczesnych</strong>, i pokazują udział także tylnych (ciemieniowych) obszarów mózgu.</li>
+<li><strong>Posner</strong>: trzy mechanizmy uwagi — <strong>aktywacyjny</strong> (pobudzenie), <strong>orientacyjny</strong> (przenoszenie uwagi, uwaga mimowolna, sterowanie oddolne) i <strong>zarządczy</strong> (kontrola czynności celowych, uwaga dowolna, sterowanie odgórne). <strong>Hamowanie powrotu</strong> (Posner i Cohen, 1984): wskazówka przyspiesza detekcję do 150 ms, ale po ok. 300 ms ją spowalnia.</li>
+<li><strong>Shallice (Norman i Shallice, 1986)</strong>: dwustopniowa kontrola. Konflikty rutyn rozwiązuje automatycznie <strong>system kontroli czynności automatycznych</strong> (<em>contention scheduling</em>), a w sytuacjach nowych działa <strong>nadzorczy system uwagi</strong> (SAS), który tworzy plan ad hoc. Uszkodzenia płatów czołowych → <strong>perseweracje</strong>.</li>
+<li><strong>Baddeley</strong>: SAS przejęty jako <strong>centralny system wykonawczy</strong> pamięci roboczej; badany głównie przez kontrolę zadań jednoczesnych.</li>
+</ul>
+</section>
+<section class="chapter" id="kto-c3">
+<div class="chapter-head"><span class="num"></span><h2>Kto jest kim — ćwiczenia 3</h2></div>
+<div class="cards">
+<div class="card"><h4>James</h4><span class="yr">1890</span><p>Klasyczna definicja uwagi: jasne i żywe ujęcie jednego z wielu przedmiotów.</p></div>
+<div class="card"><h4>Cherry</h4><span class="yr">1953</span><p>Dychotyczna prezentacja, efekt przyjęcia towarzyskiego.</p></div>
+<div class="card"><h4>Broadbent</h4><span class="yr">1957, 1958</span><p>Filtr uwagi, model Y, selekcja źródła.</p></div>
+<div class="card"><h4>Treisman i Gelade</h4><span class="yr">1980</span><p>Przeszukiwanie proste (równoległe) vs koniunkcyjne (szeregowe).</p></div>
+<div class="card"><h4>Mackworth</h4><span class="yr">1948, 1950</span><p>Test zegara, przedłużona koncentracja.</p></div>
+<div class="card"><h4>Hunt i Lansman</h4><span class="yr">1982</span><p>Paradygmat „od łatwego do trudnego”, podzielność.</p></div>
+<div class="card"><h4>Jersild</h4><span class="yr">1927</span><p>Przełączanie zadań: +6/−3, koszty przełączania.</p></div>
+<div class="card"><h4>Stroop</h4><span class="yr">1935</span><p>Efekt interferencji: nazywanie koloru atramentu.</p></div>
+<div class="card"><h4>Logan</h4><span class="yr">1988</span><p>Rywalizacja egzemplarzy; automatyzmy nie są balistyczne.</p></div>
+<div class="card"><h4>Woltz i in.</h4><span class="yr">1996</span><p>Transfer negatywny po automatyzacji.</p></div>
+<div class="card"><h4>De Jong, Coles, Logan</h4><span class="yr">1995</span><p>Stop-ogólny, stop-zmiana, stop-selektywny; hamowanie peryferyczne vs centralne.</p></div>
+<div class="card"><h4>Eriksen i Eriksen</h4><span class="yr">1974</span><p>Test flankerów.</p></div>
+<div class="card"><h4>Neill; Tipper</h4><span class="yr">1977; 1985</span><p>Tłumienie dystrakcji, poprzedzanie negatywne.</p></div>
+<div class="card"><h4>Nigg</h4><span class="yr">2000</span><p>Sześć rodzajów hamowania, trzy wymiary.</p></div>
+<div class="card"><h4>Friedman i Miyake</h4><span class="yr">2004</span><p>Trzy rodzaje hamowania → czynnik uwagowy i pamięciowy.</p></div>
+<div class="card"><h4>Miyake i in.</h4><span class="yr">2000</span><p>Funkcje zarządcze: przerzutność, hamowanie, odświeżanie.</p></div>
+</div>
+</section>
+<section class="chapter" id="pytania-c3">
+<div class="chapter-head"><span class="num">?</span><h2>Pytania kontrolne — ćwiczenia 3</h2></div>
+<p>Pytania do ćwiczeń 3, dobre na wyjściówkę.</p>
+<p class="fiszki-link">Pytania sprawdzające <a href="test.html#cwiczenia-3.html">Test z tego materiału</a></p>
+</section>
+</div>
+</div>
+<footer>
+  Wykłady: Maruszewski, T. (2017). <cite>Psychologia poznania. Umysł i świat</cite>. Gdańsk: GWP, rozdz. 1 (s. 13–41), 2 (s. 43–83), 3 (s. 85–131), 4 (s. 133–175) i 5 (s. 177–221).
+  Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN 2020, s. 33–39, 168–174, 222–246, 258–279 (+ starsze wydanie, s. 266–276).
+  Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
+</footer>
+<div class="st-check unit"><button data-check="poznawcza/fiszki:2e4a33f0,poznawcza/fiszki:014f8523,poznawcza/fiszki:93e85a47,poznawcza/fiszki:5c815020,poznawcza/fiszki:94c79d34,poznawcza/fiszki:5702b577,poznawcza/fiszki:c4772dd8,poznawcza/fiszki:af6a9494,poznawcza/fiszki:edcdb59f,poznawcza/fiszki:60f8f6c5,poznawcza/fiszki:79461455,poznawcza/fiszki:bd409c0b,poznawcza/fiszki:5a05881b,poznawcza/fiszki:37bd5175,poznawcza/fiszki:dfc38db6,poznawcza/fiszki:4093febe,poznawcza/fiszki:b6ff5338,poznawcza/fiszki:c6a5576b,poznawcza/fiszki:65569ffa,poznawcza/fiszki:5b5bcc3b,poznawcza/fiszki:44f11c8b,poznawcza/fiszki:4aaedb7f" data-title="Ćwiczenia 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź całe ćwiczenia</b><span>22 pytania</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="cwiczenia-2.html"><span>Poprzednia</span><b>Ćwiczenia 2</b><i>Spostrzeganie</i></a><span></span></nav></main>
+</div>
+<script>
+(function(){
+  var KEY_TAB='pp-tab', KEY_OPEN='pp-open';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function setTab(name,focus){
+    tabs.forEach(function(t){
+      var on=t.dataset.tab===name;
+      t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+      if(on&&focus)t.focus();
+    });
+    document.querySelectorAll('.toc-panel').forEach(function(p){p.hidden=p.dataset.for!==name});
+    store(KEY_TAB,name);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){setTab(t.dataset.tab);window.scrollTo({top:0})});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];setTab(n.dataset.tab,true);e.preventDefault()}
+    });
+  });
+  function saveOpen(){
+    var ids=[].slice.call(document.querySelectorAll('details.unit[open]')).map(function(d){return d.id});
+    store(KEY_OPEN,ids.join(','));
+  }
+  document.querySelectorAll('details.unit').forEach(function(d){d.addEventListener('toggle',saveOpen)});
+  function reveal(el){
+    var panel=el.closest('.panel'); if(panel)setTab(panel.id==='panel-cw'?'cw':'wyk');
+    var p=el; while(p){ if(p.tagName==='DETAILS')p.open=true; p=p.parentElement; }
+    if(el.tagName==='DETAILS')el.open=true;
+    requestAnimationFrame(function(){el.scrollIntoView({block:'start'})});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a)return;
+    var t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); if(!t)return;
+    e.preventDefault(); reveal(t);
+    try{history.replaceState(null,'','#'+t.id)}catch(err){}
+  });
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var open=btn.dataset.toggle==='open';
+      var panel=document.querySelector('.panel:not([hidden])');
+      panel.querySelectorAll('details').forEach(function(d){d.open=open});
+      document.getElementById('zaliczenie').open=false;
+    });
+  });
+  var saved=load(KEY_OPEN);
+  if(saved)saved.split(',').forEach(function(id){var d=document.getElementById(id);if(d&&d.classList.contains('unit'))d.open=true});
+  var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
+})();
+</script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=60577b39"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Poznawcza" data-home="../" data-title="Ćwiczenia 3" src="../assets/reader.js?v=5ef0fecc"></script></body>
+</html>

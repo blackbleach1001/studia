@@ -32,6 +32,8 @@ for sec in SRC.select("section.sub"):
                 for h4 in card.select(".lit h4")]
         # literatura po kolei do zajęć; nadmiarowa (lub wspólna dla wszystkich zajęć) — osobno
         per = lits[:len(rows)] if len(lits) >= len(rows) else []
+        if card.select_one(".lit[data-general]"):   # tematy bez dat (sylabus nie przypisuje ich do zajęć)
+            per = []
         subj["parts"].append({"kind": kind, "who": text(card.select_one(".who")), "general": lits[len(per):]})
         for i, li in enumerate(rows):
             m = re.match(r"(\d\d)\.(\d\d)\.(\d{4})", text(li.select_one(".d")))
@@ -42,7 +44,7 @@ for sec in SRC.select("section.sub"):
             topic = " · ".join([parts[0]] + [x for x in parts[1:] if not TERM.search(x)])
             s = {"subj": d, "kind": kind, "n": text(li.select_one(".n")), "date": date, "start": start, "end": end,
                  "place": place, "topic": topic, "lit": per[i]["items"] if per else []}
-            if not per and lits:                      # jedna lista na wszystkie zajęcia (kliniczna, ćwiczenia)
+            if not per and lits and not card.select_one(".lit[data-general]"):                      # jedna lista na wszystkie zajęcia (kliniczna, ćwiczenia)
                 s["lit"], s["litAll"] = lits[0]["items"], True
             plan["sessions"].append(s)
             for x in parts[1:]:
@@ -92,7 +94,11 @@ def unit_href(s):
 
 # ćwiczenia z tą samą lekturą co wykład → notatki z wykładu
 SAME_LIT = {("metodologia", "C", "2"): "metodologia/wyklad-3.html"}
+# tematy bez dat (poznawcza, ćwiczenia): nie łączymy zajęć z notatkami po numerze
+NO_LINK = {("poznawcza", "C")}
 for s in plan["sessions"]:
+    if (s["subj"], s["kind"]) in NO_LINK:
+        continue
     h = unit_href(s) or SAME_LIT.get((s["subj"], s["kind"], re.sub(r"\D", "", s["n"])))
     if h:
         s["href"] = h
