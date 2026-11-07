@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Pytania · Ćwiczenia 2 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=38668fca" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Pytania · Ćwiczenia 2</h1>
+<p class="meta">Statystyki opisowe i normalność rozkładu · 13 pytań</p>
+</header>
+<main id="deck"></main>
+</div>
+<script id="cards" type="application/json">
+[
+{
+"src": "Slajdy ćw. 2",
+"q": "Czym różnią się średnia, mediana i dominanta i która jest wrażliwa na wartości skrajne?",
+"a": "<p><strong>Średnia<\/strong> (<em>M<\/em>) – suma wartości podzielona przez ich liczbę; <strong>wrażliwa na wartości skrajne<\/strong> (2, 98, 100, 102, 104 → M = 81,2). <strong>Mediana<\/strong> (<em>Me<\/em>) – wartość środkowa uporządkowanego zbioru (tu 100); przy parzystej liczbie – średnia dwóch środkowych. <strong>Dominanta<\/strong> (<em>Mo<\/em>) – wartość najczęstsza, może być kilka; jedyna z tych miar dla zmiennych nominalnych.<\/p>",
+"k": [
+"średnia wrażliwa na skrajne",
+"mediana: środek zbioru",
+"parzysta liczba: średnia dwóch środkowych",
+"dominanta: także dla nominalnych"
+],
+"id": "metodologia/cwiczenia-2-fiszki:e8c51859",
+"unit": "cwiczenia-2.html",
+"sec": "s1"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Co oznaczają kwartyle i centyle?",
+"a": "<p>Kwartyle (3) dzielą uporządkowany zbiór na 4 równe części: poniżej <strong>Q1<\/strong> jest 25% najniższych wyników, powyżej <strong>Q3<\/strong> – 25% najwyższych, Q2 to mediana. Centyle dzielą zbiór na 100 części: powyżej 99. centyla jest 1% najwyższych wyników.<\/p>",
+"k": [
+"Q1: 25% najniższych",
+"Q2 = mediana",
+"Q3: 25% najwyższych",
+"centyle: 100 części"
+],
+"id": "metodologia/cwiczenia-2-fiszki:60d9c727",
+"unit": "cwiczenia-2.html",
+"sec": "s1"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Co mówi odchylenie standardowe i jak liczy się rozstęp?",
+"a": "<p><strong>SD<\/strong> (populacja: σ) mierzy rozproszenie wokół średniej: im większe, tym wyniki bardziej rozrzucone. 26–34 co 2 → M = 30, SD = 2,83; 10–50 co 10 → M = 30, SD = 10. <strong>Rozstęp<\/strong> = maksimum − minimum.<\/p>",
+"k": [
+"miara rozproszenia",
+"ta sama M, różne SD",
+"rozstęp = max − min"
+],
+"id": "metodologia/cwiczenia-2-fiszki:587f11a7",
+"unit": "cwiczenia-2.html",
+"sec": "s2"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jak interpretować znak skośności i kurtozy?",
+"a": "<p><strong>Skośność<\/strong> (A, symetria): A &gt; 0 – rozkład prawoskośny, A &lt; 0 – lewoskośny, A = 0 – symetryczny jak normalny. <strong>Kurtoza<\/strong> (K, skupienie): K &gt; 0 – wysmukły (leptokurtyczny), K &lt; 0 – spłaszczony (platykurtyczny), K = 0 – jak normalny.<\/p>",
+"k": [
+"A > 0 prawoskośny",
+"A < 0 lewoskośny",
+"K > 0 leptokurtyczny",
+"K < 0 platykurtyczny"
+],
+"id": "metodologia/cwiczenia-2-fiszki:755872b2",
+"unit": "cwiczenia-2.html",
+"sec": "s2"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jak w Jamovi uzyskać statystyki opisowe w podziale na grupy?",
+"a": "<p>Analizy → Eksploracja → Statystyki opisowe; zmienne do okienka Zmienne; ustaw Zmienne w wierszach; w Statystykach zaznacz N, średnią, medianę, modalną, SD, min, max, skośność, kurtozę; zmienną nominalną (np. płeć) przenieś do <strong>Podziel według<\/strong>. Wykresy: histogram, gęstości, skrzynkowy z oznaczeniem odstających.<\/p>",
+"k": [
+"Analizy → Eksploracja → Statystyki opisowe",
+"Zmienne w wierszach",
+"Podziel według",
+"wykresy: histogram, skrzynkowy"
+],
+"id": "metodologia/cwiczenia-2-fiszki:5160b1af",
+"unit": "cwiczenia-2.html",
+"sec": "s3"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jakie zasady obowiązują przy raportowaniu statystyk opisowych?",
+"a": "<p>Statystyki słownie w tekście, a symbole w nawiasie; symbole <strong>kursywą<\/strong>; zaokrąglenie do <strong>2 miejsc<\/strong> po przecinku; wyniki oddzielone <strong>średnikiem<\/strong>. N – liczebność grupy, n – podgrupy. Np. „w wieku od 20 do 45 lat (<em>M<\/em> = 28,82; <em>SD<\/em> = 4,61)”.<\/p>",
+"k": [
+"symbole kursywą w nawiasie",
+"2 miejsca po przecinku",
+"średniki",
+"N grupa, n podgrupa"
+],
+"id": "metodologia/cwiczenia-2-fiszki:61de00ca",
+"unit": "cwiczenia-2.html",
+"sec": "s3"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jak wyznacza się przypadki odstające regułą 1,5 IQR?",
+"a": "<p>IQR = Q3 − Q1 (50% środkowych wartości). Odstające są wyniki poniżej <strong>Q1 − 1,5·IQR<\/strong> lub powyżej <strong>Q3 + 1,5·IQR<\/strong>. Przykład: Q1 = 20, Q3 = 28 → IQR = 8, 1,5·IQR = 12, granice 8 i 40, więc wynik 45 jest odstający.<\/p>",
+"k": [
+"IQR = Q3 − Q1",
+"Q1 − 1,5·IQR",
+"Q3 + 1,5·IQR",
+"przykład: granice 8 i 40"
+],
+"id": "metodologia/cwiczenia-2-fiszki:2277db73",
+"unit": "cwiczenia-2.html",
+"sec": "s4"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Co pokazuje wykres skrzynkowy?",
+"a": "<p>Pudełko od Q1 do Q3 (wysokość = IQR), kreska w środku = mediana, wąsy do najdalszych wyników w granicach 1,5·IQR, punkty poza wąsami = przypadki odstające podpisane ID.<\/p>",
+"k": [
+"pudełko Q1–Q3",
+"kreska = mediana",
+"wąsy: 1,5·IQR",
+"punkty = odstające"
+],
+"id": "metodologia/cwiczenia-2-fiszki:a83b71bc",
+"unit": "cwiczenia-2.html",
+"sec": "s4"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Kiedy i jak wyłączyć obserwację w Jamovi?",
+"a": "<p>Tylko w <strong>uzasadnionych przypadkach<\/strong>, np. gdy obserwacja jest ewidentnym błędem. Dane → Filtry, w polu fx: <code>ID != 72<\/code> (!= znaczy „nie równa się”); kilka: <code>ID != 72 and ID != 80<\/code> – <code>and<\/code> małymi literami.<\/p>",
+"k": [
+"tylko z uzasadnieniem",
+"Dane → Filtry",
+"ID != 72",
+"and małymi literami"
+],
+"id": "metodologia/cwiczenia-2-fiszki:7c246f2e",
+"unit": "cwiczenia-2.html",
+"sec": "s4"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "W jakiej kolejności ocenia się normalność rozkładu?",
+"a": "<p>1) Sprawdź dane – zakres, wartości niemożliwe, błędy, odstające; błędne wyłącz <strong>przed<\/strong> oceną rozkładu. 2) Histogram – silna asymetria, długi ogon, dwa szczyty → nienormalny. 3) Skośność: od −2 do 2 → zbliżony do normalnego (podejście liberalne). 4) Test Shapiro-Wilka (grupy &lt; 100): p &gt; 0,05 → zbliżony do normalnego, p &lt; 0,05 → odbiega.<\/p>",
+"k": [
+"najpierw dane i błędy",
+"histogram",
+"skośność −2 do 2",
+"Shapiro-Wilk: p > 0,05 = normalny"
+],
+"id": "metodologia/cwiczenia-2-fiszki:610c1176",
+"unit": "cwiczenia-2.html",
+"sec": "s5"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jak zaraportować wynik testu Shapiro-Wilka?",
+"a": "<p>Np. <em>W<\/em>(77) = 0,98; <em>p<\/em> = 0,247 (n.i.). Stopnie swobody w nawiasie po symbolu, wyniki po dwukropku, <em>p<\/em> jako jedyna statystyka z <strong>3 miejscami<\/strong> po przecinku, przy p &gt; 0,05 dopisek <strong>(n.i.)<\/strong>.<\/p>",
+"k": [
+"W(df) = …",
+"p z 3 miejscami",
+"(n.i.) gdy p > 0,05",
+"wyniki po dwukropku"
+],
+"id": "metodologia/cwiczenia-2-fiszki:f6154e25",
+"unit": "cwiczenia-2.html",
+"sec": "s5"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Czym różnią się testy parametryczne od nieparametrycznych?",
+"a": "<p><strong>Parametryczne<\/strong>: większa moc, wymagają zmiennych ilościowych, często rozkładu normalnego. <strong>Nieparametryczne<\/strong>: mniejsza moc, odporne na przypadki odstające, dla dowolnego rodzaju zmiennych, bez wymogu normalności.<\/p>",
+"k": [
+"parametryczne: większa moc",
+"wymagają ilościowych i normalności",
+"nieparametryczne: odporne na odstające",
+"dowolne zmienne"
+],
+"id": "metodologia/cwiczenia-2-fiszki:4155cd10",
+"unit": "cwiczenia-2.html",
+"sec": "s5"
+},
+{
+"src": "Slajdy ćw. 2",
+"q": "Jak zmienić skalę zmiennej wiek i na czym polega dychotomizacja?",
+"a": "<p>Ilościowa (liczba lat) → porządkowa (przedziały: 0–18, 18–30…) → nominalna (pełnoletni / niepełnoletni). <strong>Dychotomizacja<\/strong>: podział na 2 grupy wg <strong>mediany<\/strong> (młodsi poniżej, starsi od mediany wzwyż) albo wg kryterium (18–40 / 41–65). Jamovi: Dane → Przekształcenie → warunek rekodowania, np. <code>jeżeli $source &lt; 28 użyj \"Młodsza\"<\/code>, w przeciwnym razie \"Starsza\".<\/p>",
+"k": [
+"ilościowa → porządkowa → nominalna",
+"podział wg mediany",
+"podział wg kryterium",
+"Dane → Przekształcenie"
+],
+"id": "metodologia/cwiczenia-2-fiszki:ee2286d2",
+"unit": "cwiczenia-2.html",
+"sec": "s6"
+}
+]
+</script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script>
+<script data-back="./" data-back-label="Metodologia" data-home="../" data-nofocus="" data-title="Pytania" src="../assets/reader.js?v=5ef0fecc"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pl">
 <head>
 <meta charset="utf-8"/>
@@ -13,35 +14,213 @@
 <div class="page">
 <header class="hero">
 <h1>Statystyki opisowe i normalność rozkładu</h1>
-<p class="meta">Bedyńska i Cypryańska, s. 84–111 · Józefacka i in., t. 1, s. 148–156, 197–233 · ćwiczenia 7.11</p>
-<div class="links"><a class="btn" href="wyklad-3.html">Pełne notatki (wykład 3)</a> <a class="btn" href="test.html#wyklad-3.html">Test z tego materiału</a></div>
+<p class="meta">Slajdy ćwiczeń 2 (T. Godlewski) · Jamovi · lektura jak do <a href="wyklad-3.html">wykładu 3</a></p>
+<div class="links"><a class="btn" href="test.html#cwiczenia-2.html">Test z tego materiału</a></div>
 </header>
 <main>
-<p class="tldr"><span class="lbl">W skrócie:</span> lektura na te ćwiczenia jest <strong>taka sama jak na wykład 3</strong>, więc pełne notatki i 36 pytań są tam. Poniżej: co przećwiczyć i gdzie to znaleźć.</p>
-<h2 id="s1">Co przygotować na ćwiczenia</h2>
+<!-- s1 -->
+<h2 id="s1">Miary tendencji centralnej</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>średnia</strong> (M) jest wrażliwa na wartości skrajne, <strong>mediana</strong> (Me) dzieli zbiór na pół i jest odporna, <strong>dominanta</strong> (Mo) to wartość najczęstsza i jako jedyna działa dla zmiennych nominalnych.</p>
 <details class="sec" open="">
-<summary>Plan powtórki z linkami</summary>
+<summary>Średnia, mediana, dominanta <span class="src">Slajdy ćw. 2</span></summary>
 <div class="body">
-<ol>
-<li><a href="wyklad-3.html#s1">Po co opisywać dane</a> – opis zawsze przed testowaniem hipotez.</li>
-<li><a href="wyklad-3.html#s2">Tabele częstości</a> i <a href="wyklad-3.html#s3">wykresy</a> – który wykres do jakiej skali.</li>
-<li><a href="wyklad-3.html#s5">Miary tendencji centralnej</a>: średnia, mediana, dominanta – kiedy która.</li>
-<li><a href="wyklad-3.html#s6">Obserwacje odstające</a> – jak je wykryć (wykres skrzynkowy).</li>
-<li><a href="wyklad-3.html#s7">Miary rozproszenia</a>: rozstęp, wariancja, odchylenie standardowe, IQR.</li>
-<li><a href="wyklad-3.html#s8">Rozkład normalny i standaryzacja</a> – wyniki z.</li>
-<li><a href="wyklad-3.html#s9">Błąd standardowy i przedział ufności</a>.</li>
-<li><a href="wyklad-3.html#s10">Skośność i kurtoza</a> oraz <a href="wyklad-3.html#s11">testy normalności</a> (Kołmogorow-Smirnow, Shapiro-Wilk).</li>
-<li><a href="wyklad-3.html#s12">Zestawienie: która miara kiedy</a> – dobra ściąga na zajęcia.</li>
-</ol>
-<p>Na ćwiczeniach zwykle liczy się to w programie (SPSS/Jamovi): tabele częstości, statystyki opisowe, wykresy i testy normalności. Instrukcje krok po kroku dla SPSS są w tej samej lekturze z Drogowskazu.</p>
+<div class="tbl"><table>
+<tr><th>Miara</th><th>Symbol</th><th>Co to jest</th><th>Przykład</th></tr>
+<tr><td><strong>Średnia</strong></td><td><em>M</em>; populacja: µ</td><td>suma wartości / liczba wartości</td><td>2, 4, 6, 8, 10 → M = 6<br/>2, 98, 100, 102, 104 → M = 81,2</td></tr>
+<tr><td><strong>Mediana</strong></td><td><em>Me</em></td><td>wartość środkowa uporządkowanego zbioru; przy parzystej liczbie – średnia dwóch środkowych</td><td>2, 98, 100, 102, 104 → Me = 100<br/>2, 4, 6, 8 → Me = 5</td></tr>
+<tr><td><strong>Dominanta</strong> (modalna, moda)</td><td><em>Mo</em></td><td>wartość najczęstsza; może być więcej niż jedna</td><td>2, 4, 4, 6, 8, 10 → Mo = 4<br/>pies, pies, pies, kot… → Mo = pies</td></tr>
+</table></div>
+<p>Przykład z jedną skrajną wartością (2) pokazuje, że średnia spada z ok. 100 do 81,2, a mediana zostaje przy 100 – stąd <strong>średnia jest wrażliwa na wartości skrajne</strong>.</p>
 </div>
 </details>
-<footer class="sources">
+<details class="sec">
+<summary>Podział zbioru: mediana, kwartyle, centyle <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<ul>
+<li><strong>Mediana</strong>: 50% wyników poniżej, 50% powyżej.</li>
+<li><strong>Kwartyle</strong> (są 3): dzielą zbiór na 4 równe części; poniżej <strong>Q1</strong> jest 25% najniższych wyników, powyżej <strong>Q3</strong> – 25% najwyższych. Q2 = mediana.</li>
+<li><strong>Centyle</strong>: podział na 100 części; powyżej 99. centyla jest 1% najwyższych wyników.</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:e8c51859,metodologia/cwiczenia-2-fiszki:60d9c727" data-title="Miary tendencji centralnej" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- s2 -->
+<h2 id="s2">Miary rozproszenia i kształtu rozkładu</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> <strong>odchylenie standardowe</strong> mówi, jak bardzo wyniki są rozrzucone wokół średniej, <strong>rozstęp</strong> to max − min. <strong>Skośność</strong> opisuje symetrię (0 w rozkładzie normalnym), <strong>kurtoza</strong> – skupienie (też 0).</p>
+<details class="sec" open="">
+<summary>Odchylenie standardowe i rozstęp <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p><strong>Odchylenie standardowe</strong> – <em>SD</em> lub <em>s</em>; w populacji σ (sigma). Im większe, tym wartości mocniej „rozrzucone”:</p>
+<ul>
+<li>26, 28, 30, 32, 34 → M = 30; SD = 2,83</li>
+<li>10, 20, 30, 40, 50 → M = 30; SD = 10</li>
+</ul>
+<p>Ta sama średnia, zupełnie inne rozproszenie.</p>
+<p><strong>Rozstęp</strong> (rozpiętość) – zakres wartości: <strong>maksimum − minimum</strong> (na slajdzie z dopiskiem „+1”, gdy liczymy liczbę możliwych wartości całkowitych).</p>
+</div>
+</details>
+<details class="sec">
+<summary>Skośność i kurtoza <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Miara</th><th>&gt; 0</th><th>&lt; 0</th><th>Rozkład normalny</th></tr>
+<tr><td><strong>Skośność</strong> (<em>A</em>) – symetria</td><td>prawoskośny (długi ogon po prawej)</td><td>lewoskośny (długi ogon po lewej)</td><td>A = 0</td></tr>
+<tr><td><strong>Kurtoza</strong> (<em>K</em>) – skupienie</td><td>wysmukły (leptokurtyczny)</td><td>spłaszczony (platykurtyczny)</td><td>K = 0</td></tr>
+</table></div>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:587f11a7,metodologia/cwiczenia-2-fiszki:755872b2" data-title="Miary rozproszenia i kształtu rozkładu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- s3 -->
+<h2 id="s3">Statystyki opisowe w Jamovi i raportowanie</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> Analizy → Eksploracja → Statystyki opisowe, zmienne w wierszach, zaznaczone N, M, Me, Mo, SD, min, max, skośność, kurtoza. W tekście: <strong>słownie w zdaniu, symbole kursywą w nawiasie, 2 miejsca po przecinku, średniki</strong>.</p>
+<details class="sec" open="">
+<summary>Krok po kroku <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<ol>
+<li><strong>Analizy → Eksploracja → Statystyki opisowe</strong>.</li>
+<li>Przenieś zmienne do okienka <strong>Zmienne</strong>.</li>
+<li>Ustaw <strong>Zmienne w wierszach</strong>.</li>
+<li>Rozwiń <strong>Statystyki</strong>: N, Średnia, Mediana, Modalna, Odchylenie standardowe, Maksimum, Minimum, Skośność, Kurtoza.</li>
+<li>Statystyki w grupach: zmienna nominalna (np. płeć) do <strong>Podziel według</strong>.</li>
+<li>Wykresy: rozwiń <strong>Wykresy</strong> i zaznacz Histogram, Gęstości, Wykres skrzynkowy oraz Oznacz przypadki odstające.</li>
+</ol>
+</div>
+</details>
+<details class="sec">
+<summary>Jak zapisać wynik <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p>Symbole: <em>N</em> – liczebność grupy, <em>n</em> – liczebność podgrupy, <em>M</em> – średnia, <em>SD</em> – odchylenie standardowe.</p>
+<p class="def">W badaniu wzięło udział 139 osób w wieku od 20 do 45 lat (<em>M</em> = 28,82; <em>SD</em> = 4,61). Wśród kobiet (<em>n</em> = 79) średnia wieku wyniosła 29,39 (<em>SD</em> = 4,81), a wśród mężczyzn (<em>n</em> = 60) – 28,07 (<em>SD</em> = 4,26).</p>
+<ul>
+<li>Statystyki <strong>słownie w tekście</strong>, a <strong>symbolami w nawiasie</strong>.</li>
+<li>Symbole <strong>kursywą</strong>.</li>
+<li>Zaokrąglenie do <strong>2 miejsc</strong> po przecinku.</li>
+<li>Wyniki w nawiasie oddzielone <strong>średnikiem</strong>.</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:5160b1af,metodologia/cwiczenia-2-fiszki:61de00ca" data-title="Statystyki opisowe w Jamovi i raportowanie" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- s4 -->
+<h2 id="s4">Przypadki odstające i wyłączanie obserwacji</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> obserwacja odstająca leży dalej niż <strong>1,5 × IQR</strong> poniżej Q1 lub powyżej Q3 (IQR = Q3 − Q1). Wyłącza się ją <strong>tylko z uzasadnieniem</strong> (np. ewidentny błąd) – w Jamovi filtrem <code>ID != 72</code>.</p>
+<details class="sec" open="">
+<summary>Reguła 1,5 IQR <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p><strong>Rozstęp ćwiartkowy</strong> (IQR) obejmuje 50% środkowych wartości: <strong>IQR = Q3 − Q1</strong>. Granice („wąsy”): dolna <strong>Q1 − 1,5·IQR</strong>, górna <strong>Q3 + 1,5·IQR</strong>. Wszystko poza nimi to przypadek odstający.</p>
+<p>Przykład (15 wyników): 12, 18, 19, <strong>20</strong>, 21, 22, 25, <strong>25</strong>, 26, 27, 28, <strong>28</strong>, 28, 31, 45</p>
+<ul>
+<li>Q1 = 20, Me = 25, Q3 = 28 → IQR = 8; 1,5·IQR = 12.</li>
+<li>Dolna granica 20 − 12 = <strong>8</strong> (odstające byłyby &lt; 8) – brak.</li>
+<li>Górna granica 28 + 12 = <strong>40</strong> → <strong>45</strong> jest przypadkiem odstającym.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Wykres skrzynkowy <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p>Pudełko rozciąga się od <strong>Q1 do Q3</strong> (jego wysokość to IQR), kreska w środku to <strong>mediana</strong>, wąsy sięgają do najdalszych wyników w granicach 1,5·IQR. Punkty poza wąsami to przypadki odstające – Jamovi podpisuje je numerem wiersza/ID (opcja Oznacz przypadki odstające).</p>
+</div>
+</details>
+<details class="sec">
+<summary>Wyłączanie w Jamovi <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<ol>
+<li>Sprawdź ID obserwacji odstającej. Wyłączaj <strong>tylko w uzasadnionych przypadkach</strong> (np. ewidentny błąd danych).</li>
+<li><strong>Dane → Filtry</strong>.</li>
+<li>W polu fx wpisz <code>ID != 72</code> (<code>!=</code> = „nie równa się”). Kilka obserwacji: <code>ID != 72 and ID != 80 and ID != 35</code> – <code>and</code> małymi literami.</li>
+<li>Enter.</li>
+</ol>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:2277db73,metodologia/cwiczenia-2-fiszki:a83b71bc,metodologia/cwiczenia-2-fiszki:7c246f2e" data-title="Przypadki odstające i wyłączanie obserwacji" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- s5 -->
+<h2 id="s5">Ocena normalności rozkładu</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> kolejność: <strong>dane i błędy → histogram → skośność (−2 do 2) → test Shapiro-Wilka</strong> (grupy &lt; 100). p &gt; 0,05 → rozkład zbliżony do normalnego. Od tego zależy wybór testów parametrycznych lub nieparametrycznych.</p>
+<details class="sec" open="">
+<summary>Cztery kroki <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p>Rozkład normalny: krzywa Gaussa, reguła trzech sigm; wiele cech w populacji ma rozkład do niego zbliżony.</p>
+<ol>
+<li><strong>Sprawdź dane</strong>: czy zakres ma sens, czy są wartości niemożliwe, błędy, przypadki odstające. Najpierw wyłącz błędne obserwacje, dopiero potem oceniaj rozkład.</li>
+<li><strong>Histogram</strong>: silna asymetria, długi ogon albo dwa szczyty → rozkład wyraźnie odbiega od normalnego. Brak pewności → dalej.</li>
+<li><strong>Skośność</strong> (podejście liberalne): od −2 do 2 → zbliżony do normalnego; poza tym zakresem → wyraźna skośność.</li>
+<li><strong>Test Shapiro-Wilka</strong> (podejście restrykcyjne, w grupach <strong>poniżej 100 osób</strong>): w statystykach opisowych zaznacz Test Shapiro-Wilka, odczytaj <em>W</em> i <em>p</em>. <strong>p &gt; 0,05</strong> → zbliżony do normalnego; <strong>p &lt; 0,05</strong> → odbiega.</li>
+</ol>
+</div>
+</details>
+<details class="sec">
+<summary>Raportowanie testu <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<p class="def">W grupie mężczyzn rozkład zmiennej Wiek jest zbliżony do normalnego: <em>W</em>(77) = 0,98; <em>p</em> = 0,247 (n.i.), natomiast w grupie kobiet odbiega od normalnego: <em>W</em>(60) = 0,94; <em>p</em> = 0,008.</p>
+<ul>
+<li><em>p</em> jako <strong>jedyną</strong> statystykę podaje się z dokładnością do <strong>3 miejsc</strong>.</li>
+<li>Gdy p &gt; 0,05, dopisuje się <strong>(n.i.)</strong> – nieistotne.</li>
+<li>Wyniki liczbowe testu po <strong>dwukropku</strong>.</li>
+<li>W nawiasie po symbolu testu – <strong>stopnie swobody</strong> (df).</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Testy parametryczne a nieparametryczne <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Parametryczne</th><th>Nieparametryczne</th></tr>
+<tr><td>większa moc<br/>wymagają zmiennych ilościowych<br/>często wymagają rozkładu normalnego</td><td>mniejsza moc<br/>odporne na przypadki odstające<br/>dla dowolnego rodzaju zmiennych<br/>nie wymagają rozkładu normalnego</td></tr>
+</table></div>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:610c1176,metodologia/cwiczenia-2-fiszki:f6154e25,metodologia/cwiczenia-2-fiszki:4155cd10" data-title="Ocena normalności rozkładu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- s6 -->
+<h2 id="s6">Rekodowanie: zmiana skali i dychotomizacja</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> zmienną ilościową można zamienić na <strong>porządkową</strong> (przedziały) albo <strong>nominalną</strong> (np. pełnoletni/niepełnoletni). Dychotomizacja: podział na 2 grupy <strong>wg mediany</strong> lub wg przyjętego kryterium – w Jamovi przez Dane → Przekształcenie.</p>
+<details class="sec" open="">
+<summary>Zmiana skali na przykładzie wieku <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Skala</th><th>Przykład</th></tr>
+<tr><td>ilościowa (ciągła)</td><td>liczba lat: 4, 19, 37, 50, 78</td></tr>
+<tr><td>porządkowa (rangowa)</td><td>0–18 / 18–30 / 30–45 / 45–65 / powyżej 65</td></tr>
+<tr><td>nominalna (kategorialna)</td><td>pełnoletni / niepełnoletni</td></tr>
+</table></div>
+<p>4-latek: 4 → 0–18 → niepełnoletni; 48-latka: 48 → 45–65 → pełnoletnia. Rekodować można tylko „w dół” – z wieku w przedziałach nie odtworzy się liczby lat.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Dychotomizacja <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<ul>
+<li><strong>Wg mediany</strong>: młodsi – poniżej mediany; starsi – mediana i powyżej.</li>
+<li><strong>Wg kryterium</strong>: np. wczesna dorosłość 18–40, średnia dorosłość 41–65.</li>
+</ul>
+<p>W Jamovi:</p>
+<ol>
+<li>Sprawdź medianę Wieku w statystykach opisowych (w przykładzie 28).</li>
+<li>Zaznacz kolumnę Wiek → <strong>Dane → Przekształcenie</strong>.</li>
+<li>Nazwij nową zmienną, np. Grupa_wiekowa.</li>
+<li>Za pomocą przekształcenia → <strong>Dodaj nowe przekształcenie</strong> → <strong>Dodaj warunek rekodowania</strong>.</li>
+<li>Formuła: <code>jeżeli $source &lt; 28 użyj "Młodsza"</code>, <code>w przeciwnym razie użyj "Starsza"</code> – nazwy grup w cudzysłowie.</li>
+<li>Enter.</li>
+</ol>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-2-fiszki:ee2286d2" data-title="Rekodowanie: zmiana skali i dychotomizacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div>
+<!-- s7 -->
+<h2 id="s7">Zadanie do samodzielnego przećwiczenia</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> baza z ćwiczeń: płeć, mieszkanie, jakość snu, samoocena (RSES), lęk uogólniony (GAD-7). Do zrobienia: etykiety i poziomy, statystyki opisowe, outliery, normalność, raport Shapiro-Wilka.</p>
+<details class="sec" open="">
+<summary>Polecenia <span class="src">Slajdy ćw. 2</span></summary>
+<div class="body">
+<ol>
+<li>Otwórz bazę w Jamovi. Nadaj etykiety i ustaw poziomy pomiaru: Płeć (1 – kobieta, 2 – mężczyzna), Mieszkanie (1 – sam/a, 2 – z innymi), Jakość snu (1 – bardzo zła … 5 – bardzo dobra; porządkowa), Samoocena (RSES) i Lęk uogólniony (GAD-7) – ilościowe.</li>
+<li>Zaraportuj statystyki opisowe Wieku dla całej grupy oraz osobno dla kobiet i mężczyzn.</li>
+<li>Czy są przypadki odstające? Czy należy je wyłączyć?</li>
+<li>Sprawdź normalność Wieku, Samooceny i Lęku dla całej grupy oraz w podziale na płeć i mieszkanie.</li>
+<li>Zaraportuj test Shapiro-Wilka dla Wieku w podziale na mieszkanie samemu / z innymi.</li>
+</ol>
+<p>Teoria do tego (wariancja, wyniki z, błąd standardowy, Kołmogorow-Smirnow): <a href="wyklad-3.html">notatki z wykładu 3</a> – <a href="wyklad-3.html#s5">miary tendencji</a>, <a href="wyklad-3.html#s7">rozproszenie</a>, <a href="wyklad-3.html#s10">skośność i kurtoza</a>, <a href="wyklad-3.html#s11">testy normalności</a>.</p>
+</div>
+</details>
+<div class="st-check unit"><button data-check="metodologia/cwiczenia-2-fiszki:e8c51859,metodologia/cwiczenia-2-fiszki:60d9c727,metodologia/cwiczenia-2-fiszki:587f11a7,metodologia/cwiczenia-2-fiszki:755872b2,metodologia/cwiczenia-2-fiszki:5160b1af,metodologia/cwiczenia-2-fiszki:61de00ca,metodologia/cwiczenia-2-fiszki:2277db73,metodologia/cwiczenia-2-fiszki:a83b71bc,metodologia/cwiczenia-2-fiszki:7c246f2e,metodologia/cwiczenia-2-fiszki:610c1176,metodologia/cwiczenia-2-fiszki:f6154e25,metodologia/cwiczenia-2-fiszki:4155cd10,metodologia/cwiczenia-2-fiszki:ee2286d2" data-title="Ćwiczenia 2" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź całe ćwiczenia</b><span>13 pytań</span></span></button></div><footer class="sources">
+<p>Godlewski, T. (2026). <em>Podstawy metodologii i statystyki – ćwiczenia 2</em> [slajdy]. Uniwersytet SWPS.</p>
 <p>Albiński, R. i Elczewski, A. (2013). Opis i prezentacja danych: tabele, wykresy i statystyki opisowe. W: S. Bedyńska i M. Cypryańska (red.), <em>Statystyczny drogowskaz 1</em> (s. 83–111). Sedno.</p>
 <p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 148–156, 197–233). Wydawnictwo Naukowe PWN.</p>
 </footer>
 </main>
 </div>
-<script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Ćwiczenia 2" src="../assets/reader.js?v=5ef0fecc"></script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=4ade938e"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Ćwiczenia 2" src="../assets/reader.js?v=5ef0fecc"></script>
 </body>
 </html>

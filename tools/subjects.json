@@ -24,7 +24,7 @@
    {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS","sim":"sym-cwiczenia-1.html"},
    {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Statystyki opisowe i rozkład normalny","src":"Józefacka t. 1, s. 148–156, 197–233 · Bedyńska i Cypryańska, s. 83–111","sub_short":"Miary, rozkład normalny, testy normalności","hand":true},
    {"key":"wyklad-4","kind":"wyk","label":"Wykład 4","file":"wyklad-4.html","title":"Modele badawcze: od pytania do testu","src":"Józefacka t. 1, s. 37–63 · Bedyńska i Cypryańska, s. 149–157, 160–192, 198–221","sub_short":"Hipotezy, eksperyment vs korelacja, r-Pearsona, chi-kwadrat, testy t","hand":true},
-   {"key":"cw-2","kind":"cw","label":"Ćwiczenia 2","file":"cwiczenia-2.html","title":"Statystyki opisowe i normalność rozkładu","src":"Bedyńska i Cypryańska, s. 84–111 · Józefacka t. 1, s. 148–156, 197–233","sub_short":"Ta sama lektura co wykład 3 · 7.11","hand":true},
+   {"key":"cw-2","kind":"cw","label":"Ćwiczenia 2","file":"cwiczenia-2.html","title":"Statystyki opisowe i normalność rozkładu","src":"Slajdy ćw. 2 · Bedyńska i Cypryańska, s. 84–111 · Józefacka t. 1","sub_short":"Jamovi: opisowe, outliery, Shapiro-Wilk, rekodowanie","hand":true},
    {"key":"cw-3","kind":"cw","label":"Ćwiczenia 3","file":"cwiczenia-3.html","title":"Korelacje i tabele krzyżowe","src":"Józefacka t. 1, s. 241–245, 340–361","sub_short":"r Pearsona, założenia, R², przyczynowość, tabele krzyżowe","hand":true},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Jak zaliczyć przedmiot","sub_short":"Sylabus"}
   ],
@@ -34,7 +34,8 @@
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 67","href":"fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Statystyki opisowe · 36","href":"wyklad-3-fiszki.html"}
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Statystyki opisowe · 36","href":"wyklad-3-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Ćwiczenia 2","sub":"Jamovi i normalność · 13","href":"cwiczenia-2-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}
  },
@@ -83,14 +84,16 @@
  {"dir":"edukacja","name":"Psychologia edukacji","short":"Edukacja","kind_label":"Wykład + Ćwiczenia","hsl":[36,48,54],
   "meta":"Bednarek (red.) · Psychologia edukacyjna",
   "units":[
-   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia edukacyjna jako specjalność psychologiczna","src":"Bednarek, rozdz. 1, s. 3–16","sub":"Terminologia, dyscypliny pokrewne, modele teoretyczne i ramy praktyczne, podejście pragmatyczne.","sub_short":"Bednarek, rozdz. 1"},
-   {"key":"wyklad-1-trusz","kind":"wyk","label":"Wykład 1 · lektura","file":"wyklad-1-trusz.html","title":"Efekt oczekiwań w szkole i rodzinie","src":"Trusz (2011)","sub_short":"Pigmalion, Golem, oczekiwania rodziców","hand":true,"extra":true},
-   {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Uczenie się i różnice indywidualne","src":"Ledzińska i Czerniawska · Budziszewska","sub_short":"Inteligencja, style poznawcze, osobowość, strategie uczenia się, funkcja promocyjna","hand":true},
-   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Psycholog we współczesnej szkole","src":"Sokołowska (2010)","sub_short":"Człowiek środka, ekspert, frontowy i gabinetowy, ekspertyzy","hand":true},
+   {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Specyfika i obszary psychologii edukacji","src":"Slajdy W1 · Bednarek, rozdz. 1, s. 3–16","sub":"Definicje, pionierzy, teorie, metody badawcze, obszary badań; terminologia i modele teoretyczne.","sub_short":"Slajdy W1 · Bednarek, rozdz. 1"},
+   {"key":"wyklad-1-trusz","kind":"wyk","label":"Wykład 2","file":"wyklad-1-trusz.html","title":"Efekt oczekiwań interpersonalnych","src":"Slajdy W2 · Trusz (2011)","sub_short":"Pigmalion, Galatea i Golem, model Rosenthala, moderatory, cztery czynniki","hand":true},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 3","file":"wyklad-2.html","title":"Uczenie się i nauczanie: style a strategie","src":"Slajdy W3 · Ledzińska i Czerniawska · Budziszewska","sub_short":"Definicje uczenia się, mit stylów, strategie poznawcze i metapoznawcze, MSLQ","hand":true},
+   {"key":"wyklad-3","kind":"wyk","label":"Wykład 5","file":"wyklad-3.html","title":"Psycholog we współczesnej szkole","src":"Sokołowska (2010)","sub_short":"Człowiek środka, ekspert, frontowy i gabinetowy, ekspertyzy","hand":true},
    {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Rola psychologa szkolnego i uczenie się społeczno-emocjonalne","src":"Katra s. 21–31 · Elias s. 137–155","sub":"Model roli psychologa szkolnego (Katra) i dziesięć zasad uczenia się poznawczego oraz społeczno-emocjonalnego (Elias).","sub_short":"Katra · Elias"}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 19","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 1","sub":"Sprawdź się · 29","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 2","sub":"Efekt oczekiwań · 21","href":"wyklad-1-trusz-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Uczenie się · 35","href":"wyklad-2-fiszki.html"},
    {"kind":"cards","title":"Fiszki: ćwiczenia 1","sub":"Sprawdź się · 26","href":"cwiczenia-1-fiszki.html"}
   ]
  }
