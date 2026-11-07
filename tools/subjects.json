@@ -75,11 +75,14 @@
    {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Środowisko pracy i etyka w organizacji","sub":"Rola psychologa w organizacji · Organizacja pracy i środowisko pracy · Etyczny biznes (CSR)","sub_short":"Środowisko pracy, CSR, etyka"},
    {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Zachowania konsumenckie i mechanizmy reklamy","src":"Slajdy, dr hab. A. Grochowska · Stasiuk, Maison (2014), r. 1–2 · Doliński (2003)","sub":"Model EKB, heurystyki, instynkty i ukryta motywacja, nastrój, iluzja odporności na reklamy, wartość marki, sieci skojarzeń, reklama natywna.","sub_short":"Konsument, reklama, marka","hand":true},
    {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Kultura i klimat organizacyjny","src":"Hofstede, rozdz. 1 · Lipińska-Grobelny (2010) · Kożusznik, rozdz. 10","sub_short":"Cebula kultury, wymiary Hofstedego, kultura a klimat, Schein, Handy, typologie","hand":true},
+   {"key":"cw-2","kind":"cw","label":"Ćwiczenia 2","file":"cwiczenia-2.html","title":"Stres i wypalenie zawodowe","src":"Schultz i Schultz, rozdz. 12 · Maslach i Leiter, rozdz. 1–2","sub_short":"Stresory, typ A, twardość, wypalenie, 6 obszarów niedopasowania, radzenie sobie","hand":true},
+   {"key":"kolokwium-1","kind":"info","label":"Kolokwium 1","file":"kolokwium-1.html","title":"Przykładowe pytania (28.11)","sub_short":"18 pytań otwartych z odpowiedziami","hand":true},
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Sylabus w skrócie","sub_short":"Zaliczenie i literatura"}
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Mechanizmy reklamy · 45","href":"wyklad-3-fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Ćwiczenia 1","sub":"Kultura i klimat · 32","href":"cwiczenia-1-fiszki.html"}
+   {"kind":"cards","title":"Fiszki · Ćwiczenia 1","sub":"Kultura i klimat · 32","href":"cwiczenia-1-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Ćwiczenia 2","sub":"Stres i wypalenie · 20","href":"cwiczenia-2-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./"}
  },
