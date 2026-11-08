@@ -22,7 +22,7 @@
    {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Psychologia jako nauka empiryczna","src":"Józefacka t. 1, s. 9–17","sub_short":"Józefacka t. 1, s. 9–17","sim":"sym-wyklad-1.html"},
    {"key":"wyklad-2","kind":"wyk","label":"Wykład 2","file":"wyklad-2.html","title":"Konceptualizacja, operacjonalizacja, pomiar","src":"Józefacka t. 1, s. 64–72 · Babbie · slajdy","sub_short":"Józefacka · Babbie · slajdy"},
    {"key":"cwiczenia-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Proces badawczy i baza danych w Jamovi","src":"Józefacka t. 1, s. 105–114 · Bedyńska i Cypryańska","sub_short":"Jamovi i SPSS","sim":"sym-cwiczenia-1.html"},
-   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Statystyki opisowe i rozkład normalny","src":"Józefacka t. 1, s. 148–156, 197–233 · Bedyńska i Cypryańska, s. 83–111","sub_short":"Miary, rozkład normalny, testy normalności","hand":true},
+   {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Zmienne, statystyki opisowe i rozkład normalny","src":"Slajdy W3 · Józefacka t. 1, s. 148–156, 197–233 · Bedyńska i Cypryańska, s. 83–111","sub_short":"Klasyfikacja zmiennych, skale pomiarowe, miary, reguła trzech sigm, testy normalności","hand":true},
    {"key":"wyklad-4","kind":"wyk","label":"Wykład 4","file":"wyklad-4.html","title":"Modele badawcze: od pytania do testu","src":"Józefacka t. 1, s. 37–63 · Bedyńska i Cypryańska, s. 149–157, 160–192, 198–221","sub_short":"Hipotezy, eksperyment vs korelacja, r-Pearsona, chi-kwadrat, testy t","hand":true},
    {"key":"cw-2","kind":"cw","label":"Ćwiczenia 2","file":"cwiczenia-2.html","title":"Statystyki opisowe i normalność rozkładu","src":"Slajdy ćw. 2 · Bedyńska i Cypryańska, s. 84–111 · Józefacka t. 1","sub_short":"Jamovi: opisowe, outliery, Shapiro-Wilk, rekodowanie","hand":true},
    {"key":"cw-3","kind":"cw","label":"Ćwiczenia 3","file":"cwiczenia-3.html","title":"Korelacje i tabele krzyżowe","src":"Józefacka t. 1, s. 241–245, 340–361","sub_short":"r Pearsona, założenia, R², przyczynowość, tabele krzyżowe","hand":true},
@@ -34,7 +34,7 @@
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 67","href":"fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Statystyki opisowe · 36","href":"wyklad-3-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Zmienne i statystyki opisowe · 45","href":"wyklad-3-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Ćwiczenia 2","sub":"Jamovi i normalność · 13","href":"cwiczenia-2-fiszki.html"}
   ],
   "redirects":{"notatki.html":"./","notatki-fiszki.html":"fiszki.html"}

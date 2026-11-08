@@ -13,12 +13,124 @@
 <body>
 <div class="page">
 <header class="hero">
-<h1>Opis danych: statystyki opisowe i rozkład normalny</h1>
-<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 148–156 i 197–233 · Bedyńska i Cypryańska, rozdz. 3, s. 83–111</p>
+<h1>Klasyfikacja zmiennych, statystyki opisowe i rozkład normalny</h1>
+<p class="meta">Slajdy wykładu 3 (dr E. Brygoła) · Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 148–156 i 197–233 · Bedyńska i Cypryańska, rozdz. 3, s. 83–111</p>
 <div class="links"><a class="btn" href="test.html#wyklad-3.html">Test z tego materiału</a></div>
 <p class="meta">Ten sam materiał obowiązuje na <strong>ćwiczeniach 2 (7.11)</strong>: statystyki opisowe i normalność rozkładu.</p>
 </header>
 <main>
+<!-- p1 -->
+<h2 id="p1">Klasyfikacja zmiennych</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> zmienne dzieli się według: <strong>liczby wartości</strong> (dwu-, trój-, wielowartościowe), <strong>ciągłości</strong> (ciągłe, dyskretne), <strong>kierunku zależności</strong> (niezależna, zależna), <strong>możliwości manipulacji</strong> (klasyfikacyjne, manipulacyjne), <strong>charakteru wskaźników</strong> (jakościowe, ilościowe), <strong>roli w modelu</strong> (główne, kontekstowe) i <strong>skali pomiarowej</strong>.</p>
+<details class="sec" open="">
+<summary>Sześć kryteriów podziału <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Kryterium</th><th>Rodzaje</th><th>Na czym polega / przykłady</th></tr>
+<tr><td>Liczba przyjmowanych wartości</td><td><strong>dwuwartościowe</strong> (dychotomiczne), <strong>trójwartościowe</strong> (trychotomiczne), <strong>wielowartościowe</strong> (politomiczne)</td><td>zmienną wielowartościową można zamienić na dwuwartościową (<strong>dychotomizacja</strong> → zmienna zdychotomizowana) lub trójwartościową (<strong>trychotomizacja</strong>)</td></tr>
+<tr><td>Ciągłość wartości</td><td><strong>ciągłe</strong> / <strong>dyskretne</strong> (skokowe)</td><td>ciągłe – każda wartość w przedziale; dyskretne – tylko niektóre, ściśle określone wartości (przez charakter obiektu, wskaźnik lub procedurę)</td></tr>
+<tr><td>Kierunek zależności</td><td><strong>niezależna</strong> (ZN) / <strong>zależna</strong> (ZZ)</td><td>wartości ZN potencjalnie warunkują różnice w ZZ; ZZ nie zależy od badacza, ale może zależeć od ZN, a poziom ZN może zależeć od badacza</td></tr>
+<tr><td>Możliwość manipulacji</td><td><strong>klasyfikacyjne</strong> (badania quasi-eksperymentalne) / <strong>manipulacyjne</strong> (badania eksperymentalne)</td><td>klasyfikacyjne – niezależne od badacza: płeć, zawód, ulubiona potrawa, miejsce zamieszkania, zmienne niemanipulowalne ze względów etycznych; manipulacyjne – zależne od decyzji badacza: trudność zadania, jasność oświetlenia, obecność autorytetu, podawany napój, płeć instruktora/aktora, rodzaj torowanych informacji</td></tr>
+<tr><td>Charakter wskaźników</td><td><strong>jakościowe</strong> / <strong>ilościowe</strong></td><td>jakościowe – bez wartości liczbowych: płeć, religia, kraj pochodzenia, rodzaj sportu, sposób relaksacji; ilościowe – mają jednostki pomiaru: wiek, czas reakcji, liczba zapamiętanych słów, konstrukty mierzone testami</td></tr>
+<tr><td>Rola w modelu zależności</td><td><strong>główne</strong> / <strong>kontekstowe</strong></td><td>główne – w bazowej zależności sprawdzanej w badaniu; kontekstowe – <strong>zmieniają</strong> zależność między zmiennymi głównymi: miejsce (lokalne i kulturowe), czas, okoliczności, rodzaj uczestników</td></tr>
+</table></div>
+</div>
+</details>
+<details class="sec">
+<summary>Dychotomizacja i trychotomizacja: przykład <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<p>Pomiar depresyjności u 1000 osób testem o zakresie 0–80 pkt:</p>
+<ul>
+<li><strong>Dychotomizacja</strong> według <strong>mediany w próbie</strong> (osoby nisko- i wysokodepresyjne) albo według <strong>progu z innych badań</strong> (osoby z depresją i bez).</li>
+<li><strong>Trychotomizacja</strong> według <strong>odchylenia standardowego w próbie</strong> (nisko-, średnio-, wysokodepresyjni) albo według <strong>norm w populacji</strong> (niski, średni, wysoki poziom).</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Zmienne kontekstowe: przykład z filmu <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<p>Eksperyment terenowy „What Would You Do?” – ktoś na oczach przechodniów przecina zabezpieczenie roweru. <strong>Zmienne główne</strong>: sytuacja kradzieży i reakcja przechodniów. <strong>Zmienne kontekstowe</strong> zmieniające tę zależność: kim jest „złodziej” (biały mężczyzna, czarnoskóry mężczyzna, atrakcyjna kobieta), pora dnia, nastrój świadków.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:79f82eb8,metodologia/wyklad-3-fiszki:33f0693d,metodologia/wyklad-3-fiszki:136559f4,metodologia/wyklad-3-fiszki:151ec210" data-title="Klasyfikacja zmiennych" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<!-- p2 -->
+<h2 id="p2">Skale pomiarowe</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> od najsłabszej: <strong>nominalna</strong> (tylko kategorie), <strong>porządkowa</strong> (kolejność), <strong>interwałowa</strong> (stała jednostka, umowne zero – „o ile”), <strong>ilorazowa</strong> (zero absolutne – „ile razy”). Rodzaj skali zależy od <strong>sposobu pomiaru</strong>; zamieniać można tylko ze skali silniejszej na słabszą.</p>
+<details class="sec" open="">
+<summary>Cztery skale <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Skala</th><th>Właściwości</th><th>Przykłady</th></tr>
+<tr><td><strong>Nominalna</strong></td><td>najsłabsza; tylko klasyfikuje do kategorii; podział <strong>wyczerpujący</strong> (względem pytania badawczego) i <strong>rozłączny</strong>; kategorii nie da się uporządkować</td><td>region, miejscowość, kierunek studiów, posiadanie i marka samochodu, sprzeciw vs brak sprzeciwu wobec przemocy</td></tr>
+<tr><td><strong>Porządkowa</strong> (rangowa)</td><td>dodatkowo szereguje kategorie wg nasilenia; znany tylko <strong>kierunek</strong> różnic, nie ich wielkość ani stałość</td><td>wykształcenie, wielkość miejsca zamieszkania, klasa samochodu (A, B, C), zamiar udziału w wyborach, siła sprzeciwu (słaby, umiarkowany, silny)</td></tr>
+<tr><td><strong>Interwałowa</strong> (przedziałowa)</td><td>ma <strong>jednostkę pomiaru</strong>, różnice między poziomami są <strong>stałe</strong>; zero <strong>umowne</strong> (możliwe wartości ujemne); pozwala określić <strong>o ile</strong> więcej, nie <strong>ile razy</strong></td><td>temperatura w °C, długość i szerokość geograficzna, większość zmiennych mierzonych testami psychologicznymi</td></tr>
+<tr><td><strong>Ilorazowa</strong> (stosunkowa)</td><td>najsilniejsza; jak interwałowa, ale z <strong>zerem absolutnym</strong> – można liczyć <strong>stosunek</strong> wartości</td><td>czas reakcji, liczba lat edukacji, liczba dzieci, wzrost, zarobki</td></tr>
+</table></div>
+</div>
+</details>
+<details class="sec">
+<summary>Pozycja testowa a wynik testu <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<p>Odpowiedź na <strong>pojedyncze pytanie</strong> (item), np. w WHO-5 („Czułam się wesoła…”: od „cały czas” = 5 do „nigdy” = 0) albo „zdecydowanie się zgadzam … zdecydowanie się nie zgadzam”, to pomiar na skali <strong>porządkowej</strong>.</p>
+<p>Umowne przydzielenie punktów odpowiedziom na <strong>wiele pytań</strong> (np. 0–3 lub 1–4) i ich <strong>zsumowanie lub uśrednienie</strong> daje pomiar na skali <strong>interwałowej</strong>.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Zmiana skali <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<p>Wiele zmiennych można operacjonalizować różnie, więc ta sama zmienna w różnych badaniach bywa wyrażona na różnych skalach. <strong>Sposób pomiaru decyduje o rodzaju skali.</strong></p>
+<p>Zamiana możliwa jest <strong>tylko ze skali silniejszej na słabszą</strong>: ilościowa (interwałowa, ilorazowa) → porządkowa (np. trychotomizacja: niski, średni, wysoki) → nominalna (np. dychotomizacja: jest, brak).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:0c20f64d,metodologia/wyklad-3-fiszki:2f24c662" data-title="Skale pomiarowe" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- p3 -->
+<h2 id="p3">Statystyki opisowe według slajdów</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> statystyki opisowe <strong>charakteryzują próbę</strong>. Slajdy omawiają 7: <strong>min i max</strong>, <strong>średnią</strong>, <strong>medianę</strong>, <strong>dominantę</strong> (trzy ostatnie to miary tendencji centralnej), <strong>skośność</strong>, <strong>kurtozę</strong> i <strong>odchylenie standardowe</strong>. W rozkładzie normalnym M = Me = Mo, A = 0, K = 0 i działa reguła trzech sigm.</p>
+<details class="sec" open="">
+<summary>Siedem statystyk i jakie skale <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Statystyka</th><th>Co opisuje</th><th>Dla jakich skal</th></tr>
+<tr><td><strong>Min. i Maks.</strong></td><td>najniższa i najwyższa wartość – granice (rozstęp) wyników; np. {4, 7, 12, 13, 14, 22} albo {podstawowe … podyplomowe}</td><td>ilościowe, ewentualnie porządkowe</td></tr>
+<tr><td><strong>Średnia</strong> (<em>M</em>, X̄; populacja: μ)</td><td>wartość przeciętna; <strong>wrażliwa na obserwacje skrajne</strong></td><td>tylko ilościowe</td></tr>
+<tr><td><strong>Mediana</strong> (<em>Me</em>)</td><td>wartość środkowa uporządkowanego zbioru; przy parzystej liczbie – średnia dwóch środkowych; mniej wrażliwa na skrajne</td><td>ilościowe, także porządkowe (przy parzystej liczbie – przybliżona)</td></tr>
+<tr><td><strong>Dominanta</strong> (<em>Mo</em>)</td><td>wartość najczęstsza; dwie → rozkład <strong>dwumodalny</strong>, więcej → <strong>wielomodalny</strong>; SPSS pokazuje wtedy <strong>najniższą</strong> wartość modalną</td><td>wszystkie, nawet nominalna</td></tr>
+<tr><td><strong>Skośność</strong> (<em>A</em>)</td><td>(a)symetria rozkładu</td><td>ilościowe</td></tr>
+<tr><td><strong>Kurtoza</strong> (<em>K</em>)</td><td>skupienie rozkładu</td><td>ilościowe</td></tr>
+<tr><td><strong>Odchylenie standardowe</strong> (<em>SD</em>, <em>s</em>; populacja: σ)</td><td>najczęstsza miara rozproszenia – rozrzut wyników wokół średniej</td><td>ilościowe</td></tr>
+</table></div>
+<p>Przykład ze slajdu: 1, 3, 3, 4, 6, 7, 8, 32 → <strong>M = 8</strong> (zawyżona przez 32), <strong>Me = 5</strong> (średnia z 4 i 6).</p>
+</div>
+</details>
+<details class="sec">
+<summary>Skośność, kurtoza i rozkład normalny <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<ul>
+<li><strong>Skośność prawostronna</strong> (A &gt; 0): długi ogon po prawej; kolejność <strong>Mo &lt; Me &lt; M</strong>.</li>
+<li><strong>Skośność lewostronna</strong> (A &lt; 0): długi ogon po lewej; kolejność <strong>M &lt; Me &lt; Mo</strong>.</li>
+<li><strong>Kurtoza</strong>: K &gt; 0 – rozkład <strong>leptokurtyczny</strong> (wysmukły); K &lt; 0 – <strong>platykurtyczny</strong> (spłaszczony).</li>
+<li><strong>Rozkład normalny</strong>: M = Me = Mo, A = 0, K = 0.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Odchylenie standardowe i reguła trzech sigm <span class="src">Slajdy W3</span></summary>
+<div class="body">
+<p>Dwa zbiory ocen szkolnych o tej samej sumie 49 i średniej <strong>M = 3,5</strong>:</p>
+<ul>
+<li>1, 2, 2, 2, 2, 3, 3, 4, 4, 4, 5, 5, 6, 6 → <strong>SD = 1,61</strong></li>
+<li>3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4 → <strong>SD = 0,52</strong></li>
+</ul>
+<p>SD zależy od wartości skrajnych i ich częstości. Nie ma stałej wartości SD dla rozkładu normalnego, ale zawsze działa w nim <strong>reguła trzech sigm</strong>:</p>
+<div class="tbl"><table>
+<tr><th>Przedział</th><th>% populacji</th></tr>
+<tr><td>μ ± 1σ</td><td><strong>68,2%</strong> (po 34,1% z każdej strony)</td></tr>
+<tr><td>μ ± 2σ</td><td><strong>95,4%</strong> (dodatkowo po 13,6%)</td></tr>
+<tr><td>μ ± 3σ</td><td><strong>99,7%</strong> (dodatkowo po 2,1%)</td></tr>
+<tr><td>poza μ ± 3σ</td><td><strong>0,3%</strong></td></tr>
+</table></div>
+<p><strong>IQ</strong> (M = 100, SD = 15): około <strong>95%</strong> populacji ma IQ między <strong>70 a 130</strong> (±2 SD); przeciętne IQ to przedział 85–115 (±1 SD).</p>
+<p class="def">Slajdy podają 68,2% i 95,4%, lektura 68,3% i 95,5% – to ta sama reguła z innym zaokrągleniem.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-3-fiszki:cbf3fa5e,metodologia/wyklad-3-fiszki:b9974deb,metodologia/wyklad-3-fiszki:d376b723" data-title="Statystyki opisowe według slajdów" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
 <h2 id="s1">Po co opisywać dane</h2>
 <p class="tldr"><span class="lbl">W skrócie:</span> opis danych (tabele, wykresy, statystyki opisowe) robi się <strong>zawsze i przed</strong> testowaniem hipotez. Pozwala poznać dane, wyłapać błędy i dewiantów oraz sprawdzić, czy planowane analizy są w ogóle możliwe. Statystyki opisowe <strong>nie pozwalają wnioskować o populacji</strong>.</p>
 <details class="sec" open="">
@@ -271,7 +383,7 @@
 <tr><td>M ± 2 SD</td><td><strong>95,5%</strong></td></tr>
 <tr><td>M ± 3 SD</td><td><strong>99,7%</strong></td></tr>
 </table></div>
-<p>Wartości równe lub większe od M + 3 SD mają prawdopodobieństwo około 0,1% (tak samo poniżej M − 3 SD). Przykład: pensje z 30 ofert, M = 6000 zł, SD = 1618,85 zł, więc około 68,3% kwot mieści się między <strong>4311,15 a 7618,85 zł</strong>. Przedział podaje się w parze: średnia ± odchylenie.</p>
+<p>Wartości równe lub większe od M + 3 SD mają prawdopodobieństwo około 0,1% (tak samo poniżej M − 3 SD). Przykład: pensje z 30 ofert, M = 6000 zł, SD = 1618,85 zł, więc około 68,3% kwot mieści się między <strong>4381,15 a 7618,85 zł</strong>. Przedział podaje się w parze: średnia ± odchylenie.</p>
 </div>
 </details>
 <details class="sec">
@@ -296,7 +408,7 @@
 <tr><td>Czego dotyczy</td><td><strong>rozproszenia</strong> (zmienności) wyników w próbie lub populacji</td><td><strong>precyzji</strong>: jak wyniki w próbach różnią się od szacowanego wyniku w populacji</td></tr>
 <tr><td>Rozkład</td><td>w próbie (empiryczny) lub w populacji</td><td><strong>z próby</strong> (próbkowania)</td></tr>
 <tr><td>Rola</td><td>miara <strong>opisowa</strong></td><td>podstawa <strong>przedziałów ufności</strong> i wnioskowania</td></tr>
-<tr><td>Przykład</td><td>1618,85 zł → 68,3% pensji: 4311,15–7618,85 zł</td><td>295,56 zł → 95% przedział ufności dla średniej: <strong>5420,70–6679,30 zł</strong></td></tr>
+<tr><td>Przykład</td><td>1618,85 zł → 68,3% pensji: 4381,15–7618,85 zł</td><td>295,56 zł → 95% przedział ufności dla średniej: <strong>5420,70–6679,30 zł</strong></td></tr>
 </table></div>
 <p>Oba zakresy są zupełnie inne, bo to dwie różne miary. Prawdziwa średnia z 702 ofert (5720,80 zł) mieści się w przedziale ufności, który można uznać za jeden z 95% przedziałów zawierających prawdziwy parametr. SD i SE bywają mylone przez wspólny przymiotnik „standardowy” i przez to, że SE liczy się z SD.</p>
 </div>
@@ -385,9 +497,9 @@
 <p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 148–156, 197–233). Wydawnictwo Naukowe PWN.</p>
 <p>Albiński, R. i Elczewski, A. (2013). Opis i prezentacja danych: tabele, wykresy i statystyki opisowe. W: S. Bedyńska i M. Cypryańska (red.), <em>Statystyczny drogowskaz 1</em> (s. 83–111). Sedno.</p>
 </footer>
-<div class="st-check unit"><button data-check="metodologia/wyklad-3-fiszki:e37b26db,metodologia/wyklad-3-fiszki:e227ad17,metodologia/wyklad-3-fiszki:436c56af,metodologia/wyklad-3-fiszki:31275391,metodologia/wyklad-3-fiszki:fd1760a4,metodologia/wyklad-3-fiszki:e13cf6d8,metodologia/wyklad-3-fiszki:e66f4867,metodologia/wyklad-3-fiszki:694113cb,metodologia/wyklad-3-fiszki:d41cdb46,metodologia/wyklad-3-fiszki:513e06c1,metodologia/wyklad-3-fiszki:de805c47,metodologia/wyklad-3-fiszki:3811a11d,metodologia/wyklad-3-fiszki:fea12417,metodologia/wyklad-3-fiszki:fccc69e9,metodologia/wyklad-3-fiszki:c9d8effc,metodologia/wyklad-3-fiszki:9a2ee625,metodologia/wyklad-3-fiszki:ca15d14e,metodologia/wyklad-3-fiszki:11585472,metodologia/wyklad-3-fiszki:917d738f,metodologia/wyklad-3-fiszki:2c6b5703,metodologia/wyklad-3-fiszki:472a6923,metodologia/wyklad-3-fiszki:c757a145,metodologia/wyklad-3-fiszki:76f33195,metodologia/wyklad-3-fiszki:b096abf9,metodologia/wyklad-3-fiszki:0c9a448c,metodologia/wyklad-3-fiszki:9b1372ee,metodologia/wyklad-3-fiszki:4b4ea1c0,metodologia/wyklad-3-fiszki:16ca3c35,metodologia/wyklad-3-fiszki:046e60e4,metodologia/wyklad-3-fiszki:941559e5,metodologia/wyklad-3-fiszki:31d32e01,metodologia/wyklad-3-fiszki:b8429d59,metodologia/wyklad-3-fiszki:2f79c205,metodologia/wyklad-3-fiszki:de29cc8b,metodologia/wyklad-3-fiszki:99e93265,metodologia/wyklad-3-fiszki:b4c3efb1" data-title="Wykład 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>36 pytań</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="cwiczenia-1.html"><span>Poprzednia</span><b>Ćwiczenia 1</b><i>Proces badawczy i baza danych w Jamovi</i></a><span></span></nav>
+<div class="st-check unit"><button data-check="metodologia/wyklad-3-fiszki:e37b26db,metodologia/wyklad-3-fiszki:e227ad17,metodologia/wyklad-3-fiszki:436c56af,metodologia/wyklad-3-fiszki:31275391,metodologia/wyklad-3-fiszki:fd1760a4,metodologia/wyklad-3-fiszki:e13cf6d8,metodologia/wyklad-3-fiszki:e66f4867,metodologia/wyklad-3-fiszki:694113cb,metodologia/wyklad-3-fiszki:d41cdb46,metodologia/wyklad-3-fiszki:513e06c1,metodologia/wyklad-3-fiszki:de805c47,metodologia/wyklad-3-fiszki:3811a11d,metodologia/wyklad-3-fiszki:fea12417,metodologia/wyklad-3-fiszki:fccc69e9,metodologia/wyklad-3-fiszki:c9d8effc,metodologia/wyklad-3-fiszki:9a2ee625,metodologia/wyklad-3-fiszki:ca15d14e,metodologia/wyklad-3-fiszki:11585472,metodologia/wyklad-3-fiszki:917d738f,metodologia/wyklad-3-fiszki:2c6b5703,metodologia/wyklad-3-fiszki:472a6923,metodologia/wyklad-3-fiszki:c757a145,metodologia/wyklad-3-fiszki:76f33195,metodologia/wyklad-3-fiszki:b096abf9,metodologia/wyklad-3-fiszki:0c9a448c,metodologia/wyklad-3-fiszki:9b1372ee,metodologia/wyklad-3-fiszki:4b4ea1c0,metodologia/wyklad-3-fiszki:16ca3c35,metodologia/wyklad-3-fiszki:046e60e4,metodologia/wyklad-3-fiszki:941559e5,metodologia/wyklad-3-fiszki:31d32e01,metodologia/wyklad-3-fiszki:b8429d59,metodologia/wyklad-3-fiszki:2f79c205,metodologia/wyklad-3-fiszki:de29cc8b,metodologia/wyklad-3-fiszki:99e93265,metodologia/wyklad-3-fiszki:b4c3efb1,metodologia/wyklad-3-fiszki:79f82eb8,metodologia/wyklad-3-fiszki:33f0693d,metodologia/wyklad-3-fiszki:136559f4,metodologia/wyklad-3-fiszki:151ec210,metodologia/wyklad-3-fiszki:0c20f64d,metodologia/wyklad-3-fiszki:2f24c662,metodologia/wyklad-3-fiszki:cbf3fa5e,metodologia/wyklad-3-fiszki:b9974deb,metodologia/wyklad-3-fiszki:d376b723" data-title="Wykład 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>45 pytań</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="cwiczenia-1.html"><span>Poprzednia</span><b>Ćwiczenia 1</b><i>Proces badawczy i baza danych w Jamovi</i></a><span></span></nav>
 </main>
 </div>
-<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=4ade938e"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 3" src="../assets/reader.js?v=5ef0fecc"></script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=16b4ae09"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 3" src="../assets/reader.js?v=5ef0fecc"></script>
 </body>
 </html>
