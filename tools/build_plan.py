@@ -87,8 +87,14 @@ def unit_href(s):
     """Zajęcia → plik notatek, jeśli istnieje (Wykład N / Ćwiczenia N / Zajęcia N)."""
     n = re.sub(r"\D", "", s["n"])
     labels = [f"Wykład {n}"] if s["kind"] == "W" else [f"Ćwiczenia {n}", f"Zajęcia {n}"]
-    for u in SUBJ[s["subj"]]["units"]:
-        if u["label"] in labels:
+    # jawne przypisanie do spotkania z planu ("plan": [nr, ...]) ma pierwszeństwo przed etykietą
+    units = SUBJ[s["subj"]]["units"]
+    kind = "wyk" if s["kind"] == "W" else "cw"
+    for u in units:
+        if "plan" in u and int(n or 0) in u["plan"] and u.get("kind") == kind:
+            return f'{s["subj"]}/{u["file"]}'
+    for u in units:
+        if u["label"] in labels and "plan" not in u:
             return f'{s["subj"]}/{u["file"]}'
     return None
 
