@@ -169,6 +169,16 @@
         "hand": true
       },
       {
+        "key": "wyklad-5",
+        "kind": "wyk",
+        "label": "Wykład 5",
+        "file": "wyklad-5.html",
+        "title": "Próba i jej dobór",
+        "src": "Józefacka t. 1, s. 80–85, 132–148",
+        "sub_short": "Dobór losowy i nielosowy, trafność, estymacja, błąd standardowy, n = 30",
+        "hand": true
+      },
+      {
         "key": "cw-2",
         "kind": "cw",
         "label": "Ćwiczenia 2",
@@ -215,6 +225,12 @@
         "title": "Fiszki · Wykład 3",
         "sub": "Zmienne i statystyki opisowe · 45",
         "href": "wyklad-3-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Wykład 5",
+        "sub": "Próba i jej dobór · 33",
+        "href": "wyklad-5-fiszki.html"
       },
       {
         "kind": "cards",

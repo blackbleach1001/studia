@@ -791,5 +791,27 @@
    "Problem w dydaktyce",
    "Zadanie, którego uczeń nie rozwiąże posiadaną wiedzą; zależy od jego reprezentacji, więc jest problemem zawsze „dla kogoś”."
   ]
+ ],
+ "metodologia/wyklad-5.html": [
+  [
+   "Populacja i próba",
+   "Populacja to cały interesujący nas zbiór (N), próba to jego część (n), na której badamy i z której wnioskujemy o populacji."
+  ],
+  [
+   "Dobór losowy",
+   "Każdy element populacji ma taką samą szansę trafić do próby; tylko on pozwala wnioskować statystycznie o populacji."
+  ],
+  [
+   "Reprezentatywność",
+   "Próba dobrze oddaje charakterystykę populacji; zależy od losowego doboru i liczebności."
+  ],
+  [
+   "Parametr i estymator",
+   "Parametr opisuje populację, estymator (statystyka z próby) go szacuje. Różnica to błąd pomiaru."
+  ],
+  [
+   "Trafność wewnętrzna i zewnętrzna",
+   "Wewnętrzna: wynik wynika z manipulacji, nie z czynnika zakłócającego. Zewnętrzna: wyniki można uogólnić na inne osoby, miejsca i czasy."
+  ]
  ]
 }
