@@ -9,7 +9,8 @@
      opts.onClose, opts.closeLabel, opts.onMore, opts.moreLabel, opts.doneTitle, opts.onStep
      opts.test       — test: bez etykiet powtórek, wynik w procentach,
                        opts.onRetry(błędne id), opts.onFinish(punkty, wszystkie)
-   Odpowiedź z pamięci: najpierw przypominasz sobie odpowiedź, potem ją odsłaniasz.
+   Odpowiedź z pamięci: najpierw przypominasz sobie odpowiedź (można ją powiedzieć
+   lub napisać — punkty, które w niej padły, zaznaczają się same), potem ją odsłaniasz.
    Potem zaznaczasz, które kluczowe punkty (k; bez nich — pogrubienia) były w Twojej
    odpowiedzi; zaliczone od 60%. Bez punktów: Umiem / Jeszcze raz.
    Strona z fiszkami: <script type="application/json" id="cards"> + <main id="deck">
@@ -38,6 +39,64 @@
     return out.length >= 2 ? out : null;
   }
 
+  /* ---------- odpowiedź własnymi słowami (głos lub tekst) ----------
+     Rozpoznawanie mowy Safari (pl-PL); bez niego — pole tekstowe (działa dyktowanie z klawiatury).
+     Po odsłonięciu kluczowe punkty, które padły w odpowiedzi, są już zaznaczone. */
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var STOPW = {};
+  ("jest są był była było były będzie oraz przez które który która którzy tego temu tych tymi jako może można między " +
+   "bardzo tylko także także gdy gdyż jeśli jeżeli czyli więc albo nawet inne innych inny inna jego jej ich sobie siebie " +
+   "wiele dużo przy nad pod bez ponad wobec według dzięki często zawsze nigdy bardziej mniej sposób rodzaj tzw np itd itp " +
+   "czyli jakiś jakaś jakie jaki jaka taki taka takie tutaj wtedy kiedy dlatego ponieważ jednak również wszystko wszystkie " +
+   "jedna jeden jedno nich niej niego nimi będą mają mamy mieć jestem chodzi znaczy właśnie trochę coś czegoś").split(" ")
+    .forEach(function (w) { STOPW[w] = 1; });
+  function fold(s) {
+    return String(s).toLowerCase().replace(/ł/g, "l").normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+  function contentWords(s) {
+    var out = [];
+    String(s).replace(/[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż0-9]+/g, function (w) {
+      var acr = /^[A-ZĄĆĘŁŃÓŚŹŻ0-9]{2,}$/.test(w), f = fold(w);
+      if (acr || /^\d+$/.test(w) || (f.length >= 4 && !STOPW[w.toLowerCase()])) out.push(f);
+      return w;
+    });
+    return out;
+  }
+  /* podobne słowa: odmiana przez przypadki (zadania/zadaniach, nowe/nowych) */
+  function alike(a, b) {
+    if (a === b) return true;
+    var m = Math.min(a.length, b.length), p = 0;
+    while (p < m && a[p] === b[p]) p++;
+    var need = m <= 4 ? m - 1 : Math.min(5, m - 2);
+    return m >= 3 && p >= Math.max(3, need);
+  }
+  /* które punkty padły: przy 1–2 słowach treściowych wystarczy jedno, przy dłuższych — 60% */
+  function matchTerms(said, terms) {
+    var sw = contentWords(said), got = {}, used = {};
+    terms.forEach(function (t, i) {
+      var tw = contentWords(t);
+      if (!tw.length) return;
+      var hits = [];
+      tw.forEach(function (w) {
+        for (var j = 0; j < sw.length; j++) if (alike(w, sw[j])) { hits.push(j); return; }
+      });
+      if (hits.length >= (tw.length <= 2 ? 1 : Math.ceil(tw.length * 0.6))) {
+        got[i] = true;
+        hits.forEach(function (j) { used[sw[j]] = 1; });
+      }
+    });
+    return { got: got, used: used };
+  }
+  function markSaid(said, used) {
+    return esc(said).replace(/[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż0-9]+/g, function (w) {
+      return used[fold(w)] ? "<mark>" + w + "</mark>" : w;
+    });
+  }
+  var MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>';
+  var KEYB = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>';
+
   function StudiaDeck(el, cards, opts) {
     opts = opts || {};
     var byId = {}; cards.forEach(function (c) { byId[c.id] = c; });
@@ -58,8 +117,48 @@
 
     function current() {
       var id = queue[0];
-      if (!cur || cur.id !== id) { var c = byId[id]; cur = { id: id, terms: c.k && c.k.length ? c.k : keyTerms(c.a), got: {} }; }
+      if (!cur || cur.id !== id) { stopRec(); var c = byId[id]; cur = { id: id, terms: c.k && c.k.length ? c.k : keyTerms(c.a), got: {}, said: "", auto: {}, used: {} }; }
       return cur;
+    }
+
+    /* ---------- nagrywanie odpowiedzi ---------- */
+    var rec = null, recOn = false;
+    function sayBox() { return el.querySelector(".st-say-tx"); }
+    function sayUI() {
+      var b = el.querySelector('[data-a="mic"]'), t = sayBox();
+      if (b) {
+        b.setAttribute("aria-pressed", recOn);
+        b.querySelector("span").textContent = recOn ? "Zakończ" : (cur && cur.said ? "Mów dalej" : "Powiedz odpowiedź");
+      }
+      if (t) { t.hidden = !(cur && (cur.said || cur.typing)); }
+    }
+    function stopRec() {
+      if (rec) { try { rec.stop(); } catch (e) {} rec = null; }
+      recOn = false;
+    }
+    document.addEventListener("visibilitychange", function () { if (document.hidden) { stopRec(); if (!shown) sayUI(); } });
+    function startRec() {
+      var base = cur.said ? cur.said.replace(/\s+$/, "") + " " : "";
+      var card = cur, r = rec = new SR();
+      r.lang = "pl-PL"; r.continuous = true; r.interimResults = true;
+      r.onresult = function (e) {
+        if (cur !== card || !el.offsetParent) { try { r.stop(); } catch (x) {} return; }   // inne pytanie albo zamknięty arkusz
+        var txt = "";
+        for (var i = 0; i < e.results.length; i++) txt += e.results[i][0].transcript + " ";
+        card.said = (base + txt).replace(/\s+/g, " ").trim();
+        var t = sayBox(); if (t) { t.value = card.said; t.hidden = false; }
+      };
+      r.onerror = function (e) {
+        if (cur !== card) return;
+        recOn = false;
+        if (e.error === "not-allowed" || e.error === "service-not-allowed") {
+          cur.typing = true; sayUI();
+          var t = sayBox(); if (t) { t.placeholder = "Mikrofon jest wyłączony. Możesz napisać odpowiedź."; t.focus(); }
+        } else sayUI();
+      };
+      r.onend = function () { if (rec === r) { rec = null; recOn = false; if (!shown) sayUI(); } };
+      try { r.start(); recOn = true; } catch (e) { recOn = false; rec = null; }
+      sayUI();
     }
 
     function head() {
@@ -137,15 +236,26 @@
         '<h2 class="st-fcard-q">' + c.q + '</h2>';
 
       var terms = k.terms, nGot = Object.keys(k.got).length;
+      var said = k.said && k.said.trim();
       el.innerHTML = head() +
         '<article class="st-fcard' + (shown ? "" : " can-reveal") + '"' + (shown ? "" : ' data-a="show"') + ' aria-live="polite">' + top +
-          (shown ? '<div class="st-fcard-a" tabindex="-1">' + c.a + '</div>' +
+          (shown ? (said ? '<div class="st-said"><p class="st-said-h">Twoja odpowiedź</p><p class="st-said-tx">' + markSaid(said, k.used) + "</p></div>" : "") +
+              '<div class="st-fcard-a" tabindex="-1">' + c.a + '</div>' +
               (terms ? '<div class="st-terms"><p class="st-terms-h">Co było w Twojej odpowiedzi? <span>' + nGot + " z " + terms.length + "</span></p>" +
                 '<div class="st-chips">' + terms.map(function (x, i) {
-                  return '<button type="button" class="st-chip" data-a="term" data-i="' + i + '" aria-pressed="' + !!k.got[i] + '">' + esc(x) + "</button>";
-                }).join("") + "</div></div>" : "")
-            : '<p class="st-fcard-hint">Odpowiedz z pamięci: na głos, w myślach albo na kartce. Potem sprawdź.</p>') +
+                  return '<button type="button" class="st-chip' + (k.auto[i] ? " auto" : "") + '" data-a="term" data-i="' + i + '" aria-pressed="' + !!k.got[i] + '">' + esc(x) + "</button>";
+                }).join("") + "</div>" +
+                (said ? '<p class="st-terms-note">Zaznaczone na podstawie Twojej odpowiedzi. Popraw, jeśli trzeba.</p>' : "") +
+                "</div>" : "")
+            : '<p class="st-fcard-hint">Odpowiedz z pamięci własnymi słowami. Potem sprawdź.</p>') +
         '</article>' +
+        (!shown ? '<div class="st-say">' +
+          '<div class="st-say-tools">' +
+            (SR ? '<button class="st-say-btn" type="button" data-a="mic" aria-pressed="false">' + MIC + "<span>Powiedz odpowiedź</span></button>" : "") +
+            (!SR || !said ? '<button class="st-say-btn plain" type="button" data-a="type"' + (SR ? ' aria-label="Napisz odpowiedź"' : "") + ">" + KEYB + "<span>" + (SR ? "Napisz" : "Napisz odpowiedź") + "</span></button>" : "") +
+          "</div>" +
+          '<textarea class="st-say-tx" rows="3" aria-label="Twoja odpowiedź" placeholder="Twoja odpowiedź"' + (said || k.typing ? "" : " hidden") + ">" + esc(k.said || "") + "</textarea>" +
+        "</div>" : "") +
         '<div class="st-fcard-actions">' +
           (!shown ? '<button class="st-btn primary wide" type="button" data-a="show">Pokaż odpowiedź</button>'
             : terms ? '<button class="st-btn primary wide" type="button" data-a="score">' + (nGot ? "Dalej" : "Nic nie pamiętam") + "</button>"
@@ -172,7 +282,25 @@
     el.addEventListener("click", function (e) {
       var b = e.target.closest("[data-a]"); if (!b || !el.contains(b)) return;
       var a = b.dataset.a;
-      if (a === "show") { shown = true; render(); }
+      if (a === "show") {
+        stopRec();
+        var t = sayBox(); if (t) cur.said = t.value;
+        if (cur.said && cur.said.trim() && cur.terms) {
+          var m = matchTerms(cur.said, cur.terms);
+          cur.got = m.got; cur.auto = {}; Object.keys(m.got).forEach(function (i) { cur.auto[i] = true; }); cur.used = m.used;
+        }
+        shown = true; render();
+      }
+      else if (a === "mic") {
+        if (recOn) stopRec();
+        else { var tx = sayBox(); if (tx) cur.said = tx.value; startRec(); }
+        sayUI();
+      }
+      else if (a === "type") {
+        stopRec(); cur.typing = true;
+        var ta = sayBox(); if (ta) { ta.hidden = false; ta.focus(); }
+        sayUI();
+      }
       else if (a === "know") { grade(true); advance(true); }
       else if (a === "again") { grade(false); advance(false); }
       else if (a === "term") {
@@ -191,6 +319,10 @@
       else if (a === "close" && opts.onClose) opts.onClose();
       else if (a === "more" && opts.onMore) opts.onMore();
       else if (a === "retry" && opts.onRetry) opts.onRetry(missed.slice());
+    });
+
+    el.addEventListener("input", function (e) {
+      if (e.target.classList && e.target.classList.contains("st-say-tx") && cur) cur.said = e.target.value;
     });
 
     if (mode === "fixed" && opts.ids) { ids = opts.ids.filter(function (i) { return byId[i]; }); }

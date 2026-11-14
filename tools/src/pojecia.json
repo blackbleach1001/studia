@@ -1,0 +1,773 @@
+{
+ "_opis": "Pojęcia na start: 5 kluczowych pojęć na stronę wykładu, definicje skrócone z notatek. Buduje tools/build_glossary.py.",
+ "poznawcza/wyklad-1.html": [
+  [
+   "Psychologia poznawcza",
+   "Dział psychologii zajmujący się procesami nabywania, przetwarzania i wykorzystywania informacji."
+  ],
+  [
+   "Reprezentacja poznawcza",
+   "Umysłowy odpowiednik obiektu realnego, fikcyjnego lub hipotetycznego: słowo, obraz albo sąd o relacjach."
+  ],
+  [
+   "Paradygmat (Kuhn)",
+   "Fundamentalne osiągnięcie, które wyznacza sposób uprawiania nauki normalnej i jest otwarte na nowe problemy."
+  ],
+  [
+   "Introspekcja",
+   "Wgląd we własne przeżycia. Dziś nie jest jedynym źródłem wiedzy o procesach poznawczych."
+  ],
+  [
+   "Wskaźniki behawioralne",
+   "Czas reakcji, liczba błędów i poprawność odpowiedzi, z których wnioskuje się o przebiegu procesów poznawczych."
+  ]
+ ],
+ "poznawcza/wyklad-2.html": [
+  [
+   "Spostrzeganie",
+   "Tworzenie reprezentacji przedmiotu na podstawie informacji ze zmysłów i, w pewnych przypadkach, z pamięci."
+  ],
+  [
+   "Bodziec dystalny i proksymalny",
+   "Dystalny działa z zewnątrz, z odległości. Proksymalny powstaje w kontakcie z narządem zmysłu, np. obraz na siatkówce."
+  ],
+  [
+   "Wrażenie i spostrzeżenie",
+   "Wrażenie odzwierciedla jedną elementarną cechę. Spostrzeżenie to obraz całego przedmiotu ze wszystkimi cechami."
+  ],
+  [
+   "Stałość spostrzegania",
+   "Spostrzeżenie nie zmienia się albo zmienia mniej niż bodźce proksymalne: wielkość, kształt, jasność, kolor."
+  ],
+  [
+   "Gotowość percepcyjna",
+   "Łatwość użycia danej kategorii pamięciowej do materiału percepcyjnego. Zależy od czynników zewnętrznych i wewnętrznych."
+  ]
+ ],
+ "poznawcza/wyklad-3.html": [
+  [
+   "Uwaga",
+   "Mechanizm selekcji informacji, który pozwala skupić się na jednych bodźcach kosztem innych."
+  ],
+  [
+   "Czujność",
+   "Zdolność do wykrywania przez dłuższy czas specyficznych bodźców spośród wielu innych."
+  ],
+  [
+   "Zasoby uwagi",
+   "Ograniczona „energia” przetwarzania, o którą konkurują zadania wykonywane jednocześnie."
+  ],
+  [
+   "Dystraktory",
+   "Bodźce odwracające uwagę od zadania, zewnętrzne lub wewnętrzne."
+  ],
+  [
+   "Czynności automatyczne i kontrolowane",
+   "Automatyczne są szybkie i przeuczone. Kontrolowane wymagają uwagi i dotyczą zadań nowych lub trudnych."
+  ]
+ ],
+ "poznawcza/wyklad-4.html": [
+  [
+   "Pamięć jako proces",
+   "Ciąg faz: zapamiętywanie (kodowanie), przechowywanie i odtwarzanie informacji."
+  ],
+  [
+   "Pamięć epizodyczna i semantyczna",
+   "Epizodyczna dotyczy zdarzeń z własnego życia, semantyczna wiedzy ogólnej o świecie."
+  ],
+  [
+   "Pamięć deklaratywna i niedeklaratywna",
+   "Deklaratywną można opisać słowami („wiem, że”). Niedeklaratywna przejawia się w działaniu, np. w nawykach."
+  ],
+  [
+   "Efekt torowania",
+   "Wcześniejszy bodziec ułatwia lub utrudnia przetwarzanie późniejszego, bez udziału świadomości."
+  ],
+  [
+   "Efekt pierwszeństwa i świeżości",
+   "Lepiej pamiętamy początek listy (pamięć trwała) i jej koniec (pamięć krótkotrwała)."
+  ]
+ ],
+ "poznawcza/cwiczenia-1.html": [
+  [
+   "Kognitywistyka",
+   "Interdyscyplinarna nauka o poznaniu: filozofia, psychologia, językoznawstwo, informatyka, antropologia i neuronauka."
+  ],
+  [
+   "Eksperyment",
+   "Badacz manipuluje zmienną niezależną, kontroluje zmienne uboczne i obserwuje wpływ na zmienną zależną."
+  ],
+  [
+   "Samoopis",
+   "Relacja osoby badanej o własnych procesach. Bardziej przydatna do formułowania hipotez niż do ich weryfikacji."
+  ],
+  [
+   "Symulacja komputerowa",
+   "Model procesu poznawczego w postaci programu, porównywany z wykonaniem zadania przez człowieka."
+  ],
+  [
+   "Czas reakcji",
+   "Podstawowy wskaźnik sprawności przetwarzania, analizowany razem z liczbą błędów."
+  ]
+ ],
+ "poznawcza/cwiczenia-2.html": [
+  [
+   "Proces oddolny i odgórny",
+   "Oddolny prowadzi od danych zmysłowych do analizy. Odgórny polega na wpływie wiedzy i oczekiwań na to, co spostrzegamy."
+  ],
+  [
+   "Detektory cech",
+   "Wyspecjalizowane grupy komórek reagujące na konkretne cechy bodźca: linie, ruch, lokalizację."
+  ],
+  [
+   "Geony",
+   "Około 36 prostych brył, z których według Biedermana składamy rozpoznawane obiekty."
+  ],
+  [
+   "Nastawienie percepcyjne",
+   "Wstępne przygotowanie umysłu do odbioru określonej informacji, wywołane instrukcją lub wcześniejszymi bodźcami."
+  ],
+  [
+   "Afordancje",
+   "Według Gibsona bezpośrednio spostrzegane możliwości działania, jakie daje obiekt: drabina do wspinania, krzesło do siedzenia."
+  ]
+ ],
+ "poznawcza/cwiczenia-3.html": [
+  [
+   "Efekt Stroopa",
+   "Nazwanie koloru słowa o niezgodnym znaczeniu trwa dłużej, bo trzeba zahamować automatyczne czytanie."
+  ],
+  [
+   "Hamowanie",
+   "Mechanizm kontrolny, który utrudnia dostęp do informacji nieistotnych i powstrzymuje niepożądaną reakcję."
+  ],
+  [
+   "Automatyzacja",
+   "Wskutek ćwiczenia czynność przestaje wymagać kontroli i zasobów uwagi."
+  ],
+  [
+   "Koszty przełączania",
+   "Wydłużenie czasu i wzrost błędów, gdy zadania zmieniają się na przemian."
+  ],
+  [
+   "Przetarg szybkość–poprawność",
+   "Pod presją czasu nie da się jednocześnie działać bardzo szybko i bardzo poprawnie."
+  ]
+ ],
+ "metodologia/wyklad-1.html": [
+  [
+   "Indukcja",
+   "Wnioskowanie od szczegółu do ogółu: uogólnianie z wielu powtórzonych przypadków."
+  ],
+  [
+   "Dedukcja",
+   "Wnioskowanie od ogółu do szczegółu: z przesłanek wyprowadza się konkretny wniosek."
+  ],
+  [
+   "Falsyfikowalność",
+   "Twierdzenie naukowe musi dać się obalić danymi. Teoria, której nic nie może obalić, nie jest naukowa."
+  ],
+  [
+   "Paradygmat",
+   "Zestaw pojęć i zależności między nimi, który zapoczątkowuje cykl badań w danym obszarze nauki."
+  ],
+  [
+   "Replikacja",
+   "Dokładne powtórzenie procedury badania, by sprawdzić, czy wynik się odtworzy."
+  ]
+ ],
+ "metodologia/wyklad-2.html": [
+  [
+   "Konceptualizacja",
+   "Ustalenie, co dokładnie rozumiemy przez pojęcie, którego używamy w badaniu."
+  ],
+  [
+   "Operacjonalizacja",
+   "Sposób pomiaru, czyli uzyskania informacji o wartości zmiennej."
+  ],
+  [
+   "Wskaźnik",
+   "Informacja o wartości zmiennej uzyskana dzięki operacjonalizacji, znak obecności badanego pojęcia."
+  ],
+  [
+   "Rzetelność",
+   "Dokładność pomiaru: ten sam pomiar powtórzony daje ten sam wynik."
+  ],
+  [
+   "Trafność",
+   "Stopień, w jakim miernik mierzy to, co miał mierzyć."
+  ]
+ ],
+ "metodologia/cwiczenia-1.html": [
+  [
+   "Pytanie badawcze i hipoteza",
+   "Pytanie mówi, czego chcemy się dowiedzieć. Hipoteza to zdanie twierdzące o tym, czego się spodziewamy."
+  ],
+  [
+   "Poziom pomiaru",
+   "Nominalny (kategorie), porządkowy (kolejność) albo ilościowy (wartości liczbowe)."
+  ],
+  [
+   "Pozycja odwrócona",
+   "Pytanie sformułowane odwrotnie niż pozostałe. Przed liczeniem wskaźnika trzeba odwrócić jego punktację."
+  ],
+  [
+   "Dane surowe i robocze",
+   "Surowe są zapisane tak, jak odpowiedział badany. Robocze są przeliczone i wyczyszczone, na nich się liczy."
+  ],
+  [
+   "Braki danych",
+   "Brakujące odpowiedzi. Trzeba je oznaczyć i zdecydować, jak je potraktować w analizie."
+  ]
+ ],
+ "metodologia/wyklad-3.html": [
+  [
+   "Statystyki opisowe",
+   "Wartości charakteryzujące próbę: środek wyników, rozrzut, kształt rozkładu i wyjątki."
+  ],
+  [
+   "Miary tendencji centralnej",
+   "Średnia (M), mediana (Me) i dominanta (Mo), czyli gdzie leży środek wyników."
+  ],
+  [
+   "Odchylenie standardowe (SD)",
+   "Pierwiastek z wariancji. Mówi, jak bardzo wyniki rozrzucone są wokół średniej, w jednostkach pomiaru."
+  ],
+  [
+   "Rozkład normalny",
+   "Symetryczna krzywa Gaussa: M = Me = Mo, w ± 1 SD mieści się 68,2% wyników."
+  ],
+  [
+   "Wynik standaryzowany Z",
+   "Z = (x − M) / SD. Mówi, o ile odchyleń standardowych wynik leży od średniej."
+  ]
+ ],
+ "metodologia/wyklad-4.html": [
+  [
+   "Hipoteza badawcza",
+   "Odpowiedź na pytanie badawcze w formie twierdzenia: kierunkowa lub niekierunkowa, o różnicy, związku albo wpływie."
+  ],
+  [
+   "Model eksperymentalny",
+   "Badacz manipuluje zmienną niezależną, losowo przydziela osoby do grup i kontroluje zmienne zakłócające. Jedyny pozwala wnioskować o przyczynie."
+  ],
+  [
+   "Model korelacyjny",
+   "Bada współwystępowanie zmiennych bez manipulacji. Mówi o predyktorach i zmiennej kryterialnej, nie o przyczynie."
+  ],
+  [
+   "Korelacja r-Pearsona",
+   "Miara liniowego związku dwóch zmiennych ilościowych, od −1 do 1: znak to kierunek, wartość bezwzględna to siła."
+  ],
+  [
+   "Istotność statystyczna",
+   "Wynik mało prawdopodobny przy prawdziwości hipotezy zerowej, umownie p < 0,05."
+  ]
+ ],
+ "metodologia/cwiczenia-2.html": [
+  [
+   "Średnia, mediana, dominanta",
+   "Średnia jest wrażliwa na wartości skrajne, mediana dzieli zbiór na pół, dominanta to wartość najczęstsza."
+  ],
+  [
+   "Rozstęp międzykwartylowy (IQR)",
+   "IQR = Q3 − Q1, czyli szerokość przedziału, w którym mieści się 50% środkowych wyników."
+  ],
+  [
+   "Obserwacja odstająca",
+   "Wynik leżący dalej niż 1,5 × IQR poniżej Q1 lub powyżej Q3."
+  ],
+  [
+   "Skośność i kurtoza",
+   "Skośność opisuje symetrię, kurtoza skupienie wyników. W rozkładzie normalnym obie wynoszą 0."
+  ],
+  [
+   "Test Shapiro-Wilka",
+   "Sprawdza normalność rozkładu. p > 0,05 oznacza rozkład zbliżony do normalnego."
+  ]
+ ],
+ "metodologia/cwiczenia-3.html": [
+  [
+   "Korelacja",
+   "Sytuacja, w której dwie zmienne są ze sobą powiązane, czyli współwystępują."
+  ],
+  [
+   "Kowariancja",
+   "Miara wspólnej zmienności dwóch zmiennych. Mówi tylko o kierunku związku, r Pearsona to jej wersja wystandaryzowana."
+  ],
+  [
+   "Współczynnik determinacji (R²)",
+   "R² = r². Jaki procent zmienności jednej zmiennej wyjaśnia druga."
+  ],
+  [
+   "Problem trzeciej zmiennej",
+   "Związek dwóch zmiennych może wynikać z czynnika, który wpływa na obie, jak przy bocianach i urodzeniach."
+  ],
+  [
+   "Tabela krzyżowa",
+   "Łączny rozkład dwóch zmiennych jakościowych: kategorie jednej w wierszach, drugiej w kolumnach."
+  ]
+ ],
+ "kliniczna/wyklad-1.html": [
+  [
+   "Orientacja patogenetyczna",
+   "Wyjaśnia przyczyny choroby: patogeny, stresory, podatność."
+  ],
+  [
+   "Orientacja salutogenetyczna",
+   "Wyjaśnia, jak zdrowie się utrzymuje i odzyskuje. Kluczowe są zasoby i poczucie koherencji (SOC)."
+  ],
+  [
+   "Model biomedyczny",
+   "Ciało i psychika są odrębne, ciało działa jak maszyna, a zdrowie i choroba wykluczają się."
+  ],
+  [
+   "Model biopsychospołeczny",
+   "Model Engla: obok czynników biologicznych uwzględnia psychologiczne i społeczne."
+  ],
+  [
+   "Dobrostan psychiczny (Ryff)",
+   "Sześć komponentów: samoakceptacja, pozytywne relacje, autonomia, radzenie sobie z otoczeniem, cel życiowy, osobisty rozwój."
+  ]
+ ],
+ "kliniczna/wyklad-2.html": [
+  [
+   "Psychologia zdrowia",
+   "Wkład psychologii do promocji i utrzymywania zdrowia, zapobiegania chorobom i ich leczenia (Matarazzo)."
+  ],
+  [
+   "Kontrakt diagnostyczny",
+   "Umowa psychologa z osobą, która zgadza się wykonać zadania będące podstawą oceny jej funkcjonowania."
+  ],
+  [
+   "Diagnoza nozologiczna",
+   "Rozpoznanie objawów i odniesienie ich do jednostek z ICD-10 lub DSM-5."
+  ],
+  [
+   "Zachowania zdrowotne",
+   "Czynności ukierunkowane na zdrowie. Kluczowe jest przekonanie człowieka o ich znaczeniu dla zdrowia."
+  ],
+  [
+   "Ogólny zespół adaptacyjny (GAS)",
+   "Niespecyficzna reakcja organizmu na stresory według Selyego: alarm, odporność, wyczerpanie."
+  ]
+ ],
+ "kliniczna/wyklad-2-dziedziny.html": [
+  [
+   "Norma rozwojowa",
+   "Punkt odniesienia w ocenie zaburzeń u dzieci: zachowanie porównuje się z tym, co typowe dla wieku."
+  ],
+  [
+   "Problemy eksternalizacyjne i internalizacyjne",
+   "Według Achenbacha: skierowane na zewnątrz (behawioralne) albo do wewnątrz (emocjonalne)."
+  ],
+  [
+   "Neurokonektom",
+   "Opis sieci połączeń układu nerwowego. Klasyczne ośrodki są w nim węzłami sieci, a nie samodzielnymi centrami."
+  ],
+  [
+   "ICF",
+   "Klasyfikacja WHO, która opisuje funkcjonowanie człowieka: uszkodzenie, dysfunkcję oraz czynniki środowiskowe i osobowe."
+  ],
+  [
+   "Model SOK",
+   "Selektywna optymalizacja z kompensacją (Baltesowie): wybór ważnych celów, dbanie o warunki i zastępowanie utraconych środków."
+  ]
+ ],
+ "kliniczna/wyklad-3.html": [
+  [
+   "Stres w ujęciu relacyjnym",
+   "Zakłócenie lub zapowiedź zakłócenia równowagi między wymaganiami a możliwościami człowieka."
+  ],
+  [
+   "Ocena pierwotna i wtórna",
+   "Pierwotna rozpoznaje krzywdę lub stratę, zagrożenie albo wyzwanie. Wtórna ocenia możliwości działania."
+  ],
+  [
+   "Teoria zachowania zasobów (COR)",
+   "Według Hobfolla stres wywołuje zagrożenie utratą zasobów, ich utrata albo brak zysku po ich zainwestowaniu."
+  ],
+  [
+   "Radzenie sobie",
+   "Zmieniające się poznawcze i behawioralne wysiłki, by uporać się z wymaganiami przekraczającymi zasoby."
+  ],
+  [
+   "Radzenie skoncentrowane na problemie i na emocjach",
+   "Pierwsze zmienia sytuację, drugie reguluje emocje wywołane przez stres."
+  ]
+ ],
+ "rozmowa/zajecia-1.html": [
+  [
+   "Kontakt diagnostyczny",
+   "Celowo asymetryczna odmiana kontaktu: uwaga skupia się na osobie badanej, a diagnosta prowadzi rozmowę w stronę celu."
+  ],
+  [
+   "Kontrakt",
+   "Umowa, na której zyskują obie strony: dobrowolna, świadoma, wzajemna i negocjowalna."
+  ],
+  [
+   "Świadoma zgoda",
+   "Zgoda osoby poinformowanej o celu i przebiegu spotkania. Bez niej psycholog nie ma prawa działać."
+  ],
+  [
+   "Kontakt pozorny",
+   "Rozmowa formalnie poprawna, w której ważne treści nie padają."
+  ],
+  [
+   "Opór",
+   "Świadome lub nieświadome unikanie zagrażającego obszaru treści. Badany ma do niego prawo."
+  ]
+ ],
+ "rozmowa/zajecia-2.html": [
+  [
+   "Kontakt w wywiadzie",
+   "Pogłębiona i asymetryczna relacja: wzajemna uwaga, autentyczność i koordynacja."
+  ],
+  [
+   "Synchronizacja niewerbalna",
+   "Elastyczne dostrajanie się do rozmówcy, a nie mechaniczne naśladowanie."
+  ],
+  [
+   "Zasada wrzeciona",
+   "Kontakt jest najgłębszy w środku rozmowy i spłyca się ku jej końcowi."
+  ],
+  [
+   "Opór",
+   "Świadoma lub nieświadoma niechęć do eksploracji pewnych obszarów treści."
+  ],
+  [
+   "Informacyjna funkcja oporu",
+   "Opór mówi coś o osobie, o relacji i o tym, jak planować interwencję."
+  ]
+ ],
+ "rozmowa/zajecia-3.html": [
+  [
+   "Interwencja",
+   "Każda wypowiedź psychologa, bo wpływa na kierunek myślenia rozmówcy."
+  ],
+  [
+   "Pytanie otwarte i zamknięte",
+   "Otwarte zachęca do wypowiedzi i rozwinięcia, zamknięte prosi o konkretne dane."
+  ],
+  [
+   "Pytanie tendencyjne",
+   "Zawiera ukrytą sugestię odpowiedzi albo założenie o doświadczeniu badanego."
+  ],
+  [
+   "Lejek",
+   "Kolejność pytań od otwartych i ogólnych do coraz bardziej szczegółowych. Lejek odwrócony idzie odwrotnie."
+  ],
+  [
+   "Parafraza",
+   "Odzwierciedlenie lub podsumowanie tego, co powiedział klient, bez dodawania nowej perspektywy."
+  ]
+ ],
+ "rozmowa/zajecia-4.html": [
+  [
+   "Plan wywiadu",
+   "Ciąg: cel, orientacja teoretyczna, pytania i hipotezy diagnostyczne, wskaźniki, operacjonalizacja."
+  ],
+  [
+   "Hipoteza diagnostyczna",
+   "Przypuszczenie o jasnym znaczeniu i ograniczonym zakresie, które da się sfalsyfikować."
+  ],
+  [
+   "Wskaźnik",
+   "Obserwowalny przejaw zmiennej. Bywa definicyjny, inferencyjny albo empiryczny."
+  ],
+  [
+   "Moc rozdzielcza",
+   "Jakość wskaźnika: suma mocy zawierania i mocy odrzucania."
+  ],
+  [
+   "Wskaźnik bezpośredni i pośredni",
+   "Bezpośredni opiera się na deklaracji badanego, pośredni szuka w wypowiedzi czegoś innego niż jej jawna treść."
+  ]
+ ],
+ "rozmowa/zajecia-5.html": [
+  [
+   "Interpretacja",
+   "Proces twórczy, w którym od wypowiedzi przez wskaźniki dochodzi się do wniosku o hipotezie."
+  ],
+  [
+   "Recypatia",
+   "Przeżycia diagnosty w kontakcie z badanym, traktowane jako źródło przesłanek."
+  ],
+  [
+   "Moc przesłanki",
+   "Siła danych: maleje, gdy zachowanie wywołała sytuacja badania, rośnie przy głębokim kontakcie i spójności."
+  ],
+  [
+   "Nadinterpretacja",
+   "Najczęstszy błąd interpretacji: wyciąganie wniosków ponad to, co uzasadniają dane."
+  ],
+  [
+   "Informacja zwrotna",
+   "Przekazanie klientowi, bez oceniania i doradzania, jaki obraz osoby wytworzył sobie psycholog."
+  ]
+ ],
+ "praca/wyklad-1.html": [
+  [
+   "Psychologia pracy i organizacji",
+   "Pierwsza bada człowieka w warunkach pracy, druga procesy i klimat wewnątrz organizacji."
+  ],
+  [
+   "Metafora organizacji",
+   "Sposób myślenia o organizacji, np. jako maszynie, organizmie albo polu gry."
+  ],
+  [
+   "Tożsamość organizacyjna",
+   "Identyfikacja z organizacją, przynależność i zaangażowanie."
+  ],
+  [
+   "Motywacja",
+   "Mechanizmy, które uruchamiają, ukierunkowują, podtrzymują i kończą zachowanie."
+  ],
+  [
+   "Motywacja zadaniowa i systemowa",
+   "Zadaniowa to „droga do celu” w konkretnym działaniu, systemowa to chęć uczestniczenia w organizacji."
+  ]
+ ],
+ "praca/wyklad-2.html": [
+  [
+   "Zagrożenia psychospołeczne",
+   "Aspekty organizacji pracy, jej kontekstu i relacji, które mogą szkodzić psychicznie lub fizycznie."
+  ],
+  [
+   "Obciążenie pracą umysłową",
+   "Koszty ponoszone przez osobę wykonującą pracę umysłową, które obniżają jakość jej wykonania."
+  ],
+  [
+   "CSR",
+   "Społeczna odpowiedzialność biznesu: odpowiedzialność organizacji za wpływ jej decyzji na społeczeństwo i środowisko."
+  ],
+  [
+   "Mobbing",
+   "Wrogie zachowania wobec pracownika, trwałe i powtarzające się w czasie."
+  ],
+  [
+   "Zachowania kontrproduktywne",
+   "Działania na szkodę organizacji, np. manipulacja czasem pracy albo brak rzetelności."
+  ]
+ ],
+ "praca/wyklad-3.html": [
+  [
+   "Model EKB",
+   "Decyzja konsumencka jako racjonalny ciąg pięciu etapów: od rozpoznania problemu do oceny po zakupie."
+  ],
+  [
+   "Heurystyki",
+   "Myślenie na skróty: ekonomia poznawcza, która pomaga szybko wybierać."
+  ],
+  [
+   "Zasada podwójnej kwantyfikacji",
+   "Według Lorenza zachowanie zależy jednocześnie od siły popędu i siły bodźca wyzwalającego."
+  ],
+  [
+   "Wartość marki",
+   "Cechy powiązane z marką, które dodają lub odejmują wartość produktu."
+  ],
+  [
+   "Iluzja odporności na reklamy",
+   "Przekonanie, że reklama działa na innych, ale nie na nas."
+  ]
+ ],
+ "praca/cwiczenia-1.html": [
+  [
+   "Kultura",
+   "Kolektywne zaprogramowanie umysłu, które odróżnia członków jednej grupy od drugiej. Jest wyuczona."
+  ],
+  [
+   "Relatywizm kulturowy",
+   "Nie ma obiektywnego kryterium wyższości jednej kultury nad drugą."
+  ],
+  [
+   "Wymiary Hofstedego",
+   "Dystans władzy, indywidualizm–kolektywizm, męskość–kobiecość, unikanie niepewności, orientacja długoterminowa."
+  ],
+  [
+   "Klimat organizacyjny",
+   "Sposób, w jaki pracownik postrzega formalne i nieformalne procedury. Powierzchnia kultury."
+  ],
+  [
+   "Kultura organizacyjna",
+   "Według Scheina wzorzec podstawowych założeń. Przejawia się w symbolach, mitach, rytuałach, wartościach i normach."
+  ]
+ ],
+ "praca/cwiczenia-2.html": [
+  [
+   "Stres w pracy",
+   "Fizjologiczne i psychologiczne reakcje na niezwykłe, zwykle nieprzyjemne bodźce lub zagrażające wydarzenia."
+  ],
+  [
+   "Kontrola nad pracą",
+   "Bufor stresu. Wysokie wymagania przy niskiej kontroli są najbardziej szkodliwe (Karasek)."
+  ],
+  [
+   "Twardość psychiczna",
+   "Cecha zwiększająca odporność na stres: kontrola, zaangażowanie i traktowanie zmiany jako wyzwania."
+  ],
+  [
+   "Wypalenie",
+   "Stopniowa utrata zaangażowania: wyczerpanie, cynizm i poczucie braku skuteczności."
+  ],
+  [
+   "Dopasowanie człowiek–praca",
+   "Zgodność między osobą a jej pracą (P-J fit) albo organizacją (P-O fit), sprzyjająca motywacji."
+  ]
+ ],
+ "edukacja/wyklad-1.html": [
+  [
+   "Psychologia edukacji",
+   "Bada nauczanie, uczenie się i wszystko, co związane z edukacją, oraz stosuje tę wiedzę do jej usprawniania."
+  ],
+  [
+   "Dyscyplina aplikacyjna",
+   "Hybryda łącząca wiele teorii i podejść, by odpowiadać na potrzeby praktyki."
+  ],
+  [
+   "Model teoretyczny i rama praktyczna",
+   "Model łączy teorie z dyscyplin podstawowych, rama to kroki stosowania go w praktyce."
+  ],
+  [
+   "Podejście pragmatyczne",
+   "Wybór teorii według przewidywanej skuteczności w danym kontekście. Metaforą jest majsterkowicz (bricoleur)."
+  ],
+  [
+   "Praktyka oparta na dowodach",
+   "Decyzje na podstawie najlepszych dowodów z badań, doświadczenia praktyka i preferencji klienta."
+  ]
+ ],
+ "edukacja/wyklad-1-trusz.html": [
+  [
+   "Oczekiwania interpersonalne",
+   "Przekonania jednej osoby o drugiej, np. nauczyciela o uczniu."
+  ],
+  [
+   "Samospełniające się proroctwo",
+   "Nietrafne oczekiwania, przez zachowania tego, kto je ma, z czasem stają się rzeczywistością."
+  ],
+  [
+   "Efekt Pigmaliona",
+   "Wzrost osiągnięć ucznia pod wpływem wysokich oczekiwań nauczyciela (Rosenthal i Jacobson)."
+  ],
+  [
+   "Efekt Golema",
+   "Negatywna odmiana proroctwa: niskie oczekiwania obniżają osiągnięcia."
+  ],
+  [
+   "Cztery czynniki Rosenthala",
+   "Klimat, sprzężenie zwrotne, wkład i wydajność, czyli sposoby przekazywania oczekiwań."
+  ]
+ ],
+ "edukacja/wyklad-2.html": [
+  [
+   "Uczenie się",
+   "Względnie trwała zmiana w potencjale zachowania: w wiedzy, umiejętnościach lub postawach."
+  ],
+  [
+   "Style uczenia się",
+   "Podział na wzrokowców, słuchowców i kinestetyków. Nie ma podstaw teoretycznych ani dowodów skuteczności."
+  ],
+  [
+   "Strategie poznawcze",
+   "Powtarzanie, elaboracja i organizowanie materiału, od najpłytszych do najgłębszych."
+  ],
+  [
+   "Strategie metapoznawcze",
+   "Kierowanie własną nauką: planowanie, monitorowanie i ocena."
+  ],
+  [
+   "Poziomy przetwarzania",
+   "Im głębiej, znaczeniowo, przetwarzamy materiał, tym lepiej go pamiętamy (Craik i Lockhart)."
+  ]
+ ],
+ "edukacja/roznice.html": [
+  [
+   "Inteligencja ogólna (g)",
+   "Według Spearmana czynnik ogólny leżący u podłoża zdolności, obok zdolności specyficznych (s)."
+  ],
+  [
+   "Zależność–niezależność od pola",
+   "Stopień, w jakim spostrzeganie zależy od całości pola (Witkin): styl globalny albo analityczny."
+  ],
+  [
+   "Refleksyjność–impulsywność",
+   "Styl poznawczy (Kagan): wolniej i z mniejszą liczbą błędów albo szybko i z większą."
+  ],
+  [
+   "Pamięć robocza",
+   "System aktywnego utrzymywania informacji potrzebnych do bieżącego zadania, o ograniczonej pojemności."
+  ],
+  [
+   "Zagrożenie stereotypem",
+   "Obawa przed oceną przez pryzmat negatywnego stereotypu własnej grupy. Obniża wyniki w testach."
+  ]
+ ],
+ "edukacja/trudnosci.html": [
+  [
+   "Specjalne potrzeby edukacyjne (SPE)",
+   "Bariery w pełnym korzystaniu z edukacji o podłożu medycznym, psychologicznym lub środowiskowym."
+  ],
+  [
+   "Kompletny model zdrowia psychicznego",
+   "Psychopatologia i dobrostan to dwa odrębne wymiary (Keyes)."
+  ],
+  [
+   "Diagnoza funkcjonalna",
+   "Rozpoznanie funkcjonowania osoby w środowisku: jej zasobów, deficytów i możliwości zmiany."
+  ],
+  [
+   "Model rozbieżności (AAD)",
+   "Trudność w uczeniu się stwierdza się, gdy wynik ucznia w teście umiejętności jest istotnie niższy, niż przewiduje jego IQ."
+  ],
+  [
+   "Analiza ABC",
+   "Bodziec poprzedzający, zachowanie i konsekwencja. Zachowanie utrzymują jego konsekwencje."
+  ]
+ ],
+ "edukacja/etyka.html": [
+  [
+   "Dobro dziecka",
+   "Nadrzędny cel diagnozy i interwencji, gwarantowany przez Konstytucję i Konwencję o prawach dziecka."
+  ],
+  [
+   "Świadoma zgoda i przyzwolenie",
+   "Rodzice wyrażają pisemną zgodę, a dziecko przyzwolenie, niezależnie od wieku."
+  ],
+  [
+   "Tajemnica zawodowa",
+   "Nieograniczona w czasie, obejmuje nawet sam fakt korzystania z pomocy psychologa."
+  ],
+  [
+   "Minimalizacja wtargnięcia",
+   "Tylko badania niezbędne do uzgodnionego celu."
+  ],
+  [
+   "Podmiotowość dziecka",
+   "Dziecko jest podmiotem diagnozy, a nie tylko źródłem danych."
+  ]
+ ],
+ "edukacja/cwiczenia-1.html": [
+  [
+   "Podmiotowość",
+   "Poczucie, że potrafi się projektować własną osobę i postrzegać świat na swój sposób."
+  ],
+  [
+   "Monitoring",
+   "Podstawowe działanie psychologa szkolnego: obserwowanie procesu wychowania, by wychwycić niekorzystne zjawiska."
+  ],
+  [
+   "Psychoprofilaktyka, interwencja, promocja",
+   "Zapobieganie problemom, reagowanie na nie i wspieranie rozwoju ponad brak problemów."
+  ],
+  [
+   "Uczenie się społeczno-emocjonalne (SEL)",
+   "Rozwijanie umiejętności społeczno-emocjonalnych razem z poznawczymi."
+  ],
+  [
+   "CASEL",
+   "Organizacja badająca SEL, która opisała 16 umiejętności w czterech grupach."
+  ]
+ ]
+}

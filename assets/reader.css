@@ -225,6 +225,44 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-chip::before{content:"";width:16px;height:16px;flex:0 0 auto;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--st-ink-3)}
 .st-chip[aria-pressed="true"]{background:hsl(150,30%,92%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%);color:hsl(150,35%,22%)}
 .st-chip[aria-pressed="true"]::before{box-shadow:none;background:hsl(150,35%,32%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat}
+/* odpowiedź własnymi słowami: głos lub tekst */
+.st-say{margin:12px 0 0}
+.st-say-tools{display:flex;gap:8px}
+.st-say-btn{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:0;border-radius:22px;
+  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-tint);
+  font:700 .9375rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-say-btn svg{width:20px;height:20px;flex:0 0 auto}
+.st-say-btn.plain{color:var(--st-ink-2)}
+.st-say-btn:active{opacity:.6}
+.st-say-btn[aria-pressed="true"]{background:var(--st-tint);color:#fff;box-shadow:none}
+.st-say-btn[aria-pressed="true"] svg{animation:st-rec 1.4s ease-in-out infinite}
+@keyframes st-rec{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.st-say-btn[aria-pressed="true"] svg{animation:none}}
+.st-say-tx{
+  display:block;width:100%;box-sizing:border-box;margin:10px 0 0;padding:12px 14px;border:0;border-radius:14px;resize:vertical;
+  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:400 1.0625rem/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+.st-say-tx:focus{outline:none;box-shadow:inset 0 0 0 2px var(--st-tint)}
+.st-say-tx[hidden]{display:none}
+.st-said{margin:0 0 12px;padding:10px 14px;border-radius:12px;background:#faf6f0}
+.st-said-h{margin:0 0 4px !important;font:700 .8125rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-3);max-width:none}
+.st-said-tx{margin:0 !important;font-size:1rem;line-height:1.55;color:var(--st-ink-2);max-width:none}
+.st-said-tx mark{background:hsl(150,30%,88%);color:hsl(150,35%,20%);border-radius:3px;padding:0 1px}
+.st-terms-note{margin:10px 0 0 !important;font-size:.8125rem;color:var(--st-ink-3);max-width:none}
+
+/* pojęcia na start (przed treścią wykładu) */
+.st-prime{margin:6px 0 26px;padding:14px 18px 6px;border-radius:16px;background:#fff;box-shadow:0 0 0 .5px var(--st-sep),0 4px 16px rgba(43,33,24,.05)}
+.st-prime-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 6px !important;max-width:none;
+  font:700 .8125rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--st-tint)}
+.st-prime dl{margin:0;padding:0}
+.st-prime dl > div{margin:0;padding:10px 0;border:0;border-top:.5px solid var(--st-sep);border-radius:0;background:none;box-shadow:none}
+.st-prime dl > div:first-child{border-top:0}
+.st-prime dt{margin:0;font:700 1.0625rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink)}
+.st-prime dd{margin:3px 0 0;font:400 1rem/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-2);max-width:62ch}
+
 /* test: wybór zakresu */
 .st-test-h{margin:18px 0 8px !important;font:700 .875rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--st-ink-3)}
 .st-scopes{display:flex;flex-direction:column;gap:8px}
