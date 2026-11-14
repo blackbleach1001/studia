@@ -61,7 +61,7 @@
   var today = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
   var up = P.sessions.filter(function (x) { return !x.alt && x.date >= today; });
   if (!up.length) return;
-  var first = up[0].date, lim = new Date(first); lim.setDate(lim.getDate() + 2);
+  var first = up[0].date, lim = new Date(first); lim.setDate(lim.getDate() + 0);  /* tylko najbliższy dzień zajęć; reszta w Planie */
   var limS = lim.getFullYear() + "-" + pad(lim.getMonth() + 1) + "-" + pad(lim.getDate());
   var WD = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
   var html = "", last = "";
@@ -75,7 +75,7 @@
     html += "<li>" + (x.href ? '<a href="' + esc(x.href) + '" ' + st + ">" + inner + "</a>" : '<span class="ev" ' + st + ">" + inner + "</span>") + "</li>";
   });
   var sec = document.createElement("section"); sec.className = "group";
-  sec.innerHTML = "<h2>Najbliższy zjazd</h2><ul class=\"pro-week\">" + html + "</ul>";
+  sec.innerHTML = "<h2>Najbliższe zajęcia</h2><ul class=\"pro-week\">" + html + "</ul><p class=\"pro-more\"><a href=\"plan.html\">Cały zjazd i terminy w planie →</a></p>";
   var plan = main.querySelector(".plan-home");
   main.insertBefore(sec, plan ? plan.nextSibling : main.firstChild);
 })();

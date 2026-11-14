@@ -76,3 +76,4 @@ html.ss:not(.ss-ready) main{visibility:hidden}
 /* odporność na style przycisków ze starszych stron (button:hover itp.) */
 .ss-nav button.ss-next,.ss-nav button.ss-next:hover,.ss-nav button.ss-next:focus{background:var(--st-ink);color:#fff;border:0;border-radius:3px;padding:0;font-size:1.0625rem}
 .ss-nav button.ss-prev,.ss-nav button.ss-prev:hover,.ss-nav button.ss-prev:focus{background:var(--st-surface);color:var(--st-ink);border:0;border-radius:3px;padding:0;font-size:1.0625rem}
+html.ss .dock-bar [data-a="focus"]{display:none}  /* w sesji jeden ekran = skupienie wbudowane */
