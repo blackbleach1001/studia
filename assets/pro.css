@@ -110,4 +110,4 @@ footer.sources{font:400 .75rem/1.5 var(--mono)}
 .pro-week .s{display:block;font-size:.875rem;color:var(--st-ink-3);line-height:1.35}
 main>h2{border-radius:0}
 details.sec>summary::after{margin-left:auto}
-.hub~*,body:has(.hub)::before{display:none}
+body:has(.hub)::before{display:none}
