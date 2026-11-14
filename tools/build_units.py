@@ -44,7 +44,7 @@ def finish(soup, subj, unit, units, container):
             "html.parser")
         container.insert(2 if unit.get("sim") else 1, link)
     # przejścia
-    seq = [u for u in units if u["kind"] != "info"]
+    seq = [u for u in units if u["kind"] not in ("info", "sum")]
     i = seq.index(unit) if unit in seq else None
     prev = seq[i - 1] if i is not None and i > 0 else None
     nxt = seq[i + 1] if i is not None and i < len(seq) - 1 else None
@@ -66,7 +66,7 @@ def finish(soup, subj, unit, units, container):
     sc["data-home"] = "../"
     sc["data-back"] = "./"
     sc["data-back-label"] = subj["short"]
-    sc["data-title"] = unit["label"] if unit["kind"] != "info" else "Informacje"
+    sc["data-title"] = unit["label"] if unit["kind"] not in ("info", "sum") else ("Informacje" if unit["kind"] == "info" else "Najważniejsze")
     soup.body.append(sc)
     # przycisk fiszek wskazuje nową stronę fiszek
     for a in soup.select(".fiszki-link a"):
@@ -248,6 +248,8 @@ def hub(subj):
         # talie fiszek zastępuje jeden test (tools/build_cards.py tworzy test.html)
         extra = [{"kind": "quiz", "title": "Test", "sub": "Wybierz wykład, wynik na koniec", "href": "test.html"}] + \
                 [p for p in extra if p["kind"] != "cards"]
+    summ = [{"kind": "notes", "title": u["title"], "sub": u.get("sub_short", ""), "href": u["file"]} for u in subj["units"] if u["kind"] == "sum"]
+    extra = summ + extra
     if extra:
         groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
     info = [u for u in subj["units"] if u["kind"] == "info"]

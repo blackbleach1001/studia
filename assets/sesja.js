@@ -257,6 +257,12 @@
   var sec = 0, tm = bar.querySelector(".ss-time");
   setInterval(function () { if (document.hidden) return; sec++; tm.textContent = Math.floor(sec / 60) + ":" + (sec % 60 < 10 ? "0" : "") + (sec % 60); }, 1000);
 
+  /* spis treści z reader.js: lista sekcji i przejście do ekranu zamiast przewijania */
+  window.StudiaSession = {
+    heads: function () { return secs.map(function (s) { return s.op.querySelector("h2"); }); },
+    current: function () { return screens[at] ? screens[at].sec : -1; },
+    go: function (h) { var k = screenOf(h); if (k >= 0) show(k); }
+  };
   var saved = 0; try { saved = +localStorage.getItem(POS) || 0; } catch (e) {}
   if (!goHash()) show(saved);
   }

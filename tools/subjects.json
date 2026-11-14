@@ -372,6 +372,16 @@
         "hand": true
       },
       {
+        "key": "podsumowanie",
+        "kind": "sum",
+        "label": "Najważniejsze",
+        "file": "podsumowanie.html",
+        "title": "Najważniejsze: ściąga przed wejściówką",
+        "src": "Zajęcia 1–5",
+        "sub_short": "Wszystko na jednej stronie · nitka łącząca materiał",
+        "hand": true
+      },
+      {
         "key": "projekt",
         "kind": "info",
         "label": "Projekt",

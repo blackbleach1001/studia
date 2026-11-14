@@ -292,7 +292,7 @@ for d, all_cards in by_dir.items():
     # test z przedmiotu (zamiast osobnych stron z fiszkami na stronie przedmiotu)
     subj = SUBJECTS[d]
     h, s, l = subj["hsl"]
-    units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] != "info"]
+    units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] not in ("info", "sum")]
     # długości testu: domyślnie 10/20/wszystkie; Rozmowa ma też 2 pytania jak na wejściówce
     lens = f' data-lengths="{",".join(map(str, subj["test_lengths"]))}"' if subj.get("test_lengths") else ""
     (ROOT / d / "test.html").write_text(f"""<!doctype html>

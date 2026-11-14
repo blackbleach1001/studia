@@ -187,7 +187,9 @@
       if (!a) return;
       e.preventDefault();
       var h = document.getElementById(a.getAttribute("href").slice(1));
+      if (a.__h) h = a.__h;
       closeToc();
+      if (window.StudiaSession && h) { window.StudiaSession.go(h); return; }
       // otwórz zwinięte sekcje, w których jest nagłówek
       for (var d = h.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
       h.scrollIntoView({ block: "start" });
@@ -201,11 +203,27 @@
     for (var d = h.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) if (!d.open) return true;
     return false;
   }
+  function sessionToc() {
+    /* tryb sesji: lista z sekcji ekranów (nagłówki leżą na ukrytych ekranach) */
+    var hs = window.StudiaSession.heads(), cur = window.StudiaSession.current(), o = sheet.querySelector("ol");
+    o.innerHTML = "";
+    hs.forEach(function (h, i) {
+      if (!h) return;
+      var t = h.cloneNode(true);
+      t.querySelectorAll(".tag, .src, .num, .n").forEach(function (x) { x.remove(); });
+      var li = document.createElement("li"), a = document.createElement("a");
+      a.href = "#" + (h.id || ""); a.__h = h; a.textContent = t.textContent.replace(/\s+/g, " ").trim();
+      li.appendChild(a); if (i === cur) li.className = "is-current"; o.appendChild(li);
+    });
+  }
   function openToc() {
     var cur = null;
-    sheet.querySelectorAll("li").forEach(function (li, i) { li.hidden = !reachable(HEADS[i]); });
-    HEADS.forEach(function (h) { if (h.getBoundingClientRect().top < 120) cur = h; });
-    sheet.querySelectorAll("li").forEach(function (li, i) { li.classList.toggle("is-current", HEADS[i] === cur); });
+    if (window.StudiaSession) sessionToc();
+    else sheet.querySelectorAll("li").forEach(function (li, i) { li.hidden = !reachable(HEADS[i]); });
+    if (!window.StudiaSession) {
+      HEADS.forEach(function (h) { if (h.getBoundingClientRect().top < 120) cur = h; });
+      sheet.querySelectorAll("li").forEach(function (li, i) { li.classList.toggle("is-current", HEADS[i] === cur); });
+    }
     lastFocus = document.activeElement;
     sheet.hidden = false; document.body.classList.add("st-locked");
     var c = sheet.querySelector(".is-current a") || sheet.querySelector("a");
