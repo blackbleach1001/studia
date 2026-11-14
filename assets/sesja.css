@@ -77,3 +77,22 @@ html.ss:not(.ss-ready) main{visibility:hidden}
 .ss-nav button.ss-next,.ss-nav button.ss-next:hover,.ss-nav button.ss-next:focus{background:var(--st-ink);color:#fff;border:0;border-radius:3px;padding:0;font-size:1.0625rem}
 .ss-nav button.ss-prev,.ss-nav button.ss-prev:hover,.ss-nav button.ss-prev:focus{background:var(--st-surface);color:var(--st-ink);border:0;border-radius:3px;padding:0;font-size:1.0625rem}
 html.ss .dock-bar [data-a="focus"]{display:none}  /* w sesji jeden ekran = skupienie wbudowane */
+
+/* lektor w sesji: wąski pasek nad przyciskami nawigacji, nie zasłania treści */
+html.ss .player{position:fixed;left:0;right:0;bottom:calc(76px + env(safe-area-inset-bottom,0px));width:auto;margin:0;border-radius:0;border:0;border-top:.5px solid var(--st-sep);box-shadow:none;background:#fff;padding:8px 16px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center;z-index:45}
+html.ss .player[hidden]{display:none}
+html.ss .player .now{grid-column:1/-1;margin:0}
+html.ss .player .row{gap:8px}
+html.ss .player .ctl{width:44px;height:44px}
+html.ss .player .ctl svg{width:22px;height:22px}
+html.ss .player .ctl.main{width:48px;height:48px}
+html.ss .player .rate{margin:0}
+html.ss .player .rate input{min-height:32px}
+body.tts-on .ss-screen{padding-bottom:120px}
+html.ss .player{grid-template-columns:auto minmax(0,1fr);padding:6px 16px 8px;box-sizing:border-box}
+html.ss .player .row{justify-content:flex-start}
+html.ss .player .rate{min-width:0;gap:8px}
+html.ss .player .rate>span{display:none}
+html.ss .player .rate input{min-width:0;width:100%}
+html.ss .player .rate output{min-width:2.6em}
+html.ss .player .now b{font-size:.875rem}
