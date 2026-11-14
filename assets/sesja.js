@@ -98,13 +98,14 @@
   /* za długi ekran dzielimy na kolejne (nic nie ma się przewijać w dół) */
   (function () {
     var lim = window.innerHeight - 215;
-    for (var k = 0; k < screens.length; k++) {
+    function nb(c) { return c.querySelectorAll(":scope > :not(.ss-kind)").length; }
+    for (var k = 0; k < screens.length && k < 600; k++) {
       var el = screens[k].el;
       if (!el.classList.contains("ss-part")) continue;
       var box = el.firstChild, det = el.querySelector("details"), cont = (det && det.querySelector(".body")) || box, moved = [];
       el.hidden = false;
-      while (box.offsetHeight > lim && cont.children.length > 1) moved.unshift(cont.removeChild(cont.lastElementChild));
-      while (moved.length && cont.children.length > 1 && /^H[3-6]$/.test(cont.lastElementChild.tagName)) moved.unshift(cont.removeChild(cont.lastElementChild));
+      while (box.offsetHeight > lim && nb(cont) > 1) moved.unshift(cont.removeChild(cont.lastElementChild));
+      while (moved.length && nb(cont) > 1 && /^H[3-6]$/.test(cont.lastElementChild.tagName)) moved.unshift(cont.removeChild(cont.lastElementChild));
       if (cont.querySelectorAll(":scope > :not(.ss-kind)").length === 1 && box.offsetHeight > lim) {        // jedna wielka tabela: dzielimy po wierszach
         var blk = cont.firstElementChild, tb = blk.matches("table") ? blk : blk.querySelector("table"), body = tb && tb.tBodies[0];
         if (body && body.rows.length > 3) {
