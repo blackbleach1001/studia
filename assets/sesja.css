@@ -1,0 +1,72 @@
+/* =========================================================
+   Studia — tryb sesji (assets/sesja.js). Wymaga pro.css.
+   Jedna część na ekranie, pasek segmentów, kolor przedmiotu na
+   ekranach otwierających i na jednym kluczowym pojęciu.
+   ========================================================= */
+html.ss body::before{display:none}
+html.ss .page{display:block !important;padding:0 0 110px !important}
+html.ss .pro-toc{display:none !important}
+html.ss .page>main{padding:0 !important}
+html.ss .dock{display:none}
+.ss-screen[hidden]{display:none}
+.ss-screen{min-height:calc(100vh - 150px)}
+.ss-in{max-width:calc(62ch + 40px);margin:0 auto;padding:36px 20px 40px;font-size:1.125rem;line-height:1.7}
+.ss-in :is(p,li){font-size:inherit}
+
+/* pasek postępu */
+.ss-bar{position:sticky;top:52px;z-index:44;background:#fff;padding:8px 16px 6px;border-bottom:.5px solid var(--st-sep)}
+.ss-segs{display:flex;gap:3px}
+.ss-segs button{flex:1 1 0;min-width:0;height:22px;padding:8px 0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ss-segs button::before{content:"";display:block;height:5px;background:#e6e6e3}
+.ss-segs button i{display:block;height:5px;margin-top:-5px;background:var(--subj);width:0;transition:width .25s}
+.ss-segs button.cur::before{background:#cfcfca}
+.ss-row{display:flex;align-items:center;gap:14px;font:400 .75rem/1 var(--mono);color:var(--st-ink-3)}
+.ss-where{flex:1}
+.ss-time{font-variant-numeric:tabular-nums}
+.ss-mode{border:0;background:none;padding:6px 0 6px 8px;font:inherit;color:var(--st-ink-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* nawigacja */
+.ss-nav{position:fixed;z-index:44;left:0;right:0;bottom:0;display:flex;gap:10px;justify-content:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:.5px solid var(--st-sep)}
+.ss-nav button{min-height:52px;border:0;border-radius:3px;font:700 1.0625rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ss-prev{width:64px;background:var(--st-surface);color:var(--st-ink)}
+.ss-next{flex:0 1 420px;background:var(--st-ink);color:#fff}
+.ss-nav button:disabled{opacity:.3}
+.ss-nav button:active{opacity:.7}
+
+/* ekran otwierający sekcję i okładka: pełny kolor przedmiotu */
+.ss-open,.ss-cover{background:var(--subj);color:var(--on-subj);display:flex;align-items:center}
+.ss-open .ss-in,.ss-cover .ss-in{width:100%}
+.ss-num{margin:0 0 6px !important;font:700 6.5rem/1 var(--mono);letter-spacing:-.04em;opacity:.9}
+.ss-open h2{display:block !important;margin:0 0 20px !important;padding:0 !important;border:0 !important;color:inherit !important;font-size:2.25rem !important;line-height:1.12 !important;letter-spacing:-.02em;max-width:18ch}
+.ss-open h2::before{content:none !important}
+.ss-open .tldr{font-size:1.1875rem;line-height:1.55;color:inherit;max-width:56ch}
+.ss-open .tldr .lbl{color:inherit;opacity:.8}
+.ss-open strong{color:inherit}
+.ss-meta{margin:22px 0 0 !important;font:600 .8125rem/1.3 var(--mono);letter-spacing:.04em;opacity:.85}
+.ss-cover header.hero{background:none !important;margin:0 !important;padding:0 !important}
+.ss-cover header.hero h1{font-size:2.5rem;max-width:20ch}
+
+/* ekran części */
+.ss-kind{margin:0 0 10px !important;font:var(--st-label);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--st-tint)}
+.ss-part details.sec{border:0 !important}
+.ss-part details.sec>summary{pointer-events:none;min-height:0;padding:0 0 14px;margin:0 0 18px;border-bottom:1px solid var(--st-ink);font-size:1.625rem;line-height:1.2;letter-spacing:-.015em;align-items:flex-start;flex-wrap:wrap}
+.ss-part details.sec>summary::after{display:none}
+.ss-part details.sec>summary .src{position:static !important;width:100% !important;margin:6px 0 0 !important;text-align:left !important}
+.ss-part details.sec .body{padding:0}
+strong.ss-key{color:var(--on-subj);background:var(--subj);padding:1px 6px;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ss-screen[data-kind="Definicja"] .def{font-size:1.25rem;line-height:1.55;border-width:2px 0}
+.ss-screen[data-kind="Zestawienie"] .ss-in{max-width:calc(78ch + 40px)}
+
+/* koniec sekcji */
+.ss-check .ss-in,.ss-end .ss-in{padding-top:18vh}
+.ss-done{margin:0 0 18px !important;font:700 2rem/1.15 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:-.02em}
+.ss-check .st-check button{min-height:72px;font-size:1.0625rem}
+@media (max-width:560px){.ss-num{font-size:4.5rem}.ss-open h2{font-size:1.75rem !important}.ss-in{font-size:1.0625rem;padding-top:26px}}
+html.ss .dock{display:flex}
+.ss-in .ss-num{font-size:6.5rem !important;line-height:1 !important}
+.ss-in .ss-kind{font-size:.75rem !important}
+.ss-in .ss-meta{font-size:.8125rem !important}
+.ss-in .ss-done{font-size:2rem !important}
+.ss-part details.sec>summary{border-radius:0 !important}
+.ss-in .st-prime dd,.ss-in .st-prime dt{font-size:1.0625rem}
+@media (max-width:560px){.ss-in .ss-num{font-size:4.5rem !important}}
