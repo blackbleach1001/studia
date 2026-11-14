@@ -98,7 +98,8 @@
    {"key":"roznice","kind":"wyk","label":"Wykład 4","file":"roznice.html","title":"Różnice indywidualne w uczeniu się","src":"Slajdy W4 · Ledzińska i Czerniawska · Rydzewska i in., rozdz. 18","sub_short":"Inteligencja, strategie a wyniki, Kagan, Wielka Piątka, Vermunt, pamięć robocza, bezradność, zagrożenie stereotypem","hand":true,"plan":[2]},
    {"key":"trudnosci","kind":"wyk","label":"Wykład 5","file":"trudnosci.html","title":"Trudności, diagnoza, psycholog szkolny","src":"Slajdy W5 · Trzebińska i Kuźmicz · Bednarek, rozdz. 8–9 · Sokołowska","sub_short":"Przedszkolak i rysunek, dysleksja, zdrowie psychiczne, SPE, modele diagnozy, zachowania trudne, rola psychologa szkolnego","hand":true,"plan":[3]},
    {"key":"etyka","kind":"wyk","label":"Wykład 6","file":"etyka.html","title":"Etyczne i prawne aspekty praktyki","src":"Slajdy W6 · Bednarek, rozdz. 6 · Standardy","sub_short":"Standardy diagnozy, klient, zgoda, tajemnica, prawo oświatowe, nowa ustawa 2026, dylematy, edukacja przyszłości","hand":true,"plan":[4]},
-   {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Rola psychologa szkolnego i uczenie się społeczno-emocjonalne","src":"Katra s. 21–31 · Elias s. 137–155","sub":"Model roli psychologa szkolnego (Katra) i dziesięć zasad uczenia się poznawczego oraz społeczno-emocjonalnego (Elias).","sub_short":"Katra · Elias"}
+   {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Rola psychologa szkolnego i uczenie się społeczno-emocjonalne","src":"Katra s. 21–31 · Elias s. 137–155","sub":"Model roli psychologa szkolnego (Katra) i dziesięć zasad uczenia się poznawczego oraz społeczno-emocjonalnego (Elias).","sub_short":"Katra · Elias"},
+   {"key":"cw-2","kind":"cw","label":"Ćwiczenia 2","file":"cwiczenia-2.html","title":"Uczenie się i nauczanie","src":"Dehaene r. 7–10 · Brzezińska t. 3–6 · Kruszewski s. 109–144","sub":"Cztery filary uczenia się, rozwój poznawczy od wczesnego wieku szkolnego do dorastania oraz nauczanie rozwiązywania problemów i praca grupowa.","sub_short":"Dehaene · Brzezińska · Kruszewski"}
   ],
   "practice":[
    {"kind":"cards","title":"Fiszki · Wykład 1","sub":"Specyfika, praktyka oparta na dowodach · 38","href":"fiszki.html"},
@@ -106,6 +107,7 @@
    {"kind":"cards","title":"Fiszki · Wykłady 3–4","sub":"Uczenie się i różnice indywidualne · 53","href":"wyklad-2-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 5","sub":"Trudności, diagnoza, psycholog szkolny · 51","href":"wyklad-3-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 6","sub":"Etyka i prawo · 25","href":"etyka-fiszki.html"},
-   {"kind":"cards","title":"Fiszki: ćwiczenia 1","sub":"Sprawdź się · 26","href":"cwiczenia-1-fiszki.html"}
+   {"kind":"cards","title":"Fiszki: ćwiczenia 1","sub":"Sprawdź się · 26","href":"cwiczenia-1-fiszki.html"},
+   {"kind":"cards","title":"Fiszki: ćwiczenia 2","sub":"Uczenie się i nauczanie · 49","href":"cwiczenia-2-fiszki.html"}
   ]}
 ]

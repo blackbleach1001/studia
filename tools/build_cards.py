@@ -44,6 +44,8 @@ DECKS = [
      "manual": {1: 'k1', 2: 'k1', 3: 'k2', 4: 'k2', 5: 'k2', 6: 'k3', 7: 'k3', 8: 'k4', 9: 'k4', 10: 'k5', 11: 'k5', 12: 'k5', 13: 'k6', 14: 'k6', 15: 'k6', 16: 'q1', 17: 'q1', 18: 'q2', 19: 'q2', 20: 'q3', 21: 'q3', 22: 'q4', 23: 'q4', 24: 'q5', 25: 'q5'}},
     {"dir": "edukacja", "file": "cwiczenia-1-fiszki.html", "units": ["cwiczenia-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s2", 5: "s2", 6: "s2", 7: "s2", 8: "s2", 9: "s3", 10: "s3", 11: "s3", 12: "s3", 13: "s3", 14: "s4", 15: "s4", 16: "s4", 17: "s5", 18: "s5", 19: "s6", 20: "s7", 21: "s7", 22: "s7", 23: "s8", 24: "s8", 25: "s8", 26: "s9"}},
+    {"dir": "edukacja", "file": "cwiczenia-2-fiszki.html", "units": ["cwiczenia-2.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's3', 20: 's4', 21: 's4', 22: 's4', 23: 's5', 24: 's5', 25: 's5', 26: 's5', 27: 's5', 28: 's5', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's6', 34: 's6', 35: 's6', 36: 's6', 37: 's7', 38: 's7', 39: 's7', 40: 's7', 41: 's7', 42: 's8', 43: 's8', 44: 's8', 45: 's8', 46: 's8', 47: 's8', 48: 's8', 49: 's8'}},
     {"dir": "poznawcza", "file": "fiszki.html",
      "unit_by_src": [(r"rozdział 2", "wyklad-2.html"), (r"rozdział 3", "wyklad-3.html"), (r"rozdział [45]", "wyklad-4.html"),
                      (r"ćwiczenia 3", "cwiczenia-3.html"), (r"ćwiczenia 2", "cwiczenia-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},

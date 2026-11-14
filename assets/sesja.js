@@ -121,7 +121,7 @@
       }
       if (cont.querySelectorAll(":scope > :not(.ss-kind)").length === 1 && box.offsetHeight > lim && /^[UO]L$/.test(cont.querySelector(":scope > :not(.ss-kind)").tagName)) {   // jedna długa lista
         var ul = cont.querySelector(":scope > :not(.ss-kind)"), its = [];
-        while (box.offsetHeight > lim && ul.children.length > 2) its.unshift(ul.removeChild(ul.lastElementChild));
+        while (box.offsetHeight > lim && ul.children.length > 1) its.unshift(ul.removeChild(ul.lastElementChild));
         if (its.length) {
           var l2 = ul.cloneNode(false); l2.removeAttribute("id");
           if (ul.tagName === "OL") l2.start = (+ul.getAttribute("start") || 1) + ul.children.length;
