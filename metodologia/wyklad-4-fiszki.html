@@ -461,6 +461,185 @@
 "id": "metodologia/wyklad-4-fiszki:46029441",
 "unit": "wyklad-4.html",
 "sec": "s11"
+},
+{
+"src": "Slajdy W4",
+"q": "Czym różni się wariancja od odchylenia standardowego i do czego się ich używa?",
+"a": "<p><strong>Wariancja<\/strong> to średnia kwadratów odległości wyników od średniej; używa się jej w obliczeniach testów (t-Studenta, analiza wariancji), a jednorodność wariancji to założenie testów parametrycznych. <strong>SD<\/strong> to pierwiastek z wariancji, w jednostkach pomiaru – podaje się je w raportach (np. M = 11,78; SD = 2,32).<\/p>",
+"k": [
+"wariancja: średnia kwadratów odległości",
+"SD = pierwiastek",
+"SD w raportach",
+"wariancja w testach"
+],
+"id": "metodologia/wyklad-4-fiszki:1e672b6f",
+"unit": "wyklad-4.html",
+"sec": "w1"
+},
+{
+"src": "Slajdy W4",
+"q": "Jak prosto sprawdzić, czy wariancje w dwóch grupach są jednorodne?",
+"a": "<p>Podziel <strong>większe SD przez mniejsze<\/strong>: wynik ≤ 2 – wariancje jednorodne, &gt; 2 – niejednorodne. Alternatywy: <strong>test Levene’a<\/strong> i <strong>test Bartletta<\/strong>. Istotny wynik tych testów (p &lt; 0,05) oznacza niejednorodność.<\/p>",
+"k": [
+"SD większe / SD mniejsze",
+"≤ 2 jednorodne",
+"Levene, Bartlett"
+],
+"id": "metodologia/wyklad-4-fiszki:0073e37c",
+"unit": "wyklad-4.html",
+"sec": "w1"
+},
+{
+"src": "Slajdy W4",
+"q": "Co oznacza zapis t(122) = 2,17; p = 0,032; d Cohena = 0,39?",
+"a": "<p>Test t-Studenta z <strong>122 stopniami swobody<\/strong> (n₁ + n₂ − 2 = 56 + 68 − 2), wartość statystyki 2,17, różnica <strong>istotna<\/strong> (p &lt; 0,05), a wielkość efektu <strong>d = 0,39<\/strong> (mała do umiarkowanej). Przy każdej grupie podaje się n, M i SD.<\/p>",
+"k": [
+"df = n₁ + n₂ − 2",
+"p < 0,05 istotne",
+"d = wielkość efektu",
+"n, M, SD grup"
+],
+"id": "metodologia/wyklad-4-fiszki:376294cf",
+"unit": "wyklad-4.html",
+"sec": "w1"
+},
+{
+"src": "Slajdy W4",
+"q": "Jak wyznaczyć przypadki odstające i skrajne z rozstępu ćwiartkowego?",
+"a": "<p>IQR = Q3 − Q1. <strong>Odstające<\/strong>: poniżej Q1 − 1,5·IQR lub powyżej Q3 + 1,5·IQR. <strong>Skrajne<\/strong>: dalej niż 3·IQR. Przykład: Q1 = 36, Q3 = 42, IQR = 6 → odstające &lt; 27 i &gt; 51; 62 &gt; 60 jest skrajne.<\/p>",
+"k": [
+"IQR = Q3 − Q1",
+"1,5·IQR: odstające",
+"3·IQR: skrajne",
+"granice 27 i 51"
+],
+"id": "metodologia/wyklad-4-fiszki:2ca21ddf",
+"unit": "wyklad-4.html",
+"sec": "w2"
+},
+{
+"src": "Slajdy W4",
+"q": "Jakie są trzy kryteria uznania rozkładu za zbliżony do normalnego?",
+"a": "<p>(1) <strong>Liberalne<\/strong>: skośność i kurtoza w przedziale &lt;−2; 2&gt;. (2) <strong>Umiarkowanie liberalne<\/strong>: skośność i kurtoza podzielone przez swoje błędy standardowe w &lt;−2; 2&gt;. (3) <strong>Konserwatywne<\/strong>: test Kołmogorowa-Smirnowa (n ≥ 100) lub Shapiro-Wilka (n &lt; 100), p &lt; 0,05 oznacza odejście od normalności. Coraz więcej autorów odradza test K-S.<\/p>",
+"k": [
+"<−2; 2>",
+"podzielone przez błąd standardowy",
+"K-S n ≥ 100, S-W n < 100",
+"K-S budzi wątpliwości"
+],
+"id": "metodologia/wyklad-4-fiszki:3d5036e7",
+"unit": "wyklad-4.html",
+"sec": "w2"
+},
+{
+"src": "Slajdy W4",
+"q": "Co zrobić z przypadkami odstającymi?",
+"a": "<p><strong>Usunąć<\/strong>, gdy to prawie na pewno pomyłka (np. wiek 331). W innym razie <strong>zostawić<\/strong> i – jeśli rozkład wyraźnie odbiega od normalnego według przyjętego kryterium – stosować <strong>testy nieparametryczne<\/strong>.<\/p>",
+"k": [
+"pomyłka → usunąć",
+"prawdziwe → zostawić",
+"testy nieparametryczne"
+],
+"id": "metodologia/wyklad-4-fiszki:a427712b",
+"unit": "wyklad-4.html",
+"sec": "w2"
+},
+{
+"src": "Slajdy W4",
+"q": "Jak działa rangowanie i jak traktuje się wyniki równe?",
+"a": "<p>Wyniki porządkuje się rosnąco i nadaje im kolejne miejsca (rangi). Równe wartości dostają <strong>średnią<\/strong> z zajmowanych miejsc, np. dwa wyniki na miejscach 5 i 6 → 5,5; pięć wyników na miejscach 10–14 → 12. Rangowanie zmniejsza wpływ odstających i zbliża rozkład do normalnego; w raporcie podaje się średnią rangę (M<sub>rang<\/sub>).<\/p>",
+"k": [
+"kolejne miejsca",
+"wiązane: średnia miejsc",
+"mniej wpływu odstających",
+"M rang"
+],
+"id": "metodologia/wyklad-4-fiszki:0bc30c16",
+"unit": "wyklad-4.html",
+"sec": "w2"
+},
+{
+"src": "Slajdy W4",
+"q": "Jakie rodzaje efektów statystycznych wyróżniono na wykładzie i co je łączy?",
+"a": "<p><strong>Korelacja, różnica, predykcja, moderacja i mediacja<\/strong>. O efekcie mówimy, gdy wynik jest istotny statystycznie, czyli <strong>p &lt; 0,05<\/strong>.<\/p>",
+"k": [
+"korelacja",
+"różnica",
+"predykcja",
+"moderacja",
+"mediacja",
+"p < 0,05"
+],
+"id": "metodologia/wyklad-4-fiszki:1818220b",
+"unit": "wyklad-4.html",
+"sec": "w3"
+},
+{
+"src": "Slajdy W4",
+"q": "Które istotne różnice są pożądane, a które niepożądane?",
+"a": "<p><strong>Pożądane<\/strong> (efekt z hipotezy): różnice między grupami, między pomiarami i między wymiarami. <strong>Niepożądane<\/strong>: istotna różnica między wariancjami w grupach i między rozkładem uzyskanym a normalnym – łamią założenia testów parametrycznych. Tu „dobrze”, gdy p ≥ 0,05.<\/p>",
+"k": [
+"pożądane: grupy, pomiary, wymiary",
+"niepożądane: wariancje, rozkład",
+"tu dobrze p ≥ 0,05"
+],
+"id": "metodologia/wyklad-4-fiszki:ad48b0f4",
+"unit": "wyklad-4.html",
+"sec": "w3"
+},
+{
+"src": "Slajdy W4",
+"q": "Czym są pytanie badawcze i hipoteza?",
+"a": "<p><strong>Pytanie badawcze<\/strong> (problem badawczy) ma formę pytania i wskazuje, jakie zmienne będą mierzone i w jakim związku. Zwykle są 1–3 główne pytania. <strong>Hipoteza<\/strong> to prawdopodobna, przewidywana i uzasadniona (oparta na przesłankach) odpowiedź na pytanie badawcze.<\/p>",
+"k": [
+"pytanie = problem",
+"zmienne i ich związek",
+"1–3 pytania",
+"hipoteza: uzasadniona odpowiedź"
+],
+"id": "metodologia/wyklad-4-fiszki:008d7ccf",
+"unit": "wyklad-4.html",
+"sec": "w3"
+},
+{
+"src": "Slajdy W4",
+"q": "Co można, a czego nie można wnioskować z badań korelacyjnych?",
+"a": "<p>Można mówić o <strong>współwystępowaniu<\/strong> zmiennych (i o predykcji), ale <strong>nie o wpływie<\/strong> ani przyczynie – nie wiadomo, która zmienna działa na którą ani czy obie nie zależą od trzeciej.<\/p>",
+"k": [
+"współwystępowanie",
+"nie o wpływie",
+"brak przyczynowości"
+],
+"id": "metodologia/wyklad-4-fiszki:4e384687",
+"unit": "wyklad-4.html",
+"sec": "w4"
+},
+{
+"src": "Slajdy W4",
+"q": "Jak z wykresu rozrzutu odczytać znak i siłę korelacji?",
+"a": "<p>Linia dopasowana metodą najmniejszych kwadratów: <strong>rosnąca<\/strong> – korelacja dodatnia, <strong>malejąca<\/strong> – ujemna, punkty bez układu – brak korelacji (r ≈ 0). <strong>Siłę<\/strong> ocenia się po |r|: im ciaśniej punkty leżą wokół linii, tym większa |r|; r = 1,00 to wszystkie punkty na prostej.<\/p>",
+"k": [
+"rosnąca: dodatnia",
+"malejąca: ujemna",
+"siła = |r|",
+"skupienie wokół linii"
+],
+"id": "metodologia/wyklad-4-fiszki:339e386d",
+"unit": "wyklad-4.html",
+"sec": "w4"
+},
+{
+"src": "Slajdy W4",
+"q": "Na czym polega metoda najmniejszych kwadratów?",
+"a": "<p>Wybiera prostą, dla której <strong>suma kwadratów odległości<\/strong> wszystkich obserwacji od linii jest najmniejsza spośród wszystkich możliwych prostych. Tak wyznacza się linię regresji na wykresie rozrzutu.<\/p>",
+"k": [
+"prosta przez chmurę punktów",
+"najmniejsza suma kwadratów odległości",
+"linia regresji"
+],
+"id": "metodologia/wyklad-4-fiszki:204ce8ce",
+"unit": "wyklad-4.html",
+"sec": "w4"
 }
 ]
 </script>

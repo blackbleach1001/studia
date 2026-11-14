@@ -9,16 +9,144 @@
 <link href="../assets/icon-180.png" rel="apple-touch-icon"/>
 <link href="../assets/study.css?v=38668fca" rel="stylesheet"/>
 <style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+<style>
+.fig{margin:.4em 0 1.1em}
+.fig svg{display:block;width:100%;height:auto;background:var(--card);border-radius:12px;box-shadow:0 0 0 .5px var(--line)}
+.fig figcaption{font-size:.9em;color:var(--ink-soft);margin-top:.45em;line-height:1.5}
+.fig text{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+.fig .tk{font-size:13px;fill:var(--ink-mute)}
+.fig .tk2{font-size:12px;fill:var(--ink-mute)}
+.fig .lb{font-size:14px;fill:var(--ink-soft)}
+.fig .lbb{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ann{font-size:13px;fill:var(--ink-soft);font-style:italic}
+.fig .pct{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ax{stroke:var(--ink-mute);stroke-width:1.2}
+.fig .grid{stroke:var(--line);stroke-width:1}
+.fig .bar{fill:var(--accent);opacity:.55}
+.fig .bar.hi,.fig .dot.hi{fill:#b4543a;opacity:.9}
+.fig .hi-t{fill:#b4543a}
+.fig .dot{fill:var(--accent);opacity:.75}
+.fig .gap{stroke:var(--ink-mute);stroke-dasharray:4 4;fill:none}
+.fig .mk{stroke:#b4543a;stroke-width:2.2}
+.fig .mk-t{fill:#b4543a}
+.fig .mk2{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:6 3}
+.fig .mk2-t{fill:var(--accent)}
+.fig .mk3{stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:2 3}
+.fig .mk3-t{fill:var(--ink-soft)}
+.fig .band{fill:var(--accent);opacity:.12}
+.fig .box{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:2}
+.fig .med{stroke:var(--ink);stroke-width:3}
+.fig .wh{stroke:var(--ink-soft);stroke-width:2}
+.fig .out{fill:none;stroke:#b4543a;stroke-width:2}
+.fig .star{font-size:30px;fill:#b4543a;text-anchor:middle}
+.fig .fence{stroke:var(--ink-mute);stroke-dasharray:3 3}
+.fig .crv{fill:none;stroke:var(--accent);stroke-width:2.6}
+.fig .crv2{fill:none;stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:6 4}
+.fig .crv3{fill:none;stroke:var(--ink-mute);stroke-width:2.4}
+.fig .fillsoft{fill:var(--ink-mute);fill-opacity:.08}
+.fig .s1{fill:var(--accent);opacity:.45}
+.fig .s2{fill:var(--accent);opacity:.25}
+.fig .s3{fill:var(--accent);opacity:.12}
+.fig .br,.fig .br2{stroke:var(--ink-mute);stroke-width:1.5;fill:none}
+</style>
 </head>
 <body>
 <div class="page">
 <header class="hero">
 <h1>Modele badawcze: od pytania do testu</h1>
-<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 37–63 (proces badawczy) · Bedyńska i Cypryańska, s. 149–157 (chi-kwadrat), 160–192 (testy t), 198–221 (korelacja) · wykład 8.11</p>
+<p class="meta">Slajdy wykładu 4 (dr E. Brygoła) · Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, s. 37–63 (proces badawczy) · Bedyńska i Cypryańska, s. 149–157 (chi-kwadrat), 160–192 (testy t), 198–221 (korelacja) · wykład 8.11</p>
 <div class="links"><a class="btn" href="test.html#wyklad-4.html">Test z tego materiału</a></div>
 </header>
 <main>
-<p class="tldr"><span class="lbl">Uwaga:</span> notatki obejmują przesłane fragmenty. Lektury z sylabusa T2 („Mapa statystycznych huncwotów”, s. 5–70) tu nie ma – po przesłaniu można ją dopisać.</p>
+<p class="tldr"><span class="lbl">Uwaga:</span> wykład 8.11 zaczął się od dokończenia statystyk opisowych, a skończył na <a href="#w4">badaniach korelacyjnych</a>. Sekcje ze slajdów mają znacznik „Slajdy W4”; pozostałe sekcje są z literatury i wyprzedzają wykład. Lektury T2 („Mapa statystycznych huncwotów”, s. 5–70) tu nie ma.</p>
+<!-- slajdy W4: statystyki opisowe -->
+<!-- w1 -->
+<h2 id="w1">Wariancja, odchylenie standardowe i jednorodność wariancji</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> Wariancja to <strong>średnia kwadratów odległości</strong> wyników od średniej, a <strong>SD</strong> to jej pierwiastek. SD podaje się w raportach, bo ma jednostkę pomiaru; wariancja pracuje w testach (t-Studenta, analiza wariancji). Warunkiem testów parametrycznych jest <strong>jednorodność wariancji</strong> w grupach: większe SD podzielone przez mniejsze ≤ 2, albo test Levene’a lub Bartletta.</p>
+<details class="sec" open="">
+<summary>Ta sama średnia, inny rozrzut <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th></th><th>Zbiór A: 10, 20, 30</th><th>Zbiór B: 18, 20, 22</th></tr>
+<tr><td>Średnia</td><td>M = 20</td><td>M = 20</td></tr>
+<tr><td>Rozstęp</td><td>30 − 10 = 20</td><td>22 − 18 = 4</td></tr>
+<tr><td>Wariancja</td><td>[(−10)² + 0² + 10²] / 3 = 200 / 3 = <strong>66,67</strong></td><td>[(−2)² + 0² + 2²] / 3 = 8 / 3 = <strong>2,67</strong></td></tr>
+<tr><td>SD = √s²</td><td>√66,67 = <strong>8,17</strong></td><td>√2,67 = <strong>1,63</strong></td></tr>
+</table></div>
+<p>Drugi przykład ze slajdów: oceny 1, 2, 2, 2, 2, 3, 3, 4, 4, 4, 5, 5, 6, 6 i oceny 3 (siedem razy), 4 (siedem razy) mają tę samą sumę 49 i M = 3,5, ale SD = <strong>1,61</strong> i <strong>0,52</strong>.</p>
+<p class="note">W przykładzie A/B wariancję podzielono przez n (3), a w przykładzie z ocenami SD wychodzi z dzielenia przez n − 1 (13): sprawdziłam – 33,5 / 13 = 2,58, √ = 1,61. Program statystyczny liczy z n − 1; przy kilku liczbach to robi dużą różnicę (200 / 2 = 100, SD = 10).</p>
+<ul>
+<li>SD zależy od <strong>skali</strong> zmiennej, od wartości skrajnych i ich częstości. Nie ma „typowej” wartości SD rozkładu normalnego, ale w każdym normalnym działa <strong>reguła trzech sigm</strong> (68,2% / 95,4% / 99,7%; np. IQ: ok. 95% ludzi między 70 a 130).</li>
+<li>Symbole: s, SD dla próby; σ (sigma) dla populacji.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Do czego która miara <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Odchylenie standardowe</th><th>Wariancja</th></tr>
+<tr><td>pierwiastek z wariancji</td><td>średnia kwadratów odległości obserwacji od średniej</td></tr>
+<tr><td>podawane przy <strong>raportowaniu</strong> wyników analiz porównawczych</td><td>używana w <strong>obliczeniach</strong> testów, np. t-Studenta, analizy wariancji</td></tr>
+<tr><td>w <strong>jednostkach pomiaru</strong> (nie podniesionych do kwadratu)</td><td>założenie <strong>jednorodności (homogeniczności) wariancji</strong> w grupach to jeden z warunków testów parametrycznych</td></tr>
+</table></div>
+<p>Zapis wyniku ze slajdu:</p>
+<div class="def">Japończycy (n = 56; M = 11,78; SD = 2,32) przejawiają wyższy poziom stresu finansowego niż Chińczycy (n = 68; M = 10,86; SD = 2,41): t(122) = 2,17; p = 0,032; d Cohena = 0,39.</div>
+<p>Liczba w nawiasie przy t to stopnie swobody: n₁ + n₂ − 2 = 56 + 68 − 2 = 122.</p>
+<p class="note">Drugi przykład na slajdzie (Japonia n = 212, Szwecja n = 230) ma <strong>t(430)</strong>, a powinno być 212 + 230 − 2 = <strong>440</strong>. Przy podanych M i SD (6,58 vs 4,85; SD 0,73 i 0,56) d Cohena wyszłoby ok. 2,7, nie 0,58 – liczby są tylko ilustracją formatu.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Czy wariancje są jednorodne? <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<div class="def">SD<sub>większe</sub> / SD<sub>mniejsze</sub> ≤ 2 → wariancje <strong>jednorodne</strong>; &gt; 2 → <strong>niejednorodne</strong>.</div>
+<p>Przykład ze slajdu: zbiory 17, 19, 22 (różnice 2 i 3) i 81, 83, 86 (różnice 2 i 3) mają jednorodne wariancje, choć leżą w zupełnie innym miejscu skali. Zbiór 15, 23, 36 (różnice 8 i 13) ma rozrzut znacznie większy.</p>
+<p>Alternatywy dla prostego wzoru: <strong>test Levene’a</strong> (w programach statystycznych przy teście t) i <strong>test Bartletta</strong>.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:1e672b6f,metodologia/wyklad-4-fiszki:0073e37c,metodologia/wyklad-4-fiszki:376294cf" data-title="Wariancja, odchylenie standardowe i jednorodność wariancji" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<!-- w2 -->
+<h2 id="w2">Przypadki odstające, normalność i rangowanie</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> Odstające to wyniki dalej niż <strong>1,5 IQR</strong> od Q1 lub Q3; dalej niż 3 IQR – skrajne. Pomyłkę (np. wiek 331) się usuwa; prawdziwe odstające zostają, a wtedy sprawdza się normalność trzema kryteriami o różnej surowości. Gdy rozkład nie jest normalny, stosuje się <strong>testy nieparametryczne</strong>, oparte na <strong>rangach</strong>, i raportuje <strong>średnią rangę</strong>.</p>
+<details class="sec" open="">
+<summary>Wyznaczanie odstających: przykład z urodzin <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<p>Wiek 20 gości: 21, 24, 25, 32, 36, 36, 37, 39, 39, 40, 40, 40, 40, 40, 42, 42, 44, 44, 50, 62.</p>
+<ul>
+<li><strong>Kwartyle</strong> są trzy i dzielą wyniki na 4 części po 25%: Q1 = 36, Q2 = Me = 40, Q3 = 42.</li>
+<li><strong>Rozstęp ćwiartkowy</strong> (IQR) obejmuje 50% środkowych wyników: IQR = Q3 − Q1 = 6; 1,5 · IQR = 9.</li>
+<li>Odstające: &lt; 36 − 9 = <strong>27</strong> (21, 24, 25) i &gt; 42 + 9 = <strong>51</strong> (62).</li>
+<li>Przypadek <strong>ekstremalny</strong>: &gt; Q3 + 3 · IQR = 60 – to 62. Na wykresie skrzynkowym program podpisuje takie punkty <strong>numerem obserwacji</strong> (tu 20 dla 62 lat; 1, 2, 3 dla 21, 24, 25 lat).</li>
+</ul><figure class="fig"><svg aria-label="Wykres skrzynkowy wieku 20 gości" role="img" viewbox="0 0 640 180" xmlns="http://www.w3.org/2000/svg"><line class="ax" x1="40" x2="610" y1="150" y2="150"></line><line class="ax" x1="40.0" x2="40.0" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="40.0" y="170">15</text><line class="ax" x1="91.8" x2="91.8" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="91.8" y="170">20</text><line class="ax" x1="143.6" x2="143.6" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="143.6" y="170">25</text><line class="ax" x1="195.5" x2="195.5" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="195.5" y="170">30</text><line class="ax" x1="247.3" x2="247.3" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="247.3" y="170">35</text><line class="ax" x1="299.1" x2="299.1" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="299.1" y="170">40</text><line class="ax" x1="350.9" x2="350.9" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="350.9" y="170">45</text><line class="ax" x1="402.7" x2="402.7" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="402.7" y="170">50</text><line class="ax" x1="454.5" x2="454.5" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="454.5" y="170">55</text><line class="ax" x1="506.4" x2="506.4" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="506.4" y="170">60</text><line class="ax" x1="558.2" x2="558.2" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="558.2" y="170">65</text><line class="ax" x1="610.0" x2="610.0" y1="150" y2="155"></line><text class="tk" text-anchor="middle" x="610.0" y="170">70</text><line class="wh" x1="216.2" x2="257.6" y1="80" y2="80"></line><line class="wh" x1="319.8" x2="402.7" y1="80" y2="80"></line><line class="wh" x1="216.2" x2="216.2" y1="70" y2="90"></line><line class="wh" x1="402.7" x2="402.7" y1="70" y2="90"></line><rect class="box" height="52" width="62.2" x="257.6" y="54"></rect><line class="med" x1="299.1" x2="299.1" y1="54" y2="106"></line><circle class="out" cx="102.2" cy="80" r="6"></circle><circle class="out" cx="133.3" cy="80" r="6"></circle><circle class="out" cx="143.6" cy="80" r="6"></circle><text class="star" x="527.1" y="90">*</text><text class="tk" text-anchor="end" x="253.6" y="46">Q1 = 36</text><text class="tk" text-anchor="middle" x="303.1" y="34">Me = 40</text><text class="tk" text-anchor="start" x="323.8" y="46">Q3 = 42</text><text class="ann" text-anchor="middle" x="126.0" y="62">21, 24, 25</text><text class="ann" text-anchor="middle" x="527.1" y="58">62: skrajna</text><line class="fence" x1="164.4" x2="164.4" y1="96" y2="150"></line><text class="tk2" text-anchor="middle" x="164.4" y="140">27 = Q1 − 1,5·IQR</text><line class="fence" x1="413.1" x2="413.1" y1="96" y2="150"></line><text class="tk2" text-anchor="middle" x="413.1" y="128">51 = Q3 + 1,5·IQR</text><line class="fence" x1="506.4" x2="506.4" y1="96" y2="150"></line><text class="tk2" text-anchor="middle" x="506.4" y="140">60 = Q3 + 3·IQR</text></svg><figcaption>Wiek 20 gości. IQR = 42 − 36 = 6, więc 1,5·IQR = 9. Wąsy kończą się na 32 i 50 (ostatnie wyniki wewnątrz granic). <strong>21, 24, 25</strong> są poniżej 27 (kółka). <strong>62</strong> jest powyżej 51, a nawet powyżej Q3 + 3·IQR = 60, więc to przypadek <strong>skrajny</strong> (gwiazdka).</figcaption></figure>
+</div>
+</details>
+<details class="sec">
+<summary>Co zrobić z odstającymi <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<ul>
+<li><strong>Usunąć</strong>, jeśli duże lub całkowite prawdopodobieństwo, że to pomyłka (np. wiek 331).</li>
+<li><strong>Zostawić</strong> i w dalszych analizach użyć testów nieparametrycznych – to zależy od tego, jak bardzo rozkład odbiega od normalnego.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Kryterium</th><th>Rozkład uznany za zbliżony do normalnego, gdy…</th></tr>
+<tr><td>1. Najbardziej <strong>liberalne</strong></td><td>skośność i kurtoza mieszczą się w przedziale <strong>&lt;−2; 2&gt;</strong></td></tr>
+<tr><td>2. Umiarkowanie liberalne</td><td>skośność i kurtoza <strong>podzielone przez swoje błędy standardowe</strong> mieszczą się w &lt;−2; 2&gt;. Przykład: −0,574 / 0,316 = −1,82 → OK; 1,362 / 0,623 = 2,19 → nie OK</td></tr>
+<tr><td>3. Najbardziej <strong>konserwatywne</strong></td><td>test <strong>Kołmogorowa-Smirnowa</strong> (próby od 100 osób) lub <strong>Shapiro-Wilka</strong> (poniżej 100): p &lt; 0,05 → rozkład istotnie różni się od normalnego</td></tr>
+</table></div>
+<p>Zdania są tu podzielone; coraz więcej autorów radzi nie stosować testu K-S albo mu nie ufać. W dużych próbach test S-W często wychodzi istotny, choć skośność i kurtoza są małe – przykład z artykułu na slajdzie: |skośność| i |kurtoza| &lt; 1 przy n = 279 uznano za akceptowalne mimo istotnego S-W, bo to „zjawisko powszechne, niekoniecznie świadczące o istotnym naruszeniu normalności”.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Rangowanie i testy nieparametryczne <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<p>Testy nieparametryczne <strong>nie wymagają</strong> rozkładu zbliżonego do normalnego, bo zamiast surowych wartości używają <strong>rang</strong> (miejsc w uporządkowanym szeregu).</p>
+<div class="tbl"><table>
+<tr><th>Wiek</th><td>21</td><td>24</td><td>25</td><td>32</td><td>36</td><td>36</td><td>37</td><td>39</td><td>39</td><td>40 ×5</td><td>42</td><td>42</td><td>44</td><td>44</td><td>50</td><td>62</td></tr>
+<tr><th>Ranga</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5,5</td><td>5,5</td><td>7</td><td>8,5</td><td>8,5</td><td>12 ×5</td><td>15,5</td><td>15,5</td><td>17,5</td><td>17,5</td><td>19</td><td>20</td></tr>
+</table></div>
+<p><strong>Rangi wiązane</strong>: równe wartości dostają średnią z zajmowanych miejsc – (5 + 6) / 2 = 5,5; pięć razy 40 zajmuje miejsca 10–14, więc (10 + 11 + 12 + 13 + 14) / 5 = 12. Skrajne 62 dostaje po prostu rangę 20, czyli rangowanie „ściąga” odstające wyniki.</p>
+<p>W SPSS po rangowaniu wieku: skośność spadła z 0,246 do −0,015, a kurtoza z 1,936 do −1,143 (co do wartości bezwzględnej) – rozkład stał się bardziej zbliżony do normalnego. W raportach z testów nieparametrycznych podaje się częściej <strong>średnią rangę</strong> (M<sub>rang</sub>) niż średnią z wyników surowych (M).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:2ca21ddf,metodologia/wyklad-4-fiszki:3d5036e7,metodologia/wyklad-4-fiszki:a427712b,metodologia/wyklad-4-fiszki:0bc30c16" data-title="Przypadki odstające, normalność i rangowanie" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
 <!-- 1 -->
 <h2 id="s1">Cel i problem badawczy</h2>
 <p class="tldr"><span class="lbl">W skrócie:</span> cel wyznacza wszystkie dalsze decyzje. Nauka ma cztery kierunki: <strong>opis, wyjaśnienie, predykcję i aplikację</strong>. Cel wynika z <strong>problemu badawczego</strong>, czyli luki w wiedzy, i trzeba go zawęzić do konkretnych zmiennych.</p>
@@ -80,6 +208,41 @@
 <p>Hipotezy o wpływie wymagają <strong>eksperymentu</strong> (s5). Autorki BC zalecają, by hipotezy w miarę możliwości określały kierunek.</p>
 </div>
 </details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:c1bbd6f5,metodologia/wyklad-4-fiszki:6dca530c" data-title="Hipotezy badawcze" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- w3 -->
+<h2 id="w3">Efekty statystyczne: czego szukają hipotezy</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> Badanie szuka <strong>efektu statystycznego</strong>, czyli wyniku istotnego (<strong>p &lt; 0,05</strong>). Pięć rodzajów efektów: <strong>korelacja, różnica, predykcja, moderacja, mediacja</strong>. Różnice <strong>między grupami, pomiarami i wymiarami</strong> są tym, czego szukamy. Natomiast istotna różnica między wariancjami w grupach albo między rozkładem uzyskanym a normalnym to <strong>problem</strong>, bo łamie założenia testów parametrycznych.</p>
+<details class="sec" open="">
+<summary>Pytanie, hipoteza, efekt <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<ul>
+<li><strong>Pytanie badawcze = problem badawczy</strong>: ma formę pytania i wskazuje, jakie zmienne będą mierzone i w jakim związku ze sobą. Projekt ma zwykle <strong>1–3 główne</strong> pytania, czasem dodatkowe szczegółowe.</li>
+<li><strong>Hipotezy</strong> to prawdopodobne, przewidywane i <strong>uzasadnione</strong> (oparte na przesłankach) odpowiedzi na pytania badawcze.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Efekt</th><th>O co pyta</th></tr>
+<tr><td><strong>Korelacja</strong></td><td>czy zmienne <strong>współwystępują</strong> (bez wniosków o wpływie)</td></tr>
+<tr><td><strong>Różnica</strong></td><td>czy grupy, pomiary lub wymiary różnią się poziomem zmiennej</td></tr>
+<tr><td><strong>Predykcja</strong></td><td>czy jedna zmienna (predyktor) pozwala przewidywać drugą (kryterialną)</td></tr>
+<tr><td><strong>Moderacja</strong></td><td>czy siła lub kierunek związku zależy od trzeciej zmiennej (moderatora)</td></tr>
+<tr><td><strong>Mediacja</strong></td><td>czy związek X z Y przebiega przez trzecią zmienną (mediator)</td></tr>
+</table></div>
+<p class="note">Slajd tylko wymienia moderację, predykcję i mediację. Opisy w tabeli to standardowe definicje, a nie treść slajdu; zapewne zostaną rozwinięte na kolejnych wykładach.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Dobre i złe różnice <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Różnica istotna (p &lt; 0,05)</th><th>Znaczenie</th></tr>
+<tr><td><strong>między grupami</strong> (np. kobiety vs mężczyźni)</td><td rowspan="3">efekt, którego szukamy w hipotezie</td></tr>
+<tr><td><strong>między pomiarami</strong> (np. przed i po treningu)</td></tr>
+<tr><td><strong>między wymiarami</strong> (np. dwie podskale u tych samych osób)</td></tr>
+<tr><td><strong>między wariancjami</strong> zmiennych w grupach (test Levene’a)</td><td rowspan="2"><strong>niepożądana</strong>: łamie założenia testów parametrycznych</td></tr>
+<tr><td><strong>między rozkładem normalnym a uzyskanym</strong> (test S-W lub K-S)</td></tr>
+</table></div>
+<p>Dlatego przy teście Levene’a i teście normalności „dobrze” jest, gdy p ≥ 0,05: nie ma podstaw, by twierdzić, że założenie jest złamane.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:1818220b,metodologia/wyklad-4-fiszki:ad48b0f4,metodologia/wyklad-4-fiszki:008d7ccf" data-title="Efekty statystyczne: czego szukają hipotezy" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
 <!-- 4 -->
 <h2 id="s4">Typy badań: kurs, wysokość, prędkość</h2>
 <p class="tldr"><span class="lbl">W skrócie:</span> badanie opisują trzy wymiary: <strong>podstawowe vs stosowane</strong>, <strong>laboratoryjne vs terenowe</strong>, <strong>ilościowe vs jakościowe</strong>.</p>
@@ -151,6 +314,27 @@
 <p>Oba modele są szanowane; wybór zależy od celu, problemu i możliwości organizacyjnych.</p>
 </div>
 </details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:147e3a38,metodologia/wyklad-4-fiszki:dd8c6d8d" data-title="Model nieeksperymentalny (korelacyjny)" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- w4 -->
+<h2 id="w4">Badania korelacyjne na wykresie</h2>
+<p class="tldr"><span class="lbl">W skrócie:</span> Badania korelacyjne pokazują <strong>współwystępowanie</strong> – nie można wnioskować o wpływie. Na <strong>wykresie rozrzutu</strong> prowadzi się linię <strong>metodą najmniejszych kwadratów</strong>. Kierunek linii daje <strong>znak</strong> korelacji, a skupienie punktów wokół niej – <strong>siłę</strong>, ocenianą po wartości bezwzględnej |r|. Na tym skończył się wykład 8.11.</p>
+<details class="sec" open="">
+<summary>Wykres rozrzutu i linia regresji <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<ul>
+<li>Każdy punkt na <strong>wykresie rozrzutu</strong> to jedna osoba: X na osi poziomej, Y na pionowej.</li>
+<li>Linię dopasowuje się <strong>metodą najmniejszych kwadratów</strong>: suma (kwadratów) odległości wszystkich obserwacji od linii jest najmniejsza ze wszystkich możliwych prostych.</li>
+<li><strong>Idealna korelacja dodatnia</strong>, r = 1,00: wszystkie punkty leżą dokładnie na rosnącej prostej.</li>
+<li>Dwie linie o różnym nachyleniu (a stromsza, b łagodniejsza): na slajdzie r<sub>a</sub> &gt; r<sub>b</sub>. Wyjaśnienie: nachylenie zależy też od jednostek i rozrzutu zmiennych, a r mówi, jak <strong>ciasno</strong> punkty leżą wokół linii.</li>
+<li><strong>Siła</strong> zależy od |r|: przy dwóch liniach malejących |r<sub>b</sub>| &gt; |r<sub>a</sub>|, choć oba r są ujemne.</li>
+</ul><figure class="fig"><svg aria-label="Cztery wykresy rozrzutu o różnej sile i kierunku korelacji" role="img" viewbox="0 0 652 205" xmlns="http://www.w3.org/2000/svg"><rect class="grid" fill="none" height="150" width="150" x="12" y="30"></rect><circle class="dot" cx="80.6" cy="105.2" r="2.6"></circle><circle class="dot" cx="81.3" cy="113.5" r="2.6"></circle><circle class="dot" cx="63.7" cy="128.2" r="2.6"></circle><circle class="dot" cx="114.8" cy="75.4" r="2.6"></circle><circle class="dot" cx="112.9" cy="79.0" r="2.6"></circle><circle class="dot" cx="96.9" cy="94.1" r="2.6"></circle><circle class="dot" cx="45.3" cy="133.2" r="2.6"></circle><circle class="dot" cx="99.7" cy="88.2" r="2.6"></circle><circle class="dot" cx="44.7" cy="162.1" r="2.6"></circle><circle class="dot" cx="64.8" cy="130.1" r="2.6"></circle><circle class="dot" cx="94.6" cy="98.6" r="2.6"></circle><circle class="dot" cx="100.0" cy="100.3" r="2.6"></circle><circle class="dot" cx="94.7" cy="93.8" r="2.6"></circle><circle class="dot" cx="70.5" cy="101.2" r="2.6"></circle><circle class="dot" cx="100.9" cy="79.4" r="2.6"></circle><circle class="dot" cx="71.5" cy="127.0" r="2.6"></circle><circle class="dot" cx="78.4" cy="113.9" r="2.6"></circle><circle class="dot" cx="102.8" cy="88.1" r="2.6"></circle><circle class="dot" cx="75.8" cy="125.5" r="2.6"></circle><circle class="dot" cx="74.0" cy="103.4" r="2.6"></circle><circle class="dot" cx="66.8" cy="120.5" r="2.6"></circle><circle class="dot" cx="97.7" cy="111.6" r="2.6"></circle><circle class="dot" cx="88.2" cy="89.7" r="2.6"></circle><circle class="dot" cx="36.6" cy="153.8" r="2.6"></circle><circle class="dot" cx="84.3" cy="116.3" r="2.6"></circle><circle class="dot" cx="99.4" cy="94.5" r="2.6"></circle><circle class="dot" cx="50.4" cy="128.9" r="2.6"></circle><circle class="dot" cx="103.7" cy="79.6" r="2.6"></circle><circle class="dot" cx="123.0" cy="68.6" r="2.6"></circle><circle class="dot" cx="90.0" cy="116.5" r="2.6"></circle><circle class="dot" cx="102.4" cy="97.8" r="2.6"></circle><circle class="dot" cx="75.7" cy="129.0" r="2.6"></circle><circle class="dot" cx="62.8" cy="132.6" r="2.6"></circle><circle class="dot" cx="119.2" cy="98.1" r="2.6"></circle><circle class="dot" cx="50.6" cy="135.2" r="2.6"></circle><circle class="dot" cx="123.1" cy="66.2" r="2.6"></circle><circle class="dot" cx="39.5" cy="175.2" r="2.6"></circle><circle class="dot" cx="95.9" cy="105.0" r="2.6"></circle><circle class="dot" cx="59.0" cy="119.5" r="2.6"></circle><circle class="dot" cx="114.5" cy="78.5" r="2.6"></circle><circle class="dot" cx="93.1" cy="94.7" r="2.6"></circle><circle class="dot" cx="126.9" cy="62.4" r="2.6"></circle><circle class="dot" cx="100.0" cy="87.4" r="2.6"></circle><circle class="dot" cx="47.8" cy="126.3" r="2.6"></circle><circle class="dot" cx="110.9" cy="77.7" r="2.6"></circle><circle class="dot" cx="37.7" cy="156.3" r="2.6"></circle><circle class="dot" cx="108.1" cy="105.8" r="2.6"></circle><circle class="dot" cx="82.4" cy="98.0" r="2.6"></circle><circle class="dot" cx="54.2" cy="117.0" r="2.6"></circle><circle class="dot" cx="100.8" cy="94.2" r="2.6"></circle><circle class="dot" cx="95.1" cy="90.6" r="2.6"></circle><circle class="dot" cx="90.0" cy="89.8" r="2.6"></circle><circle class="dot" cx="70.5" cy="124.4" r="2.6"></circle><circle class="dot" cx="113.0" cy="81.3" r="2.6"></circle><circle class="dot" cx="65.0" cy="114.5" r="2.6"></circle><circle class="dot" cx="123.6" cy="76.9" r="2.6"></circle><circle class="dot" cx="52.5" cy="137.5" r="2.6"></circle><circle class="dot" cx="83.3" cy="111.6" r="2.6"></circle><circle class="dot" cx="122.1" cy="84.6" r="2.6"></circle><circle class="dot" cx="118.5" cy="90.5" r="2.6"></circle><line class="mk" x1="22.0" x2="152.0" y1="162.9" y2="47.5"></line><text class="lbb" text-anchor="middle" x="87.0" y="20">r = 0,91</text><text class="tk" text-anchor="middle" x="87.0" y="200">dodatnia, silna</text><rect class="grid" fill="none" height="150" width="150" x="172" y="30"></rect><circle class="dot" cx="245.5" cy="92.3" r="2.6"></circle><circle class="dot" cx="284.3" cy="121.0" r="2.6"></circle><circle class="dot" cx="230.2" cy="80.3" r="2.6"></circle><circle class="dot" cx="200.1" cy="74.6" r="2.6"></circle><circle class="dot" cx="197.9" cy="49.2" r="2.6"></circle><circle class="dot" cx="216.2" cy="77.4" r="2.6"></circle><circle class="dot" cx="242.2" cy="101.0" r="2.6"></circle><circle class="dot" cx="232.2" cy="89.1" r="2.6"></circle><circle class="dot" cx="291.8" cy="144.8" r="2.6"></circle><circle class="dot" cx="260.3" cy="106.0" r="2.6"></circle><circle class="dot" cx="242.1" cy="114.3" r="2.6"></circle><circle class="dot" cx="233.1" cy="80.8" r="2.6"></circle><circle class="dot" cx="205.8" cy="74.5" r="2.6"></circle><circle class="dot" cx="272.2" cy="119.0" r="2.6"></circle><circle class="dot" cx="247.2" cy="96.4" r="2.6"></circle><circle class="dot" cx="251.1" cy="121.6" r="2.6"></circle><circle class="dot" cx="207.9" cy="76.8" r="2.6"></circle><circle class="dot" cx="270.1" cy="131.9" r="2.6"></circle><circle class="dot" cx="224.4" cy="93.1" r="2.6"></circle><circle class="dot" cx="208.7" cy="71.8" r="2.6"></circle><circle class="dot" cx="217.5" cy="74.5" r="2.6"></circle><circle class="dot" cx="188.0" cy="48.3" r="2.6"></circle><circle class="dot" cx="231.0" cy="111.7" r="2.6"></circle><circle class="dot" cx="265.1" cy="124.3" r="2.6"></circle><circle class="dot" cx="191.2" cy="64.4" r="2.6"></circle><circle class="dot" cx="254.3" cy="116.5" r="2.6"></circle><circle class="dot" cx="266.5" cy="114.4" r="2.6"></circle><circle class="dot" cx="263.7" cy="116.4" r="2.6"></circle><circle class="dot" cx="280.3" cy="127.8" r="2.6"></circle><circle class="dot" cx="258.3" cy="137.9" r="2.6"></circle><circle class="dot" cx="269.4" cy="110.9" r="2.6"></circle><circle class="dot" cx="239.6" cy="103.4" r="2.6"></circle><circle class="dot" cx="295.5" cy="167.8" r="2.6"></circle><circle class="dot" cx="258.7" cy="89.1" r="2.6"></circle><circle class="dot" cx="223.8" cy="76.6" r="2.6"></circle><circle class="dot" cx="294.2" cy="148.8" r="2.6"></circle><circle class="dot" cx="261.0" cy="107.8" r="2.6"></circle><circle class="dot" cx="224.4" cy="85.6" r="2.6"></circle><circle class="dot" cx="254.3" cy="102.6" r="2.6"></circle><circle class="dot" cx="246.1" cy="106.4" r="2.6"></circle><circle class="dot" cx="221.6" cy="86.1" r="2.6"></circle><circle class="dot" cx="269.3" cy="124.0" r="2.6"></circle><circle class="dot" cx="225.7" cy="95.0" r="2.6"></circle><circle class="dot" cx="313.7" cy="152.6" r="2.6"></circle><circle class="dot" cx="262.9" cy="147.6" r="2.6"></circle><circle class="dot" cx="262.5" cy="113.7" r="2.6"></circle><circle class="dot" cx="289.1" cy="138.2" r="2.6"></circle><circle class="dot" cx="245.3" cy="97.8" r="2.6"></circle><circle class="dot" cx="198.4" cy="50.0" r="2.6"></circle><circle class="dot" cx="255.1" cy="120.0" r="2.6"></circle><circle class="dot" cx="280.1" cy="115.1" r="2.6"></circle><circle class="dot" cx="211.9" cy="80.7" r="2.6"></circle><circle class="dot" cx="254.3" cy="109.6" r="2.6"></circle><circle class="dot" cx="237.0" cy="106.7" r="2.6"></circle><circle class="dot" cx="300.0" cy="141.4" r="2.6"></circle><circle class="dot" cx="217.1" cy="92.8" r="2.6"></circle><circle class="dot" cx="289.6" cy="132.5" r="2.6"></circle><circle class="dot" cx="292.5" cy="137.1" r="2.6"></circle><circle class="dot" cx="225.2" cy="82.5" r="2.6"></circle><circle class="dot" cx="193.0" cy="64.6" r="2.6"></circle><line class="mk" x1="182.0" x2="312.0" y1="52.0" y2="156.8"></line><text class="lbb" text-anchor="middle" x="247.0" y="20">r = −0,92</text><text class="tk" text-anchor="middle" x="247.0" y="200">ujemna, silna</text><rect class="grid" fill="none" height="150" width="150" x="332" y="30"></rect><circle class="dot" cx="458.6" cy="135.8" r="2.6"></circle><circle class="dot" cx="420.3" cy="94.4" r="2.6"></circle><circle class="dot" cx="412.0" cy="100.7" r="2.6"></circle><circle class="dot" cx="433.3" cy="142.4" r="2.6"></circle><circle class="dot" cx="375.9" cy="139.9" r="2.6"></circle><circle class="dot" cx="393.1" cy="120.1" r="2.6"></circle><circle class="dot" cx="416.2" cy="98.3" r="2.6"></circle><circle class="dot" cx="407.8" cy="121.9" r="2.6"></circle><circle class="dot" cx="396.0" cy="81.2" r="2.6"></circle><circle class="dot" cx="426.1" cy="102.5" r="2.6"></circle><circle class="dot" cx="398.9" cy="66.2" r="2.6"></circle><circle class="dot" cx="392.1" cy="88.8" r="2.6"></circle><circle class="dot" cx="435.8" cy="111.6" r="2.6"></circle><circle class="dot" cx="427.6" cy="132.9" r="2.6"></circle><circle class="dot" cx="432.3" cy="100.0" r="2.6"></circle><circle class="dot" cx="367.3" cy="88.3" r="2.6"></circle><circle class="dot" cx="384.7" cy="73.0" r="2.6"></circle><circle class="dot" cx="390.0" cy="109.1" r="2.6"></circle><circle class="dot" cx="414.1" cy="113.3" r="2.6"></circle><circle class="dot" cx="413.5" cy="118.8" r="2.6"></circle><circle class="dot" cx="423.8" cy="104.9" r="2.6"></circle><circle class="dot" cx="412.3" cy="173.8" r="2.6"></circle><circle class="dot" cx="436.0" cy="104.2" r="2.6"></circle><circle class="dot" cx="362.4" cy="102.6" r="2.6"></circle><circle class="dot" cx="418.7" cy="78.2" r="2.6"></circle><circle class="dot" cx="379.9" cy="66.3" r="2.6"></circle><circle class="dot" cx="403.0" cy="45.1" r="2.6"></circle><circle class="dot" cx="403.3" cy="88.0" r="2.6"></circle><circle class="dot" cx="397.8" cy="132.9" r="2.6"></circle><circle class="dot" cx="434.4" cy="82.3" r="2.6"></circle><circle class="dot" cx="445.5" cy="83.6" r="2.6"></circle><circle class="dot" cx="392.7" cy="146.6" r="2.6"></circle><circle class="dot" cx="390.7" cy="121.9" r="2.6"></circle><circle class="dot" cx="386.6" cy="90.4" r="2.6"></circle><circle class="dot" cx="415.2" cy="111.7" r="2.6"></circle><circle class="dot" cx="411.3" cy="108.6" r="2.6"></circle><circle class="dot" cx="412.3" cy="86.2" r="2.6"></circle><circle class="dot" cx="431.0" cy="122.1" r="2.6"></circle><circle class="dot" cx="369.3" cy="69.3" r="2.6"></circle><circle class="dot" cx="409.9" cy="77.4" r="2.6"></circle><circle class="dot" cx="365.9" cy="113.2" r="2.6"></circle><circle class="dot" cx="407.7" cy="141.0" r="2.6"></circle><circle class="dot" cx="394.1" cy="86.9" r="2.6"></circle><circle class="dot" cx="434.0" cy="65.1" r="2.6"></circle><circle class="dot" cx="385.4" cy="140.0" r="2.6"></circle><circle class="dot" cx="420.0" cy="81.5" r="2.6"></circle><circle class="dot" cx="411.8" cy="137.5" r="2.6"></circle><circle class="dot" cx="426.6" cy="85.2" r="2.6"></circle><circle class="dot" cx="420.8" cy="117.2" r="2.6"></circle><circle class="dot" cx="414.6" cy="85.2" r="2.6"></circle><circle class="dot" cx="393.0" cy="151.1" r="2.6"></circle><circle class="dot" cx="415.2" cy="93.0" r="2.6"></circle><circle class="dot" cx="407.3" cy="82.8" r="2.6"></circle><circle class="dot" cx="392.3" cy="107.1" r="2.6"></circle><circle class="dot" cx="399.4" cy="90.7" r="2.6"></circle><circle class="dot" cx="446.9" cy="111.3" r="2.6"></circle><circle class="dot" cx="458.4" cy="66.8" r="2.6"></circle><circle class="dot" cx="426.8" cy="90.3" r="2.6"></circle><circle class="dot" cx="451.3" cy="109.5" r="2.6"></circle><circle class="dot" cx="404.2" cy="131.6" r="2.6"></circle><text class="lbb" text-anchor="middle" x="407.0" y="20">r = 0,00</text><text class="tk" text-anchor="middle" x="407.0" y="200">brak związku</text><rect class="grid" fill="none" height="150" width="150" x="492" y="30"></rect><circle class="dot" cx="578.8" cy="69.5" r="2.6"></circle><circle class="dot" cx="580.3" cy="90.0" r="2.6"></circle><circle class="dot" cx="562.0" cy="103.1" r="2.6"></circle><circle class="dot" cx="531.4" cy="95.2" r="2.6"></circle><circle class="dot" cx="556.8" cy="134.4" r="2.6"></circle><circle class="dot" cx="548.2" cy="131.4" r="2.6"></circle><circle class="dot" cx="588.4" cy="72.2" r="2.6"></circle><circle class="dot" cx="533.1" cy="97.4" r="2.6"></circle><circle class="dot" cx="589.2" cy="109.4" r="2.6"></circle><circle class="dot" cx="529.8" cy="136.9" r="2.6"></circle><circle class="dot" cx="551.2" cy="103.5" r="2.6"></circle><circle class="dot" cx="558.1" cy="155.1" r="2.6"></circle><circle class="dot" cx="572.8" cy="137.8" r="2.6"></circle><circle class="dot" cx="589.6" cy="123.6" r="2.6"></circle><circle class="dot" cx="549.7" cy="131.5" r="2.6"></circle><circle class="dot" cx="553.4" cy="80.7" r="2.6"></circle><circle class="dot" cx="588.3" cy="82.7" r="2.6"></circle><circle class="dot" cx="575.0" cy="137.3" r="2.6"></circle><circle class="dot" cx="554.0" cy="122.8" r="2.6"></circle><circle class="dot" cx="542.6" cy="103.1" r="2.6"></circle><circle class="dot" cx="548.5" cy="128.7" r="2.6"></circle><circle class="dot" cx="540.9" cy="162.6" r="2.6"></circle><circle class="dot" cx="581.9" cy="68.6" r="2.6"></circle><circle class="dot" cx="571.4" cy="125.6" r="2.6"></circle><circle class="dot" cx="499.4" cy="128.1" r="2.6"></circle><circle class="dot" cx="597.4" cy="86.0" r="2.6"></circle><circle class="dot" cx="590.2" cy="61.9" r="2.6"></circle><circle class="dot" cx="595.2" cy="103.8" r="2.6"></circle><circle class="dot" cx="593.3" cy="76.7" r="2.6"></circle><circle class="dot" cx="528.6" cy="129.7" r="2.6"></circle><circle class="dot" cx="531.4" cy="121.7" r="2.6"></circle><circle class="dot" cx="581.5" cy="123.7" r="2.6"></circle><circle class="dot" cx="515.6" cy="95.8" r="2.6"></circle><circle class="dot" cx="576.4" cy="67.5" r="2.6"></circle><circle class="dot" cx="533.9" cy="93.9" r="2.6"></circle><circle class="dot" cx="618.8" cy="38.3" r="2.6"></circle><circle class="dot" cx="561.7" cy="100.9" r="2.6"></circle><circle class="dot" cx="563.1" cy="83.7" r="2.6"></circle><circle class="dot" cx="592.9" cy="92.6" r="2.6"></circle><circle class="dot" cx="533.0" cy="101.6" r="2.6"></circle><circle class="dot" cx="555.3" cy="95.3" r="2.6"></circle><circle class="dot" cx="573.6" cy="65.2" r="2.6"></circle><circle class="dot" cx="595.4" cy="104.0" r="2.6"></circle><circle class="dot" cx="575.7" cy="61.1" r="2.6"></circle><circle class="dot" cx="553.6" cy="100.4" r="2.6"></circle><circle class="dot" cx="596.8" cy="64.3" r="2.6"></circle><circle class="dot" cx="580.0" cy="130.1" r="2.6"></circle><circle class="dot" cx="535.5" cy="111.9" r="2.6"></circle><circle class="dot" cx="576.7" cy="42.8" r="2.6"></circle><circle class="dot" cx="545.5" cy="87.5" r="2.6"></circle><circle class="dot" cx="586.3" cy="135.6" r="2.6"></circle><circle class="dot" cx="546.5" cy="109.4" r="2.6"></circle><circle class="dot" cx="554.7" cy="113.5" r="2.6"></circle><circle class="dot" cx="578.8" cy="118.8" r="2.6"></circle><circle class="dot" cx="578.7" cy="114.9" r="2.6"></circle><circle class="dot" cx="553.4" cy="98.1" r="2.6"></circle><circle class="dot" cx="552.7" cy="104.2" r="2.6"></circle><circle class="dot" cx="607.0" cy="88.4" r="2.6"></circle><circle class="dot" cx="563.3" cy="89.6" r="2.6"></circle><circle class="dot" cx="557.9" cy="83.8" r="2.6"></circle><line class="mk" x1="502.0" x2="632.0" y1="129.7" y2="72.1"></line><text class="lbb" text-anchor="middle" x="567.0" y="20">r = 0,41</text><text class="tk" text-anchor="middle" x="567.0" y="200">dodatnia, słaba</text></svg><figcaption>Wykresy rozrzutu jak na slajdzie (r ≈ 0,90; −0,90; 0,00; 0,40). Linia to prosta dopasowana <strong>metodą najmniejszych kwadratów</strong>. Im ciaśniej punkty układają się wokół linii, tym większa |r|. Kierunek linii mówi o znaku: rośnie – korelacja dodatnia, opada – ujemna. Dane wygenerowane do ilustracji.</figcaption></figure>
+</div>
+</details>
+<details class="sec">
+<summary>Dalej na wykładzie 5 <span class="src">Slajdy W4</span></summary>
+<div class="body">
+<p>Slajdy W4 skończyły się na pierwszym typie pytań – <strong>badaniach korelacyjnych</strong>. Kolejne typy pytań i hipotez (różnice, predykcja, moderacja, mediacja) oraz modele eksperymentalne pewnie będą na W5. Na razie dokładniej opisuje je literatura w sekcjach niżej (model eksperymentalny, r-Pearsona, chi-kwadrat, testy t).</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-4-fiszki:4e384687,metodologia/wyklad-4-fiszki:339e386d,metodologia/wyklad-4-fiszki:204ce8ce" data-title="Badania korelacyjne na wykresie" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
 <!-- 7 -->
 <h2 id="s7">Operacjonalizacja zmiennych</h2>
 <p class="tldr"><span class="lbl">W skrócie:</span> konstrukty psychologiczne nie są bezpośrednio obserwowalne, więc trzeba je <strong>zoperacjonalizować</strong>: napisać <strong>definicję teoretyczną</strong> (co badam) i <strong>operacyjną</strong> (jak mierzę). Ta sama definicja teoretyczna może mieć różne definicje operacyjne.</p>
@@ -297,12 +481,12 @@
 </table></div>
 </div>
 </details>
-<div class="st-check unit"><button data-check="metodologia/wyklad-4-fiszki:1ac6b571,metodologia/wyklad-4-fiszki:39086fe7,metodologia/wyklad-4-fiszki:a66e1515,metodologia/wyklad-4-fiszki:4f15c0cc,metodologia/wyklad-4-fiszki:c1bbd6f5,metodologia/wyklad-4-fiszki:6dca530c,metodologia/wyklad-4-fiszki:a0e819bb,metodologia/wyklad-4-fiszki:4ca5f506,metodologia/wyklad-4-fiszki:3adcf693,metodologia/wyklad-4-fiszki:d823b10c,metodologia/wyklad-4-fiszki:3efdd472,metodologia/wyklad-4-fiszki:74715ac8,metodologia/wyklad-4-fiszki:7b06cf0e,metodologia/wyklad-4-fiszki:bb579139,metodologia/wyklad-4-fiszki:147e3a38,metodologia/wyklad-4-fiszki:dd8c6d8d,metodologia/wyklad-4-fiszki:fe54d1de,metodologia/wyklad-4-fiszki:0e037fcb,metodologia/wyklad-4-fiszki:7f3f39f3,metodologia/wyklad-4-fiszki:490173d4,metodologia/wyklad-4-fiszki:8125aa8b,metodologia/wyklad-4-fiszki:c18a6570,metodologia/wyklad-4-fiszki:1895f570,metodologia/wyklad-4-fiszki:146d6058,metodologia/wyklad-4-fiszki:6460a044,metodologia/wyklad-4-fiszki:4ae53c4e,metodologia/wyklad-4-fiszki:47e91351,metodologia/wyklad-4-fiszki:6b00f618,metodologia/wyklad-4-fiszki:a4a8ecf0,metodologia/wyklad-4-fiszki:cdd48b7d,metodologia/wyklad-4-fiszki:bb48064a,metodologia/wyklad-4-fiszki:46029441" data-title="Wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>32 pytania</span></span></button></div><footer class="sources">
+<div class="st-check unit"><button data-check="metodologia/wyklad-4-fiszki:1ac6b571,metodologia/wyklad-4-fiszki:39086fe7,metodologia/wyklad-4-fiszki:a66e1515,metodologia/wyklad-4-fiszki:4f15c0cc,metodologia/wyklad-4-fiszki:c1bbd6f5,metodologia/wyklad-4-fiszki:6dca530c,metodologia/wyklad-4-fiszki:a0e819bb,metodologia/wyklad-4-fiszki:4ca5f506,metodologia/wyklad-4-fiszki:3adcf693,metodologia/wyklad-4-fiszki:d823b10c,metodologia/wyklad-4-fiszki:3efdd472,metodologia/wyklad-4-fiszki:74715ac8,metodologia/wyklad-4-fiszki:7b06cf0e,metodologia/wyklad-4-fiszki:bb579139,metodologia/wyklad-4-fiszki:147e3a38,metodologia/wyklad-4-fiszki:dd8c6d8d,metodologia/wyklad-4-fiszki:fe54d1de,metodologia/wyklad-4-fiszki:0e037fcb,metodologia/wyklad-4-fiszki:7f3f39f3,metodologia/wyklad-4-fiszki:490173d4,metodologia/wyklad-4-fiszki:8125aa8b,metodologia/wyklad-4-fiszki:c18a6570,metodologia/wyklad-4-fiszki:1895f570,metodologia/wyklad-4-fiszki:146d6058,metodologia/wyklad-4-fiszki:6460a044,metodologia/wyklad-4-fiszki:4ae53c4e,metodologia/wyklad-4-fiszki:47e91351,metodologia/wyklad-4-fiszki:6b00f618,metodologia/wyklad-4-fiszki:a4a8ecf0,metodologia/wyklad-4-fiszki:cdd48b7d,metodologia/wyklad-4-fiszki:bb48064a,metodologia/wyklad-4-fiszki:46029441,metodologia/wyklad-4-fiszki:1e672b6f,metodologia/wyklad-4-fiszki:0073e37c,metodologia/wyklad-4-fiszki:376294cf,metodologia/wyklad-4-fiszki:2ca21ddf,metodologia/wyklad-4-fiszki:3d5036e7,metodologia/wyklad-4-fiszki:a427712b,metodologia/wyklad-4-fiszki:0bc30c16,metodologia/wyklad-4-fiszki:1818220b,metodologia/wyklad-4-fiszki:ad48b0f4,metodologia/wyklad-4-fiszki:008d7ccf,metodologia/wyklad-4-fiszki:4e384687,metodologia/wyklad-4-fiszki:339e386d,metodologia/wyklad-4-fiszki:204ce8ce" data-title="Wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>45 pytań</span></span></button></div><footer class="sources">
 <p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 37–63). Wydawnictwo Naukowe PWN.</p>
 <p>Wnioskowanie statystyczne na danych jakościowych (s. 149–157); Testy t-Studenta i ich nieparametryczne odpowiedniki (s. 160–192); Ścibor-Rylski, M. Miary związku między zmiennymi – współczynniki korelacji (s. 198–221). W: S. Bedyńska i M. Cypryańska (red.) (2013), <em>Statystyczny drogowskaz 1</em>. Sedno.</p>
 </footer>
 </main>
 </div>
-<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=e753d827"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 4" src="../assets/reader.js?v=5ef0fecc"></script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=6a685ea2"></script><script src="cards.js?v=1da097d9"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 4" src="../assets/reader.js?v=5ef0fecc"></script>
 </body>
 </html>
