@@ -242,12 +242,7 @@ def hub(subj):
         us = [u for u in subj["units"] if u["kind"] == kind]
         if us:
             groups.append((label, "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)))
-    sims = subj.get("sims", [])
-    if sims:
-        groups.append(("Symulacje", "".join(row(m["href"], "sim", f'{m["label"]} · Symulacje', m.get("title", "")) for m in sims)))
-    mods = subj.get("models", [])
-    if mods:
-        groups.append(("Modele", "".join(row(m["href"], "models", f'{m["label"]} · Mapa modeli', m.get("title", "")) for m in mods)))
+    # symulacje i mapy modeli nie mają własnej listy: mapa jest linkiem na stronie wykładu (mniej ścieżek do tego samego)
     extra = subj.get("practice", [])
     if any(p["kind"] == "cards" for p in extra):
         # talie fiszek zastępuje jeden test (tools/build_cards.py tworzy test.html)
