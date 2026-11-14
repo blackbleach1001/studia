@@ -72,3 +72,7 @@ html.ss .dock{display:flex}
 @media (max-width:560px){.ss-in .ss-num{font-size:4.5rem !important}}
 .ss-cont .ss-kind{text-transform:none;letter-spacing:.02em;color:var(--st-ink-3);font-size:.8125rem !important}
 html.ss:not(.ss-ready) main{visibility:hidden}
+
+/* odporność na style przycisków ze starszych stron (button:hover itp.) */
+.ss-nav button.ss-next,.ss-nav button.ss-next:hover,.ss-nav button.ss-next:focus{background:var(--st-ink);color:#fff;border:0;border-radius:3px;padding:0;font-size:1.0625rem}
+.ss-nav button.ss-prev,.ss-nav button.ss-prev:hover,.ss-nav button.ss-prev:focus{background:var(--st-surface);color:var(--st-ink);border:0;border-radius:3px;padding:0;font-size:1.0625rem}
