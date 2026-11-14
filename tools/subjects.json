@@ -297,6 +297,17 @@
         "sub": "Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, style radzenia sobie, techniki relaksacyjne.",
         "sub_short": "Modele stresu, radzenie sobie",
         "hand": true
+      },
+      {
+        "key": "wyklad-4",
+        "kind": "wyk",
+        "label": "Wykład 4",
+        "file": "wyklad-4.html",
+        "title": "Czynniki ryzyka i chroniące",
+        "src": "Cierpiałkowska, Sęk (2016), r. 30.3, 24.3, 18, 22",
+        "sub": "Ryzyko i zasoby, prewencja, wzór A, typ C i D, poczucie koherencji, PTSD, dzieci.",
+        "sub_short": "Ryzyko, zasoby, osobowość a zdrowie",
+        "hand": true
       }
     ],
     "practice": [
@@ -323,6 +334,12 @@
         "title": "Fiszki · Wykład 3",
         "sub": "Stres · 36",
         "href": "wyklad-3-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Wykład 4",
+        "sub": "Czynniki ryzyka i chroniące · 33",
+        "href": "wyklad-4-fiszki.html"
       }
     ],
     "redirects": {
