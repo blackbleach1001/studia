@@ -12,13 +12,21 @@ for page in list(ROOT.glob("*.html")) + list(ROOT.glob("*/*.html")):
     if "tools" in page.parts:
         continue
     t = page.read_text(encoding="utf-8")
-    if "<main" not in t or "overlay.css" in t:
+    legacy = "overlay.css" in t
+    if not legacy and "<main" not in t:
         continue
-    m = re.search(r'<link[^>]*href="((?:\.\./)?)assets/study\.css[^"]*"[^>]*>', t)
+    m = re.search(r'<link[^>]*href="((?:\.\./)?)assets/%s\.css[^"]*"[^>]*>' % ("overlay" if legacy else "study"), t)
     if not m:
         continue
     pre = m.group(1)
     o = t
+    if legacy:
+        if "assets/sesja.js" in t:
+            continue
+        t = t.replace(m.group(0), m.group(0) + f'\n<link rel="stylesheet" href="{pre}assets/pro.css">\n<link rel="stylesheet" href="{pre}assets/sesja.css">\n<link rel="stylesheet" href="{pre}assets/sesja-legacy.css">', 1)
+        t = t.replace("</body>", f'<script src="{pre}assets/sesja.js"></script>\n</body>', 1)
+        page.write_text(t, encoding="utf-8"); n += 1
+        continue
     if "assets/pro.css" not in t:
         t = t.replace(m.group(0), m.group(0) + f'\n<link rel="stylesheet" href="{pre}assets/pro.css">\n<link rel="stylesheet" href="{pre}assets/sesja.css">', 1)
     if "assets/pro.js" not in t:

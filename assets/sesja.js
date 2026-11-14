@@ -8,16 +8,70 @@
 (function () {
   "use strict";
   var main = document.querySelector("main"), page = document.querySelector(".page");
-  if (!main || !page || page.classList.contains("hub")) return;
-  if (main.querySelectorAll(":scope > h2").length < 2 || !main.querySelector(".tldr, details.sec")) return;
   var KEY = "studia-sesja", POS = KEY + ":" + location.pathname, on = true;
   try { on = localStorage.getItem(KEY) !== "0"; } catch (e) {}
-  var hero = page.querySelector("header.hero");
+  var root = main || document.querySelector(".wrap");
+  if (!root || (page && page.classList.contains("hub"))) return;
+  /* starsze notatki: sekcje (h2) leżą głębiej, w opakowaniach (section.chapter, div.panel…) */
+  var legacy = root.querySelectorAll(":scope > h2").length < 2;
+  if (legacy && root.querySelectorAll("h2").length < 2) return;
+  if (!legacy && !root.querySelector(".tldr, details.sec")) return;
+  var hero = root.querySelector("header.hero, header.st-hero") || document.querySelector("header.hero, header.st-hero");
   function setMode(v) { try { localStorage.setItem(KEY, v ? "1" : "0"); } catch (e) {} location.reload(); }
   if (!on) {
     var links = hero && hero.querySelector(".links");
+    if (hero && !links) { links = document.createElement("div"); links.className = "links"; hero.appendChild(links); }
     if (links) { var b0 = document.createElement("button"); b0.className = "btn"; b0.type = "button"; b0.textContent = "Tryb sesji"; b0.onclick = function () { setMode(true); }; links.appendChild(b0); }
     return;
+  }
+  if (legacy) {
+    /* adapter: rozpakowuje opakowania i ujednolica sekcje do układu h2 + details.sec, treść zostaje bez zmian */
+    if (root.tagName !== "MAIN") {
+      var m = document.createElement("main");
+      while (root.firstChild) m.appendChild(root.firstChild);
+      root.appendChild(m); root.classList.add("page"); page = root; main = m;
+    } else {
+      main = root;
+      if (!page) { page = document.createElement("div"); page.className = "page"; main.parentNode.insertBefore(page, main); page.appendChild(main); }
+    }
+    (function flat(el, out) {
+      Array.prototype.slice.call(el.children).forEach(function (c) {
+        var cls = c.classList, tag = c.tagName;
+        if (/^(SCRIPT|STYLE)$/.test(tag)) return;
+        if (cls.contains("st-hero") || cls.contains("st-prime") || cls.contains("st-check") || cls.contains("st-pager") || tag === "FOOTER" || tag === "NAV") { out.push(c); return; }
+        if (cls.contains("chapter-head") || cls.contains("section-title")) {
+          var h = c.querySelector("h2"); if (h) { var w = c.parentNode; if (!h.id && w && w.id) h.id = w.id; out.push(h); } return;
+        }
+        if (tag === "H2") { var w2 = c.parentNode; if (!c.id && w2 && w2 !== el && w2.id) c.id = w2.id; out.push(c); return; }
+        if (tag === "DETAILS") {
+          c.classList.add("sec");
+          var sm = c.querySelector(":scope > summary"), hh = sm && sm.querySelector("h2");
+          var inner = c.querySelector(":scope > div");
+          if (!inner || c.children.length > 2 || hh) {      // treść bezpośrednio w details → opakuj w .body
+            inner = document.createElement("div");
+            Array.prototype.slice.call(c.childNodes).forEach(function (n) { if (n !== sm) inner.appendChild(n); });
+            c.appendChild(inner);
+          }
+          inner.classList.add("body");
+          if (hh) {                                         // tytuł sekcji w summary → ekran otwierający
+            var h2 = document.createElement("h2"); h2.id = c.id || ""; h2.innerHTML = hh.innerHTML;
+            var nm = h2.querySelector(".num"); if (nm) nm.remove();
+            sm.textContent = h2.textContent.replace(/\s+/g, " ").trim();
+            c.removeAttribute("id"); out.push(h2);
+          }
+          out.push(c); return;
+        }
+        if ((tag === "SECTION" || tag === "DIV" || tag === "ARTICLE") && !cls.contains("tbl") && !cls.contains("def") && !cls.contains("key") && !cls.contains("flag") && !cls.contains("cards") && !cls.contains("card") && !cls.contains("grid-cards") && !cls.contains("card-grid") && !cls.contains("note-box") && !cls.contains("quote-box") && c.querySelector("h2, details")) {
+          var id = c.id; var first = out.length; flat(c, out);
+          if (id) for (var q = first; q < out.length; q++) if (out[q].tagName === "H2") { if (!out[q].id) out[q].id = id; break; }
+          return;
+        }
+        out.push(c);
+      });
+    })(main, (function () { var o = []; main._flat = o; return o; })());
+    var kids = main._flat; delete main._flat;
+    while (main.firstChild) main.removeChild(main.firstChild);
+    kids.forEach(function (k) { main.appendChild(k); });
   }
   document.documentElement.classList.add("ss");
   /* ekrany liczymy dopiero, gdy krój pisma jest wczytany (od niego zależy wysokość tekstu) */
