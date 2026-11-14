@@ -308,6 +308,18 @@
         "sub": "Ryzyko i zasoby, prewencja, wzór A, typ C i D, poczucie koherencji, PTSD, dzieci.",
         "sub_short": "Ryzyko, zasoby, osobowość a zdrowie",
         "hand": true
+      },
+      {
+        "key": "cwiczenia",
+        "kind": "cw",
+        "label": "Ćwiczenia",
+        "plan": [1, 2, 3, 4],
+        "file": "cwiczenia.html",
+        "title": "Pomoc psychologiczna: perspektywa indywidualna, społeczna i instytucjonalna",
+        "src": "Cierpiałkowska, Sęk (2016), cz. 6, r. 28–29, 31–34",
+        "sub": "Psychoterapia, poradnictwo, interwencja kryzysowa, rehabilitacja, samopomoc, efektywność.",
+        "sub_short": "Psychoterapia, kryzys, samopomoc, efektywność",
+        "hand": true
       }
     ],
     "practice": [
@@ -340,6 +352,12 @@
         "title": "Fiszki · Wykład 4",
         "sub": "Czynniki ryzyka i chroniące · 33",
         "href": "wyklad-4-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Ćwiczenia",
+        "sub": "Pomoc psychologiczna · 27",
+        "href": "cwiczenia-fiszki.html"
       }
     ],
     "redirects": {
