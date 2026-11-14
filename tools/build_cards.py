@@ -36,14 +36,12 @@ DECKS = [
                 11: "s3", 12: "s4", 13: "s4", 14: "s5", 15: "s5", 16: "s6", 17: "s6", 18: "s6", 19: "s6", 20: 'p1', 21: 'p1', 22: 'p2', 23: 'p3', 24: 'p4', 25: 'p4', 26: 'p4', 27: 'p5', 28: 'p5', 29: 'p6', 30: 'e1', 31: 'e1', 32: 'e2', 33: 'e2', 34: 'e2', 35: 'e2', 36: 'e3', 37: 'e3', 38: 'e4'}},
     {"dir": "edukacja", "file": "wyklad-1-trusz-fiszki.html", "units": ["wyklad-1-trusz.html"],
      "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's3', 6: 's4', 7: 's5', 8: 's5', 9: 'p1', 10: 'p1', 11: 'p2', 12: 'p2', 13: 'p2', 14: 'p3', 15: 'p3', 16: 'p4', 17: 'p4', 18: 'p4', 19: 'p5', 20: 'p5', 21: 'p6'}},
-    {"dir": "edukacja", "file": "wyklad-2-fiszki.html", "units": ["wyklad-2.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's2', 6: 's2', 7: 's2', 8: 's3', 9: 's3', 10: 's3', 11: 's3', 12: 's4', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's6', 18: 's6', 19: 's6', 20: 's7', 21: 's7', 22: 's7', 23: 'p1', 24: 'p1', 25: 'p2', 26: 'p3', 27: 'p3', 28: 'p3', 29: 'p4', 30: 'p4', 31: 'p5', 32: 'p5', 33: 'p6', 34: 'p6', 35: 'p6', 36: 'r1', 37: 'r1', 38: 'r1', 39: 'r2', 40: 'r2', 41: 'r2', 42: 'r3', 43: 'r3', 44: 'r3', 45: 'r3'}},
-    {"dir": "edukacja", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
-     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's5', 8: 's6', 9: 's6'}},
-    {"dir": "edukacja", "file": "trudnosci-fiszki.html", "units": ["trudnosci.html"],
-     "manual": {1: 'z1', 2: 'z1', 3: 'z2', 4: 'z2', 5: 'z2', 6: 'z3', 7: 'z3', 8: 'z4', 9: 'z4', 10: 'z4', 11: 'n1', 12: 'n1', 13: 'n1', 14: 'n2', 15: 'n2', 16: 'n2', 17: 'n3', 18: 'n3', 19: 'n3', 20: 'd1', 21: 'd1', 22: 'd2', 23: 'd2', 24: 'd3', 25: 'd3', 26: 'd3', 27: 'd4', 28: 'd4', 29: 'd4', 30: 'd5', 31: 'd5'}},
+    {"dir": "edukacja", "file": "wyklad-2-fiszki.html", "units": ["wyklad-2.html", "roznice.html"],
+     "manual": {1: 'roznice.html#s1', 2: 'roznice.html#s1', 3: 'roznice.html#s1', 4: 'roznice.html#s1', 5: 'roznice.html#s2', 6: 'roznice.html#s2', 7: 'roznice.html#s2', 8: 'roznice.html#s3', 9: 'roznice.html#s3', 10: 'roznice.html#s3', 11: 'roznice.html#s3', 12: 'roznice.html#s4', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's6', 18: 's6', 19: 's6', 20: 's7', 21: 's7', 22: 's7', 23: 'p1', 24: 'p1', 25: 'p2', 26: 'p3', 27: 'p3', 28: 'p3', 29: 'p4', 30: 'p4', 31: 'p5', 32: 'p5', 33: 'p6', 34: 'p6', 35: 'p6', 36: 'roznice.html#r1', 37: 'roznice.html#r1', 38: 'roznice.html#r1', 39: 'roznice.html#r2', 40: 'roznice.html#r2', 41: 'roznice.html#r2', 42: 'roznice.html#r3', 43: 'roznice.html#r3', 44: 'roznice.html#r3', 45: 'roznice.html#r3', 46: 'roznice.html#s1', 47: 'roznice.html#v1', 48: 'roznice.html#s2', 49: 'roznice.html#s3', 50: 'roznice.html#s3', 51: 'roznice.html#v2', 52: 'roznice.html#v2', 53: 'roznice.html#s4'}},
+    {"dir": "edukacja", "file": "wyklad-3-fiszki.html", "units": ["trudnosci.html"],
+     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's5', 8: 's6', 9: 's6', 10: 'z1', 11: 'z1', 12: 'z2', 13: 'z2', 14: 'z2', 15: 'z3', 16: 'z3', 17: 'z4', 18: 'z4', 19: 'z4', 20: 'n1', 21: 'n1', 22: 'n1', 23: 'n2', 24: 'n2', 25: 'n2', 26: 'n3', 27: 'n3', 28: 'n3', 29: 'd1', 30: 'd1', 31: 'd2', 32: 'd2', 33: 'd3', 34: 'd3', 35: 'd3', 36: 'd4', 37: 'd4', 38: 'd4', 39: 'd5', 40: 'd5', 41: 'y1', 42: 'y1', 43: 'y2', 44: 'y2', 45: 'y3', 46: 'y3', 47: 'y4', 48: 'y4', 49: 'y4', 50: 'y5', 51: 'y5'}},
     {"dir": "edukacja", "file": "etyka-fiszki.html", "units": ["etyka.html"],
-     "manual": {1: 'k1', 2: 'k1', 3: 'k2', 4: 'k2', 5: 'k2', 6: 'k3', 7: 'k3', 8: 'k4', 9: 'k4', 10: 'k5', 11: 'k5', 12: 'k5', 13: 'k6', 14: 'k6', 15: 'k6'}},
+     "manual": {1: 'k1', 2: 'k1', 3: 'k2', 4: 'k2', 5: 'k2', 6: 'k3', 7: 'k3', 8: 'k4', 9: 'k4', 10: 'k5', 11: 'k5', 12: 'k5', 13: 'k6', 14: 'k6', 15: 'k6', 16: 'q1', 17: 'q1', 18: 'q2', 19: 'q2', 20: 'q3', 21: 'q3', 22: 'q4', 23: 'q4', 24: 'q5', 25: 'q5'}},
     {"dir": "edukacja", "file": "cwiczenia-1-fiszki.html", "units": ["cwiczenia-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s2", 5: "s2", 6: "s2", 7: "s2", 8: "s2", 9: "s3", 10: "s3", 11: "s3", 12: "s3", 13: "s3", 14: "s4", 15: "s4", 16: "s4", 17: "s5", 18: "s5", 19: "s6", 20: "s7", 21: "s7", 22: "s7", 23: "s8", 24: "s8", 25: "s8", 26: "s9"}},
     {"dir": "poznawcza", "file": "fiszki.html",
@@ -191,7 +189,11 @@ for deck in DECKS:
     # przypisanie
     if "manual" in deck:
         for i, c in enumerate(cards, 1):
-            c["unit"], c["sec"] = unit_files[0], deck["manual"].get(i)
+            v = deck["manual"].get(i)
+            if v and "#" in v:
+                c["unit"], c["sec"] = v.split("#", 1)
+            else:
+                c["unit"], c["sec"] = unit_files[0], v
     else:
         all_secs = [(u, x) for u in unit_files for x in secs[u]]
         vec = tfidf([toks(x["text"]) for _, x in all_secs])

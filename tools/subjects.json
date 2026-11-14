@@ -90,18 +90,18 @@
   "units":[
    {"key":"wyklad-1","kind":"wyk","label":"Wykład 1","file":"wyklad-1.html","title":"Specyfika i obszary psychologii edukacji","src":"Slajdy W1 · Bednarek, rozdz. 1 i 5","sub":"Definicje, pionierzy, teorie, metody badawcze, obszary badań; praktyka oparta na dowodach i jej kontrowersje.","sub_short":"Slajdy W1 · Bednarek, rozdz. 1 i 5 (praktyka oparta na dowodach)","plan":[1]},
    {"key":"wyklad-1-trusz","kind":"wyk","label":"Wykład 2","file":"wyklad-1-trusz.html","title":"Efekt oczekiwań interpersonalnych","src":"Slajdy W2 · Trusz (2011)","sub_short":"Pigmalion, Galatea i Golem, model Rosenthala, moderatory, cztery czynniki","hand":true,"plan":[1]},
-   {"key":"wyklad-2","kind":"wyk","label":"Wykład 3","file":"wyklad-2.html","title":"Uczenie się i nauczanie: style a strategie","src":"Slajdy W3 · Ledzińska i Czerniawska · Budziszewska · Rydzewska i in.","sub_short":"Uczenie się, mit stylów, strategie, MSLQ; pamięć robocza, bezradność intelektualna, zagrożenie stereotypem","hand":true,"plan":[2]},
-   {"key":"trudnosci","kind":"wyk","label":"Lektury","file":"trudnosci.html","title":"Trudności edukacyjne, SPE i diagnoza","src":"Trzebińska i Kuźmicz, rozdz. 7 · Bednarek, rozdz. 8–9","sub_short":"Zdrowie psychiczne w szkole, SPE i Konwencja ONZ, ICD/ICF, modele diagnozy","hand":true,"plan":[3]},
-   {"key":"wyklad-3","kind":"wyk","label":"Wykład 5","file":"wyklad-3.html","title":"Psycholog we współczesnej szkole","src":"Sokołowska (2010)","sub_short":"Człowiek środka, ekspert, frontowy i gabinetowy, ekspertyzy","hand":true,"plan":[3]},
-   {"key":"etyka","kind":"wyk","label":"Lektury","file":"etyka.html","title":"Etyczne i prawne aspekty praktyki","src":"Bednarek, rozdz. 6","sub_short":"Kto jest klientem, zgoda, tajemnica i jej granice, prawa rodziców, placówki i psychologa","hand":true,"plan":[4]},
+   {"key":"wyklad-2","kind":"wyk","label":"Wykład 3","file":"wyklad-2.html","title":"Uczenie się i nauczanie: style a strategie","src":"Slajdy W3 · Ledzińska i Czerniawska · Budziszewska","sub_short":"Definicje uczenia się, mit stylów, strategie poznawcze i metapoznawcze, MSLQ, funkcja promocyjna","hand":true,"plan":[2]},
+   {"key":"roznice","kind":"wyk","label":"Wykład 4","file":"roznice.html","title":"Różnice indywidualne w uczeniu się","src":"Slajdy W4 · Ledzińska i Czerniawska · Rydzewska i in., rozdz. 18","sub_short":"Inteligencja, strategie a wyniki, Kagan, Wielka Piątka, Vermunt, pamięć robocza, bezradność, zagrożenie stereotypem","hand":true,"plan":[2]},
+   {"key":"trudnosci","kind":"wyk","label":"Wykład 5","file":"trudnosci.html","title":"Trudności, diagnoza, psycholog szkolny","src":"Slajdy W5 · Trzebińska i Kuźmicz · Bednarek, rozdz. 8–9 · Sokołowska","sub_short":"Przedszkolak i rysunek, dysleksja, zdrowie psychiczne, SPE, modele diagnozy, zachowania trudne, rola psychologa szkolnego","hand":true,"plan":[3]},
+   {"key":"etyka","kind":"wyk","label":"Wykład 6","file":"etyka.html","title":"Etyczne i prawne aspekty praktyki","src":"Slajdy W6 · Bednarek, rozdz. 6 · Standardy","sub_short":"Standardy diagnozy, klient, zgoda, tajemnica, prawo oświatowe, nowa ustawa 2026, dylematy, edukacja przyszłości","hand":true,"plan":[4]},
    {"key":"cw-1","kind":"cw","label":"Ćwiczenia 1","file":"cwiczenia-1.html","title":"Rola psychologa szkolnego i uczenie się społeczno-emocjonalne","src":"Katra s. 21–31 · Elias s. 137–155","sub":"Model roli psychologa szkolnego (Katra) i dziesięć zasad uczenia się poznawczego oraz społeczno-emocjonalnego (Elias).","sub_short":"Katra · Elias"}
   ],
   "practice":[
-   {"kind":"cards","title":"Fiszki · Wykład 1","sub":"Sprawdź się · 38","href":"fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 1","sub":"Specyfika, praktyka oparta na dowodach · 38","href":"fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 2","sub":"Efekt oczekiwań · 21","href":"wyklad-1-trusz-fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Uczenie się · 45","href":"wyklad-2-fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Trudności i diagnoza","sub":"Lektury · 31","href":"trudnosci-fiszki.html"},
-   {"kind":"cards","title":"Fiszki · Etyka i prawo","sub":"Lektury · 15","href":"etyka-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykłady 3–4","sub":"Uczenie się i różnice indywidualne · 53","href":"wyklad-2-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 5","sub":"Trudności, diagnoza, psycholog szkolny · 51","href":"wyklad-3-fiszki.html"},
+   {"kind":"cards","title":"Fiszki · Wykład 6","sub":"Etyka i prawo · 25","href":"etyka-fiszki.html"},
    {"kind":"cards","title":"Fiszki: ćwiczenia 1","sub":"Sprawdź się · 26","href":"cwiczenia-1-fiszki.html"}
   ]}
 ]
