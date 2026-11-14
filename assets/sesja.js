@@ -9,6 +9,7 @@
   "use strict";
   var main = document.querySelector("main"), page = document.querySelector(".page");
   if (!main || !page || page.classList.contains("hub")) return;
+  if (main.querySelectorAll(":scope > h2").length < 2 || !main.querySelector(".tldr, details.sec")) return;
   var KEY = "studia-sesja", POS = KEY + ":" + location.pathname, on = true;
   try { on = localStorage.getItem(KEY) !== "0"; } catch (e) {}
   var hero = page.querySelector("header.hero");
@@ -19,6 +20,11 @@
     return;
   }
   document.documentElement.classList.add("ss");
+  /* ekrany liczymy dopiero, gdy krój pisma jest wczytany (od niego zależy wysokość tekstu) */
+  function go() { try { run(); } catch (e) { if (window.console) console.error(e); } document.documentElement.classList.add("ss-ready"); }
+  var fr = window.document.fonts && document.fonts.ready;
+  if (fr) { var done = false, once = function () { if (!done) { done = true; go(); } }; fr.then(once); setTimeout(once, 1200); } else go();
+  function run() {
 
   function mk(cls) {
     var s = document.createElement("section"); s.className = "ss-screen " + cls; s.hidden = true;
@@ -89,6 +95,57 @@
   cover.firstChild.appendChild(start);
   screens.forEach(function (s) { main.appendChild(s.el); });
 
+  /* za długi ekran dzielimy na kolejne (nic nie ma się przewijać w dół) */
+  (function () {
+    var lim = window.innerHeight - 215;
+    for (var k = 0; k < screens.length; k++) {
+      var el = screens[k].el;
+      if (!el.classList.contains("ss-part")) continue;
+      var box = el.firstChild, det = el.querySelector("details"), cont = (det && det.querySelector(".body")) || box, moved = [];
+      el.hidden = false;
+      while (box.offsetHeight > lim && cont.children.length > 1) moved.unshift(cont.removeChild(cont.lastElementChild));
+      while (moved.length && cont.children.length > 1 && /^H[3-6]$/.test(cont.lastElementChild.tagName)) moved.unshift(cont.removeChild(cont.lastElementChild));
+      if (cont.querySelectorAll(":scope > :not(.ss-kind)").length === 1 && box.offsetHeight > lim) {        // jedna wielka tabela: dzielimy po wierszach
+        var blk = cont.firstElementChild, tb = blk.matches("table") ? blk : blk.querySelector("table"), body = tb && tb.tBodies[0];
+        if (body && body.rows.length > 3) {
+          var rows = [];
+          while (box.offsetHeight > lim && body.rows.length > 2) rows.unshift(body.removeChild(body.rows[body.rows.length - 1]));
+          if (rows.length) {
+            var cl = blk.cloneNode(true), cb = (cl.matches("table") ? cl : cl.querySelector("table")).tBodies[0];
+            while (cb.rows.length) cb.removeChild(cb.rows[0]);
+            rows.forEach(function (r) { cb.appendChild(r); });
+            moved.unshift(cl);
+          }
+        }
+      }
+      if (cont.querySelectorAll(":scope > :not(.ss-kind)").length === 1 && box.offsetHeight > lim && /^[UO]L$/.test(cont.querySelector(":scope > :not(.ss-kind)").tagName)) {   // jedna długa lista
+        var ul = cont.querySelector(":scope > :not(.ss-kind)"), its = [];
+        while (box.offsetHeight > lim && ul.children.length > 2) its.unshift(ul.removeChild(ul.lastElementChild));
+        if (its.length) {
+          var l2 = ul.cloneNode(false); l2.removeAttribute("id");
+          if (ul.tagName === "OL") l2.start = (+ul.getAttribute("start") || 1) + ul.children.length;
+          its.forEach(function (x) { l2.appendChild(x); });
+          moved.unshift(l2);
+        }
+      }
+      el.hidden = true;
+      if (!moved.length) continue;
+      var n = mk("ss-part ss-cont"), h = document.createElement("p");
+      var sm = det && det.querySelector("summary"), ttl = "";
+      if (sm) { var c = sm.cloneNode(true); Array.prototype.forEach.call(c.querySelectorAll(".src"), function (x) { x.remove(); }); ttl = c.textContent.replace(/\s+/g, " ").trim(); }
+      h.className = "ss-kind"; h.textContent = "cd." + (ttl ? " · " + ttl : "");
+      n.firstChild.appendChild(h);
+      moved.forEach(function (x) { n.firstChild.appendChild(x); });
+      main.insertBefore(n, el.nextSibling);
+      screens.splice(k + 1, 0, { el: n, sec: screens[k].sec });
+    }
+    secs.forEach(function (s, i) {
+      var f = -1, l = -1;
+      screens.forEach(function (x, j) { if (x.sec === i) { if (f < 0) f = j; l = j; } });
+      s.start = f; s.end = l;
+    });
+  })();
+
   /* ---------- pasek postępu: jeden segment na sekcję ---------- */
   var bar = document.createElement("div"); bar.className = "ss-bar";
   bar.innerHTML = '<div class="ss-segs">' + secs.map(function (s, i) { return '<button type="button" data-s="' + i + '" aria-label="Sekcja ' + (i + 1) + '"><i></i></button>'; }).join("") + "</div>" +
@@ -147,4 +204,5 @@
 
   var saved = 0; try { saved = +localStorage.getItem(POS) || 0; } catch (e) {}
   if (!goHash()) show(saved);
+  }
 })();

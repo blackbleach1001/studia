@@ -9,4 +9,5 @@ python3 tools/build_glossary.py
 python3 tools/build_baza.py
 python3 tools/build_search.py
 python3 tools/build_plan.py
+python3 tools/apply_pro.py
 python3 tools/version_assets.py
