@@ -14,6 +14,7 @@ SUBJ = {s["dir"]: s for s in json.loads((ROOT / "tools" / "subjects.json").read_
 def plq(n):
     return "pytanie" if n == 1 else ("pytania" if n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14) else "pytań")
 
+counts = {}
 for src in sorted((ROOT / "tools" / "src" / "baza").glob("*.json")):
     d = src.stem
     data = json.loads(src.read_text(encoding="utf-8"))
@@ -48,4 +49,8 @@ for src in sorted((ROOT / "tools" / "src" / "baza").glob("*.json")):
 </html>
 """
     (ROOT / d / "baza.html").write_text(page, encoding="utf-8")
+    counts[d] = n
     print(f"{d}/baza.html: {n} {plq(n)}")
+
+# liczba pytań w bazach dla strony głównej (postęp: localStorage studia-baza-v1)
+(ROOT / "assets" / "baza-index.js").write_text("window.STUDIA_BAZA_N=" + json.dumps(counts) + ";\n", encoding="utf-8")

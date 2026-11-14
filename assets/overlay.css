@@ -3,7 +3,7 @@
    Ujednolica czytanie bez zmiany treści: Atkinson w tekście,
    Playfair w nagłówkach, linia ok. 65 znaków, wyrównanie do lewej.
    ========================================================= */
-@import url("reader.css?v=04906688");
+@import url("reader.css?v=e3e23c7e");
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@600;700&display=swap");
 
 body, body :where(*:not(svg):not(svg *):not(code):not(pre):not(kbd):not(samp)){
@@ -50,3 +50,104 @@ html{scroll-padding-bottom:140px}
 .sim-link span.s{display:block;font-size:.875rem;color:var(--st-ink-2);line-height:1.35}
 .chapter-head .num:empty,.toc b:empty{display:none}
 @media (max-width:430px){.chapter-head h2{font-size:1.375rem !important}}
+
+/* =========================================================
+   Jeden wygląd dla starszych notatek (2026-11)
+   Treść na papierze, bez ramek i kolorowych teł. Kolor przedmiotu
+   tylko jako akcent (numery, etykiety, linki). Tło tylko dla
+   definicji i ramek do zapamiętania (--st-surface).
+   ========================================================= */
+html body{background:var(--st-paper) !important;color:var(--st-ink)}
+body h1, body h1 *{font-family:"Playfair Display",Georgia,serif !important}
+body h2, body h3, body h4, body h2 *, body h3 *, body h4 *, body summary, body summary *{
+  font-family:"Atkinson Hyperlegible",system-ui,sans-serif !important;
+}
+body :is(main,.wrap) h2{font-size:1.375rem !important;font-weight:700 !important;letter-spacing:-.01em;line-height:1.25 !important;color:var(--st-ink) !important}
+body :is(main,.wrap) h3{font-size:1.0625rem !important;font-weight:700 !important;line-height:1.3 !important;color:var(--st-ink) !important;margin:1.6em 0 .4em !important}
+body :is(main,.wrap) h4{font-size:1rem !important;font-weight:700 !important;line-height:1.3 !important;color:var(--st-ink) !important}
+body :is(main,.wrap) a:not(.st-btn):not(.sim-link):not(.btn){color:var(--st-tint)}
+body strong, body b{color:inherit}
+body .term, body .gterm dt{color:var(--st-ink) !important;font-weight:700 !important}
+
+/* nagłówki sekcji: numer w kolorze przedmiotu, w tej samej linii */
+body section.chapter{margin:0 0 1rem !important;padding-top:2.2rem}
+body .chapter-head, body .section-title{display:flex !important;align-items:baseline !important;gap:.6em !important;margin:0 0 .8rem !important;padding:0 !important;border:0 !important;background:none !important}
+body .chapter-head .num, body .section-title .num, body details.sec>summary .num{
+  font:700 1.375rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif !important;color:var(--st-tint) !important;
+  min-width:1.2em;background:none !important;width:auto !important;height:auto !important;border-radius:0 !important;padding:0 !important;box-shadow:none !important;
+  display:inline !important;font-variant-numeric:tabular-nums;
+}
+body .chapter-head h2, body .section-title h2{margin:0 !important}
+
+/* „W skrócie”, wprowadzenia, cytaty: zwykły tekst */
+body .lede, body .note, body .note-box, body .trap, body .flag, body .pending, body blockquote, body .quote-box{
+  background:none !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;padding:0 !important;margin:.6em 0 1em !important;color:var(--st-ink-2) !important;
+}
+body blockquote, body .quote-box{padding-left:1em !important;border-left:2px solid var(--st-sep) !important;font-style:italic}
+body .flag .label, body .trap .label, body .note-box .label{color:var(--st-ink-3) !important}
+
+/* ramki do zapamiętania: jedna wyróżniona powierzchnia */
+body .key, body .def, body .blok, body details.block.ramka, body .syl, body .sylabus-card, body .meta-grid div{
+  background:var(--st-surface) !important;border:0 !important;border-radius:10px !important;box-shadow:none !important;padding:14px 16px !important;margin:.6em 0 1.2em !important;
+}
+body .key .label, body .blok .label, body .label{
+  display:block;font:var(--st-label) !important;letter-spacing:.06em;text-transform:uppercase;color:var(--st-tint) !important;margin:0 0 4px !important;font-style:normal !important;
+}
+body .key p:last-child, body .def p:last-child, body .blok p:last-child{margin-bottom:0}
+body .syl li::before{color:var(--st-tint) !important}
+
+/* karty pojęć i postaci: lista na papierze, cienka linia nad każdą pozycją */
+body .cards, body .grid, body .grid-cards, body .card-grid, body .glossary{gap:0 28px !important;margin:.6em 0 1.4em !important}
+body .card, body .gterm, body .sylabus-item{
+  background:none !important;border:0 !important;border-top:.5px solid var(--st-sep) !important;border-radius:0 !important;
+  box-shadow:none !important;padding:12px 0 14px !important;margin:0 !important;
+}
+body .card h4, body .card h3{margin:0 0 4px !important}
+body .card p, body .gterm dd{color:var(--st-ink-2) !important;font-size:.9375rem !important;line-height:1.55 !important}
+body .card .yr, body .card .big, body .big{color:var(--st-ink-3) !important;font-family:"Atkinson Hyperlegible",system-ui,sans-serif !important;font-size:.8125rem !important}
+
+/* sekcje rozwijane */
+body details.block, body details.sec, body details.q, body details:not(.unit):not(.st-check *){
+  background:none !important;border:0 !important;border-top:.5px solid var(--st-sep) !important;border-radius:0 !important;box-shadow:none !important;margin:0 !important;padding:0 !important;
+}
+body details.block>summary, body details.sec>summary, body details.q>summary, body details>summary{
+  padding:14px 0 !important;font-size:1.0625rem !important;font-weight:700 !important;color:var(--st-ink) !important;border:0 !important;background:none !important;
+}
+body details.block>summary::after, body details.sec>summary::after, body details:not(.unit)>summary::after{
+  content:"" !important;flex:0 0 auto;width:8px;height:8px;margin:0 4px 0 auto;align-self:center;
+  border-right:2px solid var(--st-ink-3);border-bottom:2px solid var(--st-ink-3);transform:rotate(-45deg);transition:transform .2s;font-size:0 !important;
+}
+body details.block[open]>summary::after, body details.sec[open]>summary::after, body details:not(.unit)[open]>summary::after{transform:rotate(45deg)}
+body details:not(.unit)>summary::before{content:none !important}
+body details>summary{display:flex !important;align-items:center;gap:10px;list-style:none}
+body details>summary::-webkit-details-marker{display:none}
+body details.block .inner, body .details-body{padding:0 0 14px !important;background:none !important;border:0 !important}
+body details.block.ramka{padding:0 16px !important}
+body details.block.ramka>summary .kind{color:var(--st-ink-3) !important}
+
+/* znaczniki źródeł i tagi: drobny tekst zamiast „pigułek” */
+body .src, body .tag, body .pill, body .figure-badge, body .t-date{
+  background:none !important;border:0 !important;border-radius:0 !important;padding:0 !important;
+  color:var(--st-ink-3) !important;font:400 .8125rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif !important;letter-spacing:0 !important;
+}
+body .figure-badge .dot{display:none}
+
+/* tabele i ilustracje */
+body .table-wrap, body .scroll{border-top:.5px solid var(--st-sep);border-bottom:.5px solid var(--st-sep);margin:.6em 0 1.4em !important}
+body table{background:transparent !important;box-shadow:none !important;border-radius:0 !important;font-size:.9375rem !important}
+body th{background:transparent !important;color:var(--st-ink-2) !important;font:var(--st-label) !important;letter-spacing:.04em !important;text-transform:uppercase;vertical-align:bottom}
+body td{background:transparent !important;border-bottom:.5px solid var(--st-sep) !important}
+body tr:last-child td{border-bottom:0 !important}
+body .fig, body .diagram{border:0 !important;box-shadow:none !important;background:none !important;padding:0 !important}
+body .divider, body .wyklad-divider{color:var(--st-ink-3) !important}
+
+/* łącznik do symulacji i mapy modeli: wiersz z cienką ramką */
+.sim-link{background:none;box-shadow:inset 0 0 0 .5px var(--st-sep);border-radius:10px;margin:0 0 10px}
+.sim-link .ic{background:none;color:var(--st-tint)}
+.fiszki-link{background:var(--st-surface);border-left:0;border-radius:10px}
+
+/* szerokość kolumny jak w pozostałych notatkach */
+body .wrap{max-width:50rem !important;padding-left:calc(20px + var(--st-safe-l)) !important;padding-right:calc(20px + var(--st-safe-r)) !important}
+body blockquote, body .quote-box{text-align:left !important}
+body .quote-box *{text-align:left !important}
+body :is(main,.wrap) h2{border:0 !important;box-shadow:none !important;background:none !important}

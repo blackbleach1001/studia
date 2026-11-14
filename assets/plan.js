@@ -60,9 +60,38 @@
         META[nx.subj].short + " · " + kindName(nx).toLowerCase() + (nx.place === "online" ? " · online" : "") +
         (ne && days(TODAY, ne.date) <= 14 ? " · " + ne.text.toLowerCase() + " " + rel(ne.date) : "");
     }
+    subjects();
     return;
   }
   if (!root) return;
+
+  /* ---------- strona główna: przy każdym przedmiocie najbliższy termin, fiszki na dziś i baza ---------- */
+  function subjects() {
+    var IDX = window.STUDIA_INDEX || [], NB = window.STUDIA_BAZA_N || {}, baza = {};
+    try { baza = JSON.parse(localStorage.getItem("studia-baza-v1") || "{}") || {}; } catch (e) {}
+    Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
+      var d = a.getAttribute("data-subj"), s = a.querySelector(".s"), m = a.querySelector(".m");
+      var nx = D.sessions.filter(function (x) { return x.subj === d && !x.alt && !past(x); })[0];
+      var ex = D.exams.filter(function (e) { return e.subj === d && e.date >= TODAY; })[0];
+      var line = [];
+      if (ex && (!nx || ex.date <= nx.date || days(TODAY, ex.date) <= 14)) line.push(ex.text.split(":")[0] + " " + rel(ex.date));
+      if (nx) line.push((live(nx) ? "teraz" : short(nx.date)) + " · " + kindName(nx).toLowerCase());
+      if (s && line.length) s.textContent = line.join(" · ").replace(/^./, function (c) { return c.toUpperCase(); });
+      var chips = [];
+      if (window.SRS) {
+        var ids = [];
+        IDX.forEach(function (k) { if (k.dir === d) ids = ids.concat(k.ids); });
+        var due = ids.length ? window.SRS.reviewList(ids).length : 0;
+        if (due) chips.push('<span class="due">' + due + " " + pl(due, "fiszka", "fiszki", "fiszek") + " na dziś</span>");
+      }
+      if (NB[d]) {
+        var r = baza[d] || {}, ok = 0;
+        Object.keys(r).forEach(function (k) { if (r[k] && r[k][2] === 1) ok++; });
+        chips.push("<span>Baza " + ok + "/" + NB[d] + "</span>");
+      }
+      if (m && chips.length) { m.innerHTML = chips.join(""); m.hidden = false; }
+    });
+  }
 
   /* ---------- stan ---------- */
   var store = { read: {} };

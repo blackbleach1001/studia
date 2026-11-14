@@ -307,8 +307,9 @@ def build_index(subjects):
         if n("zaj"): parts.append(rng("Zajęcia", "Zajęcia", n("zaj")))
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
-            rows.append(f'<li {style}><a class="row" href="{subj["dir"]}/"><span class="ic">{book}</span>'
-                        f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span></span></a></li>')
+            rows.append(f'<li {style}><a class="row subj" href="{subj["dir"]}/" data-subj="{subj["dir"]}"><span class="dot" aria-hidden="true"></span>'
+                        f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span>'
+                        f'<span class="m" hidden></span></span></a></li>')
         else:
             rows.append(f'<li {style}><span class="row empty"><span class="ic alt">{book}</span>'
                         f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">Brak materiałów</span></span></span></li>')
@@ -346,11 +347,14 @@ def build_index(subjects):
   <main>
     <section class="group results" id="results" hidden><h2 id="results-h">Wyniki</h2><ul class="ios-list" id="results-list"></ul></section>
     <section class="group plan-home"><h2>Plan</h2><ul class="ios-list"><li style="--sh:28;--ss:22%;--sl:45%"><a class="row" href="plan.html" id="plan-row"><span class="ic">{ICONS["cal"]}</span><span class="tx"><span class="t">Plan semestru</span><span class="s">Zajęcia, lektury i terminy zaliczeń</span></span></a></li></ul></section>
-    <section class="group"><h2>Przedmioty</h2><ul class="ios-list">{"".join(rows)}</ul></section>
+    <section class="group"><h2>Przedmioty</h2><ul class="ios-list subjects">{"".join(rows)}</ul></section>
   </main>
 </div>
 <script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
 <script src="assets/home.js" data-index="assets/search-index.js"></script>
+<script src="assets/srs.js"></script>
+<script src="assets/cards-index.js"></script>
+<script src="assets/baza-index.js"></script>
 <script src="assets/plan-data.js"></script>
 <script src="assets/plan.js"></script>
 </body>

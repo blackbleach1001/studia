@@ -132,7 +132,8 @@
   var BACK = (script && script.dataset.back) || HOME;
   var BACK_LABEL = (script && script.dataset.backLabel) || "Studia";
   var h1 = document.querySelector("h1");
-  var pageTitle = (script && script.dataset.title) || (h1 ? h1.textContent.replace(/\s+/g, " ").trim() : document.title);
+  var h1t = h1 ? h1.textContent.replace(/\s+/g, " ").trim() : "", dt = script && script.dataset.title;
+  var pageTitle = dt && h1t && dt !== h1t && h1t.indexOf(dt) < 0 ? dt + " · " + h1t : (dt || h1t || document.title);
   var nav = document.createElement("header");
   nav.className = "st-nav";
   nav.innerHTML =
