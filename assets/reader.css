@@ -263,6 +263,37 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-prime dt{margin:0;font:700 1.0625rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink)}
 .st-prime dd{margin:3px 0 0;font:400 1rem/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-2);max-width:62ch}
 
+/* baza pytań: jednokrotny wybór */
+.st-opts{display:flex;flex-direction:column;gap:8px;margin:4px 0 6px}
+.st-opt{
+  display:flex;align-items:flex-start;gap:12px;width:100%;padding:12px 14px;border:0;border-radius:14px;text-align:left;
+  background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:400 1.0625rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-opt .k{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+  box-shadow:inset 0 0 0 1.5px var(--st-ink-3);font:700 .8125rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-2)}
+.st-opt .t{padding-top:2px}
+.st-opt:not(:disabled):active{opacity:.7}
+.st-opt:disabled{cursor:default}
+.st-opt.ok{background:hsl(150,30%,92%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%);color:hsl(150,35%,18%)}
+.st-opt.ok .k{background:hsl(150,35%,32%);box-shadow:none;color:#fff}
+.st-opt.bad{background:hsl(8,60%,94%);box-shadow:inset 0 0 0 1.5px hsl(8,55%,48%);color:hsl(8,50%,26%)}
+.st-opt.bad .k{background:hsl(8,55%,44%);box-shadow:none;color:#fff}
+.st-opt.dim{opacity:.55}
+.st-fb:empty{display:none}
+.st-fb{margin:12px 0 4px;padding-top:12px;border-top:.5px solid var(--st-sep)}
+.st-fb p{margin:0 0 8px !important;max-width:none}
+.st-fb-t{font-weight:700}
+.st-fb-t.ok{color:hsl(150,35%,26%)}
+.st-fb-t.bad{color:hsl(8,50%,34%)}
+.st-fb-e{line-height:1.55}
+.st-fb-n{font-size:.875rem;color:var(--st-ink-3)}
+.st-wrong{list-style:none;margin:0 0 14px;padding:0}
+.st-wrong li{margin:0 0 8px;padding:10px 12px;border-radius:12px;background:#faf6f0;font-size:.9375rem;line-height:1.45}
+.st-wrong li b{color:var(--st-ink-3);font-weight:700;margin-right:4px}
+.st-wrong li .a{display:block;margin-top:4px;color:hsl(150,35%,26%);font-weight:700}
+.st-btn:disabled{opacity:.4}
+
 /* test: wybór zakresu */
 .st-test-h{margin:18px 0 8px !important;font:700 .875rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--st-ink-3)}
 .st-scopes{display:flex;flex-direction:column;gap:8px}

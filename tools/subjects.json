@@ -12,6 +12,7 @@
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Zaliczenie przedmiotu","sub_short":"Punktacja i wymagania"}
   ],
   "practice":[
+   {"kind":"quiz","title":"Baza egzaminacyjna","sub":"340 pytań · test jak na egzaminie","href":"baza.html"},
    {"kind":"cards","title":"Fiszki","sub":"Pytania kontrolne · 69","href":"fiszki.html"}
   ],
   "redirects":{"literatura.html":"./","literatura-fiszki.html":"fiszki.html"}
@@ -33,6 +34,7 @@
    {"label":"Ćwiczenia 1","title":"Pozycja odwrócona · Wzór · Braki danych","href":"sym-cwiczenia-1.html"}
   ],
   "practice":[
+   {"kind":"quiz","title":"Baza egzaminacyjna","sub":"Statystyka · 117 pytań","href":"baza.html"},
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 67","href":"fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Zmienne i statystyki opisowe · 45","href":"wyklad-3-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Ćwiczenia 2","sub":"Jamovi i normalność · 13","href":"cwiczenia-2-fiszki.html"}
@@ -48,6 +50,7 @@
    {"key":"wyklad-3","kind":"wyk","label":"Wykład 3","file":"wyklad-3.html","title":"Stres psychologiczny: modele i radzenie sobie","src":"Heszen-Celińska, Sęk (2020), r. 9 · slajdy W3a","sub":"Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, style radzenia sobie, techniki relaksacyjne.","sub_short":"Modele stresu, radzenie sobie","hand":true}
   ],
   "practice":[
+   {"kind":"quiz","title":"Baza egzaminacyjna","sub":"210 pytań · test jak na egzaminie","href":"baza.html"},
    {"kind":"cards","title":"Fiszki","sub":"Sprawdź się · 60","href":"fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 2 · lektura","sub":"Dziedziny psychologii klinicznej · 50","href":"wyklad-2-dziedziny-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Stres · 36","href":"wyklad-3-fiszki.html"}
@@ -80,6 +83,7 @@
    {"key":"zaliczenie","kind":"info","label":"Informacje","file":"zaliczenie.html","title":"Sylabus w skrócie","sub_short":"Zaliczenie i literatura"}
   ],
   "practice":[
+   {"kind":"quiz","title":"Kolokwium 1: pytania z bazy","sub":"12 zamkniętych · 11 otwartych","href":"baza.html"},
    {"kind":"cards","title":"Fiszki · Wykład 3","sub":"Mechanizmy reklamy · 45","href":"wyklad-3-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Ćwiczenia 1","sub":"Kultura i klimat · 32","href":"cwiczenia-1-fiszki.html"},
    {"kind":"cards","title":"Fiszki · Ćwiczenia 2","sub":"Stres, wypalenie, dobrostan · 31","href":"cwiczenia-2-fiszki.html"}
