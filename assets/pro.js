@@ -92,7 +92,7 @@
     var kick = document.createElement("p"); kick.className = "hp-kicker";
     kick.textContent = WD[now.getDay()] + ", " + now.getDate() + " " + MON[now.getMonth()];
     hero.insertBefore(kick, hero.firstChild);
-    if (zj.length) {
+    if (zj.length && !main.querySelector(".sec-tiles")) {
       var doneN = zi < 0 ? zj.length : zi, curIn = zi >= 0 && zj[zi][0] <= today;
       var sem = document.createElement("div"); sem.className = "hp-sem";
       sem.innerHTML = '<div class="hp-seg" aria-hidden="true">' + zj.map(function (g, j) {
@@ -103,7 +103,7 @@
       hero.insertBefore(sem, form);
     }
   }
-  if (!P) return;
+  if (!P || main.querySelector(".sec-tiles")) return;
 
   /* --- 1. karta najbliższego zjazdu --- */
   if (zi >= 0) {
@@ -229,4 +229,105 @@
     '<a class="sec-home" href="' + home + '">Studia</a>';
   document.body.appendChild(nav);
   document.body.classList.add("has-pg-foot");
+})();
+
+/* ---------- strona przedmiotu: karta „Następne zajęcia” (z planu) ---------- */
+(function () {
+  "use strict";
+  var nav = document.querySelector(".sec-tiles"), P = window.STUDIA_PLAN;
+  if (!nav || !P) return;
+  var dir = location.pathname.split("/").filter(Boolean).slice(-2).filter(function (x) { return !/\.html$/.test(x); }).pop();
+  if (!P.meta[dir]) return;
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  var now = new Date(), NOW = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) + " " + pad(now.getHours()) + ":" + pad(now.getMinutes());
+  var ses = P.sessions.filter(function (x) { return x.subj === dir && !x.alt && (x.date + " " + (x.end || "23:59")) >= NOW; })
+    .sort(function (a, b) { return (a.date + (a.start || "")) < (b.date + (b.start || "")) ? -1 : 1; });
+  var x = ses[0];
+  var KEY = "studia-plan-v1", store = { read: {} };
+  try { store = JSON.parse(localStorage.getItem(KEY) || "null") || store; store.read = store.read || {}; } catch (e) {}
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var WD = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+  var MON = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+  var card = document.createElement("section"); card.className = "nx-card";
+  if (!x) {
+    card.innerHTML = '<p class="nx-l">Następne zajęcia</p><p class="nx-t">Wszystkie zajęcia za Tobą</p>';
+  } else {
+    var d = new Date(x.date + "T12:00:00"), t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12);
+    var n = Math.round((d - t0) / 864e5), live = x.start && (x.date + " " + x.start) <= NOW;
+    var when = live ? "trwa teraz" : n === 0 ? "dziś" : n === 1 ? "jutro" : "za " + n + " dni";
+    var kind = x.kind === "W" ? "Wykład " : dir === "rozmowa" ? "Zajęcia " : "Ćwiczenia ";
+    var pl = x.place === "online" ? "online" : x.place ? x.place.replace(/sala\s*/i, "sala ") : "";
+    var ex = (P.exams || []).filter(function (e) { return e.subj === dir && e.date === x.date && (!e.grp || e.grp === x.grp); });
+    var lit = (x.lit || []).length ? '<ul class="nx-lit">' + x.lit.map(function (l, i) {
+      var id = x.id + (x.lit.length > 1 ? "" : ""), on = !!store.read[x.id];
+      return "<li>" + esc(l) + "</li>";
+    }).join("") + "</ul>" : "";
+    var done = !!store.read[x.id];
+    card.innerHTML = '<p class="nx-l"><span>Następne zajęcia</span><b>' + esc(when) + "</b></p>" +
+      '<a class="nx-main" href="' + esc(x.href ? "../" + x.href : "#") + '">' +
+        '<span class="nx-d">' + WD[d.getDay()] + ", " + d.getDate() + " " + MON[d.getMonth()] + (x.start ? " · " + esc(x.start) + "–" + esc(x.end || "") : "") + (pl ? " · " + esc(pl) : "") + "</span>" +
+        '<span class="nx-t">' + esc(kind + String(x.n).replace(/\D/g, "")) + " · " + esc(x.topic || "temat nie podany") + "</span>" +
+        ex.map(function (e) { return '<span class="nx-ex">' + esc(e.text) + "</span>"; }).join("") +
+      "</a>" +
+      (lit ? '<div class="nx-read"><button type="button" class="nx-chk" aria-pressed="' + done + '"><i aria-hidden="true"></i>' + (done ? "Przeczytane" : "Do przeczytania") + "</button>" + lit + "</div>" : "");
+    var b = card.querySelector(".nx-chk");
+    if (b) b.addEventListener("click", function () {
+      var v = b.getAttribute("aria-pressed") !== "true";
+      if (v) store.read[x.id] = true; else delete store.read[x.id];
+      try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+      b.setAttribute("aria-pressed", String(v)); b.lastChild.textContent = v ? "Przeczytane" : "Do przeczytania";
+      card.classList.toggle("is-read", v);
+    });
+    if (done) card.classList.add("is-read");
+    var ul = card.querySelector(".nx-lit"); if (ul) ul.addEventListener("click", function () { card.classList.toggle("open"); });
+  }
+  card.setAttribute("style", "--sh:" + P.meta[dir].hsl[0] + ";--ss:" + P.meta[dir].hsl[1] + "%;--sl:" + P.meta[dir].hsl[2] + "%");
+  var hero = document.querySelector(".page.hub>header.hero");
+  if (hero) hero.after(card);
+})();
+
+/* ---------- strona przedmiotu: plan przedmiotu otwiera się na miejscu (zajęcia, terminy, zaliczenie) ---------- */
+(function () {
+  "use strict";
+  var panel = document.querySelector(".sec-panel#plan"), P = window.STUDIA_PLAN;
+  if (!panel || !P) return;
+  var dir = location.pathname.split("/").filter(Boolean).filter(function (x) { return !/\.html$/.test(x); }).pop();
+  var S = P.subjects[dir]; if (!S) return;
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var now = new Date(), TODAY = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+  var WDS = ["nd.", "pon.", "wt.", "śr.", "czw.", "pt.", "sob."];
+  function d(s) { var x = new Date(s + "T12:00:00"); return WDS[x.getDay()] + " " + x.getDate() + "." + pad(x.getMonth() + 1); }
+  var ses = P.sessions.filter(function (x) { return x.subj === dir && !x.alt; }).sort(function (a, b) { return (a.date + (a.start || "")) < (b.date + (b.start || "")) ? -1 : 1; });
+  var ex = (P.exams || []).filter(function (e) { return e.subj === dir && (!e.grp || ses.some(function (x) { return x.grp === e.grp; })); });
+  var rows = ses.map(function (x) {
+    var kind = x.kind === "W" ? "W" : dir === "rozmowa" ? "Z" : "Ć", past = x.date < TODAY;
+    var e = ex.filter(function (y) { return y.date === x.date; });
+    var inner = '<span class="pp-d">' + d(x.date) + "<small>" + esc(x.start || "") + "</small></span>" +
+      '<span class="pp-x"><b>' + kind + String(x.n).replace(/\D/g, "") + " · " + esc(x.topic || "temat nie podany") + "</b>" +
+      (x.place ? '<span class="pp-s">' + esc(x.place === "online" ? "online" : x.place) + "</span>" : "") +
+      e.map(function (y) { return '<span class="pp-ex">' + esc(y.text) + "</span>"; }).join("") + "</span>";
+    return '<li class="' + (past ? "is-past" : "") + '">' + (x.href ? '<a href="../' + esc(x.href) + '">' + inner + "</a>" : "<div>" + inner + "</div>") + "</li>";
+  }).join("");
+  var free = ex.filter(function (e) { return !ses.some(function (x) { return x.date === e.date; }); }).map(function (e) {
+    return '<li class="' + (e.date < TODAY ? "is-past" : "") + '"><div><span class="pp-d">' + d(e.date) + '</span><span class="pp-x"><b>' + esc(e.text) + "</b></span></div></li>";
+  }).join("");
+  var old = panel.querySelector(".ios-list");
+  var extra = [].slice.call(old.querySelectorAll("li")).filter(function (li) { return !/plan\.html/.test((li.querySelector("a") || {}).getAttribute ? li.querySelector("a").getAttribute("href") : ""); });
+  var html = '<h2>Zajęcia</h2><ol class="pp-list">' + rows + "</ol>" +
+    (free ? '<h2>Terminy</h2><ol class="pp-list">' + free + "</ol>" : "") +
+    '<h2>Zaliczenie</h2><p class="pp-pass">' + esc(S.pass) + "</p>" +
+    (S.parts || []).map(function (p) { return '<p class="pp-who">' + (p.kind === "W" ? "Wykłady" : "Ćwiczenia") + ": " + esc(p.who) + "</p>"; }).join("");
+  panel.innerHTML = html;
+  if (extra.length) { var ul = document.createElement("ul"); ul.className = "ios-list pp-extra"; extra.forEach(function (li) { ul.appendChild(li); }); panel.appendChild(ul); }
+  var full = document.createElement("a"); full.className = "pp-full"; full.href = "../plan.html?p=" + dir + "#przedmioty"; full.textContent = "Lektury do każdych zajęć — pełny plan →";
+  panel.appendChild(full);
+  /* po otwarciu: przewiń do najbliższych zajęć (przeszłe zostają wyżej) */
+  function jump() {
+    if (panel.hidden) return;
+    var li = panel.querySelector(".pp-list li:not(.is-past)");
+    if (li && panel.scrollHeight > panel.clientHeight) panel.scrollTop = Math.max(0, li.offsetTop - panel.offsetTop - 34);
+  }
+  new MutationObserver(jump).observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+  jump();
 })();

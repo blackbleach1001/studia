@@ -272,3 +272,42 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   body.has-pg-foot .page{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px)) !important}
   .pg-foot .sec-home{flex:0 0 32%}
 }
+
+/* strona przedmiotu: karta „Następne zajęcia” */
+.nx-card{margin:16px 0 0;padding:12px 14px 10px;border:1px solid var(--st-sep,rgba(0,0,0,.12));border-left:4px solid hsl(var(--sh),var(--ss),var(--sl));border-radius:3px;background:#fff}
+.nx-l{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 6px;font:600 .6875rem/1.3 var(--mono,ui-monospace,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--st-ink-3,var(--ink-mute))}
+.nx-l b{color:var(--st-ink,var(--ink));letter-spacing:.04em}
+.nx-main{display:block;color:var(--ink) !important;text-decoration:none}
+.nx-d{display:block;font-size:.8125rem;color:var(--st-ink-2,var(--ink-soft))}
+.nx-t{display:block;margin-top:3px;font-weight:700;font-size:1.0625rem;line-height:1.3}
+.nx-ex{display:inline-block;margin-top:6px;padding:3px 7px;border-radius:3px;background:hsl(var(--sh),40%,93%);color:hsl(var(--sh),var(--ss),28%);font-size:.75rem;font-weight:700}
+.nx-read{margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,.07)}
+.nx-chk{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0;border:0;background:none;font:700 .8125rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink,var(--ink));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nx-chk i{width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--st-sep,rgba(0,0,0,.2))}
+.nx-chk[aria-pressed="true"] i{box-shadow:none;background:hsl(150,35%,38%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.nx-lit{list-style:none;margin:2px 0 0;padding:0;font-size:.8125rem;line-height:1.4;color:var(--st-ink-2,var(--ink-soft))}
+.nx-lit li{padding:3px 0 3px 28px}
+.is-read .nx-lit li{color:var(--st-ink-3,var(--ink-mute));text-decoration:line-through}
+@media (max-width:999px){
+  .page.hub:has(.sec-panel:not([hidden])) .nx-card{display:none}
+  .page.hub .nx-card{overflow-y:auto;min-height:0;flex:0 1 auto}
+}
+.nx-lit li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2px 0 2px 28px}
+.nx-card.open .nx-lit li{white-space:normal}
+
+/* plan przedmiotu na stronie przedmiotu */
+.sec-panel#plan h2{margin:14px 0 4px}
+.sec-panel#plan h2:first-child{margin-top:0}
+.pp-list{list-style:none;margin:0;padding:0}
+.pp-list li>a,.pp-list li>div{display:grid;grid-template-columns:4.6em 1fr;gap:10px;padding:8px 0;border-top:1px solid rgba(0,0,0,.07);color:var(--ink) !important;text-decoration:none}
+.pp-list li:first-child>*{border-top:0}
+.pp-d{font:600 .8125rem/1.35 var(--mono,ui-monospace,monospace)}
+.pp-d small{display:block;font-weight:400;font-size:.75rem;color:var(--st-ink-3,var(--ink-mute))}
+.pp-x b{display:block;font-size:.9375rem;line-height:1.3}
+.pp-s{display:block;font-size:.8125rem;color:var(--st-ink-3,var(--ink-mute))}
+.pp-ex{display:inline-block;margin-top:4px;padding:2px 6px;border-radius:3px;background:hsl(var(--sh),40%,93%);color:hsl(var(--sh),var(--ss),28%);font-size:.75rem;font-weight:700}
+.pp-list .is-past{opacity:.45}
+.pp-pass{margin:4px 0 6px;font-size:.875rem;line-height:1.5}
+.pp-who{margin:0 0 2px;font-size:.8125rem;color:var(--st-ink-2,var(--ink-soft))}
+.pp-extra{margin-top:12px}
+.pp-full{display:block;margin:12px 0 4px;font-weight:700;font-size:.875rem;color:var(--ink) !important;text-decoration:none}
