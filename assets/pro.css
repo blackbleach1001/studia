@@ -226,24 +226,27 @@ body:has(.hub)::before{display:none}
 .hub-pro .row.subj{min-height:0;gap:10px;padding:12px 12px 11px}
 .hub-pro .group:has(.subjects) h2{margin-top:24px}
 
-/* zjazd jako panel wysuwany z prawej */
-.hp-zj-tab,.hp-zj-bd,.hp-zj-x{display:none}
+/* zjazd: przycisk pod kafelkami + panel od dołu (telefon i tablet) */
+.hp-zj-open,.hp-zj-bd,.hp-zj-x{display:none}
 @media (max-width:999px){
-  .hp-zj-tab{display:flex;position:fixed;z-index:70;right:0;top:calc(50px + env(safe-area-inset-top,0px));bottom:auto;padding:8px 5px;transition:right .25s ease;border:1px solid var(--st-ink);border-right:0;border-radius:3px 0 0 3px;background:var(--st-ink);color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  .hp-zj-tab span{writing-mode:vertical-rl;transform:rotate(180deg);font:600 .625rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-  .hub-pro .hp-zjazd{position:fixed;z-index:72;top:0;right:0;bottom:0;width:min(88vw,420px);margin:0 !important;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(22px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px));background:#fff;border-left:1px solid var(--st-sep);box-shadow:-12px 0 32px rgba(0,0,0,.12);transform:translateX(105%);transition:transform .25s ease;visibility:hidden}
-  .zj-open .hub-pro .hp-zjazd{transform:none;visibility:visible}
-  .zj-open .hp-zj-tab{right:min(88vw,420px);z-index:73}
-  .hp-zj-bd{display:block;position:fixed;inset:0;z-index:71;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s}
+  .hp-zj-open{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px;width:100%;margin:14px 0 0;padding:12px 14px;border:0;border-radius:3px;background:var(--st-ink);color:#fff;text-align:left;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .hp-zj-l{font:var(--st-label);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+  .hp-zj-open b{grid-column:1;font-size:1.0625rem;line-height:1.25}
+  .hp-zj-open i{grid-column:2;grid-row:1/3;width:9px;height:9px;border-left:2px solid #fff;border-top:2px solid #fff;transform:rotate(45deg);margin-top:4px}
+  .hub-pro .hp-zjazd{position:fixed;z-index:72;left:0;right:0;bottom:0;max-height:82vh;margin:0 !important;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:18px 20px 0;background:#fff;border-radius:10px 10px 0 0;box-shadow:0 -12px 32px rgba(0,0,0,.16);transform:translateY(105%);transition:transform .28s ease;visibility:hidden}
+  .zj-open .hub-pro .hp-zjazd,.zj-open .hp-zjazd{transform:none;visibility:visible}
+  .hp-zj-bd{display:block;position:fixed;inset:0;z-index:71;background:rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .25s}
   .zj-open .hp-zj-bd{opacity:1;pointer-events:auto}
-  .hp-zj-x{display:flex;align-items:center;justify-content:center;position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:10px;width:40px;height:40px;border:0;background:none;font-size:1.75rem;line-height:1;color:var(--st-ink-2);cursor:pointer}
-  .hub-pro .hp-zjazd .hp-label{padding-right:44px}
-  .hub-pro .hp-zjazd .hp-more{margin:10px -20px 0}
+  .zj-open body{overflow:hidden}
+  .hp-zj-x{display:flex;position:sticky;bottom:0;align-items:center;justify-content:center;gap:10px;width:calc(100% + 40px);margin:8px -20px 0;padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));border:0;border-top:1px solid var(--st-sep);background:#fff;color:var(--st-ink);font:700 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer}
+  .hp-zj-x i{width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-5px}
+  .hp-zjazd .hp-more{margin:10px -20px 0 !important}
 }
+@media (min-width:1000px){.hp-zjazd .hp-zj-x{display:none}}
 
 /* strona główna na telefonie: wszystko na jednym ekranie */
 @media (max-width:999px){
-  .hub-pro>header.hero{padding:14px 34px 0 0}
+  .hub-pro>header.hero{padding:14px 0 0 0}
   .hub-pro>header.hero h1{font-size:2.125rem;margin:2px 0 2px}
   .hub-pro>header.hero .meta{font-size:.8125rem;margin:0}
   .hub-pro .hp-sem{margin:10px 0 0}
@@ -251,9 +254,9 @@ body:has(.hub)::before{display:none}
   .hub-pro .hp-duo{margin-top:14px}
   .hub-pro .group:has(.subjects) h2{margin-top:16px;padding-top:8px}
   .hub-pro .ios-list.subjects{gap:8px;margin-top:6px}
-  .hub-pro .row.subj{display:grid;grid-template-columns:28px 1fr;column-gap:10px;row-gap:0;align-items:start;padding:10px 10px 9px}
-  .hub-pro .row.subj .tile{width:28px;height:28px}
-  .hub-pro .row.subj .tile svg{width:17px;height:17px}
+  .hub-pro .row.subj{display:grid;grid-template-columns:34px 1fr;column-gap:12px;row-gap:0;align-items:start;min-height:92px;padding:14px 12px 12px}
+  .hub-pro .row.subj .tile{width:34px;height:34px}
+  .hub-pro .row.subj .tile svg{width:20px;height:20px}
   .hub-pro .row.subj .t{font-size:.875rem;line-height:1.2}
   .hub-pro .row.subj .s{padding-top:3px;font-size:.6875rem;line-height:1.25}
   .hub-pro .row.subj .m{margin-top:3px;font-size:.6875rem}
@@ -267,7 +270,7 @@ body:has(.hub)::before{display:none}
 @media (max-width:999px){
   .hub-pro .row.subj .t-full{display:none}
   .hub-pro .row.subj .t-short{display:inline}
-  .hub-pro .row.subj .t{font-size:.9375rem}
+  .hub-pro .row.subj .t{font-size:1rem}
   .hub-pro .row.subj .s{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .hub-pro .row.subj .tx{min-width:0}
   .hub-pro .hp-duo{margin-top:12px}

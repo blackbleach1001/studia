@@ -199,17 +199,18 @@
     if (due) main.insertBefore(due, subjSec || duo.nextSibling);
   }
 
-  /* zjazd: panel z prawej (tylko węższe ekrany) */
+  /* zjazd: przycisk pod kafelkami (w zasięgu kciuka), panel wysuwany od dołu */
   if (zj) {
-    var lab = zj.querySelector(".hp-label b"), tab = document.createElement("button");
-    tab.type = "button"; tab.className = "hp-zj-tab"; tab.setAttribute("aria-expanded", "false");
-    tab.innerHTML = "<span>Zjazd " + (lab ? lab.textContent.toLowerCase().replace(/^za /, "") : "") + "</span>";
+    var lab = zj.querySelector(".hp-label b"), dte = zj.querySelector(".hp-date");
+    var open = document.createElement("button"); open.type = "button"; open.className = "hp-zj-open"; open.setAttribute("aria-expanded", "false");
+    open.innerHTML = '<span class="hp-zj-l">Najbliższy zjazd · ' + (lab ? lab.textContent.toLowerCase() : "") + "</span><b>" + (dte ? dte.textContent : "") + '</b><i aria-hidden="true"></i>';
     var bd = document.createElement("div"); bd.className = "hp-zj-bd";
-    var x = document.createElement("button"); x.type = "button"; x.className = "hp-zj-x"; x.setAttribute("aria-label", "Zamknij"); x.innerHTML = "×";
-    zj.insertBefore(x, zj.firstChild);
-    document.body.appendChild(bd); document.body.appendChild(tab);
-    function set(o) { document.documentElement.classList.toggle("zj-open", o); tab.setAttribute("aria-expanded", String(o)); }
-    tab.addEventListener("click", function () { set(!document.documentElement.classList.contains("zj-open")); });
+    var x = document.createElement("button"); x.type = "button"; x.className = "hp-zj-x"; x.innerHTML = '<i aria-hidden="true"></i>Zwiń';
+    zj.appendChild(x);
+    (subjSec || main).after(open);
+    document.body.appendChild(bd); page.appendChild(zj);
+    function set(o) { document.documentElement.classList.toggle("zj-open", o); open.setAttribute("aria-expanded", String(o)); if (o) zj.scrollTop = 0; }
+    open.addEventListener("click", function () { set(true); });
     bd.addEventListener("click", function () { set(false); });
     x.addEventListener("click", function () { set(false); });
     addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
