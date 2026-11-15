@@ -293,7 +293,6 @@ def hub(subj):
         + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)
     if not zaj:
         planrows += "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
-    tiles.append(tile("#plan", "plan", "Plan przedmiotu", "Terminy, sylabus, zaliczenie"))
     groups.append(("plan", "Plan przedmiotu", planrows))
     body = f'<nav class="sec-tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
     body += "".join(f'<section class="group sec-panel" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
@@ -312,12 +311,13 @@ def hub(subj):
 <body>
 <div class="page hub">
   <header class="hero">
+    <a class="plan-btn" href="#plan" aria-expanded="false" aria-label="Plan przedmiotu: terminy, sylabus, zaliczenie">{TILE_ICONS["plan"]}<span>Plan</span></a>
     <h1>{esc(subj["name"])}</h1>
     {f'<p class="meta">{esc(subj["meta"])}</p>' if subj.get("meta") else ""}
   </header>
   <main>{body}</main>
 </div>
-<script>(function(){{var nav=document.querySelector('.sec-tiles'),T=[].slice.call(nav.querySelectorAll('.sec-tile[href^="#"]')),A=[].slice.call(nav.querySelectorAll('.sec-tile')),P=[].slice.call(document.querySelectorAll('.sec-panel'));document.documentElement.classList.add('sec-js');function place(p,t){{var top=t.offsetTop,last=t;A.forEach(function(x){{if(x.offsetTop===top)last=x}});last.after(p)}}function show(id){{P.forEach(function(p){{p.hidden=p.id!==id}});T.forEach(function(t){{var on=t.getAttribute('href')==='#'+id;t.classList.toggle('on',on);t.setAttribute('aria-expanded',on);if(on)place(document.getElementById(id),t)}})}}T.forEach(function(t){{t.addEventListener('click',function(e){{e.preventDefault();var id=t.getAttribute('href').slice(1),open=t.classList.contains('on');show(open?null:id);history.replaceState(null,'',open?location.pathname+location.search:'#'+id)}})}});addEventListener('resize',function(){{var t=nav.querySelector('.sec-tile.on');if(t)place(document.getElementById(t.getAttribute('href').slice(1)),t)}});show(location.hash.slice(1)||null)}})()</script>
+<script>(function(){{var nav=document.querySelector('.sec-tiles'),T=[].slice.call(document.querySelectorAll('.sec-tile[href^="#"],.plan-btn')),A=[].slice.call(nav.querySelectorAll('.sec-tile')),P=[].slice.call(document.querySelectorAll('.sec-panel'));document.documentElement.classList.add('sec-js');function place(p,t){{if(t.classList.contains('plan-btn')){{nav.before(p);return}}var top=t.offsetTop,last=t;A.forEach(function(x){{if(x.offsetTop===top)last=x}});last.after(p)}}function show(id){{P.forEach(function(p){{p.hidden=p.id!==id}});T.forEach(function(t){{var on=t.getAttribute('href')==='#'+id;t.classList.toggle('on',on);t.setAttribute('aria-expanded',on);if(on)place(document.getElementById(id),t)}})}}T.forEach(function(t){{t.addEventListener('click',function(e){{e.preventDefault();var id=t.getAttribute('href').slice(1),open=t.classList.contains('on');show(open?null:id);history.replaceState(null,'',open?location.pathname+location.search:'#'+id)}})}});addEventListener('resize',function(){{var t=document.querySelector('.sec-tile.on,.plan-btn.on');if(t)place(document.getElementById(t.getAttribute('href').slice(1)),t)}});show(location.hash.slice(1)||null)}})()</script>
 <script src="../assets/reader.js" data-home="../" data-nodock data-title="{esc(subj["short"])}"></script>
 </body>
 </html>
