@@ -204,3 +204,5 @@ body:has(.hub)::before{display:none}
 .hp-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 .625rem/1 var(--mono);color:var(--st-ink-2)}
 .hp-chip{max-width:190px}
 @media (min-width:700px){.hp-chips{margin:8px 0 0;padding:2px 0 6px;-webkit-mask:linear-gradient(90deg,#000 92%,transparent);mask:linear-gradient(90deg,#000 92%,transparent)}}
+.hub-pro .hp-zjazd{margin-top:34px}
+.hub-pro .subjects{margin-top:10px}

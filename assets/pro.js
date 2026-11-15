@@ -66,6 +66,10 @@
   }
   function vars(d) { var h = P && P.meta[d] ? P.meta[d].hsl : [28, 22, 45]; return "--sh:" + h[0] + ";--ss:" + h[1] + "%;--sl:" + h[2] + "%"; }
   var hub = page, hero = hub.querySelector("header.hero"), plan = main.querySelector(".plan-home");
+  /* kolejność: przedmioty → zjazd → terminy (wstawiane za listą przedmiotów) */
+  var subjSec = (main.querySelector(".subjects") || {}).closest ? main.querySelector(".subjects").closest("section") : null;
+  var anchor = subjSec || plan;
+  function after(el) { if (anchor && anchor.parentNode) { anchor.parentNode.insertBefore(el, anchor.nextSibling); anchor = el; } else main.appendChild(el); }
 
   /* kafelki przedmiotów: ikona zamiast kropki */
   Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
@@ -125,7 +129,7 @@
       '<h2 class="hp-date">' + esc(title) + "</h2>" +
       '<ol class="hp-tl">' + rows + "</ol>" +
       '<a class="hp-more" href="plan.html">Plan semestru<span aria-hidden="true">→</span></a>';
-    main.insertBefore(card, plan || main.firstChild);
+    after(card);
   }
 
   /* --- 2. terminy zaliczeń --- */
@@ -145,7 +149,7 @@
       return '<a role="listitem" class="hp-chip ' + lvl + '" style="' + vars(e.subj) + '" href="plan.html?p=' + esc(e.subj) + '#przedmioty">' +
         '<span class="w">' + esc(rel(e.date)) + "</span><b>" + esc(e.lab) + "</b><span class=\"sj\"><i></i>" + esc(P.meta[e.subj].short) + "</span></a>";
     }).join("") + "</div>";
-    main.insertBefore(ds, plan || main.firstChild);
+    after(ds);
   }
 
   /* --- 4. kafelki przedmiotów: pierścień postępu bazy --- */
