@@ -237,28 +237,66 @@ def row(href, kind, title, sub, alt=False):
             + (f'<span class="s">{esc(sub)}</span>' if sub else "")
             + "</span></a></li>")
 
+TILE_ICONS = {
+    "wyk": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h6M7 12h10"/></svg>',
+    "cw": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14 7l3 3"/></svg>',
+    "baza": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>',
+    "odp": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.4M12 14.8v.2"/></svg>',
+    "plan": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3M13 14h3M8 17h3"/></svg>',
+}
+
+def tile(href, kind, title, sub):
+    return (f'<a class="tile" href="{href}"><span class="ti">{TILE_ICONS[kind]}</span>'
+            f'<span class="tt">{esc(title)}</span><span class="ts">{esc(sub)}</span></a>')
+
+def plural(n, one, few, many):
+    if n == 1: return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
+    return many
+
 def hub(subj):
-    groups = []
-    for kind, label in [("wyk", "Wykłady"), ("cw", "Ćwiczenia"), ("zaj", "Zajęcia")]:
-        us = [u for u in subj["units"] if u["kind"] == kind]
-        if us:
-            groups.append((label, "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)))
-    # symulacje i mapy modeli nie mają własnej listy: mapa jest linkiem na stronie wykładu (mniej ścieżek do tego samego)
-    extra = subj.get("practice", [])
-    if any(p["kind"] == "cards" for p in extra):
-        # talie fiszek zastępuje jeden test (tools/build_cards.py tworzy test.html)
-        extra = [{"kind": "quiz", "title": "Test", "sub": "Wybierz wykład, wynik na koniec", "href": "test.html"}] + \
-                [p for p in extra if p["kind"] != "cards"]
-    summ = [{"kind": "notes", "title": u["title"], "sub": u.get("sub_short", ""), "href": u["file"]} for u in subj["units"] if u["kind"] == "sum"]
-    extra = summ + extra
-    if extra:
-        groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
-    info = [u for u in subj["units"] if u["kind"] == "info"]
-    groups.append(("Informacje", row(f'../plan.html?p={subj["dir"]}#przedmioty', "cal", "Plan i literatura", "Terminy zajęć, lektury, zaliczenie", alt=True)
-                   + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)))
-    if not groups:
-        groups.append(("Materiały", '<li><span class="row empty">Brak materiałów</span></li>'))
-    body = "".join(f'<section class="group"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for g, rows in groups)
+    units = subj["units"]
+    wyk = [u for u in units if u["kind"] == "wyk"]
+    cw = [u for u in units if u["kind"] == "cw"]
+    zaj = [u for u in units if u["kind"] == "zaj"]
+    summ = [u for u in units if u["kind"] == "sum"]
+    info = [u for u in units if u["kind"] == "info"]
+    prac = subj.get("practice", [])
+    baza = next((p for p in prac if p["kind"] == "quiz" and p["href"] == "baza.html"), None)
+    cards = [p for p in prac if p["kind"] == "cards"]
+    other = [p for p in prac if p is not baza and p["kind"] != "cards"]
+    tiles, groups = [], []
+    def unit_rows(us):
+        return "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)
+    if wyk:
+        tiles.append(tile("#wyklady", "wyk", "Wykłady", f'{len(wyk)} {plural(len(wyk), "wykład", "wykłady", "wykładów")}'))
+        groups.append(("wyklady", "Wykłady", unit_rows(wyk)))
+    if cw:
+        tiles.append(tile("#cwiczenia", "cw", "Ćwiczenia", f'{len(cw)} {plural(len(cw), "temat", "tematy", "tematów")}'))
+        groups.append(("cwiczenia", "Ćwiczenia", unit_rows(cw)))
+    if zaj:
+        tiles.append(tile("#zajecia", "cw", "Zajęcia", f'{len(zaj)} {plural(len(zaj), "temat", "tematy", "tematów")}'))
+        rows = unit_rows(zaj) + "".join(row(u["file"], "notes", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
+        groups.append(("zajecia", "Zajęcia", rows))
+    if baza:
+        tiles.append(tile(baza["href"], "baza", "Baza pytań", (lambda m: (m.group(0) + " z egzaminu") if m else "Pytania z egzaminu")(re.search(r"\d+\s+pyta\w*", baza.get("sub", "")))))
+    if cards:
+        n = sum(int(m.group(1)) for c in cards for m in [re.search(r"(\d+)\s*$", c.get("sub", ""))] if m)
+        has_test = True
+        href = "test.html"
+        tiles.append(tile(href, "odp", "Odpytywanie", "Test z wybranego wykładu i fiszki"))
+    for p in other:
+        pass
+    if other:
+        groups.append(("inne", "Dodatkowe", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in other)))
+    planrows = row(f'../plan.html?p={subj["dir"]}#przedmioty', "cal", "Terminy i literatura", "Plan zajęć, lektury, zaliczenie", alt=True) \
+        + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)
+    if not zaj:
+        planrows += "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
+    tiles.append(tile("#plan", "plan", "Plan przedmiotu", "Terminy, sylabus, zaliczenie"))
+    body = f'<nav class="tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
+    body += "".join(f'<section class="group" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
+    body += f'<section class="group" id="plan"><details class="plan-box"><summary>Plan przedmiotu</summary><ul class="ios-list">{planrows}</ul></details></section>'
     h, s, l = subj["hsl"]
     page = f"""<!doctype html>
 <html lang="pl">
@@ -279,6 +317,7 @@ def hub(subj):
   </header>
   <main>{body}</main>
 </div>
+<script>(function(){{var d=document.querySelector("#plan details");function o(){{if(d&&location.hash=="#plan")d.open=true}}o();addEventListener("hashchange",o)}})()</script>
 <script src="../assets/reader.js" data-home="../" data-nodock data-title="{esc(subj["short"])}"></script>
 </body>
 </html>
