@@ -266,3 +266,9 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   .page.hub .sec-tile .ti{width:32px;height:32px}
   .page.hub .sec-tile .tt{overflow-wrap:normal;hyphens:auto;-webkit-hyphens:auto}
 }
+@media (max-width:999px){
+  body.has-pg-foot .st-nav{display:none !important}
+  body.has-pg-foot{padding-top:0 !important}
+  body.has-pg-foot .page{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px)) !important}
+  .pg-foot .sec-home{flex:0 0 32%}
+}

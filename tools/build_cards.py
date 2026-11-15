@@ -311,7 +311,7 @@ for d, all_cards in by_dir.items():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Test · {subj["name"]}</title>
+<title>Odpytywanie · {subj["name"]}</title>
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="stylesheet" href="../assets/study.css">
 <style>:root{{--st-h:{h};--st-s:{s}%;--st-l:{l}%}}</style>
@@ -319,7 +319,7 @@ for d, all_cards in by_dir.items():
 <body>
 <div class="page">
 <header class="hero">
-<h1>Test</h1>
+<h1>Odpytywanie</h1>
 <p class="meta">{subj["name"]} · {len(all_cards)} {pl_q(len(all_cards))}</p>
 </header>
 <main id="test"></main>
@@ -330,7 +330,7 @@ for d, all_cards in by_dir.items():
 <script src="../assets/flashcards.js"></script>
 <script src="cards.js"></script>
 <script src="../assets/test.js"></script>
-<script src="../assets/reader.js" data-home="../" data-back="./" data-back-label="{subj["short"]}" data-title="Test" data-nodock></script>
+<script src="../assets/reader.js" data-home="../" data-back="./" data-back-label="{subj["short"]}" data-title="Odpytywanie" data-nodock></script>
 </body>
 </html>
 """, encoding="utf-8")
