@@ -344,7 +344,7 @@ def build_index(subjects):
   </header>
   <main>
     <section class="group results" id="results" hidden><h2 id="results-h">Wyniki</h2><ul class="ios-list" id="results-list"></ul></section>
-    <section class="group plan-home"><h2>Plan</h2><ul class="ios-list"><li style="--sh:28;--ss:22%;--sl:45%"><a class="row" href="plan.html" id="plan-row"><span class="ic">{ICONS["cal"]}</span><span class="tx"><span class="t">Plan semestru</span><span class="s">Zajęcia, lektury i terminy zaliczeń</span></span></a></li><li style="--sh:48;--ss:70%;--sl:42%"><a class="row" href="zakreslenia.html"><span class="ic">{ICONS["hl"]}</span><span class="tx"><span class="t">Zakreślenia</span><span class="s">Zaznaczone fragmenty i notatki ze wszystkich wykładów</span></span></a></li></ul></section>
+    <section class="group plan-home"><h2>Plan</h2><ul class="ios-list"><li style="--sh:28;--ss:22%;--sl:45%"><a class="row" href="plan.html" id="plan-row"><span class="ic">{ICONS["cal"]}</span><span class="tx"><span class="t">Plan semestru</span><span class="s">Zajęcia, lektury i terminy zaliczeń</span></span></a></li></ul></section>
     <section class="group"><h2>Przedmioty</h2><ul class="ios-list subjects">{"".join(rows)}</ul></section>
   </main>
 </div>
