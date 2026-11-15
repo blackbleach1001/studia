@@ -130,3 +130,77 @@ body:has(.hub)::before{display:none}
 .st-opt{background:var(--st-surface) !important;box-shadow:none !important;border:1px solid transparent}
 .st-opt:hover{border-color:var(--st-ink)}
 .pro-more{margin:10px 0 0;font:400 .8125rem/1.4 var(--mono)}.pro-more a{color:var(--st-ink-2);text-decoration:underline;text-underline-offset:3px}
+
+/* =========================================================
+   Strona główna (2026-11): data i postęp semestru, karta zjazdu,
+   terminy zaliczeń, przedmioty jako kafelki.
+   ========================================================= */
+.hub-pro{max-width:calc(68ch + 40px)}
+.hub-pro>main{padding:0 !important}
+.hub-pro>header.hero{padding-top:28px}
+.hub-pro>header.hero h1{font:700 2.75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:-.035em;margin:2px 0 6px}
+.hp-kicker{margin:0;font:var(--st-label);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--st-ink-3)}
+.hp-sem{margin:16px 0 18px}
+.hp-seg{display:flex;gap:3px}
+.hp-seg i{flex:1;height:5px;background:#e6e6e3}
+.hp-seg i.on{background:var(--st-ink)}
+.hp-seg i.next{background:transparent;box-shadow:inset 0 0 0 1.5px var(--st-ink)}
+.hp-seg i.now{background:hsl(28,60%,52%)}
+.hp-sem-t{margin:7px 0 0;font:400 .8125rem/1.3 var(--mono);color:var(--st-ink-2)}
+
+/* karta zjazdu */
+.hp-zjazd{margin:22px 0 0;padding:20px 20px 16px;background:var(--st-surface);border-radius:3px}
+.hp-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0;font:var(--st-label);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--st-ink-3)}
+.hp-label b{font-weight:700;color:var(--st-ink);letter-spacing:.04em}
+.hub .hp-date{margin:6px 0 14px;padding:0;border:0;font:700 1.625rem/1.15 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:-.02em;text-transform:none;color:var(--st-ink)}
+.hp-tl{list-style:none;margin:0;padding:0}
+.hp-tl .hp-day{margin:14px 0 4px;font:var(--st-label);letter-spacing:.08em;text-transform:uppercase;color:var(--st-ink-3)}
+.hp-tl .hp-day:first-child{margin-top:0}
+.hp-tl a,.hp-tl li>div{display:grid;grid-template-columns:3.4em 10px 1fr;gap:12px;align-items:start;padding:9px 0;color:var(--st-ink);text-decoration:none;border-top:1px solid rgba(0,0,0,.07)}
+.hp-tl .hp-day+li>*{border-top:0}
+.hp-tl .tm{font:600 .875rem/1.35 var(--mono);color:var(--st-ink)}
+.hp-tl .tm small{display:block;font-weight:400;font-size:.75rem;color:var(--st-ink-3)}
+.hp-tl .dot{width:10px;height:10px;margin-top:5px;border-radius:50%;background:hsl(var(--sh),var(--ss),var(--sl))}
+.hp-tl b{display:block;line-height:1.3}
+.hp-tl b em{font-style:normal;font-weight:400;color:var(--st-ink-2)}
+.hp-tl .s{display:block;margin-top:2px;font-size:.875rem;line-height:1.35;color:var(--st-ink-3)}
+.hp-tl a:hover b{text-decoration:underline;text-underline-offset:3px}
+.hp-tl .is-past{opacity:.45}
+.hp-more{display:flex;justify-content:space-between;align-items:center;margin:10px -20px -16px;padding:13px 20px;border-top:1px solid rgba(0,0,0,.08);font:600 .9375rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink) !important;text-decoration:none}
+.hp-more span{font-size:1.1rem}
+.hp-more:active{background:rgba(0,0,0,.04)}
+.hub-pro .plan-home{display:none}
+
+/* terminy zaliczeń */
+.hp-chips{display:flex;gap:8px;overflow-x:auto;margin:8px -20px 0;padding:2px 20px 6px;scroll-snap-type:x proximity;scrollbar-width:none}
+.hp-chips::-webkit-scrollbar{display:none}
+.hp-chip{flex:0 0 auto;scroll-snap-align:start;display:flex;flex-direction:column;gap:3px;min-width:132px;padding:11px 14px 12px;border:1px solid var(--st-sep);border-radius:3px;background:#fff;color:var(--st-ink) !important;text-decoration:none}
+.hp-chip .w{font:600 .75rem/1.2 var(--mono);letter-spacing:.02em;color:var(--st-ink-2)}
+.hp-chip b{font-size:1rem;line-height:1.25}
+.hp-chip .sj{display:flex;align-items:center;gap:6px;font-size:.8125rem;color:var(--st-ink-3)}
+.hp-chip .sj i{width:8px;height:8px;border-radius:50%;background:hsl(var(--sh),var(--ss),var(--sl))}
+.hp-chip.warm{border-color:hsl(36,70%,55%)}
+.hp-chip.warm .w{color:hsl(30,75%,34%)}
+.hp-chip.hot{border-color:hsl(4,62%,50%);box-shadow:inset 0 3px 0 hsl(4,62%,50%)}
+.hp-chip.hot .w{color:hsl(4,62%,42%)}
+
+/* przedmioty jako kafelki */
+.hub-pro .ios-list.subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (min-width:640px){.hub-pro .ios-list.subjects{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.hub-pro .subjects li+li::before{display:none}
+.hub-pro .subjects li{display:flex}
+.hub-pro .row.subj{position:relative;flex:1;flex-direction:column;align-items:flex-start;gap:12px;min-height:150px;padding:14px 14px 13px;border:1px solid var(--st-sep);border-top:4px solid hsl(var(--sh),var(--ss),var(--sl));border-radius:3px;background:#fff;transition:border-color .15s,transform .15s}
+.hub-pro .row.subj:hover{border-color:hsl(var(--sh),var(--ss),var(--sl));transform:translateY(-1px)}
+.hub-pro .row.subj::after{display:none}
+.hub-pro .row.subj .tile{width:32px;height:32px}
+.hub-pro .row.subj .tx{display:flex;flex-direction:column;flex:1;width:100%}
+.hub-pro .row.subj .t{font-size:1rem;line-height:1.25;hyphens:auto}
+.hub-pro .row.subj .s{margin-top:auto;padding-top:8px;font-size:.8125rem}
+.hub-pro .row.subj .m{margin-top:6px}
+.hp-ring{position:absolute;top:12px;right:12px;width:36px;height:36px}
+.hp-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hp-ring circle{fill:none;stroke:#ecece9;stroke-width:3.5}
+.hp-ring circle.v{stroke:hsl(var(--sh),var(--ss),var(--sl));stroke-linecap:round}
+.hp-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 .625rem/1 var(--mono);color:var(--st-ink-2)}
+.hp-chip{max-width:190px}
+@media (min-width:700px){.hp-chips{margin:8px 0 0;padding:2px 0 6px;-webkit-mask:linear-gradient(90deg,#000 92%,transparent);mask:linear-gradient(90deg,#000 92%,transparent)}}

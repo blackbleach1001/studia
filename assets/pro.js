@@ -50,32 +50,118 @@
   }
 
   /* ---------- strona główna ---------- */
+  /* nagłówek z postępem semestru · karta najbliższego zjazdu · terminy zaliczeń · przedmioty jako kafelki */
+  var P = window.STUDIA_PLAN;
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+  var iso = function (d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); };
+  var dt = function (s) { var a = s.split("-"); return new Date(+a[0], a[1] - 1, +a[2]); };
+  var now = new Date(), today = iso(now);
+  var diff = function (s) { return Math.round((dt(s) - dt(today)) / 864e5); };
+  var WD = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+  var WDS = ["nd.", "pon.", "wt.", "śr.", "czw.", "pt.", "sob."];
+  var MON = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+  function rel(s) {
+    var n = diff(s);
+    return n === 0 ? "dziś" : n === 1 ? "jutro" : n === 2 ? "pojutrze" : n < 0 ? "" : n <= 13 ? "za " + n + " dni" : dt(s).getDate() + "." + pad(dt(s).getMonth() + 1);
+  }
+  function vars(d) { var h = P && P.meta[d] ? P.meta[d].hsl : [28, 22, 45]; return "--sh:" + h[0] + ";--ss:" + h[1] + "%;--sl:" + h[2] + "%"; }
+  var hub = page, hero = hub.querySelector("header.hero"), plan = main.querySelector(".plan-home");
+
+  /* kafelki przedmiotów: ikona zamiast kropki */
   Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
     var dot = a.querySelector(".dot"); if (!dot) return;
     var t = document.createElement("span"); t.className = "tile"; t.innerHTML = svg(a.getAttribute("data-subj"));
     dot.parentNode.replaceChild(t, dot);
   });
-  var P = window.STUDIA_PLAN;
-  if (!P) return;
-  var now = new Date(), pad = function (n) { return (n < 10 ? "0" : "") + n; };
-  var today = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
-  var up = P.sessions.filter(function (x) { return !x.alt && x.date >= today; });
-  if (!up.length) return;
-  var first = up[0].date, lim = new Date(first); lim.setDate(lim.getDate() + 0);  /* tylko najbliższy dzień zajęć; reszta w Planie */
-  var limS = lim.getFullYear() + "-" + pad(lim.getMonth() + 1) + "-" + pad(lim.getDate());
-  var WD = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
-  var html = "", last = "";
-  up.filter(function (x) { return x.date <= limS; }).forEach(function (x) {
-    var m = P.meta[x.subj], d = new Date(x.date);
-    if (x.date !== last) { html += '<li class="day">' + WD[d.getDay()] + " " + d.getDate() + "." + pad(d.getMonth() + 1) + "</li>"; last = x.date; }
-    var inner = '<span class="tm">' + esc(x.start || "") + (x.end ? "–" + esc(x.end) : "") + '</span><span class="bar"></span><span><b>' +
-      esc(m.short + " · " + (x.kind === "W" ? "wykład" : x.kind === "C" ? "ćwiczenia" : "zajęcia") + " " + String(x.n).replace(/^\D+/, "")) + '</b><span class="s">' +
-      esc(x.topic || "") + (x.place === "online" ? " · online" : "") + "</span></span>";
-    var st = 'style="--sh:' + m.hsl[0] + ";--ss:" + m.hsl[1] + "%;--sl:" + m.hsl[2] + '%"';
-    html += "<li>" + (x.href ? '<a href="' + esc(x.href) + '" ' + st + ">" + inner + "</a>" : '<span class="ev" ' + st + ">" + inner + "</span>") + "</li>";
+  hub.classList.add("hub-pro");
+
+  /* --- 5. nagłówek: data i postęp semestru --- */
+  var ses = P ? P.sessions.filter(function (x) { return !x.alt; }) : [];
+  var zj = [];                                           // zjazdy = zajęcia w kolejnych dniach
+  ses.map(function (x) { return x.date; }).filter(function (d, i, a) { return a.indexOf(d) === i; }).sort().forEach(function (d) {
+    var g = zj[zj.length - 1];
+    if (g && diff(d) - diff(g[g.length - 1]) <= 1) g.push(d); else zj.push([d]);
   });
-  var sec = document.createElement("section"); sec.className = "group";
-  sec.innerHTML = "<h2>Najbliższe zajęcia</h2><ul class=\"pro-week\">" + html + "</ul><p class=\"pro-more\"><a href=\"plan.html\">Cały zjazd i terminy w planie →</a></p>";
-  var plan = main.querySelector(".plan-home");
-  main.insertBefore(sec, plan ? plan.nextSibling : main.firstChild);
+  var zi = -1;
+  for (var k = 0; k < zj.length; k++) if (zj[k][zj[k].length - 1] >= today) { zi = k; break; }
+  if (hero) {
+    var kick = document.createElement("p"); kick.className = "hp-kicker";
+    kick.textContent = WD[now.getDay()] + ", " + now.getDate() + " " + MON[now.getMonth()];
+    hero.insertBefore(kick, hero.firstChild);
+    if (zj.length) {
+      var doneN = zi < 0 ? zj.length : zi, curIn = zi >= 0 && zj[zi][0] <= today;
+      var sem = document.createElement("div"); sem.className = "hp-sem";
+      sem.innerHTML = '<div class="hp-seg" aria-hidden="true">' + zj.map(function (g, j) {
+        return '<i class="' + (j < doneN ? "on" : j === zi ? (curIn ? "now on" : "next") : "") + '"></i>';
+      }).join("") + "</div>" +
+        '<p class="hp-sem-t">' + (zi < 0 ? "Wszystkie zjazdy za Tobą" : (curIn ? "Trwa zjazd " : "Przed Tobą zjazd ") + (zi + 1) + " z " + zj.length) + "</p>";
+      var form = hero.querySelector("form.search");
+      hero.insertBefore(sem, form);
+    }
+  }
+  if (!P) return;
+
+  /* --- 1. karta najbliższego zjazdu --- */
+  if (zi >= 0) {
+    var days = zj[zi], d0 = dt(days[0]), d1 = dt(days[days.length - 1]);
+    var title = days.length > 1
+      ? WDS[d0.getDay()] + " " + d0.getDate() + (d0.getMonth() !== d1.getMonth() ? " " + MON[d0.getMonth()] : "") + " – " + WDS[d1.getDay()] + " " + d1.getDate() + " " + MON[d1.getMonth()]
+      : WD[d0.getDay()] + " " + d0.getDate() + " " + MON[d0.getMonth()];
+    var n0 = diff(days[0]), when = n0 <= 0 ? "Trwa teraz" : n0 === 1 ? "Jutro" : "Za " + n0 + " dni";
+    var rows = days.map(function (d) {
+      var dd = dt(d);
+      var list = ses.filter(function (x) { return x.date === d; }).map(function (x) {
+        var m = P.meta[x.subj], kind = x.kind === "W" ? "wykład" : x.subj === "rozmowa" ? "zajęcia" : "ćwiczenia";
+        var past = d === today && x.end && (pad(now.getHours()) + ":" + pad(now.getMinutes())) > x.end;
+        var inner = '<span class="tm">' + esc(x.start || "") + "<small>" + esc(x.end || "") + '</small></span><span class="dot"></span>' +
+          '<span class="tx"><b>' + esc(m.short) + ' <em>· ' + kind + " " + esc(String(x.n).replace(/^\D+/, "")) + "</em></b>" +
+          '<span class="s">' + esc(x.topic || "") + (x.place ? " · " + esc(x.place === "online" ? "online" : x.place.replace("sala ", "")) : "") + "</span></span>";
+        return '<li class="' + (past ? "is-past" : "") + '" style="' + vars(x.subj) + '">' + (x.href ? '<a href="' + esc(x.href) + '">' + inner + "</a>" : "<div>" + inner + "</div>") + "</li>";
+      }).join("");
+      return (days.length > 1 ? '<li class="hp-day">' + WD[dd.getDay()] + "</li>" : "") + list;
+    }).join("");
+    var card = document.createElement("section"); card.className = "hp-zjazd";
+    card.innerHTML = '<p class="hp-label"><span>Najbliższy zjazd</span><b>' + when + "</b></p>" +
+      '<h2 class="hp-date">' + esc(title) + "</h2>" +
+      '<ol class="hp-tl">' + rows + "</ol>" +
+      '<a class="hp-more" href="plan.html">Plan semestru<span aria-hidden="true">→</span></a>';
+    main.insertBefore(card, plan || main.firstChild);
+  }
+
+  /* --- 2. terminy zaliczeń --- */
+  var due = P.exams.filter(function (e) { return e.date >= today && (e.subj !== "rozmowa" || e.grp === "popa"); }).map(function (e) {
+    var t = e.text, lab = t.split(/\s[–-]\s|:|\s·\s|\s\(/)[0].trim(), tm = /(\d)\.\s*termin/.exec(t);
+    if (/^egzamin/i.test(lab)) { if (tm && tm[1] !== "1") return null; lab = "Egzamin"; }
+    return { date: e.date, subj: e.subj, lab: lab };
+  }).filter(Boolean);
+  ses.forEach(function (x) { if (x.date >= today && /wyjściówk/i.test(x.topic || "")) due.push({ date: x.date, subj: x.subj, lab: "Wyjściówka" }); });
+  due.sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  var soon = due.filter(function (e) { return diff(e.date) <= 45; });
+  if (soon.length < 4) soon = due.slice(0, 4);
+  if (soon.length) {
+    var ds = document.createElement("section"); ds.className = "group hp-due";
+    ds.innerHTML = '<h2>Do zaliczenia</h2><div class="hp-chips" role="list">' + soon.map(function (e) {
+      var n = diff(e.date), lvl = n <= 3 ? "hot" : n <= 7 ? "warm" : "";
+      return '<a role="listitem" class="hp-chip ' + lvl + '" style="' + vars(e.subj) + '" href="plan.html?p=' + esc(e.subj) + '#przedmioty">' +
+        '<span class="w">' + esc(rel(e.date)) + "</span><b>" + esc(e.lab) + "</b><span class=\"sj\"><i></i>" + esc(P.meta[e.subj].short) + "</span></a>";
+    }).join("") + "</div>";
+    main.insertBefore(ds, plan || main.firstChild);
+  }
+
+  /* --- 4. kafelki przedmiotów: pierścień postępu bazy --- */
+  var NB = window.STUDIA_BAZA_N || {}, baza = {};
+  try { baza = JSON.parse(localStorage.getItem("studia-baza-v1") || "{}") || {}; } catch (e) {}
+  Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
+    var d = a.getAttribute("data-subj"), m = a.querySelector(".m");
+    if (m) Array.prototype.forEach.call(m.querySelectorAll("span"), function (c) { if (/^Baza /.test(c.textContent)) c.remove(); });
+    if (m && !m.children.length) m.hidden = true;
+    if (!NB[d]) return;
+    var r = baza[d] || {}, ok = 0;
+    Object.keys(r).forEach(function (q) { if (r[q] && r[q][2] === 1) ok++; });
+    var pct = Math.round(ok / NB[d] * 100), C = 2 * Math.PI * 15;
+    var ring = document.createElement("span"); ring.className = "hp-ring";
+    ring.title = "Baza pytań: " + ok + " z " + NB[d] + " opanowanych";
+    ring.innerHTML = '<svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15"/>' + (pct ? '<circle class="v" cx="18" cy="18" r="15" stroke-dasharray="' + (C * pct / 100).toFixed(1) + " " + C.toFixed(1) + '"/>' : "") + '</svg><b>' + pct + "%</b>";
+    a.appendChild(ring);
+  });
 })();
