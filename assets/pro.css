@@ -299,4 +299,4 @@ body:has(.hub)::before{display:none}
 .st-scope[aria-checked="true"] .t{color:var(--st-ink)}
 .st-scope[aria-checked="true"]::after{box-shadow:none;background:var(--st-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
 @media (max-width:999px){.page:not(.hub):not(.plan)>header.hero{padding:14px 20px 18px;margin:0 0 18px}}
-@media (min-width:1000px){.page:not(.hub):not(.plan)>header.hero{margin:0 0 28px;padding:20px 0 20px max(0px,calc((100% - 65ch - 540px)/2 + 300px))}}
+@media (min-width:1000px){.page:not(.hub):not(.plan)>header.hero{grid-column:2/3;margin:0 0 28px;padding:20px 0}}
