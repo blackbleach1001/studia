@@ -246,7 +246,7 @@ TILE_ICONS = {
 }
 
 def tile(href, kind, title, sub):
-    return (f'<a class="tile" href="{href}"><span class="ti">{TILE_ICONS[kind]}</span>'
+    return (f'<a class="sec-tile" href="{href}"><span class="ti">{TILE_ICONS[kind]}</span>'
             f'<span class="tt">{esc(title)}</span><span class="ts">{esc(sub)}</span></a>')
 
 def plural(n, one, few, many):
@@ -294,7 +294,7 @@ def hub(subj):
     if not zaj:
         planrows += "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
     tiles.append(tile("#plan", "plan", "Plan przedmiotu", "Terminy, sylabus, zaliczenie"))
-    body = f'<nav class="tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
+    body = f'<nav class="sec-tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
     body += "".join(f'<section class="group" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
     body += f'<section class="group" id="plan"><details class="plan-box"><summary>Plan przedmiotu</summary><ul class="ios-list">{planrows}</ul></details></section>'
     h, s, l = subj["hsl"]
