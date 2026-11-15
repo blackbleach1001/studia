@@ -462,7 +462,8 @@
     "Adama Mickiewicza w Poznaniu – pod kierunkiem Mariusza Maruszewskiego",
     "Warszawskim – pod kierunkiem Mariusza Maruszewskiego"
    ],
-   "c": 1
+   "c": 0,
+   "f": "niepewne"
   },
   {
    "id": "k32",
@@ -2621,7 +2622,8 @@
     "odwołuje się do obowiązujących klasyfikacji zaburzeń",
     "pełni funkcję eksplanacyjną i predykcyjną"
    ],
-   "c": 0
+   "c": 0,
+   "e": "Treść pytania w arkuszu była ucięta (widoczna tylko końcówka); odtworzona z innego arkusza."
   },
   {
    "id": "k192",
@@ -2692,15 +2694,16 @@
    "id": "k197",
    "n": 197,
    "g": "k3",
-   "q": "(Po) weryfikacji hipotez o prawdopodobnych wyjaśnieniach problemu następuje etap:",
+   "q": "Po weryfikacji hipotez o prawdopodobnych wyjaśnieniach problemu następuje etap:",
    "a": [
-    "(…) wyników",
-    "(stawi)ania problemu diagnostycznego",
+    "interpretacji wyników",
+    "stawiania problemu diagnostycznego",
     "kontaktu z osobą badaną",
     "opracowania wyniku diagnozy"
    ],
    "c": 0,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Początek pytania i opcji w arkuszu był ucięty, treść odtworzona częściowo."
   },
   {
    "id": "k198",
@@ -3334,7 +3337,7 @@
    ],
    "c": 2,
    "e": "Sieć pierwotna to rodzina i bliscy. Do sieci wtórnej należą m.in. współpracownicy.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: sąsiedzi (niepewne)",
+   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: sąsiedzi (?) (niepewne)",
    "u": 1
   },
   {
@@ -3860,9 +3863,9 @@
     "zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje",
     "wprowadza pięć faz rozwoju libido"
    ],
-   "c": 0,
+   "c": 2,
    "e": "Model dynamiczny opisuje konflikt wrodzonych popędów. Id, ego i superego to model strukturalny, a przepływ energii to model ekonomiczny.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje"
+   "f": "Model dynamiczny w metapsychologii Freuda dotyczy przepływu, gromadzenia i rozładowania energii psychicznej."
   },
   {
    "id": "98",
@@ -5416,7 +5419,7 @@
    ],
    "c": 0,
    "e": "Palenie tytoniu jest wskazywane jako czynnik o największym wpływie na choroby cywilizacyjne i śmiertelność.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: niezdrowa dieta, w tym zbyt dużo soli w jedzeniu (niepewne)",
+   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: niezdrowa dieta, w tym zbyt dużo soli w jedzeniu (?) (niepewne)",
    "u": 1
   },
   {
@@ -5610,9 +5613,9 @@
     "samobójstwa",
     "wypadki samochodowe"
    ],
-   "c": 3,
+   "c": 2,
    "e": "Według przywołanych w bazie danych WHO najczęstszą zewnętrzną przyczyną zgonów w Europie są wypadki komunikacyjne. W innych zestawieniach na pierwszym miejscu są samobójstwa.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: samobójstwa"
+   "f": "Wg raportu WHO Europe (Violence and injuries in Europe) samobójstwa/samookaleczenia to najczęstsza przyczyna zgonów z przyczyn zewnętrznych (141 tys. w 2016) przed wypadkami drogowymi (78 tys.)."
   },
   {
    "id": "10",
@@ -6646,14 +6649,15 @@
    "id": "k488",
    "n": 488,
    "g": "k7",
-   "q": "… model zdrowia opisuje zdrowie człowieka za pomocą następujących określeń:",
+   "q": "Socjoekologiczny model zdrowia opisuje zdrowie człowieka za pomocą następujących określeń:",
    "a": [
     "dualizm, przyczyna-skutek, izolacja",
     "biologizm, zdrowie jako domena opieki zdrowotnej, stałość",
     "holizm, dynamika, interaktywność, społeczna dystrybucja zdrowia",
     "wszystkie odpowiedzi są poprawne"
    ],
-   "c": 2
+   "c": 2,
+   "e": "Początek pytania w arkuszu był ucięty; odtworzony jako prawdopodobny."
   },
   {
    "id": "k489",
@@ -7565,7 +7569,7 @@
    ],
    "c": 1,
    "e": "Według badań retrospektywnych dla SOC najważniejsza była równowaga obciążeń w okresie dorastania.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: stałości i uczestnictwa w podejmowaniu decyzji (niepewne)"
+   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: stałości i uczestnictwa w podejmowaniu decyzji (?) (niepewne)"
   },
   {
    "id": "26",
@@ -7796,7 +7800,7 @@
    ],
    "c": 0,
    "e": "Katedrę Psychologii Klinicznej na UAM w Poznaniu założył Andrzej Lewicki (1961).",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: Warszawskim – pod kierunkiem Andrzeja Lewickiego"
+   "f": "niepewne"
   },
   {
    "id": "147",

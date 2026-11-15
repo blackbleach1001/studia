@@ -249,7 +249,8 @@
     "Dodatnia ocena przenosi się niepostrzeżenie z jednej właściwości człowieka (wyglądu, zachowania, osiągnięć w jednym przedmiocie szkolnym) na inne właściwości (moralność, motywacja, osiągnięcia w innym przedmiocie)",
     "Potępia się osobę, która ma inne zdanie"
    ],
-   "c": 2
+   "c": 2,
+   "e": "Odpowiedź dla efektu aureoli. Gdyby pytanie dotyczyło efektu kontrastu – odpowiedź b."
   },
   {
    "id": "e16",
@@ -2147,7 +2148,8 @@
     "zwiększa świadomość fonologiczną i fonemową",
     "nie wpływa na poprawę pisowni"
    ],
-   "c": 3
+   "c": 3,
+   "e": "Metaanaliza Galuschka i in. (2020) nie potwierdziła skuteczności uczenia strategii zapamiętywania."
   },
   {
    "id": "e155-A",
@@ -3045,7 +3047,8 @@
     "strategii zapamiętywania zasad ortograficznych",
     "poprawne są odpowiedzi a i b"
    ],
-   "c": 1
+   "c": 1,
+   "e": "Galuschka i in. (2020): największy efekt dla interwencji morfologicznych (g = 0,80)."
   },
   {
    "id": "e215",
@@ -3727,7 +3730,8 @@
     "przedmioty szkolne uważa za nudne i ma do nich stosunek lekceważący"
    ],
    "c": 2,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Żadna odpowiedź nie opisuje modelu alfa wprost; c jest najbliższa (alfa = przyswajanie, praca indywidualna)."
   },
   {
    "id": "e261",
@@ -4162,7 +4166,8 @@
     "braku kompetencji poznawczych"
    ],
    "c": 0,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "W oryginale odpowiedzi są rozbite w połowie zdania („…to cechy” + „braku sprawczości”). Zaznaczono opis zjawiska."
   },
   {
    "id": "e294",
