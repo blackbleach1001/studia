@@ -161,3 +161,57 @@
     if (m && !m.children.length) m.hidden = true;
   });
 })();
+
+/* ---------- strona główna na telefonie: mniej przewijania ----------
+   „Czytaj dalej” i „Do zaliczenia” obok siebie (pół na pół),
+   najbliższy zjazd jako wysuwany panel z prawej krawędzi. */
+(function () {
+  "use strict";
+  var page = document.querySelector(".hub-pro"); if (!page) return;
+  var main = page.querySelector("main");
+  var resume = main.querySelector(".group.resume"), due = main.querySelector(".group.hp-due"), zj = main.querySelector(".hp-zjazd");
+  var subjSec = main.querySelector(".subjects") ? main.querySelector(".subjects").closest("section") : null;
+
+  /* pół na pół */
+  if (resume || due) {
+    var duo = document.createElement("section"); duo.className = "hp-duo";
+    if (resume) {
+      var a = resume.querySelector("a.row");
+      var r = document.createElement("a"); r.className = "hp-half"; r.href = a.getAttribute("href");
+      r.setAttribute("style", resume.querySelector("li").getAttribute("style") || "");
+      r.innerHTML = '<span class="hp-half-l">Czytaj dalej</span><b>' + a.querySelector(".t").innerHTML + '</b><span class="hp-half-s">' + a.querySelector(".s").innerHTML + "</span>";
+      r.addEventListener("click", function () { try { sessionStorage.setItem("studia-resume", r.getAttribute("href")); } catch (e) {} });
+      duo.appendChild(r); resume.remove();
+    }
+    if (due) {
+      var chips = due.querySelectorAll(".hp-chip"), c0 = chips[0];
+      var d = document.createElement("button"); d.type = "button"; d.className = "hp-half hp-half-due"; d.setAttribute("aria-expanded", "false");
+      d.setAttribute("style", c0.getAttribute("style") || "");
+      d.innerHTML = '<span class="hp-half-l">Do zaliczenia' + (chips.length > 1 ? ' <i>+' + (chips.length - 1) + "</i>" : "") + '</span><b>' + c0.querySelector("b").innerHTML +
+        '</b><span class="hp-half-s"><i class="dt"></i>' + c0.querySelector(".sj").textContent + " · " + c0.querySelector(".w").textContent + "</span>";
+      if (/\bhot\b|\bwarm\b/.test(c0.className)) d.classList.add(/\bhot\b/.test(c0.className) ? "hot" : "warm");
+      duo.appendChild(d);
+      due.classList.add("hp-due-more"); due.hidden = true;
+      d.addEventListener("click", function () { due.hidden = !due.hidden; d.setAttribute("aria-expanded", String(!due.hidden)); });
+    }
+    if (!resume || !due) duo.classList.add("one");
+    main.insertBefore(duo, subjSec || main.firstChild);
+    if (due) main.insertBefore(due, subjSec || duo.nextSibling);
+  }
+
+  /* zjazd: panel z prawej (tylko węższe ekrany) */
+  if (zj) {
+    var lab = zj.querySelector(".hp-label b"), tab = document.createElement("button");
+    tab.type = "button"; tab.className = "hp-zj-tab"; tab.setAttribute("aria-expanded", "false");
+    tab.innerHTML = "<span>Zjazd · " + (lab ? lab.textContent.toLowerCase() : "") + "</span>";
+    var bd = document.createElement("div"); bd.className = "hp-zj-bd";
+    var x = document.createElement("button"); x.type = "button"; x.className = "hp-zj-x"; x.setAttribute("aria-label", "Zamknij"); x.innerHTML = "×";
+    zj.insertBefore(x, zj.firstChild);
+    document.body.appendChild(bd); document.body.appendChild(tab);
+    function set(o) { document.documentElement.classList.toggle("zj-open", o); tab.setAttribute("aria-expanded", String(o)); }
+    tab.addEventListener("click", function () { set(true); });
+    bd.addEventListener("click", function () { set(false); });
+    x.addEventListener("click", function () { set(false); });
+    addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+  }
+})();
