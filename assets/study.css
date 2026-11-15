@@ -200,3 +200,25 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
 .hub .hero:has(.plan-btn) h1{padding-right:84px}
 .hub .hero+.sec-panel,.hub .sec-panel#plan{margin-top:18px}
 .sec-panel#plan h2{display:block}
+
+/* telefon: kafelki przedmiotu na dole ekranu (w zasięgu kciuka), listy otwierają się nad nimi */
+@media (max-width:999px){
+  .page.hub:has(.sec-tiles){display:flex !important;flex-direction:column;min-height:calc(100svh - 64px);padding-bottom:calc(16px + env(safe-area-inset-bottom,0px)) !important;box-sizing:border-box}
+  .page.hub:has(.sec-tiles)>main{flex:1;display:flex;flex-direction:column}
+  .page.hub .sec-tiles{margin-top:auto;padding-top:14px}
+  .page.hub main>.sec-panel{margin:14px 0 0}
+}
+@media (max-width:999px){
+  .page.hub:has(.sec-tiles){height:calc(100svh - 64px);min-height:0}
+  .page.hub:has(.sec-tiles)>main{min-height:0}
+  .page.hub main>.sec-panel:not([hidden]){flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;margin-bottom:0}
+  .page.hub main>.sec-panel:not([hidden])+.sec-tiles{margin-top:0}
+}
+@media (max-width:999px){
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile{min-height:0;flex-direction:row;align-items:center;gap:10px;padding:10px 12px}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile .ts{display:none}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile .tt{margin:0;font-size:.9375rem}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile .ti{width:28px;height:28px;flex:0 0 auto}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile[href^="#"]::after{top:50%;margin-top:-6px}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile.on::after{margin-top:-2px}
+}

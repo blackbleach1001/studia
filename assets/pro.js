@@ -207,7 +207,8 @@
     var bd = document.createElement("div"); bd.className = "hp-zj-bd";
     var x = document.createElement("button"); x.type = "button"; x.className = "hp-zj-x"; x.innerHTML = '<i aria-hidden="true"></i>Zwiń';
     zj.appendChild(x);
-    (subjSec || main).after(open);
+    var dock = document.createElement("div"); dock.className = "hp-zj-dock"; dock.appendChild(open);
+    page.appendChild(dock);
     document.body.appendChild(bd); page.appendChild(zj);
     function set(o) { document.documentElement.classList.toggle("zj-open", o); open.setAttribute("aria-expanded", String(o)); if (o) zj.scrollTop = 0; }
     open.addEventListener("click", function () { set(!document.documentElement.classList.contains("zj-open")); });
