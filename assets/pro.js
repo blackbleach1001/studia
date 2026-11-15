@@ -210,7 +210,7 @@
     (subjSec || main).after(open);
     document.body.appendChild(bd); page.appendChild(zj);
     function set(o) { document.documentElement.classList.toggle("zj-open", o); open.setAttribute("aria-expanded", String(o)); if (o) zj.scrollTop = 0; }
-    open.addEventListener("click", function () { set(true); });
+    open.addEventListener("click", function () { set(!document.documentElement.classList.contains("zj-open")); });
     bd.addEventListener("click", function () { set(false); });
     x.addEventListener("click", function () { set(false); });
     addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
