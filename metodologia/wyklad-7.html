@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Wykład 7 · Testy, moc, wielkość efektu · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=e2cd84d4" rel="stylesheet"/>
+<link href="../assets/pro.css?v=6734dc36" rel="stylesheet"/>
+<link href="../assets/sesja.css?v=bb6035fa" rel="stylesheet"/>
+<link href="../assets/czytanie.css?v=7cd3d3ac" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+<style>
+.fig{margin:.4em 0 1.1em}
+.fig svg{display:block;width:100%;height:auto;background:var(--card);border-radius:12px;box-shadow:0 0 0 .5px var(--line)}
+.fig figcaption{font-size:.9em;color:var(--ink-soft);margin-top:.45em;line-height:1.5}
+.fig text{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+.fig .tk{font-size:13px;fill:var(--ink-mute)}
+.fig .tk2{font-size:12px;fill:var(--ink-mute)}
+.fig .lb{font-size:14px;fill:var(--ink-soft)}
+.fig .lbb{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ann{font-size:13px;fill:var(--ink-soft);font-style:italic}
+.fig .pct{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ax{stroke:var(--ink-mute);stroke-width:1.2}
+.fig .grid{stroke:var(--line);stroke-width:1}
+.fig .bar{fill:var(--accent);opacity:.55}
+.fig .bar.hi,.fig .dot.hi{fill:#b4543a;opacity:.9}
+.fig .hi-t{fill:#b4543a}
+.fig .dot{fill:var(--accent);opacity:.75}
+.fig .gap{stroke:var(--ink-mute);stroke-dasharray:4 4;fill:none}
+.fig .mk{stroke:#b4543a;stroke-width:2.2}
+.fig .mk-t{fill:#b4543a}
+.fig .mk2{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:6 3}
+.fig .mk2-t{fill:var(--accent)}
+.fig .mk3{stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:2 3}
+.fig .mk3-t{fill:var(--ink-soft)}
+.fig .band{fill:var(--accent);opacity:.12}
+.fig .box{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:2}
+.fig .med{stroke:var(--ink);stroke-width:3}
+.fig .wh{stroke:var(--ink-soft);stroke-width:2}
+.fig .out{fill:none;stroke:#b4543a;stroke-width:2}
+.fig .star{font-size:30px;fill:#b4543a;text-anchor:middle}
+.fig .fence{stroke:var(--ink-mute);stroke-dasharray:3 3}
+.fig .crv{fill:none;stroke:var(--accent);stroke-width:2.6}
+.fig .crv2{fill:none;stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:6 4}
+.fig .crv3{fill:none;stroke:var(--ink-mute);stroke-width:2.4}
+.fig .fillsoft{fill:var(--ink-mute);fill-opacity:.08}
+.fig .s1{fill:var(--accent);opacity:.45}
+.fig .s2{fill:var(--accent);opacity:.25}
+.fig .s3{fill:var(--accent);opacity:.12}
+.fig .br,.fig .br2{stroke:var(--ink-mute);stroke-width:1.5;fill:none}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Testy, moc, wielkość efektu</h1>
+<p class="meta">Józefacka i in., t. 1, s. 167–195 (moc) i t. 2, s. 141–209 (testy nieparametryczne); Bedyńska i Cypryańska · wykład 12.12</p>
+<div class="links"><a class="btn" href="test.html#wyklad-7.html">Test z tego materiału</a></div>
+</header>
+<main><section aria-label="Pojęcia na start" class="st-prime"><p aria-level="2" class="st-prime-h" role="heading">Pojęcia na start</p><dl><div><dt>Moc testu</dt><dd>Prawdopodobieństwo wykrycia istniejącego efektu (1 − β).</dd></div><div><dt>Wielkość efektu</dt><dd>Miara tego, jak duży jest efekt (np. d Cohena); uzupełnia p, które zależy od liczebności próby.</dd></div><div><dt>d Cohena</dt><dd>Różnica średnich w jednostkach odchylenia standardowego; konwencja: 0,2 mały, 0,5 średni, 0,8 duży.</dd></div><div><dt>Test parametryczny</dt><dd>Test oparty na średniej i wariancji; wymaga danych ilościowych i założeń, ma większą moc.</dd></div><div><dt>Test nieparametryczny</dt><dd>Test oparty na rangach lub częstościach; mniej wymagań, mniejsza moc (np. U Manna-Whitneya).</dd></div><div><dt>Ranga</dt><dd>Numer pozycji wartości po uszeregowaniu od najmniejszej.</dd></div><div><dt>Test Levene’a</dt><dd>Sprawdza równość wariancji między grupami.</dd></div><div><dt>Porównania post hoc</dt><dd>Porównania par grup po istotnym teście ogólnym (np. test Dunna).</dd></div><div><dt>Poprawka Bonferroniego</dt><dd>Dzielenie α przez liczbę porównań, aby nie rosło ryzyko błędu I rodzaju.</dd></div></dl></section>
+<h2 id="s1">Moc testu</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> moc to <strong>prawdopodobieństwo wykrycia istniejącego efektu</strong> (1 − β). Rośnie z liczebnością próby, wielkością efektu i poziomem α.</p>
+<details class="sec" open="">
+<summary>Czym jest moc i od czego zależy <span class="src">T1 s. 173</span></summary>
+<div class="body">
+<ul>
+<li><strong>Moc testu</strong> to prawdopodobieństwo odrzucenia fałszywej H₀, czyli uniknięcia błędu II rodzaju: <strong>1 − β</strong>.</li>
+<li>Zależy od <strong>poziomu istotności α</strong> (większe α = większa moc), <strong>wielkości efektu</strong> w populacji (duży efekt trudno przeoczyć) i <strong>liczebności próby</strong> (mniejszy błąd standardowy).</li>
+<li>Zależy też od <strong>rodzaju testu</strong>: parametryczne mają zwykle większą moc niż nieparametryczne; jednostronne większą niż dwustronne (przy zgodnym kierunku); plan z powtarzanymi pomiarami większą niż grup niezależnych przy tej samej liczbie osób.</li>
+<li>Moc planuje się <strong>przed badaniem</strong> (analiza mocy podpowiada minimalną liczebność). Przy małym efekcie próba n = 30 może być za mała.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Błąd I i II w praktyce: balans <span class="src">T1 s. 174</span></summary>
+<div class="body">
+<ul>
+<li>Przy małych próbach rośnie ryzyko błędu II rodzaju (przeoczenia efektu), ale też ryzyko, że istotny wynik to artefakt oszacowania.</li>
+<li>Przy bardzo dużych próbach nawet znikome różnice wychodzą istotne (zbyt duża moc).</li>
+<li>Trzeba znaleźć rozsądną równowagę między błędem I i II rodzaju.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Zbyt duża moc: istotne, ale bez znaczenia <span class="src">T1 s. 174, 189</span></summary>
+<div class="body">
+<ul>
+<li>Przykład z książki: 1000 statystyków i 1000 influencerów, średnie 5800 i 5882 zł. Różnica 82 zł jest istotna statystycznie, ale praktycznie nic nie znaczy.</li>
+<li><strong>Istotność statystyczna ≠ istotność praktyczna.</strong> Dlatego do p zawsze dodajemy wielkość efektu.</li>
+<li>Czasem wynik istotny jest tylko artefaktem niereprezentatywnej próby („klątwa zwycięzcy”).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-7-fiszki:67052c55,metodologia/wyklad-7-fiszki:5d5f763c,metodologia/wyklad-7-fiszki:3ac0c274,metodologia/wyklad-7-fiszki:a951d9c9,metodologia/wyklad-7-fiszki:8b9240ab,metodologia/wyklad-7-fiszki:b2773284" data-title="Moc testu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
+<h2 id="s2">Wielkość efektu</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> p mówi, <strong>czy</strong> efekt istnieje; <strong>wielkość efektu</strong> mówi, <strong>jak duży</strong> jest. Nie zależy od liczebności próby w taki sposób jak p.</p>
+<details class="sec" open="">
+<summary>Co to jest efekt i jego wielkość <span class="src">T1 s. 188–189; bank pytań</span></summary>
+<div class="body">
+<ul>
+<li><strong>Efekt statystyczny</strong> to związek, różnica albo wpływ (np. różnica średnich, korelacja, wpływ czynnika), nie pojedyncza średnia.</li>
+<li><strong>Wielkość efektu</strong> to miara skali zjawiska (np. różnicy w średnich), często z konkretnymi przedziałami pozwalającymi ocenić, czy efekt jest słaby, umiarkowany czy silny.</li>
+<li>Podajemy ją razem z p i przedziałem ufności, bo p zależy od n, a wielkość efektu pokazuje znaczenie praktyczne.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Wybrane miary <span class="src">T1 s. 188–189; T2 (tab. 4.16–4.17); bank pytań</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Miara</th><th>Dotyczy</th><th>Uwagi</th></tr>
+<tr><td><strong>d Cohena</strong></td><td>różnica dwóch średnich w jednostkach odchylenia standardowego</td><td>Konwencja: <strong>0,2 mały</strong>, 0,5 średni, 0,8 duży. Wariantami są poprawka Hedgesa i delta Glassa.</td></tr>
+<tr><td><strong>r (korelacja), R²</strong></td><td>siła związku; R² = część wyjaśnianej wariancji</td><td>Korelację interpretuje się w metryce kwadratowej (r²).</td></tr>
+<tr><td><strong>η²</strong></td><td>część wariancji wyjaśniana przez czynnik (ANOVA, Kruskal-Wallis)</td><td>np. η² = 0,10 to efekt umiarkowany.</td></tr>
+<tr><td><strong>r = Z/√N</strong></td><td>testy rangowe (Wilcoxon, U Manna-Whitneya)</td><td>np. r = −0,24 to słaby efekt.</td></tr>
+</table></div>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-7-fiszki:75dde06f,metodologia/wyklad-7-fiszki:ecad6e66,metodologia/wyklad-7-fiszki:70d5c6f8,metodologia/wyklad-7-fiszki:c00b33c1,metodologia/wyklad-7-fiszki:4011302e" data-title="Wielkość efektu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>5 pytań</span></span></button></div>
+<h2 id="s3">Testy parametryczne i nieparametryczne</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> parametryczne mają większą moc, ale wymagają <strong>danych ilościowych i spełnionych założeń</strong>; nieparametryczne pracują na <strong>rangach</strong> i mają mniej wymagań.</p>
+<details class="sec" open="">
+<summary>Różnice między grupami testów <span class="src">BC s. 138–139; T2 (wprowadzenie)</span></summary>
+<div class="body">
+<ul>
+<li><strong>Parametryczne</strong> (t-Studenta, ANOVA, r Pearsona) liczą średnią i wariancję; zakładają skalę ilościową, zwykle rozkład normalny i równość wariancji; mają <strong>większą moc</strong>.</li>
+<li><strong>Nieparametryczne</strong> używają <strong>rang</strong> (kolejności), nie wartości; sprawdzają się, gdy zmienna jest porządkowa lub nominalna, rozkład odbiega od normalnego, próba jest mała albo są obserwacje odstające.</li>
+<li>Rangi: obserwacje szereguje się od najmniejszej, a wynik zastępuje się numerem pozycji (przy remisach „rangi wiązane” = średnia pozycji).</li>
+<li>Testy chi-kwadrat to nieparametryczne testy dla danych jakościowych (częstości).</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Odpowiedniki testów <span class="src">T2, tab. 4.2</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Test nieparametryczny</th><th>Odpowiednik parametryczny</th></tr>
+<tr><td><strong>Rho Spearmana, tau Kendalla</strong></td><td>korelacja r Pearsona</td></tr>
+<tr><td><strong>U Manna-Whitneya</strong></td><td>test t Studenta dla prób niezależnych</td></tr>
+<tr><td><strong>Wilcoxona</strong> (z testem znaków)</td><td>test t Studenta dla prób zależnych</td></tr>
+<tr><td><strong>Kruskala-Wallisa (H)</strong></td><td>jednoczynnikowa ANOVA</td></tr>
+<tr><td><strong>Friedmana</strong></td><td>ANOVA z powtarzanym pomiarem</td></tr>
+</table></div><p>Nieparametryczne mają swoje „odpowiedniki”, ale nie są to ten sam test: porównują rangi, nie średnie.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-7-fiszki:d73b7369,metodologia/wyklad-7-fiszki:ef125729,metodologia/wyklad-7-fiszki:58439127,metodologia/wyklad-7-fiszki:450e9757,metodologia/wyklad-7-fiszki:2b5a2c0f,metodologia/wyklad-7-fiszki:f418659f,metodologia/wyklad-7-fiszki:911f7d8e" data-title="Testy parametryczne i nieparametryczne" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>7 pytań</span></span></button></div>
+<h2 id="s4">Jak wybrać test</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> o wyborze decydują: <strong>skala zmiennej, liczba i zależność grup, rozkład, równość wariancji, liczebność</strong> i obecność wartości odstających.</p>
+<details class="sec" open="">
+<summary>Lista kontrolna wyboru <span class="src">T2, case studies; BC s. 138</span></summary>
+<div class="body">
+<ul>
+<li><strong>Skala zmiennej zależnej:</strong> ilościowa → parametryczny możliwy; porządkowa/nominalna → nieparametryczny.</li>
+<li><strong>Liczba grup i plan:</strong> dwie grupy niezależne (t / U), dwa pomiary zależne (t / Wilcoxon), więcej niż dwie niezależne (ANOVA / Kruskal-Wallis), więcej niż dwa pomiary zależne (ANOVA z powt. pomiarem / Friedman).</li>
+<li><strong>Założenia:</strong> normalność (np. test Shapiro-Wilka), <strong>równość wariancji</strong> (test Levene’a), liczebność grup (czy ≥ 30?) i równoliczność.</li>
+<li>Przy niespełnionych założeniach lub małej próbie rozważ nieparametryczny; czasem raportuje się <strong>oba</strong> testy, jeśli wyniki są spójne.</li>
+<li>Na wyborze ważą też przypadki odstające i cel analizy (ranking czy wartości).</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Przykład z badania (t vs U) <span class="src">T2, case study 1 (tab. 4.12–4.16)</span></summary>
+<div class="body">
+<ul>
+<li>Zmienna „polityka”: wariancje nierówne (Levene p &lt; 0,05), rozkład odbiega od normalnego, grupy nierówne → <strong>U Manna-Whitneya</strong>.</li>
+<li>Zmienna „dwuznaczne liczby”: wariancje równe, rozkład zbliżony do normalnego, ale jedna grupa n &lt; 30 → można policzyć U i t (raportuje się oba, gdy zgodne).</li>
+<li>Wynik testu t zapisujemy z df (np. t(58) = −2,08).</li>
+<li>Z wyniku testu bierzemy także wielkość efektu (np. d Cohena).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-7-fiszki:5e405835,metodologia/wyklad-7-fiszki:33b18ec8,metodologia/wyklad-7-fiszki:7b2e4de7,metodologia/wyklad-7-fiszki:398bd164" data-title="Jak wybrać test" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<h2 id="s5">Porównania wielokrotne i post hoc</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> jeśli test dla wielu grup (ANOVA, Kruskal-Wallis, Friedman) jest istotny, szukamy, <strong>które pary się różnią</strong>; trzeba skorygować α, żeby nie rosło ryzyko błędu I rodzaju.</p>
+<details class="sec" open="">
+<summary>Test omnibus i post hoc <span class="src">T2, case study 4–5 (tab. 4.20–4.25)</span></summary>
+<div class="body">
+<ul>
+<li>Test Kruskala-Wallisa (H) lub Friedmana mówi tylko, że <strong>jakaś</strong> różnica istnieje, nie gdzie.</li>
+<li><strong>Porównania post hoc</strong> (np. <strong>test Dunna</strong>) sprawdzają poszczególne pary grup lub pomiarów.</li>
+<li>Im więcej porównań, tym większa szansa na fałszywy alarm, dlatego stosuje się korektę.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Poprawka Bonferroniego <span class="src">T2, case study 4–5</span></summary>
+<div class="body">
+<ul>
+<li><strong>Korekta Bonferroniego:</strong> nowe α = 0,05 / liczba porównań (lub p mnożone przez liczbę porównań).</li>
+<li>W tabelach często są dwie kolumny: istotność nieskorygowana i <strong>skorygowana</strong>; liczy się skorygowana.</li>
+<li>Efekt: wyniki, które „ledwo” przechodziły próg bez korekty (np. p = 0,014), po korekcie mogą stać się nieistotne.</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-7-fiszki:0e5aa10d,metodologia/wyklad-7-fiszki:785bb5c0,metodologia/wyklad-7-fiszki:135ced9f" data-title="Porównania wielokrotne i post hoc" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+<div class="st-check unit"><button data-check="metodologia/wyklad-7-fiszki:67052c55,metodologia/wyklad-7-fiszki:5d5f763c,metodologia/wyklad-7-fiszki:3ac0c274,metodologia/wyklad-7-fiszki:a951d9c9,metodologia/wyklad-7-fiszki:8b9240ab,metodologia/wyklad-7-fiszki:b2773284,metodologia/wyklad-7-fiszki:75dde06f,metodologia/wyklad-7-fiszki:ecad6e66,metodologia/wyklad-7-fiszki:70d5c6f8,metodologia/wyklad-7-fiszki:c00b33c1,metodologia/wyklad-7-fiszki:4011302e,metodologia/wyklad-7-fiszki:d73b7369,metodologia/wyklad-7-fiszki:ef125729,metodologia/wyklad-7-fiszki:58439127,metodologia/wyklad-7-fiszki:450e9757,metodologia/wyklad-7-fiszki:2b5a2c0f,metodologia/wyklad-7-fiszki:f418659f,metodologia/wyklad-7-fiszki:911f7d8e,metodologia/wyklad-7-fiszki:5e405835,metodologia/wyklad-7-fiszki:33b18ec8,metodologia/wyklad-7-fiszki:7b2e4de7,metodologia/wyklad-7-fiszki:398bd164,metodologia/wyklad-7-fiszki:0e5aa10d,metodologia/wyklad-7-fiszki:785bb5c0,metodologia/wyklad-7-fiszki:135ced9f" data-title="Wykład 7" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>25 pytań</span></span></button></div><footer class="sources">
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1</em> (s. 167–195). PWN.</p>
+<p>Bedyńska, S. i Cypryańska, M. (red.) (2013). <em>Statystyczny drogowskaz 1</em> (s. 136–140). Wydawnictwo Akademickie Sedno.</p>
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2026). <em>Metodologia i statystyka. Tom 2</em> (rozdz. o testach nieparametrycznych, s. 141–209). PWN.</p>
+</footer>
+</main>
+</div>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=770f9d12"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 7" src="../assets/reader.js?v=2edc1715"></script>
+<script src="../assets/pro.js?v=f0f5442e"></script>
+<script src="../assets/sesja.js?v=31a09f19"></script>
+<script src="../assets/czytanie.js?v=1976e457"></script>
+</body>
+</html>

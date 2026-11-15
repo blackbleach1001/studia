@@ -20,7 +20,7 @@
   {
    "id": "w4",
    "t": "Wykład 4: Modele badawcze i testowanie",
-   "s": "eksperyment, kontrola, H0, p, moc"
+   "s": "eksperyment, kontrola, randomizacja, hipotezy"
   },
   {
    "id": "kor",
@@ -30,7 +30,12 @@
   {
    "id": "w5",
    "t": "Wykład 5: Próba, trafność i estymacja",
-   "s": "dobór próby, błąd standardowy, przedział ufności"
+   "s": "dobór próby, błąd standardowy, rozkład średnich"
+  },
+  {
+   "id": "w67",
+   "t": "Wykłady 6–7: Wnioskowanie, istotność, moc i efekt",
+   "s": "H₀, p, błędy I i II rodzaju, przedziały ufności, moc, d Cohena"
   }
  ],
  "items": [
@@ -890,20 +895,6 @@
    "e": "Dobra hipoteza jest konkretna i falsyfikowalna: wskazuje zmienne i przewidywany wynik."
   },
   {
-   "id": "13",
-   "n": 13,
-   "g": "w4",
-   "q": "Wartość d Cohena > 0,20 oznacza",
-   "a": [
-    "bardzo dużą różnicę między średnimi",
-    "małą różnicę między średnimi",
-    "średnią różnicę między średnimi",
-    "dużą różnicę między średnimi"
-   ],
-   "c": 1,
-   "e": "Według progów Cohena d około 0,20 to mały efekt, 0,50 średni, 0,80 duży."
-  },
-  {
    "id": "15",
    "n": 15,
    "g": "w4",
@@ -946,20 +937,6 @@
    "e": "Żeby wnioskować o wpływie rodzaju przekąsek, trzeba je losowo przydzielić osobom badanym."
   },
   {
-   "id": "39",
-   "n": 39,
-   "g": "w4",
-   "q": "Poziom istotności (p) to prawdopodobieństwo popełnienia",
-   "a": [
-    "błędu czwartego rodzaju",
-    "błędu trzeciego rodzaju",
-    "błędu pierwszego rodzaju",
-    "błędu drugiego rodzaju"
-   ],
-   "c": 2,
-   "e": "Poziom istotności to dopuszczalne ryzyko błędu I rodzaju: odrzucenia prawdziwej H0."
-  },
-  {
    "id": "41",
    "n": 41,
    "g": "w4",
@@ -974,20 +951,6 @@
    "e": "Plan 0–1 ma tylko dwa poziomy zmiennej niezależnej, więc może wykryć jedynie zależność liniową. Do zależności krzywoliniowych potrzeba co najmniej trzech poziomów.",
    "f": "niepewne",
    "z": 1
-  },
-  {
-   "id": "44",
-   "n": 44,
-   "g": "w4",
-   "q": "Od czego zależy prawdopodobieństwo odrzucenia hipotezy zerowej dla współczynnika korelacji, czy uznanie jej za istotną statystycznie?",
-   "a": [
-    "Od wielkości próbki i znaku korelacji",
-    "Tylko od znaku korelacji",
-    "Tylko od siły korelacji",
-    "Od wielkości próbki i siły korelacji"
-   ],
-   "c": 3,
-   "e": "Istotność korelacji zależy od jej siły i liczebności próby. Znak nie ma znaczenia."
   },
   {
    "id": "47",
@@ -1074,36 +1037,6 @@
    "u": 1
   },
   {
-   "id": "56",
-   "n": 56,
-   "g": "w4",
-   "q": "Które z poniższych zdań jest prawdziwe? W psychologii... (Fałszywy alarm = uznanie za istniejący efektu, którego nie ma; wyniki fałszywie ujemne = uznanie za nieistniejący w rzeczywistości istniejącego efektu)",
-   "a": [
-    "fałszywe alarmy są uznawane za równie niebezpieczne błędy jak wyniki fałszywie ujemne",
-    "fałszywe alarmy są uznawane za bardziej niebezpieczne błędy niż wyniki fałszywie ujemne",
-    "fałszywe alarmy są uznawane za mniej niebezpieczne błędy niż wyniki fałszywie ujemne",
-    "fałszywe alarmy oraz wyniki fałszywie ujemne nie są uznawane za błędy"
-   ],
-   "c": 1,
-   "e": "W psychologii błąd I rodzaju (α = 0,05) uznaje się za groźniejszy niż błąd II rodzaju (zwykle akceptuje się β = 0,20).",
-   "u": 1
-  },
-  {
-   "id": "57",
-   "n": 57,
-   "g": "w4",
-   "q": "Które z opisanych badań będzie miało największą moc (prawdopodobieństwo odrzucenia w rzeczywistości fałszywej hipotezy zerowej)?",
-   "a": [
-    "Eksperyment w planie powtarzanych pomiarów, w którym N = 500",
-    "Eksperyment w planie grup niezależnych, w którym N = 500",
-    "Eksperyment w planie grup niezależnych, w którym N = 400",
-    "Eksperyment w planie powtarzanych pomiarów, w którym N = 400"
-   ],
-   "c": 0,
-   "e": "Moc rośnie z liczebnością, a plan powtarzanych pomiarów usuwa różnice między osobami. Największą moc ma więc pomiar powtarzany z N = 500.",
-   "u": 1
-  },
-  {
    "id": "62",
    "n": 62,
    "g": "w4",
@@ -1116,22 +1049,6 @@
    ],
    "c": 2,
    "e": "Rotacja, ABBA i kwadrat łaciński to techniki równoważenia kolejności. Transfer różnicowy to problem, którego te techniki nie usuwają.",
-   "u": 1
-  },
-  {
-   "id": "67",
-   "n": 67,
-   "g": "w4",
-   "q": "Która interpretacja wyniku p < 0,05 jest błędna?",
-   "a": [
-    "Prawdopodobieństwo uzyskania takiego wyniku jedynie przez przypadek jest mniejsze od 0,05",
-    "Wartość statystyki p jest niższa niż konwencjonalna wartość odrzucenia HO",
-    "Wynik jest istotny (znaczący) statystycznie",
-    "Wyniki pojawiają się z prawdopodobieństwem mniejszym niż 0,05, przy założeniu, że HO jest prawdziwa"
-   ],
-   "c": 0,
-   "e": "p to prawdopodobieństwo takiego wyniku przy założeniu, że H0 jest prawdziwa. Nie jest to prawdopodobieństwo, że wynik powstał „przez przypadek”.",
-   "f": "niepewne",
    "u": 1
   },
   {
@@ -1237,21 +1154,6 @@
    ],
    "c": 0,
    "e": "Efekt statystyczny to różnica, związek albo wpływ. Sama średnia w jednej grupie efektem nie jest.",
-   "u": 1
-  },
-  {
-   "id": "103",
-   "n": 103,
-   "g": "w4",
-   "q": "Czym jest tzw. hipoteza zerowa - H0?",
-   "a": [
-    "Najprostszą wywiedzioną z teorii hipotezą badawczą, którą badacz powinien poddać testowaniu",
-    "Pełnowartościową hipotezą przeciwstawioną hipotezie alternatywnej, która oznacza, że hipoteza zerowa jest prawdziwa",
-    "Technicznym założeniem procedury analizy statystycznej, jej NIEODRZUCENIE nie oznacza, że jest ona prawdziwa",
-    "Hipoteza zerowa to poziom wsparcia dla alternatywnej hipotezy, który jest badany podczas testów statystycznych"
-   ],
-   "c": 2,
-   "e": "H0 to techniczne założenie testu. Jej nieodrzucenie nie dowodzi, że jest prawdziwa.",
    "u": 1
   },
   {
@@ -1416,20 +1318,6 @@
    ],
    "c": 1,
    "e": "Korelację interpretuje się w jej oryginalnej wartości (kierunek i siła). Jej kwadrat to już współczynnik determinacji."
-  },
-  {
-   "id": "25",
-   "n": 25,
-   "g": "kor",
-   "q": "W badaniu sprawdzano jakie są predyktóry nasilenia depresji poporodowej u kobiet. Analiza regresji wykazała wartości istotności statystycznej dla zmiennych: wsparcie ze strony partnera (p = 0,009), idealizacja macierzyństwa przed porodem (p = 0,091), dostępność do poradników opieki nad dzieckiem (p = 0,109), pozytywność obrazu własnej matki (p = 0,319). Można wnioskować, że",
-   "a": [
-    "predyktorem depresji poporodowej jest wsparcie ze strony partnera",
-    "predyktorami depresji poporodowej są wsparcie ze strony partnera i idealizacja macierzyństwa przed porodem",
-    "predyktorem depresji poporodowej jest pozytywność obrazu własnej matki",
-    "predyktorami depresji poporodowej są pozytywność obrazu własnej matki i dostępność do poradników opieki nad dzieckiem"
-   ],
-   "c": 0,
-   "e": "Istotne (p < 0,05) jest tylko wsparcie partnera. p = 0,091 nie przekracza progu."
   },
   {
    "id": "26",
@@ -1740,9 +1628,126 @@
    "u": 1
   },
   {
+   "id": "13",
+   "n": 13,
+   "g": "w67",
+   "q": "Wartość d Cohena > 0,20 oznacza",
+   "a": [
+    "bardzo dużą różnicę między średnimi",
+    "małą różnicę między średnimi",
+    "średnią różnicę między średnimi",
+    "dużą różnicę między średnimi"
+   ],
+   "c": 1,
+   "e": "Według progów Cohena d około 0,20 to mały efekt, 0,50 średni, 0,80 duży."
+  },
+  {
+   "id": "25",
+   "n": 25,
+   "g": "w67",
+   "q": "W badaniu sprawdzano jakie są predyktóry nasilenia depresji poporodowej u kobiet. Analiza regresji wykazała wartości istotności statystycznej dla zmiennych: wsparcie ze strony partnera (p = 0,009), idealizacja macierzyństwa przed porodem (p = 0,091), dostępność do poradników opieki nad dzieckiem (p = 0,109), pozytywność obrazu własnej matki (p = 0,319). Można wnioskować, że",
+   "a": [
+    "predyktorem depresji poporodowej jest wsparcie ze strony partnera",
+    "predyktorami depresji poporodowej są wsparcie ze strony partnera i idealizacja macierzyństwa przed porodem",
+    "predyktorem depresji poporodowej jest pozytywność obrazu własnej matki",
+    "predyktorami depresji poporodowej są pozytywność obrazu własnej matki i dostępność do poradników opieki nad dzieckiem"
+   ],
+   "c": 0,
+   "e": "Istotne (p < 0,05) jest tylko wsparcie partnera. p = 0,091 nie przekracza progu."
+  },
+  {
+   "id": "39",
+   "n": 39,
+   "g": "w67",
+   "q": "Poziom istotności (p) to prawdopodobieństwo popełnienia",
+   "a": [
+    "błędu czwartego rodzaju",
+    "błędu trzeciego rodzaju",
+    "błędu pierwszego rodzaju",
+    "błędu drugiego rodzaju"
+   ],
+   "c": 2,
+   "e": "Poziom istotności to dopuszczalne ryzyko błędu I rodzaju: odrzucenia prawdziwej H0."
+  },
+  {
+   "id": "44",
+   "n": 44,
+   "g": "w67",
+   "q": "Od czego zależy prawdopodobieństwo odrzucenia hipotezy zerowej dla współczynnika korelacji, czy uznanie jej za istotną statystycznie?",
+   "a": [
+    "Od wielkości próbki i znaku korelacji",
+    "Tylko od znaku korelacji",
+    "Tylko od siły korelacji",
+    "Od wielkości próbki i siły korelacji"
+   ],
+   "c": 3,
+   "e": "Istotność korelacji zależy od jej siły i liczebności próby. Znak nie ma znaczenia."
+  },
+  {
+   "id": "56",
+   "n": 56,
+   "g": "w67",
+   "q": "Które z poniższych zdań jest prawdziwe? W psychologii... (Fałszywy alarm = uznanie za istniejący efektu, którego nie ma; wyniki fałszywie ujemne = uznanie za nieistniejący w rzeczywistości istniejącego efektu)",
+   "a": [
+    "fałszywe alarmy są uznawane za równie niebezpieczne błędy jak wyniki fałszywie ujemne",
+    "fałszywe alarmy są uznawane za bardziej niebezpieczne błędy niż wyniki fałszywie ujemne",
+    "fałszywe alarmy są uznawane za mniej niebezpieczne błędy niż wyniki fałszywie ujemne",
+    "fałszywe alarmy oraz wyniki fałszywie ujemne nie są uznawane za błędy"
+   ],
+   "c": 1,
+   "e": "W psychologii błąd I rodzaju (α = 0,05) uznaje się za groźniejszy niż błąd II rodzaju (zwykle akceptuje się β = 0,20).",
+   "u": 1
+  },
+  {
+   "id": "57",
+   "n": 57,
+   "g": "w67",
+   "q": "Które z opisanych badań będzie miało największą moc (prawdopodobieństwo odrzucenia w rzeczywistości fałszywej hipotezy zerowej)?",
+   "a": [
+    "Eksperyment w planie powtarzanych pomiarów, w którym N = 500",
+    "Eksperyment w planie grup niezależnych, w którym N = 500",
+    "Eksperyment w planie grup niezależnych, w którym N = 400",
+    "Eksperyment w planie powtarzanych pomiarów, w którym N = 400"
+   ],
+   "c": 0,
+   "e": "Moc rośnie z liczebnością, a plan powtarzanych pomiarów usuwa różnice między osobami. Największą moc ma więc pomiar powtarzany z N = 500.",
+   "u": 1
+  },
+  {
+   "id": "67",
+   "n": 67,
+   "g": "w67",
+   "q": "Która interpretacja wyniku p < 0,05 jest błędna?",
+   "a": [
+    "Prawdopodobieństwo uzyskania takiego wyniku jedynie przez przypadek jest mniejsze od 0,05",
+    "Wartość statystyki p jest niższa niż konwencjonalna wartość odrzucenia HO",
+    "Wynik jest istotny (znaczący) statystycznie",
+    "Wyniki pojawiają się z prawdopodobieństwem mniejszym niż 0,05, przy założeniu, że HO jest prawdziwa"
+   ],
+   "c": 0,
+   "e": "p to prawdopodobieństwo takiego wyniku przy założeniu, że H0 jest prawdziwa. Nie jest to prawdopodobieństwo, że wynik powstał „przez przypadek”.",
+   "f": "niepewne",
+   "u": 1
+  },
+  {
+   "id": "103",
+   "n": 103,
+   "g": "w67",
+   "q": "Czym jest tzw. hipoteza zerowa - H0?",
+   "a": [
+    "Najprostszą wywiedzioną z teorii hipotezą badawczą, którą badacz powinien poddać testowaniu",
+    "Pełnowartościową hipotezą przeciwstawioną hipotezie alternatywnej, która oznacza, że hipoteza zerowa jest prawdziwa",
+    "Technicznym założeniem procedury analizy statystycznej, jej NIEODRZUCENIE nie oznacza, że jest ona prawdziwa",
+    "Hipoteza zerowa to poziom wsparcia dla alternatywnej hipotezy, który jest badany podczas testów statystycznych"
+   ],
+   "c": 2,
+   "e": "H0 to techniczne założenie testu. Jej nieodrzucenie nie dowodzi, że jest prawdziwa.",
+   "u": 1
+  },
+  {
    "id": "114",
    "n": 114,
-   "g": "w5",
+   "g": "w67",
    "q": "W pewnym badaniu średnia pomiaru tolerancji niepewności wyniosła 72. Badacz zastosował przedział ufności 95%, a tym samym średnia pomiaru tolerancji niepewności zawarła się w przedziale od 65 do 79. Jeśli w tym samym badaniu zastosuje przedział ufności 85%, możliwym przedziałem zawierania się średniej tolerancji niepewności będzie:",
    "a": [
     "Od 62 do 72",

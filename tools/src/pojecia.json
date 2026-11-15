@@ -857,5 +857,81 @@
    "Efficacy i effectiveness",
    "Efficacy to badania laboratoryjne (trafność wewnętrzna), effectiveness to badania w warunkach naturalnych (trafność zewnętrzna)."
   ]
+ ],
+ "metodologia/wyklad-6.html": [
+  [
+   "Hipoteza zerowa (H₀)",
+   "Hipoteza o braku efektu, różnic lub związku. Test sprawdza, czy dane pozwalają ją odrzucić; jej nieodrzucenie nie dowodzi, że jest prawdziwa."
+  ],
+  [
+   "Hipoteza alternatywna (H₁)",
+   "Przeciwieństwo H₀, zwykle to, co badacz chce wykazać; kierunkowa (A > B) albo niekierunkowa (A ≠ B)."
+  ],
+  [
+   "Błąd I rodzaju (α)",
+   "Odrzucenie prawdziwej H₀, czyli fałszywy alarm."
+  ],
+  [
+   "Błąd II rodzaju (β)",
+   "Nieodrzucenie fałszywej H₀, czyli przeoczenie istniejącego efektu."
+  ],
+  [
+   "Poziom istotności α",
+   "Z góry przyjęte maksymalne ryzyko błędu I rodzaju, zwykle 0,05."
+  ],
+  [
+   "Wartość p",
+   "Prawdopodobieństwo takiego lub bardziej skrajnego wyniku, gdyby H₀ była prawdziwa. Gdy p < α, odrzucamy H₀."
+  ],
+  [
+   "Przedział ufności",
+   "Zakres wiarygodnych wartości parametru; 95% takich przedziałów z powtórzonych badań zawiera prawdziwą wartość."
+  ],
+  [
+   "Stopnie swobody (df)",
+   "Liczba niezależnych informacji: liczba obserwacji minus liczba oszacowanych parametrów."
+  ],
+  [
+   "Chi-kwadrat",
+   "Nieparametryczny test dla danych jakościowych, porównujący rozkład z badania z teoretycznym lub dwa rozkłady empiryczne."
+  ]
+ ],
+ "metodologia/wyklad-7.html": [
+  [
+   "Moc testu",
+   "Prawdopodobieństwo wykrycia istniejącego efektu (1 − β)."
+  ],
+  [
+   "Wielkość efektu",
+   "Miara tego, jak duży jest efekt (np. d Cohena); uzupełnia p, które zależy od liczebności próby."
+  ],
+  [
+   "d Cohena",
+   "Różnica średnich w jednostkach odchylenia standardowego; konwencja: 0,2 mały, 0,5 średni, 0,8 duży."
+  ],
+  [
+   "Test parametryczny",
+   "Test oparty na średniej i wariancji; wymaga danych ilościowych i założeń, ma większą moc."
+  ],
+  [
+   "Test nieparametryczny",
+   "Test oparty na rangach lub częstościach; mniej wymagań, mniejsza moc (np. U Manna-Whitneya)."
+  ],
+  [
+   "Ranga",
+   "Numer pozycji wartości po uszeregowaniu od najmniejszej."
+  ],
+  [
+   "Test Levene’a",
+   "Sprawdza równość wariancji między grupami."
+  ],
+  [
+   "Porównania post hoc",
+   "Porównania par grup po istotnym teście ogólnym (np. test Dunna)."
+  ],
+  [
+   "Poprawka Bonferroniego",
+   "Dzielenie α przez liczbę porównań, aby nie rosło ryzyko błędu I rodzaju."
+  ]
  ]
 }

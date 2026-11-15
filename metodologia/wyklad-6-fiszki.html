@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Fiszki · Wykład 6 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=e2cd84d4" rel="stylesheet"/>
+<link href="../assets/pro.css?v=6734dc36" rel="stylesheet"/>
+<link href="../assets/sesja.css?v=bb6035fa" rel="stylesheet"/>
+<link href="../assets/czytanie.css?v=7cd3d3ac" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Pytania · Wykład 6</h1>
+<p class="meta">Wnioskowanie statystyczne · 32 pytań</p>
+</header>
+<main id="deck"></main>
+</div>
+<script id="cards" type="application/json">
+[
+{
+"q": "Czym jest hipoteza zerowa (H₀)?",
+"a": "<p>Hipoteza o <strong>braku związku, różnic lub efektu<\/strong>; technicznym założeniem procedury testowej. Każdy test ma swoją H₀. Jej <strong>nieodrzucenie nie oznacza, że jest prawdziwa<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"brak efektu",
+"techniczne założenie"
+],
+"id": "metodologia/wyklad-6-fiszki:f09e5d3c",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Czym jest hipoteza alternatywna (H₁)?",
+"a": "<p>Przeciwieństwo H₀, zwykle to, co badacz chce wykazać (np. istnieje różnica). Może być <strong>kierunkowa<\/strong> (A &gt; B) lub <strong>niekierunkowa<\/strong> (A ≠ B).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"przeciwieństwo H₀",
+"kierunkowa / niekierunkowa"
+],
+"id": "metodologia/wyklad-6-fiszki:7e3b70ea",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Jaka jest analogia sądowa do testowania hipotez?",
+"a": "<p>Punkt wyjścia to <strong>domniemanie niewinności<\/strong> (H₀). Dopiero mocne dowody pozwalają odrzucić je na rzecz winy (H₁). Błąd I rodzaju = skazanie niewinnego, II rodzaju = uniewinnienie winnego.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"niewinność = H₀",
+"dowody = dane"
+],
+"id": "metodologia/wyklad-6-fiszki:c3e76525",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Co oznacza nieistotny wynik testu?",
+"a": "<p>Tylko tyle, że <strong>nie udało się odrzucić H₀<\/strong> (brak podstaw do odrzucenia). Nie dowodzi, że efektu nie ma.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"brak podstaw",
+"nie dowód braku"
+],
+"id": "metodologia/wyklad-6-fiszki:e8498734",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Co oznacza odrzucenie H₀?",
+"a": "<p>Dane trudno pogodzić z brakiem efektu. To <strong>nie jest dowód<\/strong> na istnienie efektu ani na jego wielkość.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"nie dowód efektu"
+],
+"id": "metodologia/wyklad-6-fiszki:99208a32",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Wymień kroki wnioskowania statystycznego.",
+"a": "<p>Schemat badania, <strong>hipoteza zerowa<\/strong> (wybór testu), sprawdzenie <strong>założeń<\/strong>, obliczenie statystyki, porównanie z wartością krytyczną lub poziomem istotności, <strong>decyzja<\/strong>, interpretacja.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"hipoteza",
+"założenia",
+"statystyka",
+"decyzja"
+],
+"id": "metodologia/wyklad-6-fiszki:7f3dbf2d",
+"unit": "wyklad-6.html",
+"sec": "s1"
+},
+{
+"q": "Czym jest błąd I rodzaju?",
+"a": "<p>Odrzucenie <strong>prawdziwej<\/strong> H₀ (fałszywy alarm: stwierdzamy efekt, którego nie ma). Jego prawdopodobieństwo to <strong>α<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"α",
+"fałszywy alarm"
+],
+"id": "metodologia/wyklad-6-fiszki:c16adabc",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Czym jest błąd II rodzaju?",
+"a": "<p>Nieodrzucenie <strong>fałszywej<\/strong> H₀ (przeoczenie istniejącego efektu, wynik fałszywie ujemny). Jego prawdopodobieństwo to <strong>β<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"β",
+"przeoczenie"
+],
+"id": "metodologia/wyklad-6-fiszki:80a1e533",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Który błąd uznaje się w psychologii za groźniejszy?",
+"a": "<p>Błąd <strong>I rodzaju<\/strong> (fałszywy alarm). Dlatego α ustala się z góry, najczęściej na 0,05.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"fałszywy alarm groźniejszy"
+],
+"id": "metodologia/wyklad-6-fiszki:f4c63269",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Jak zmieniają się błędy I i II rodzaju względem siebie?",
+"a": "<p>Zmniejszając jeden, <strong>zwiększamy<\/strong> prawdopodobieństwo drugiego (kompromis).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"kompromis"
+],
+"id": "metodologia/wyklad-6-fiszki:7b76485c",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Czym jest poziom istotności α i jaka jest typowa wartość?",
+"a": "<p>Z góry przyjęte maksymalne ryzyko błędu I rodzaju. W naukach społecznych <strong>α = 0,05<\/strong> (5%), czasem 0,01 lub 0,001. Konwencję wprowadził R. Fisher.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"0,05",
+"Fisher",
+"konwencja"
+],
+"id": "metodologia/wyklad-6-fiszki:c1df07f5",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Czym różni się α od p?",
+"a": "<p><strong>α<\/strong> ustalamy przed badaniem (dopuszczalne ryzyko). <strong>p<\/strong> wynika z danych. Decyzja: p &lt; α → odrzucamy H₀.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"α przed",
+"p z danych"
+],
+"id": "metodologia/wyklad-6-fiszki:fff0d1de",
+"unit": "wyklad-6.html",
+"sec": "s2"
+},
+{
+"q": "Czym jest przedział ufności?",
+"a": "<p>Zakres wiarygodnych wartości parametru wokół estymatora (estymacja przedziałowa), najczęściej <strong>95%<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"zakres",
+"95%"
+],
+"id": "metodologia/wyklad-6-fiszki:f320bf51",
+"unit": "wyklad-6.html",
+"sec": "s3"
+},
+{
+"q": "Jak poprawnie interpretować 95% przedział ufności?",
+"a": "<p>Przy wielokrotnym powtarzaniu badania ok. <strong>95% takich przedziałów<\/strong> zawiera prawdziwą wartość parametru. Błędne: „z prawdopodobieństwem 95% parametr leży w tym konkretnym przedziale”.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"wielokrotne powtórzenia",
+"nie ten przedział"
+],
+"id": "metodologia/wyklad-6-fiszki:31ad65d6",
+"unit": "wyklad-6.html",
+"sec": "s3"
+},
+{
+"q": "Od czego zależy szerokość przedziału ufności?",
+"a": "<p>Węższy przy <strong>większej próbie<\/strong> i <strong>mniejszym rozrzucie<\/strong>; szerszy przy wyższym poziomie ufności (99% &gt; 95% &gt; 85%).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"n w górę – węższy",
+"ufność w górę – szerszy"
+],
+"id": "metodologia/wyklad-6-fiszki:35a8a16f",
+"unit": "wyklad-6.html",
+"sec": "s3"
+},
+{
+"q": "Średnia = 72, 95% CI = 65–79. Jaki przedział przy 85% ufności?",
+"a": "<p>Węższy, wokół 72 (np. <strong>67–77<\/strong>). Przedział 85% mieści się w przedziale 95%.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"węższy",
+"środek bez zmian"
+],
+"id": "metodologia/wyklad-6-fiszki:20e4df22",
+"unit": "wyklad-6.html",
+"sec": "s3"
+},
+{
+"q": "Czym jest statystyka testowa?",
+"a": "<p>Jedna liczba policzona z danych (Z, t, χ²), która pozwala ocenić zgodność wyniku z H₀. Sprowadza dane o różnych jednostkach do wspólnej skali.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"liczba z danych",
+"Z, t, χ²"
+],
+"id": "metodologia/wyklad-6-fiszki:8efab5ba",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Czym jest wartość p?",
+"a": "<p>Prawdopodobieństwo uzyskania takiej lub bardziej skrajnej statystyki testowej <strong>przy założeniu, że H₀ jest prawdziwa<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"przy założeniu H₀",
+"skrajny wynik"
+],
+"id": "metodologia/wyklad-6-fiszki:11e2d140",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Kiedy wynik jest istotny statystycznie?",
+"a": "<p>Gdy <strong>p &lt; α<\/strong> (zwykle p &lt; 0,05). Wtedy odrzucamy H₀. Przy p &gt; α wynik jest nieistotny i nie odrzucamy H₀.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"p < α",
+"odrzuć H₀"
+],
+"id": "metodologia/wyklad-6-fiszki:ab1d1f02",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Czym jest wartość krytyczna i obszar krytyczny?",
+"a": "<p><strong>Obszar krytyczny<\/strong>: część pola pod rozkładem statystyki, w której wartości uprawniają do odrzucenia H₀. <strong>Wartość krytyczna<\/strong> wyznacza jego granicę.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"granica obszaru",
+"odrzucenie H₀"
+],
+"id": "metodologia/wyklad-6-fiszki:64e18ad0",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Jakie są wartości krytyczne Z dla testu jedno- i dwustronnego (α = 0,05)?",
+"a": "<p>Jednostronny: <strong>±1,64<\/strong> (zależnie od strony). Dwustronny: <strong>−1,96 i +1,96<\/strong> (po 2,5% w ogonach).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"1,64",
+"1,96"
+],
+"id": "metodologia/wyklad-6-fiszki:5a79b3b6",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Kiedy stosuje się test jednostronny, a kiedy dwustronny?",
+"a": "<p><strong>Jednostronny<\/strong> dla hipotezy kierunkowej, <strong>dwustronny<\/strong> dla niekierunkowej. W praktyce zwykle dwustronny. Zmiana na jednostronny po obejrzeniu danych to nadużycie.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"kierunkowa",
+"niekierunkowa",
+"nadużycie"
+],
+"id": "metodologia/wyklad-6-fiszki:9a837775",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Czym są stopnie swobody (df)?",
+"a": "<p>Liczba niezależnych informacji: liczba obserwacji minus liczba oszacowanych parametrów. Więcej df (większa próba) = łatwiej o istotny wynik. Zawsze podaje się je przy teście.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"n − parametry",
+"stonoga"
+],
+"id": "metodologia/wyklad-6-fiszki:d297c07a",
+"unit": "wyklad-6.html",
+"sec": "s4"
+},
+{
+"q": "Podaj błędne interpretacje wartości p.",
+"a": "<p>Mylenie p z <strong>α<\/strong>; uznanie p za prawdopodobieństwo prawdziwości H₀; traktowanie wyniku nieistotnego jako dowodu braku efektu, a istotnego jako dowodu „prawdziwości”.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"p ≠ α",
+"p ≠ P(H₀)"
+],
+"id": "metodologia/wyklad-6-fiszki:0e2ccc56",
+"unit": "wyklad-6.html",
+"sec": "s5"
+},
+{
+"q": "Czy p = 0,06 to „trend” albo „prawie istotne”?",
+"a": "<p>Nie. Decyzja jest zero-jedynkowa: <strong>odrzucamy albo nie odrzucamy<\/strong> H₀. „Prawie istotne” świadczy o niezrozumieniu p. (BC dopuszcza zapis „tendencja” dla 0,05–0,10.)<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"brak „prawie”",
+"zero-jedynkowo"
+],
+"id": "metodologia/wyklad-6-fiszki:eaa57a1a",
+"unit": "wyklad-6.html",
+"sec": "s5"
+},
+{
+"q": "Co to jest efekt szuflady?",
+"a": "<p>Wyniki <strong>nieistotne<\/strong> nie są publikowane (autorzy je chowają, redakcje nie przyjmują), co zniekształca obraz wiedzy naukowej.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"nieistotne chowane"
+],
+"id": "metodologia/wyklad-6-fiszki:06bfc366",
+"unit": "wyklad-6.html",
+"sec": "s5"
+},
+{
+"q": "Jakie praktyki zaliczamy do manipulacji dla uzyskania istotności?",
+"a": "<p>Dodatkowe niezaplanowane analizy, usuwanie niewygodnych obserwacji, dobieranie badanych aż do p &lt; 0,05. To próba oszustwa naukowego.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"p-hacking"
+],
+"id": "metodologia/wyklad-6-fiszki:0bc310f4",
+"unit": "wyklad-6.html",
+"sec": "s5"
+},
+{
+"q": "Jak raportować p?",
+"a": "<p>Podaj <strong>dokładną wartość<\/strong> (np. p = 0,028; dla bardzo małych p &lt; 0,001), a nie „p &lt; 0,05” czy „p &gt; 0,05”. Dodaj <strong>wielkość efektu<\/strong> i przedział ufności.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"dokładne p",
+"wielkość efektu"
+],
+"id": "metodologia/wyklad-6-fiszki:03e89a4d",
+"unit": "wyklad-6.html",
+"sec": "s5"
+},
+{
+"q": "Opisz pełną procedurę testowania na przykładzie 50 ofert pracy.",
+"a": "<p>H₀: średnia = 8000 zł, H₁: ≠ 8000; test; α = 0,05; obszar krytyczny; statystyka z próby; decyzja <strong>p &lt; 0,001 &lt; α<\/strong> → odrzucamy H₀. Dodatkowo wielkość efektu i przedział ufności.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"hipotezy",
+"α",
+"p < α"
+],
+"id": "metodologia/wyklad-6-fiszki:b158c325",
+"unit": "wyklad-6.html",
+"sec": "s6"
+},
+{
+"q": "Kiedy stosuje się testy nieparametryczne, np. chi-kwadrat?",
+"a": "<p>Gdy zmienne są <strong>jakościowe<\/strong> (nominalne), więc nie da się policzyć średniej. Parametryczne wymagają danych ilościowych i założeń, ale mają większą moc.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"dane jakościowe",
+"brak średniej"
+],
+"id": "metodologia/wyklad-6-fiszki:c9846b56",
+"unit": "wyklad-6.html",
+"sec": "s6"
+},
+{
+"q": "Do czego służy test chi-kwadrat dobroci dopasowania?",
+"a": "<p>Porównuje rozkład z badania z <strong>teoretycznym<\/strong> (np. moneta 52/48 vs 50/50) i sprawdza, czy różnica jest istotna. Pozwala też porównać dwa rozkłady empiryczne (zależność zmiennych).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"empiryczny vs teoretyczny"
+],
+"id": "metodologia/wyklad-6-fiszki:74e1cdc5",
+"unit": "wyklad-6.html",
+"sec": "s6"
+},
+{
+"q": "Jakie są założenia testu chi-kwadrat?",
+"a": "<p>Pomiary są <strong>niezależne<\/strong> (jedna obserwacja w jednej komórce) i próba jest duża: w każdej kategorii <strong>co najmniej ok. 5 obserwacji<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"niezależność",
+"≥ 5 w kategorii"
+],
+"id": "metodologia/wyklad-6-fiszki:aaf4ccee",
+"unit": "wyklad-6.html",
+"sec": "s6"
+}
+]
+</script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script>
+<script data-back="./" data-back-label="Metodologia" data-home="../" data-nofocus="" data-title="Pytania" src="../assets/reader.js?v=2edc1715"></script>
+<script src="../assets/pro.js?v=f0f5442e"></script>
+<script src="../assets/sesja.js?v=31a09f19"></script>
+<script src="../assets/czytanie.js?v=1976e457"></script>
+</body>
+</html>

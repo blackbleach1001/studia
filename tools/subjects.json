@@ -179,6 +179,26 @@
         "hand": true
       },
       {
+        "key": "wyklad-6",
+        "kind": "wyk",
+        "label": "Wykład 6",
+        "file": "wyklad-6.html",
+        "title": "Wnioskowanie statystyczne",
+        "src": "Józefacka t. 1, s. 167–195 · Bedyńska, s. 136–140",
+        "sub_short": "H₀ i H₁, błędy I i II rodzaju, α, przedziały ufności, p, wartość krytyczna, df, chi-kwadrat",
+        "hand": true
+      },
+      {
+        "key": "wyklad-7",
+        "kind": "wyk",
+        "label": "Wykład 7",
+        "file": "wyklad-7.html",
+        "title": "Testy, moc, wielkość efektu",
+        "src": "Józefacka t. 1, s. 167–195 · t. 2, s. 141–209",
+        "sub_short": "Moc testu, wielkość efektu, testy parametryczne i nieparametryczne, wybór testu, post hoc, Bonferroni",
+        "hand": true
+      },
+      {
         "key": "cw-2",
         "kind": "cw",
         "label": "Ćwiczenia 2",
@@ -231,6 +251,18 @@
         "title": "Fiszki · Wykład 5",
         "sub": "Próba i jej dobór · 33",
         "href": "wyklad-5-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Wykład 6",
+        "sub": "Wnioskowanie statystyczne · 32",
+        "href": "wyklad-6-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Wykład 7",
+        "sub": "Testy, moc, wielkość efektu · 25",
+        "href": "wyklad-7-fiszki.html"
       },
       {
         "kind": "cards",
@@ -313,7 +345,12 @@
         "key": "cwiczenia",
         "kind": "cw",
         "label": "Ćwiczenia",
-        "plan": [1, 2, 3, 4],
+        "plan": [
+          1,
+          2,
+          3,
+          4
+        ],
         "file": "cwiczenia.html",
         "title": "Pomoc psychologiczna: perspektywa indywidualna, społeczna i instytucjonalna",
         "src": "Cierpiałkowska, Sęk (2016), cz. 6, r. 28–29, 31–34",
