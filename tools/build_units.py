@@ -296,6 +296,8 @@ def hub(subj):
     groups.append(("plan", "Plan przedmiotu", planrows))
     body = f'<nav class="sec-tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
     body += "".join(f'<section class="group sec-panel" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
+    body += ('<nav class="sec-foot" aria-label="Nawigacja"><a class="sec-back" href="../"><i aria-hidden="true"></i>Studia</a>'
+             f'<a class="plan-btn plan-foot" href="#plan" aria-expanded="false">{TILE_ICONS["plan"]}<span>Plan przedmiotu</span></a></nav>')
     h, s, l = subj["hsl"]
     page = f"""<!doctype html>
 <html lang="pl">

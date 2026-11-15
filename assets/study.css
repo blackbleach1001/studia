@@ -222,3 +222,17 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
   .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile[href^="#"]::after{top:50%;margin-top:-6px}
   .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile.on::after{margin-top:-2px}
 }
+
+/* telefon: nawigacja pod kciukiem (powrót + plan), nazwa przedmiotu na środku wolnego miejsca */
+.sec-foot{display:none}
+@media (max-width:999px){
+  .sec-foot{display:flex;gap:10px;margin-top:10px}
+  .sec-foot>a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1px solid var(--st-sep,rgba(0,0,0,.12));border-radius:3px;background:#fff;color:var(--ink);font-weight:700;font-size:.9375rem;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  .sec-foot .plan-btn{position:static;height:auto;padding:0 10px}
+  .sec-back i{width:8px;height:8px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:2px}
+  .hub .hero>.plan-btn{display:none}
+  .hub .hero:has(.plan-btn) h1{padding-right:0}
+  .page.hub:has(.sec-tiles):not(:has(.sec-panel:not([hidden])))>header.hero{margin:auto 0;text-align:center;padding-bottom:0}
+  .page.hub:has(.sec-tiles):not(:has(.sec-panel:not([hidden])))>main{flex:0 0 auto}
+  .page.hub:has(.sec-tiles):not(:has(.sec-panel:not([hidden])))>header.hero h1{font-size:2.5rem}
+}
