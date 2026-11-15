@@ -278,3 +278,25 @@ body:has(.hub)::before{display:none}
   .hub-pro .row.subj .tx{min-width:0}
   .hub-pro .hp-duo{margin-top:12px}
 }
+
+/* ---------- nagłówek strony jak na stronie wykładu (biały, tytuł szeryfowy) — baza, test, fiszki, materiały ---------- */
+.page:not(.hub):not(.plan)>header.hero{background:none;color:var(--st-ink);margin:0 0 18px;padding:14px 0 18px;border-bottom:.5px solid var(--st-sep)}
+.page:not(.hub):not(.plan)>header.hero h1{font:700 2.1rem/1.15 "Playfair Display",Georgia,serif;letter-spacing:-.005em;max-width:none;margin:0 0 8px}
+@media (max-width:430px){.page:not(.hub):not(.plan)>header.hero h1{font-size:1.75rem}}
+.page:not(.hub):not(.plan)>header.hero .pro-kicker{margin:0 0 6px;gap:8px;font:700 .8125rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--st-ink-2)}
+.page:not(.hub):not(.plan)>header.hero .pro-kicker svg{display:none}
+.page:not(.hub):not(.plan)>header.hero .pro-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--subj);flex:0 0 auto}
+.page:not(.hub):not(.plan)>header.hero .meta{opacity:1;color:var(--st-ink-2);font-size:.875rem}
+.page:not(.hub):not(.plan)>header.hero .btn{color:var(--st-tint);box-shadow:inset 0 0 0 1px var(--st-sep);background:#fff}
+
+/* zakres pytań: lekkie karty jak „Mapa modeli” na stronie wykładu */
+.st-scopes{gap:6px}
+.st-scope{position:relative;border-radius:10px;padding:11px 44px 11px 14px;background:#fff;box-shadow:inset 0 0 0 .5px var(--st-sep)}
+.st-scope .t{font-size:.9375rem;color:var(--st-ink-2)}
+.st-scope .s{font-size:.8125rem;color:var(--st-ink-3)}
+.st-scope::after{content:"";position:absolute;right:14px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--st-sep);background:#fff}
+.st-scope[aria-checked="true"]{background:#fff;box-shadow:inset 0 0 0 1px var(--st-tint)}
+.st-scope[aria-checked="true"] .t{color:var(--st-ink)}
+.st-scope[aria-checked="true"]::after{box-shadow:none;background:var(--st-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+@media (max-width:999px){.page:not(.hub):not(.plan)>header.hero{padding:14px 20px 18px;margin:0 0 18px}}
+@media (min-width:1000px){.page:not(.hub):not(.plan)>header.hero{margin:0 0 28px;padding:20px 0 20px max(0px,calc((100% - 65ch - 540px)/2 + 300px))}}
