@@ -267,7 +267,7 @@ def hub(subj):
     other = [p for p in prac if p is not baza and p["kind"] != "cards"]
     tiles, groups = [], []
     def unit_rows(us):
-        return "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)
+        return "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")).replace('<a class="row"', f'<a class="row" data-src="{esc(u.get("src", ""))}"', 1) for u in us)
     if wyk:
         tiles.append(tile("#wyklady", "wyk", "Wykłady", f'{len(wyk)} {plural(len(wyk), "wykład", "wykłady", "wykładów")}'))
         groups.append(("wyklady", "Wykłady", unit_rows(wyk)))

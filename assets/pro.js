@@ -258,27 +258,23 @@
     var kind = x.kind === "W" ? "Wykład " : dir === "rozmowa" ? "Zajęcia " : "Ćwiczenia ";
     var pl = x.place === "online" ? "online" : x.place ? x.place.replace(/sala\s*/i, "sala ") : "";
     var ex = (P.exams || []).filter(function (e) { return e.subj === dir && e.date === x.date && (!e.grp || e.grp === x.grp); });
-    var lit = (x.lit || []).length ? '<ul class="nx-lit">' + x.lit.map(function (l, i) {
-      var id = x.id + (x.lit.length > 1 ? "" : ""), on = !!store.read[x.id];
-      return "<li>" + esc(l) + "</li>";
-    }).join("") + "</ul>" : "";
-    var done = !!store.read[x.id];
-    card.innerHTML = '<p class="nx-l"><span>Następne zajęcia</span><b>' + esc(when) + "</b></p>" +
-      '<a class="nx-main" href="' + esc(x.href ? "../" + x.href : "#") + '">' +
-        '<span class="nx-d">' + WD[d.getDay()] + ", " + d.getDate() + " " + MON[d.getMonth()] + (x.start ? " · " + esc(x.start) + "–" + esc(x.end || "") : "") + (pl ? " · " + esc(pl) : "") + "</span>" +
-        '<span class="nx-t">' + esc(kind + String(x.n).replace(/\D/g, "")) + " · " + esc(x.topic || "temat nie podany") + "</span>" +
-        ex.map(function (e) { return '<span class="nx-ex">' + esc(e.text) + "</span>"; }).join("") +
-      "</a>" +
-      (lit ? '<div class="nx-read"><button type="button" class="nx-chk" aria-pressed="' + done + '"><i aria-hidden="true"></i>' + (done ? "Przeczytane" : "Do przeczytania") + "</button>" + lit + "</div>" : "");
-    var b = card.querySelector(".nx-chk");
-    if (b) b.addEventListener("click", function () {
-      var v = b.getAttribute("aria-pressed") !== "true";
-      if (v) store.read[x.id] = true; else delete store.read[x.id];
-      try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
-      b.setAttribute("aria-pressed", String(v)); b.lastChild.textContent = v ? "Przeczytane" : "Do przeczytania";
-      card.classList.toggle("is-read", v);
+    var label = kind + String(x.n).replace(/\D/g, ""), href = x.href ? "../" + x.href : "", src = "";
+    /* notatki z tych zajęć: z listy na tej stronie (gdy plan nie ma linku) */
+    [].forEach.call(document.querySelectorAll(".sec-panel a.row"), function (a) {
+      var t = a.querySelector(".t"); if (!t || t.textContent.indexOf(label + " ·") !== 0) return;
+      if (!href) href = a.getAttribute("href");
+      src = a.getAttribute("data-src") || (a.querySelector(".s") || {}).textContent || "";
     });
-    if (done) card.classList.add("is-read");
+    var topic = String(x.topic || "temat nie podany").replace(/^\d+\.\s*/, "");
+    var lit = (x.lit || []).length ? x.lit : (src ? [src] : []);
+    card.innerHTML = '<p class="nx-l"><span>Następne zajęcia</span><b>' + esc(when) + "</b></p>" +
+      (href ? '<a class="nx-main" href="' + esc(href) + '">' : '<div class="nx-main">') +
+        '<span class="nx-d">' + WD[d.getDay()] + ", " + d.getDate() + " " + MON[d.getMonth()] + (x.start ? " · " + esc(x.start) + "–" + esc(x.end || "") : "") + (pl ? " · " + esc(pl) : "") + "</span>" +
+        '<span class="nx-t">' + esc(label) + " · " + esc(topic) + "</span>" +
+        ex.map(function (e) { return '<span class="nx-ex">' + esc(e.text) + "</span>"; }).join("") +
+        (href ? '<span class="nx-go">Notatki →</span>' : "") +
+      (href ? "</a>" : "</div>") +
+      (lit.length ? '<div class="nx-read"><p class="nx-rl">Do przeczytania</p><ul class="nx-lit">' + lit.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></div>" : "");
     var ul = card.querySelector(".nx-lit"); if (ul) ul.addEventListener("click", function () { card.classList.toggle("open"); });
   }
   card.setAttribute("style", "--sh:" + P.meta[dir].hsl[0] + ";--ss:" + P.meta[dir].hsl[1] + "%;--sl:" + P.meta[dir].hsl[2] + "%");
