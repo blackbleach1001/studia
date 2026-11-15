@@ -203,13 +203,13 @@
   if (zj) {
     var lab = zj.querySelector(".hp-label b"), tab = document.createElement("button");
     tab.type = "button"; tab.className = "hp-zj-tab"; tab.setAttribute("aria-expanded", "false");
-    tab.innerHTML = "<span>Zjazd · " + (lab ? lab.textContent.toLowerCase() : "") + "</span>";
+    tab.innerHTML = "<span>Zjazd " + (lab ? lab.textContent.toLowerCase().replace(/^za /, "") : "") + "</span>";
     var bd = document.createElement("div"); bd.className = "hp-zj-bd";
     var x = document.createElement("button"); x.type = "button"; x.className = "hp-zj-x"; x.setAttribute("aria-label", "Zamknij"); x.innerHTML = "×";
     zj.insertBefore(x, zj.firstChild);
     document.body.appendChild(bd); document.body.appendChild(tab);
     function set(o) { document.documentElement.classList.toggle("zj-open", o); tab.setAttribute("aria-expanded", String(o)); }
-    tab.addEventListener("click", function () { set(true); });
+    tab.addEventListener("click", function () { set(!document.documentElement.classList.contains("zj-open")); });
     bd.addEventListener("click", function () { set(false); });
     x.addEventListener("click", function () { set(false); });
     addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });

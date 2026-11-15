@@ -345,7 +345,7 @@ def build_index(subjects):
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
             rows.append(f'<li {style}><a class="row subj" href="{subj["dir"]}/" data-subj="{subj["dir"]}"><span class="dot" aria-hidden="true"></span>'
-                        f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span>'
+                        f'<span class="tx"><span class="t"><span class="t-full">{esc(subj["name"])}</span><span class="t-short">{esc(subj["short"])}</span></span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span>'
                         f'<span class="m" hidden></span></span></a></li>')
         else:
             rows.append(f'<li {style}><span class="row empty"><span class="ic alt">{book}</span>'
