@@ -152,20 +152,12 @@
     after(ds);
   }
 
-  /* --- 4. kafelki przedmiotów: pierścień postępu bazy --- */
+  /* --- 4. kafelki przedmiotów: bez licznika bazy (sam przedmiot i najbliższy termin) --- */
   var NB = window.STUDIA_BAZA_N || {}, baza = {};
   try { baza = JSON.parse(localStorage.getItem("studia-baza-v1") || "{}") || {}; } catch (e) {}
   Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
     var d = a.getAttribute("data-subj"), m = a.querySelector(".m");
     if (m) Array.prototype.forEach.call(m.querySelectorAll("span"), function (c) { if (/^Baza /.test(c.textContent)) c.remove(); });
     if (m && !m.children.length) m.hidden = true;
-    if (!NB[d]) return;
-    var r = baza[d] || {}, ok = 0;
-    Object.keys(r).forEach(function (q) { if (r[q] && r[q][2] === 1) ok++; });
-    var pct = Math.round(ok / NB[d] * 100), C = 2 * Math.PI * 15;
-    var ring = document.createElement("span"); ring.className = "hp-ring";
-    ring.title = "Baza pytań: " + ok + " z " + NB[d] + " opanowanych";
-    ring.innerHTML = '<svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15"/>' + (pct ? '<circle class="v" cx="18" cy="18" r="15" stroke-dasharray="' + (C * pct / 100).toFixed(1) + " " + C.toFixed(1) + '"/>' : "") + '</svg><b>' + pct + "%</b>";
-    a.appendChild(ring);
   });
 })();
