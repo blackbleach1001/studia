@@ -294,9 +294,9 @@ def hub(subj):
     if not zaj:
         planrows += "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
     tiles.append(tile("#plan", "plan", "Plan przedmiotu", "Terminy, sylabus, zaliczenie"))
+    groups.append(("plan", "Plan przedmiotu", planrows))
     body = f'<nav class="sec-tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
-    body += "".join(f'<section class="group" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
-    body += f'<section class="group" id="plan"><details class="plan-box"><summary>Plan przedmiotu</summary><ul class="ios-list">{planrows}</ul></details></section>'
+    body += "".join(f'<section class="group sec-panel" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
     h, s, l = subj["hsl"]
     page = f"""<!doctype html>
 <html lang="pl">
@@ -317,7 +317,7 @@ def hub(subj):
   </header>
   <main>{body}</main>
 </div>
-<script>(function(){{var d=document.querySelector("#plan details");function o(){{if(d&&location.hash=="#plan")d.open=true}}o();addEventListener("hashchange",o)}})()</script>
+<script>(function(){{var T=[].slice.call(document.querySelectorAll('.sec-tile[href^="#"]')),P=[].slice.call(document.querySelectorAll('.sec-panel'));document.documentElement.classList.add('sec-js');function show(id,scroll){{P.forEach(function(p){{p.hidden=p.id!==id}});T.forEach(function(t){{var on=t.getAttribute('href')==='#'+id;t.classList.toggle('on',on);t.setAttribute('aria-expanded',on)}});if(id&&scroll){{var el=document.getElementById(id);if(el)el.scrollIntoView({{behavior:'smooth',block:'start'}})}}}}T.forEach(function(t){{t.addEventListener('click',function(e){{e.preventDefault();var id=t.getAttribute('href').slice(1);var open=t.classList.contains('on');show(open?null:id,!open);history.replaceState(null,'',open?location.pathname+location.search:'#'+id)}})}});show(location.hash.slice(1)||null,false)}})()</script>
 <script src="../assets/reader.js" data-home="../" data-nodock data-title="{esc(subj["short"])}"></script>
 </body>
 </html>
