@@ -533,7 +533,9 @@
     for (var i = 0; i < cs.length; i++) {
       var n = cs[i];
       if (n === "visibility" || n === "left" || n === "top" || n === "right" || n === "bottom" || n === "inset" || /^(transition|animation|cursor|pointer-events|will-change|-webkit-tap|user-select|-webkit-user|caret|scroll|overscroll|touch-action|view-transition|container|anchor|position-)/.test(n)) continue;
-      out += n + ":" + cs.getPropertyValue(n) + ";";
+      var v = cs.getPropertyValue(n);
+      if ((n === "overflow-x" || n === "overflow-y" || n === "overflow") && /auto|scroll/.test(v)) v = "visible";
+      out += n + ":" + v + ";";
     }
     dst.setAttribute("style", out);
     for (var a = dst.attributes.length - 1; a >= 0; a--) {
@@ -557,11 +559,20 @@
       x.remove();
     });
     host.querySelectorAll("details").forEach(function (d) { d.setAttribute("open", ""); });
+    // faktyczna szerokość treści: elementy z przewijaniem (tabele) mogą wystawać poza kolumnę
+    var hr = host.getBoundingClientRect(), need = width;
+    host.querySelectorAll("*").forEach(function (x) {
+      var r = x.getBoundingClientRect(); if (!r.width || !r.height) return;
+      var pos = getComputedStyle(x).position; if (pos === "absolute" || pos === "fixed") return;
+      var over = x.scrollWidth > x.clientWidth + 1 ? x.scrollWidth - x.clientWidth : 0;
+      need = Math.max(need, Math.ceil(r.right - hr.left + over) + 14);
+    });
     var copyEl = host.cloneNode(true);
     cloneWithStyles(host, copyEl);
-    copyEl.style.cssText += ";position:static;left:0;top:0;margin:0;width:" + width + "px;box-sizing:border-box;padding:14px;background:" + bodyBg() + ";";
-    var h = Math.ceil(host.getBoundingClientRect().height) + 28;
-    var W = width, scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2));
+    var W = Math.min(need, 2400);
+    copyEl.style.cssText += ";position:static;left:0;top:0;margin:0;width:" + W + "px;box-sizing:border-box;padding:14px;background:" + bodyBg() + ";";
+    var h = Math.ceil(host.getBoundingClientRect().height);
+    var scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2));
     if (h * scale > 16000) scale = 16000 / h;
     var ser = new XMLSerializer().serializeToString(copyEl);
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + h + '"><foreignObject x="0" y="0" width="100%" height="100%">' +
@@ -578,32 +589,34 @@
       img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
     });
   }
-  function offscreen(build) {
+  function offscreen(build, width) {
     var wrap = document.createElement("div");
-    wrap.className = "hl-ui hl-off"; wrap.style.cssText = "position:fixed;left:-20000px;top:0;visibility:hidden;pointer-events:none";
+    wrap.className = "hl-ui hl-off"; wrap.style.cssText = "position:fixed;left:-20000px;top:0;visibility:hidden;pointer-events:none;box-sizing:border-box;padding:14px;width:" + Math.ceil(width) + "px";
     root.appendChild(wrap);
     var host = build(wrap);
     return { host: host, done: function () { wrap.remove(); } };
   }
   function renderRange(range) {
-    var w = Math.min(Math.max(range.getBoundingClientRect().width, 280), root.getBoundingClientRect().width || 700);
+    var w = Math.min(Math.max(range.getBoundingClientRect().width, 280), root.getBoundingClientRect().width || 700) + 28;
     var anc = range.commonAncestorContainer; if (anc.nodeType !== 1) anc = anc.parentNode;
     var o = offscreen(function (wrap) {
       // odtwarzamy łańcuch przodków (klasy), żeby działały selektory typu ".sec .body p"
       var chain = []; for (var a = anc; a && a !== root && a !== document.body; a = a.parentNode) chain.unshift(a);
       var parent = wrap;
-      chain.forEach(function (a) { var c = a.cloneNode(false); c.removeAttribute("id"); c.removeAttribute("hidden"); c.style.cssText = ""; parent.appendChild(c); parent = c; });
+      chain.forEach(function (a) { var c = a.cloneNode(false); c.removeAttribute("id"); c.removeAttribute("hidden"); c.style.cssText = "";
+        if (c.tagName === "DETAILS") { c.setAttribute("open", ""); var sm = document.createElement("summary"); sm.style.cssText = "display:none"; c.appendChild(sm); }
+        parent.appendChild(c); parent = c; });
       var box = document.createElement("div"); box.appendChild(range.cloneContents());
       parent.appendChild(box);
       return wrap;
-    });
+    }, w);
     // ramka: przodkowie bez marginesów/ramek, żeby obraz był tylko treścią
     var p = renderNode(o.host, Math.ceil(w));
     return p.then(function (b) { o.done(); return b; }, function (e) { o.done(); throw e; });
   }
   function renderElement(el) {
-    var w = Math.ceil(el.getBoundingClientRect().width);
-    var o = offscreen(function (wrap) { var c = el.cloneNode(true); wrap.appendChild(c); return wrap; });
+    var w = Math.ceil(el.getBoundingClientRect().width) + 28;
+    var o = offscreen(function (wrap) { var c = el.cloneNode(true); wrap.appendChild(c); return wrap; }, w);
     var p = renderNode(o.host, w);
     return p.then(function (b) { o.done(); return b; }, function (e) { o.done(); throw e; });
   }
