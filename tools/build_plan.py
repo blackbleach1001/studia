@@ -44,6 +44,8 @@ for sec in SRC.select("section.sub"):
             topic = " · ".join([parts[0]] + [x for x in parts[1:] if not TERM.search(x)])
             s = {"subj": d, "kind": kind, "n": text(li.select_one(".n")), "date": date, "start": start, "end": end,
                  "place": place, "topic": topic, "lit": per[i]["items"] if per else []}
+            if li.get("data-note"):                     # np. zajęcia odwołane / odrabiane
+                s["note"] = li["data-note"]
             if not per and lits and not card.select_one(".lit[data-general]"):                      # jedna lista na wszystkie zajęcia (kliniczna, ćwiczenia)
                 s["lit"], s["litAll"] = lits[0]["items"], True
             plan["sessions"].append(s)
