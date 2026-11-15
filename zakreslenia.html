@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Zakreślenia · Studia</title>
+<meta name="theme-color" content="#fffdf9">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="assets/study.css?v=e2cd84d4">
+<link rel="stylesheet" href="assets/pro.css?v=d934d1ff">
+<link rel="stylesheet" href="assets/sesja.css?v=bb6035fa">
+<link rel="stylesheet" href="assets/czytanie.css?v=92679de6">
+<style>
+:root{--st-h:28;--st-s:22%;--st-l:45%}
+.zk-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.zk-tools input{flex:1 1 220px;min-height:42px;padding:0 14px;border:0;border-radius:10px;background:var(--st-surface,#f4f4f2);font:inherit;color:var(--st-ink)}
+.zk-page{margin:0 0 28px}
+.zk-page h2{margin:0 0 4px;font-size:1.25rem}
+.zk-page h2::before{display:none}
+.zk-page h2 a{color:var(--st-ink);text-decoration:none}
+.zk-meta{margin:0 0 10px;font:600 .6875rem/1.3 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--st-ink-3)}
+.zk-page .rd-go{text-decoration:none;color:var(--st-ink)}
+.zk-empty{color:var(--st-ink-2)}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <h1>Zakreślenia</h1>
+    <p class="meta">Wszystko, co zakreślisz i opiszesz w notatkach i wykładach. Zapisane w tej przeglądarce, na tym urządzeniu.</p>
+  </header>
+  <main id="zk"><noscript>Ta strona wymaga JavaScriptu.</noscript></main>
+</div>
+<script src="assets/reader.js?v=2edc1715" data-home="./" data-back="./" data-back-label="Studia" data-title="Zakreślenia" data-nodock></script>
+<script>
+(function () {
+  "use strict";
+  var main = document.getElementById("zk");
+  var COL = { y: "Żółty", g: "Zielony", b: "Niebieski", p: "Różowy" };
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var pages = [];
+  try {
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k.indexOf("studia-hl:") !== 0) continue;
+      var d = JSON.parse(localStorage.getItem(k));
+      if (d && d.items && d.items.length) pages.push(d);
+    }
+  } catch (e) {}
+  pages.sort(function (a, b) { return (b.at || 0) - (a.at || 0); });
+  var BASE = location.pathname.replace(/[^\/]*$/, "");
+  function rel(u) { return u.indexOf(BASE) === 0 ? u.slice(BASE.length) || "./" : u; }
+  var q = "", f = "";
+  function render() {
+    var total = 0, notes = 0;
+    pages.forEach(function (p) { total += p.items.length; p.items.forEach(function (x) { if (x.n) notes++; }); });
+    if (!total) { main.innerHTML = '<p class="zk-empty">Nic tu jeszcze nie ma. Otwórz wykład, zaznacz fragment tekstu i wybierz kolor. Na komputerze możesz też nacisnąć <kbd>H</kbd>.</p>'; return; }
+    var html = '<div class="zk-tools"><input type="search" placeholder="Szukaj w zakreśleniach i notatkach" aria-label="Szukaj" value="' + esc(q) + '">' +
+      '<button type="button" class="rd-btn ghost" data-act="md">Kopiuj wszystko (Markdown)</button></div>' +
+      '<div class="rd-filter"><button type="button" data-f="" aria-pressed="' + (!f) + '">Wszystkie <b>' + total + '</b></button>' +
+      Object.keys(COL).map(function (c) { return '<button type="button" data-f="' + c + '" aria-pressed="' + (f === c) + '"><i class="hl-sw" data-c="' + c + '"></i>' + COL[c] + "</button>"; }).join("") +
+      (notes ? '<button type="button" data-f="n" aria-pressed="' + (f === "n") + '">z notatką <b>' + notes + "</b></button>" : "") + "</div>";
+    var ql = q.toLowerCase();
+    pages.forEach(function (p) {
+      var its = p.items.filter(function (x) {
+        return (!f || (f === "n" ? !!x.n : x.c === f)) && (!ql || (x.x + " " + (x.n || "") + " " + (x.h || "")).toLowerCase().indexOf(ql) !== -1);
+      });
+      if (!its.length) return;
+      var href = rel(p.u);
+      html += '<section class="zk-page"><h2><a href="' + esc(href) + '">' + esc(p.t) + "</a></h2>" +
+        '<p class="zk-meta">' + its.length + " " + (its.length === 1 ? "zakreślenie" : its.length < 5 ? "zakreślenia" : "zakreśleń") + (p.at ? " · " + new Date(p.at).toLocaleDateString("pl-PL") : "") + "</p><ol class=\"rd-list\">" +
+        its.map(function (x) {
+          return '<li class="rd-item" data-c="' + x.c + '"><a class="rd-go" href="' + esc(href) + "#hl=" + x.id + '">' +
+            (x.h ? '<span class="zk-meta" style="display:block;margin:0 0 4px">' + esc(x.h) + "</span>" : "") +
+            '<span class="rd-x">' + esc(x.x) + "</span>" + (x.n ? '<span class="rd-n">' + esc(x.n) + "</span>" : "") + "</a></li>";
+        }).join("") + "</ol></section>";
+    });
+    main.innerHTML = html;
+  }
+  function md() {
+    var out = ["# Zakreślenia — Studia", ""];
+    pages.forEach(function (p) {
+      out.push("## " + p.t, "");
+      var last = null;
+      p.items.forEach(function (x) {
+        if (x.h && x.h !== last) { out.push("### " + x.h, ""); last = x.h; }
+        out.push("> " + x.x.replace(/\s*\n\s*/g, " ")); if (x.n) out.push("", "**Notatka:** " + x.n); out.push("");
+      });
+    });
+    return out.join("\n");
+  }
+  main.addEventListener("input", function (e) { if (e.target.type === "search") { q = e.target.value; var pos = e.target.selectionStart; render(); var i = main.querySelector("input"); i.focus(); i.setSelectionRange(pos, pos); } });
+  main.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.hasAttribute("data-f")) { f = b.getAttribute("data-f"); render(); }
+    if (b.getAttribute("data-act") === "md") {
+      var t = md();
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = "Skopiowano ✓"; }, function () { b.textContent = "Nie udało się skopiować"; });
+    }
+  });
+  render();
+})();
+</script>
+<script src="assets/pro.js?v=4847bf4d"></script>
+<script src="assets/sesja.js?v=31a09f19"></script>
+<script src="assets/czytanie.js?v=88ff40bb"></script>
+</body>
+</html>

@@ -2,14 +2,14 @@
    Studia — tryb sesji: wykład jako ciąg ekranów zamiast przewijanej strony.
    Dzieli <main> na ekrany: okładka → dla każdej sekcji (h2): ekran otwierający,
    po jednym ekranie na część (details.sec / blok treści), ekran sprawdzenia.
-   Treści nie zmienia. Przełącznik „Strona” wraca do zwykłego widoku.
+   Treści nie zmienia. Domyślny widok to zwykła strona; „Tryb sesji” włącza ekrany, „Strona” wraca.
    Postęp i wybór widoku: localStorage (studia-sesja*).
    ========================================================= */
 (function () {
   "use strict";
   var main = document.querySelector("main"), page = document.querySelector(".page");
-  var KEY = "studia-sesja", POS = KEY + ":" + location.pathname, on = true;
-  try { on = localStorage.getItem(KEY) !== "0"; } catch (e) {}
+  var KEY = "studia-sesja", POS = KEY + ":" + location.pathname, on = false;
+  try { on = localStorage.getItem(KEY) === "1"; } catch (e) {}       /* domyślnie zwykła strona; sesja tylko po wybraniu */
   var root = main || document.querySelector(".wrap");
   if (!root || (page && page.classList.contains("hub"))) return;
   /* starsze notatki: sekcje (h2) leżą głębiej, w opakowaniach (section.chapter, div.panel…) */
