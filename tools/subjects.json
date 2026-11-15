@@ -363,7 +363,7 @@
       {
         "kind": "quiz",
         "title": "Baza egzaminacyjna",
-        "sub": "210 pytań · test jak na egzaminie",
+        "sub": "580 pytań · test jak na egzaminie",
         "href": "baza.html"
       },
       {
@@ -574,8 +574,8 @@
     "practice": [
       {
         "kind": "quiz",
-        "title": "Kolokwium 1: pytania z bazy",
-        "sub": "12 zamkniętych · 11 otwartych",
+        "title": "Baza egzaminacyjna",
+        "sub": "346 pytań · test jak na egzaminie + kolokwium 1",
         "href": "baza.html"
       },
       {
@@ -713,6 +713,12 @@
       }
     ],
     "practice": [
+      {
+        "kind": "quiz",
+        "title": "Baza egzaminacyjna",
+        "sub": "393 pytania · test jak na egzaminie",
+        "href": "baza.html"
+      },
       {
         "kind": "cards",
         "title": "Fiszki · Wykład 1",
