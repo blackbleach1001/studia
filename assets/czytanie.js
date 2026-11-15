@@ -218,6 +218,7 @@
     copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
     del: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
     hl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l-5 5v4h4l5-5"/><path d="M9 11l6-6 4 4-6 6z"/><path d="M14 20h6"/></svg>',
+    img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></svg>',
     aa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19l5-14 5 14M5 14h6"/><path d="M15 12.5a3 3 0 0 1 6 0V19M21 15.5c-3.5-.6-6 .2-6 2a1.8 1.8 0 0 0 3.2 1.1"/></svg>'
   };
   var tb = document.createElement("div");
@@ -231,7 +232,8 @@
     }).join("") + '<span class="hl-sep"></span>' +
       '<button type="button" data-act="note" aria-label="Notatka">' + ICON.note + "<span>" + (it && it.n ? "Notatka" : "Notatka") + "</span></button>" +
       (it ? '<button type="button" data-act="del" aria-label="Usuń zakreślenie">' + ICON.del + "</button>"
-          : '<button type="button" data-act="copy" aria-label="Kopiuj">' + ICON.copy + "</button>");
+          : '<button type="button" data-act="copy" aria-label="Kopiuj tekst">' + ICON.copy + "</button>" +
+            '<button type="button" data-act="img" aria-label="Kopiuj jako obraz">' + ICON.img + "</button>");
   }
   function place(rect) {
     tb.hidden = false;
@@ -263,7 +265,8 @@
     var b = e.target.closest("button"); if (!b || !cur) return;
     var act = b.getAttribute("data-act"), it;
     if (cur.range) {
-      if (act === "copy") { copy(cur.range.toString().trim()); clearSel(); hide(); return; }
+      if (act === "copy") { copy(cur.range.toString().trim(), null, rangeHTML(cur.range)); clearSel(); hide(); return; }
+      if (act === "img") { var rg = cur.range; copyImage(function () { return renderRange(rg); }, "Skopiowano jako obraz"); clearSel(); hide(); return; }
       it = create(cur.range, act === "color" ? b.getAttribute("data-c") : "y");
       clearSel();
       if (!it) { hide(); toast("Tego fragmentu nie da się zakreślić"); return; }
@@ -501,14 +504,147 @@
     toastEl.textContent = t; toastEl.classList.add("on"); clearTimeout(toastT);
     toastT = setTimeout(function () { toastEl.classList.remove("on"); }, 1800);
   }
-  function copy(t, msg) {
+  function copy(t, msg, h) {
     function fallback() {
       var ta = document.createElement("textarea"); ta.value = t; ta.className = "hl-ui"; ta.style.cssText = "position:fixed;opacity:0";
       document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (e) {} ta.remove();
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(fallback); else fallback();
+    if (h && window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      navigator.clipboard.write([new ClipboardItem({
+        "text/html": new Blob([h], { type: "text/html" }), "text/plain": new Blob([t], { type: "text/plain" })
+      })]).catch(function () { if (navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(fallback); else fallback(); });
+    } else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).catch(fallback); else fallback();
     toast(msg || "Skopiowano");
   }
+  function rangeHTML(r) {
+    var d = document.createElement("div"); d.appendChild(r.cloneContents());
+    d.querySelectorAll(".hl-ui, script, style").forEach(function (x) { x.remove(); });
+    return d.innerHTML;
+  }
+
+  /* =========================================================
+     5. Kopiowanie jako obraz (do GoodNotes itp.)
+        Zaznaczony fragment lub schemat → PNG (schowek; w razie czego arkusz udostępniania / pobranie).
+        Fragment jest renderowany z zachowaniem formatowania i zakreśleń, na jasnym tle.
+     ========================================================= */
+  var KEEP = null;
+  function inlineStyles(src, dst) {
+    var cs = getComputedStyle(src), out = "";
+    for (var i = 0; i < cs.length; i++) {
+      var n = cs[i];
+      if (n === "visibility" || n === "left" || n === "top" || n === "right" || n === "bottom" || n === "inset" || /^(transition|animation|cursor|pointer-events|will-change|-webkit-tap|user-select|-webkit-user|caret|scroll|overscroll|touch-action|view-transition|container|anchor|position-)/.test(n)) continue;
+      out += n + ":" + cs.getPropertyValue(n) + ";";
+    }
+    dst.setAttribute("style", out);
+    for (var a = dst.attributes.length - 1; a >= 0; a--) {
+      var an = dst.attributes[a].name;
+      if (an === "class" || an === "id" || an.indexOf("data-") === 0 || an === "aria-label" || an === "hidden") dst.removeAttribute(an);
+    }
+  }
+  function cloneWithStyles(srcRoot, dstRoot) {
+    inlineStyles(srcRoot, dstRoot);
+    var sk = srcRoot.children, dk = dstRoot.children;
+    for (var i = 0; i < sk.length && i < dk.length; i++) cloneWithStyles(sk[i], dk[i]);
+  }
+  function bodyBg() {
+    var c = getComputedStyle(document.body).backgroundColor;
+    return /rgba\(.*,\s*0\)|transparent/.test(c) ? "#ffffff" : c;
+  }
+  function renderNode(host, width) {
+    // host: element już w DOM (poza ekranem), z prawdziwym kaskadowaniem stylów
+    host.querySelectorAll(".hl-ui, script, style, summary .ic, .st-check, .st-prime, button, details > summary").forEach(function (x) {
+      if (x.matches("details > summary")) return;
+      x.remove();
+    });
+    host.querySelectorAll("details").forEach(function (d) { d.setAttribute("open", ""); });
+    var copyEl = host.cloneNode(true);
+    cloneWithStyles(host, copyEl);
+    copyEl.style.cssText += ";position:static;left:0;top:0;margin:0;width:" + width + "px;box-sizing:border-box;padding:14px;background:" + bodyBg() + ";";
+    var h = Math.ceil(host.getBoundingClientRect().height) + 28;
+    var W = width, scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2));
+    if (h * scale > 16000) scale = 16000 / h;
+    var ser = new XMLSerializer().serializeToString(copyEl);
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + h + '"><foreignObject x="0" y="0" width="100%" height="100%">' +
+      (/^<\w+[^>]*xmlns=/.test(ser) ? ser : ser.replace(/^<(\w+)/, '<$1 xmlns="http://www.w3.org/1999/xhtml"')) + "</foreignObject></svg>";
+    return new Promise(function (res, rej) {
+      var img = new Image();
+      img.onload = function () {
+        var cv = document.createElement("canvas"); cv.width = Math.round(W * scale); cv.height = Math.round(h * scale);
+        var cx = cv.getContext("2d"); cx.fillStyle = bodyBg(); cx.fillRect(0, 0, cv.width, cv.height);
+        cx.drawImage(img, 0, 0, cv.width, cv.height);
+        cv.toBlob(function (b) { b ? res(b) : rej(new Error("toBlob")); }, "image/png");
+      };
+      img.onerror = function () { rej(new Error("img")); };
+      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    });
+  }
+  function offscreen(build) {
+    var wrap = document.createElement("div");
+    wrap.className = "hl-ui hl-off"; wrap.style.cssText = "position:fixed;left:-20000px;top:0;visibility:hidden;pointer-events:none";
+    root.appendChild(wrap);
+    var host = build(wrap);
+    return { host: host, done: function () { wrap.remove(); } };
+  }
+  function renderRange(range) {
+    var w = Math.min(Math.max(range.getBoundingClientRect().width, 280), root.getBoundingClientRect().width || 700);
+    var anc = range.commonAncestorContainer; if (anc.nodeType !== 1) anc = anc.parentNode;
+    var o = offscreen(function (wrap) {
+      // odtwarzamy łańcuch przodków (klasy), żeby działały selektory typu ".sec .body p"
+      var chain = []; for (var a = anc; a && a !== root && a !== document.body; a = a.parentNode) chain.unshift(a);
+      var parent = wrap;
+      chain.forEach(function (a) { var c = a.cloneNode(false); c.removeAttribute("id"); c.removeAttribute("hidden"); c.style.cssText = ""; parent.appendChild(c); parent = c; });
+      var box = document.createElement("div"); box.appendChild(range.cloneContents());
+      parent.appendChild(box);
+      return wrap;
+    });
+    // ramka: przodkowie bez marginesów/ramek, żeby obraz był tylko treścią
+    var p = renderNode(o.host, Math.ceil(w));
+    return p.then(function (b) { o.done(); return b; }, function (e) { o.done(); throw e; });
+  }
+  function renderElement(el) {
+    var w = Math.ceil(el.getBoundingClientRect().width);
+    var o = offscreen(function (wrap) { var c = el.cloneNode(true); wrap.appendChild(c); return wrap; });
+    var p = renderNode(o.host, w);
+    return p.then(function (b) { o.done(); return b; }, function (e) { o.done(); throw e; });
+  }
+  // Safari wymaga wywołania clipboard.write synchronicznie w geście — dlatego przekazujemy obietnicę blobu
+  function copyImage(make, msg) {
+    var p = make();
+    var ok = false;
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      try {
+        navigator.clipboard.write([new ClipboardItem({ "image/png": p })]).then(function () { toast(msg || "Skopiowano obraz"); },
+          function () { fallbackImage(p); });
+        ok = true;
+      } catch (e) { ok = false; }
+    }
+    if (!ok) fallbackImage(p);
+  }
+  function fallbackImage(p) {
+    p.then(function (b) {
+      var f = new File([b], "notatka.png", { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [f] })) {
+        return navigator.share({ files: [f] }).catch(function () {});
+      }
+      var a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "notatka.png";
+      document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+      toast("Pobrano obraz (schowek niedostępny)");
+    }, function () { toast("Nie udało się zrobić obrazu"); });
+  }
+  // przycisk na schematach
+  function figButtons() {
+    root.querySelectorAll("figure.fig, .diagram").forEach(function (f) {
+      if (f.querySelector(":scope > .fig-copy") || !f.querySelector("svg")) return;
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "hl-ui fig-copy"; b.setAttribute("aria-label", "Kopiuj schemat jako obraz"); b.title = "Kopiuj jako obraz";
+      b.innerHTML = ICON.img;
+      b.addEventListener("click", function (e) { e.stopPropagation(); copyImage(function () { return renderElement(f); }, "Skopiowano schemat jako obraz"); });
+      if (getComputedStyle(f).position === "static") f.style.position = "relative";
+      f.appendChild(b);
+    });
+  }
+  figButtons();
+  window.StudiaCopyImage = { range: renderRange, element: renderElement };
   function download(t, name) {
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([t], { type: "text/markdown;charset=utf-8" })); a.download = name;
