@@ -284,7 +284,7 @@ def hub(subj):
         n = sum(int(m.group(1)) for c in cards for m in [re.search(r"(\d+)\s*$", c.get("sub", ""))] if m)
         has_test = True
         href = "test.html"
-        tiles.append(tile(href, "odp", "Odpytywanie", "Test z wybranego wykładu i fiszki"))
+        tiles.append(tile(href, "odp", "Odpytywanie", "Test i fiszki"))
     for p in other:
         pass
     if other:
