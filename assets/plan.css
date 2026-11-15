@@ -123,3 +123,31 @@
 .pl-alt{margin:16px 0 0}
 .pl-alt>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--ink-mute)}
 .pl-alt[open]>*:not(summary){opacity:.55}
+
+/* =========================================================
+   Wygląd jak strona główna: biały nagłówek, karty z cienką ramką, etykiety mono
+   ========================================================= */
+.page.plan{max-width:calc(68ch + 40px);margin:0 auto;display:block;padding-left:20px;padding-right:20px;overflow-x:clip}
+.page.plan>header.hero{background:none;color:var(--st-ink);margin:0;padding:36px 0 8px;grid-column:auto}
+.page.plan>header.hero h1{font:700 2.75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:-.035em;margin:2px 0 8px;max-width:none}
+.page.plan>header.hero .meta{opacity:1;color:var(--st-ink-2,var(--ink-soft));font-size:.9375rem}
+.page.plan>main{padding:0}
+.plan .pl-tabs{margin:20px 0 12px}
+.plan .pl-chips{margin:0 -20px 4px}
+.plan .pl-chips button{border-radius:3px;background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep)}
+.plan .pl-chips button[aria-pressed="true"]{background:var(--st-ink);color:#fff;box-shadow:none}
+.plan .pl-card{background:#fff;border-radius:3px;box-shadow:none;border:1px solid var(--st-sep);padding:16px 16px 8px}
+.plan .pl-card.subj{border-top:4px solid hsl(var(--sh),var(--ss),var(--sl))}
+.plan .pl-list{border-radius:3px;box-shadow:none;border:1px solid var(--st-sep);background:#fff}
+.plan .pl-card .pl-list{border:0}
+.plan .pl-list>li+li::before{border-top:1px solid rgba(0,0,0,.07)}
+.plan .pl-eyebrow,.plan .pl-dayh,.plan .pl-h3,.plan .pl-k{font:var(--st-label);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--st-ink-3,var(--ink-mute))}
+.plan .pl-h3.late{color:hsl(4,55%,40%)}
+.plan .pl-sec>h2,.plan main>h2,.plan .pl-sec-h{font:var(--st-label);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--st-ink);padding-top:10px;margin:34px 0 4px;color:var(--st-ink-3,var(--ink-mute))}
+.plan .pl-tag{border-radius:3px}
+.plan .pl-card h2{font:700 1.5rem/1.15 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:-.02em}
+.plan .pl-more a{color:var(--st-ink)}
+body:has(.page.plan)::before{display:none}
+.page.plan>header.hero .pro-kicker{gap:0;margin:0;font-size:.75rem;color:var(--st-ink-3,var(--ink-mute))}
+.page.plan>header.hero .pro-kicker svg{display:none}
+.plan .pl-cal{background:#fff;border-radius:3px;box-shadow:none;border:1px solid var(--st-sep)}

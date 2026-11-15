@@ -129,7 +129,7 @@ plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="assets/study.css">
 <link rel="stylesheet" href="assets/plan.css">
-<style>:root{--st-h:28;--st-s:22%;--st-l:45%}</style>
+<style>:root{--st-h:215;--st-s:14%;--st-l:22%}</style>
 </head>
 <body>
 <div class="page plan">

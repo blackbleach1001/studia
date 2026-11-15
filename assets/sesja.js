@@ -11,7 +11,7 @@
   var KEY = "studia-sesja", POS = KEY + ":" + location.pathname, on = false;
   try { on = localStorage.getItem(KEY) === "1"; } catch (e) {}       /* domyślnie zwykła strona; sesja tylko po wybraniu */
   var root = main || document.querySelector(".wrap");
-  if (!root || (page && page.classList.contains("hub"))) return;
+  if (!root || (page && (page.classList.contains("hub") || page.classList.contains("plan")))) return;
   /* starsze notatki: sekcje (h2) leżą głębiej, w opakowaniach (section.chapter, div.panel…) */
   var legacy = root.querySelectorAll(":scope > h2").length < 2;
   if (legacy && root.querySelectorAll("h2").length < 2) return;
