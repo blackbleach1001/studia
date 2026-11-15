@@ -183,3 +183,10 @@ footer.sources{margin-top:3em;padding-top:14px;border-top:.5px solid var(--line)
 @media(min-width:640px){.sec-tile:last-child:nth-child(odd){grid-column:auto;min-height:118px}}
 .sec-js .sec-panel[hidden]{display:none}
 .hub .sec-panel{scroll-margin-top:16px}
+
+/* lupa na stronie głównej: przycisk w prawym górnym rogu, pole wysuwa się po kliknięciu */
+.hub .hero{position:relative}
+.search-btn{position:absolute;top:14px;right:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;background:none;color:var(--ink-mute);cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:3px}
+.search-btn svg{width:22px;height:22px}
+.search-btn:hover,.search-btn.on{color:var(--ink)}
+.search[hidden]{display:none}

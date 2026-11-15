@@ -376,7 +376,8 @@ def build_index(subjects):
   <header class="hero">
     <h1>Studia</h1>
     <p class="meta">Psychologia SWPS · Semestr 3</p>
-    <form class="search" role="search" onsubmit="return false">
+    <button type="button" class="search-btn" id="search-btn" aria-label="Szukaj w notatkach" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <form class="search" id="search-form" role="search" onsubmit="return false" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
       <input type="search" id="q" placeholder="Szukaj w notatkach" aria-label="Szukaj w notatkach" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
     </form>
@@ -388,6 +389,7 @@ def build_index(subjects):
   </main>
 </div>
 <script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
+<script>(function(){{var b=document.getElementById("search-btn"),f=document.getElementById("search-form"),q=document.getElementById("q");function open(o){{f.hidden=!o;b.setAttribute("aria-expanded",o);b.classList.toggle("on",o);if(o)q.focus();else{{if(q.value){{q.value="";q.dispatchEvent(new Event("input"))}}}}}}b.addEventListener("click",function(){{open(f.hidden)}});q.addEventListener("keydown",function(e){{if(e.key==="Escape")open(false)}});q.addEventListener("blur",function(){{setTimeout(function(){{if(!q.value&&document.activeElement!==b)open(false)}},150)}})}})()</script>
 <script src="assets/home.js" data-index="assets/search-index.js"></script>
 <script src="assets/srs.js"></script>
 <script src="assets/cards-index.js"></script>
