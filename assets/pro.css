@@ -300,3 +300,73 @@ body:has(.hub)::before{display:none}
 .st-scope[aria-checked="true"]::after{box-shadow:none;background:var(--st-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
 @media (max-width:999px){.page:not(.hub):not(.plan)>header.hero{padding:14px 20px 18px;margin:0 0 18px}}
 @media (min-width:1000px){.page:not(.hub):not(.plan)>header.hero{grid-column:2/3;margin:0 0 28px;padding:20px 0}}
+
+/* =========================================================
+   TABLET (700–999 px): większa skala, siatka 2 kolumny, treść wypełnia ekran
+   ========================================================= */
+@media (min-width:700px) and (max-width:999px){
+  /* wspólne: nagłówek */
+  .hub-pro>header.hero{padding:28px 0 0 !important}
+  .hub-pro>header.hero .pro-kicker,.hub-pro>header.hero .hp-kicker{font-size:.875rem}
+  .hub-pro>header.hero h1{font-size:3.25rem !important;line-height:1.02;margin:6px 0 6px}
+  .hub-pro>header.hero .meta{font-size:1.0625rem}
+  .hub-pro .search-btn{top:22px;right:-8px;width:48px;height:48px}
+  .hub-pro .search-btn svg{width:26px;height:26px}
+  /* strona główna */
+  .hub-pro .hp-sem{margin:20px 0 0}
+  .hub-pro .hp-sem-t{margin-top:8px;font-size:.9375rem}
+  .hub-pro .hp-duo{gap:14px;margin-top:22px}
+  .hp-half{padding:18px 20px 18px;gap:5px}
+  .hp-half-l{font-size:.75rem}
+  .hp-half b{font-size:1.25rem}
+  .hp-half-s{font-size:.9375rem}
+  .hub-pro .group:has(.subjects) h2{margin-top:28px;padding-top:12px;font-size:.8125rem}
+  .hub-pro .ios-list.subjects{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+  .hub-pro .row.subj{grid-template-columns:52px 1fr;column-gap:18px;min-height:168px;padding:24px 22px 20px}
+  .hub-pro .row.subj .tile{width:52px;height:52px}
+  .hub-pro .row.subj .tile svg{width:28px;height:28px}
+  .hub-pro .row.subj .t{font-size:1.375rem}
+  .hub-pro .row.subj .t-full{display:inline}
+  .hub-pro .row.subj .t-short{display:none}
+  .hub-pro .row.subj .s{font-size:1rem;padding-top:6px;-webkit-line-clamp:3}
+  .hub-pro .row.subj .m{font-size:.9375rem;margin-top:8px}
+  .hp-zj-dock{padding:14px 30px calc(14px + env(safe-area-inset-bottom,0px))}
+  .hp-zj-open{max-width:none;padding:16px 20px}
+  .hp-zj-open b{font-size:1.25rem}
+  .hp-zj-l{font-size:.75rem}
+  .hub-pro .hp-zjazd{max-height:70vh;padding:24px 30px 0;max-width:none}
+  .hub-pro .hp-zjazd{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px)) !important}
+  /* strona przedmiotu */
+  .page.hub:has(.sec-tiles){padding-bottom:calc(104px + env(safe-area-inset-bottom,0px)) !important}
+  .page.hub:has(.sec-tiles)>header.hero h1{font-size:3.25rem}
+  .page.hub:has(.sec-tiles)>header.hero .meta{font-size:1.0625rem}
+  .page.hub .sec-tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px;padding-top:16px}
+  .page.hub .sec-tile{grid-template-columns:52px 1fr;column-gap:18px;min-height:150px;padding:24px 22px 20px}
+  .page.hub .sec-tile .ti{width:52px;height:52px}
+  .page.hub .sec-tile .ti svg{width:28px;height:28px}
+  .page.hub .sec-tile .tt{font-size:1.375rem}
+  .page.hub .sec-tile .ts{font-size:1rem;margin-top:6px}
+  .page.hub .sec-tile[href^="#"]::after{top:30px;right:22px;width:9px;height:9px}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile{min-height:0;padding:14px 18px}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile .ti{width:36px;height:36px}
+  .page.hub main:has(>.sec-panel:not([hidden])) .sec-tile .tt{font-size:1.0625rem}
+  .nx-card{margin-top:24px;padding:20px 22px 16px}
+  .nx-l{font-size:.75rem}
+  .nx-d{font-size:1rem}
+  .nx-t{font-size:1.5rem;margin-top:6px}
+  .nx-go{font-size:.9375rem;margin-top:10px}
+  .nx-rl,.nx-card .nx-lit{font-size:.9375rem}
+  .sec-foot{padding:14px 30px calc(14px + env(safe-area-inset-bottom,0px))}
+  .sec-foot>a{min-height:64px;font-size:1.0625rem}
+  .sec-foot>a svg{width:22px;height:22px}
+  .page.hub .ios-list .row{min-height:64px}
+  .page.hub .ios-list .row .t{font-size:1.0625rem}
+  .pp-x b{font-size:1.0625rem}
+  .pp-d{font-size:.9375rem}
+}
+@media (min-width:700px) and (max-width:999px){
+  .page.hub:has(.sec-tiles)>header.hero{padding:28px 0 0 !important}
+  .pg-foot{padding:14px 30px calc(14px + env(safe-area-inset-bottom,0px))}
+}
+/* fokus z klawiatury widoczny wszędzie (WCAG 2.4.7) */
+.sec-tile:focus-visible,.row.subj:focus-visible,.hp-half:focus-visible,.hp-zj-open:focus-visible,.sec-foot>a:focus-visible,.search-btn:focus-visible,.nx-main:focus-visible{outline:3px solid hsl(212,90%,48%);outline-offset:2px}

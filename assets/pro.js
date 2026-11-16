@@ -221,11 +221,13 @@
 /* ---------- baza, odpytywanie, fiszki: powrót na dole ekranu (telefon) ---------- */
 (function () {
   "use strict";
-  var main = document.querySelector("main#baza, main#test, main#deck"); if (!main) return;
+  var main = document.querySelector("main#baza, main#test, main#deck, .page.plan>main"); if (!main) return;
+  var isPlan = !!main.closest(".page.plan");
   var rd = document.querySelector('script[src*="reader.js"]'); if (!rd) return;
   var back = rd.dataset.back || "./", home = rd.dataset.home || "../", lab = rd.dataset.backLabel || "Wstecz";
   var nav = document.createElement("nav"); nav.className = "sec-foot pg-foot"; nav.setAttribute("aria-label", "Nawigacja");
-  nav.innerHTML = '<a class="sec-back" href="' + back + '"><i aria-hidden="true"></i>' + lab.replace(/[<>&]/g, "") + '</a>' +
+  nav.innerHTML = isPlan ? '<a class="sec-back" href="' + home + '"><i aria-hidden="true"></i>Studia</a>' :
+    '<a class="sec-back" href="' + back + '"><i aria-hidden="true"></i>' + lab.replace(/[<>&]/g, "") + '</a>' +
     '<a class="sec-home" href="' + home + '">Studia</a>';
   document.body.appendChild(nav);
   document.body.classList.add("has-pg-foot");
