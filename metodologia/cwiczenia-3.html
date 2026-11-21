@@ -17,7 +17,7 @@
 <div class="page">
 <header class="hero">
 <h1>Korelacje i tabele krzyżowe</h1>
-<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, rozdz. 8 (s. 340–361) i rozdz. 5 (s. 241–245) · ćwiczenia 22.11 · uzupełnienie: <a href="wyklad-4.html#s8">wykład 4</a> (Drogowskaz)</p>
+<p class="meta">Józefacka, Kołek i Arciszewska-Leszczuk, t. 1, rozdz. 8 (s. 340–361) i rozdz. 5 (s. 241–245) · ćwiczenia 22.11 · slajdy z zajęć (Jamovi, χ², moc testu) · uzupełnienie: <a href="wyklad-4.html#s8">wykład 4</a> (Drogowskaz)</p>
 <div class="links"><a class="btn" href="test.html#cwiczenia-3.html">Test z tego materiału</a></div>
 </header>
 <main><section aria-label="Pojęcia na start" class="st-prime"><p aria-level="2" class="st-prime-h" role="heading">Pojęcia na start</p><dl><div><dt>Korelacja</dt><dd>Sytuacja, w której dwie zmienne są ze sobą powiązane, czyli współwystępują.</dd></div><div><dt>Kowariancja</dt><dd>Miara wspólnej zmienności dwóch zmiennych. Mówi tylko o kierunku związku, r Pearsona to jej wersja wystandaryzowana.</dd></div><div><dt>Współczynnik determinacji (R²)</dt><dd>R² = r². Jaki procent zmienności jednej zmiennej wyjaśnia druga.</dd></div><div><dt>Problem trzeciej zmiennej</dt><dd>Związek dwóch zmiennych może wynikać z czynnika, który wpływa na obie, jak przy bocianach i urodzeniach.</dd></div><div><dt>Tabela krzyżowa</dt><dd>Łączny rozkład dwóch zmiennych jakościowych: kategorie jednej w wierszach, drugiej w kolumnach.</dd></div></dl></section>
@@ -31,7 +31,18 @@
 <p><strong>Bociany i dzieci</strong> (Matthews): w 17 krajach Europy liczba bocianów istotnie korelowała z liczbą urodzeń (p = 0,008), a współczynnik był wysoki. To klasyczny przykład mylenia <strong>współwystępowania z przyczynowością</strong> i <strong>korelacji pozornej</strong>: nie uwzględniono wielkości kraju i liczby ludności – w większym kraju jest więcej i ludzi, i bocianów.</p>
 <p>Korelacja to miara <strong>wzajemnego</strong> związku; zmienne mogą być jednocześnie przyczynami i skutkami, a związek może zależeć od <strong>trzeciej zmiennej</strong>.</p>
 </div>
-</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99" data-title="Czym jest korelacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div>
+</details><details class="sec">
+<summary>Hipotezy korelacyjne <span class="src">Slajdy ćw. 3 4–10</span></summary>
+<div class="body">
+<ul>
+<li>Korelacja to <strong>współzmienność liniowa</strong>: zmianom jednej zmiennej towarzyszą zmiany drugiej. Dotyczy zmiennych <strong>ilościowych i porządkowych</strong>; współczynnik mówi o <strong>sile i kierunku</strong> związku.</li>
+<li>Hipoteza korelacyjna mówi o <strong>związku, nie o wpływie</strong>. Wzory: „A koreluje (wiąże się) dodatnio/ujemnie z B”, „Im wyższy poziom A, tym wyższy/niższy poziom B”.</li>
+<li><strong>Kierunkowa</strong> – wskazuje znak: „Samoocena koreluje dodatnio z poczuciem własnej skuteczności”, „Im dłuższy czas w social mediach, tym niższe zadowolenie z życia”. <strong>Bezkierunkowa</strong> (dwukierunkowa): „Czas w social mediach koreluje z zadowoleniem z życia”, „Wiek jest związany z dobrostanem”.</li>
+<li>„Im wyższa samoocena, tym wyższy dobrostan”, „Im niższa samoocena, tym niższy dobrostan” i „Samoocena koreluje dodatnio z dobrostanem” to <strong>ta sama hipoteza</strong>.</li>
+</ul>
+<p class="def"><strong>Typowe błędy</strong>: „Ugodowość koreluje z płcią” i „Narodowość koreluje z indywidualizmem” – płeć i narodowość to zmienne <strong>nominalne</strong>, więc nie liczymy korelacji (tylko analizę kontyngencji albo porównanie grup). „<strong>Wysoka</strong> samoocena koreluje z <strong>wysokim</strong> poziomem motywacji” – korelacja dotyczy całego zakresu zmiennej, nie tylko wysokich wartości.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99,metodologia/cwiczenia-3-fiszki:53032d4e,metodologia/cwiczenia-3-fiszki:58345069" data-title="Czym jest korelacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
 <!-- 2 -->
 <h2 id="s2">Mechanizm: od kowariancji do testu</h2>
 <p class="tldr"><span class="lbl">W skrócie</span> r Pearsona to <strong>wystandaryzowana kowariancja</strong> (od −1 do +1). Kowariancja mówi tylko o kierunku. Istotność r sprawdza się testem opartym na rozkładzie <strong>t Studenta</strong> z uwzględnieniem df – przy dużej próbie nawet słaba korelacja bywa istotna.</p>
@@ -77,7 +88,24 @@
 <div class="body">
 <p>Anscombe pokazał cztery zbiory o tych samych średnich (X = 9, Y = 7,5), wariancjach i r = 0,816, a zupełnie różnych wykresach: związek liniowy, <strong>krzywoliniowy</strong>, liniowy z jedną <strong>wpływową obserwacją odstającą</strong> i <strong>korelacja pozorna</strong>, którą tworzy jeden punkt. <strong>Datasaurus</strong> (142 punkty w kształcie dinozaura, r = −0,06) i jego „poplecznicy” (Matejka i Fitzmaurice) mają identyczne statystyki. Wniosek: <strong>bez wykresu rozrzutu nie da się poprawnie zinterpretować danych</strong>.</p>
 </div>
-</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82" data-title="Założenia korelacji r Pearsona" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+</details><details class="sec">
+<summary>Pearson czy Spearman? Decyzja krok po kroku <span class="src">Slajdy ćw. 3 16–17, 22</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th></th><th>r Pearsona</th><th>rho Spearmana</th></tr>
+<tr><td>Rodzaj testu</td><td>parametryczny</td><td>nieparametryczny</td></tr>
+<tr><td>Zmienne</td><td>2 ilościowe, zależność liniowa</td><td>co najmniej 1 porządkowa</td></tr>
+<tr><td>Rozkład</td><td>obu zmiennych zbliżony do normalnego</td><td>rozkład choć 1 zmiennej odbiega od normalnego</td></tr>
+</table></div>
+<ol>
+<li>Czy obie zmienne są ilościowe? <strong>Nie</strong> (choć jedna porządkowa, np. jakość snu na skali 1–5) → <strong>rho Spearmana</strong>.</li>
+<li>Tak → sprawdź normalność obu zmiennych (Statystyki opisowe):
+<ul><li><strong>N ≤ 30</strong> – kryterium <strong>restrykcyjne</strong>: test <strong>Shapiro-Wilka</strong>; p &gt; 0,05 dla obu → r Pearsona; p &lt; 0,05 dla choć jednej → rho Spearmana.</li>
+<li><strong>N &gt; 30</strong> – kryterium <strong>liberalne</strong>: <strong>skośność i kurtoza</strong> obu zmiennych w przedziale <strong>od −2 do 2</strong> → r Pearsona; choć jedna wartość poza → rho Spearmana.</li></ul></li>
+<li>Obejrzyj <strong>wykres rozrzutu</strong>: dla r Pearsona zależność powinna być liniowa.</li>
+</ol>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82,metodologia/cwiczenia-3-fiszki:9fdfdf5f,metodologia/cwiczenia-3-fiszki:d5ef2020" data-title="Założenia korelacji r Pearsona" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
 <!-- 4 -->
 <h2 id="s4">Interpretacja: istotność, siła, determinacja</h2>
 <p class="tldr"><span class="lbl">W skrócie</span> najpierw <strong>p</strong> (czy związek istnieje), potem <strong>znak</strong> (kierunek), <strong>wartość r</strong> (siła) i <strong>R² = r²</strong> – jaki procent zmienności jednej zmiennej wyjaśnia druga. r = 0,76 <strong>nie</strong> znaczy „76%”.</p>
@@ -94,7 +122,26 @@
 <p>Gignac i Szodorai przeanalizowali 708 korelacji z 199 metaanaliz: połowa nie przekraczała r = 0,19, a 95% – r = 0,45. Progi Cohena są dla psychologii zawyżone; warto sprawdzić, jakie wartości są typowe w danej dziedzinie. (W wykładzie 4 jest jeszcze trzecia propozycja progów z Drogowskazu.)</p>
 <p class="def"><strong>Współczynnik determinacji R²</strong> = r² (zawsze dodatni): część zmienności jednej zmiennej wyjaśniana zmiennością drugiej. Dla r = 0,76 → R² = 0,58: liczba książek wyjaśnia 58% zróżnicowania liczby myśli, a 42% wyjaśniają inne czynniki. Przewidywanie konkretnych wartości to już <strong>regresja</strong>.</p>
 </div>
-</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b" data-title="Interpretacja: istotność, siła, determinacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
+</details><details class="sec">
+<summary>Skala siły, istotność i raportowanie (wersja z ćwiczeń) <span class="src">Slajdy ćw. 3 11–12, 25, 28, 60</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>|r| lub |rho|</th><th>Interpretacja</th></tr>
+<tr><td>0–0,20</td><td>brak lub bardzo słaba</td></tr>
+<tr><td>0,21–0,30</td><td>słaba</td></tr>
+<tr><td>0,31–0,50</td><td>umiarkowana</td></tr>
+<tr><td>0,51–0,70</td><td>silna</td></tr>
+<tr><td>0,71–1</td><td>bardzo silna</td></tr>
+</table></div>
+<p>Klasyfikacji jest wiele – przy interpretacji „zdrowy rozsądek”. Na ćwiczeniach obowiązuje ta skala.</p>
+<ul>
+<li><strong>p &lt; 0,05</strong> – wynik istotny: szansa błędu przy odrzuceniu H₀ mniejsza niż 5%. <strong>p &gt; 0,05</strong> – nieistotny (<strong>n.i.</strong>). p zaokrąglamy do <strong>trzech miejsc</strong> (p = 0,042) albo podajemy przedział (p &lt; 0,05; &lt; 0,01; &lt; 0,001).</li>
+<li>Kolejność: najpierw <strong>istotność</strong>, dopiero potem wartość współczynnika (siła i kierunek).</li>
+<li><strong>r² (współczynnik determinacji)</strong>: r = 0,70 → r² = 0,49 – zmienność samooceny wyjaśnia <strong>49%</strong> wariancji dobrostanu.</li>
+</ul>
+<p class="def"><strong>Wzór raportu</strong>: „W badanej grupie (N = 120) samoocena koreluje silnie dodatnio z dobrostanem (r = 0,70; p &lt; 0,001). Hipotezę badawczą można przyjąć.” Przy braku związku: „…samoocena nie koreluje z czasem spędzonym w social mediach (r = −0,05; p = 0,616; n.i.). Nie ma podstaw do przyjęcia hipotezy badawczej.”</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b,metodologia/cwiczenia-3-fiszki:6bc30fa7,metodologia/cwiczenia-3-fiszki:db46caa9,metodologia/cwiczenia-3-fiszki:886047ac" data-title="Interpretacja: istotność, siła, determinacja" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
 <!-- 5 -->
 <h2 id="s5">Przyczynowość i trzecia zmienna</h2>
 <p class="tldr"><span class="lbl">W skrócie</span> o przyczynie można mówić tylko przy trzech warunkach: <strong>związek</strong>, <strong>pierwszeństwo czasowe</strong> i <strong>kontrola trzeciej zmiennej</strong>. Badania korelacyjne zwykle spełniają tylko pierwszy.</p>
@@ -110,9 +157,52 @@
 </ol>
 <p><strong>Problem trzeciej zmiennej</strong>: związek może wynikać z czynnika, który wpływa na obie zmienne (bociany i dzieci – wielkość kraju). W korelacji obie zmienne są równorzędne, nie ma zależnej i niezależnej. Kierunkowość można próbować badać metodą <strong>korelacji krzyżowych</strong> (pomiar obu zmiennych w kilku punktach czasu).</p>
 </div>
-</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635" data-title="Przyczynowość i trzecia zmienna" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+</details><details class="sec">
+<summary>Przykład z Instagramem <span class="src">Slajdy ćw. 3 13–14</span></summary>
+<div class="body">
+<p><em>Correlation is not causation</em>: współwystępowanie nie dowodzi przyczyny, nawet jeśli jedno zdarzenie poprzedza drugie. „Im więcej czasu na Instagramie, tym więcej objawów depresyjnych” można wyjaśnić na trzy sposoby:</p>
+<ol><li><strong>Instagram → depresja</strong> (np. porównania społeczne);</li>
+<li><strong>depresja → Instagram</strong> (wycofanie z kontaktów bezpośrednich);</li>
+<li><strong>trzecia zmienna</strong> – np. samotność sprzyja obu.</li></ol>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635,metodologia/cwiczenia-3-fiszki:1c3020a1" data-title="Przyczynowość i trzecia zmienna" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>3 pytania</span></span></button></div>
 <!-- 6 -->
-<h2 id="s6">Tabele krzyżowe i procenty</h2>
+<h2 id="s6">Korelacje w Jamovi: od hipotezy do raportu</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> procedura z zajęć: <strong>hipoteza → wykres rozrzutu → normalność → macierz korelacji → istotność → siła i kierunek → raport</strong>. Dziesięć przykładów z bazy <em>Zajęcia 3 – korelacje.omv</em> pokazuje wszystkie warianty wyboru r Pearsona lub rho Spearmana.</p>
+<details class="sec" open="">
+<summary>Procedura w Jamovi <span class="src">Slajdy ćw. 3 21–23</span></summary>
+<div class="body">
+<ol>
+<li><strong>Wykres rozrzutu</strong>: Analizy → Eksploracja → Wykres rozrzutu; zmienne na osie X i Y; Linia regresji: <em>Prosta</em>.</li>
+<li><strong>Normalność</strong>: Statystyki opisowe (Shapiro-Wilk dla N ≤ 30, skośność i kurtoza dla N &gt; 30) – patrz <a href="#s3">drzewko decyzji</a>.</li>
+<li><strong>Analizy → Regresja → Macierz korelacji</strong>; przenieś zmienne do okna po prawej.</li>
+<li>Zaznacz <strong>r Pearsona</strong> albo <strong>rho Spearmana</strong>.</li>
+<li>Hipoteza: <em>Skorelowane</em> (bezkierunkowa) albo kierunkowa (dodatnio/ujemnie).</li>
+<li>Dodatkowe opcje: <em>Wyświetl istotność</em>, <em>Oznacz istotne korelacje</em>, <em>N</em>. Wykres macierzy korelacji – tylko dla r Pearsona.</li>
+</ol>
+<p>Zmienne w bazie: płeć, sytuacja finansowa i jakość snu (porządkowe 1–5), samoocena (RSES), dobrostan, stres postrzegany (PSS), czas w social mediach (min); część badanych (N = 25) wypełniała też: satysfakcja z życia, poczucie sensu, samokontrola, otwartość, ruminacje, jakość relacji, objawy somatyczne, prokrastynacja.</p>
+</div>
+</details>
+<details class="sec">
+<summary>Dziesięć przykładów z zajęć <span class="src">Slajdy ćw. 3 20–59</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Zmienne (N)</th><th>Hipoteza</th><th>Normalność</th><th>Test</th><th>Wynik</th></tr>
+<tr><td>samoocena – dobrostan (120)</td><td>kierunkowa +</td><td>skośność, kurtoza w normie</td><td>r Pearsona</td><td>r = 0,70; p &lt; 0,001 – silna dodatnia</td></tr>
+<tr><td>samoocena – social media (120)</td><td>bezkierunkowa</td><td>w normie</td><td>r Pearsona</td><td>r = −0,05; p = 0,616; n.i.</td></tr>
+<tr><td>samoocena – jakość snu (120)</td><td>bezkierunkowa</td><td>jakość snu porządkowa</td><td>rho Spearmana</td><td>rho = 0,29; p = 0,001 – słaba dodatnia</td></tr>
+<tr><td>jakość snu – stres (120)</td><td>kierunkowa −</td><td>jakość snu porządkowa</td><td>rho Spearmana</td><td>rho = −0,67; p &lt; 0,001 – silna ujemna</td></tr>
+<tr><td>stres – dobrostan (120)</td><td>kierunkowa −</td><td>kurtoza stresu poza ±2</td><td>rho Spearmana</td><td>rho = −0,27; p = 0,002 – słaba ujemna</td></tr>
+<tr><td>poczucie sensu – satysfakcja (25)</td><td>kierunkowa +</td><td>Shapiro-Wilk p &gt; 0,05</td><td>r Pearsona</td><td>r = 0,49; p = 0,006 – umiarkowana dodatnia</td></tr>
+<tr><td>samokontrola – otwartość (25)</td><td>bezkierunkowa</td><td>Shapiro-Wilk p &gt; 0,05</td><td>r Pearsona</td><td>r = 0,11; p = 0,586; n.i.</td></tr>
+<tr><td>ruminacje – jakość relacji (25)</td><td>kierunkowa −</td><td>ruminacje: Shapiro-Wilk p &lt; 0,05</td><td>rho Spearmana</td><td>rho = −0,56; p = 0,002 – silna ujemna</td></tr>
+<tr><td>objawy somatyczne – prokrastynacja (25)</td><td>bezkierunkowa</td><td>obie: p &lt; 0,05</td><td>rho Spearmana</td><td>rho = 0,08; p = 0,699; n.i.</td></tr>
+</table></div>
+<p>Przy wyniku nieistotnym piszemy „nie koreluje” i „nie ma podstaw do przyjęcia hipotezy badawczej”. (Na slajdzie 59 jest literówka „wartość wyższa niż 0,05 oznacza występowanie korelacji” – chodzi o <strong>brak</strong> korelacji.)</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:2c3cdc7e,metodologia/cwiczenia-3-fiszki:ccb46a17" data-title="Korelacje w Jamovi: od hipotezy do raportu" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<!-- 7 -->
+<h2 id="s7">Tabele krzyżowe i procenty</h2>
 <p class="tldr"><span class="lbl">W skrócie</span> <strong>tabela krzyżowa</strong> (kontyngencji) pokazuje łączny rozkład dwóch zmiennych jakościowych. <strong>Sumy brzegowe</strong> odpowiadają na pytania o każdą zmienną osobno, a <strong>procenty z wierszy lub kolumn</strong> pozwalają porównać kategorie. To podstawa testu <strong>chi-kwadrat</strong>.</p>
 <details class="sec" open="">
 <summary>Budowa tabeli <span class="src">T1 s. 241–242</span></summary>
@@ -132,13 +222,60 @@
 <p>Zasady: przyjąć <strong>jedną strategię</strong> (wiersze albo kolumny) zależnie od tego, co jest zmienną zależną, a co niezależną; gdy w wierszach są porównywane grupy (zmienna niezależna), najbardziej użyteczne są <strong>procenty z wierszy</strong>. Opisać tabelę („wartości procentowe odnoszą się do sum z wierszy”).</p>
 <p>Wrażenie, że rozkłady się różnią, jest subiektywne – rozstrzyga <strong>test chi-kwadrat niezależności</strong> (opisany w <a href="wyklad-4.html#s10">wykładzie 4</a>).</p>
 </div>
-</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43" data-title="Tabele krzyżowe i procenty" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
-<div class="st-check unit"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99,metodologia/cwiczenia-3-fiszki:a13d8c87,metodologia/cwiczenia-3-fiszki:1bf6df76,metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82,metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b,metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635,metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43" data-title="Ćwiczenia 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź całe ćwiczenia</b><span>14 pytań</span></span></button></div><footer class="sources">
+</details><details class="sec">
+<summary>Test chi-kwadrat w Jamovi <span class="src">Slajdy ćw. 3 61–74</span></summary>
+<div class="body">
+<ul>
+<li><strong>Analiza kontyngencji</strong>: związek między zmiennymi <strong>nominalnymi</strong> – czy obserwacje rozkładają się proporcjonalnie między poziomy. Zmienne mają zwykle 2–4 poziomy.</li>
+<li>Hipotezy: „Kobiety częściej niż mężczyźni korzystają z psychoterapii” (równoważnie: „Mężczyźni rzadziej…”, „Więcej kobiet korzysta…”); „Forma zamieszkania wiąże się z rozmowami z bliskimi”.</li>
+</ul>
+<ol>
+<li><strong>Analizy → Częstości → Próby niezależne – test niezależności χ²</strong>.</li>
+<li>Jedna zmienna do <em>Wiersze</em>, druga do <em>Kolumny</em>.</li>
+<li>Statystyki: <strong>χ²</strong>, hipoteza Grupa 1 ≠ Grupa 2, <strong>Phi i V Cramera</strong>.</li>
+<li>Komórki: liczebności <strong>obserwowane</strong> i <strong>oczekiwane</strong>, <strong>procenty – wiersz</strong>.</li>
+<li>Wykresy: <strong>słupkowy</strong> (tylko w układzie 2×2 – przy większych nie określamy, na czym polega związek).</li>
+</ol>
+<p class="def">Jeśli w którejś komórce <strong>liczebność oczekiwana &lt; 5</strong> → zaznacz <strong>dokładny test Fishera</strong> i odczytaj p z jego wiersza (tylko 2×2). p &lt; 0,05 → związek istnieje; p &gt; 0,05 → nie istnieje.</p>
+<div class="tbl"><table>
+<tr><th>Płeć</th><th></th><th>Nie</th><th>Tak</th><th>Całość</th></tr>
+<tr><td>Kobieta</td><td>obserwowana / oczekiwana / % w wierszu</td><td>25 / 30,54 / 44%</td><td>32 / 26,46 / 56%</td><td>57</td></tr>
+<tr><td>Mężczyzna</td><td>obserwowana / oczekiwana / % w wierszu</td><td>20 / 14,46 / 74%</td><td>7 / 12,54 / 26%</td><td>27</td></tr>
+</table></div>
+<p><strong>Raporty z zajęć</strong>:</p>
+<ul>
+<li>„Płeć wiąże się z wcześniejszym udziałem w psychoterapii: χ²(1, 84) = 6,72; p = 0,010. Związek ten jest słaby (phi = 0,28). Kobiety częściej uczęszczały na psychoterapię niż mężczyźni.” – w 2×2 podajemy <strong>phi</strong> i <strong>na czym polega związek</strong>.</li>
+<li>„Forma zamieszkania wiąże się z prowadzeniem rozmów z bliskimi: χ²(2, 84) = 9,00; p = 0,011. Związek ten jest umiarkowany (V Cramera = 0,33).” – w układzie większym niż 2×2 podajemy <strong>V Cramera</strong>.</li>
+<li>„Tryb studiów nie wiąże się z aktualnym korzystaniem z pomocy psychologicznej: χ²(2, 84) = 1,30; p = 0,521 (n.i.).” – przy wyniku nieistotnym <strong>nie podajemy siły</strong> ani charakteru związku.</li>
+</ul>
+<p>Zapis χ²(df, N): w nawiasie stopnie swobody i liczebność próby.</p>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43,metodologia/cwiczenia-3-fiszki:7dde46c3,metodologia/cwiczenia-3-fiszki:7825167e" data-title="Tabele krzyżowe i procenty" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<!-- 8 -->
+<h2 id="s8">Moc testu i wielkość próby</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> <strong>moc testu (1 − β)</strong> to szansa wykrycia efektu, który naprawdę istnieje w populacji; rośnie z wielkością próby. Dopuszczalna moc to <strong>0,80</strong>. W Jamovi liczy ją moduł <strong>Pamlj</strong>: znając dwa z trzech parametrów (N, moc, siła efektu), oblicza trzeci.</p>
+<details class="sec" open="">
+<summary>Moc testu w Jamovi (Pamlj) <span class="src">Slajdy ćw. 3 75–80</span></summary>
+<div class="body">
+<ol>
+<li>Instalacja: Moduły (prawy górny róg) → Biblioteka Jamovi → <strong>Pamlj</strong> → Zainstaluj. W menu Analizy pojawi się <em>Power</em>.</li>
+<li><strong>Analizy → Power → Correlation</strong>. Można obliczyć: <strong>N</strong> (próba potrzebna do wykrycia efektu o danej sile), <strong>Power</strong> (moc dla danej siły i N) albo <strong>Effect size</strong> (najmniejszą siłę efektu wykrywalną przy danym N).</li>
+<li>Ustawienia: <em>Minimally interesting effect size</em> (ρ) – szukana siła korelacji; <em>Minimum desired power</em> – zawsze <strong>0,8</strong>; α – zawsze <strong>0,05</strong>; <em>Tails</em>: two-tailed (hipoteza bezkierunkowa) albo one-tailed (kierunkowa).</li>
+</ol>
+<div class="tbl"><table>
+<tr><th>Pytanie</th><th>Dane</th><th>Wynik</th></tr>
+<tr><td>Jaka jest moc testu?</td><td>N = 35, r = −0,45, kierunkowa</td><td>moc = 0,87 (akceptowalna)</td></tr>
+<tr><td>Ile osób potrzeba?</td><td>r = 0,30, bezkierunkowa</td><td>minimum 84 osoby</td></tr>
+<tr><td>Jaki efekt wykryjemy?</td><td>N = 50, kierunkowa</td><td>r ≥ 0,34</td></tr>
+</table></div>
+</div>
+</details><div class="st-check"><button data-check="metodologia/cwiczenia-3-fiszki:adbf0d1a,metodologia/cwiczenia-3-fiszki:2491e37d" data-title="Moc testu i wielkość próby" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>2 pytania</span></span></button></div>
+<div class="st-check unit"><button data-check="metodologia/cwiczenia-3-fiszki:08e06f99,metodologia/cwiczenia-3-fiszki:53032d4e,metodologia/cwiczenia-3-fiszki:58345069,metodologia/cwiczenia-3-fiszki:a13d8c87,metodologia/cwiczenia-3-fiszki:1bf6df76,metodologia/cwiczenia-3-fiszki:68946033,metodologia/cwiczenia-3-fiszki:61e76074,metodologia/cwiczenia-3-fiszki:de33aab0,metodologia/cwiczenia-3-fiszki:0e3e3d82,metodologia/cwiczenia-3-fiszki:9fdfdf5f,metodologia/cwiczenia-3-fiszki:d5ef2020,metodologia/cwiczenia-3-fiszki:e6e2c9b6,metodologia/cwiczenia-3-fiszki:0a3de770,metodologia/cwiczenia-3-fiszki:92bf4d1b,metodologia/cwiczenia-3-fiszki:6bc30fa7,metodologia/cwiczenia-3-fiszki:db46caa9,metodologia/cwiczenia-3-fiszki:886047ac,metodologia/cwiczenia-3-fiszki:ffc5fd8a,metodologia/cwiczenia-3-fiszki:de835635,metodologia/cwiczenia-3-fiszki:1c3020a1,metodologia/cwiczenia-3-fiszki:2c3cdc7e,metodologia/cwiczenia-3-fiszki:ccb46a17,metodologia/cwiczenia-3-fiszki:8247b32e,metodologia/cwiczenia-3-fiszki:aa2c9a43,metodologia/cwiczenia-3-fiszki:7dde46c3,metodologia/cwiczenia-3-fiszki:7825167e,metodologia/cwiczenia-3-fiszki:adbf0d1a,metodologia/cwiczenia-3-fiszki:2491e37d" data-title="Ćwiczenia 3" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź całe ćwiczenia</b><span>28 pytań</span></span></button></div><footer class="sources">
 <p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1. Przewodnik naukowego turysty</em> (s. 241–245, 340–361). Wydawnictwo Naukowe PWN.</p>
 </footer>
 </main>
 </div>
-<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=770f9d12"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Ćwiczenia 3" src="../assets/reader.js?v=2edc1715"></script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=7eba0c68"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Ćwiczenia 3" src="../assets/reader.js?v=2edc1715"></script>
 <script src="../assets/pro.js?v=66992051"></script>
 <script src="../assets/sesja.js?v=90983177"></script>
 <script src="../assets/czytanie.js?v=cc607b65"></script>

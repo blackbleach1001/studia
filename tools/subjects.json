@@ -214,8 +214,8 @@
         "label": "Ćwiczenia 3",
         "file": "cwiczenia-3.html",
         "title": "Korelacje i tabele krzyżowe",
-        "src": "Józefacka t. 1, s. 241–245, 340–361",
-        "sub_short": "r Pearsona, założenia, R², przyczynowość, tabele krzyżowe",
+        "src": "Józefacka t. 1, s. 241–245, 340–361 · slajdy",
+        "sub_short": "r Pearsona i rho Spearmana, chi-kwadrat, moc testu, Jamovi",
         "hand": true
       },
       {

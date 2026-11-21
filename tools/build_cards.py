@@ -64,7 +64,7 @@ DECKS = [
     {"dir": "metodologia", "file": "cwiczenia-2-fiszki.html", "units": ["cwiczenia-2.html"],
      "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's4', 8: 's4', 9: 's4', 10: 's5', 11: 's5', 12: 's5', 13: 's6'}},
     {"dir": "metodologia", "file": "cwiczenia-3-fiszki.html", "units": ["cwiczenia-3.html"],
-     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's3', 6: 's3', 7: 's3', 8: 's4', 9: 's4', 10: 's4', 11: 's5', 12: 's5', 13: 's6', 14: 's6'}},
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's2', 5: 's2', 6: 's3', 7: 's3', 8: 's3', 9: 's3', 10: 's3', 11: 's3', 12: 's4', 13: 's4', 14: 's4', 15: 's4', 16: 's4', 17: 's4', 18: 's5', 19: 's5', 20: 's5', 21: 's6', 22: 's6', 23: 's7', 24: 's7', 25: 's7', 26: 's7', 27: 's8', 28: 's8'}},
     {"dir": "metodologia", "file": "fiszki.html",
      "unit_by_src": [(r"wykład 2", "wyklad-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "kliniczna", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
