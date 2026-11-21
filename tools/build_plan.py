@@ -75,6 +75,11 @@ roz["pass"] = popa.get("pass", roz["pass"])
 roz["parts"][0]["grp"] = "c1"
 roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
 roz["parts"].insert(0, {"kind": "C", "grp": "popa", "who": popa["who"], "note": popa["note"], "general": []})
+# dodatkowe terminy zaliczeń spoza planu zajęć (np. projekt zespołowy) — tools/src/terminy.json
+_t = ROOT / "tools" / "src" / "terminy.json"
+if _t.exists():
+    for e in json.loads(_t.read_text(encoding="utf-8")):
+        plan["exams"].append({"date": e["date"], "subj": e["subj"], "text": e["text"]})
 # sesja egzaminacyjna (zdjęcie harmonogramu egzaminów) — tools/src/egzaminy.json
 for e in json.loads((ROOT / "tools" / "src" / "egzaminy.json").read_text(encoding="utf-8")):
     plan["exams"].append({"date": e["date"], "subj": e["subj"],
