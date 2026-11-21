@@ -11,7 +11,9 @@
   --st-tint-soft:hsl(var(--st-h),40%,94%);
   --st-paper:#fffdf9; --st-ink:#2b2118; --st-ink-2:#5c4d40; --st-ink-3:#6f6255;
   --st-sep:rgba(60,45,30,.14);
-  --st-bar:rgba(255,253,249,.78);
+  --st-surface:#f5efe6;             /* wyróżnione powierzchnie: definicje, pytania */
+  --st-label:700 .75rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;
+  --st-bar:#fffdf9;
   --st-bar-solid:#fffdf9;
   --st-elev:#ffffff;
   --st-shadow:0 8px 30px rgba(43,33,24,.14),0 1px 2px rgba(43,33,24,.08);
@@ -25,7 +27,7 @@
   position:sticky;top:0;z-index:45;
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   min-height:52px;padding:env(safe-area-inset-top,0px) calc(8px + var(--st-safe-r)) 0 calc(8px + var(--st-safe-l));
-  background:var(--st-bar);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  background:var(--st-bar-solid);
   border-bottom:.5px solid transparent;transition:border-color .2s;
 }
 .st-nav.is-scrolled{border-bottom-color:var(--st-sep)}
@@ -37,8 +39,8 @@
 .st-back svg{width:22px;height:22px}
 .st-back:active{opacity:.4}
 .st-title{
-  max-width:52vw;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
-  font:700 1.0625rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink);
+  max-width:min(60vw,40rem);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  font:700 .9375rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink);
   opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;
 }
 .st-nav.show-title .st-title{opacity:1;transform:none}
@@ -225,6 +227,74 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-chip::before{content:"";width:16px;height:16px;flex:0 0 auto;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--st-ink-3)}
 .st-chip[aria-pressed="true"]{background:hsl(150,30%,92%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%);color:hsl(150,35%,22%)}
 .st-chip[aria-pressed="true"]::before{box-shadow:none;background:hsl(150,35%,32%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat}
+/* odpowiedź własnymi słowami: głos lub tekst */
+.st-say{margin:12px 0 0}
+.st-say-tools{display:flex;gap:8px}
+.st-say-btn{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:0;border-radius:22px;
+  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-tint);
+  font:700 .9375rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-say-btn svg{width:20px;height:20px;flex:0 0 auto}
+.st-say-btn.plain{color:var(--st-ink-2)}
+.st-say-btn:active{opacity:.6}
+.st-say-btn[aria-pressed="true"]{background:var(--st-tint);color:#fff;box-shadow:none}
+.st-say-btn[aria-pressed="true"] svg{animation:st-rec 1.4s ease-in-out infinite}
+@keyframes st-rec{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.st-say-btn[aria-pressed="true"] svg{animation:none}}
+.st-say-tx{
+  display:block;width:100%;box-sizing:border-box;margin:10px 0 0;padding:12px 14px;border:0;border-radius:14px;resize:vertical;
+  background:#fff;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:400 1.0625rem/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+.st-say-tx:focus{outline:none;box-shadow:inset 0 0 0 2px var(--st-tint)}
+.st-say-tx[hidden]{display:none}
+.st-said{margin:0 0 12px;padding:10px 14px;border-radius:12px;background:#faf6f0}
+.st-said-h{margin:0 0 4px !important;font:700 .8125rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-3);max-width:none}
+.st-said-tx{margin:0 !important;font-size:1rem;line-height:1.55;color:var(--st-ink-2);max-width:none}
+.st-said-tx mark{background:hsl(150,30%,88%);color:hsl(150,35%,20%);border-radius:3px;padding:0 1px}
+.st-terms-note{margin:10px 0 0 !important;font-size:.8125rem;color:var(--st-ink-3);max-width:none}
+
+/* pojęcia na start (przed treścią wykładu) */
+.st-prime{margin:8px 0 32px;padding:14px 18px 6px;border-radius:10px;background:var(--st-surface)}
+.st-prime-h{margin:0 0 6px !important;max-width:none;font:var(--st-label);letter-spacing:.06em;text-transform:uppercase;color:var(--st-tint)}
+.st-prime dl{margin:0;padding:0}
+.st-prime dl > div{margin:0;padding:10px 0;border:0;border-top:.5px solid rgba(60,45,30,.12);border-radius:0;background:none;box-shadow:none}
+.st-prime dl > div:first-child{border-top:0}
+.st-prime dt{margin:0;font:700 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink)}
+.st-prime dd{margin:2px 0 0;font:400 .9375rem/1.5 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-2);max-width:62ch}
+
+/* baza pytań: jednokrotny wybór */
+.st-opts{display:flex;flex-direction:column;gap:8px;margin:4px 0 6px}
+.st-opt{
+  display:flex;align-items:flex-start;gap:12px;width:100%;padding:12px 14px;border:0;border-radius:14px;text-align:left;
+  background:#faf6f0;box-shadow:inset 0 0 0 1px var(--st-sep);color:var(--st-ink);
+  font:400 1.0625rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.st-opt .k{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+  box-shadow:inset 0 0 0 1.5px var(--st-ink-3);font:700 .8125rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--st-ink-2)}
+.st-opt .t{padding-top:2px}
+.st-opt:not(:disabled):active{opacity:.7}
+.st-opt:disabled{cursor:default}
+.st-opt.ok{background:hsl(150,30%,92%);box-shadow:inset 0 0 0 1.5px hsl(150,35%,38%);color:hsl(150,35%,18%)}
+.st-opt.ok .k{background:hsl(150,35%,32%);box-shadow:none;color:#fff}
+.st-opt.bad{background:hsl(8,60%,94%);box-shadow:inset 0 0 0 1.5px hsl(8,55%,48%);color:hsl(8,50%,26%)}
+.st-opt.bad .k{background:hsl(8,55%,44%);box-shadow:none;color:#fff}
+.st-opt.dim{opacity:.55}
+.st-fb:empty{display:none}
+.st-fb{margin:12px 0 4px;padding-top:12px;border-top:.5px solid var(--st-sep)}
+.st-fb p{margin:0 0 8px !important;max-width:none}
+.st-fb-t{font-weight:700}
+.st-fb-t.ok{color:hsl(150,35%,26%)}
+.st-fb-t.bad{color:hsl(8,50%,34%)}
+.st-fb-e{line-height:1.55}
+.st-fb-n{font-size:.875rem;color:var(--st-ink-3)}
+.st-wrong{list-style:none;margin:0 0 14px;padding:0}
+.st-wrong li{margin:0 0 8px;padding:10px 12px;border-radius:12px;background:#faf6f0;font-size:.9375rem;line-height:1.45}
+.st-wrong li b{color:var(--st-ink-3);font-weight:700;margin-right:4px}
+.st-wrong li .a{display:block;margin-top:4px;color:hsl(150,35%,26%);font-weight:700}
+.st-btn:disabled{opacity:.4}
+
 /* test: wybór zakresu */
 .st-test-h{margin:18px 0 8px !important;font:700 .875rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase;color:var(--st-ink-3)}
 .st-scopes{display:flex;flex-direction:column;gap:8px}
@@ -248,10 +318,10 @@ body:not(.focus):not(.tts-on) [data-block].is-active{background:transparent;box-
 .st-miss a span{display:block;font-size:.875rem;color:var(--st-ink-2)}
 
 /* przycisk „Sprawdź tę sekcję” */
-.st-check{margin:18px 0 6px;clear:both}
+.st-check{margin:20px 0 8px;clear:both}
 .st-check button{
-  display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 16px;border:0;border-radius:14px;
-  background:var(--st-tint-soft);color:var(--st-ink);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 16px;border:0;border-radius:10px;
+  background:var(--st-surface);color:var(--st-ink);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;
   font:400 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
 }
 .st-check button:active{opacity:.7}
@@ -268,3 +338,4 @@ mark.st-hit{background:hsl(44,92%,74%);color:inherit;border-radius:3px;padding:0
 mark.st-hit.fade{background:transparent}
 .st-hero .st-src{font-size:.875rem;color:var(--st-ink-3);margin-top:4px}
 @media (max-width:430px){.st-hero h1{font-size:1.75rem !important}}
+@media (max-width:500px){.st-title{max-width:46vw}}

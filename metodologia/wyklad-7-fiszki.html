@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Fiszki · Wykład 7 · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=95a1cead" rel="stylesheet"/>
+<link href="../assets/pro.css?v=ec8e35d0" rel="stylesheet"/>
+<link href="../assets/sesja.css?v=bb6035fa" rel="stylesheet"/>
+<link href="../assets/czytanie.css?v=7cd3d3ac" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Pytania · Wykład 7</h1>
+<p class="meta">Testy, moc, wielkość efektu · 25 pytań</p>
+</header>
+<main id="deck"></main>
+</div>
+<script id="cards" type="application/json">
+[
+{
+"q": "Czym jest moc testu?",
+"a": "<p>Prawdopodobieństwo odrzucenia <strong>fałszywej<\/strong> H₀ (wykrycia istniejącego efektu): <strong>1 − β<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"1 − β",
+"wykrycie efektu"
+],
+"id": "metodologia/wyklad-7-fiszki:67052c55",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Od czego zależy moc testu?",
+"a": "<p>Od <strong>α<\/strong> (większe α = większa moc), <strong>wielkości efektu<\/strong>, <strong>liczebności próby<\/strong> i rodzaju testu (parametryczne, jednostronne, powtarzane pomiary = większa moc).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"α",
+"wielkość efektu",
+"n"
+],
+"id": "metodologia/wyklad-7-fiszki:5d5f763c",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Które badanie ma największą moc: powtarzane pomiary czy grupy niezależne, n = 500 czy 400?",
+"a": "<p>Plan z <strong>powtarzanymi pomiarami<\/strong> i <strong>większym n (500)<\/strong>. Oba czynniki zwiększają moc.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"powtarzane pomiary",
+"większe n"
+],
+"id": "metodologia/wyklad-7-fiszki:3ac0c274",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Jak związane są moc i błąd II rodzaju?",
+"a": "<p>Moc = <strong>1 − β<\/strong>. Im większa moc, tym mniejsze ryzyko błędu II rodzaju (przeoczenia efektu).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"1 − β"
+],
+"id": "metodologia/wyklad-7-fiszki:a951d9c9",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Dlaczego bardzo duża próba bywa problemem?",
+"a": "<p>Zbyt duża moc: nawet <strong>znikomy<\/strong> efekt jest istotny (np. 5800 vs 5882 zł przy n = 1000), ale praktycznie bez znaczenia. Istotność statystyczna ≠ praktyczna.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"znikomy efekt istotny"
+],
+"id": "metodologia/wyklad-7-fiszki:8b9240ab",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Co grozi przy zbyt małej próbie?",
+"a": "<p>Wysokie ryzyko <strong>błędu II rodzaju<\/strong> (przeoczenia istniejącego efektu) oraz wyników będących artefaktem oszacowania.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"niska moc",
+"błąd II"
+],
+"id": "metodologia/wyklad-7-fiszki:b2773284",
+"unit": "wyklad-7.html",
+"sec": "s1"
+},
+{
+"q": "Czym różni się istotność statystyczna od wielkości efektu?",
+"a": "<p><strong>p<\/strong> mówi, czy efekt istnieje (zależy od n). <strong>Wielkość efektu<\/strong> mówi, jak duży jest, i pokazuje znaczenie praktyczne.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"czy",
+"jak duży"
+],
+"id": "metodologia/wyklad-7-fiszki:75dde06f",
+"unit": "wyklad-7.html",
+"sec": "s2"
+},
+{
+"q": "Czym jest efekt statystyczny? Co NIE jest efektem?",
+"a": "<p>Efektem jest <strong>związek, różnica lub wpływ<\/strong> (np. korelacja, różnica między grupami, wpływ koloru ścian). Pojedyncza średnia (np. średni poziom nadziei) <strong>nie jest<\/strong> efektem.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"związek",
+"różnica",
+"wpływ"
+],
+"id": "metodologia/wyklad-7-fiszki:ecad6e66",
+"unit": "wyklad-7.html",
+"sec": "s2"
+},
+{
+"q": "Co oznacza d Cohena &gt; 0,20?",
+"a": "<p><strong>Małą<\/strong> różnicę między średnimi (konwencja: 0,2 mały, 0,5 średni, 0,8 duży).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"0,2 mały",
+"0,5 średni",
+"0,8 duży"
+],
+"id": "metodologia/wyklad-7-fiszki:70d5c6f8",
+"unit": "wyklad-7.html",
+"sec": "s2"
+},
+{
+"q": "Czym jest d Cohena?",
+"a": "<p>Różnica dwóch średnich wyrażona w <strong>jednostkach odchylenia standardowego<\/strong>. Warianty: poprawka Hedgesa, delta Glassa.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"różnica / SD"
+],
+"id": "metodologia/wyklad-7-fiszki:c00b33c1",
+"unit": "wyklad-7.html",
+"sec": "s2"
+},
+{
+"q": "Jak mierzy się wielkość efektu dla testów rangowych i ANOVA?",
+"a": "<p>Testy rangowe: <strong>r = Z/√N<\/strong>. Kruskal-Wallis i ANOVA: <strong>η²<\/strong> (część wyjaśnianej wariancji).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"r = Z/√N",
+"η²"
+],
+"id": "metodologia/wyklad-7-fiszki:4011302e",
+"unit": "wyklad-7.html",
+"sec": "s2"
+},
+{
+"q": "Czym różnią się testy parametryczne i nieparametryczne?",
+"a": "<p><strong>Parametryczne<\/strong> liczą średnią i wariancję, wymagają skali ilościowej i założeń, mają większą moc. <strong>Nieparametryczne<\/strong> pracują na rangach, mniej wymagają, ale są mniej mocne.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"średnia vs rangi",
+"moc"
+],
+"id": "metodologia/wyklad-7-fiszki:d73b7369",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Kiedy sięgamy po test nieparametryczny?",
+"a": "<p>Gdy zmienna jest <strong>porządkowa lub nominalna<\/strong>, rozkład mocno odbiega od normalnego, próba jest mała albo są obserwacje odstające lub nierówne wariancje i grupy.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"porządkowa",
+"nienormalny",
+"mała próba"
+],
+"id": "metodologia/wyklad-7-fiszki:ef125729",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Co to jest ranga i ranga wiązana?",
+"a": "<p><strong>Ranga<\/strong> to pozycja wartości po uszeregowaniu. Przy remisach każda wartość dostaje <strong>średnią<\/strong> z zajmowanych pozycji (ranga wiązana).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"pozycja",
+"remis = średnia"
+],
+"id": "metodologia/wyklad-7-fiszki:58439127",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Jaki jest parametryczny odpowiednik testu U Manna-Whitneya?",
+"a": "<p><strong>Test t Studenta dla prób niezależnych.<\/strong><\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"t niezależnych"
+],
+"id": "metodologia/wyklad-7-fiszki:450e9757",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Jaki jest parametryczny odpowiednik testu Wilcoxona?",
+"a": "<p><strong>Test t Studenta dla prób zależnych.<\/strong><\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"t zależnych"
+],
+"id": "metodologia/wyklad-7-fiszki:2b5a2c0f",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Jaki jest parametryczny odpowiednik testu Kruskala-Wallisa i Friedmana?",
+"a": "<p>Kruskal-Wallis → <strong>jednoczynnikowa ANOVA<\/strong>. Friedman → <strong>ANOVA z powtarzanym pomiarem<\/strong>.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"K-W: ANOVA",
+"Friedman: ANOVA powt."
+],
+"id": "metodologia/wyklad-7-fiszki:f418659f",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Jaki nieparametryczny test zastępuje korelację Pearsona?",
+"a": "<p><strong>Rho Spearmana<\/strong> i <strong>tau Kendalla<\/strong> (dla danych porządkowych).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"Spearman",
+"Kendall"
+],
+"id": "metodologia/wyklad-7-fiszki:911f7d8e",
+"unit": "wyklad-7.html",
+"sec": "s3"
+},
+{
+"q": "Od czego zależy wybór testu?",
+"a": "<p>Od <strong>skali zmiennej zależnej<\/strong>, liczby i zależności grup (plan), rozkładu (normalność), <strong>równości wariancji<\/strong>, liczebności grup i obecności odstających.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"skala",
+"plan",
+"założenia"
+],
+"id": "metodologia/wyklad-7-fiszki:5e405835",
+"unit": "wyklad-7.html",
+"sec": "s4"
+},
+{
+"q": "Jakim testem sprawdza się równość wariancji i normalność?",
+"a": "<p>Równość wariancji: test <strong>Levene’a<\/strong>. Normalność: test <strong>Shapiro-Wilka<\/strong> (S-W).<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"Levene",
+"Shapiro-Wilk"
+],
+"id": "metodologia/wyklad-7-fiszki:33b18ec8",
+"unit": "wyklad-7.html",
+"sec": "s4"
+},
+{
+"q": "Jaki test dla dwóch grup niezależnych, a jaki dla dwóch pomiarów zależnych?",
+"a": "<p>Niezależne: <strong>t Studenta<\/strong> / U Manna-Whitneya. Zależne: <strong>t dla prób zależnych<\/strong> / Wilcoxona.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"niezależne",
+"zależne"
+],
+"id": "metodologia/wyklad-7-fiszki:7b2e4de7",
+"unit": "wyklad-7.html",
+"sec": "s4"
+},
+{
+"q": "Jaki test dla więcej niż dwóch grup niezależnych, a jaki dla więcej niż dwóch pomiarów zależnych?",
+"a": "<p>Niezależne: <strong>ANOVA<\/strong> / Kruskal-Wallis. Zależne: <strong>ANOVA z powt. pomiarem<\/strong> / Friedman.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"ANOVA / K-W",
+"powt. / Friedman"
+],
+"id": "metodologia/wyklad-7-fiszki:398bd164",
+"unit": "wyklad-7.html",
+"sec": "s4"
+},
+{
+"q": "Po co się robi porównania post hoc?",
+"a": "<p>Test dla wielu grup (np. Kruskal-Wallis) mówi, że <strong>jakaś<\/strong> różnica jest, ale nie gdzie. Post hoc (np. test Dunna) wskazuje, które pary się różnią.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"która para"
+],
+"id": "metodologia/wyklad-7-fiszki:0e5aa10d",
+"unit": "wyklad-7.html",
+"sec": "s5"
+},
+{
+"q": "Na czym polega poprawka Bonferroniego?",
+"a": "<p>Dzielimy α przez <strong>liczbę porównań<\/strong> (np. 0,05/3) lub odpowiednio mnożymy p. Chroni przed wzrostem ryzyka błędu I rodzaju przy wielu testach.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"α / liczba porównań"
+],
+"id": "metodologia/wyklad-7-fiszki:785bb5c0",
+"unit": "wyklad-7.html",
+"sec": "s5"
+},
+{
+"q": "Dlaczego przy wielu porównaniach rośnie ryzyko błędu I rodzaju?",
+"a": "<p>Każdy test ma ryzyko fałszywego alarmu α; w wielu testach te ryzyka <strong>się kumulują<\/strong>, więc trzeba korygować.<\/p>",
+"src": "Józefacka i in. · Bedyńska i Cypryańska",
+"k": [
+"kumulacja błędu"
+],
+"id": "metodologia/wyklad-7-fiszki:135ced9f",
+"unit": "wyklad-7.html",
+"sec": "s5"
+}
+]
+</script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script>
+<script data-back="./" data-back-label="Metodologia" data-home="../" data-nofocus="" data-title="Pytania" src="../assets/reader.js?v=2edc1715"></script>
+<script src="../assets/pro.js?v=66992051"></script>
+<script src="../assets/sesja.js?v=90983177"></script>
+<script src="../assets/czytanie.js?v=cc607b65"></script>
+</body>
+</html>

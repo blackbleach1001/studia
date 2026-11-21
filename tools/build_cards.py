@@ -33,32 +33,52 @@ DECKS = [
      "manual": {1: 's2', 2: 's3', 3: 's4', 4: 's5', 5: 's6', 6: 's7', 7: 's7', 8: 's8', 9: 's9', 10: 's9', 11: 's9'}},
     {"dir": "edukacja", "file": "fiszki.html", "units": ["wyklad-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s1", 5: "s2", 6: "s2", 7: "s2", 8: "s2", 9: "s3", 10: "s3",
-                11: "s3", 12: "s4", 13: "s4", 14: "s5", 15: "s5", 16: "s6", 17: "s6", 18: "s6", 19: "s6"}},
+                11: "s3", 12: "s4", 13: "s4", 14: "s5", 15: "s5", 16: "s6", 17: "s6", 18: "s6", 19: "s6", 20: 'p1', 21: 'p1', 22: 'p2', 23: 'p3', 24: 'p4', 25: 'p4', 26: 'p4', 27: 'p5', 28: 'p5', 29: 'p6', 30: 'e1', 31: 'e1', 32: 'e2', 33: 'e2', 34: 'e2', 35: 'e2', 36: 'e3', 37: 'e3', 38: 'e4'}},
     {"dir": "edukacja", "file": "wyklad-1-trusz-fiszki.html", "units": ["wyklad-1-trusz.html"],
-     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's3', 6: 's4', 7: 's5', 8: 's5'}},
-    {"dir": "edukacja", "file": "wyklad-2-fiszki.html", "units": ["wyklad-2.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's2', 6: 's2', 7: 's2', 8: 's3', 9: 's3', 10: 's3', 11: 's3', 12: 's4', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's6', 18: 's6', 19: 's6', 20: 's7', 21: 's7', 22: 's7'}},
-    {"dir": "edukacja", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
-     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's5', 8: 's6', 9: 's6'}},
-    {"dir": "edukacja", "file": "cwiczenia-3-fiszki.html", "units": ["cwiczenia-3.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's4', 8: 's4', 9: 's5', 10: 's5', 11: 's5', 12: 's6', 13: 's6', 14: 's6', 15: 's6', 16: 's7', 17: 's7', 18: 's8', 19: 's8', 20: 's8', 21: 's8', 22: 's9', 23: 's10', 24: 's10', 25: 's10', 26: 's11', 27: 's11', 28: 's12', 29: 's12', 30: 's12'}},
+     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's3', 6: 's4', 7: 's5', 8: 's5', 9: 'p1', 10: 'p1', 11: 'p2', 12: 'p2', 13: 'p2', 14: 'p3', 15: 'p3', 16: 'p4', 17: 'p4', 18: 'p4', 19: 'p5', 20: 'p5', 21: 'p6'}},
+    {"dir": "edukacja", "file": "wyklad-2-fiszki.html", "units": ["wyklad-2.html", "roznice.html"],
+     "manual": {1: 'roznice.html#s1', 2: 'roznice.html#s1', 3: 'roznice.html#s1', 4: 'roznice.html#s1', 5: 'roznice.html#s2', 6: 'roznice.html#s2', 7: 'roznice.html#s2', 8: 'roznice.html#s3', 9: 'roznice.html#s3', 10: 'roznice.html#s3', 11: 'roznice.html#s3', 12: 'roznice.html#s4', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's6', 18: 's6', 19: 's6', 20: 's7', 21: 's7', 22: 's7', 23: 'p1', 24: 'p1', 25: 'p2', 26: 'p3', 27: 'p3', 28: 'p3', 29: 'p4', 30: 'p4', 31: 'p5', 32: 'p5', 33: 'p6', 34: 'p6', 35: 'p6', 36: 'roznice.html#r1', 37: 'roznice.html#r1', 38: 'roznice.html#r1', 39: 'roznice.html#r2', 40: 'roznice.html#r2', 41: 'roznice.html#r2', 42: 'roznice.html#r3', 43: 'roznice.html#r3', 44: 'roznice.html#r3', 45: 'roznice.html#r3', 46: 'roznice.html#s1', 47: 'roznice.html#v1', 48: 'roznice.html#s2', 49: 'roznice.html#s3', 50: 'roznice.html#s3', 51: 'roznice.html#v2', 52: 'roznice.html#v2', 53: 'roznice.html#s4'}},
+    {"dir": "edukacja", "file": "wyklad-3-fiszki.html", "units": ["trudnosci.html"],
+     "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's5', 8: 's6', 9: 's6', 10: 'z1', 11: 'z1', 12: 'z2', 13: 'z2', 14: 'z2', 15: 'z3', 16: 'z3', 17: 'z4', 18: 'z4', 19: 'z4', 20: 'n1', 21: 'n1', 22: 'n1', 23: 'n2', 24: 'n2', 25: 'n2', 26: 'n3', 27: 'n3', 28: 'n3', 29: 'd1', 30: 'd1', 31: 'd2', 32: 'd2', 33: 'd3', 34: 'd3', 35: 'd3', 36: 'd4', 37: 'd4', 38: 'd4', 39: 'd5', 40: 'd5', 41: 'y1', 42: 'y1', 43: 'y2', 44: 'y2', 45: 'y3', 46: 'y3', 47: 'y4', 48: 'y4', 49: 'y4', 50: 'y5', 51: 'y5'}},
+    {"dir": "edukacja", "file": "etyka-fiszki.html", "units": ["etyka.html"],
+     "manual": {1: 'k1', 2: 'k1', 3: 'k2', 4: 'k2', 5: 'k2', 6: 'k3', 7: 'k3', 8: 'k4', 9: 'k4', 10: 'k5', 11: 'k5', 12: 'k5', 13: 'k6', 14: 'k6', 15: 'k6', 16: 'q1', 17: 'q1', 18: 'q2', 19: 'q2', 20: 'q3', 21: 'q3', 22: 'q4', 23: 'q4', 24: 'q5', 25: 'q5'}},
     {"dir": "edukacja", "file": "cwiczenia-1-fiszki.html", "units": ["cwiczenia-1.html"],
      "manual": {1: "s1", 2: "s1", 3: "s1", 4: "s2", 5: "s2", 6: "s2", 7: "s2", 8: "s2", 9: "s3", 10: "s3", 11: "s3", 12: "s3", 13: "s3", 14: "s4", 15: "s4", 16: "s4", 17: "s5", 18: "s5", 19: "s6", 20: "s7", 21: "s7", 22: "s7", 23: "s8", 24: "s8", 25: "s8", 26: "s9"}},
+    {"dir": "edukacja", "file": "cwiczenia-2-fiszki.html", "units": ["cwiczenia-2.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's3', 20: 's4', 21: 's4', 22: 's4', 23: 's5', 24: 's5', 25: 's5', 26: 's5', 27: 's5', 28: 's5', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's6', 34: 's6', 35: 's6', 36: 's6', 37: 's7', 38: 's7', 39: 's7', 40: 's7', 41: 's7', 42: 's8', 43: 's8', 44: 's8', 45: 's8', 46: 's8', 47: 's8', 48: 's8', 49: 's8'}},
+    {"dir": "edukacja", "file": "cwiczenia-3-fiszki.html", "units": ["cwiczenia-3.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's4', 7: 's4', 8: 's4', 9: 's5', 10: 's5', 11: 's5', 12: 's6', 13: 's6', 14: 's6', 15: 's6', 16: 's7', 17: 's7', 18: 's8', 19: 's8', 20: 's8', 21: 's8', 22: 's9', 23: 's10', 24: 's10', 25: 's10', 26: 's11', 27: 's11', 28: 's12', 29: 's12', 30: 's12'}},
     {"dir": "poznawcza", "file": "fiszki.html",
      "unit_by_src": [(r"rozdział 2", "wyklad-2.html"), (r"rozdział 3", "wyklad-3.html"), (r"rozdział [45]", "wyklad-4.html"),
                      (r"ćwiczenia 3", "cwiczenia-3.html"), (r"ćwiczenia 2", "cwiczenia-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "metodologia", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's2', 5: 's2', 6: 's2', 7: 's3', 8: 's3', 9: 's3', 10: 's4', 11: 's4', 12: 's5', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's5', 18: 's5', 19: 's5', 20: 's6', 21: 's6', 22: 's6', 23: 's6', 24: 's7', 25: 's7', 26: 's7', 27: 's7', 28: 's7', 29: 's7', 30: 's8', 31: 's8', 32: 's9', 33: 's10', 34: 's10', 35: 's11', 36: 's11'}},
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's4', 5: 's4', 6: 's4', 7: 's5', 8: 's5', 9: 's5', 10: 's6', 11: 's6', 12: 's7', 13: 's7', 14: 's7', 15: 's7', 16: 's7', 17: 's7', 18: 's8', 19: 's7', 20: 's9', 21: 's9', 22: 's9', 23: 's9', 24: 's8', 25: 's8', 26: 's8', 27: 's8', 28: 's8', 29: 's8', 30: 's11', 31: 's11', 32: 's12', 33: 's10', 34: 's10', 35: 's13', 36: 's13', 37: 's2', 38: 's2', 39: 's2', 40: 's2', 41: 's3', 42: 's3', 43: 's7', 44: 's10', 45: 's11'}},
     {"dir": "metodologia", "file": "wyklad-4-fiszki.html", "units": ["wyklad-4.html"],
-     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's4', 8: 's4', 9: 's4', 10: 's5', 11: 's5', 12: 's5', 13: 's5', 14: 's5', 15: 's6', 16: 's6', 17: 's7', 18: 's8', 19: 's8', 20: 's8', 21: 's9', 22: 's9', 23: 's9', 24: 's10', 25: 's10', 26: 's10', 27: 's11', 28: 's11', 29: 's11', 30: 's11', 31: 's11', 32: 's11'}},
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's4', 8: 's4', 9: 's4', 10: 's5', 11: 's5', 12: 's5', 13: 's5', 14: 's5', 15: 's6', 16: 's6', 17: 's7', 18: 's8', 19: 's8', 20: 's8', 21: 's9', 22: 's9', 23: 's9', 24: 's10', 25: 's10', 26: 's10', 27: 's11', 28: 's11', 29: 's11', 30: 's11', 31: 's11', 32: 's11', 33: 'w1', 34: 'w1', 35: 'w1', 36: 'w2', 37: 'w2', 38: 'w2', 39: 'w2', 40: 'w3', 41: 'w3', 42: 'w3', 43: 'w4', 44: 'w4', 45: 'w4'}},
+    {"dir": "metodologia", "file": "wyklad-5-fiszki.html", "units": ["wyklad-5.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's2', 6: 's2', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's2', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's3', 20: 's4', 21: 's4', 22: 's4', 23: 's4', 24: 's5', 25: 's5', 26: 's5', 27: 's5', 28: 's5', 29: 's6', 30: 's6', 31: 's6', 32: 's6', 33: 's6'}},
+    {"dir": "metodologia", "file": "wyklad-6-fiszki.html", "units": ["wyklad-6.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's4', 18: 's4', 19: 's4', 20: 's4', 21: 's4', 22: 's4', 23: 's4', 24: 's5', 25: 's5', 26: 's5', 27: 's5', 28: 's5', 29: 's6', 30: 's6', 31: 's6', 32: 's6'}},
+    {"dir": "metodologia", "file": "wyklad-7-fiszki.html", "units": ["wyklad-7.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's3', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's4', 20: 's4', 21: 's4', 22: 's4', 23: 's5', 24: 's5', 25: 's5'}},
+    {"dir": "metodologia", "file": "cwiczenia-2-fiszki.html", "units": ["cwiczenia-2.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's4', 8: 's4', 9: 's4', 10: 's5', 11: 's5', 12: 's5', 13: 's6'}},
     {"dir": "metodologia", "file": "cwiczenia-3-fiszki.html", "units": ["cwiczenia-3.html"],
      "manual": {1: 's1', 2: 's2', 3: 's2', 4: 's3', 5: 's3', 6: 's3', 7: 's3', 8: 's4', 9: 's4', 10: 's4', 11: 's5', 12: 's5', 13: 's6', 14: 's6'}},
     {"dir": "metodologia", "file": "fiszki.html",
      "unit_by_src": [(r"wykład 2", "wyklad-2.html"), (r"ćwiczenia", "cwiczenia-1.html"), (r".*", "wyklad-1.html")]},
     {"dir": "kliniczna", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
      "manual": {1: 's2', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's3', 8: 's3', 9: 's4', 10: 's4', 11: 's1', 12: 's6', 13: 's6', 14: 's7', 15: 's7', 16: 's7', 17: 's7', 18: 's9', 19: 's1', 20: 's1', 21: 's1', 22: 's1', 23: 's3', 24: 's3', 25: 's3', 26: 's4', 27: 's4', 28: 's4', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's7', 34: 's7', 35: 's7', 36: 's8'}},
+    {"dir": "kliniczna", "file": "wyklad-4-fiszki.html", "units": ["wyklad-4.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's1', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's3', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's3', 20: 's3', 21: 's3', 22: 's4', 23: 's4', 24: 's4', 25: 's4', 26: 's5', 27: 's5', 28: 's5', 29: 's5', 30: 's6', 31: 's6', 32: 's6', 33: 's6'}},
+    {"dir": "kliniczna", "file": "cwiczenia-fiszki.html", "units": ["cwiczenia.html"],
+     "manual": {1: 's2', 2: 's2', 3: 's2', 4: 's2', 5: 's3', 6: 's3', 7: 's3', 8: 's3', 9: 's3', 10: 's4', 11: 's4', 12: 's4', 13: 's4', 14: 's4', 15: 's4', 16: 's4', 17: 's5', 18: 's5', 19: 's5', 20: 's6', 21: 's6', 22: 's6', 23: 's7', 24: 's7', 25: 's7', 26: 's7', 27: 's7'}},
     {"dir": "kliniczna", "file": "wyklad-2-dziedziny-fiszki.html", "units": ["wyklad-2-dziedziny.html"],
      "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's1', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's2', 13: 's2', 14: 's2', 15: 's2', 16: 's2', 17: 's2', 18: 's3', 19: 's3', 20: 's3', 21: 's3', 22: 's3', 23: 's3', 24: 's3', 25: 's3', 26: 's4', 27: 's4', 28: 's4', 29: 's4', 30: 's4', 31: 's4', 32: 's4', 33: 's5', 34: 's5', 35: 's5', 36: 's5', 37: 's5', 38: 's5', 39: 's5', 40: 's5', 41: 's6', 42: 's6', 43: 's6', 44: 's6', 45: 's6', 46: 's6', 47: 's6', 48: 's6', 49: 's6', 50: 's6'}},
+    {"dir": "praca", "file": "cwiczenia-1-fiszki.html", "units": ["cwiczenia-1.html"],
+     "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's2', 5: 's2', 6: 's2', 7: 's2', 8: 's3', 9: 's3', 10: 's3', 11: 's4', 12: 's4', 13: 's5', 14: 's5', 15: 's5', 16: 's5', 17: 's6', 18: 's6', 19: 's7', 20: 's7', 21: 's7', 22: 's8', 23: 's9', 24: 's9', 25: 's9', 26: 's10', 27: 's10', 28: 's11', 29: 's11', 30: 's11', 31: 's12', 32: 's12'}},
+    {"dir": "praca", "file": "cwiczenia-2-fiszki.html", "units": ["cwiczenia-2.html"],
+     "manual": {1: 's1', 2: 's2', 3: 's3', 4: 's3', 5: 's3', 6: 's4', 7: 's5', 8: 's5', 9: 's6', 10: 's6', 11: 's7', 12: 's7', 13: 's8', 14: 's8', 15: 's8', 16: 's8', 17: 's9', 18: 's9', 19: 's9', 20: 's9', 21: 's10', 22: 's10', 23: 's10', 24: 's10', 25: 's11', 26: 's11', 27: 's11', 28: 's12', 29: 's12', 30: 's12', 31: 's12'}},
     {"dir": "praca", "file": "wyklad-3-fiszki.html", "units": ["wyklad-3.html"],
      "manual": {1: 's1', 2: 's1', 3: 's1', 4: 's1', 5: 's1', 6: 's1', 7: 's2', 8: 's2', 9: 's2', 10: 's2', 11: 's2', 12: 's3', 13: 's3', 14: 's3', 15: 's3', 16: 's3', 17: 's3', 18: 's3', 19: 's4', 20: 's4', 21: 's4', 22: 's4', 23: 's5', 24: 's5', 25: 's5', 26: 's5', 27: 's6', 28: 's6', 29: 's7', 30: 's7', 31: 's7', 32: 's8', 33: 's8', 34: 's8', 35: 's8', 36: 's9', 37: 's9', 38: 's9', 39: 's9', 40: 's10', 41: 's10', 42: 's10', 43: 's11', 44: 's11', 45: 's11'}},
     {"dir": "kliniczna", "file": "fiszki.html",
@@ -183,7 +203,11 @@ for deck in DECKS:
     # przypisanie
     if "manual" in deck:
         for i, c in enumerate(cards, 1):
-            c["unit"], c["sec"] = unit_files[0], deck["manual"].get(i)
+            v = deck["manual"].get(i)
+            if v and "#" in v:
+                c["unit"], c["sec"] = v.split("#", 1)
+            else:
+                c["unit"], c["sec"] = unit_files[0], v
     else:
         all_secs = [(u, x) for u in unit_files for x in secs[u]]
         vec = tfidf([toks(x["text"]) for _, x in all_secs])
@@ -280,7 +304,7 @@ for d, all_cards in by_dir.items():
     # test z przedmiotu (zamiast osobnych stron z fiszkami na stronie przedmiotu)
     subj = SUBJECTS[d]
     h, s, l = subj["hsl"]
-    units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] != "info"]
+    units = [{"u": u["file"], "label": u["label"], "title": u["title"]} for u in subj["units"] if u["kind"] not in ("info", "sum")]
     # długości testu: domyślnie 10/20/wszystkie; Rozmowa ma też 2 pytania jak na wejściówce
     lens = f' data-lengths="{",".join(map(str, subj["test_lengths"]))}"' if subj.get("test_lengths") else ""
     (ROOT / d / "test.html").write_text(f"""<!doctype html>
@@ -289,7 +313,7 @@ for d, all_cards in by_dir.items():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Test · {subj["name"]}</title>
+<title>Odpytywanie · {subj["name"]}</title>
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="stylesheet" href="../assets/study.css">
 <style>:root{{--st-h:{h};--st-s:{s}%;--st-l:{l}%}}</style>
@@ -297,7 +321,7 @@ for d, all_cards in by_dir.items():
 <body>
 <div class="page">
 <header class="hero">
-<h1>Test</h1>
+<h1>Odpytywanie</h1>
 <p class="meta">{subj["name"]} · {len(all_cards)} {pl_q(len(all_cards))}</p>
 </header>
 <main id="test"></main>
@@ -308,7 +332,7 @@ for d, all_cards in by_dir.items():
 <script src="../assets/flashcards.js"></script>
 <script src="cards.js"></script>
 <script src="../assets/test.js"></script>
-<script src="../assets/reader.js" data-home="../" data-back="./" data-back-label="{subj["short"]}" data-title="Test" data-nodock></script>
+<script src="../assets/reader.js" data-home="../" data-back="./" data-back-label="{subj["short"]}" data-title="Odpytywanie" data-nodock></script>
 </body>
 </html>
 """, encoding="utf-8")

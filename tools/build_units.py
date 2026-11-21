@@ -44,7 +44,7 @@ def finish(soup, subj, unit, units, container):
             "html.parser")
         container.insert(2 if unit.get("sim") else 1, link)
     # przejścia
-    seq = [u for u in units if u["kind"] != "info"]
+    seq = [u for u in units if u["kind"] not in ("info", "sum")]
     i = seq.index(unit) if unit in seq else None
     prev = seq[i - 1] if i is not None and i > 0 else None
     nxt = seq[i + 1] if i is not None and i < len(seq) - 1 else None
@@ -66,7 +66,7 @@ def finish(soup, subj, unit, units, container):
     sc["data-home"] = "../"
     sc["data-back"] = "./"
     sc["data-back-label"] = subj["short"]
-    sc["data-title"] = unit["label"] if unit["kind"] != "info" else "Informacje"
+    sc["data-title"] = unit["label"] if unit["kind"] not in ("info", "sum") else ("Informacje" if unit["kind"] == "info" else "Najważniejsze")
     soup.body.append(sc)
     # przycisk fiszek wskazuje nową stronę fiszek
     for a in soup.select(".fiszki-link a"):
@@ -221,6 +221,7 @@ def build_praca(subj):
 # strona przedmiotu
 # ------------------------------------------------------------------
 ICONS = {
+    "hl": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l-5 5v4h4l5-5"/><path d="M9 11l6-6 4 4-6 6z"/><path d="M14 20h6"/></svg>',
     "notes": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>',
     "cards": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2"/><path d="M7 4h12a2 2 0 0 1 2 2v11"/></svg>',
     "quiz": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>',
@@ -236,31 +237,67 @@ def row(href, kind, title, sub, alt=False):
             + (f'<span class="s">{esc(sub)}</span>' if sub else "")
             + "</span></a></li>")
 
+TILE_ICONS = {
+    "wyk": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h6M7 12h10"/></svg>',
+    "cw": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/><path d="M14 7l3 3"/></svg>',
+    "baza": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>',
+    "odp": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.4M12 14.8v.2"/></svg>',
+    "plan": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3M13 14h3M8 17h3"/></svg>',
+}
+
+def tile(href, kind, title, sub):
+    return (f'<a class="sec-tile" href="{href}"><span class="ti">{TILE_ICONS[kind]}</span>'
+            f'<span class="tt">{esc(title)}</span><span class="ts">{esc(sub)}</span></a>')
+
+def plural(n, one, few, many):
+    if n == 1: return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14: return few
+    return many
+
 def hub(subj):
-    groups = []
-    for kind, label in [("wyk", "Wykłady"), ("cw", "Ćwiczenia"), ("zaj", "Zajęcia")]:
-        us = [u for u in subj["units"] if u["kind"] == kind]
-        if us:
-            groups.append((label, "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")) for u in us)))
-    sims = subj.get("sims", [])
-    if sims:
-        groups.append(("Symulacje", "".join(row(m["href"], "sim", f'{m["label"]} · Symulacje', m.get("title", "")) for m in sims)))
-    mods = subj.get("models", [])
-    if mods:
-        groups.append(("Modele", "".join(row(m["href"], "models", f'{m["label"]} · Mapa modeli', m.get("title", "")) for m in mods)))
-    extra = subj.get("practice", [])
-    if any(p["kind"] == "cards" for p in extra):
-        # talie fiszek zastępuje jeden test (tools/build_cards.py tworzy test.html)
-        extra = [{"kind": "quiz", "title": "Test", "sub": "Wybierz wykład, wynik na koniec", "href": "test.html"}] + \
-                [p for p in extra if p["kind"] != "cards"]
-    if extra:
-        groups.append(("Powtórka", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in extra)))
-    info = [u for u in subj["units"] if u["kind"] == "info"]
-    groups.append(("Informacje", row(f'../plan.html?p={subj["dir"]}#przedmioty', "cal", "Plan i literatura", "Terminy zajęć, lektury, zaliczenie", alt=True)
-                   + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)))
-    if not groups:
-        groups.append(("Materiały", '<li><span class="row empty">Brak materiałów</span></li>'))
-    body = "".join(f'<section class="group"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for g, rows in groups)
+    units = subj["units"]
+    wyk = [u for u in units if u["kind"] == "wyk"]
+    cw = [u for u in units if u["kind"] == "cw"]
+    zaj = [u for u in units if u["kind"] == "zaj"]
+    summ = [u for u in units if u["kind"] == "sum"]
+    info = [u for u in units if u["kind"] == "info"]
+    prac = subj.get("practice", [])
+    baza = next((p for p in prac if p["kind"] == "quiz" and p["href"] == "baza.html"), None)
+    cards = [p for p in prac if p["kind"] == "cards"]
+    other = [p for p in prac if p is not baza and p["kind"] != "cards"]
+    tiles, groups = [], []
+    def unit_rows(us):
+        return "".join(row(u["file"], "notes", f'{u["label"]} · {u["title"]}', u.get("sub_short") or u.get("src", "")).replace('<a class="row"', f'<a class="row" data-src="{esc(u.get("src", ""))}"', 1) for u in us)
+    if wyk:
+        tiles.append(tile("#wyklady", "wyk", "Wykłady", f'{len(wyk)} {plural(len(wyk), "wykład", "wykłady", "wykładów")}'))
+        groups.append(("wyklady", "Wykłady", unit_rows(wyk)))
+    if cw:
+        tiles.append(tile("#cwiczenia", "cw", "Ćwiczenia", f'{len(cw)} {plural(len(cw), "temat", "tematy", "tematów")}'))
+        groups.append(("cwiczenia", "Ćwiczenia", unit_rows(cw)))
+    if zaj:
+        tiles.append(tile("#zajecia", "cw", "Zajęcia", f'{len(zaj)} {plural(len(zaj), "temat", "tematy", "tematów")}'))
+        rows = unit_rows(zaj) + "".join(row(u["file"], "notes", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
+        groups.append(("zajecia", "Zajęcia", rows))
+    if baza:
+        tiles.append(tile(baza["href"], "baza", "Baza pytań", (lambda m: (m.group(0) + " z egzaminu") if m else "Pytania z egzaminu")(re.search(r"\d+\s+pyta\w*", baza.get("sub", "")))))
+    if cards:
+        n = sum(int(m.group(1)) for c in cards for m in [re.search(r"(\d+)\s*$", c.get("sub", ""))] if m)
+        has_test = True
+        href = "test.html"
+        tiles.append(tile(href, "odp", "Odpytywanie", "Test i fiszki"))
+    for p in other:
+        pass
+    if other:
+        groups.append(("inne", "Dodatkowe", "".join(row(p["href"], p["kind"], p["title"], p.get("sub", ""), alt=True) for p in other)))
+    planrows = row(f'../plan.html?p={subj["dir"]}#przedmioty', "cal", "Terminy i literatura", "Plan zajęć, lektury, zaliczenie", alt=True) \
+        + "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in info)
+    if not zaj:
+        planrows += "".join(row(u["file"], "info", u["title"], u.get("sub_short", ""), alt=True) for u in summ)
+    groups.append(("plan", "Plan przedmiotu", planrows))
+    body = f'<nav class="sec-tiles" aria-label="Sekcje przedmiotu">{"".join(tiles)}</nav>'
+    body += "".join(f'<section class="group sec-panel" id="{i}"><h2>{esc(g)}</h2><ul class="ios-list">{rows}</ul></section>' for i, g, rows in groups)
+    body += ('<nav class="sec-foot" aria-label="Nawigacja"><a class="sec-back" href="../"><i aria-hidden="true"></i>Studia</a>'
+             f'<a class="plan-btn plan-foot" href="#plan" aria-expanded="false">{TILE_ICONS["plan"]}<span>Plan przedmiotu</span></a></nav>')
     h, s, l = subj["hsl"]
     page = f"""<!doctype html>
 <html lang="pl">
@@ -276,11 +313,14 @@ def hub(subj):
 <body>
 <div class="page hub">
   <header class="hero">
+    <a class="plan-btn" href="#plan" aria-expanded="false" aria-label="Plan przedmiotu: terminy, sylabus, zaliczenie">{TILE_ICONS["plan"]}<span>Plan</span></a>
     <h1>{esc(subj["name"])}</h1>
     {f'<p class="meta">{esc(subj["meta"])}</p>' if subj.get("meta") else ""}
   </header>
   <main>{body}</main>
 </div>
+<script>(function(){{var nav=document.querySelector('.sec-tiles'),T=[].slice.call(document.querySelectorAll('.sec-tile[href^="#"],.plan-btn')),A=[].slice.call(nav.querySelectorAll('.sec-tile')),P=[].slice.call(document.querySelectorAll('.sec-panel'));document.documentElement.classList.add('sec-js');function place(p,t){{if(t.classList.contains('plan-btn')||matchMedia('(max-width:999px)').matches){{nav.before(p);return}}var top=t.offsetTop,last=t;A.forEach(function(x){{if(x.offsetTop===top)last=x}});last.after(p)}}function show(id){{P.forEach(function(p){{p.hidden=p.id!==id}});T.forEach(function(t){{var on=t.getAttribute('href')==='#'+id;t.classList.toggle('on',on);t.setAttribute('aria-expanded',on);if(on)place(document.getElementById(id),t)}})}}T.forEach(function(t){{t.addEventListener('click',function(e){{e.preventDefault();var id=t.getAttribute('href').slice(1),open=t.classList.contains('on');show(open?null:id);history.replaceState(null,'',open?location.pathname+location.search:'#'+id)}})}});addEventListener('resize',function(){{var t=document.querySelector('.sec-tile.on,.plan-btn.on');if(t)place(document.getElementById(t.getAttribute('href').slice(1)),t)}});show(location.hash.slice(1)||null)}})()</script>
+<script src="../assets/plan-data.js"></script>
 <script src="../assets/reader.js" data-home="../" data-nodock data-title="{esc(subj["short"])}"></script>
 </body>
 </html>
@@ -307,8 +347,9 @@ def build_index(subjects):
         if n("zaj"): parts.append(rng("Zajęcia", "Zajęcia", n("zaj")))
         style = f'style="--sh:{h};--ss:{s_}%;--sl:{l}%"'
         if subj["units"]:
-            rows.append(f'<li {style}><a class="row" href="{subj["dir"]}/"><span class="ic">{book}</span>'
-                        f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span></span></a></li>')
+            rows.append(f'<li {style}><a class="row subj" href="{subj["dir"]}/" data-subj="{subj["dir"]}"><span class="dot" aria-hidden="true"></span>'
+                        f'<span class="tx"><span class="t"><span class="t-full">{esc(subj["name"])}</span><span class="t-short">{esc(subj["short"])}</span></span><span class="s">{esc(" · ".join(dict.fromkeys(parts)))}</span>'
+                        f'<span class="m" hidden></span></span></a></li>')
         else:
             rows.append(f'<li {style}><span class="row empty"><span class="ic alt">{book}</span>'
                         f'<span class="tx"><span class="t">{esc(subj["name"])}</span><span class="s">Brak materiałów</span></span></span></li>')
@@ -338,7 +379,8 @@ def build_index(subjects):
   <header class="hero">
     <h1>Studia</h1>
     <p class="meta">Psychologia SWPS · Semestr 3</p>
-    <form class="search" role="search" onsubmit="return false">
+    <button type="button" class="search-btn" id="search-btn" aria-label="Szukaj w notatkach" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <form class="search" id="search-form" role="search" onsubmit="return false" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
       <input type="search" id="q" placeholder="Szukaj w notatkach" aria-label="Szukaj w notatkach" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
     </form>
@@ -346,11 +388,15 @@ def build_index(subjects):
   <main>
     <section class="group results" id="results" hidden><h2 id="results-h">Wyniki</h2><ul class="ios-list" id="results-list"></ul></section>
     <section class="group plan-home"><h2>Plan</h2><ul class="ios-list"><li style="--sh:28;--ss:22%;--sl:45%"><a class="row" href="plan.html" id="plan-row"><span class="ic">{ICONS["cal"]}</span><span class="tx"><span class="t">Plan semestru</span><span class="s">Zajęcia, lektury i terminy zaliczeń</span></span></a></li></ul></section>
-    <section class="group"><h2>Przedmioty</h2><ul class="ios-list">{"".join(rows)}</ul></section>
+    <section class="group"><h2>Przedmioty</h2><ul class="ios-list subjects">{"".join(rows)}</ul></section>
   </main>
 </div>
 <script>window.STUDIA_SUBJECTS={json.dumps({s["dir"]: {"short": s["short"], "hsl": s["hsl"]} for s in subjects}, ensure_ascii=False)};</script>
+<script>(function(){{var b=document.getElementById("search-btn"),f=document.getElementById("search-form"),q=document.getElementById("q");function open(o){{f.hidden=!o;b.setAttribute("aria-expanded",o);b.classList.toggle("on",o);if(o)q.focus();else{{if(q.value){{q.value="";q.dispatchEvent(new Event("input"))}}}}}}b.addEventListener("click",function(){{open(f.hidden)}});q.addEventListener("keydown",function(e){{if(e.key==="Escape")open(false)}});q.addEventListener("blur",function(){{setTimeout(function(){{if(!q.value&&document.activeElement!==b)open(false)}},150)}})}})()</script>
 <script src="assets/home.js" data-index="assets/search-index.js"></script>
+<script src="assets/srs.js"></script>
+<script src="assets/cards-index.js"></script>
+<script src="assets/baza-index.js"></script>
 <script src="assets/plan-data.js"></script>
 <script src="assets/plan.js"></script>
 </body>

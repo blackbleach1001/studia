@@ -44,6 +44,8 @@ for sec in SRC.select("section.sub"):
             topic = " · ".join([parts[0]] + [x for x in parts[1:] if not TERM.search(x)])
             s = {"subj": d, "kind": kind, "n": text(li.select_one(".n")), "date": date, "start": start, "end": end,
                  "place": place, "topic": topic, "lit": per[i]["items"] if per else []}
+            if li.get("data-note"):                     # np. zajęcia odwołane / odrabiane
+                s["note"] = li["data-note"]
             if not per and lits and not card.select_one(".lit[data-general]"):                      # jedna lista na wszystkie zajęcia (kliniczna, ćwiczenia)
                 s["lit"], s["litAll"] = lits[0]["items"], True
             plan["sessions"].append(s)
@@ -73,6 +75,11 @@ roz["pass"] = popa.get("pass", roz["pass"])
 roz["parts"][0]["grp"] = "c1"
 roz["parts"][0]["who"] = "Grupa C1 z planu zajęć: " + roz["parts"][0]["who"]
 roz["parts"].insert(0, {"kind": "C", "grp": "popa", "who": popa["who"], "note": popa["note"], "general": []})
+# dodatkowe terminy zaliczeń spoza planu zajęć (np. projekt zespołowy) — tools/src/terminy.json
+_t = ROOT / "tools" / "src" / "terminy.json"
+if _t.exists():
+    for e in json.loads(_t.read_text(encoding="utf-8")):
+        plan["exams"].append({"date": e["date"], "subj": e["subj"], "text": e["text"]})
 # sesja egzaminacyjna (zdjęcie harmonogramu egzaminów) — tools/src/egzaminy.json
 for e in json.loads((ROOT / "tools" / "src" / "egzaminy.json").read_text(encoding="utf-8")):
     plan["exams"].append({"date": e["date"], "subj": e["subj"],
@@ -87,8 +94,14 @@ def unit_href(s):
     """Zajęcia → plik notatek, jeśli istnieje (Wykład N / Ćwiczenia N / Zajęcia N)."""
     n = re.sub(r"\D", "", s["n"])
     labels = [f"Wykład {n}"] if s["kind"] == "W" else [f"Ćwiczenia {n}", f"Zajęcia {n}"]
-    for u in SUBJ[s["subj"]]["units"]:
-        if u["label"] in labels:
+    # jawne przypisanie do spotkania z planu ("plan": [nr, ...]) ma pierwszeństwo przed etykietą
+    units = SUBJ[s["subj"]]["units"]
+    kind = "wyk" if s["kind"] == "W" else "cw"
+    for u in units:
+        if "plan" in u and int(n or 0) in u["plan"] and u.get("kind") == kind:
+            return f'{s["subj"]}/{u["file"]}'
+    for u in units:
+        if u["label"] in labels and "plan" not in u:
             return f'{s["subj"]}/{u["file"]}'
     return None
 
@@ -121,7 +134,7 @@ plan["meta"] = {d: {"short": s["short"], "name": s["name"], "hsl": s["hsl"]} for
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="assets/study.css">
 <link rel="stylesheet" href="assets/plan.css">
-<style>:root{--st-h:28;--st-s:22%;--st-l:45%}</style>
+<style>:root{--st-h:215;--st-s:14%;--st-l:22%}</style>
 </head>
 <body>
 <div class="page plan">

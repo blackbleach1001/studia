@@ -60,9 +60,38 @@
         META[nx.subj].short + " · " + kindName(nx).toLowerCase() + (nx.place === "online" ? " · online" : "") +
         (ne && days(TODAY, ne.date) <= 14 ? " · " + ne.text.toLowerCase() + " " + rel(ne.date) : "");
     }
+    subjects();
     return;
   }
   if (!root) return;
+
+  /* ---------- strona główna: przy każdym przedmiocie najbliższy termin, fiszki na dziś i baza ---------- */
+  function subjects() {
+    var IDX = window.STUDIA_INDEX || [], NB = window.STUDIA_BAZA_N || {}, baza = {};
+    try { baza = JSON.parse(localStorage.getItem("studia-baza-v1") || "{}") || {}; } catch (e) {}
+    Array.prototype.forEach.call(document.querySelectorAll(".row.subj[data-subj]"), function (a) {
+      var d = a.getAttribute("data-subj"), s = a.querySelector(".s"), m = a.querySelector(".m");
+      var nx = D.sessions.filter(function (x) { return x.subj === d && !x.alt && !past(x); })[0];
+      var ex = D.exams.filter(function (e) { return e.subj === d && e.date >= TODAY; })[0];
+      var line = [];
+      if (ex && (!nx || ex.date <= nx.date || days(TODAY, ex.date) <= 14)) line.push(ex.text.split(":")[0] + " " + rel(ex.date));
+      if (nx) line.push((live(nx) ? "teraz" : short(nx.date)) + " · " + kindName(nx).toLowerCase());
+      if (s && line.length) s.textContent = line.join(" · ").replace(/^./, function (c) { return c.toUpperCase(); });
+      var chips = [];
+      if (window.SRS) {
+        var ids = [];
+        IDX.forEach(function (k) { if (k.dir === d) ids = ids.concat(k.ids); });
+        var due = ids.length ? window.SRS.reviewList(ids).length : 0;
+        if (due) chips.push('<span class="due">' + due + " " + pl(due, "fiszka", "fiszki", "fiszek") + " na dziś</span>");
+      }
+      if (NB[d]) {
+        var r = baza[d] || {}, ok = 0;
+        Object.keys(r).forEach(function (k) { if (r[k] && r[k][2] === 1) ok++; });
+        chips.push("<span>Baza " + ok + "/" + NB[d] + "</span>");
+      }
+      if (m && chips.length) { m.innerHTML = chips.join(""); m.hidden = false; }
+    });
+  }
 
   /* ---------- stan ---------- */
   var store = { read: {} };
@@ -137,41 +166,44 @@
       '<li class="pl-more-row"><button type="button" data-all="' + id + '">' + esc(label) + " " + (list.length - limit) + "</button></li>";
   }
 
-  /* ---------- Teraz ---------- */
+  /* ---------- Teraz: zjazdy jako karty przewijane w bok ---------- */
+  function srow(x) {
+    var pl = x.place === "online" ? "online" : x.place ? x.place.replace(/sala\s*/i, "") : "";
+    var inner = '<span class="tm">' + esc(x.start || "—") + "<small>" + esc(x.end || "") + '</small></span><span class="dot"></span>' +
+      '<span class="tx"><b>' + esc(META[x.subj].short) + " <em>· " + esc(kindName(x).toLowerCase()) + "</em>" + (live(x) ? ' <span class="pl-tag live">Teraz</span>' : "") + "</b>" +
+      '<span class="s">' + esc(x.topic || "Temat nie podany") + (pl ? " · " + esc(pl) : "") + "</span></span>";
+    return '<li class="' + (past(x) ? "is-past" : "") + '" style="' + vars(x.subj) + '">' + (x.href ? '<a href="' + esc(x.href) + '">' + inner + "</a>" : "<div>" + inner + "</div>") + "</li>";
+  }
+  function rrow(x) {
+    var d = isRead(x);
+    return '<li class="pl-rd' + (d ? " is-done" : "") + '" style="' + vars(x.subj) + '">' +
+      '<button type="button" class="pl-chk" data-read="' + x.id + '" aria-pressed="' + d + '" aria-label="' + (d ? "Odznacz: " : "Przeczytane: ") + esc(META[x.subj].short + " " + kindName(x)) + '">' + CHECK + "</button>" +
+      '<span class="pl-rd-t"><b><i class="dot"></i>' + esc(META[x.subj].short) + " · " + esc(kindName(x)) + "</b>" + x.lit.map(esc).join(" · ") + "</span></li>";
+  }
   function viewNow() {
+    var zs = zjazdy().filter(function (z) { return z.items.some(function (x) { return !past(x); }); });
     var html = "";
-    var zs = zjazdy(), next = zs.filter(function (z) { return z.items.some(function (x) { return !past(x); }); })[0];
-    if (next) {
-      var first = next.items[0].date, last = next.items[next.items.length - 1].date;
-      var running = first <= TODAY;
-      html += '<section class="pl-card next"><p class="pl-eyebrow">' + (running ? "Trwa zjazd" : "Najbliższy zjazd · " + esc(rel(first))) + "</p>" +
-        "<h2>" + esc(first === last ? long(first) : short(first) + " – " + short(last)) + "</h2>" +
-        '<p class="pl-meta">' + next.items.length + " " + pl(next.items.length, "zajęcia", "zajęcia", "zajęć") + " · " + esc(mode(next.items)) + "</p>";
-      var byDay = {};
-      next.items.forEach(function (x) { (byDay[x.date] = byDay[x.date] || []).push(x); });
-      Object.keys(byDay).sort().forEach(function (d) {
-        html += '<h3 class="pl-dayh">' + esc(long(d)) + (d === TODAY ? " · dziś" : "") + '</h3><ul class="pl-list">' +
-          byDay[d].map(function (x) { return session(x, { open: !past(x) && x === next.items.filter(function (y) { return !past(y); })[0] }); }).join("") + "</ul>";
+    if (zs.length) {
+      html += '<div class="pl-zjs" role="list">';
+      zs.forEach(function (z, i) {
+        var first = z.items[0].date, last = z.items[z.items.length - 1].date, running = first <= TODAY;
+        var byDay = {};
+        z.items.forEach(function (x) { (byDay[x.date] = byDay[x.date] || []).push(x); });
+        var lit = z.items.filter(function (x) { return !past(x) && x.lit && x.lit.length; });
+        var left = lit.filter(function (x) { return !isRead(x); }).length;
+        html += '<section class="pl-zj" role="listitem"><p class="hp-label"><span>' + (running ? "Trwa zjazd" : i === 0 ? "Najbliższy zjazd" : "Zjazd") + "</span><b>" + esc(running ? "teraz" : rel(first)) + "</b></p>" +
+          '<h2 class="pl-zj-d">' + esc(first === last ? long(first) : short(first) + " – " + short(last)) + "</h2>" +
+          '<ol class="hp-tl">' + Object.keys(byDay).sort().map(function (d) {
+            return (Object.keys(byDay).length > 1 ? '<li class="hp-day">' + esc(long(d).split(",")[0]) + (d === TODAY ? " · dziś" : "") + "</li>" : "") + byDay[d].map(srow).join("");
+          }).join("") + "</ol>" +
+          (lit.length ? '<details class="pl-zj-lit"><summary>Lektury<span>' + (left ? "zostało " + left : "gotowe") + '</span></summary><ul>' + lit.map(rrow).join("") + "</ul></details>" : "") +
+          "</section>";
       });
-      html += "</section>";
-    }
-
-    // co przeczytać: tylko ten zjazd i kolejny — dalsze w zakładce Przedmioty
-    var two = zs.filter(function (z) { return z.items.some(function (x) { return !past(x); }); }).slice(0, 2);
-    html += '<section class="pl-sec"><h2>Do przeczytania</h2>';
-    two.forEach(function (z, i) {
-      var items = z.items.filter(function (x) { return !past(x) && x.lit && x.lit.length; });
-      if (!items.length) return;
-      var left = items.filter(function (x) { return !isRead(x); }).length;
-      var d0 = z.items[0].date, d1 = z.items[z.items.length - 1].date;
-      html += '<h3 class="pl-h3">' + (i ? "Kolejny zjazd" : "Ten zjazd") + " · " + esc(short(d0) + (d0 !== d1 ? " – " + short(d1) : "")) +
-        '<span class="pl-left">' + (left ? "zostało " + left : "gotowe") + '</span></h3><ul class="pl-list">' + items.map(reading).join("") + "</ul>";
-    });
-    if (!two.length) html += '<p class="pl-empty">Brak kolejnych zjazdów.</p>';
-    html += '<p class="pl-foot">Dalsze lektury: zakładka Przedmioty. Odhaczenia zapisują się w tej przeglądarce.</p></section>';
-
+      html += "</div>";
+      if (zs.length > 1) html += '<p class="pl-swipe">' + zs.length + " " + pl(zs.length, "zjazd", "zjazdy", "zjazdów") + " przed Tobą · przesuń w bok</p>";
+    } else html += '<p class="pl-empty">Brak kolejnych zjazdów.</p>';
     var up = EX.filter(function (e) { return on(e) && e.date >= TODAY; });
-    if (up.length) html += '<section class="pl-sec"><h2>Terminy</h2><ul class="pl-list">' + more("ex", up, 4, exam, "Pokaż jeszcze") + '</ul><p class="pl-foot">Zasady zaliczenia każdego przedmiotu: zakładka Przedmioty.</p></section>';
+    if (up.length) html += '<section class="pl-sec"><h2>Terminy</h2><ul class="pl-list">' + more("ex", up, 4, exam, "Pokaż jeszcze") + "</ul></section>";
     return html;
   }
 
@@ -273,7 +305,9 @@
     } else if (b.dataset.read) {
       var id = b.dataset.read;
       if (store.read[id]) delete store.read[id]; else store.read[id] = true;
+      var car = root.querySelector('.pl-zjs'), sx = car ? car.scrollLeft : 0, ol = [].map.call(root.querySelectorAll('.pl-zj-lit'), function (d) { return d.open; });
       save(); render();
+      car = root.querySelector('.pl-zjs'); if (car) car.scrollLeft = sx; [].forEach.call(root.querySelectorAll('.pl-zj-lit'), function (d, i) { d.open = !!ol[i]; });
       var nb = root.querySelector('[data-read="' + id + '"]'); if (nb) nb.focus({ preventScroll: true });
     } else if (b.dataset.all) { openAll[b.dataset.all] = true; render(); }
     else if (b.hasAttribute("data-month") && b.dataset.month) { month = b.dataset.month; picked = null; render(); }

@@ -1,0 +1,12 @@
+/* Starsze notatki (overlay.css) w trybie sesji — uzupełnia tokeny i układ, których tam brakuje. */
+:root{--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --subj:hsl(var(--st-h,209),var(--st-s,33%),var(--st-l,40%));
+  --on-subj:hsl(0,0%,calc((var(--st-l,40%) - 52%) * -100))}
+html.ss body{background:#fff}
+html.ss .page,html.ss .wrap{max-width:none !important;margin:0 !important;padding:0 0 110px !important;display:block !important}
+html.ss main{max-width:none !important;margin:0 !important;padding:0 !important;display:block}
+html.ss .ss-screen header.st-hero{margin:0;border:0;border-radius:0}
+html.ss .ss-in details>summary{list-style:none}
+html.ss .ss-in details>div{padding:0;border:0;background:none}
+html.ss .ss-in h2{margin-top:0}
+html.ss .st-nav,html.ss .player{position:relative}

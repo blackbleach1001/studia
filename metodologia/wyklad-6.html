@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Wykład 6 · Wnioskowanie statystyczne · Podstawy metodologii i statystyki</title>
+<link href="../assets/icon-180.png" rel="apple-touch-icon"/>
+<link href="../assets/study.css?v=95a1cead" rel="stylesheet"/>
+<link href="../assets/pro.css?v=ec8e35d0" rel="stylesheet"/>
+<link href="../assets/sesja.css?v=bb6035fa" rel="stylesheet"/>
+<link href="../assets/czytanie.css?v=7cd3d3ac" rel="stylesheet"/>
+<style>:root{--st-h:150;--st-s:26%;--st-l:44%}</style>
+<style>
+.fig{margin:.4em 0 1.1em}
+.fig svg{display:block;width:100%;height:auto;background:var(--card);border-radius:12px;box-shadow:0 0 0 .5px var(--line)}
+.fig figcaption{font-size:.9em;color:var(--ink-soft);margin-top:.45em;line-height:1.5}
+.fig text{font-family:"Atkinson Hyperlegible",system-ui,sans-serif}
+.fig .tk{font-size:13px;fill:var(--ink-mute)}
+.fig .tk2{font-size:12px;fill:var(--ink-mute)}
+.fig .lb{font-size:14px;fill:var(--ink-soft)}
+.fig .lbb{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ann{font-size:13px;fill:var(--ink-soft);font-style:italic}
+.fig .pct{font-size:14px;font-weight:700;fill:var(--ink)}
+.fig .ax{stroke:var(--ink-mute);stroke-width:1.2}
+.fig .grid{stroke:var(--line);stroke-width:1}
+.fig .bar{fill:var(--accent);opacity:.55}
+.fig .bar.hi,.fig .dot.hi{fill:#b4543a;opacity:.9}
+.fig .hi-t{fill:#b4543a}
+.fig .dot{fill:var(--accent);opacity:.75}
+.fig .gap{stroke:var(--ink-mute);stroke-dasharray:4 4;fill:none}
+.fig .mk{stroke:#b4543a;stroke-width:2.2}
+.fig .mk-t{fill:#b4543a}
+.fig .mk2{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:6 3}
+.fig .mk2-t{fill:var(--accent)}
+.fig .mk3{stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:2 3}
+.fig .mk3-t{fill:var(--ink-soft)}
+.fig .band{fill:var(--accent);opacity:.12}
+.fig .box{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:2}
+.fig .med{stroke:var(--ink);stroke-width:3}
+.fig .wh{stroke:var(--ink-soft);stroke-width:2}
+.fig .out{fill:none;stroke:#b4543a;stroke-width:2}
+.fig .star{font-size:30px;fill:#b4543a;text-anchor:middle}
+.fig .fence{stroke:var(--ink-mute);stroke-dasharray:3 3}
+.fig .crv{fill:none;stroke:var(--accent);stroke-width:2.6}
+.fig .crv2{fill:none;stroke:var(--ink-soft);stroke-width:2;stroke-dasharray:6 4}
+.fig .crv3{fill:none;stroke:var(--ink-mute);stroke-width:2.4}
+.fig .fillsoft{fill:var(--ink-mute);fill-opacity:.08}
+.fig .s1{fill:var(--accent);opacity:.45}
+.fig .s2{fill:var(--accent);opacity:.25}
+.fig .s3{fill:var(--accent);opacity:.12}
+.fig .br,.fig .br2{stroke:var(--ink-mute);stroke-width:1.5;fill:none}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+<h1>Wnioskowanie statystyczne</h1>
+<p class="meta">Józefacka i in., t. 1, s. 167–195; Bedyńska i Cypryańska, s. 136–140 · wykład 28.11</p>
+<div class="links"><a class="btn" href="test.html#wyklad-6.html">Test z tego materiału</a></div>
+</header>
+<main><section aria-label="Pojęcia na start" class="st-prime"><p aria-level="2" class="st-prime-h" role="heading">Pojęcia na start</p><dl><div><dt>Hipoteza zerowa (H₀)</dt><dd>Hipoteza o braku efektu, różnic lub związku. Test sprawdza, czy dane pozwalają ją odrzucić; jej nieodrzucenie nie dowodzi, że jest prawdziwa.</dd></div><div><dt>Hipoteza alternatywna (H₁)</dt><dd>Przeciwieństwo H₀, zwykle to, co badacz chce wykazać; kierunkowa (A &gt; B) albo niekierunkowa (A ≠ B).</dd></div><div><dt>Błąd I rodzaju (α)</dt><dd>Odrzucenie prawdziwej H₀, czyli fałszywy alarm.</dd></div><div><dt>Błąd II rodzaju (β)</dt><dd>Nieodrzucenie fałszywej H₀, czyli przeoczenie istniejącego efektu.</dd></div><div><dt>Poziom istotności α</dt><dd>Z góry przyjęte maksymalne ryzyko błędu I rodzaju, zwykle 0,05.</dd></div><div><dt>Wartość p</dt><dd>Prawdopodobieństwo takiego lub bardziej skrajnego wyniku, gdyby H₀ była prawdziwa. Gdy p &lt; α, odrzucamy H₀.</dd></div><div><dt>Przedział ufności</dt><dd>Zakres wiarygodnych wartości parametru; 95% takich przedziałów z powtórzonych badań zawiera prawdziwą wartość.</dd></div><div><dt>Stopnie swobody (df)</dt><dd>Liczba niezależnych informacji: liczba obserwacji minus liczba oszacowanych parametrów.</dd></div><div><dt>Chi-kwadrat</dt><dd>Nieparametryczny test dla danych jakościowych, porównujący rozkład z badania z teoretycznym lub dwa rozkłady empiryczne.</dd></div></dl></section>
+<h2 id="s1">Logika testowania hipotez</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> badacz stawia <strong>hipotezę zerową (H₀: brak efektu)</strong> i sprawdza, czy dane na tyle do niej nie pasują, że można ją <strong>odrzucić</strong>; hipoteza alternatywna (H₁) jest tym, co zostaje.</p>
+<details class="sec" open="">
+<summary>Hipoteza zerowa i alternatywna <span class="src">BC s. 136; T1 s. 167–168</span></summary>
+<div class="body">
+<ul>
+<li>Wnioskowanie statystyczne to procedura, która pozwala wyciągnąć wnioski o prawdziwości postawionej tezy na podstawie <strong>próby</strong>, a nie całej populacji.</li>
+<li><strong>Hipoteza zerowa (H₀)</strong> mówi o braku związku między zmiennymi, braku różnic między grupami lub braku wpływu czynnika. Każdy test ma „swoją” hipotezę zerową.</li>
+<li><strong>Hipoteza alternatywna (H₁)</strong> to przeciwieństwo H₀ i zwykle to, co badacz chce wykazać. Hipoteza badawcza może być <strong>kierunkowa</strong> (A &gt; B) lub <strong>niekierunkowa</strong> (A ≠ B).</li>
+<li>Analogia sądowa: punktem wyjścia jest <strong>domniemanie niewinności</strong> (H₀). Dopiero mocne dowody pozwalają ją odrzucić na rzecz winy (H₁).</li>
+<li>H₀ jest technicznym założeniem procedury, nie „pełnowartościową” hipotezą badacza. Jej <strong>nieodrzucenie nie znaczy, że jest prawdziwa</strong>.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Czego nie wolno wnioskować <span class="src">T1 s. 169–170; BC s. 138</span></summary>
+<div class="body">
+<ul>
+<li><strong>Nieistotny wynik</strong> nie dowodzi braku efektu. Mówimy tylko, że w badaniu nie udało się odrzucić H₀ (brak podstaw do odrzucenia).</li>
+<li><strong>Odrzucenie H₀</strong> nie jest dowodem na istnienie efektu ani na jego wielkość; mówi, że dane trudno pogodzić z brakiem efektu.</li>
+<li>Statystyka opiera się na estymacji i prawdopodobieństwie, więc decyzja może być błędna. Dlatego zawsze wiąże się z ryzykiem błędu.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Jak wygląda procedura (kroki) <span class="src">BC s. 136–137; T1 s. 192</span></summary>
+<div class="body">
+<ul>
+<li>Ustal schemat badania, liczbę i sposób pomiaru zmiennych zależnych i niezależnych.</li>
+<li>Sformułuj hipotezę zerową (to automatycznie wiąże się z wyborem <strong>testu</strong>).</li>
+<li>Sprawdź <strong>założenia</strong> wybranego testu.</li>
+<li>Oblicz wartość testu (robi to program, np. SPSS, jamovi), odczytaj wartość krytyczną lub <strong>p</strong> i porównaj z poziomem istotności.</li>
+<li>Podejmij decyzję: odrzucić albo nie odrzucać H₀.</li>
+<li>Zinterpretuj wynik, najczęściej razem ze statystykami opisowymi (średnie, rozrzut, wielkość efektu).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:f09e5d3c,metodologia/wyklad-6-fiszki:7e3b70ea,metodologia/wyklad-6-fiszki:c3e76525,metodologia/wyklad-6-fiszki:e8498734,metodologia/wyklad-6-fiszki:99208a32,metodologia/wyklad-6-fiszki:7f3dbf2d" data-title="Logika testowania hipotez" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
+<h2 id="s2">Błędy I i II rodzaju, poziom istotności</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> α to <strong>dopuszczalne ryzyko odrzucenia prawdziwej H₀</strong> (błąd I rodzaju, zwykle 5%); β to ryzyko nieodrzucenia fałszywej H₀ (błąd II rodzaju). Obniżanie jednego podnosi drugie.</p>
+<details class="sec" open="">
+<summary>Tabela decyzji <span class="src">BC s. 138; T1 s. 170–171</span></summary>
+<div class="body">
+<div class="tbl"><table>
+<tr><th>Decyzja</th><th>H₀ jest prawdziwa</th><th>H₀ jest fałszywa</th></tr>
+<tr><td><strong>Odrzucamy H₀</strong></td><td><strong>Błąd I rodzaju (α)</strong>, fałszywy alarm</td><td>poprawna decyzja (to jest <strong>moc</strong> testu, 1 − β)</td></tr>
+<tr><td><strong>Nie odrzucamy H₀</strong></td><td>poprawna decyzja</td><td><strong>Błąd II rodzaju (β)</strong>, wynik fałszywie ujemny</td></tr>
+</table></div><ul>
+<li><strong>Błąd I rodzaju (α):</strong> stwierdzamy efekt, którego nie ma (np. różnicę w zarobkach statystyków i influencerów, której w rzeczywistości nie ma). W sądzie: skazanie niewinnego.</li>
+<li><strong>Błąd II rodzaju (β):</strong> nie widzimy efektu, który istnieje. W sądzie: uniewinnienie winnego.</li>
+<li>W psychologii za groźniejszy uznaje się błąd I rodzaju (fałszywy alarm), dlatego to α jest ustalane z góry.</li>
+<li>Minimalizując jeden z błędów, zwiększamy prawdopodobieństwo drugiego.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Poziom istotności α <span class="src">BC s. 136–138; T1 s. 172, 178</span></summary>
+<div class="body">
+<ul>
+<li><strong>Poziom istotności (α)</strong> to z góry przyjęte maksymalne ryzyko popełnienia błędu I rodzaju. W naukach społecznych <strong>α = 0,05</strong> (5%), czasem 0,01 lub 0,001.</li>
+<li>Wartość 0,05 wprowadził Ronald Fisher; jest to konwencja, nie prawo natury ani wynik dowodu.</li>
+<li>Poziom ufności to dopełnienie: α = 0,05 odpowiada 95% poziomowi ufności.</li>
+<li>Nie myl α (ustalane <strong>przed</strong> badaniem) z <strong>p</strong> (wynik z danych).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:c16adabc,metodologia/wyklad-6-fiszki:80a1e533,metodologia/wyklad-6-fiszki:f4c63269,metodologia/wyklad-6-fiszki:7b76485c,metodologia/wyklad-6-fiszki:c1df07f5,metodologia/wyklad-6-fiszki:fff0d1de" data-title="Błędy I i II rodzaju, poziom istotności" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>6 pytań</span></span></button></div>
+<h2 id="s3">Przedziały ufności</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> przedział ufności pokazuje <strong>zakres wiarygodnych wartości parametru</strong>; 95% przedziałów skonstruowanych w wielu powtórzeniach badania zawiera prawdziwą wartość.</p>
+<details class="sec" open="">
+<summary>Co to jest i jak interpretować <span class="src">T1 s. 171–172</span></summary>
+<div class="body">
+<ul>
+<li><strong>Przedział ufności (CI)</strong> to estymacja przedziałowa: zakres wokół oszacowania (np. średniej), w którym z przyjętą ufnością leży parametr populacji.</li>
+<li><strong>Poprawna interpretacja:</strong> gdybyśmy powtarzali badanie wiele razy, ok. <strong>95% takich przedziałów</strong> zawierałoby prawdziwą wartość parametru.</li>
+<li><strong>Błędna interpretacja:</strong> „z prawdopodobieństwem 95% prawdziwa średnia leży w tym konkretnym przedziale”. Tak mówi bardziej statystyka bayesowska.</li>
+<li>Przykład z książki: średnia z n = 30 ofert pracy wyszła 6000 zł, a 95% przedział to ok. <strong>5420,70–6579,30 zł</strong>. Prawdziwa średnia z populacji (N = 702) mieści się w tym zakresie, ale inne próby dałyby inne przedziały.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Od czego zależy szerokość przedziału <span class="src">T1 s. 172</span></summary>
+<div class="body">
+<ul>
+<li>Większa <strong>liczebność próby</strong> zmniejsza błąd standardowy, więc przedział jest węższy (dokładniejsze oszacowanie).</li>
+<li>Większy <strong>rozrzut</strong> wyników poszerza przedział.</li>
+<li>Wyższy <strong>poziom ufności</strong> (99% zamiast 95%) daje szerszy przedział; niższy (85%) węższy. Przedział 85% zawsze mieści się w przedziale 95% (te same środek i estymator).</li>
+<li>Dlatego najlepiej zwiększyć liczebność i <strong>reprezentatywność</strong> próby, a nie tylko poszerzać przedział.</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:f320bf51,metodologia/wyklad-6-fiszki:31ad65d6,metodologia/wyklad-6-fiszki:35a8a16f,metodologia/wyklad-6-fiszki:20e4df22" data-title="Przedziały ufności" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<h2 id="s4">Statystyka testowa, p i wartość krytyczna</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> z danych liczymy <strong>statystykę testową</strong>; <strong>p</strong> to szansa na wynik co najmniej tak skrajny, <strong>gdyby H₀ była prawdziwa</strong>. Gdy p &lt; α, odrzucamy H₀.</p>
+<details class="sec" open="">
+<summary>Statystyka testowa i jej rozkład <span class="src">T1 s. 173–176</span></summary>
+<div class="body">
+<ul>
+<li><strong>Statystyka testowa</strong> to jedna liczba policzona z danych (np. Z, t, χ²), która pozwala ocenić, czy wynik jest zgodny z H₀. Sprowadza dane o dowolnych jednostkach do wspólnej skali.</li>
+<li>Jej <strong>rozkład</strong> to rozkład wartości, jakie przyjmowałaby w próbach, <strong>gdyby H₀ była prawdziwa</strong>; każdej wartości przypisane jest prawdopodobieństwo.</li>
+<li>Gdyby próby się nie różniły, różnica = 0 i statystyka = 0. Im bardziej wartość oddala się od 0, tym mniej prawdopodobna jest przy H₀.</li>
+<li>Wynik bliski zera (np. Z = 0,26) zdarza się przy prawdziwej H₀ całkiem często (ok. 40%), więc nie jest podstawą do jej odrzucenia.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Wartość p i decyzja <span class="src">T1 s. 177–178; BC s. 137–138</span></summary>
+<div class="body">
+<ul>
+<li><strong>p</strong> to prawdopodobieństwo uzyskania takiej (lub bardziej skrajnej) statystyki testowej <strong>przy założeniu, że H₀ jest prawdziwa</strong>.</li>
+<li><strong>p &lt; α</strong> (np. &lt; 0,05): wynik <strong>istotny statystycznie</strong>, odrzucamy H₀.</li>
+<li><strong>p &gt; α</strong>: wynik <strong>nieistotny</strong>, nie odrzucamy H₀.</li>
+<li>Szybka reguła z książki: patrz na pierwszą cyfrę po przecinku (&gt; 0 = nieistotny, 0,0x), potem na drugą: &lt; 5 = istotny, ≥ 5 = nieistotny. Np. 0,743 i 0,058 nieistotne, 0,015 istotne.</li>
+<li>Programy statystyczne często podpisują p jako „istotność” (Sig.).</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Wartość krytyczna i test jedno- vs dwustronny <span class="src">T1 s. 169, 179–181</span></summary>
+<div class="body">
+<ul>
+<li><strong>Obszar krytyczny</strong> to część pola pod krzywą rozkładu, w której wartości statystyki uprawniają do odrzucenia H₀. Jego granicę wyznacza <strong>wartość krytyczna</strong>.</li>
+<li>Test <strong>jednostronny</strong> (hipoteza kierunkowa): cały obszar krytyczny (5%) po jednej stronie. Dla rozkładu Z: <strong>±1,64</strong>.</li>
+<li>Test <strong>dwustronny</strong> (hipoteza niekierunkowa): obszar dzieli się na dwa ogony po 2,5%. Dla rozkładu Z: <strong>−1,96 i +1,96</strong>.</li>
+<li>Test jednostronny ma <strong>większą moc</strong> (jeśli efekt jest w przewidzianym kierunku), ale w praktyce stosuje się dwustronne. Przełączenie na jednostronny po obejrzeniu danych to nadużycie metodologiczne.</li>
+<li>Wartość krytyczna zależy też od <strong>liczby stopni swobody</strong> i przyjętego α.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Stopnie swobody (df) <span class="src">T1 s. 181–183; BC s. 138</span></summary>
+<div class="body">
+<ul>
+<li><strong>Stopnie swobody</strong> to liczba niezależnych informacji, które mogą się swobodnie zmieniać: liczba obserwacji minus liczba oszacowanych parametrów.</li>
+<li>Metafora z książki: stonoga zakładająca 100 butów; przy ostatnim bucie nie ma już wyboru, więc swobodnych wyborów jest 99.</li>
+<li>Więcej stopni swobody (zwykle większa próba) = <strong>łatwiej o istotny wynik</strong> (wartość krytyczna maleje).</li>
+<li>Wartość df zawsze podajemy przy zapisie testu.</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:8efab5ba,metodologia/wyklad-6-fiszki:11e2d140,metodologia/wyklad-6-fiszki:ab1d1f02,metodologia/wyklad-6-fiszki:64e18ad0,metodologia/wyklad-6-fiszki:5a79b3b6,metodologia/wyklad-6-fiszki:9a837775,metodologia/wyklad-6-fiszki:d297c07a" data-title="Statystyka testowa, p i wartość krytyczna" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>7 pytań</span></span></button></div>
+<h2 id="s5">Pułapki interpretacji i dobre praktyki</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> p nie mówi, że H₀ jest prawdziwa ani że efekt jest duży; „prawie istotne” nie istnieje; zawsze podawaj <strong>dokładne p</strong> i <strong>wielkość efektu</strong>.</p>
+<details class="sec" open="">
+<summary>Błędne interpretacje p <span class="src">T1 s. 186–187</span></summary>
+<div class="body">
+<ul>
+<li>Mylenie <strong>p z α</strong> (α to ryzyko ustalone z góry, p wynika z danych).</li>
+<li>Przekonanie, że p to <strong>prawdopodobieństwo prawdziwości H₀</strong>. P jest liczone przy założeniu, że H₀ jest prawdziwa.</li>
+<li>Uznanie wyniku nieistotnego za dowód, że efektu <strong>nie ma</strong>. To samo dotyczy wyniku istotnego: nie dowodzi, że efekt jest „prawdziwy”. Efekt uznajemy za obiektywny po <strong>replikacjach</strong> i <strong>metaanalizie</strong>.</li>
+<li>Interpretacja „prawdopodobieństwo uzyskania takiego wyniku jedynie przez przypadek jest mniejsze od 0,05” jest błędna. Prawidłowo: przy założeniu H₀ wynik tak skrajny pojawiałby się z prawdopodobieństwem &lt; 0,05.</li>
+<li>Przy wyniku nieistotnym, ale z p = 0,05–0,10, zapis „tendencja” (BC) bywa stosowany, lecz T1 krytykuje „prawie istotne” jako błąd: decyzja jest zero-jedynkowa, nie ma kategorii „prawie odrzucone”.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Nadużycia: efekt szuflady i p-hacking <span class="src">T1 s. 187–188</span></summary>
+<div class="body">
+<ul>
+<li><strong>Efekt szuflady:</strong> wyniki nieistotne (p &gt; 0,05) trafiają do szuflady, bo autorzy ich nie wysyłają, a redakcje nie chcą ich publikować. Wiedza naukowa zostaje zniekształcona.</li>
+<li><strong>Manipulacje</strong> dla uzyskania p &lt; 0,05: dodatkowe niezaplanowane analizy, usuwanie niewygodnych obserwacji, badanie kolejnych osób aż do istotności. To próba oszustwa naukowego.</li>
+<li>Nieistotne wyniki często wskazują na niedociągnięcia metodologiczne, z których można się uczyć.</li>
+<li>Różnica między p = 0,051 a 0,050 to zaledwie 0,001; granica 0,05 jest konwencją Fishera.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Dobre praktyki raportowania <span class="src">T1 s. 186, 189; BC s. 137–138</span></summary>
+<div class="body">
+<ul>
+<li>Podawaj <strong>dokładne p</strong> (do trzech miejsc po przecinku, np. p = 0,028), a nie „p &lt; 0,05” czy „p &gt; 0,05”. Dla bardzo małych: p &lt; 0,001. Nie pisz „p = 0,000”.</li>
+<li>Starsza konwencja (BC): p &lt; 0,001, p &lt; 0,01, p &lt; 0,05, „ni” (nieistotne).</li>
+<li>Do p zawsze dodaj <strong>wielkość efektu</strong> i <strong>przedział ufności</strong>, bo p zależy od liczebności próby.</li>
+<li>Duża próba daje istotne wyniki nawet dla znikomych różnic, mała próba może ukryć istniejący efekt (więcej w W7).</li>
+<li>Podejście <strong>bayesowskie</strong> porównuje bezpośrednio, która hipoteza lepiej tłumaczy dane (omawiane jako alternatywa dla NHST).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:0e2ccc56,metodologia/wyklad-6-fiszki:eaa57a1a,metodologia/wyklad-6-fiszki:06bfc366,metodologia/wyklad-6-fiszki:0bc310f4,metodologia/wyklad-6-fiszki:03e89a4d" data-title="Pułapki interpretacji i dobre praktyki" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>5 pytań</span></span></button></div>
+<h2 id="s6">Przykład pełnej procedury i chi-kwadrat</h2>
+<p class="tldr"><span class="lbl">W skrócie</span> krok po kroku: hipotezy, test, α, obszar krytyczny, statystyka, decyzja. <strong>Chi-kwadrat</strong> porównuje rozkład z badania z oczekiwanym dla danych jakościowych.</p>
+<details class="sec" open="">
+<summary>Przykład: oferty pracy statystyka <span class="src">T1 s. 193–195</span></summary>
+<div class="body">
+<ul>
+<li><strong>1. Hipotezy:</strong> H₀: średnie zarobki w 50 najlepszych ofertach = 8000 zł; H₁: ≠ 8000 zł (hipoteza dwustronna).</li>
+<li><strong>2. Test statystyczny:</strong> porównanie średniej z próby z wartością odniesienia.</li>
+<li><strong>3. Poziom istotności:</strong> α = 0,05.</li>
+<li><strong>4. Obszar krytyczny</strong> (program robi to za nas) i <strong>5. statystyka testowa</strong> z próby.</li>
+<li><strong>6. Decyzja:</strong> p &lt; 0,001, czyli p &lt; α. Odrzucamy H₀: średnia płaca w najlepszych ofertach istotnie różni się od 8000 zł.</li>
+<li>Dodatkowo patrzymy na wielkość efektu, błąd standardowy i przedział ufności średniej.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Testy parametryczne i nieparametryczne <span class="src">BC s. 138–139</span></summary>
+<div class="body">
+<ul>
+<li>Dane <strong>ilościowe</strong> (wiek, czas reakcji) analizujemy testami <strong>parametrycznymi</strong>, opartymi na średniej i wariancji; wymagają założeń i mają większą moc.</li>
+<li>Dane <strong>jakościowe</strong> (np. zgoda/brak zgody, kooperacja/rywalizacja, wybór partnera) nie mają średniej, więc używamy testów <strong>nieparametrycznych</strong>, np. <strong>chi-kwadrat</strong>.</li>
+<li>Dla zmiennych nominalnych jedyną statystyką opisową jest <strong>dominanta (modalna)</strong>; średnia czy SD nie mają sensu.</li>
+</ul>
+</div>
+</details>
+<details class="sec">
+<summary>Test chi-kwadrat <span class="src">BC s. 139–140</span></summary>
+<div class="body">
+<ul>
+<li>Wspólna nazwa testów opartych na rozkładzie χ²; należą do testów <strong>dobroci dopasowania</strong>, które pokazują, jak bardzo dane empiryczne pasują do modelu teoretycznego.</li>
+<li>Najprostsze użycie: czy rozkład w badaniu różni się od <strong>teoretycznego</strong> w sposób istotny? Przykłady: moneta 100 rzutów (52 reszki, 48 orłów vs 50/50) oraz 40 studentów (25 K, 15 M vs 21 K, 19 M w populacji).</li>
+<li>Test chi-kwadrat porównuje też <strong>dwa rozkłady empiryczne</strong> i sprawdza, czy zmienne są ze sobą powiązane czy niezależne.</li>
+<li>W teście chi-kwadrat model teoretyczny to zwykle H₀, którą chcemy sfalsyfikować.</li>
+<li><strong>Założenia:</strong> pomiary są od siebie niezależne (jedna obserwacja = jedna komórka tabeli) oraz próba jest duża (w każdej kategorii co najmniej około 5 obserwacji).</li>
+</ul>
+</div>
+</details><div class="st-check"><button data-check="metodologia/wyklad-6-fiszki:b158c325,metodologia/wyklad-6-fiszki:c9846b56,metodologia/wyklad-6-fiszki:74e1cdc5,metodologia/wyklad-6-fiszki:aaf4ccee" data-title="Przykład pełnej procedury i chi-kwadrat" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>4 pytania</span></span></button></div>
+<div class="st-check unit"><button data-check="metodologia/wyklad-6-fiszki:f09e5d3c,metodologia/wyklad-6-fiszki:7e3b70ea,metodologia/wyklad-6-fiszki:c3e76525,metodologia/wyklad-6-fiszki:e8498734,metodologia/wyklad-6-fiszki:99208a32,metodologia/wyklad-6-fiszki:7f3dbf2d,metodologia/wyklad-6-fiszki:c16adabc,metodologia/wyklad-6-fiszki:80a1e533,metodologia/wyklad-6-fiszki:f4c63269,metodologia/wyklad-6-fiszki:7b76485c,metodologia/wyklad-6-fiszki:c1df07f5,metodologia/wyklad-6-fiszki:fff0d1de,metodologia/wyklad-6-fiszki:f320bf51,metodologia/wyklad-6-fiszki:31ad65d6,metodologia/wyklad-6-fiszki:35a8a16f,metodologia/wyklad-6-fiszki:20e4df22,metodologia/wyklad-6-fiszki:8efab5ba,metodologia/wyklad-6-fiszki:11e2d140,metodologia/wyklad-6-fiszki:ab1d1f02,metodologia/wyklad-6-fiszki:64e18ad0,metodologia/wyklad-6-fiszki:5a79b3b6,metodologia/wyklad-6-fiszki:9a837775,metodologia/wyklad-6-fiszki:d297c07a,metodologia/wyklad-6-fiszki:0e2ccc56,metodologia/wyklad-6-fiszki:eaa57a1a,metodologia/wyklad-6-fiszki:06bfc366,metodologia/wyklad-6-fiszki:0bc310f4,metodologia/wyklad-6-fiszki:03e89a4d,metodologia/wyklad-6-fiszki:b158c325,metodologia/wyklad-6-fiszki:c9846b56,metodologia/wyklad-6-fiszki:74e1cdc5,metodologia/wyklad-6-fiszki:aaf4ccee" data-title="Wykład 6" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>32 pytania</span></span></button></div><footer class="sources">
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2023). <em>Metodologia i statystyka. Tom 1</em> (s. 167–195). PWN.</p>
+<p>Bedyńska, S. i Cypryańska, M. (red.) (2013). <em>Statystyczny drogowskaz 1</em> (s. 136–140). Wydawnictwo Akademickie Sedno.</p>
+<p>Józefacka, N. M., Kołek, M. F. i Arciszewska-Leszczuk, A. (2026). <em>Metodologia i statystyka. Tom 2</em> (rozdz. o testach nieparametrycznych, s. 141–209). PWN.</p>
+</footer>
+</main>
+</div>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=770f9d12"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Metodologia" data-home="../" data-title="Wykład 6" src="../assets/reader.js?v=2edc1715"></script>
+<script src="../assets/pro.js?v=66992051"></script>
+<script src="../assets/sesja.js?v=90983177"></script>
+<script src="../assets/czytanie.js?v=cc607b65"></script>
+</body>
+</html>

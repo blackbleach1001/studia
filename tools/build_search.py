@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 SUBJECTS = json.loads((ROOT / "tools" / "subjects.json").read_text(encoding="utf-8"))
 
-DROP = "script, style, nav, .st-check, .st-pager, .st-hero, header.hero, footer, .sim-link, .dock, .toc, .switch"
+DROP = "script, style, nav, .st-check, .st-prime, .st-pager, .st-hero, header.hero, footer, .sim-link, .dock, .toc, .switch"
 
 def clean(s):
     return re.sub(r"\s+", " ", s).strip()
