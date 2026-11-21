@@ -289,7 +289,8 @@
     "znając poziom samokontroli uczniów możemy przewidzieć sposób nauczania",
     "permisywny sposób nauczania i niski poziom samokontroli uczniów obniżają ich osiągnięcia"
    ],
-   "c": 2
+   "c": 2,
+   "e": "Korelacja pozwala przewidywać, ale nie dowodzi przyczynowości: permisywność nie musi być przyczyną niższej samokontroli (slajdy W1). W bazie grupy pogrubiono a – to błąd."
   },
   {
    "id": "e19-A",
@@ -1650,7 +1651,8 @@
     "wszystkich wymienionych"
    ],
    "c": 2,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Nie ma tego na stronie wprost. W bazie grupy pogrubiono a („zainteresowania przedmiotem nauki”)."
   },
   {
    "id": "e122",
@@ -1821,7 +1823,8 @@
     "rysowanie tylko tego, co dziecko aktualnie widzi"
    ],
    "c": 1,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Na slajdach W5 cechy rysunku tego okresu to: zmiana tematu w trakcie, efekt rentgenowski i dysproporcja emocjonalna (a, b, c). Pytanie prawdopodobnie miało brzmieć „NIE zalicza się” – wtedy odpowiedź to d."
   },
   {
    "id": "e132",
@@ -3047,8 +3050,8 @@
     "strategii zapamiętywania zasad ortograficznych",
     "poprawne są odpowiedzi a i b"
    ],
-   "c": 1,
-   "e": "Galuschka i in. (2020): największy efekt dla interwencji morfologicznych (g = 0,80)."
+   "c": 3,
+   "e": "Na stronie Wykładu 5 (Galuschka i in., 2020): największy wpływ mają zadania fonologiczne, ortograficzne i morfologiczne; strategie zapamiętywania zasad – brak wpływu. Stąd „a i b”."
   },
   {
    "id": "e215",
@@ -3902,7 +3905,8 @@
     "gamma",
     "delta"
    ],
-   "c": 3
+   "c": 3,
+   "e": "Przeżywanie, sprawy społeczne, działalność w organizacjach – model delta. W bazie grupy pogrubione są gamma i delta."
   },
   {
    "id": "e274",
@@ -3954,7 +3958,8 @@
     "język, jakim posługujemy się w szkole, np. zwracanie się do nauczycieli „Profesorze”",
     "wszystkie odpowiedzi są prawidłowe"
    ],
-   "c": 3
+   "c": 3,
+   "e": "Kultura szkoły obejmuje i elementy widoczne (ławki, język), i przekonania kadry – odpowiedź „wszystkie”."
   },
   {
    "id": "e278",
@@ -3993,7 +3998,9 @@
     "gamma",
     "delta"
    ],
-   "c": 1
+   "c": 1,
+   "f": "niepewne",
+   "e": "Nie ma tego na stronie. Wiedza praktyczna, „przydatna w życiu” = beta (działanie, por. e279). W bazie grupy pogrubiono gammę."
   },
   {
    "id": "e281",
@@ -4007,7 +4014,8 @@
     "polega na zastosowaniu wybranego modelu rozwojowego w identyfikowaniu okoliczności i zachowań mających wpływ na proces uczenia się"
    ],
    "c": 2,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Nie ma tego na stronie. W bazie grupy pogrubiono a („synonim diagnozy pełnej”)."
   },
   {
    "id": "e282",
@@ -4152,7 +4160,8 @@
     "jako typowe cechy nastolatka wychowywanego w stylu permisywnym"
    ],
    "c": 1,
-   "f": "niepewne"
+   "f": "niepewne",
+   "e": "Nie ma tego na stronie. W bazie grupy pogrubiono a („elementy dojrzałości emocjonalnej”)."
   },
   {
    "id": "e293",
@@ -5188,6 +5197,635 @@
     "wszystkie odpowiedzi są prawidłowe"
    ],
    "c": 3
+  },
+  {
+   "id": "e365",
+   "n": 365,
+   "g": "e2",
+   "q": "Zgodnie z koncepcją podwójnego kodowania, najlepsze rezultaty w nauce uzyska osoba, która:",
+   "a": [
+    "wykorzysta wzrokowe i werbalne informacje podczas nauki",
+    "preferując wzrokowy styl uczenia się wykorzysta wyłącznie informacje wzrokowe",
+    "preferując słuchowy styl uczenia się wykorzysta wyłącznie informacje wzrokowe",
+    "semantycznie przetworzy przyswajany materiał"
+   ],
+   "c": 0,
+   "e": "Podwójne kodowanie: słowo + obraz zapamiętuje się lepiej (slajdy W3, strona Wykładu 3)."
+  },
+  {
+   "id": "e366",
+   "n": 366,
+   "g": "e4",
+   "q": "Zgodnie z klasyfikacją ICD-10 kryterium wykluczającym możliwość rozpoznania u ucznia dysleksji rozwojowej jest:",
+   "a": [
+    "wysoka inteligencja",
+    "niepełnosprawność intelektualna",
+    "inteligencja niższa od przeciętnej",
+    "inteligencja na poziomie szeroko rozumianej normy"
+   ],
+   "c": 1,
+   "e": "Dysleksję rozwojową rozpoznaje się przy prawidłowym rozwoju umysłowym; niepełnosprawność intelektualna wyklucza to rozpoznanie (Olechowska, rozdz. 10)."
+  },
+  {
+   "id": "e367",
+   "n": 367,
+   "g": "e2",
+   "q": "Zasada, że łatwiej uczymy się materiału bardziej ustrukturyzowanego, niż mniej ustrukturyzowanego jest:",
+   "a": [
+    "nie ma takiej zasady",
+    "zawsze prawdziwa",
+    "zależna od możliwości intelektualnych ucznia oraz rodzaju materiału i zmiany psychicznej, do jakiej chcemy doprowadzić",
+    "zależna od poziomu inteligencji ucznia"
+   ],
+   "c": 2,
+   "e": "Według slajdów W3 skuteczność struktury materiału zależy od możliwości ucznia, rodzaju materiału i celu uczenia się."
+  },
+  {
+   "id": "e368",
+   "n": 368,
+   "g": "e5",
+   "q": "Zasada Rumpelstilzchena w diagnozie psychopedagogicznej oznacza:",
+   "a": [
+    "„magiczną\" wiarę w wartość słowa użytego w sformułowaniu diagnozy",
+    "koncentrację na ograniczeniach ucznia",
+    "koncentrację na mocnych stronach ucznia",
+    "konieczność wdrożenia postępowania korygującego"
+   ],
+   "c": 0,
+   "e": "Zasada Rumpelstilzchena: „magiczna” wiara w moc słowa użytego w diagnozie (slajdy W5)."
+  },
+  {
+   "id": "e369",
+   "n": 369,
+   "g": "e4",
+   "q": "Zaburzenie zdolności matematycznych, to:",
+   "a": [
+    "dyskalkulia",
+    "dysgrafia",
+    "dysleksja",
+    "dysalgebra"
+   ],
+   "c": 0,
+   "e": "Dyskalkulia – specyficzne zaburzenie zdolności matematycznych (Kosc; Olechowska, rozdz. 10)."
+  },
+  {
+   "id": "e370",
+   "n": 370,
+   "g": "e5",
+   "q": "Wysoka jakość szkoły, jako czynnik wspierający rozwój uczniów oznacza:",
+   "a": [
+    "małą szkołą, małe zaangażowanie rodziców i wiele zajęć pozalekcyjnych dla uczniów",
+    "wysoką jakość nauczania, jasne i konsekwentne zasady dla uczniów",
+    "dużą szkołę, wsparcie nauczycieli i rozwiniętą infrastrukturę szkoły",
+    "pozytywny klimat szkoły, wsparcie nauczycieli, odczuwaną więź ze szkołą, wysoką jakość nauczania"
+   ],
+   "c": 3,
+   "e": "Szkolne czynniki chroniące: przynależność, pozytywny klimat, wsparcie, okazje do sukcesu (strona Wykładu 5)."
+  },
+  {
+   "id": "e371",
+   "n": 371,
+   "g": "e2",
+   "q": "Wiązanie uczenia się z obserwowalnymi wydarzeniami jest charakterystyczne dla:",
+   "a": [
+    "empirycznych definicji uczenia się",
+    "fizjologicznych definicji uczenia się",
+    "teoretycznych definicji uczenia się",
+    "poznawczych definicji uczenia się"
+   ],
+   "c": 0,
+   "e": "Definicje empiryczne wiążą uczenie się z obserwowalnymi wydarzeniami (slajdy W3)."
+  },
+  {
+   "id": "e372",
+   "n": 372,
+   "g": "e4",
+   "q": "W związku z niepełnosprawnością intelektualną w stopniu lekkim, uczeń:",
+   "a": [
+    "nie będzie posługiwał się myśleniem abstrakcyjnym",
+    "otrzymuje opinię z Poradni Psychologiczno-Pedagogicznej",
+    "obligatoryjnie otrzymuje skierowanie do placówki kształcenia integracyjnego",
+    "będzie miał słabą pamięć mechaniczną"
+   ],
+   "c": 0,
+   "f": "niepewne",
+   "e": "Najbliższa jest a: przy lekkiej NI zdolność do abstrakcji jest wyraźnie obniżona (Olechowska, rozdz. 7.1). Sformułowanie „nie będzie” jest za mocne – w bazie grupy były wątpliwości."
+  },
+  {
+   "id": "e373",
+   "n": 373,
+   "g": "e4",
+   "q": "W rozpoznaniu nadpobudliwości psychoruchowej konieczne jest stwierdzenie występowania objawów przez ukończeniem:",
+   "a": [
+    "7 roku życia",
+    "4 roku życia",
+    "10 roku życia",
+    "15 roku życia"
+   ],
+   "c": 0,
+   "e": "ICD-10 (F90): objawy przed 7. rokiem życia (Bogdanowicz). W DSM-5 granica to 12 lat."
+  },
+  {
+   "id": "e374",
+   "n": 374,
+   "g": "e7",
+   "q": "W pracy psychoprofilaktycznej z wykorzystaniem filmu ważne jest:",
+   "a": [
+    "dobranie odpowiedniego materiału filmowego",
+    "dobranie odpowiedniego materiału filmowego i zaplanowanie aktywności wspierających refleksję uczniów po emisji filmu",
+    "zaplanowanie aktywności, mających na celu przekazanie wiedzy uczniom",
+    "ze względu na niską skuteczność filmy nie są wykorzystywane w pracy profilaktycznej"
+   ],
+   "c": 1
+  },
+  {
+   "id": "e375",
+   "n": 375,
+   "g": "e5",
+   "q": "W celu niedopuszczenia do wystąpienia zachowań trudnych należy:",
+   "a": [
+    "manipulować karami",
+    "wprowadzić wzmocnienia",
+    "wycofać wzmocnienia",
+    "manipulować bodźcami poprzedzającymi"
+   ],
+   "c": 3,
+   "e": "Zapobieganie to praca na bodźcach poprzedzających (A w analizie ABC, slajdy W5)."
+  },
+  {
+   "id": "e376",
+   "n": 376,
+   "g": "e2",
+   "q": "Uczeń, który podczas nauki powtarza materiał własnymi słowami, próbuje połączyć go z już posiadaną wiedzą i szuka praktycznych zastosowań przyswajanej wiedzy stosuje strategię:",
+   "a": [
+    "powierzchniowego przetwarzania informacji",
+    "głębokiego przetwarzania informacji",
+    "ukierunkowaną na reprodukcję",
+    "metapoznawczą"
+   ],
+   "c": 1,
+   "e": "Powtarzanie własnymi słowami, łączenie z wiedzą i szukanie zastosowań to przetwarzanie głębokie (slajdy W3)."
+  },
+  {
+   "id": "e377",
+   "n": 377,
+   "g": "e1",
+   "q": "Trzy podstawowe elementy procesów pedagogicznych to:",
+   "a": [
+    "osoba ucznia, osoba nauczyciela, materiał nauczania",
+    "materiał nauczania, warunki klasy szkolnej, wsparcie rodziców",
+    "osoba ucznia, warunki klasy szkolnej, wsparcie rodziców",
+    "materiał nauczania, osoba nauczyciela, wsparcie rodziców"
+   ],
+   "c": 0
+  },
+  {
+   "id": "e378",
+   "n": 378,
+   "g": "e2",
+   "q": "Stylem uczenia się NIE jest:",
+   "a": [
+    "preferowany sensoryczny kanał odbioru informacji",
+    "aktywność podejmowana w trakcie uczenia się",
+    "stały wymiar psychiki odpowiadający różnicom indywidualnym w zakresie spostrzegania, myślenia, organizowania i przetwarzania informacji",
+    "przekonanie co do preferowanego zmysłu podczas uczenia się i jego roli w uczeniu się i nauczaniu"
+   ],
+   "c": 2,
+   "e": "Opis c to definicja stylu poznawczego (względnie stała preferencja), a nie stylu uczenia się (strony Wykładu 3 i 4)."
+  },
+  {
+   "id": "e379",
+   "n": 379,
+   "g": "e5",
+   "q": "Stosunek haseł tematycznych z historii Polski do haseł z historii powszechnej, sprzyjający budowaniu podstawy polonocentrycznej jest elementem:",
+   "a": [
+    "programu profilaktycznego",
+    "programu wychowawczego",
+    "programu ukrytego szkoły",
+    "programu dyrektorskiego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "e380",
+   "n": 380,
+   "g": "e5",
+   "q": "Stosowanie przez nauczyciela strategii odliczania (\"Liczę do trzech i wszyscy mają się w tym czasie uspokoić\") jest przykładem:",
+   "a": [
+    "manipulowania wzmocnieniami",
+    "manipulowania karami",
+    "manipulowania bodźcami wygaszeniowymi",
+    "manipulowania bodźcami różnicującymi"
+   ],
+   "c": 3,
+   "f": "niepewne",
+   "e": "Odliczanie to sygnał zapowiadający konsekwencję, czyli bodziec różnicujący (prezentacja nr 6 według bazy grupy)."
+  },
+  {
+   "id": "e381",
+   "n": 381,
+   "g": "e5",
+   "q": "Skuteczna edukacja moralna ma szansę wystąpić, kiedy:",
+   "a": [
+    "omawiane są hipotetyczne dylematy moralne",
+    "szkoła nazywa wprost ważne dla niej wartości, dyskutuje o nich i promuje wśród uczniów",
+    "nauczyciele rozwiązują problemy uczniów i modelują prawidłowe zachowania",
+    "zasady w szkole są różne dla uczniów, nauczycieli, innych pracowników szkoły"
+   ],
+   "c": 1
+  },
+  {
+   "id": "e382",
+   "n": 382,
+   "g": "e2",
+   "q": "Przedstawianie przyswajanego materiału tekstowego w postaci tabeli jest przykładem stosowania strategii:",
+   "a": [
+    "elaboracji",
+    "powtarzania",
+    "organizowania",
+    "metapoznawczej"
+   ],
+   "c": 2,
+   "e": "Tabela porządkuje materiał – strategia organizowania (strategie poznawcze: powtarzanie, elaboracja, organizowanie; slajdy W3)."
+  },
+  {
+   "id": "e383",
+   "n": 383,
+   "g": "e7",
+   "q": "Profilaktyka oparta na wiedzy obejmuje programy:",
+   "a": [
+    "dobrej praktyki",
+    "wszystkie wymienione odpowiedzi są poprawne",
+    "oparte na naukowych dowodach skuteczności",
+    "szyte na miarę"
+   ],
+   "c": 1,
+   "f": "niepewne",
+   "e": "W bazie grupy pogrubione są b i c; komentarz („dowody + praktyka + dostosowanie”) wskazuje na b."
+  },
+  {
+   "id": "e384",
+   "n": 384,
+   "g": "e2",
+   "q": "Proces nauczania powinien obejmować:",
+   "a": [
+    "wszystkie wymienione odpowiedzi są poprawne",
+    "analizę już posiadanych przez uczniów wiadomości",
+    "wyposażenie uczniów w wiedzę wyjściową",
+    "zaplanowanie różnych ćwiczeń, czynności uczniów"
+   ],
+   "c": 0
+  },
+  {
+   "id": "e385",
+   "n": 385,
+   "g": "e2",
+   "q": "Parafrazowanie przyswajalnego materiału jest przykładem stosowania strategii:",
+   "a": [
+    "powtarzania",
+    "organizowania",
+    "elaboracji",
+    "metapoznawczej"
+   ],
+   "c": 2,
+   "e": "Parafrazowanie to elaboracja (slajdy W3)."
+  },
+  {
+   "id": "e386",
+   "n": 386,
+   "g": "e3",
+   "q": "Osoba dojrzała moralnie charakteryzuje się:",
+   "a": [
+    "szacunkiem dla ludzkiej godności",
+    "refleksją nad wyborami moralnymi",
+    "troską o dobro innych",
+    "wszystkie odpowiedzi są prawidłowe"
+   ],
+   "c": 3
+  },
+  {
+   "id": "e387",
+   "n": 387,
+   "g": "e3",
+   "q": "Opowiadanie o treści swojego rysunku pojawia się w rozwoju rysunku w okresie:",
+   "a": [
+    "bazgroty kontrolowanej",
+    "schematycznym",
+    "bazgroty nazywanej",
+    "głowonogów"
+   ],
+   "c": 2,
+   "e": "Etapy bazgrot: bezładna → kontrolowana → nazywana; w ostatniej dziecko nazywa i opowiada, co narysowało (slajdy W5)."
+  },
+  {
+   "id": "e388",
+   "n": 388,
+   "g": "e5",
+   "q": "Obraz firmy w przyszłości, marzenie, do którego realizacji firma będzie dążyła, to definicja:",
+   "a": [
+    "wizji organizacji",
+    "strategii organizacji",
+    "misji organizacji",
+    "wartości organizacji"
+   ],
+   "c": 0
+  },
+  {
+   "id": "e389",
+   "n": 389,
+   "g": "e4",
+   "q": "Niewłaściwy poziom graficzny pisma ucznia określa się jako:",
+   "a": [
+    "dysgrafia",
+    "dysortografia",
+    "dysleksja",
+    "dyskopatia"
+   ],
+   "c": 0,
+   "e": "Dysgrafia – niski poziom graficzny pisma (Olechowska, rozdz. 10)."
+  },
+  {
+   "id": "e390",
+   "n": 390,
+   "g": "e5",
+   "q": "Nakreślenie misji szkoły ma za zadanie:",
+   "a": [
+    "informować otoczenie o działalności i celach szkoły",
+    "pełnić rolę drogowskazu przy podejmowaniu decyzji i planowaniu",
+    "przewodzić w codziennej pracy nauczyciela",
+    "wszystkie wymienione odpowiedzi są poprawne"
+   ],
+   "c": 3
+  },
+  {
+   "id": "e391",
+   "n": 391,
+   "g": "e1",
+   "q": "Na gruncie psychologii akademickiej psychologia edukacji czerpie z:",
+   "a": [
+    "psychologii kształcenia",
+    "wszystkich wymienionych",
+    "psychologii rozwoju",
+    "psychologii wychowawczej"
+   ],
+   "c": 1,
+   "e": "Psychologia edukacji czerpie z wielu subdyscyplin psychologii (strona Wykładu 1)."
+  },
+  {
+   "id": "e392",
+   "n": 392,
+   "g": "e5",
+   "q": "Model uczenia się od umiejętności praktycznych do wiadomości teoretycznych to model:",
+   "a": [
+    "alfa",
+    "beta",
+    "gamma",
+    "delta"
+   ],
+   "c": 2,
+   "f": "niepewne",
+   "e": "Zgodnie z e272 w bazie: od praktyki do teorii = gamma. W bazie grupy pogrubiono beta, ale komentarz wskazuje gammę."
+  },
+  {
+   "id": "e393",
+   "n": 393,
+   "g": "e5",
+   "q": "Model uczenia się gamma zakłada między innym, że uczeń lub uczennica:",
+   "a": [
+    "samodzielnie odkrywa prawidłowości",
+    "poznaje świat przez działanie",
+    "nie ceni pracy indywidualnej i długotrwałego namysłu",
+    "przedmioty szkolne uważa za nudne i ma do nich stosunek lekceważący"
+   ],
+   "c": 0,
+   "f": "niepewne",
+   "e": "Model gamma = odkrywanie prawidłowości (por. e261)."
+  },
+  {
+   "id": "e394",
+   "n": 394,
+   "g": "e5",
+   "q": "Kultura szkoły, która wiąże się z poczuciem przynależności i wyższym poczuciem własnej wartości, to taka, w której:",
+   "a": [
+    "nie ma akceptacji dla zachowań antyspołecznych",
+    "są relacje oparte o szacunek i zaufaniu",
+    "ważne jest zrozumienie materiału i dążenie do wysokich wyników",
+    "wszystkie wymienione odpowiedzi"
+   ],
+   "c": 3,
+   "f": "niepewne",
+   "e": "W bazie grupy pogrubione są c i d."
+  },
+  {
+   "id": "e395",
+   "n": 395,
+   "g": "e5",
+   "q": "Który opis typu umysłu prezentuje typ globalno - subiektywny:",
+   "a": [
+    "Wrażliwy emocjonalnie, impulsywny, chętnie podejmuje ryzyko i eksperymentuje",
+    "Poszukuje szczegółowych faktów, jest logiczny, ostrożny, przestrzega reguł zewnętrznych",
+    "Wykorzystuje modele i prawa ogólne, poszukuje wyjaśnień deterministycznych, tworzy teorie",
+    "Dąży do głębokiego rozumienia i przeżycia problemów, duchowego przywództwa i wpływu"
+   ],
+   "c": 3,
+   "e": "Globalno-subiektywny: głębokie rozumienie i przeżycie, duchowe przywództwo (por. e274). „Wrażliwy, impulsywny” to typ konkretno-subiektywny (e263). W bazie grupy pogrubiono a – to błąd."
+  },
+  {
+   "id": "e396",
+   "n": 396,
+   "g": "e5",
+   "q": "Które przyporządkowanie jest poprawne:",
+   "a": [
+    "typ konkretno-subiektywny - model beta; typ globalno-subiektywny - model delta",
+    "typ konkretno-obiektywny - model alfa; typ globalno-obiektywny - model beta",
+    "typ konkretno-obiektywny - model delta; typ globalno-obiektywny - model alfa",
+    "typ globalno-obiektywny - model alfa; typ konkretno-subiektywny - model beta"
+   ],
+   "c": 0,
+   "f": "niepewne",
+   "e": "Przy przyporządkowaniu z bazy (konkretno-obiektywny – alfa, konkretno-subiektywny – beta, globalno-obiektywny – gamma, globalno-subiektywny – delta; por. e284) poprawne jest tylko a."
+  },
+  {
+   "id": "e397",
+   "n": 397,
+   "g": "e1",
+   "q": "Jednym z pionierów psychologii edukacji był:",
+   "a": [
+    "Wilhelm Wundt",
+    "William James",
+    "Burrhus F. Skinner",
+    "Mamie P. Clark"
+   ],
+   "c": 1,
+   "e": "Pionierzy: William James, John Dewey, Edward Thorndike (slajdy W1)."
+  },
+  {
+   "id": "e398",
+   "n": 398,
+   "g": "e2",
+   "q": "Jakie warunki muszą być spełnione, żeby uznać dany materiał nauczania za znaczący dla ucznia?",
+   "a": [
+    "uczeń jest w stanie zrozumieć materiał i nauczyciel jest w stanie go wyjaśnić",
+    "uczeń jest w stanie zrozumieć materiał i jest w stanie odnieść ten materiał do posiadanej już wiedzy",
+    "nauczyciel ma wystarczającą wiedzę o przedmiocie i uczeń ma wystarczające możliwości intelektualne do nauki",
+    "nauczyciel potrafi odnieść dany materiał do wcześniej omawianego i uczeń ma wystarczające możliwości intelektualne do nauki"
+   ],
+   "c": 1,
+   "e": "Uczenie się znaczące (Ausubel): materiał zrozumiały i dający się połączyć z posiadaną wiedzą."
+  },
+  {
+   "id": "e399",
+   "n": 399,
+   "g": "e1",
+   "q": "Etykietowaniu uczniów przez nauczyciela sprzyja:",
+   "a": [
+    "poddawanie w wątpliwość wiedzy o właściwościach danej kategorii uczniów",
+    "kontrolowanie, czy mimowolnie nie komunikuje się uczniowi negatywnej opinii o nim",
+    "uświadomienie determinant własnego zachowania",
+    "przypisywanie kategorii typu \"zdolny\" uczniowi"
+   ],
+   "c": 3,
+   "e": "Przypisywanie uczniom kategorii („zdolny”, „słaby”) sprzyja etykietowaniu; pozostałe odpowiedzi to sposoby przeciwdziałania (Wykład 2)."
+  },
+  {
+   "id": "e400",
+   "n": 400,
+   "g": "e1",
+   "q": "Efekt kilku etykiet w kontekście oczekiwań interpersonalnych w edukacji oznacza, że:",
+   "a": [
+    "nauczyciel utworzył niskie oczekiwania względem ucznia, a uczeń wysokie względem siebie",
+    "różne osoby tworzą jednakowe, niskie lub wysokie, oczekiwania względem ucznia",
+    "różne osoby tworzą odmienne oczekiwania względem ucznia",
+    "uczeń zachowuje się niezgodnie z oczekiwaniami nauczycieli"
+   ],
+   "c": 2,
+   "e": "Efekt kilku etykiet: różne osoby mają wobec ucznia odmienne oczekiwania (slajdy W2; por. efekt piętna w e1)."
+  },
+  {
+   "id": "e401",
+   "n": 401,
+   "g": "e1",
+   "q": "Efekt Galatei może wystąpić, jeśli:",
+   "a": [
+    "ten sam nauczyciel uczy młodsze dziecko, a starsze osiągało niskie wyniki w nauce",
+    "ten sam nauczyciel uczy młodsze dziecko, a starsze osiągało wysokie wyniki w nauce",
+    "inny nauczyciel uczy młodsze dziecko, a starsze osiągało niskie wyniki w nauce",
+    "inny nauczyciel uczy młodsze dziecko, a starsze osiągało wysokie wyniki w nauce"
+   ],
+   "c": 1,
+   "e": "Galatea to pozytywna odmiana efektu oczekiwań; działa też przez starsze rodzeństwo u tego samego nauczyciela (Seaver; strona Wykładu 2)."
+  },
+  {
+   "id": "e402",
+   "n": 402,
+   "g": "e4",
+   "q": "Dziecko ze stwierdzoną dysleksją rozwojową może mieć trudności w nauce:",
+   "a": [
+    "języków obcych",
+    "języka polskiego",
+    "matematyki",
+    "wszystkie wymienione odpowiedzi są poprawne"
+   ],
+   "c": 3,
+   "e": "Dysleksja utrudnia naukę języka ojczystego, języków obcych i matematyki (Olechowska, rozdz. 10)."
+  },
+  {
+   "id": "e403",
+   "n": 403,
+   "g": "e4",
+   "q": "Dziecko, które nie odróżnia głosek zbliżonych fonetycznie przejawia deficyty w obszarze:",
+   "a": [
+    "funkcji wzrokowo-ruchowych",
+    "funkcji wzrokowo-przestrzennych",
+    "integracji wzrokowo-słuchowej",
+    "funkcji słuchowo-językowych"
+   ],
+   "c": 3,
+   "e": "Różnicowanie głosek należy do funkcji słuchowo-językowych (fonologicznych) (Bogdanowicz)."
+  },
+  {
+   "id": "e404",
+   "n": 404,
+   "g": "e7",
+   "q": "Działania profilaktyczne skierowane do grup zwiększonego ryzyka, które są bardziej zagrożone występowaniem problemów i zaburzeń pochodzą z obszaru:",
+   "a": [
+    "profilaktyki trzeciorzędowej",
+    "profilaktyki wskazującej",
+    "profilaktyki selektywnej",
+    "profilaktyki uniwersalnej"
+   ],
+   "c": 2,
+   "e": "Profilaktyka selektywna obejmuje grupy zwiększonego ryzyka; uniwersalna – wszystkich, wskazująca – osoby z pierwszymi objawami."
+  },
+  {
+   "id": "e405",
+   "n": 405,
+   "g": "e1",
+   "q": "Do zmiennych niezależnych w Modelu Rosenthala zalicza się:",
+   "a": [
+    "oczekiwania nauczyciela względem ucznia",
+    "informacje uzyskane przed pierwszym kontaktem z dzieckiem",
+    "powierzchowne cechy dziecka",
+    "wszystkie wymienione"
+   ],
+   "c": 3,
+   "e": "Model Rosenthala: zmienne niezależne to źródła oczekiwań i same oczekiwania (strona Wykładu 2)."
+  },
+  {
+   "id": "e406",
+   "n": 406,
+   "g": "e2",
+   "q": "Do poznawczych strategii uczenia się zalicza się:",
+   "a": [
+    "powtarzanie",
+    "organizowanie",
+    "elaborację",
+    "wszystkie wymienione"
+   ],
+   "c": 3,
+   "e": "Strategie poznawcze: powtarzanie, elaboracja, organizowanie (slajdy W3)."
+  },
+  {
+   "id": "e407",
+   "n": 407,
+   "g": "e7",
+   "q": "Do czynników chroniących w psychoprofilaktyce NIE zalicza się:",
+   "a": [
+    "cech indywidualnych",
+    "relacji z osobami z najbliższego otoczenia",
+    "jakości szkolnictwa",
+    "zasobów ekonomicznych"
+   ],
+   "c": 3,
+   "f": "niepewne"
+  },
+  {
+   "id": "e408",
+   "n": 408,
+   "g": "e1",
+   "q": "Do celów psychologii edukacji zalicza się:",
+   "a": [
+    "prowadzenie badań, których wyniki można wykorzystać w dydaktyce",
+    "wykorzystanie wiedzy psychologicznej w rozwiązywaniu problemów wychowawczych i edukacyjnych",
+    "rozwijanie postawy naukowej opartej na rozwiązywaniu problemów",
+    "wszystkie wymienione odpowiedzi są prawidłowe"
+   ],
+   "c": 3
+  },
+  {
+   "id": "e409",
+   "n": 409,
+   "g": "e6",
+   "q": "Do cech uczniów zdolnych NIE zalicza się:",
+   "a": [
+    "wysokiego poziomu sprecyzowania celów uczenia się",
+    "szybszego tempa uczenia się",
+    "przypisywania większej wartości nagrodom wewnętrznym niż zewnętrznym",
+    "większej wytrwałości w przypadku dostrzegania sensu swojej pracy"
+   ],
+   "c": 0,
+   "f": "niepewne",
+   "e": "Uczniowie zdolni często mają szerokie zainteresowania i trudność z określeniem konkretnego celu."
   }
  ]
 }
