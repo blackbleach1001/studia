@@ -5,12 +5,12 @@
   {
    "id": "w1",
    "t": "Wykład 1: podstawy, EBP, zdrowie i choroba, modele",
-   "s": "historia i zawód, podejścia teoretyczne, praktyka oparta na dowodach, definicje i modele zdrowia, salutogeneza"
+   "s": "psychologia kliniczna: definicje, praktyka oparta na dowodach, definicje i modele zdrowia, salutogeneza"
   },
   {
    "id": "w2",
    "t": "Wykład 2: dziedziny zastosowań, diagnoza",
-   "s": "diagnoza, normy i klasyfikacje, psychologia zdrowia jako dziedzina, dzieci i młodzież"
+   "s": "diagnoza, normy i klasyfikacje, psychologia zdrowia jako dziedzina, zachowania zdrowotne i styl życia, dzieci i młodzież"
   },
   {
    "id": "w3",
@@ -30,7 +30,12 @@
   {
    "id": "w6",
    "t": "Wykład 6: promocja zdrowia i prewencja",
-   "s": "promocja, prewencja, zachowania zdrowotne i modele ich zmiany"
+   "s": "promocja zdrowia, prewencja, czynniki ryzyka w ujęciu zdrowia publicznego"
+  },
+  {
+   "id": "spoza",
+   "t": "Spoza tematów wykładów: historia, psychopatologia, modele zachowań",
+   "s": "opracowanie na stronie „Pytania spoza wykładów”"
   }
  ],
  "items": [
@@ -47,148 +52,6 @@
    ],
    "c": 1,
    "e": "EBPP łączy najlepsze dowody z badań z biegłością kliniczną i preferencjami pacjenta."
-  },
-  {
-   "id": "129",
-   "n": 2,
-   "g": "w1",
-   "q": "Ojcem psychologii klinicznej jest",
-   "a": [
-    "Sigmund Freud",
-    "Lightner Witmer",
-    "Wilhelm Wundt",
-    "Aron Antonovsky"
-   ],
-   "c": 1,
-   "e": "Ojcem psychologii klinicznej jest Lightner Witmer, który w 1896 r. założył pierwszą klinikę psychologiczną."
-  },
-  {
-   "id": "190",
-   "n": 3,
-   "g": "w1",
-   "q": "Jaki jest współczesny model współpracy psychologa klinicznego w pracy zawodowej?",
-   "a": [
-    "model konsultacyjny, model zespołu diagnostyczno-terapeutycznego",
-    "model asystenta psychiatrycznego, model konsultanta",
-    "model technika, model laboranta",
-    "model zespołu diagnostyczno-terapeutycznego, model eksperta"
-   ],
-   "c": 0,
-   "e": "Współcześnie psycholog pracuje jako konsultant albo członek zespołu diagnostyczno-terapeutycznego.",
-   "u": 1
-  },
-  {
-   "id": "91",
-   "n": 4,
-   "g": "w1",
-   "q": "Specjalista psychologii klinicznej to",
-   "a": [
-    "psycholog, który ukończył studia magisterskie w ścieżce/specjalności: psychologia kliniczna",
-    "psycholog, który ma stopień naukowy doktora w dziedzinie psychologii klinicznej",
-    "psycholog kliniczny specjalizujący się w danym zagadnieniu i jest uznawany za eksperta",
-    "psycholog, który ukończył specjalizację kliniczną i zdał państwowy egzamin specjalizacyjny"
-   ],
-   "c": 3,
-   "e": "Specjalista psychologii klinicznej ukończył specjalizację i zdał państwowy egzamin specjalizacyjny."
-  },
-  {
-   "id": "136",
-   "n": 5,
-   "g": "w1",
-   "q": "Nurt higieny psychicznej zapoczątkowany przez C. Beersa można współcześnie nazwać",
-   "a": [
-    "nurtem teoretycznym w psychologii klinicznej",
-    "nurtem empirycznym w psychologii klinicznej",
-    "nurtem patopsychologii eksperymentalnej w psychologii klinicznej",
-    "nurtem pragmatycznym w psychologii klinicznej"
-   ],
-   "c": 3,
-   "e": "Ruch higieny psychicznej Beersa nastawiony był na praktyczną poprawę opieki i profilaktykę, więc to nurt pragmatyczny.",
-   "f": "niepewne",
-   "u": 1
-  },
-  {
-   "id": "152",
-   "n": 6,
-   "g": "w1",
-   "q": "Lata 70te i 80te ubiegłego wieku można scharakteryzować w historii polskiej psychologii klinicznej jako okres",
-   "a": [
-    "pozbawienia psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
-    "zastosowania po raz pierwszy w naszym kraju psychologii w medycynie",
-    "powstania poradni zdrowia psychicznego",
-    "wprowadzania zmian w modelu praktyki (np. społeczności terapeutyczne) oraz rozwoju doskonalenia zawodowego (np. specjalizacja psychologa klinicznego)"
-   ],
-   "c": 3,
-   "e": "Lata 70. i 80. to zmiany w praktyce (społeczności terapeutyczne) i rozwój specjalizacji psychologa klinicznego.",
-   "u": 1
-  },
-  {
-   "id": "75",
-   "n": 7,
-   "g": "w1",
-   "q": "Tytuł psychologa klinicznego dotyczy",
-   "a": [
-    "osoby, która ukończyła tylko studia psychologiczne ze specjalnością psychologia kliniczna",
-    "osoby, która ukończyła specjalizację w psychologii klinicznej w ramach kształcenia podyplomowego w dziedzinach mających zastosowanie w ochronie zdrowia",
-    "osoby, która pracuje w szpitalu psychiatrycznym",
-    "osoby, która ukończyła szkolenie psychoterapeutyczne i otrzymała certyfikat"
-   ],
-   "c": 1,
-   "e": "Tytuł psychologa klinicznego daje ukończona specjalizacja z psychologii klinicznej, uzyskiwana po studiach."
-  },
-  {
-   "id": "195",
-   "n": 8,
-   "g": "w1",
-   "q": "Interpretowanie zachowania na podstawie stanu mózgu to domena następującej subdyscypliny psychologii klinicznej",
-   "a": [
-    "neuropsychologii",
-    "psychologii zdrowia",
-    "klinicznej psychologii człowieka dorosłego",
-    "psychologii uzależnień"
-   ],
-   "c": 0,
-   "e": "Interpretowanie zachowania przez stan mózgu to domena neuropsychologii.",
-   "u": 1
-  },
-  {
-   "id": "k9",
-   "n": 9,
-   "g": "w1",
-   "q": "Prawo do posługiwania się tytułem psychologa klinicznego w Polsce ma osoba, która:",
-   "a": [
-    "Jest absolwentem studiów psychologii, posiada tytuł magistra",
-    "Ukończyła 4 letnie ustawiczne szkolenie specjalizacyjne",
-    "Zdała egzamin państwowy w Centrum Egzaminów Medycznych",
-    "Spełnia wszystkie wymienione wyżej kryteria"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k10",
-   "n": 10,
-   "g": "w1",
-   "q": "Subdyscypliny psychologii klinicznej (np. psychologia przemocy, psychologia traumy itd.) charakteryzują się tym, że:",
-   "a": [
-    "Powstają wskutek zapotrzebowania społecznego, nie są wobec tego poparte badaniami podstawowymi",
-    "Powstają wskutek rozwoju wiedzy profesjonalnej ograniczonej do konkretnego, pozostającego w izolacji obszaru praktyki, np. jak konsultować grupę samopomocy",
-    "W ich ramach mają zastosowanie odmienne zasady etyczne",
-    "Wyrastają z głównego nurtu psychologii zaburzeń psychicznych, chociaż prowadzą do różnych sposobów uprawiania psychologii klinicznej"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k11",
-   "n": 11,
-   "g": "w1",
-   "q": "Ustanowienie tożsamości psychologii klinicznej jako dziedziny, powiązanie jej z praktyką oraz utworzenie wzorów instytucjonalnej współpracy interdyscyplinarnej zawdzięczamy przedstawicielom nurtu:",
-   "a": [
-    "eksperymentalnego",
-    "pragmatycznego",
-    "klinicznego",
-    "analitycznego"
-   ],
-   "c": 1
   },
   {
    "id": "k12",
@@ -216,58 +79,6 @@
    ],
    "c": 2,
    "e": "Zadania psychologa to m.in. psychoedukacja, rehabilitacja, interwencja kryzysowa i terapia."
-  },
-  {
-   "id": "k14",
-   "n": 14,
-   "g": "w1",
-   "q": "Pierwszą klinikę psychologiczną stworzył:",
-   "a": [
-    "Z. Freud",
-    "L. Witmer",
-    "W. Wundt",
-    "E. Kraepelin"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k15",
-   "n": 15,
-   "g": "w1",
-   "q": "Twórcą nurtu teoretycznego w psychologii klinicznej jest:",
-   "a": [
-    "Z. Freud",
-    "L. Witmer",
-    "W. Wundt",
-    "H. Eysenck"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k16",
-   "n": 16,
-   "g": "w1",
-   "q": "Sformułowanie koncepcji rozwoju człowieka, powstawania i dynamiki zaburzeń nerwicowych to znaczący dorobek nurtu:",
-   "a": [
-    "eksperymentalnego",
-    "pragmatycznego",
-    "klinicznego/teoretycznego",
-    "praktyki psychologicznej opartej na dowodach naukowych"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k17",
-   "n": 17,
-   "g": "w1",
-   "q": "Naukowe podstawy podejścia poznawczo-behawioralnego stworzył następujący nurt w psychologii klinicznej:",
-   "a": [
-    "eksperymentalny",
-    "pragmatyczny",
-    "kliniczny/teoretyczny",
-    "praktyka psychologiczna oparta na dowodach naukowych"
-   ],
-   "c": 0
   },
   {
    "id": "k18",
@@ -298,58 +109,6 @@
    "u": 1
   },
   {
-   "id": "k20",
-   "n": 20,
-   "g": "w1",
-   "q": "Lata 50te ubiegłego wieku można scharakteryzować w historii polskiej psychologii klinicznej jako okres:",
-   "a": [
-    "pozbawienia psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
-    "zastosowania po raz pierwszy w naszym kraju psychologii w medycynie",
-    "powstania poradni zdrowia psychicznego",
-    "wprowadzania zmian w modelu praktyki (np. społeczności terapeutyczne) oraz rozwoju doskonalenia zawodowego (np. specjalizacja psychologa klinicznego)"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k21",
-   "n": 21,
-   "g": "w1",
-   "q": "Określenie psychologicznych aspektów powstawania, przebiegu i leczenia chorób somatycznych to domena następującej subdyscypliny psychologii klinicznej:",
-   "a": [
-    "neuropsychologii",
-    "psychologii zdrowia",
-    "klinicznej psychologii człowieka dorosłego",
-    "psychologii uzależnień"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k22",
-   "n": 22,
-   "g": "w1",
-   "q": "Pierwsza nowoczesna klasyfikacja zaburzeń psychicznych stworzona przez E. Kraepelina wpisuje się w:",
-   "a": [
-    "Nurt teoretyczny w psychologii klinicznej",
-    "Nurt empiryczny w psychologii klinicznej",
-    "Nurt pozytywny w psychologii klinicznej",
-    "Nurt pragmatyczny w psychologii klinicznej"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k23",
-   "n": 23,
-   "g": "w1",
-   "q": "Wpływ na psychologię kliniczną miały główne nurty:",
-   "a": [
-    "eksperymentalny i pragmatyczny",
-    "kliniczny i eksperymentalny",
-    "kliniczny, pragmatyczny i eksperymentalny",
-    "kliniczny, eksperymentalny i analityczny"
-   ],
-   "c": 2
-  },
-  {
    "id": "96",
    "n": 24,
    "g": "w1",
@@ -362,58 +121,6 @@
    ],
    "c": 3,
    "e": "Wąska definicja dotyczy zaburzeń (psychopatologii), szeroka obejmuje też zdrowie psychiczne."
-  },
-  {
-   "id": "k25",
-   "n": 25,
-   "g": "w1",
-   "q": "Pierwszą definicję \"psychologii klinicznej\" sformułował:",
-   "a": [
-    "Z. Freud",
-    "L. Witmer",
-    "W. Wundt",
-    "E. Kraepelin"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k26",
-   "n": 26,
-   "g": "w1",
-   "q": "Twórczynią/twórcą klasyfikacji chorób psychicznych jest:",
-   "a": [
-    "Z. Freud",
-    "L. Witmer",
-    "B. Zeigarnik",
-    "E. Kraepelin"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k27",
-   "n": 27,
-   "g": "w1",
-   "q": "Stworzenie wzorców współpracy interdyscyplinarnej w niesieniu pomocy psychologicznej głównie w przypadku opóźnień rozwoju to dorobek następującego nurtu w psychologii klinicznej:",
-   "a": [
-    "eksperymentalnego",
-    "pragmatycznego",
-    "klinicznego/teoretycznego",
-    "środowiskowego modelu pracy psychologa klinicznego"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k28",
-   "n": 28,
-   "g": "w1",
-   "q": "Naukowe podstawy podejścia poznawczo-behawioralnego i terapii opartej na mechanizmach uczenia się stworzył następujący nurt w psychologii klinicznej:",
-   "a": [
-    "eksperymentalnego",
-    "pragmatycznego",
-    "klinicznego/teoretycznego",
-    "praktyki psychologicznej opartej na dowodach naukowych"
-   ],
-   "c": 0
   },
   {
    "id": "k29",
@@ -442,85 +149,6 @@
    "c": 2
   },
   {
-   "id": "k31",
-   "n": 31,
-   "g": "w1",
-   "q": "Pierwsza w Polsce Katedra Psychologii Klinicznej powstała na Uniwersytecie:",
-   "a": [
-    "Adama Mickiewicza w Poznaniu – pod kierunkiem Andrzeja Lewickiego",
-    "Warszawskim – pod kierunkiem Andrzeja Lewickiego",
-    "Adama Mickiewicza w Poznaniu – pod kierunkiem Mariusza Maruszewskiego",
-    "Warszawskim – pod kierunkiem Mariusza Maruszewskiego"
-   ],
-   "c": 0,
-   "f": "niepewne"
-  },
-  {
-   "id": "k32",
-   "n": 32,
-   "g": "w1",
-   "q": "Nurt zapoczątkowany przez twórcę pierwszej kliniki psychologicznej i pisma The Psychological Clinic - L. Witmera - można współcześnie nazwać:",
-   "a": [
-    "nurtem pragmatycznym w psychologii klinicznej",
-    "nurtem teoretycznym w psychologii klinicznej",
-    "nurtem empirycznym w psychologii klinicznej",
-    "nurtem patopsychologii eksperymentalnej w psychologii klinicznej"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k33",
-   "n": 33,
-   "g": "w1",
-   "q": "Ocena zaburzeń w perspektywie rozwojowej to domena następującej subdyscypliny psychologii klinicznej:",
-   "a": [
-    "psychologii klinicznej dzieci i młodzieży",
-    "neuropsychologii",
-    "psychologii zdrowia",
-    "psychologii uzależnień"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k34",
-   "n": 34,
-   "g": "w1",
-   "q": "Psycholog kliniczny to tytuł zawodowy, który otrzymuje osoba:",
-   "a": [
-    "pracująca z osobami z zaburzeniami psychicznymi przez co najmniej 8 lat",
-    "po ukończeniu specjalności klinicznej na studiach magisterskich z psychologii",
-    "po ukończeniu 4-letniego szkolenia specjalizacyjnego po studiach magisterskich",
-    "pracująca w szpitalu lub poradni psychologicznej od 5 lat"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k35",
-   "n": 35,
-   "g": "w1",
-   "q": "Wprowadzenie w latach 50-tych ubiegłego wieku stanowiska asystenta psychiatrycznego w poradniach zdrowia psychicznego w Polsce oznaczało:",
-   "a": [
-    "uznanie ruchu antypsychiatrii",
-    "pozbawienie psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
-    "zastosowanie po raz pierwszy w naszym kraju psychologii w medycynie",
-    "powstanie odrębnej specjalizacji w ramach psychologii klinicznej"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k36",
-   "n": 36,
-   "g": "w1",
-   "q": "Wiedza społecznie responsywna:",
-   "a": [
-    "dotyczy znajomości zasad i procedur postępowania",
-    "odpowiada na zapotrzebowanie społeczne",
-    "to tzw. wiedza paradygmatyczna",
-    "dotyczy wiedzy o metodach diagnozy i podstawach pomocy psychologicznej"
-   ],
-   "c": 1
-  },
-  {
    "id": "k37",
    "n": 37,
    "g": "w1",
@@ -532,45 +160,6 @@
     "nauka zajmująca się tworzeniem klasyfikacji zaburzeń psychicznych oraz wyjaśnianiem ich patogenezy"
    ],
    "c": 0
-  },
-  {
-   "id": "k38",
-   "n": 38,
-   "g": "w1",
-   "q": "Naczelną wartością dla psychologa jest:",
-   "a": [
-    "dobro drugiego człowieka",
-    "obiektywizm i bezstronność",
-    "pomoc drugiemu człowiekowi",
-    "dochowanie tajemnicy zawodowej"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k39",
-   "n": 39,
-   "g": "w1",
-   "q": "Patofizjologia eksperymentalna rozwijała się w następującym nurcie psychologii klinicznej:",
-   "a": [
-    "eksperymentalnym",
-    "pragmatycznym",
-    "teoretycznym",
-    "pozytywnym"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k40",
-   "n": 40,
-   "g": "w1",
-   "q": "Tworzenie zrębów profesji i kształcenia psychologów klinicznych nastąpiło w:",
-   "a": [
-    "nurcie eksperymentalnym",
-    "nurcie teoretycznym",
-    "nurcie pragmatycznym",
-    "żadna z odpowiedzi nie jest prawidłowa"
-   ],
-   "c": 2
   },
   {
    "id": "k41",
@@ -586,32 +175,6 @@
    "c": 3
   },
   {
-   "id": "k42",
-   "n": 42,
-   "g": "w1",
-   "q": "Altman nazwałby wiedzę o zasadach i procedurach postępowania diagnostycznego i pomocowego oraz o metodach i technikach, z których powstają umiejętności i myślenie kliniczne:",
-   "a": [
-    "podstawową teoretyczną",
-    "profesjonalną",
-    "społecznie responsywną",
-    "praktyczną"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k43",
-   "n": 43,
-   "g": "w1",
-   "q": "Początki rozwoju specyficznych metod badawczych w psychologii klinicznej związane są z:",
-   "a": [
-    "Z. Freudem",
-    "E. Kraepelinem",
-    "C. Beersem",
-    "L. Witmerem"
-   ],
-   "c": 1
-  },
-  {
    "id": "k44",
    "n": 44,
    "g": "w1",
@@ -623,58 +186,6 @@
     "najlepszych dostępnych wyników badań i kompetencji klinicznych profesjonalisty, w kontekście cech osobowych klienta, jego preferencji i pochodzenia kulturowego"
    ],
    "c": 3
-  },
-  {
-   "id": "k45",
-   "n": 45,
-   "g": "w1",
-   "q": "Altman nazwałby wiedzę, która wynika z analizowania problemów praktycznych i badania nowych zjawisk przez psychologów praktyków:",
-   "a": [
-    "podstawową teoretyczną",
-    "profesjonalną",
-    "społecznie responsywną",
-    "praktyczną"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k46",
-   "n": 46,
-   "g": "w1",
-   "q": "Obszarem zainteresowań nurtu eksperymentalnego psychologii klinicznej było:",
-   "a": [
-    "zrozumienie trudności rozwojowych i możliwości pomocy",
-    "tworzenie koncepcji wyjaśniających mechanizmy zaburzeń psychicznych",
-    "badanie procesów poznawczych i emocjonalnych oraz ich patologia",
-    "podwyższanie standardów zawodowych"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k47",
-   "n": 47,
-   "g": "w1",
-   "q": "Stworzenie całościowej koncepcji człowieka i jego rozwoju, kliniczne metody poznawania i psychoterapii to wkład w psychologię kliniczną następującego nurtu:",
-   "a": [
-    "eksperymentalnego",
-    "pragmatycznego",
-    "teoretycznego",
-    "żadna z wymienionych odpowiedzi nie jest prawidłowa"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k48",
-   "n": 48,
-   "g": "w1",
-   "q": "Wskaż NIEPRAWDZIWE stwierdzenie dotyczące pierwszych klinik psychologicznych:",
-   "a": [
-    "zostały stworzone na wzór pierwszej kliniki założonej przez Zygmunta Freuda",
-    "próbowano w nich zastosować psychologię empiryczną w praktyce",
-    "tworzyły wzór współpracy interdyscyplinarnej",
-    "oferowały pomoc dzieciom opóźnionym umysłowo i z zaburzeniami zachowania"
-   ],
-   "c": 0
   },
   {
    "id": "18",
@@ -892,526 +403,6 @@
     "charakteryzuje wyłącznie osoby o wysokich standardach etycznych"
    ],
    "c": 0
-  },
-  {
-   "id": "k272",
-   "n": 272,
-   "g": "w1",
-   "q": "Psychoanaliza:",
-   "a": [
-    "jest formą terapii, która skupia się na zmianie zachowań pacjenta poprzez odpowiednie nagrody i kary",
-    "systemem filozoficznym, który zakłada, że nasze myśli i emocje są determinowane przez nasze doświadczenia z dzieciństwa",
-    "to sposób na leczenie chorób psychicznych poprzez zastosowanie leków psychotropowych",
-    "metodą psychoterapii, która polega na badaniu nieświadomych motywów i procesów myślowych mogących mieć wpływ na zachowanie i emocje człowieka"
-   ],
-   "c": 3
-  },
-  {
-   "id": "121",
-   "n": 274,
-   "g": "w1",
-   "q": "Podział procesów psychicznych na świadome, przedświadome i nieświadome to model",
-   "a": [
-    "Dynamiczny",
-    "Strukturalny",
-    "Topograficzny",
-    "Ekonomiczny"
-   ],
-   "c": 2,
-   "e": "Podział na świadome, przedświadome i nieświadome to model topograficzny Freuda."
-  },
-  {
-   "id": "209",
-   "n": 276,
-   "g": "w1",
-   "q": "Do dewiacyjnych wzorców zachowań należą wg Bandury",
-   "a": [
-    "deficyty behawioralne",
-    "poprawna kontrola bodźcowa zachowania",
-    "poprawna kontrola zachowania",
-    "samowzmacniające się systemy wzmocnień"
-   ],
-   "c": 0,
-   "e": "Według Bandury dewiacyjne wzorce to m.in. deficyty behawioralne.",
-   "u": 1
-  },
-  {
-   "id": "36",
-   "n": 278,
-   "g": "w1",
-   "q": "Wg Becka myśli automatyczne",
-   "a": [
-    "odzwierciedlają tendencyjność procesów przetwarzania informacji pod postacią zniekształceń poznawczych",
-    "są zawsze negatywne",
-    "nie mogą być zmienione ani kontrolowane",
-    "są wyłącznie wytworem naszego podświadomego umysłu"
-   ],
-   "c": 0,
-   "e": "Myśli automatyczne odzwierciedlają zniekształcenia poznawcze w przetwarzaniu informacji."
-  },
-  {
-   "id": "77",
-   "n": 280,
-   "g": "w1",
-   "q": "Terapię skoncentrowaną na kliencie stworzył",
-   "a": [
-    "Abraham Maslow",
-    "Carl Rogers",
-    "Aaron Beck",
-    "Carl Gustav Jung"
-   ],
-   "c": 1,
-   "e": "Terapię skoncentrowaną na kliencie stworzył Carl Rogers."
-  },
-  {
-   "id": "7",
-   "n": 282,
-   "g": "w1",
-   "q": "Zgodnie z metapsychologią Z. Freuda model dynamiczny",
-   "a": [
-    "zakłada istnienie wrodzonych popędów",
-    "jest zbiorem założeń o id, ego i superego",
-    "zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje",
-    "wprowadza pięć faz rozwoju libido"
-   ],
-   "c": 2,
-   "e": "Model dynamiczny opisuje konflikt wrodzonych popędów. Id, ego i superego to model strukturalny, a przepływ energii to model ekonomiczny.",
-   "f": "Model dynamiczny w metapsychologii Freuda dotyczy przepływu, gromadzenia i rozładowania energii psychicznej."
-  },
-  {
-   "id": "98",
-   "n": 283,
-   "g": "w1",
-   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że",
-   "a": [
-    "wadliwe reakcje i nawyki są wrodzone",
-    "zachowanie człowieka jest determinowane przez pierwotną siłę",
-    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
-    "psychika człowieka kształtuje się pod wpływem oddziaływań zewnętrznych"
-   ],
-   "c": 3,
-   "e": "Behawioryzm zakłada, że zachowanie i psychikę kształtują wpływy środowiska.",
-   "u": 1
-  },
-  {
-   "id": "122",
-   "n": 284,
-   "g": "w1",
-   "q": "Podstawowym założeniem dotyczącym natury człowieka w orientacji humanistyczno-egzystencjalnej jest samorealizacja. Oznacza ono:",
-   "a": [
-    "rozpoznawanie i urzeczywistnianie wartości",
-    "frustrację naturalnego procesu samorealizacji przez społeczeństwo",
-    "traktowanie psychiki i ciała jako całości",
-    "przekonanie o pozytywnych możliwościach człowieka"
-   ],
-   "c": 3,
-   "e": "Samorealizacja zakłada wiarę w pozytywny potencjał człowieka i jego tendencję do rozwoju."
-  },
-  {
-   "id": "k285",
-   "n": 285,
-   "g": "w1",
-   "q": "Podejście strukturalne, uwzględniające m.in. hierarchię rodzinną jest charakterystyczne dla orientacji:",
-   "a": [
-    "Psychodynamicznej",
-    "Behawioralno-poznawczej",
-    "Humanistycznej",
-    "Systemowej"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k287",
-   "n": 287,
-   "g": "w1",
-   "q": "Teoria hierarchii potrzeb A. Maslowa wywodzi się z podejścia:",
-   "a": [
-    "Psychodynamicznego",
-    "Behawioralno-poznawczego",
-    "Humanistycznego",
-    "Systemowego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "66",
-   "n": 297,
-   "g": "w1",
-   "q": "W modelu ABC",
-   "a": [
-    "A oznacza aktywność człowieka będącą wynikiem zadziałania bodźców zewnętrznych",
-    "B oznacza przekonania",
-    "C oznacza okoliczności",
-    "brak prawidłowej odpowiedzi"
-   ],
-   "c": 1,
-   "e": "W modelu ABC Ellisa: A to zdarzenie aktywizujące, B przekonania, C konsekwencje."
-  },
-  {
-   "id": "19",
-   "n": 298,
-   "g": "w1",
-   "q": "Wyuczona bezradność",
-   "a": [
-    "to brak zależności między wzmocnieniami a zachowaniem",
-    "to brak umiejętności radzenia sobie z problemami w życiu",
-    "to syndrom, który charakteryzuje się brakiem motywacji i zainteresowania życiem",
-    "to brak umiejętności przeżywania emocji i radzenia sobie z nimi"
-   ],
-   "c": 0,
-   "e": "Wyuczona bezradność (Seligman) powstaje, gdy wzmocnienia nie zależą od zachowania."
-  },
-  {
-   "id": "k299",
-   "n": 299,
-   "g": "w1",
-   "q": "Zgodnie z metapsychologią Z. Freuda model strukturalny:",
-   "a": [
-    "zakłada istnienie wrodzonych popędów",
-    "jest zbiorem założeń o id, ego i superego",
-    "zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje",
-    "wprowadza pięć faz rozwoju libido"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k300",
-   "n": 300,
-   "g": "w1",
-   "q": "Mechanizmy obronne w podejściu psychoanalitycznym to:",
-   "a": [
-    "sposoby poszukiwania przyjemności",
-    "sposoby radzenia sobie z lękiem",
-    "regulowanie zachowania przez popędy",
-    "czynności psychiczne naładowane kateksją"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k301",
-   "n": 301,
-   "g": "w1",
-   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że:",
-   "a": [
-    "wadliwe reakcje i nawyki są wrodzone",
-    "zachowanie człowieka jest determinowane przez pierwotną siłę",
-    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
-    "zachowanie człowieka kształtuje się pod wpływem nagród i kar, jest wyuczone"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k302",
-   "n": 302,
-   "g": "w1",
-   "q": "Twierdzenie, że \"każdy człowiek posiada potrzebę samorealizacji\" pochodzi z podejścia:",
-   "a": [
-    "psychodynamicznego",
-    "behawioralno-poznawczego",
-    "humanistycznego",
-    "systemowego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k314",
-   "n": 314,
-   "g": "w1",
-   "q": "Depresja, rozumiana jako rezultat braku wzmacniania ze środowiska, nawiązuje do ujęcia:",
-   "a": [
-    "Behawioralnego",
-    "Psychodynamicznego",
-    "Poznawczego",
-    "Humanistycznego"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k315",
-   "n": 315,
-   "g": "w1",
-   "q": "Która z teorii wyjaśniłaby zaburzenia osobowości w sposób następujący: „U osób, które w sytuacjach społecznych zachowują się nieadekwatnie, można mówić o niewłaściwych historiach wzmocnień i wynikającego z nich braku umiejętności społecznych. Niewzmacniani za społeczne umiejętności w procesie socjalizacji, jako dorośli posiadają nieadekwatny repertuar zachowań w sytuacjach społecznych”?",
-   "a": [
-    "Humanistyczna",
-    "Behawioralna",
-    "Poznawcza",
-    "Psychodynamiczna"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k316",
-   "n": 316,
-   "g": "w1",
-   "q": "Obraz siebie, jaki człowiek pragnąłby posiadać. Kluczowe pojęcie w teorii C. Rogersa, to:",
-   "a": [
-    "Ja Powinnościowe",
-    "Ja Idealne",
-    "Ja Realne",
-    "Ja Racjonalne"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k317",
-   "n": 317,
-   "g": "w1",
-   "q": "Obserwowanie kolegi przeżywającego intensywny lęk w sytuacji społecznej, staje się źródłem reakcji fobicznych. Opisana zasada nabywania zachowań nieprzystosowawczych nawiązuje do modelu warunkowania (opartego na wzorcach kojarzeniowych):",
-   "a": [
-    "Warunkowania klasycznego",
-    "Warunkowania zastępczego",
-    "Warunkowania instrumentalnego",
-    "Warunkowania następczego"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k318",
-   "n": 318,
-   "g": "w1",
-   "q": "Orędowników koncepcji zaburzeń osobowości, jako charakterystycznej organizacji struktury powstałej w celu radzenia sobie z wewnętrznym konfliktem, znajdziemy w ujęciu:",
-   "a": [
-    "Behawioralnym",
-    "Psychodynamicznym",
-    "Poznawczym",
-    "Humanistycznym"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k320",
-   "n": 320,
-   "g": "w1",
-   "q": "W 2002 r. oskarżono nastolatka o kradzież 100 pojazdów. Nastolatek podał wyjaśnienie: „Zainspirowała mnie gra GTA” (gracze popełniają w niej różne przestępstwa). Odnosząc się do wyjaśnienia chłopca, co mogło spowodować takie zachowanie?",
-   "a": [
-    "Uczenie się przez obserwację (modelowanie)",
-    "Wrogie impulsy ukryte głęboko w nieświadomości nastolatka",
-    "Cecha przestępczości towarzysząca mu przez całe życie",
-    "Przekonania dotyczące przestępczości"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k321",
-   "n": 321,
-   "g": "w1",
-   "q": "W jakim ujęciu narcyzm rozpatrywany jest w kontekście specyficznych dla tego zaburzenia przekonań oraz charakterystycznych zniekształceń przetwarzania informacji:",
-   "a": [
-    "Humanistycznym",
-    "Psychodynamicznym",
-    "Poznawczym",
-    "Behawioralnym"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k322",
-   "n": 322,
-   "g": "w1",
-   "q": "Występujące w narcystycznym zaburzeniu osobowości kompensacyjne przekonania o wyższości: „jestem osobą wyjątkową i rzadką” lub „jestem lepszy od innych”, są przykładem:",
-   "a": [
-    "Myśli automatycznych",
-    "Przekonań kluczowych",
-    "Przekonań pośredniczących",
-    "Mechanizmu obronnego"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k323",
-   "n": 323,
-   "g": "w1",
-   "q": "Występujące w narcystycznym zaburzeniu osobowości założenia opierające się na stwierdzeniach: „muszę odnieść sukces, aby udowodnić, że jestem lepszy” i „jeśli nie odnoszę sukcesów, to znaczy, że jestem bezwartościowy”, są przykładem:",
-   "a": [
-    "Myśli automatycznych",
-    "Przekonań kluczowych",
-    "Przekonań pośredniczących",
-    "Mechanizmu obronnego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k324",
-   "n": 324,
-   "g": "w1",
-   "q": "Występujące w różnych typach fobii unikanie bodźców wywołujących lęk, ma skutki w postaci nienarażania na lęk, ale tym samym wzmacniają zaburzenie, nie pozwalając na doświadczenie lęku i wypracowanie strategii poradzenia sobie z nim. W nawiązaniu do modelu behawioralnego, unikanie jest reakcją tu związaną z:",
-   "a": [
-    "Karą pozytywną",
-    "Wzmocnieniem negatywnym",
-    "Wzmocnieniem pozytywnym",
-    "Karą negatywną"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k325",
-   "n": 325,
-   "g": "w1",
-   "q": "Zaburzenie postrzegane jako defekt rozwoju na skutek trwałego niezaspokojenia podstawowych potrzeb, jest charakterystyczne dla teorii:",
-   "a": [
-    "Behawioralnej",
-    "Humanistycznej",
-    "Poznawczej",
-    "Psychodynamicznej"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k326",
-   "n": 326,
-   "g": "w1",
-   "q": "Zależne zaburzenie osobowości ukształtowało się w związku z fiksacją w okresie różnicowania reprezentacji self od reprezentacji obiektu. Fiksacja ta skutkuje nierozwiązanym konfliktem pomiędzy zależnością i autonomią, co odzwierciedla się w zaburzonej strukturze osobowości spełniającej kryteria organizacji borderline wyższego poziomu. Powyższy opis nawiązuje do:",
-   "a": [
-    "Teorii relacji z obiektem",
-    "Błędnego koła ABC (Sytuacja – Przekonania – Konsekwencje) A. Ellisa",
-    "Dwuczynnikowego modelu Mowerera",
-    "Teorii organizmicznej C. Rogersa"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k327",
-   "n": 327,
-   "g": "w1",
-   "q": "Antypsychologizm w podejściu behawioralnym oznacza:",
-   "a": [
-    "uznanie przekonań za podlegające regułom warunkowania",
-    "uznanie przez naukę tylko tych zachowań, które można zaobserwować i poddać pomiarowi",
-    "uznanie eksperymentu jako właściwej metody badawczej",
-    "wpływ środowiska na zachowanie człowieka poprzez system nagród i kar"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k329",
-   "n": 329,
-   "g": "w1",
-   "q": "Teoria racjonalno-emotywna A. Ellisa wywodzi się z podejścia:",
-   "a": [
-    "humanistycznego",
-    "psychodynamicznego",
-    "behawioralno-poznawczego",
-    "systemowego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "84",
-   "n": 330,
-   "g": "w1",
-   "q": "Teoria atrybucji i teoria umysłu to, w modelach zdrowia psychicznego, teorie opisujące",
-   "a": [
-    "działanie warunkowania sprawczego",
-    "działanie substancji farmakologicznych",
-    "działanie społecznego poznania",
-    "działanie nieuświadomionych konfliktów i deficytów"
-   ],
-   "c": 2,
-   "e": "Teoria atrybucji i teoria umysłu opisują poznanie społeczne."
-  },
-  {
-   "id": "k331",
-   "n": 331,
-   "g": "w1",
-   "q": "Osoba w depresji nie reaguje na otoczenie, ponieważ usunięto z niego pozytywne wzmocnienia. Jest to opis depresji w ujęciu:",
-   "a": [
-    "Behawioralnym",
-    "Psychodynamicznym",
-    "Poznawczym",
-    "Humanistycznym"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k332",
-   "n": 332,
-   "g": "w1",
-   "q": "Słuchanie opowieści innych o kompromitacji i zawstydzeniu w sytuacjach popełnienia faux pas, staje się źródłem reakcji fobicznych. Opisana zasada nabywania zachowań nieprzystosowawczych nawiązuje do modelu warunkowania (opartego na wzorcach kojarzeniowych):",
-   "a": [
-    "Uczenie się przez obserwację",
-    "Uczenie się na bazie transmisji informacji werbalnej",
-    "Uczenie się zastępcze",
-    "Warunkowanie instrumentalne"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k333",
-   "n": 333,
-   "g": "w1",
-   "q": "W procesie przetwarzania informacji u osób zależnych występują formalne błędy w myśleniu, które podtrzymują i utrwalają przekonania kluczowe i warunkowe, głównie w obszarze wizji siebie i świata. Zniekształcenia poznawcze stosowane przez tę grupę pacjentów to przede wszystkim dychotomizacja i katastrofizacja oraz błędy atrybucji. Powyższy opis nawiązuje do ujęcia:",
-   "a": [
-    "Behawioralnego",
-    "Psychodynamicznego",
-    "Poznawczego",
-    "Humanistycznego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k334",
-   "n": 334,
-   "g": "w1",
-   "q": "W przypadku osobowości zależnej, założenia: „mogę funkcjonować tylko wtedy, gdy ktoś (kompetentny) jest obok mnie”, „jeśli jestem sama, nie poradzę sobie”, „mogę być szczęśliwy tylko wtedy, gdy ona jest przy mnie”, są przykładem:",
-   "a": [
-    "Myśli automatycznych",
-    "Przekonań kluczowych",
-    "Przekonań pośredniczących",
-    "Mechanizmu obronnego"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k335",
-   "n": 335,
-   "g": "w1",
-   "q": "Występujące w zaburzeniu lękowym przekonanie: „Jestem słaba” – jest przykładem:",
-   "a": [
-    "Mechanizmu obronnego",
-    "Przekonania kluczowego",
-    "Przekonania pośredniczącego",
-    "Nieadaptacyjnego schematu"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k336",
-   "n": 336,
-   "g": "w1",
-   "q": "Zdrowie, jako dążenie do poznania własnych potencjałów i realizowaniu ich, najlepiej charakteryzuje ujęcie:",
-   "a": [
-    "Behawioralna",
-    "Humanistyczna",
-    "Poznawcza",
-    "Psychodynamiczna"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k337",
-   "n": 337,
-   "g": "w1",
-   "q": "Zdrowie psychiczne interpretowane jako posiadanie racjonalnych przekonań, związane jest z ujęciem:",
-   "a": [
-    "Poznawczym",
-    "Psychodynamicznym",
-    "Behawioralnym",
-    "Humanistycznym"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k338",
-   "n": 338,
-   "g": "w1",
-   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że:",
-   "a": [
-    "wadliwe reakcje i nawyki są wrodzone",
-    "zachowanie człowieka jest determinowane przez pierwotną siłę",
-    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
-    "człowiek kształtuje się pod wpływem oddziaływań zewnętrznych"
-   ],
-   "c": 3
   },
   {
    "id": "k362",
@@ -2566,20 +1557,6 @@
    "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: stałości i uczestnictwa w podejmowaniu decyzji (?) (niepewne)"
   },
   {
-   "id": "73",
-   "n": 564,
-   "g": "w1",
-   "q": "Tzw. triada poznawcza (Beck) to",
-   "a": [
-    "arbitralne wnioskowanie selektywne abstrahowanie, nadmierna generalizacja",
-    "kryteria selekcji informacji sposoby ich przekształcania i integrowania",
-    "przeżywanie zdarzeń pozytywnych, neutralnych negatywnych, które okazują się niezależne od działań jednostki",
-    "pesymistyczne przekonania o sobie, wydarzeniach zewnętrznych i przyszłości"
-   ],
-   "c": 3,
-   "e": "Triada poznawcza Becka to negatywny obraz siebie, świata i przyszłości."
-  },
-  {
    "id": "86",
    "n": 565,
    "g": "w1",
@@ -2592,35 +1569,6 @@
    ],
    "c": 1,
    "e": "W modelu socjoekologicznym (mandala zdrowia) system opieki zdrowotnej leży na styku zachowania i biologii człowieka.",
-   "f": "niepewne"
-  },
-  {
-   "id": "102",
-   "n": 567,
-   "g": "w1",
-   "q": "Psychoanaliza jest",
-   "a": [
-    "formą terapii, która skupia się na zmianie zachowań pacjenta poprzez odpowiednie nagrody i kary",
-    "systemem filozoficznym, który zakłada, że nasze myśli i emocje są determinowane przez nasze doświadczenia z dzieciństwa",
-    "sposobem na leczenie chorób psychicznych poprzez zastosowanie leków psychotropowych",
-    "metodą psychoterapii, która polega na badaniu nieświadomych motywów i procesów myślowych, mogących mieć wpływ na zachowanie i emocje człowieka"
-   ],
-   "c": 3,
-   "e": "Psychoanaliza bada nieświadome motywy i procesy wpływające na zachowanie i emocje."
-  },
-  {
-   "id": "127",
-   "n": 571,
-   "g": "w1",
-   "q": "Pierwsza w Polsce Katedra Psychologii Klinicznej powstała na Uniwersytecie",
-   "a": [
-    "Adama Mickiewicza w Poznaniu pod kierunkiem Andrzeja Lewickiego",
-    "Warszawskim - pod kierunkiem Andrzeja Lewickiego",
-    "Adama Mickiewicza w Poznaniu - pod kierunkiem Mariusza Maruszewskiego",
-    "Warszawskim- pod kierunkiem Mariusza Maruszewskiego"
-   ],
-   "c": 0,
-   "e": "Katedrę Psychologii Klinicznej na UAM w Poznaniu założył Andrzej Lewicki (1961).",
    "f": "niepewne"
   },
   {
@@ -3974,20 +2922,6 @@
    "e": "Parentyfikacja to odwrócenie ról: dziecko przejmuje odpowiedzialność za rodzica."
   },
   {
-   "id": "16",
-   "n": 553,
-   "g": "w2",
-   "q": "Zaburzeniem psychicznym o najwyższej śmiertelności jest",
-   "a": [
-    "żadna odpowiedź nie jest prawidłowa",
-    "jadłowstręt psychiczny",
-    "schizofrenia paranoidalna",
-    "depresja"
-   ],
-   "c": 1,
-   "e": "Jadłowstręt psychiczny ma najwyższą śmiertelność spośród zaburzeń psychicznych."
-  },
-  {
    "id": "45",
    "n": 559,
    "g": "w2",
@@ -4164,6 +3098,446 @@
    "c": 1,
    "e": "Wyzwaniem jest umiejętne i efektywne wykorzystanie nowych technologii.",
    "u": 1
+  },
+  {
+   "id": "192",
+   "n": 345,
+   "g": "w2",
+   "q": "Jaki jest cel oceny zachowań zdrowotnych?",
+   "a": [
+    "przeprowadzanie badań naukowych w celu ustalenia predyktorów awansów w pracy",
+    "diagnoza potrzeb zdrowotnych danej grupy ludzi w celu zaplanowania programów promocji zdrowia",
+    "ocena efektywności programów antymobbingowych",
+    "promocja dobrostanu psychicznego i redukcja zaburzeń nerwowych"
+   ],
+   "c": 1,
+   "e": "Ocena zachowań zdrowotnych służy rozpoznaniu potrzeb grupy i zaplanowaniu promocji zdrowia.",
+   "u": 1
+  },
+  {
+   "id": "k348",
+   "n": 348,
+   "g": "w2",
+   "q": "Które zachowanie zdrowotne można nazwać nawykiem?",
+   "a": [
+    "przestrzeganie higieny snu",
+    "regularne mycie rąk",
+    "zdrowa dieta",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 3
+  },
+  {
+   "id": "162",
+   "n": 349,
+   "g": "w2",
+   "q": "Które czynniki obniżają dokładność i wiarygodność oceny zachowań zdrowotnych?",
+   "a": [
+    "luki i zniekształcenia pamięciowe",
+    "zawyżanie udziału w zachowaniach prozdrowotnych",
+    "zaniżanie udziału w zachowaniach antyzdrowotnych",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 3,
+   "e": "Dokładność obniżają luki pamięci, zawyżanie zachowań prozdrowotnych i zaniżanie antyzdrowotnych.",
+   "u": 1
+  },
+  {
+   "id": "184",
+   "n": 350,
+   "g": "w2",
+   "q": "Jakie zachowania korelują z aktualnym i przyszłym stanem zdrowia według badań projektu Alameda (Alameda Study) (1965-1983) w Kalifornii?",
+   "a": [
+    "odpowiednia waga ciała i ruch fizyczny",
+    "zdrowy sen (7-8 godzin)",
+    "umiarkowane spożycie alkoholu i niepalenie tytoniu",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 3,
+   "e": "Badanie Alameda: sen 7–8 h, śniadanie, brak podjadania, prawidłowa waga, ruch, umiarkowany alkohol i niepalenie.",
+   "u": 1
+  },
+  {
+   "id": "k360",
+   "n": 360,
+   "g": "w2",
+   "q": "Z badań Mathesona i zespołu nad związkiem stylu życia z umieralnością wynika, że:",
+   "a": [
+    "zdrowy styl życia związany jest z mniejszą śmiertelnością niezależnie od wskaźnika BMI",
+    "osoby otyłe żyją krócej",
+    "zdrowy styl życia związany jest z mniejszą śmiertelnością, ale tylko u osób z wagą w normie",
+    "osoby z wagą w normie żyją dłużej niezależnie od stylu życia"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k361",
+   "n": 361,
+   "g": "w2",
+   "q": "Ze względu na poziom organizacji zachowania wyróżniamy zachowania:",
+   "a": [
+    "prozdrowotne i antyzdrowotne",
+    "w sytuacji zdrowia i choroby",
+    "nawykowe i celowe",
+    "wysoko i nisko zorganizowane"
+   ],
+   "c": 2
+  },
+  {
+   "id": "105",
+   "n": 367,
+   "g": "w2",
+   "q": "Przykładem celowego zachowania zdrowotnego jest",
+   "a": [
+    "regularne mycie rąk",
+    "zdrowa dieta",
+    "decyzja o zmianie niezdrowego stylu życia (np. rzucenie palenia po zajściu w ciążę)",
+    "regularne uczęszczanie na basen"
+   ],
+   "c": 2,
+   "e": "Zachowanie celowe to świadoma decyzja podjęta dla zdrowia, w odróżnieniu od nawyku."
+  },
+  {
+   "id": "k368",
+   "n": 368,
+   "g": "w2",
+   "q": "Styl życia i zachowanie wyjaśniają następujący procent stanu zdrowia:",
+   "a": [
+    "10%",
+    "53%",
+    "21%",
+    "40%"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k372",
+   "n": 372,
+   "g": "w2",
+   "q": "Według Lalonde'a dziedziczenie odpowiada za zdrowie w:",
+   "a": [
+    "53%",
+    "16%",
+    "10%",
+    "20%"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k373",
+   "n": 373,
+   "g": "w2",
+   "q": "Głównym czynnikiem ryzyka zgonu jest:",
+   "a": [
+    "palenie tytoniu",
+    "otyłość",
+    "uzależnienie od środków psychoaktywnych",
+    "nadciśnienie tętnicze"
+   ],
+   "c": 0,
+   "f": "niepewne"
+  },
+  {
+   "id": "k374",
+   "n": 374,
+   "g": "w2",
+   "q": "Jaki procent (%) w stanie zdrowia wyjaśnia styl życia i zachowanie?",
+   "a": [
+    "33",
+    "53",
+    "23",
+    "63"
+   ],
+   "c": 1
+  },
+  {
+   "id": "185",
+   "n": 377,
+   "g": "w2",
+   "q": "Jakie zachowania korelują z aktualnym i przyszłym stanem zdrowia według badań projektu Alameda (Alameda Study) (1965-1983) w Kalifornii?",
+   "a": [
+    "odpowiednia waga ciała i ruch fizyczny",
+    "unikanie stresu w pracy",
+    "umiarkowane oglądanie telewizji",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 0,
+   "e": "Z listy Alameda pasują tu prawidłowa waga ciała i ruch fizyczny.",
+   "u": 1
+  },
+  {
+   "id": "5",
+   "n": 383,
+   "g": "w2",
+   "q": "Zgodnie z raportem Lalonde'a (1974) udział stylu życia w kształtowaniu zdrowia wynosi",
+   "a": [
+    "23%",
+    "53%",
+    "83%",
+    "27%"
+   ],
+   "c": 1,
+   "e": "Według raportu Lalonde’a styl życia odpowiada za około 53% stanu zdrowia, środowisko za około 21%, geny za około 16%, opieka medyczna za około 10%."
+  },
+  {
+   "id": "k385",
+   "n": 385,
+   "g": "w2",
+   "q": "Z prospektywnych badań Mathesona i zespołu nad związkami stylu życia, BMI i umieralnością wynika, że:",
+   "a": [
+    "zdrowy styl życia związany jest z mniejszą śmiertelnością, ale tylko u osób z wagą w normie",
+    "osoby z nadwagą żyją dłużej w porównaniu do osób z wagą w normie i z otyłością",
+    "osoby otyłe żyją krócej, ale tylko wtedy, jeśli nie podejmują żadnych zachowań zdrowotnych",
+    "osoby z wagą w normie żyją dłużej niezależnie od stylu życia"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k386",
+   "n": 386,
+   "g": "w2",
+   "q": "Ze względu na stosunek do zdrowia i konsekwencje zdrowotne wyróżniamy zachowania:",
+   "a": [
+    "nawykowe i celowe",
+    "prozdrowotne i antyzdrowotne",
+    "w sytuacji zdrowia i w sytuacji choroby",
+    "rodzicielskie i medyczne"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k393",
+   "n": 393,
+   "g": "w2",
+   "q": "Klasyfikacja zachowań zdrowotnych według funkcji obejmuje podział na:",
+   "a": [
+    "zachowania w sytuacji choroby i w sytuacji zdrowia",
+    "pro- i antyzdrowotne",
+    "konfrontacyjne i unikowe",
+    "poznawcze i behawioralne"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k395",
+   "n": 395,
+   "g": "w2",
+   "q": "Według Lalonde'a za zdrowie w najmniejszym stopniu odpowiada:",
+   "a": [
+    "środowisko",
+    "genetyka",
+    "styl życia",
+    "opieka zdrowotna"
+   ],
+   "c": 3
+  },
+  {
+   "id": "138",
+   "n": 397,
+   "g": "w2",
+   "q": "Największy wpływ na zachorowalność na choroby cywilizacyjne i śmiertelność ma",
+   "a": [
+    "palenie tytoniu",
+    "brak ruchu fizycznego",
+    "wysoka konsumpcja alkoholu",
+    "niezdrowa dieta, w tym zbyt dużo soli w jedzeniu"
+   ],
+   "c": 0,
+   "e": "Palenie tytoniu jest wskazywane jako czynnik o największym wpływie na choroby cywilizacyjne i śmiertelność.",
+   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: niezdrowa dieta, w tym zbyt dużo soli w jedzeniu (?) (niepewne)",
+   "u": 1
+  },
+  {
+   "id": "137",
+   "n": 398,
+   "g": "w2",
+   "q": "Nawyki prozdrowotne (np aktywny wypoczynek poprzez ruch fizyczny) możemy kształtować",
+   "a": [
+    "w przedszkolu",
+    "w szkole",
+    "poprzez modelowanie w domu rodzinnym",
+    "wszystkie odpowiedzi są poprawne"
+   ],
+   "c": 3,
+   "e": "Nawyki prozdrowotne kształtują się w domu (modelowanie), w przedszkolu i w szkole.",
+   "u": 1
+  },
+  {
+   "id": "123",
+   "n": 399,
+   "g": "w2",
+   "q": "Podstawowe kryteria odróżniania rodzajów zachowań zdrowotnych to",
+   "a": [
+    "funkcja danego zachowania (np. prozdrowotna)",
+    "zachowanie jako nawyk lub jako celowa czynność",
+    "poziom świadomości i poziom zdrowia, którego dane zachowanie dotyczy",
+    "wszystkie odpowiedzi są poprawne"
+   ],
+   "c": 3,
+   "e": "Zachowania zdrowotne różnicuje się według funkcji, celowości (nawyk vs czynność celowa) oraz poziomu świadomości i zdrowia."
+  },
+  {
+   "id": "40",
+   "n": 401,
+   "g": "w2",
+   "q": "Według raportu WHO z 2014 roku najczęstszą przyczynę zgonów na świecie stanowią choroby",
+   "a": [
+    "układu krążenia",
+    "nowotworowe",
+    "przewlekłe układu oddechowego",
+    "metaboliczne (cukrzyca)"
+   ],
+   "c": 0,
+   "e": "Najczęstszą przyczyną zgonów na świecie są choroby układu krążenia."
+  },
+  {
+   "id": "15",
+   "n": 403,
+   "g": "w2",
+   "q": "Zainteresowanie wpływem zachowań zdrowotnych na zdrowie - tzw. drugą rewolucję zdrowotną - wywołała rosnąca liczba zgonów spowodowanych",
+   "a": [
+    "chorobami zakaźnymi",
+    "wypadkami związanymi z zanieczyszczeniem środowiska",
+    "chorobami cywilizacyjnymi",
+    "chorobami natury psychicznej"
+   ],
+   "c": 2,
+   "e": "Drugą rewolucję zdrowotną wywołał wzrost zgonów z powodu chorób cywilizacyjnych, związanych ze stylem życia."
+  },
+  {
+   "id": "161",
+   "n": 409,
+   "g": "w2",
+   "q": "Które określenie stylu życia jest najbardziej pomocne dla nurtu psychologii zdrowia?",
+   "a": [
+    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi wyłącznie od cech indywidualnych",
+    "styl życia to wzör behawioralnych zachowań",
+    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi od cech indywidualnych i społeczno-kulturowych",
+    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi wyłącznie od cech społeczno-kulturowych"
+   ],
+   "c": 2,
+   "e": "Styl życia zależy od cech indywidualnych i społeczno-kulturowych.",
+   "u": 1
+  },
+  {
+   "id": "50",
+   "n": 411,
+   "g": "w2",
+   "q": "Według danych WHO najczęstszą przyczyną śmierci z tak zwanych „przyczyn zewnętrznych” w regionie europejskim są",
+   "a": [
+    "zatrucia alkoholem",
+    "zabójstwa",
+    "samobójstwa",
+    "wypadki samochodowe"
+   ],
+   "c": 2,
+   "e": "Według przywołanych w bazie danych WHO najczęstszą zewnętrzną przyczyną zgonów w Europie są wypadki komunikacyjne. W innych zestawieniach na pierwszym miejscu są samobójstwa.",
+   "f": "Wg raportu WHO Europe (Violence and injuries in Europe) samobójstwa/samookaleczenia to najczęstsza przyczyna zgonów z przyczyn zewnętrznych (141 tys. w 2016) przed wypadkami drogowymi (78 tys.)."
+  },
+  {
+   "id": "k425",
+   "n": 425,
+   "g": "w2",
+   "q": "Kryterium klasyfikacji zachowań zdrowotnych według poziomu organizacji behawioralnej obejmuje podział na:",
+   "a": [
+    "nawyki zdrowotne i intencjonalne czynności",
+    "zachowania korzystne i niekorzystne dla zdrowia",
+    "zachowania w sytuacji zdrowia i w sytuacji choroby",
+    "zachowania prozdrowotne i antyzdrowotne"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k427",
+   "n": 427,
+   "g": "w2",
+   "q": "Z perspektywy psychologicznej styl życia związany ze zdrowiem to:",
+   "a": [
+    "luźno powiązany zespół zachowań charakterystyczny dla danej osoby, który ma znaczenie dla jej zdrowia",
+    "charakterystyczny dla danej osoby system zachowań zdrowotnych uwarunkowanych m.in. wiedzą",
+    "odzwierciedlenie indywidualnych wyborów i przynależności do warstwy społecznej",
+    "utrwalone wzory nawyków związanych ze zdrowiem"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k428",
+   "n": 428,
+   "g": "w2",
+   "q": "W przypadku zachowań zdrowotnych wskazuje się, iż:",
+   "a": [
+    "silnie współwystępują ze sobą",
+    "są stałe w czasie",
+    "zależą od wykształcenia i statusu ekonomicznego",
+    "najczęściej podejmowane są przez osoby w średniej dorosłości"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k434",
+   "n": 434,
+   "g": "w2",
+   "q": "Mycie rąk to:",
+   "a": [
+    "nawykowe zachowanie zdrowotne",
+    "reaktywne zachowanie zdrowotne",
+    "intencjonalne zachowanie zdrowotne",
+    "rodzicielskie zachowanie zdrowotne"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k438",
+   "n": 438,
+   "g": "w2",
+   "q": "Wyniki prospektywnych badań prowadzonych w ramach Alameda Study w latach 1965–1983 NIE wykazały związku między zdrowiem a:",
+   "a": [
+    "niepaleniem",
+    "6 godzinami snu",
+    "umiarkowanym piciem alkoholu",
+    "utrzymywaniem właściwej masy ciała"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k439",
+   "n": 439,
+   "g": "w2",
+   "q": "Zgodnie z raportem Lalonde'a (1974) udział stylu życia w kształtowaniu zdrowia wynosi:",
+   "a": [
+    "23%",
+    "53%",
+    "59%",
+    "27%"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k443",
+   "n": 443,
+   "g": "w2",
+   "q": "Według raportu Lalonde'a największy udział w kształtowaniu pola zdrowotnego mają:",
+   "a": [
+    "styl życia i środowisko",
+    "styl życia i dziedziczenie",
+    "środowisko i dziedziczenie",
+    "opieka zdrowotna i dziedziczenie"
+   ],
+   "c": 0
+  },
+  {
+   "id": "27",
+   "n": 557,
+   "g": "w2",
+   "q": "Wskaż zachowanie zdrowotne, które możemy nazwać nawykiem",
+   "a": [
+    "zachowywanie higieny snu",
+    "regularne mycie rąk",
+    "zdrowa dieta",
+    "wszystkie odpowiedzi są poprawne"
+   ],
+   "c": 3,
+   "e": "Higiena snu, mycie rąk i dieta mogą stać się automatycznymi nawykami."
   },
   {
    "id": "187",
@@ -5732,20 +5106,6 @@
    "u": 1
   },
   {
-   "id": "32",
-   "n": 558,
-   "g": "w4",
-   "q": "Wskaźnik odziedziczalności w depresji wynosi",
-   "a": [
-    "ok 20%",
-    "ok 80%",
-    "ok. 90%",
-    "ok 30-40%"
-   ],
-   "c": 3,
-   "e": "Odziedziczalność depresji szacuje się na około 30–40%."
-  },
-  {
    "id": "178",
    "n": 577,
    "g": "w4",
@@ -6719,179 +6079,6 @@
    "u": 1
   },
   {
-   "id": "192",
-   "n": 345,
-   "g": "w6",
-   "q": "Jaki jest cel oceny zachowań zdrowotnych?",
-   "a": [
-    "przeprowadzanie badań naukowych w celu ustalenia predyktorów awansów w pracy",
-    "diagnoza potrzeb zdrowotnych danej grupy ludzi w celu zaplanowania programów promocji zdrowia",
-    "ocena efektywności programów antymobbingowych",
-    "promocja dobrostanu psychicznego i redukcja zaburzeń nerwowych"
-   ],
-   "c": 1,
-   "e": "Ocena zachowań zdrowotnych służy rozpoznaniu potrzeb grupy i zaplanowaniu promocji zdrowia.",
-   "u": 1
-  },
-  {
-   "id": "222",
-   "n": 346,
-   "g": "w6",
-   "q": "Co kształtuje przekonania zdrowotne na temat zdrowia i choroby?",
-   "a": [
-    "system przekonań współistniejących: medycyna pierwotna, ludowa i naukowa",
-    "osobiste doświadczenie ze zdrowiem i chorobą",
-    "własna aktywność poznawcza (np. poczucie kontroli, poczucie skuteczności)",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 3,
-   "e": "Przekonania zdrowotne kształtują systemy medycyny, osobiste doświadczenia i własna aktywność poznawcza.",
-   "u": 1
-  },
-  {
-   "id": "164",
-   "n": 347,
-   "g": "w6",
-   "q": "Która odpowiedź opisuje przekonanie zdrowotne, według teorii poczucia własnej skuteczności?",
-   "a": [
-    "Zamierzam zacząć jeść więcej warzyw, bo nie stać mnie na mięso",
-    "Zamierzam zacząć jeść więcej warzyw, bo wiem że jestem w stanie to zrobić",
-    "Zamierzam regularnie chodzić na basen, bo nie trzeba płacić za wstęp",
-    "Zamierzam regularnie chodzić na basen, bo mam już dość mojej nadwagi"
-   ],
-   "c": 1,
-   "e": "Przekonanie o własnej skuteczności to „wiem, że jestem w stanie to zrobić”.",
-   "u": 1
-  },
-  {
-   "id": "k348",
-   "n": 348,
-   "g": "w6",
-   "q": "Które zachowanie zdrowotne można nazwać nawykiem?",
-   "a": [
-    "przestrzeganie higieny snu",
-    "regularne mycie rąk",
-    "zdrowa dieta",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 3
-  },
-  {
-   "id": "162",
-   "n": 349,
-   "g": "w6",
-   "q": "Które czynniki obniżają dokładność i wiarygodność oceny zachowań zdrowotnych?",
-   "a": [
-    "luki i zniekształcenia pamięciowe",
-    "zawyżanie udziału w zachowaniach prozdrowotnych",
-    "zaniżanie udziału w zachowaniach antyzdrowotnych",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 3,
-   "e": "Dokładność obniżają luki pamięci, zawyżanie zachowań prozdrowotnych i zaniżanie antyzdrowotnych.",
-   "u": 1
-  },
-  {
-   "id": "184",
-   "n": 350,
-   "g": "w6",
-   "q": "Jakie zachowania korelują z aktualnym i przyszłym stanem zdrowia według badań projektu Alameda (Alameda Study) (1965-1983) w Kalifornii?",
-   "a": [
-    "odpowiednia waga ciała i ruch fizyczny",
-    "zdrowy sen (7-8 godzin)",
-    "umiarkowane spożycie alkoholu i niepalenie tytoniu",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 3,
-   "e": "Badanie Alameda: sen 7–8 h, śniadanie, brak podjadania, prawidłowa waga, ruch, umiarkowany alkohol i niepalenie.",
-   "u": 1
-  },
-  {
-   "id": "163",
-   "n": 351,
-   "g": "w6",
-   "q": "Która ze społecznych teorii poznawczych zajmuje kluczowe miejsce we współczesnych modelach wyjaśniających zachowania zdrowotne?",
-   "a": [
-    "teoria lokalizacji kontroli",
-    "teoria poczucia własnej skuteczności",
-    "teoria dysonansu poznawczego",
-    "teoria wsparcia społecznego"
-   ],
-   "c": 1,
-   "e": "Poczucie własnej skuteczności (Bandura) jest kluczowe w większości modeli zachowań zdrowotnych.",
-   "u": 1
-  },
-  {
-   "id": "43",
-   "n": 352,
-   "g": "w6",
-   "q": "Według modelu HAPA (Health Action Process Approach), jaki proces umożliwia kontynuację zachowania już PO jego podjęciu?",
-   "a": [
-    "planowanie działania (np. miejsce lub czas wykonywania zachowania)",
-    "planowanie radzenia sobie z przeszkodami (np. jeśli będzie zimno, to ubiorę ciepłą bluzę do biegania)",
-    "oczekiwanie pozytywnych efektów",
-    "poczucie kontroli"
-   ],
-   "c": 1,
-   "e": "W fazie wolicjonalnej HAPA utrzymanie zachowania wspiera planowanie radzenia sobie z przeszkodami."
-  },
-  {
-   "id": "37",
-   "n": 353,
-   "g": "w6",
-   "q": "Według teorii autodeterminacji autorstwa Ryan i Deci (2000), który rodzaj motywacji najbardziej sprzyja podjęciu się lub utrzymaniu zachowań zdrowotnych?",
-   "a": [
-    "motywacja wewnętrzna",
-    "motywacja zewnętrzna",
-    "równy poziom obu typów motywacji",
-    "żadna z pozostałych odpowiedzi"
-   ],
-   "c": 0,
-   "e": "Według teorii autodeterminacji zachowania zdrowotne najlepiej podtrzymuje motywacja wewnętrzna (autonomiczna)."
-  },
-  {
-   "id": "61",
-   "n": 354,
-   "g": "w6",
-   "q": "W odniesieniu do zachowań zdrowotnych, do czego służą modele teoretyczne?",
-   "a": [
-    "pomagają w systemowym zrozumieniu zachowań zdrowotnych, między innymi co wpływa na ich kształtowanie, utrzymanie lub zmianę",
-    "modele teoretyczne nie są przydatne w psychologii zdrowia, bo wiele z nich pochodzi z innych dziedzin psychologii, np. poznawczej",
-    "modele teoretyczne są przydatne w psychologii zdrowia w celu zrozumienia ludzkiego zachowania, o ile zostały stworzone przez wybitnych psychologów zdrowia",
-    "żadna z pozostałych odpowiedzi"
-   ],
-   "c": 0,
-   "e": "Modele teoretyczne porządkują wiedzę o tym, co kształtuje, podtrzymuje i zmienia zachowania zdrowotne."
-  },
-  {
-   "id": "41",
-   "n": 355,
-   "g": "w6",
-   "q": "Według przeglądów literatury (np. Godin i Kok, 1996), jaka jest użyteczność teorii uzasadnionego działania i teorii planowanego zachowania w wyjaśnianiu zachowań zdrowotnych?",
-   "a": [
-    "teorie wyjaśniają większy zakres intencji niż rzeczywistych zachowań zdrowotnych",
-    "teorie trafnie wyjaśniają wysoki odsetek zachowań zdrowotnych",
-    "teorie trafnie wyjaśniają wysoki odsetek zachowań zdrowotnych, zwłaszcza u kobiet",
-    "żadna z pozostałych odpowiedzi"
-   ],
-   "c": 0,
-   "e": "Te teorie dobrze wyjaśniają intencje, ale słabiej rzeczywiste zachowania (luka intencja–zachowanie)."
-  },
-  {
-   "id": "125",
-   "n": 356,
-   "g": "w6",
-   "q": "Poczucie własnej skuteczności",
-   "a": [
-    "wzmacnia się, gdy jednostka doświadcza wielu porażek w działaniu",
-    "związane jest z realistyczną oceną własnych możliwości działania",
-    "kształtuje się wyłącznie w oparciu o styl wychowania",
-    "zdecydowanie wzrasta w sytuacji silnego pobudzenia psychofizycznego"
-   ],
-   "c": 1,
-   "e": "Poczucie własnej skuteczności wiąże się z realistyczną oceną własnych możliwości działania."
-  },
-  {
    "id": "114",
    "n": 357,
    "g": "w6",
@@ -6933,32 +6120,6 @@
    ],
    "c": 1,
    "e": "Prewencja wtórna to wczesne wykrywanie choroby i powstrzymywanie jej rozwoju."
-  },
-  {
-   "id": "k360",
-   "n": 360,
-   "g": "w6",
-   "q": "Z badań Mathesona i zespołu nad związkiem stylu życia z umieralnością wynika, że:",
-   "a": [
-    "zdrowy styl życia związany jest z mniejszą śmiertelnością niezależnie od wskaźnika BMI",
-    "osoby otyłe żyją krócej",
-    "zdrowy styl życia związany jest z mniejszą śmiertelnością, ale tylko u osób z wagą w normie",
-    "osoby z wagą w normie żyją dłużej niezależnie od stylu życia"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k361",
-   "n": 361,
-   "g": "w6",
-   "q": "Ze względu na poziom organizacji zachowania wyróżniamy zachowania:",
-   "a": [
-    "prozdrowotne i antyzdrowotne",
-    "w sytuacji zdrowia i choroby",
-    "nawykowe i celowe",
-    "wysoko i nisko zorganizowane"
-   ],
-   "c": 2
   },
   {
    "id": "k363",
@@ -7015,86 +6176,6 @@
    "e": "Promocja zdrowia to wspieranie zachowań sprzyjających zdrowiu jednostek i społeczności."
   },
   {
-   "id": "105",
-   "n": 367,
-   "g": "w6",
-   "q": "Przykładem celowego zachowania zdrowotnego jest",
-   "a": [
-    "regularne mycie rąk",
-    "zdrowa dieta",
-    "decyzja o zmianie niezdrowego stylu życia (np. rzucenie palenia po zajściu w ciążę)",
-    "regularne uczęszczanie na basen"
-   ],
-   "c": 2,
-   "e": "Zachowanie celowe to świadoma decyzja podjęta dla zdrowia, w odróżnieniu od nawyku."
-  },
-  {
-   "id": "k368",
-   "n": 368,
-   "g": "w6",
-   "q": "Styl życia i zachowanie wyjaśniają następujący procent stanu zdrowia:",
-   "a": [
-    "10%",
-    "53%",
-    "21%",
-    "40%"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k371",
-   "n": 371,
-   "g": "w6",
-   "q": "Centralnym konstruktem postintencjonalnych modeli zmiany zachowań zdrowotnych jest:",
-   "a": [
-    "planowanie",
-    "intencja",
-    "zagrożenie chorobą",
-    "dynamiczny proces zmiany zachowania"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k372",
-   "n": 372,
-   "g": "w6",
-   "q": "Według Lalonde'a dziedziczenie odpowiada za zdrowie w:",
-   "a": [
-    "53%",
-    "16%",
-    "10%",
-    "20%"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k373",
-   "n": 373,
-   "g": "w6",
-   "q": "Głównym czynnikiem ryzyka zgonu jest:",
-   "a": [
-    "palenie tytoniu",
-    "otyłość",
-    "uzależnienie od środków psychoaktywnych",
-    "nadciśnienie tętnicze"
-   ],
-   "c": 0,
-   "f": "niepewne"
-  },
-  {
-   "id": "k374",
-   "n": 374,
-   "g": "w6",
-   "q": "Jaki procent (%) w stanie zdrowia wyjaśnia styl życia i zachowanie?",
-   "a": [
-    "33",
-    "53",
-    "23",
-    "63"
-   ],
-   "c": 1
-  },
-  {
    "id": "216",
    "n": 375,
    "g": "w6",
@@ -7108,49 +6189,6 @@
    "c": 0,
    "e": "Promocja zdrowia jest kierowana do całej populacji, prewencja do grup ryzyka.",
    "u": 1
-  },
-  {
-   "id": "220",
-   "n": 376,
-   "g": "w6",
-   "q": "Co okazało się problemem teorii i interwencji zmian zachowań zdrowotnych?",
-   "a": [
-    "trudność lub niepowodzenie w utrzymaniu zmiany zachowania",
-    "fakt, że tylko młodzi ludzie są chętni do zmian zachowań zdrowotnych",
-    "fakt, że tylko wykształceni ludzie są chętni do zmian zachowań zdrowotnych",
-    "luka między ludzką pamięcią a rzeczywistym zachowaniem"
-   ],
-   "c": 0,
-   "e": "Największym problemem okazało się utrzymanie zmiany zachowania.",
-   "u": 1
-  },
-  {
-   "id": "185",
-   "n": 377,
-   "g": "w6",
-   "q": "Jakie zachowania korelują z aktualnym i przyszłym stanem zdrowia według badań projektu Alameda (Alameda Study) (1965-1983) w Kalifornii?",
-   "a": [
-    "odpowiednia waga ciała i ruch fizyczny",
-    "unikanie stresu w pracy",
-    "umiarkowane oglądanie telewizji",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 0,
-   "e": "Z listy Alameda pasują tu prawidłowa waga ciała i ruch fizyczny.",
-   "u": 1
-  },
-  {
-   "id": "k378",
-   "n": 378,
-   "g": "w6",
-   "q": "Według modelu HAPA, jaki proces umożliwia kontynuację zachowania już PO jego podjęciu?",
-   "a": [
-    "planowanie działania (np. miejsce lub czas wykonywania zachowania)",
-    "planowanie radzenia sobie z przeszkodami (np. jeśli będzie zimno, to ubiorę ciepłą bluzę do biegania)",
-    "oczekiwanie pozytywnych efektów",
-    "poczucie kontroli"
-   ],
-   "c": 1
   },
   {
    "id": "k379",
@@ -7179,74 +6217,6 @@
    "c": 1
   },
   {
-   "id": "k381",
-   "n": 381,
-   "g": "w6",
-   "q": "Co może być źródłem poczucia własnej skuteczności?",
-   "a": [
-    "Wykonywanie różnych zadań i czynności w ciągu życia (tzw. przeszłe doświadczenia jednostki)",
-    "Obserwowanie innych osób (tzw. doświadczenia zastępcze)",
-    "Pochwały ze strony innych (perswazja werbalna)",
-    "Wszystkie odpowiedzi są prawidłowe"
-   ],
-   "c": 3
-  },
-  {
-   "id": "130",
-   "n": 382,
-   "g": "w6",
-   "q": "Oczekiwanie własnej skuteczności to przekonanie, że",
-   "a": [
-    "jesteśmy w stanie wykonać dane zachowanie",
-    "dane zachowanie doprowadzi do pożądanego celu",
-    "nasze zachowania zdrowotne zależą od czynników zewnętrznych, takich jak opieka boska lub przypadek",
-    "współczesna medycyna naukowa jest skuteczna"
-   ],
-   "c": 0,
-   "e": "Oczekiwanie własnej skuteczności to przekonanie, że jestem w stanie wykonać dane zachowanie. Odpowiedź b to oczekiwanie wyniku.",
-   "u": 1
-  },
-  {
-   "id": "5",
-   "n": 383,
-   "g": "w6",
-   "q": "Zgodnie z raportem Lalonde'a (1974) udział stylu życia w kształtowaniu zdrowia wynosi",
-   "a": [
-    "23%",
-    "53%",
-    "83%",
-    "27%"
-   ],
-   "c": 1,
-   "e": "Według raportu Lalonde’a styl życia odpowiada za około 53% stanu zdrowia, środowisko za około 21%, geny za około 16%, opieka medyczna za około 10%."
-  },
-  {
-   "id": "k385",
-   "n": 385,
-   "g": "w6",
-   "q": "Z prospektywnych badań Mathesona i zespołu nad związkami stylu życia, BMI i umieralnością wynika, że:",
-   "a": [
-    "zdrowy styl życia związany jest z mniejszą śmiertelnością, ale tylko u osób z wagą w normie",
-    "osoby z nadwagą żyją dłużej w porównaniu do osób z wagą w normie i z otyłością",
-    "osoby otyłe żyją krócej, ale tylko wtedy, jeśli nie podejmują żadnych zachowań zdrowotnych",
-    "osoby z wagą w normie żyją dłużej niezależnie od stylu życia"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k386",
-   "n": 386,
-   "g": "w6",
-   "q": "Ze względu na stosunek do zdrowia i konsekwencje zdrowotne wyróżniamy zachowania:",
-   "a": [
-    "nawykowe i celowe",
-    "prozdrowotne i antyzdrowotne",
-    "w sytuacji zdrowia i w sytuacji choroby",
-    "rodzicielskie i medyczne"
-   ],
-   "c": 1
-  },
-  {
    "id": "k388",
    "n": 388,
    "g": "w6",
@@ -7256,172 +6226,6 @@
     "przeciwdziałania czynnikom ryzyka zanim dojdzie do choroby",
     "powstrzymywania dalszego rozwoju choroby",
     "zapobiegania nawrotom choroby"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k389",
-   "n": 389,
-   "g": "w6",
-   "q": "Wygaszenie motywacji wewnętrznej w efekcie pojawienia się motywacji zewnętrznej określa się jako:",
-   "a": [
-    "efekt reaktancji",
-    "efekt bumerangowy",
-    "efekt naduzasadnienia",
-    "efekt zaszczepienia"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k393",
-   "n": 393,
-   "g": "w6",
-   "q": "Klasyfikacja zachowań zdrowotnych według funkcji obejmuje podział na:",
-   "a": [
-    "zachowania w sytuacji choroby i w sytuacji zdrowia",
-    "pro- i antyzdrowotne",
-    "konfrontacyjne i unikowe",
-    "poznawcze i behawioralne"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k394",
-   "n": 394,
-   "g": "w6",
-   "q": "Centralnym konstruktem motywacyjnych modeli zmiany zachowań zdrowotnych jest:",
-   "a": [
-    "planowanie",
-    "intencja",
-    "próbowanie",
-    "dynamiczny proces zmiany zachowania"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k395",
-   "n": 395,
-   "g": "w6",
-   "q": "Według Lalonde'a za zdrowie w najmniejszym stopniu odpowiada:",
-   "a": [
-    "środowisko",
-    "genetyka",
-    "styl życia",
-    "opieka zdrowotna"
-   ],
-   "c": 3
-  },
-  {
-   "id": "138",
-   "n": 397,
-   "g": "w6",
-   "q": "Największy wpływ na zachorowalność na choroby cywilizacyjne i śmiertelność ma",
-   "a": [
-    "palenie tytoniu",
-    "brak ruchu fizycznego",
-    "wysoka konsumpcja alkoholu",
-    "niezdrowa dieta, w tym zbyt dużo soli w jedzeniu"
-   ],
-   "c": 0,
-   "e": "Palenie tytoniu jest wskazywane jako czynnik o największym wpływie na choroby cywilizacyjne i śmiertelność.",
-   "f": "W arkuszach przy tym pytaniu poprawna była odpowiedź: niezdrowa dieta, w tym zbyt dużo soli w jedzeniu (?) (niepewne)",
-   "u": 1
-  },
-  {
-   "id": "137",
-   "n": 398,
-   "g": "w6",
-   "q": "Nawyki prozdrowotne (np aktywny wypoczynek poprzez ruch fizyczny) możemy kształtować",
-   "a": [
-    "w przedszkolu",
-    "w szkole",
-    "poprzez modelowanie w domu rodzinnym",
-    "wszystkie odpowiedzi są poprawne"
-   ],
-   "c": 3,
-   "e": "Nawyki prozdrowotne kształtują się w domu (modelowanie), w przedszkolu i w szkole.",
-   "u": 1
-  },
-  {
-   "id": "123",
-   "n": 399,
-   "g": "w6",
-   "q": "Podstawowe kryteria odróżniania rodzajów zachowań zdrowotnych to",
-   "a": [
-    "funkcja danego zachowania (np. prozdrowotna)",
-    "zachowanie jako nawyk lub jako celowa czynność",
-    "poziom świadomości i poziom zdrowia, którego dane zachowanie dotyczy",
-    "wszystkie odpowiedzi są poprawne"
-   ],
-   "c": 3,
-   "e": "Zachowania zdrowotne różnicuje się według funkcji, celowości (nawyk vs czynność celowa) oraz poziomu świadomości i zdrowia."
-  },
-  {
-   "id": "83",
-   "n": 400,
-   "g": "w6",
-   "q": "Teorię lokalizacji kontroli stworzył/stworzyła",
-   "a": [
-    "Albert Bandura",
-    "Julian B. Rotter",
-    "Joseph D. Matarazzo",
-    "Shelley E. Taylor"
-   ],
-   "c": 1,
-   "e": "Teorię umiejscowienia kontroli stworzył Julian Rotter."
-  },
-  {
-   "id": "40",
-   "n": 401,
-   "g": "w6",
-   "q": "Według raportu WHO z 2014 roku najczęstszą przyczynę zgonów na świecie stanowią choroby",
-   "a": [
-    "układu krążenia",
-    "nowotworowe",
-    "przewlekłe układu oddechowego",
-    "metaboliczne (cukrzyca)"
-   ],
-   "c": 0,
-   "e": "Najczęstszą przyczyną zgonów na świecie są choroby układu krążenia."
-  },
-  {
-   "id": "62",
-   "n": 402,
-   "g": "w6",
-   "q": "W odniesieniu do spraw zdrowotnych lokalizacja poczucia kontroli może być",
-   "a": [
-    "wewnętrzna",
-    "zewnętrzna przypisana innym ludziom",
-    "zewnętrzna przypisana przypadkowi",
-    "wszystkie odpowiedzi są poprawne"
-   ],
-   "c": 3,
-   "e": "Umiejscowienie kontroli zdrowia może być wewnętrzne albo zewnętrzne: przypisane innym (np. lekarzom) lub przypadkowi."
-  },
-  {
-   "id": "15",
-   "n": 403,
-   "g": "w6",
-   "q": "Zainteresowanie wpływem zachowań zdrowotnych na zdrowie - tzw. drugą rewolucję zdrowotną - wywołała rosnąca liczba zgonów spowodowanych",
-   "a": [
-    "chorobami zakaźnymi",
-    "wypadkami związanymi z zanieczyszczeniem środowiska",
-    "chorobami cywilizacyjnymi",
-    "chorobami natury psychicznej"
-   ],
-   "c": 2,
-   "e": "Drugą rewolucję zdrowotną wywołał wzrost zgonów z powodu chorób cywilizacyjnych, związanych ze stylem życia."
-  },
-  {
-   "id": "k404",
-   "n": 404,
-   "g": "w6",
-   "q": "Co okazało się problemem teorii i interwencji zmian zachowań zdrowotnych?",
-   "a": [
-    "fakt, że tylko wykształceni ludzie są chętni do zmian zachowań zdrowotnych",
-    "luka między wytworzeniem intencji a rzeczywistym zachowaniem",
-    "fakt, że tylko młodzi ludzie są chętni do zmian zachowań zdrowotnych",
-    "luka między ludzką pamięcią a rzeczywistym zachowaniem"
    ],
    "c": 1
   },
@@ -7439,60 +6243,6 @@
    "c": 3
   },
   {
-   "id": "k406",
-   "n": 406,
-   "g": "w6",
-   "q": "Która odpowiedź opisuje dorobek naukowy lub zasługi modelu HAPA (Health Action Process Approach) Ralfa Schwarzera?",
-   "a": [
-    "model zajmuje drugie miejsce na liście eksperckich teorii przydatnych w wyjaśnianiu utrzymania się zmian zachowań (Kwaśnicka i in., 2016)",
-    "model zakłada, że w kolejnych etapach procesu zmiany, zachowania mają odrębne determinanty będące predykatorami zmiany",
-    "model wyodrębnia trzy rodzaje poczucia skuteczności dotyczące inicjowania działania, radzenie sobie w trakcie jego wykonywania i podczas utrzymania zmiany",
-    "wszystkie pozostałe odpowiedzi"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k407",
-   "n": 407,
-   "g": "w6",
-   "q": "Która odpowiedź opisuje przekonanie zdrowotne, według teorii poczucia własnej skuteczności?",
-   "a": [
-    "Zamierzam regularnie chodzić na basen, bo nie trzeba płacić za wstęp",
-    "Jeśli zachoruję, to od mojego lekarza zależy, jak szybko wyzdrowieję",
-    "Zmierzam regularnie chodzić na basen bo wiem, że jestem w stanie to zrobić",
-    "Zamierzam regularnie chodzić na basen, bo mam już dość narzekania mojej żony, że nie uprawiam żadnego sportu"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k408",
-   "n": 408,
-   "g": "w6",
-   "q": "Który model lub teoria zachowań zdrowotnych opiera się na 6 procesach (stadiach): prekontemplacja, kontemplacja, przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany?",
-   "a": [
-    "teoria lokalizacji kontroli",
-    "poczucie własnej skuteczności",
-    "teoria autodeterminacji",
-    "model transteoretyczny"
-   ],
-   "c": 3
-  },
-  {
-   "id": "161",
-   "n": 409,
-   "g": "w6",
-   "q": "Które określenie stylu życia jest najbardziej pomocne dla nurtu psychologii zdrowia?",
-   "a": [
-    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi wyłącznie od cech indywidualnych",
-    "styl życia to wzör behawioralnych zachowań",
-    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi od cech indywidualnych i społeczno-kulturowych",
-    "styl życia to sposób życia uwarunkowany indywidualnymi zachowaniami zależnymi wyłącznie od cech społeczno-kulturowych"
-   ],
-   "c": 2,
-   "e": "Styl życia zależy od cech indywidualnych i społeczno-kulturowych.",
-   "u": 1
-  },
-  {
    "id": "65",
    "n": 410,
    "g": "w6",
@@ -7508,21 +6258,6 @@
    "u": 1
   },
   {
-   "id": "50",
-   "n": 411,
-   "g": "w6",
-   "q": "Według danych WHO najczęstszą przyczyną śmierci z tak zwanych „przyczyn zewnętrznych” w regionie europejskim są",
-   "a": [
-    "zatrucia alkoholem",
-    "zabójstwa",
-    "samobójstwa",
-    "wypadki samochodowe"
-   ],
-   "c": 2,
-   "e": "Według przywołanych w bazie danych WHO najczęstszą zewnętrzną przyczyną zgonów w Europie są wypadki komunikacyjne. W innych zestawieniach na pierwszym miejscu są samobójstwa.",
-   "f": "Wg raportu WHO Europe (Violence and injuries in Europe) samobójstwa/samookaleczenia to najczęstsza przyczyna zgonów z przyczyn zewnętrznych (141 tys. w 2016) przed wypadkami drogowymi (78 tys.)."
-  },
-  {
    "id": "10",
    "n": 412,
    "g": "w6",
@@ -7535,58 +6270,6 @@
    ],
    "c": 0,
    "e": "To definicja promocji zdrowia z Karty Ottawskiej (1986)."
-  },
-  {
-   "id": "k413",
-   "n": 413,
-   "g": "w6",
-   "q": "Co zaleca się dla ludzi, którzy podjęli decyzję zdrowotną (np. chcę zacząć biegać) i chcą ją wprowadzić w czyn?",
-   "a": [
-    "utrwalanie siły woli i poczucia skuteczności, np. przez stałe wsparcie społeczne",
-    "makrooddziaływania, np. kampanie reklamowe i mechanizmy wpływu społecznego",
-    "mikrooddziaływania ukierunkowane na małe grupy, np. kluby sportowe, porzucanie palenia tytoniu",
-    "zwiększanie dobrostanu psychologicznego"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k414",
-   "n": 414,
-   "g": "w6",
-   "q": "Jaki zakres kształtowania zachowania obejmują modele motywacyjne zachowań zdrowotnych?",
-   "a": [
-    "przekształcenie się zachowania w nawyk, np. regularne bieganie",
-    "kształtowanie się intencji podjęcia zachowania",
-    "realizacja już istniejącego zachowania",
-    "zaprzestanie starań w celu zaczęcia nowego zachowania"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k415",
-   "n": 415,
-   "g": "w6",
-   "q": "Na czym polegają modele fazowe i procesualne zmiany zachowań zdrowotnych?",
-   "a": [
-    "modele zakładają, że nabywanie zachowań zdrowotnych i ich zmiana są procesami opartymi na nabywania skuteczności",
-    "… procesami opartymi na nabywaniu wiedzy",
-    "… procesami opartymi na motywacji zewnętrznej",
-    "modele zakładają, że nabywanie zachowań zdrowotnych i ich zmiana są procesami odbywającymi się w czasie i w odrębnych etapach"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k416",
-   "n": 416,
-   "g": "w6",
-   "q": "Wyróżnienie odrębnych etapów zmiany (stadiów) w modelu transteoretycznym (Prochaska i DiClemente, 1992) pokazało, że zmiany zachowań łączą się z innymi procesami zaangażowania. To było bardzo pomocne dla:",
-   "a": [
-    "projektowania interwencji promujących szczepienia u dzieci",
-    "projektowania interwencji zdrowotnych dopasowanych do zindywidualizowanych potrzeb uczestników",
-    "projektowania interwencji opartych na niskich kosztach",
-    "projektowania interwencji zdrowotnych na dużą skalę"
-   ],
-   "c": 1
   },
   {
    "id": "k418",
@@ -7613,19 +6296,6 @@
     "wskazująca"
    ],
    "c": 0
-  },
-  {
-   "id": "k421",
-   "n": 421,
-   "g": "w6",
-   "q": "Efekt naduzasadnienia to:",
-   "a": [
-    "równoczesne działanie motywacji zewnętrznej i wewnętrznej",
-    "wygaszenie motywacji wewnętrznej w efekcie pojawienia się motywacji zewnętrznej",
-    "wygaszenie motywacji zewnętrznej w efekcie pojawienia się motywacji wewnętrznej",
-    "poszukiwanie dodatkowego uzasadnienia dla podejmowanych działań"
-   ],
-   "c": 1
   },
   {
    "id": "k422",
@@ -7663,71 +6333,6 @@
     "negatywna reakcja klienta na sytuacje interpretowane przez niego jako zagrażające jego wolności i autonomii",
     "sposób, w jaki myślimy o sobie",
     "pojęcie pochodzące z psychoterapii opartej na doświadczeniu, używane do określenia nieuświadomionych metod organizacji doświadczenia wokół procesów emocjonalnych"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k425",
-   "n": 425,
-   "g": "w6",
-   "q": "Kryterium klasyfikacji zachowań zdrowotnych według poziomu organizacji behawioralnej obejmuje podział na:",
-   "a": [
-    "nawyki zdrowotne i intencjonalne czynności",
-    "zachowania korzystne i niekorzystne dla zdrowia",
-    "zachowania w sytuacji zdrowia i w sytuacji choroby",
-    "zachowania prozdrowotne i antyzdrowotne"
-   ],
-   "c": 0
-  },
-  {
-   "id": "k426",
-   "n": 426,
-   "g": "w6",
-   "q": "Fazowym modelem zmiany zachowań zdrowotnych jest:",
-   "a": [
-    "model przekonań zdrowotnych",
-    "teoria uzasadnionego działania",
-    "teoria planowanego zachowania",
-    "model transteoretyczny"
-   ],
-   "c": 3
-  },
-  {
-   "id": "k427",
-   "n": 427,
-   "g": "w6",
-   "q": "Z perspektywy psychologicznej styl życia związany ze zdrowiem to:",
-   "a": [
-    "luźno powiązany zespół zachowań charakterystyczny dla danej osoby, który ma znaczenie dla jej zdrowia",
-    "charakterystyczny dla danej osoby system zachowań zdrowotnych uwarunkowanych m.in. wiedzą",
-    "odzwierciedlenie indywidualnych wyborów i przynależności do warstwy społecznej",
-    "utrwalone wzory nawyków związanych ze zdrowiem"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k428",
-   "n": 428,
-   "g": "w6",
-   "q": "W przypadku zachowań zdrowotnych wskazuje się, iż:",
-   "a": [
-    "silnie współwystępują ze sobą",
-    "są stałe w czasie",
-    "zależą od wykształcenia i statusu ekonomicznego",
-    "najczęściej podejmowane są przez osoby w średniej dorosłości"
-   ],
-   "c": 2
-  },
-  {
-   "id": "k429",
-   "n": 429,
-   "g": "w6",
-   "q": "Postintencjonalne modele zachowań zdrowotnych podkreślają rolę:",
-   "a": [
-    "motywacji",
-    "planowania",
-    "przekonania nt. zagrożenia",
-    "czasu"
    ],
    "c": 1
   },
@@ -7771,32 +6376,6 @@
    "c": 3
   },
   {
-   "id": "k433",
-   "n": 433,
-   "g": "w6",
-   "q": "Intencja jest głównym przedmiotem zainteresowań w modelach:",
-   "a": [
-    "procesualnych",
-    "motywacyjnych",
-    "postintencjonalnych",
-    "fazowych"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k434",
-   "n": 434,
-   "g": "w6",
-   "q": "Mycie rąk to:",
-   "a": [
-    "nawykowe zachowanie zdrowotne",
-    "reaktywne zachowanie zdrowotne",
-    "intencjonalne zachowanie zdrowotne",
-    "rodzicielskie zachowanie zdrowotne"
-   ],
-   "c": 0
-  },
-  {
    "id": "k435",
    "n": 435,
    "g": "w6",
@@ -7810,19 +6389,6 @@
    "c": 1
   },
   {
-   "id": "k436",
-   "n": 436,
-   "g": "w6",
-   "q": "Procesy (stadia) nabycia lub zmiany zachowań zdrowotnych przedstawionych w teorii transteoretycznej Prochaski i DiClemente (1992) to:",
-   "a": [
-    "prekontemplacja, kontemplacja, przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany",
-    "prekontemplacja, działanie, utrzymanie zachowania",
-    "kontemplacja, działanie, zakończenie procesu zmiany",
-    "przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany"
-   ],
-   "c": 0
-  },
-  {
    "id": "k437",
    "n": 437,
    "g": "w6",
@@ -7832,32 +6398,6 @@
     "prewencji pierwszego stopnia",
     "prewencji drugiego stopnia",
     "prewencji trzeciego stopnia"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k438",
-   "n": 438,
-   "g": "w6",
-   "q": "Wyniki prospektywnych badań prowadzonych w ramach Alameda Study w latach 1965–1983 NIE wykazały związku między zdrowiem a:",
-   "a": [
-    "niepaleniem",
-    "6 godzinami snu",
-    "umiarkowanym piciem alkoholu",
-    "utrzymywaniem właściwej masy ciała"
-   ],
-   "c": 1
-  },
-  {
-   "id": "k439",
-   "n": 439,
-   "g": "w6",
-   "q": "Zgodnie z raportem Lalonde'a (1974) udział stylu życia w kształtowaniu zdrowia wynosi:",
-   "a": [
-    "23%",
-    "53%",
-    "59%",
-    "27%"
    ],
    "c": 1
   },
@@ -7888,36 +6428,1501 @@
    "c": 1
   },
   {
-   "id": "k443",
-   "n": 443,
-   "g": "w6",
-   "q": "Według raportu Lalonde'a największy udział w kształtowaniu pola zdrowotnego mają:",
+   "id": "129",
+   "n": 2,
+   "g": "spoza",
+   "q": "Ojcem psychologii klinicznej jest",
    "a": [
-    "styl życia i środowisko",
-    "styl życia i dziedziczenie",
-    "środowisko i dziedziczenie",
-    "opieka zdrowotna i dziedziczenie"
+    "Sigmund Freud",
+    "Lightner Witmer",
+    "Wilhelm Wundt",
+    "Aron Antonovsky"
+   ],
+   "c": 1,
+   "e": "Ojcem psychologii klinicznej jest Lightner Witmer, który w 1896 r. założył pierwszą klinikę psychologiczną."
+  },
+  {
+   "id": "190",
+   "n": 3,
+   "g": "spoza",
+   "q": "Jaki jest współczesny model współpracy psychologa klinicznego w pracy zawodowej?",
+   "a": [
+    "model konsultacyjny, model zespołu diagnostyczno-terapeutycznego",
+    "model asystenta psychiatrycznego, model konsultanta",
+    "model technika, model laboranta",
+    "model zespołu diagnostyczno-terapeutycznego, model eksperta"
+   ],
+   "c": 0,
+   "e": "Współcześnie psycholog pracuje jako konsultant albo członek zespołu diagnostyczno-terapeutycznego.",
+   "u": 1
+  },
+  {
+   "id": "91",
+   "n": 4,
+   "g": "spoza",
+   "q": "Specjalista psychologii klinicznej to",
+   "a": [
+    "psycholog, który ukończył studia magisterskie w ścieżce/specjalności: psychologia kliniczna",
+    "psycholog, który ma stopień naukowy doktora w dziedzinie psychologii klinicznej",
+    "psycholog kliniczny specjalizujący się w danym zagadnieniu i jest uznawany za eksperta",
+    "psycholog, który ukończył specjalizację kliniczną i zdał państwowy egzamin specjalizacyjny"
+   ],
+   "c": 3,
+   "e": "Specjalista psychologii klinicznej ukończył specjalizację i zdał państwowy egzamin specjalizacyjny."
+  },
+  {
+   "id": "136",
+   "n": 5,
+   "g": "spoza",
+   "q": "Nurt higieny psychicznej zapoczątkowany przez C. Beersa można współcześnie nazwać",
+   "a": [
+    "nurtem teoretycznym w psychologii klinicznej",
+    "nurtem empirycznym w psychologii klinicznej",
+    "nurtem patopsychologii eksperymentalnej w psychologii klinicznej",
+    "nurtem pragmatycznym w psychologii klinicznej"
+   ],
+   "c": 3,
+   "e": "Ruch higieny psychicznej Beersa nastawiony był na praktyczną poprawę opieki i profilaktykę, więc to nurt pragmatyczny.",
+   "f": "niepewne",
+   "u": 1
+  },
+  {
+   "id": "152",
+   "n": 6,
+   "g": "spoza",
+   "q": "Lata 70te i 80te ubiegłego wieku można scharakteryzować w historii polskiej psychologii klinicznej jako okres",
+   "a": [
+    "pozbawienia psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
+    "zastosowania po raz pierwszy w naszym kraju psychologii w medycynie",
+    "powstania poradni zdrowia psychicznego",
+    "wprowadzania zmian w modelu praktyki (np. społeczności terapeutyczne) oraz rozwoju doskonalenia zawodowego (np. specjalizacja psychologa klinicznego)"
+   ],
+   "c": 3,
+   "e": "Lata 70. i 80. to zmiany w praktyce (społeczności terapeutyczne) i rozwój specjalizacji psychologa klinicznego.",
+   "u": 1
+  },
+  {
+   "id": "75",
+   "n": 7,
+   "g": "spoza",
+   "q": "Tytuł psychologa klinicznego dotyczy",
+   "a": [
+    "osoby, która ukończyła tylko studia psychologiczne ze specjalnością psychologia kliniczna",
+    "osoby, która ukończyła specjalizację w psychologii klinicznej w ramach kształcenia podyplomowego w dziedzinach mających zastosowanie w ochronie zdrowia",
+    "osoby, która pracuje w szpitalu psychiatrycznym",
+    "osoby, która ukończyła szkolenie psychoterapeutyczne i otrzymała certyfikat"
+   ],
+   "c": 1,
+   "e": "Tytuł psychologa klinicznego daje ukończona specjalizacja z psychologii klinicznej, uzyskiwana po studiach."
+  },
+  {
+   "id": "195",
+   "n": 8,
+   "g": "spoza",
+   "q": "Interpretowanie zachowania na podstawie stanu mózgu to domena następującej subdyscypliny psychologii klinicznej",
+   "a": [
+    "neuropsychologii",
+    "psychologii zdrowia",
+    "klinicznej psychologii człowieka dorosłego",
+    "psychologii uzależnień"
+   ],
+   "c": 0,
+   "e": "Interpretowanie zachowania przez stan mózgu to domena neuropsychologii.",
+   "u": 1
+  },
+  {
+   "id": "k9",
+   "n": 9,
+   "g": "spoza",
+   "q": "Prawo do posługiwania się tytułem psychologa klinicznego w Polsce ma osoba, która:",
+   "a": [
+    "Jest absolwentem studiów psychologii, posiada tytuł magistra",
+    "Ukończyła 4 letnie ustawiczne szkolenie specjalizacyjne",
+    "Zdała egzamin państwowy w Centrum Egzaminów Medycznych",
+    "Spełnia wszystkie wymienione wyżej kryteria"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k10",
+   "n": 10,
+   "g": "spoza",
+   "q": "Subdyscypliny psychologii klinicznej (np. psychologia przemocy, psychologia traumy itd.) charakteryzują się tym, że:",
+   "a": [
+    "Powstają wskutek zapotrzebowania społecznego, nie są wobec tego poparte badaniami podstawowymi",
+    "Powstają wskutek rozwoju wiedzy profesjonalnej ograniczonej do konkretnego, pozostającego w izolacji obszaru praktyki, np. jak konsultować grupę samopomocy",
+    "W ich ramach mają zastosowanie odmienne zasady etyczne",
+    "Wyrastają z głównego nurtu psychologii zaburzeń psychicznych, chociaż prowadzą do różnych sposobów uprawiania psychologii klinicznej"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k11",
+   "n": 11,
+   "g": "spoza",
+   "q": "Ustanowienie tożsamości psychologii klinicznej jako dziedziny, powiązanie jej z praktyką oraz utworzenie wzorów instytucjonalnej współpracy interdyscyplinarnej zawdzięczamy przedstawicielom nurtu:",
+   "a": [
+    "eksperymentalnego",
+    "pragmatycznego",
+    "klinicznego",
+    "analitycznego"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k14",
+   "n": 14,
+   "g": "spoza",
+   "q": "Pierwszą klinikę psychologiczną stworzył:",
+   "a": [
+    "Z. Freud",
+    "L. Witmer",
+    "W. Wundt",
+    "E. Kraepelin"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k15",
+   "n": 15,
+   "g": "spoza",
+   "q": "Twórcą nurtu teoretycznego w psychologii klinicznej jest:",
+   "a": [
+    "Z. Freud",
+    "L. Witmer",
+    "W. Wundt",
+    "H. Eysenck"
    ],
    "c": 0
   },
   {
-   "id": "27",
-   "n": 557,
-   "g": "w6",
-   "q": "Wskaż zachowanie zdrowotne, które możemy nazwać nawykiem",
+   "id": "k16",
+   "n": 16,
+   "g": "spoza",
+   "q": "Sformułowanie koncepcji rozwoju człowieka, powstawania i dynamiki zaburzeń nerwicowych to znaczący dorobek nurtu:",
    "a": [
-    "zachowywanie higieny snu",
-    "regularne mycie rąk",
-    "zdrowa dieta",
+    "eksperymentalnego",
+    "pragmatycznego",
+    "klinicznego/teoretycznego",
+    "praktyki psychologicznej opartej na dowodach naukowych"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k17",
+   "n": 17,
+   "g": "spoza",
+   "q": "Naukowe podstawy podejścia poznawczo-behawioralnego stworzył następujący nurt w psychologii klinicznej:",
+   "a": [
+    "eksperymentalny",
+    "pragmatyczny",
+    "kliniczny/teoretyczny",
+    "praktyka psychologiczna oparta na dowodach naukowych"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k20",
+   "n": 20,
+   "g": "spoza",
+   "q": "Lata 50te ubiegłego wieku można scharakteryzować w historii polskiej psychologii klinicznej jako okres:",
+   "a": [
+    "pozbawienia psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
+    "zastosowania po raz pierwszy w naszym kraju psychologii w medycynie",
+    "powstania poradni zdrowia psychicznego",
+    "wprowadzania zmian w modelu praktyki (np. społeczności terapeutyczne) oraz rozwoju doskonalenia zawodowego (np. specjalizacja psychologa klinicznego)"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k21",
+   "n": 21,
+   "g": "spoza",
+   "q": "Określenie psychologicznych aspektów powstawania, przebiegu i leczenia chorób somatycznych to domena następującej subdyscypliny psychologii klinicznej:",
+   "a": [
+    "neuropsychologii",
+    "psychologii zdrowia",
+    "klinicznej psychologii człowieka dorosłego",
+    "psychologii uzależnień"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k22",
+   "n": 22,
+   "g": "spoza",
+   "q": "Pierwsza nowoczesna klasyfikacja zaburzeń psychicznych stworzona przez E. Kraepelina wpisuje się w:",
+   "a": [
+    "Nurt teoretyczny w psychologii klinicznej",
+    "Nurt empiryczny w psychologii klinicznej",
+    "Nurt pozytywny w psychologii klinicznej",
+    "Nurt pragmatyczny w psychologii klinicznej"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k23",
+   "n": 23,
+   "g": "spoza",
+   "q": "Wpływ na psychologię kliniczną miały główne nurty:",
+   "a": [
+    "eksperymentalny i pragmatyczny",
+    "kliniczny i eksperymentalny",
+    "kliniczny, pragmatyczny i eksperymentalny",
+    "kliniczny, eksperymentalny i analityczny"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k25",
+   "n": 25,
+   "g": "spoza",
+   "q": "Pierwszą definicję \"psychologii klinicznej\" sformułował:",
+   "a": [
+    "Z. Freud",
+    "L. Witmer",
+    "W. Wundt",
+    "E. Kraepelin"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k26",
+   "n": 26,
+   "g": "spoza",
+   "q": "Twórczynią/twórcą klasyfikacji chorób psychicznych jest:",
+   "a": [
+    "Z. Freud",
+    "L. Witmer",
+    "B. Zeigarnik",
+    "E. Kraepelin"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k27",
+   "n": 27,
+   "g": "spoza",
+   "q": "Stworzenie wzorców współpracy interdyscyplinarnej w niesieniu pomocy psychologicznej głównie w przypadku opóźnień rozwoju to dorobek następującego nurtu w psychologii klinicznej:",
+   "a": [
+    "eksperymentalnego",
+    "pragmatycznego",
+    "klinicznego/teoretycznego",
+    "środowiskowego modelu pracy psychologa klinicznego"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k28",
+   "n": 28,
+   "g": "spoza",
+   "q": "Naukowe podstawy podejścia poznawczo-behawioralnego i terapii opartej na mechanizmach uczenia się stworzył następujący nurt w psychologii klinicznej:",
+   "a": [
+    "eksperymentalnego",
+    "pragmatycznego",
+    "klinicznego/teoretycznego",
+    "praktyki psychologicznej opartej na dowodach naukowych"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k31",
+   "n": 31,
+   "g": "spoza",
+   "q": "Pierwsza w Polsce Katedra Psychologii Klinicznej powstała na Uniwersytecie:",
+   "a": [
+    "Adama Mickiewicza w Poznaniu – pod kierunkiem Andrzeja Lewickiego",
+    "Warszawskim – pod kierunkiem Andrzeja Lewickiego",
+    "Adama Mickiewicza w Poznaniu – pod kierunkiem Mariusza Maruszewskiego",
+    "Warszawskim – pod kierunkiem Mariusza Maruszewskiego"
+   ],
+   "c": 0,
+   "f": "niepewne"
+  },
+  {
+   "id": "k32",
+   "n": 32,
+   "g": "spoza",
+   "q": "Nurt zapoczątkowany przez twórcę pierwszej kliniki psychologicznej i pisma The Psychological Clinic - L. Witmera - można współcześnie nazwać:",
+   "a": [
+    "nurtem pragmatycznym w psychologii klinicznej",
+    "nurtem teoretycznym w psychologii klinicznej",
+    "nurtem empirycznym w psychologii klinicznej",
+    "nurtem patopsychologii eksperymentalnej w psychologii klinicznej"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k33",
+   "n": 33,
+   "g": "spoza",
+   "q": "Ocena zaburzeń w perspektywie rozwojowej to domena następującej subdyscypliny psychologii klinicznej:",
+   "a": [
+    "psychologii klinicznej dzieci i młodzieży",
+    "neuropsychologii",
+    "psychologii zdrowia",
+    "psychologii uzależnień"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k34",
+   "n": 34,
+   "g": "spoza",
+   "q": "Psycholog kliniczny to tytuł zawodowy, który otrzymuje osoba:",
+   "a": [
+    "pracująca z osobami z zaburzeniami psychicznymi przez co najmniej 8 lat",
+    "po ukończeniu specjalności klinicznej na studiach magisterskich z psychologii",
+    "po ukończeniu 4-letniego szkolenia specjalizacyjnego po studiach magisterskich",
+    "pracująca w szpitalu lub poradni psychologicznej od 5 lat"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k35",
+   "n": 35,
+   "g": "spoza",
+   "q": "Wprowadzenie w latach 50-tych ubiegłego wieku stanowiska asystenta psychiatrycznego w poradniach zdrowia psychicznego w Polsce oznaczało:",
+   "a": [
+    "uznanie ruchu antypsychiatrii",
+    "pozbawienie psychologów prawa do posługiwania się własnym tytułem zawodowym i prawa do posługiwania się testowymi metodami badania",
+    "zastosowanie po raz pierwszy w naszym kraju psychologii w medycynie",
+    "powstanie odrębnej specjalizacji w ramach psychologii klinicznej"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k36",
+   "n": 36,
+   "g": "spoza",
+   "q": "Wiedza społecznie responsywna:",
+   "a": [
+    "dotyczy znajomości zasad i procedur postępowania",
+    "odpowiada na zapotrzebowanie społeczne",
+    "to tzw. wiedza paradygmatyczna",
+    "dotyczy wiedzy o metodach diagnozy i podstawach pomocy psychologicznej"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k38",
+   "n": 38,
+   "g": "spoza",
+   "q": "Naczelną wartością dla psychologa jest:",
+   "a": [
+    "dobro drugiego człowieka",
+    "obiektywizm i bezstronność",
+    "pomoc drugiemu człowiekowi",
+    "dochowanie tajemnicy zawodowej"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k39",
+   "n": 39,
+   "g": "spoza",
+   "q": "Patofizjologia eksperymentalna rozwijała się w następującym nurcie psychologii klinicznej:",
+   "a": [
+    "eksperymentalnym",
+    "pragmatycznym",
+    "teoretycznym",
+    "pozytywnym"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k40",
+   "n": 40,
+   "g": "spoza",
+   "q": "Tworzenie zrębów profesji i kształcenia psychologów klinicznych nastąpiło w:",
+   "a": [
+    "nurcie eksperymentalnym",
+    "nurcie teoretycznym",
+    "nurcie pragmatycznym",
+    "żadna z odpowiedzi nie jest prawidłowa"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k42",
+   "n": 42,
+   "g": "spoza",
+   "q": "Altman nazwałby wiedzę o zasadach i procedurach postępowania diagnostycznego i pomocowego oraz o metodach i technikach, z których powstają umiejętności i myślenie kliniczne:",
+   "a": [
+    "podstawową teoretyczną",
+    "profesjonalną",
+    "społecznie responsywną",
+    "praktyczną"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k43",
+   "n": 43,
+   "g": "spoza",
+   "q": "Początki rozwoju specyficznych metod badawczych w psychologii klinicznej związane są z:",
+   "a": [
+    "Z. Freudem",
+    "E. Kraepelinem",
+    "C. Beersem",
+    "L. Witmerem"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k45",
+   "n": 45,
+   "g": "spoza",
+   "q": "Altman nazwałby wiedzę, która wynika z analizowania problemów praktycznych i badania nowych zjawisk przez psychologów praktyków:",
+   "a": [
+    "podstawową teoretyczną",
+    "profesjonalną",
+    "społecznie responsywną",
+    "praktyczną"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k46",
+   "n": 46,
+   "g": "spoza",
+   "q": "Obszarem zainteresowań nurtu eksperymentalnego psychologii klinicznej było:",
+   "a": [
+    "zrozumienie trudności rozwojowych i możliwości pomocy",
+    "tworzenie koncepcji wyjaśniających mechanizmy zaburzeń psychicznych",
+    "badanie procesów poznawczych i emocjonalnych oraz ich patologia",
+    "podwyższanie standardów zawodowych"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k47",
+   "n": 47,
+   "g": "spoza",
+   "q": "Stworzenie całościowej koncepcji człowieka i jego rozwoju, kliniczne metody poznawania i psychoterapii to wkład w psychologię kliniczną następującego nurtu:",
+   "a": [
+    "eksperymentalnego",
+    "pragmatycznego",
+    "teoretycznego",
+    "żadna z wymienionych odpowiedzi nie jest prawidłowa"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k48",
+   "n": 48,
+   "g": "spoza",
+   "q": "Wskaż NIEPRAWDZIWE stwierdzenie dotyczące pierwszych klinik psychologicznych:",
+   "a": [
+    "zostały stworzone na wzór pierwszej kliniki założonej przez Zygmunta Freuda",
+    "próbowano w nich zastosować psychologię empiryczną w praktyce",
+    "tworzyły wzór współpracy interdyscyplinarnej",
+    "oferowały pomoc dzieciom opóźnionym umysłowo i z zaburzeniami zachowania"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k272",
+   "n": 272,
+   "g": "spoza",
+   "q": "Psychoanaliza:",
+   "a": [
+    "jest formą terapii, która skupia się na zmianie zachowań pacjenta poprzez odpowiednie nagrody i kary",
+    "systemem filozoficznym, który zakłada, że nasze myśli i emocje są determinowane przez nasze doświadczenia z dzieciństwa",
+    "to sposób na leczenie chorób psychicznych poprzez zastosowanie leków psychotropowych",
+    "metodą psychoterapii, która polega na badaniu nieświadomych motywów i procesów myślowych mogących mieć wpływ na zachowanie i emocje człowieka"
+   ],
+   "c": 3
+  },
+  {
+   "id": "121",
+   "n": 274,
+   "g": "spoza",
+   "q": "Podział procesów psychicznych na świadome, przedświadome i nieświadome to model",
+   "a": [
+    "Dynamiczny",
+    "Strukturalny",
+    "Topograficzny",
+    "Ekonomiczny"
+   ],
+   "c": 2,
+   "e": "Podział na świadome, przedświadome i nieświadome to model topograficzny Freuda."
+  },
+  {
+   "id": "209",
+   "n": 276,
+   "g": "spoza",
+   "q": "Do dewiacyjnych wzorców zachowań należą wg Bandury",
+   "a": [
+    "deficyty behawioralne",
+    "poprawna kontrola bodźcowa zachowania",
+    "poprawna kontrola zachowania",
+    "samowzmacniające się systemy wzmocnień"
+   ],
+   "c": 0,
+   "e": "Według Bandury dewiacyjne wzorce to m.in. deficyty behawioralne.",
+   "u": 1
+  },
+  {
+   "id": "36",
+   "n": 278,
+   "g": "spoza",
+   "q": "Wg Becka myśli automatyczne",
+   "a": [
+    "odzwierciedlają tendencyjność procesów przetwarzania informacji pod postacią zniekształceń poznawczych",
+    "są zawsze negatywne",
+    "nie mogą być zmienione ani kontrolowane",
+    "są wyłącznie wytworem naszego podświadomego umysłu"
+   ],
+   "c": 0,
+   "e": "Myśli automatyczne odzwierciedlają zniekształcenia poznawcze w przetwarzaniu informacji."
+  },
+  {
+   "id": "77",
+   "n": 280,
+   "g": "spoza",
+   "q": "Terapię skoncentrowaną na kliencie stworzył",
+   "a": [
+    "Abraham Maslow",
+    "Carl Rogers",
+    "Aaron Beck",
+    "Carl Gustav Jung"
+   ],
+   "c": 1,
+   "e": "Terapię skoncentrowaną na kliencie stworzył Carl Rogers."
+  },
+  {
+   "id": "7",
+   "n": 282,
+   "g": "spoza",
+   "q": "Zgodnie z metapsychologią Z. Freuda model dynamiczny",
+   "a": [
+    "zakłada istnienie wrodzonych popędów",
+    "jest zbiorem założeń o id, ego i superego",
+    "zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje",
+    "wprowadza pięć faz rozwoju libido"
+   ],
+   "c": 2,
+   "e": "Model dynamiczny opisuje konflikt wrodzonych popędów. Id, ego i superego to model strukturalny, a przepływ energii to model ekonomiczny.",
+   "f": "Model dynamiczny w metapsychologii Freuda dotyczy przepływu, gromadzenia i rozładowania energii psychicznej."
+  },
+  {
+   "id": "98",
+   "n": 283,
+   "g": "spoza",
+   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że",
+   "a": [
+    "wadliwe reakcje i nawyki są wrodzone",
+    "zachowanie człowieka jest determinowane przez pierwotną siłę",
+    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
+    "psychika człowieka kształtuje się pod wpływem oddziaływań zewnętrznych"
+   ],
+   "c": 3,
+   "e": "Behawioryzm zakłada, że zachowanie i psychikę kształtują wpływy środowiska.",
+   "u": 1
+  },
+  {
+   "id": "122",
+   "n": 284,
+   "g": "spoza",
+   "q": "Podstawowym założeniem dotyczącym natury człowieka w orientacji humanistyczno-egzystencjalnej jest samorealizacja. Oznacza ono:",
+   "a": [
+    "rozpoznawanie i urzeczywistnianie wartości",
+    "frustrację naturalnego procesu samorealizacji przez społeczeństwo",
+    "traktowanie psychiki i ciała jako całości",
+    "przekonanie o pozytywnych możliwościach człowieka"
+   ],
+   "c": 3,
+   "e": "Samorealizacja zakłada wiarę w pozytywny potencjał człowieka i jego tendencję do rozwoju."
+  },
+  {
+   "id": "k285",
+   "n": 285,
+   "g": "spoza",
+   "q": "Podejście strukturalne, uwzględniające m.in. hierarchię rodzinną jest charakterystyczne dla orientacji:",
+   "a": [
+    "Psychodynamicznej",
+    "Behawioralno-poznawczej",
+    "Humanistycznej",
+    "Systemowej"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k287",
+   "n": 287,
+   "g": "spoza",
+   "q": "Teoria hierarchii potrzeb A. Maslowa wywodzi się z podejścia:",
+   "a": [
+    "Psychodynamicznego",
+    "Behawioralno-poznawczego",
+    "Humanistycznego",
+    "Systemowego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "66",
+   "n": 297,
+   "g": "spoza",
+   "q": "W modelu ABC",
+   "a": [
+    "A oznacza aktywność człowieka będącą wynikiem zadziałania bodźców zewnętrznych",
+    "B oznacza przekonania",
+    "C oznacza okoliczności",
+    "brak prawidłowej odpowiedzi"
+   ],
+   "c": 1,
+   "e": "W modelu ABC Ellisa: A to zdarzenie aktywizujące, B przekonania, C konsekwencje."
+  },
+  {
+   "id": "19",
+   "n": 298,
+   "g": "spoza",
+   "q": "Wyuczona bezradność",
+   "a": [
+    "to brak zależności między wzmocnieniami a zachowaniem",
+    "to brak umiejętności radzenia sobie z problemami w życiu",
+    "to syndrom, który charakteryzuje się brakiem motywacji i zainteresowania życiem",
+    "to brak umiejętności przeżywania emocji i radzenia sobie z nimi"
+   ],
+   "c": 0,
+   "e": "Wyuczona bezradność (Seligman) powstaje, gdy wzmocnienia nie zależą od zachowania."
+  },
+  {
+   "id": "k299",
+   "n": 299,
+   "g": "spoza",
+   "q": "Zgodnie z metapsychologią Z. Freuda model strukturalny:",
+   "a": [
+    "zakłada istnienie wrodzonych popędów",
+    "jest zbiorem założeń o id, ego i superego",
+    "zakłada, że energia psychiczna przemieszcza się w człowieku, gromadzi i rozładowuje",
+    "wprowadza pięć faz rozwoju libido"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k300",
+   "n": 300,
+   "g": "spoza",
+   "q": "Mechanizmy obronne w podejściu psychoanalitycznym to:",
+   "a": [
+    "sposoby poszukiwania przyjemności",
+    "sposoby radzenia sobie z lękiem",
+    "regulowanie zachowania przez popędy",
+    "czynności psychiczne naładowane kateksją"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k301",
+   "n": 301,
+   "g": "spoza",
+   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że:",
+   "a": [
+    "wadliwe reakcje i nawyki są wrodzone",
+    "zachowanie człowieka jest determinowane przez pierwotną siłę",
+    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
+    "zachowanie człowieka kształtuje się pod wpływem nagród i kar, jest wyuczone"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k302",
+   "n": 302,
+   "g": "spoza",
+   "q": "Twierdzenie, że \"każdy człowiek posiada potrzebę samorealizacji\" pochodzi z podejścia:",
+   "a": [
+    "psychodynamicznego",
+    "behawioralno-poznawczego",
+    "humanistycznego",
+    "systemowego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k314",
+   "n": 314,
+   "g": "spoza",
+   "q": "Depresja, rozumiana jako rezultat braku wzmacniania ze środowiska, nawiązuje do ujęcia:",
+   "a": [
+    "Behawioralnego",
+    "Psychodynamicznego",
+    "Poznawczego",
+    "Humanistycznego"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k315",
+   "n": 315,
+   "g": "spoza",
+   "q": "Która z teorii wyjaśniłaby zaburzenia osobowości w sposób następujący: „U osób, które w sytuacjach społecznych zachowują się nieadekwatnie, można mówić o niewłaściwych historiach wzmocnień i wynikającego z nich braku umiejętności społecznych. Niewzmacniani za społeczne umiejętności w procesie socjalizacji, jako dorośli posiadają nieadekwatny repertuar zachowań w sytuacjach społecznych”?",
+   "a": [
+    "Humanistyczna",
+    "Behawioralna",
+    "Poznawcza",
+    "Psychodynamiczna"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k316",
+   "n": 316,
+   "g": "spoza",
+   "q": "Obraz siebie, jaki człowiek pragnąłby posiadać. Kluczowe pojęcie w teorii C. Rogersa, to:",
+   "a": [
+    "Ja Powinnościowe",
+    "Ja Idealne",
+    "Ja Realne",
+    "Ja Racjonalne"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k317",
+   "n": 317,
+   "g": "spoza",
+   "q": "Obserwowanie kolegi przeżywającego intensywny lęk w sytuacji społecznej, staje się źródłem reakcji fobicznych. Opisana zasada nabywania zachowań nieprzystosowawczych nawiązuje do modelu warunkowania (opartego na wzorcach kojarzeniowych):",
+   "a": [
+    "Warunkowania klasycznego",
+    "Warunkowania zastępczego",
+    "Warunkowania instrumentalnego",
+    "Warunkowania następczego"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k318",
+   "n": 318,
+   "g": "spoza",
+   "q": "Orędowników koncepcji zaburzeń osobowości, jako charakterystycznej organizacji struktury powstałej w celu radzenia sobie z wewnętrznym konfliktem, znajdziemy w ujęciu:",
+   "a": [
+    "Behawioralnym",
+    "Psychodynamicznym",
+    "Poznawczym",
+    "Humanistycznym"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k320",
+   "n": 320,
+   "g": "spoza",
+   "q": "W 2002 r. oskarżono nastolatka o kradzież 100 pojazdów. Nastolatek podał wyjaśnienie: „Zainspirowała mnie gra GTA” (gracze popełniają w niej różne przestępstwa). Odnosząc się do wyjaśnienia chłopca, co mogło spowodować takie zachowanie?",
+   "a": [
+    "Uczenie się przez obserwację (modelowanie)",
+    "Wrogie impulsy ukryte głęboko w nieświadomości nastolatka",
+    "Cecha przestępczości towarzysząca mu przez całe życie",
+    "Przekonania dotyczące przestępczości"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k321",
+   "n": 321,
+   "g": "spoza",
+   "q": "W jakim ujęciu narcyzm rozpatrywany jest w kontekście specyficznych dla tego zaburzenia przekonań oraz charakterystycznych zniekształceń przetwarzania informacji:",
+   "a": [
+    "Humanistycznym",
+    "Psychodynamicznym",
+    "Poznawczym",
+    "Behawioralnym"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k322",
+   "n": 322,
+   "g": "spoza",
+   "q": "Występujące w narcystycznym zaburzeniu osobowości kompensacyjne przekonania o wyższości: „jestem osobą wyjątkową i rzadką” lub „jestem lepszy od innych”, są przykładem:",
+   "a": [
+    "Myśli automatycznych",
+    "Przekonań kluczowych",
+    "Przekonań pośredniczących",
+    "Mechanizmu obronnego"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k323",
+   "n": 323,
+   "g": "spoza",
+   "q": "Występujące w narcystycznym zaburzeniu osobowości założenia opierające się na stwierdzeniach: „muszę odnieść sukces, aby udowodnić, że jestem lepszy” i „jeśli nie odnoszę sukcesów, to znaczy, że jestem bezwartościowy”, są przykładem:",
+   "a": [
+    "Myśli automatycznych",
+    "Przekonań kluczowych",
+    "Przekonań pośredniczących",
+    "Mechanizmu obronnego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k324",
+   "n": 324,
+   "g": "spoza",
+   "q": "Występujące w różnych typach fobii unikanie bodźców wywołujących lęk, ma skutki w postaci nienarażania na lęk, ale tym samym wzmacniają zaburzenie, nie pozwalając na doświadczenie lęku i wypracowanie strategii poradzenia sobie z nim. W nawiązaniu do modelu behawioralnego, unikanie jest reakcją tu związaną z:",
+   "a": [
+    "Karą pozytywną",
+    "Wzmocnieniem negatywnym",
+    "Wzmocnieniem pozytywnym",
+    "Karą negatywną"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k325",
+   "n": 325,
+   "g": "spoza",
+   "q": "Zaburzenie postrzegane jako defekt rozwoju na skutek trwałego niezaspokojenia podstawowych potrzeb, jest charakterystyczne dla teorii:",
+   "a": [
+    "Behawioralnej",
+    "Humanistycznej",
+    "Poznawczej",
+    "Psychodynamicznej"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k326",
+   "n": 326,
+   "g": "spoza",
+   "q": "Zależne zaburzenie osobowości ukształtowało się w związku z fiksacją w okresie różnicowania reprezentacji self od reprezentacji obiektu. Fiksacja ta skutkuje nierozwiązanym konfliktem pomiędzy zależnością i autonomią, co odzwierciedla się w zaburzonej strukturze osobowości spełniającej kryteria organizacji borderline wyższego poziomu. Powyższy opis nawiązuje do:",
+   "a": [
+    "Teorii relacji z obiektem",
+    "Błędnego koła ABC (Sytuacja – Przekonania – Konsekwencje) A. Ellisa",
+    "Dwuczynnikowego modelu Mowerera",
+    "Teorii organizmicznej C. Rogersa"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k327",
+   "n": 327,
+   "g": "spoza",
+   "q": "Antypsychologizm w podejściu behawioralnym oznacza:",
+   "a": [
+    "uznanie przekonań za podlegające regułom warunkowania",
+    "uznanie przez naukę tylko tych zachowań, które można zaobserwować i poddać pomiarowi",
+    "uznanie eksperymentu jako właściwej metody badawczej",
+    "wpływ środowiska na zachowanie człowieka poprzez system nagród i kar"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k329",
+   "n": 329,
+   "g": "spoza",
+   "q": "Teoria racjonalno-emotywna A. Ellisa wywodzi się z podejścia:",
+   "a": [
+    "humanistycznego",
+    "psychodynamicznego",
+    "behawioralno-poznawczego",
+    "systemowego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "84",
+   "n": 330,
+   "g": "spoza",
+   "q": "Teoria atrybucji i teoria umysłu to, w modelach zdrowia psychicznego, teorie opisujące",
+   "a": [
+    "działanie warunkowania sprawczego",
+    "działanie substancji farmakologicznych",
+    "działanie społecznego poznania",
+    "działanie nieuświadomionych konfliktów i deficytów"
+   ],
+   "c": 2,
+   "e": "Teoria atrybucji i teoria umysłu opisują poznanie społeczne."
+  },
+  {
+   "id": "k331",
+   "n": 331,
+   "g": "spoza",
+   "q": "Osoba w depresji nie reaguje na otoczenie, ponieważ usunięto z niego pozytywne wzmocnienia. Jest to opis depresji w ujęciu:",
+   "a": [
+    "Behawioralnym",
+    "Psychodynamicznym",
+    "Poznawczym",
+    "Humanistycznym"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k332",
+   "n": 332,
+   "g": "spoza",
+   "q": "Słuchanie opowieści innych o kompromitacji i zawstydzeniu w sytuacjach popełnienia faux pas, staje się źródłem reakcji fobicznych. Opisana zasada nabywania zachowań nieprzystosowawczych nawiązuje do modelu warunkowania (opartego na wzorcach kojarzeniowych):",
+   "a": [
+    "Uczenie się przez obserwację",
+    "Uczenie się na bazie transmisji informacji werbalnej",
+    "Uczenie się zastępcze",
+    "Warunkowanie instrumentalne"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k333",
+   "n": 333,
+   "g": "spoza",
+   "q": "W procesie przetwarzania informacji u osób zależnych występują formalne błędy w myśleniu, które podtrzymują i utrwalają przekonania kluczowe i warunkowe, głównie w obszarze wizji siebie i świata. Zniekształcenia poznawcze stosowane przez tę grupę pacjentów to przede wszystkim dychotomizacja i katastrofizacja oraz błędy atrybucji. Powyższy opis nawiązuje do ujęcia:",
+   "a": [
+    "Behawioralnego",
+    "Psychodynamicznego",
+    "Poznawczego",
+    "Humanistycznego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k334",
+   "n": 334,
+   "g": "spoza",
+   "q": "W przypadku osobowości zależnej, założenia: „mogę funkcjonować tylko wtedy, gdy ktoś (kompetentny) jest obok mnie”, „jeśli jestem sama, nie poradzę sobie”, „mogę być szczęśliwy tylko wtedy, gdy ona jest przy mnie”, są przykładem:",
+   "a": [
+    "Myśli automatycznych",
+    "Przekonań kluczowych",
+    "Przekonań pośredniczących",
+    "Mechanizmu obronnego"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k335",
+   "n": 335,
+   "g": "spoza",
+   "q": "Występujące w zaburzeniu lękowym przekonanie: „Jestem słaba” – jest przykładem:",
+   "a": [
+    "Mechanizmu obronnego",
+    "Przekonania kluczowego",
+    "Przekonania pośredniczącego",
+    "Nieadaptacyjnego schematu"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k336",
+   "n": 336,
+   "g": "spoza",
+   "q": "Zdrowie, jako dążenie do poznania własnych potencjałów i realizowaniu ich, najlepiej charakteryzuje ujęcie:",
+   "a": [
+    "Behawioralna",
+    "Humanistyczna",
+    "Poznawcza",
+    "Psychodynamiczna"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k337",
+   "n": 337,
+   "g": "spoza",
+   "q": "Zdrowie psychiczne interpretowane jako posiadanie racjonalnych przekonań, związane jest z ujęciem:",
+   "a": [
+    "Poznawczym",
+    "Psychodynamicznym",
+    "Behawioralnym",
+    "Humanistycznym"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k338",
+   "n": 338,
+   "g": "spoza",
+   "q": "Środowiskowość charakterystyczna dla założeń behawioryzmu wiąże się z przekonaniem, że:",
+   "a": [
+    "wadliwe reakcje i nawyki są wrodzone",
+    "zachowanie człowieka jest determinowane przez pierwotną siłę",
+    "poznanie praw związanych ze zjawiskami patologicznymi pozwoli na opracowanie technik przeciwdziałania im",
+    "człowiek kształtuje się pod wpływem oddziaływań zewnętrznych"
+   ],
+   "c": 3
+  },
+  {
+   "id": "73",
+   "n": 564,
+   "g": "spoza",
+   "q": "Tzw. triada poznawcza (Beck) to",
+   "a": [
+    "arbitralne wnioskowanie selektywne abstrahowanie, nadmierna generalizacja",
+    "kryteria selekcji informacji sposoby ich przekształcania i integrowania",
+    "przeżywanie zdarzeń pozytywnych, neutralnych negatywnych, które okazują się niezależne od działań jednostki",
+    "pesymistyczne przekonania o sobie, wydarzeniach zewnętrznych i przyszłości"
+   ],
+   "c": 3,
+   "e": "Triada poznawcza Becka to negatywny obraz siebie, świata i przyszłości."
+  },
+  {
+   "id": "102",
+   "n": 567,
+   "g": "spoza",
+   "q": "Psychoanaliza jest",
+   "a": [
+    "formą terapii, która skupia się na zmianie zachowań pacjenta poprzez odpowiednie nagrody i kary",
+    "systemem filozoficznym, który zakłada, że nasze myśli i emocje są determinowane przez nasze doświadczenia z dzieciństwa",
+    "sposobem na leczenie chorób psychicznych poprzez zastosowanie leków psychotropowych",
+    "metodą psychoterapii, która polega na badaniu nieświadomych motywów i procesów myślowych, mogących mieć wpływ na zachowanie i emocje człowieka"
+   ],
+   "c": 3,
+   "e": "Psychoanaliza bada nieświadome motywy i procesy wpływające na zachowanie i emocje."
+  },
+  {
+   "id": "127",
+   "n": 571,
+   "g": "spoza",
+   "q": "Pierwsza w Polsce Katedra Psychologii Klinicznej powstała na Uniwersytecie",
+   "a": [
+    "Adama Mickiewicza w Poznaniu pod kierunkiem Andrzeja Lewickiego",
+    "Warszawskim - pod kierunkiem Andrzeja Lewickiego",
+    "Adama Mickiewicza w Poznaniu - pod kierunkiem Mariusza Maruszewskiego",
+    "Warszawskim- pod kierunkiem Mariusza Maruszewskiego"
+   ],
+   "c": 0,
+   "e": "Katedrę Psychologii Klinicznej na UAM w Poznaniu założył Andrzej Lewicki (1961).",
+   "f": "niepewne"
+  },
+  {
+   "id": "16",
+   "n": 553,
+   "g": "spoza",
+   "q": "Zaburzeniem psychicznym o najwyższej śmiertelności jest",
+   "a": [
+    "żadna odpowiedź nie jest prawidłowa",
+    "jadłowstręt psychiczny",
+    "schizofrenia paranoidalna",
+    "depresja"
+   ],
+   "c": 1,
+   "e": "Jadłowstręt psychiczny ma najwyższą śmiertelność spośród zaburzeń psychicznych."
+  },
+  {
+   "id": "32",
+   "n": 558,
+   "g": "spoza",
+   "q": "Wskaźnik odziedziczalności w depresji wynosi",
+   "a": [
+    "ok 20%",
+    "ok 80%",
+    "ok. 90%",
+    "ok 30-40%"
+   ],
+   "c": 3,
+   "e": "Odziedziczalność depresji szacuje się na około 30–40%."
+  },
+  {
+   "id": "222",
+   "n": 346,
+   "g": "spoza",
+   "q": "Co kształtuje przekonania zdrowotne na temat zdrowia i choroby?",
+   "a": [
+    "system przekonań współistniejących: medycyna pierwotna, ludowa i naukowa",
+    "osobiste doświadczenie ze zdrowiem i chorobą",
+    "własna aktywność poznawcza (np. poczucie kontroli, poczucie skuteczności)",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 3,
+   "e": "Przekonania zdrowotne kształtują systemy medycyny, osobiste doświadczenia i własna aktywność poznawcza.",
+   "u": 1
+  },
+  {
+   "id": "164",
+   "n": 347,
+   "g": "spoza",
+   "q": "Która odpowiedź opisuje przekonanie zdrowotne, według teorii poczucia własnej skuteczności?",
+   "a": [
+    "Zamierzam zacząć jeść więcej warzyw, bo nie stać mnie na mięso",
+    "Zamierzam zacząć jeść więcej warzyw, bo wiem że jestem w stanie to zrobić",
+    "Zamierzam regularnie chodzić na basen, bo nie trzeba płacić za wstęp",
+    "Zamierzam regularnie chodzić na basen, bo mam już dość mojej nadwagi"
+   ],
+   "c": 1,
+   "e": "Przekonanie o własnej skuteczności to „wiem, że jestem w stanie to zrobić”.",
+   "u": 1
+  },
+  {
+   "id": "163",
+   "n": 351,
+   "g": "spoza",
+   "q": "Która ze społecznych teorii poznawczych zajmuje kluczowe miejsce we współczesnych modelach wyjaśniających zachowania zdrowotne?",
+   "a": [
+    "teoria lokalizacji kontroli",
+    "teoria poczucia własnej skuteczności",
+    "teoria dysonansu poznawczego",
+    "teoria wsparcia społecznego"
+   ],
+   "c": 1,
+   "e": "Poczucie własnej skuteczności (Bandura) jest kluczowe w większości modeli zachowań zdrowotnych.",
+   "u": 1
+  },
+  {
+   "id": "43",
+   "n": 352,
+   "g": "spoza",
+   "q": "Według modelu HAPA (Health Action Process Approach), jaki proces umożliwia kontynuację zachowania już PO jego podjęciu?",
+   "a": [
+    "planowanie działania (np. miejsce lub czas wykonywania zachowania)",
+    "planowanie radzenia sobie z przeszkodami (np. jeśli będzie zimno, to ubiorę ciepłą bluzę do biegania)",
+    "oczekiwanie pozytywnych efektów",
+    "poczucie kontroli"
+   ],
+   "c": 1,
+   "e": "W fazie wolicjonalnej HAPA utrzymanie zachowania wspiera planowanie radzenia sobie z przeszkodami."
+  },
+  {
+   "id": "37",
+   "n": 353,
+   "g": "spoza",
+   "q": "Według teorii autodeterminacji autorstwa Ryan i Deci (2000), który rodzaj motywacji najbardziej sprzyja podjęciu się lub utrzymaniu zachowań zdrowotnych?",
+   "a": [
+    "motywacja wewnętrzna",
+    "motywacja zewnętrzna",
+    "równy poziom obu typów motywacji",
+    "żadna z pozostałych odpowiedzi"
+   ],
+   "c": 0,
+   "e": "Według teorii autodeterminacji zachowania zdrowotne najlepiej podtrzymuje motywacja wewnętrzna (autonomiczna)."
+  },
+  {
+   "id": "61",
+   "n": 354,
+   "g": "spoza",
+   "q": "W odniesieniu do zachowań zdrowotnych, do czego służą modele teoretyczne?",
+   "a": [
+    "pomagają w systemowym zrozumieniu zachowań zdrowotnych, między innymi co wpływa na ich kształtowanie, utrzymanie lub zmianę",
+    "modele teoretyczne nie są przydatne w psychologii zdrowia, bo wiele z nich pochodzi z innych dziedzin psychologii, np. poznawczej",
+    "modele teoretyczne są przydatne w psychologii zdrowia w celu zrozumienia ludzkiego zachowania, o ile zostały stworzone przez wybitnych psychologów zdrowia",
+    "żadna z pozostałych odpowiedzi"
+   ],
+   "c": 0,
+   "e": "Modele teoretyczne porządkują wiedzę o tym, co kształtuje, podtrzymuje i zmienia zachowania zdrowotne."
+  },
+  {
+   "id": "41",
+   "n": 355,
+   "g": "spoza",
+   "q": "Według przeglądów literatury (np. Godin i Kok, 1996), jaka jest użyteczność teorii uzasadnionego działania i teorii planowanego zachowania w wyjaśnianiu zachowań zdrowotnych?",
+   "a": [
+    "teorie wyjaśniają większy zakres intencji niż rzeczywistych zachowań zdrowotnych",
+    "teorie trafnie wyjaśniają wysoki odsetek zachowań zdrowotnych",
+    "teorie trafnie wyjaśniają wysoki odsetek zachowań zdrowotnych, zwłaszcza u kobiet",
+    "żadna z pozostałych odpowiedzi"
+   ],
+   "c": 0,
+   "e": "Te teorie dobrze wyjaśniają intencje, ale słabiej rzeczywiste zachowania (luka intencja–zachowanie)."
+  },
+  {
+   "id": "125",
+   "n": 356,
+   "g": "spoza",
+   "q": "Poczucie własnej skuteczności",
+   "a": [
+    "wzmacnia się, gdy jednostka doświadcza wielu porażek w działaniu",
+    "związane jest z realistyczną oceną własnych możliwości działania",
+    "kształtuje się wyłącznie w oparciu o styl wychowania",
+    "zdecydowanie wzrasta w sytuacji silnego pobudzenia psychofizycznego"
+   ],
+   "c": 1,
+   "e": "Poczucie własnej skuteczności wiąże się z realistyczną oceną własnych możliwości działania."
+  },
+  {
+   "id": "k371",
+   "n": 371,
+   "g": "spoza",
+   "q": "Centralnym konstruktem postintencjonalnych modeli zmiany zachowań zdrowotnych jest:",
+   "a": [
+    "planowanie",
+    "intencja",
+    "zagrożenie chorobą",
+    "dynamiczny proces zmiany zachowania"
+   ],
+   "c": 0
+  },
+  {
+   "id": "220",
+   "n": 376,
+   "g": "spoza",
+   "q": "Co okazało się problemem teorii i interwencji zmian zachowań zdrowotnych?",
+   "a": [
+    "trudność lub niepowodzenie w utrzymaniu zmiany zachowania",
+    "fakt, że tylko młodzi ludzie są chętni do zmian zachowań zdrowotnych",
+    "fakt, że tylko wykształceni ludzie są chętni do zmian zachowań zdrowotnych",
+    "luka między ludzką pamięcią a rzeczywistym zachowaniem"
+   ],
+   "c": 0,
+   "e": "Największym problemem okazało się utrzymanie zmiany zachowania.",
+   "u": 1
+  },
+  {
+   "id": "k378",
+   "n": 378,
+   "g": "spoza",
+   "q": "Według modelu HAPA, jaki proces umożliwia kontynuację zachowania już PO jego podjęciu?",
+   "a": [
+    "planowanie działania (np. miejsce lub czas wykonywania zachowania)",
+    "planowanie radzenia sobie z przeszkodami (np. jeśli będzie zimno, to ubiorę ciepłą bluzę do biegania)",
+    "oczekiwanie pozytywnych efektów",
+    "poczucie kontroli"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k381",
+   "n": 381,
+   "g": "spoza",
+   "q": "Co może być źródłem poczucia własnej skuteczności?",
+   "a": [
+    "Wykonywanie różnych zadań i czynności w ciągu życia (tzw. przeszłe doświadczenia jednostki)",
+    "Obserwowanie innych osób (tzw. doświadczenia zastępcze)",
+    "Pochwały ze strony innych (perswazja werbalna)",
+    "Wszystkie odpowiedzi są prawidłowe"
+   ],
+   "c": 3
+  },
+  {
+   "id": "130",
+   "n": 382,
+   "g": "spoza",
+   "q": "Oczekiwanie własnej skuteczności to przekonanie, że",
+   "a": [
+    "jesteśmy w stanie wykonać dane zachowanie",
+    "dane zachowanie doprowadzi do pożądanego celu",
+    "nasze zachowania zdrowotne zależą od czynników zewnętrznych, takich jak opieka boska lub przypadek",
+    "współczesna medycyna naukowa jest skuteczna"
+   ],
+   "c": 0,
+   "e": "Oczekiwanie własnej skuteczności to przekonanie, że jestem w stanie wykonać dane zachowanie. Odpowiedź b to oczekiwanie wyniku.",
+   "u": 1
+  },
+  {
+   "id": "k389",
+   "n": 389,
+   "g": "spoza",
+   "q": "Wygaszenie motywacji wewnętrznej w efekcie pojawienia się motywacji zewnętrznej określa się jako:",
+   "a": [
+    "efekt reaktancji",
+    "efekt bumerangowy",
+    "efekt naduzasadnienia",
+    "efekt zaszczepienia"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k394",
+   "n": 394,
+   "g": "spoza",
+   "q": "Centralnym konstruktem motywacyjnych modeli zmiany zachowań zdrowotnych jest:",
+   "a": [
+    "planowanie",
+    "intencja",
+    "próbowanie",
+    "dynamiczny proces zmiany zachowania"
+   ],
+   "c": 1
+  },
+  {
+   "id": "83",
+   "n": 400,
+   "g": "spoza",
+   "q": "Teorię lokalizacji kontroli stworzył/stworzyła",
+   "a": [
+    "Albert Bandura",
+    "Julian B. Rotter",
+    "Joseph D. Matarazzo",
+    "Shelley E. Taylor"
+   ],
+   "c": 1,
+   "e": "Teorię umiejscowienia kontroli stworzył Julian Rotter."
+  },
+  {
+   "id": "62",
+   "n": 402,
+   "g": "spoza",
+   "q": "W odniesieniu do spraw zdrowotnych lokalizacja poczucia kontroli może być",
+   "a": [
+    "wewnętrzna",
+    "zewnętrzna przypisana innym ludziom",
+    "zewnętrzna przypisana przypadkowi",
     "wszystkie odpowiedzi są poprawne"
    ],
    "c": 3,
-   "e": "Higiena snu, mycie rąk i dieta mogą stać się automatycznymi nawykami."
+   "e": "Umiejscowienie kontroli zdrowia może być wewnętrzne albo zewnętrzne: przypisane innym (np. lekarzom) lub przypadkowi."
+  },
+  {
+   "id": "k404",
+   "n": 404,
+   "g": "spoza",
+   "q": "Co okazało się problemem teorii i interwencji zmian zachowań zdrowotnych?",
+   "a": [
+    "fakt, że tylko wykształceni ludzie są chętni do zmian zachowań zdrowotnych",
+    "luka między wytworzeniem intencji a rzeczywistym zachowaniem",
+    "fakt, że tylko młodzi ludzie są chętni do zmian zachowań zdrowotnych",
+    "luka między ludzką pamięcią a rzeczywistym zachowaniem"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k406",
+   "n": 406,
+   "g": "spoza",
+   "q": "Która odpowiedź opisuje dorobek naukowy lub zasługi modelu HAPA (Health Action Process Approach) Ralfa Schwarzera?",
+   "a": [
+    "model zajmuje drugie miejsce na liście eksperckich teorii przydatnych w wyjaśnianiu utrzymania się zmian zachowań (Kwaśnicka i in., 2016)",
+    "model zakłada, że w kolejnych etapach procesu zmiany, zachowania mają odrębne determinanty będące predykatorami zmiany",
+    "model wyodrębnia trzy rodzaje poczucia skuteczności dotyczące inicjowania działania, radzenie sobie w trakcie jego wykonywania i podczas utrzymania zmiany",
+    "wszystkie pozostałe odpowiedzi"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k407",
+   "n": 407,
+   "g": "spoza",
+   "q": "Która odpowiedź opisuje przekonanie zdrowotne, według teorii poczucia własnej skuteczności?",
+   "a": [
+    "Zamierzam regularnie chodzić na basen, bo nie trzeba płacić za wstęp",
+    "Jeśli zachoruję, to od mojego lekarza zależy, jak szybko wyzdrowieję",
+    "Zmierzam regularnie chodzić na basen bo wiem, że jestem w stanie to zrobić",
+    "Zamierzam regularnie chodzić na basen, bo mam już dość narzekania mojej żony, że nie uprawiam żadnego sportu"
+   ],
+   "c": 2
+  },
+  {
+   "id": "k408",
+   "n": 408,
+   "g": "spoza",
+   "q": "Który model lub teoria zachowań zdrowotnych opiera się na 6 procesach (stadiach): prekontemplacja, kontemplacja, przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany?",
+   "a": [
+    "teoria lokalizacji kontroli",
+    "poczucie własnej skuteczności",
+    "teoria autodeterminacji",
+    "model transteoretyczny"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k413",
+   "n": 413,
+   "g": "spoza",
+   "q": "Co zaleca się dla ludzi, którzy podjęli decyzję zdrowotną (np. chcę zacząć biegać) i chcą ją wprowadzić w czyn?",
+   "a": [
+    "utrwalanie siły woli i poczucia skuteczności, np. przez stałe wsparcie społeczne",
+    "makrooddziaływania, np. kampanie reklamowe i mechanizmy wpływu społecznego",
+    "mikrooddziaływania ukierunkowane na małe grupy, np. kluby sportowe, porzucanie palenia tytoniu",
+    "zwiększanie dobrostanu psychologicznego"
+   ],
+   "c": 0
+  },
+  {
+   "id": "k414",
+   "n": 414,
+   "g": "spoza",
+   "q": "Jaki zakres kształtowania zachowania obejmują modele motywacyjne zachowań zdrowotnych?",
+   "a": [
+    "przekształcenie się zachowania w nawyk, np. regularne bieganie",
+    "kształtowanie się intencji podjęcia zachowania",
+    "realizacja już istniejącego zachowania",
+    "zaprzestanie starań w celu zaczęcia nowego zachowania"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k415",
+   "n": 415,
+   "g": "spoza",
+   "q": "Na czym polegają modele fazowe i procesualne zmiany zachowań zdrowotnych?",
+   "a": [
+    "modele zakładają, że nabywanie zachowań zdrowotnych i ich zmiana są procesami opartymi na nabywania skuteczności",
+    "… procesami opartymi na nabywaniu wiedzy",
+    "… procesami opartymi na motywacji zewnętrznej",
+    "modele zakładają, że nabywanie zachowań zdrowotnych i ich zmiana są procesami odbywającymi się w czasie i w odrębnych etapach"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k416",
+   "n": 416,
+   "g": "spoza",
+   "q": "Wyróżnienie odrębnych etapów zmiany (stadiów) w modelu transteoretycznym (Prochaska i DiClemente, 1992) pokazało, że zmiany zachowań łączą się z innymi procesami zaangażowania. To było bardzo pomocne dla:",
+   "a": [
+    "projektowania interwencji promujących szczepienia u dzieci",
+    "projektowania interwencji zdrowotnych dopasowanych do zindywidualizowanych potrzeb uczestników",
+    "projektowania interwencji opartych na niskich kosztach",
+    "projektowania interwencji zdrowotnych na dużą skalę"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k421",
+   "n": 421,
+   "g": "spoza",
+   "q": "Efekt naduzasadnienia to:",
+   "a": [
+    "równoczesne działanie motywacji zewnętrznej i wewnętrznej",
+    "wygaszenie motywacji wewnętrznej w efekcie pojawienia się motywacji zewnętrznej",
+    "wygaszenie motywacji zewnętrznej w efekcie pojawienia się motywacji wewnętrznej",
+    "poszukiwanie dodatkowego uzasadnienia dla podejmowanych działań"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k426",
+   "n": 426,
+   "g": "spoza",
+   "q": "Fazowym modelem zmiany zachowań zdrowotnych jest:",
+   "a": [
+    "model przekonań zdrowotnych",
+    "teoria uzasadnionego działania",
+    "teoria planowanego zachowania",
+    "model transteoretyczny"
+   ],
+   "c": 3
+  },
+  {
+   "id": "k429",
+   "n": 429,
+   "g": "spoza",
+   "q": "Postintencjonalne modele zachowań zdrowotnych podkreślają rolę:",
+   "a": [
+    "motywacji",
+    "planowania",
+    "przekonania nt. zagrożenia",
+    "czasu"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k433",
+   "n": 433,
+   "g": "spoza",
+   "q": "Intencja jest głównym przedmiotem zainteresowań w modelach:",
+   "a": [
+    "procesualnych",
+    "motywacyjnych",
+    "postintencjonalnych",
+    "fazowych"
+   ],
+   "c": 1
+  },
+  {
+   "id": "k436",
+   "n": 436,
+   "g": "spoza",
+   "q": "Procesy (stadia) nabycia lub zmiany zachowań zdrowotnych przedstawionych w teorii transteoretycznej Prochaski i DiClemente (1992) to:",
+   "a": [
+    "prekontemplacja, kontemplacja, przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany",
+    "prekontemplacja, działanie, utrzymanie zachowania",
+    "kontemplacja, działanie, zakończenie procesu zmiany",
+    "przygotowanie, działanie, utrzymanie zachowania, zakończenie procesu zmiany"
+   ],
+   "c": 0
   },
   {
    "id": "167",
    "n": 574,
-   "g": "w6",
+   "g": "spoza",
    "q": "Kto był autorem modelu HAPA (Health Action Process Approach)?",
    "a": [
     "Bandura",

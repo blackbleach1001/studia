@@ -363,6 +363,17 @@
         ]
       },
       {
+        "key": "spoza",
+        "kind": "wyk",
+        "label": "Spoza wykładów",
+        "file": "spoza.html",
+        "title": "Pytania z bazy spoza wykładów",
+        "src": "Cierpiałkowska, Sęk (2016), r. 1–2, 4, 6–9, 14–17 · Heszen, Sęk (2007), r. 7–8",
+        "sub_short": "Historia i zawód, orientacje i psychopatologia, modele zachowań zdrowotnych",
+        "hand": true,
+        "extra": true
+      },
+      {
         "key": "cw-1",
         "kind": "cw",
         "label": "Ćwiczenia 1",
@@ -451,6 +462,12 @@
         "title": "Fiszki · Wykład 5",
         "sub": "Typy pomocy psychologicznej · 45",
         "href": "wyklad-5-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Spoza wykładów",
+        "sub": "Pytania z bazy spoza wykładów · 107",
+        "href": "spoza-fiszki.html"
       },
       {
         "kind": "cards",
