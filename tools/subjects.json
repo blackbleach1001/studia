@@ -342,6 +342,17 @@
         "hand": true
       },
       {
+        "key": "wyklad-5",
+        "kind": "wyk",
+        "label": "Wykład 5",
+        "file": "wyklad-5.html",
+        "title": "Typy pomocy psychologicznej",
+        "src": "Heszen, Sęk (2007), r. 17 · Cierpiałkowska, Sęk (2016), cz. 6",
+        "sub": "Promocja zdrowia, prewencja, interwencja kryzysowa i potraumatyczna, psychoterapia, terapia bólu, psychoterapia elementarna, konsultacja.",
+        "sub_short": "Promocja, prewencja, kryzys, psychoterapia",
+        "hand": true
+      },
+      {
         "key": "cwiczenia",
         "kind": "cw",
         "label": "Ćwiczenia",
@@ -389,6 +400,12 @@
         "title": "Fiszki · Wykład 4",
         "sub": "Czynniki ryzyka i chroniące · 58",
         "href": "wyklad-4-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Wykład 5",
+        "sub": "Typy pomocy psychologicznej · 45",
+        "href": "wyklad-5-fiszki.html"
       },
       {
         "kind": "cards",
