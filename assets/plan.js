@@ -65,7 +65,7 @@
   }
   if (!root) return;
 
-  /* ---------- strona główna: przy każdym przedmiocie najbliższy termin, fiszki na dziś i baza ---------- */
+  /* ---------- strona główna: przy każdym przedmiocie najbliższy termin i baza ---------- */
   function subjects() {
     var IDX = window.STUDIA_INDEX || [], NB = window.STUDIA_BAZA_N || {}, baza = {};
     try { baza = JSON.parse(localStorage.getItem("studia-baza-v1") || "{}") || {}; } catch (e) {}
@@ -78,12 +78,6 @@
       if (nx) line.push((live(nx) ? "teraz" : short(nx.date)) + " · " + kindName(nx).toLowerCase());
       if (s && line.length) s.textContent = line.join(" · ").replace(/^./, function (c) { return c.toUpperCase(); });
       var chips = [];
-      if (window.SRS) {
-        var ids = [];
-        IDX.forEach(function (k) { if (k.dir === d) ids = ids.concat(k.ids); });
-        var due = ids.length ? window.SRS.reviewList(ids).length : 0;
-        if (due) chips.push('<span class="due">' + due + " " + pl(due, "fiszka", "fiszki", "fiszek") + " na dziś</span>");
-      }
       if (NB[d]) {
         var r = baza[d] || {}, ok = 0;
         Object.keys(r).forEach(function (k) { if (r[k] && r[k][2] === 1) ok++; });
