@@ -328,7 +328,11 @@
         "src": "Heszen-Celińska, Sęk (2020), r. 9 · slajdy W3a i W3b",
         "sub": "Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, radzenie sobie; fizjologia stresu: osie reakcji, skutki dla organizmu.",
         "sub_short": "Modele stresu, radzenie sobie",
-        "hand": true
+        "hand": true,
+        "plan": [
+          3,
+          4
+        ]
       },
       {
         "key": "wyklad-4",
@@ -339,7 +343,10 @@
         "src": "Heszen, Sęk (2007), r. 10, 13 · Cierpiałkowska, Sęk (2016), r. 30.3, 24.3, 18, 22",
         "sub": "Zasoby i deficyty, wsparcie społeczne, resilience, zachowanie wobec choroby; ryzyko i prewencja, wzór A/C/D, PTSD.",
         "sub_short": "Ryzyko, zasoby, osobowość a zdrowie",
-        "hand": true
+        "hand": true,
+        "plan": [
+          5
+        ]
       },
       {
         "key": "wyklad-5",
@@ -350,7 +357,10 @@
         "src": "Heszen, Sęk (2007), r. 17 · Cierpiałkowska, Sęk (2016), cz. 6",
         "sub": "Promocja zdrowia, prewencja, interwencja kryzysowa i potraumatyczna, psychoterapia, terapia bólu, psychoterapia elementarna, konsultacja.",
         "sub_short": "Promocja, prewencja, kryzys, psychoterapia",
-        "hand": true
+        "hand": true,
+        "plan": [
+          6
+        ]
       },
       {
         "key": "cwiczenia",
