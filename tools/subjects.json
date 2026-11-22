@@ -325,8 +325,8 @@
         "label": "Wykład 3",
         "file": "wyklad-3.html",
         "title": "Stres psychologiczny: modele i radzenie sobie",
-        "src": "Heszen-Celińska, Sęk (2020), r. 9 · slajdy W3a",
-        "sub": "Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, style radzenia sobie, techniki relaksacyjne.",
+        "src": "Heszen-Celińska, Sęk (2020), r. 9 · slajdy W3a i W3b",
+        "sub": "Holmes i Rahe, model transakcyjny, teoria zachowania zasobów, radzenie sobie; fizjologia stresu: osie reakcji, skutki dla organizmu.",
         "sub_short": "Modele stresu, radzenie sobie",
         "hand": true
       },
@@ -381,7 +381,7 @@
       {
         "kind": "cards",
         "title": "Fiszki · Wykład 3",
-        "sub": "Stres · 36",
+        "sub": "Stres · 48",
         "href": "wyklad-3-fiszki.html"
       },
       {
