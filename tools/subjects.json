@@ -363,20 +363,55 @@
         ]
       },
       {
-        "key": "cwiczenia",
+        "key": "cw-1",
         "kind": "cw",
-        "label": "Ćwiczenia",
+        "label": "Ćwiczenia 1",
         "plan": [
-          1,
-          2,
-          3,
+          1
+        ],
+        "file": "cwiczenia-1.html",
+        "title": "Zdrowie i choroba w świadomości społecznej · dziedziny zastosowań",
+        "src": "Heszen-Celińska, Sęk (2020), r. 2–5 · Cierpiałkowska, Sęk (2016), r. 2, 10",
+        "sub_short": "Pojęcie zdrowia, modele, pato- i salutogeneza, dziedziny, diagnoza",
+        "hand": true
+      },
+      {
+        "key": "cw-2",
+        "kind": "cw",
+        "label": "Ćwiczenia 2",
+        "plan": [
+          2
+        ],
+        "file": "cwiczenia-2.html",
+        "title": "Czynniki ryzyka i czynniki chroniące",
+        "src": "Heszen-Celińska, Sęk (2020), r. 9–10 · Cierpiałkowska, Sęk (2016)",
+        "sub_short": "Stres i radzenie sobie, zasoby, wsparcie, resilience, osobowość",
+        "hand": true
+      },
+      {
+        "key": "cw-3",
+        "kind": "cw",
+        "label": "Ćwiczenia 3",
+        "plan": [
+          3
+        ],
+        "file": "cwiczenia-3.html",
+        "title": "Interwencje środowiskowe i typy pomocy psychologicznej",
+        "src": "Heszen, Sęk (2007), r. 17 · Cierpiałkowska, Sęk (2016), cz. 6",
+        "sub_short": "Psychoterapia, poradnictwo, kryzys, samopomoc, rehabilitacja, efektywność",
+        "hand": true
+      },
+      {
+        "key": "cw-4",
+        "kind": "cw",
+        "label": "Ćwiczenia 4",
+        "plan": [
           4
         ],
-        "file": "cwiczenia.html",
-        "title": "Pomoc psychologiczna: perspektywa indywidualna, społeczna i instytucjonalna",
-        "src": "Cierpiałkowska, Sęk (2016), cz. 6, r. 28–29, 31–34",
-        "sub": "Psychoterapia, poradnictwo, interwencja kryzysowa, rehabilitacja, samopomoc, efektywność.",
-        "sub_short": "Psychoterapia, kryzys, samopomoc, efektywność",
+        "file": "cwiczenia-4.html",
+        "title": "Promocja zdrowia i prewencja",
+        "src": "Cierpiałkowska, Sęk (2016), r. 30 · Heszen-Celińska, Sęk (2020), r. 19",
+        "sub_short": "Karta Ottawska, cele psychologiczne, poziomy prewencji, ryzyko, strategie, programy",
         "hand": true
       }
     ],
@@ -419,9 +454,27 @@
       },
       {
         "kind": "cards",
-        "title": "Fiszki · Ćwiczenia",
-        "sub": "Pomoc psychologiczna · 27",
+        "title": "Fiszki · Ćwiczenia 1",
+        "sub": "Zdrowie i choroba w świadomości społecznej · 22",
+        "href": "cwiczenia-1-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Ćwiczenia 2",
+        "sub": "Czynniki ryzyka i czynniki chroniące · 75",
+        "href": "cwiczenia-2-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Ćwiczenia 3",
+        "sub": "Interwencje środowiskowe i typy pomocy psychologicznej · 48",
         "href": "cwiczenia-fiszki.html"
+      },
+      {
+        "kind": "cards",
+        "title": "Fiszki · Ćwiczenia 4",
+        "sub": "Promocja zdrowia i prewencja · 42",
+        "href": "cwiczenia-4-fiszki.html"
       }
     ],
     "redirects": {

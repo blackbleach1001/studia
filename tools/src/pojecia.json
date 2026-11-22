@@ -836,28 +836,6 @@
    "Ujęcie Tomaszewskiego: przekształcenie stanu choroby w stan zdrowia przez celowe działania chorego."
   ]
  ],
- "kliniczna/cwiczenia.html": [
-  [
-   "Psychoterapia a poradnictwo",
-   "Psychoterapia leczy rozpoznane zaburzenia; poradnictwo pomaga zdrowym osobom w problemach rozwojowych, krótkoterminowo."
-  ],
-  [
-   "Czynniki specyficzne i wspólne",
-   "Specyficzne wynikają ze szkoły terapii, wspólne (relacja, przymierze terapeutyczne) działają we wszystkich i wyjaśniają skuteczność."
-  ],
-  [
-   "Kryzys i interwencja kryzysowa",
-   "Kryzys to zaburzenie równowagi przy przewadze presji nad zasobami; interwencja jest natychmiastowa, krótka i skoncentrowana."
-  ],
-  [
-   "Zdrowienie i umacnianie",
-   "Zdrowienie to satysfakcjonujące życie mimo choroby; umacnianie wzmacnia samodzielność. Przeszkody: osamotnienie i stygmatyzacja."
-  ],
-  [
-   "Efficacy i effectiveness",
-   "Efficacy to badania laboratoryjne (trafność wewnętrzna), effectiveness to badania w warunkach naturalnych (trafność zewnętrzna)."
-  ]
- ],
  "metodologia/wyklad-6.html": [
   [
    "Hipoteza zerowa (H₀)",
@@ -976,6 +954,94 @@
   [
    "Psychoterapia elementarna",
    "Forma pośrednia między psychoterapią podtrzymującą a poradnictwem dla chorych somatycznie; stosuje ją cały personel."
+  ]
+ ],
+ "kliniczna/cwiczenia-3.html": [
+  [
+   "Psychoterapia a poradnictwo",
+   "Psychoterapia leczy rozpoznane zaburzenia; poradnictwo pomaga zdrowym osobom w problemach rozwojowych, krótkoterminowo."
+  ],
+  [
+   "Czynniki specyficzne i wspólne",
+   "Specyficzne wynikają ze szkoły terapii, wspólne (relacja, przymierze terapeutyczne) działają we wszystkich i wyjaśniają skuteczność."
+  ],
+  [
+   "Kryzys i interwencja kryzysowa",
+   "Kryzys to zaburzenie równowagi przy przewadze presji nad zasobami; interwencja jest natychmiastowa, krótka i skoncentrowana."
+  ],
+  [
+   "Zdrowienie i umacnianie",
+   "Zdrowienie to satysfakcjonujące życie mimo choroby; umacnianie wzmacnia samodzielność. Przeszkody: osamotnienie i stygmatyzacja."
+  ],
+  [
+   "Efficacy i effectiveness",
+   "Efficacy to badania laboratoryjne (trafność wewnętrzna), effectiveness to badania w warunkach naturalnych (trafność zewnętrzna)."
+  ]
+ ],
+ "kliniczna/cwiczenia-1.html": [
+  [
+   "Zdrowie (WHO, 1946)",
+   "Stan pełnego dobrostanu fizycznego, psychicznego i społecznego, a nie tylko brak choroby lub niepełnosprawności."
+  ],
+  [
+   "Model biopsychospołeczny",
+   "Zdrowie i choroba wynikają ze współdziałania czynników biologicznych, psychologicznych i społecznych (Engel)."
+  ],
+  [
+   "Salutogeneza",
+   "Podejście Antonovsky'ego: pyta, dlaczego ludzie pozostają zdrowi; zdrowie i choroba to kontinuum."
+  ],
+  [
+   "Poczucie koherencji",
+   "Globalna orientacja: zrozumiałość, zaradność i sensowność; metazasób zdrowia."
+  ],
+  [
+   "Diagnoza różnicowa",
+   "Przyporządkowanie objawów do jednostki klasyfikacji (ICD, DSM)."
+  ]
+ ],
+ "kliniczna/cwiczenia-2.html": [
+  [
+   "Czynnik ryzyka",
+   "Czynnik zwiększający prawdopodobieństwo zaburzenia; nie jest ani konieczny, ani wystarczający."
+  ],
+  [
+   "Czynnik chroniący (zasób)",
+   "Właściwość osoby lub środowiska, która zmniejsza wpływ ryzyka i sprzyja zdrowiu."
+  ],
+  [
+   "Ocena pierwotna i wtórna",
+   "W modelu Lazarusa: ocena znaczenia sytuacji (krzywda, zagrożenie, wyzwanie) i ocena możliwości poradzenia sobie."
+  ],
+  [
+   "Wsparcie społeczne",
+   "Dostępne sieci i wymiana pomocy w trudnej sytuacji; działa bezpośrednio i buforowo."
+  ],
+  [
+   "Resilience (prężność)",
+   "Zdolność elastycznego radzenia sobie z silnym stresem i odbicia się od niego."
+  ]
+ ],
+ "kliniczna/cwiczenia-4.html": [
+  [
+   "Promocja zdrowia",
+   "Według Karty Ottawskiej (1986) proces umożliwiający ludziom zwiększenie wpływu na własne zdrowie."
+  ],
+  [
+   "Prewencja",
+   "Działania zmniejszające prawdopodobieństwo zaburzeń przez przeciwdziałanie ryzyku i wzmacnianie zasobów."
+  ],
+  [
+   "Ryzyko względne",
+   "Ile razy częściej chorują osoby z czynnikiem ryzyka niż osoby bez niego."
+  ],
+  [
+   "Strategia pozytywna",
+   "Wzmacnianie zasobów i kompetencji; podstawowa w promocji zdrowia."
+  ],
+  [
+   "Mapy interwencji",
+   "Systematyczne planowanie programu, w którym każdy element ma uzasadnienie teoretyczne i empiryczne."
   ]
  ]
 }
