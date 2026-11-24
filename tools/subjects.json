@@ -651,6 +651,16 @@
         "hand": true
       },
       {
+        "key": "kolokwium-1-pytania",
+        "kind": "cw",
+        "label": "Kolokwium I",
+        "file": "kolokwium-1-pytania.html",
+        "title": "Pytania na I kolokwium",
+        "src": "lista pytań do zajęć 1 i 2",
+        "sub_short": "12 pytań zamkniętych i 11 otwartych z odpowiedziami",
+        "hand": true
+      },
+      {
         "key": "kolokwium-1",
         "kind": "info",
         "label": "Kolokwium 1",
