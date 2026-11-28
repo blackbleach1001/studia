@@ -165,3 +165,21 @@ mark.hl.is-flash{animation:hl-flash 1.2s ease}
 .fig-copy:hover,.fig-copy:focus-visible{opacity:1;outline:0}
 @media (pointer:coarse){.fig-copy{opacity:.8;width:40px;height:40px}}
 @media print{.fig-copy{display:none}}
+
+/* ---------- słownik w locie (pojecia.js) ---------- */
+.gl-term{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-decoration-color:color-mix(in srgb,var(--st-tint,#8a4b3a) 70%,transparent);text-underline-offset:.22em;cursor:help;border-radius:3px;-webkit-tap-highlight-color:transparent}
+.gl-term:hover,.gl-term.is-open{background:var(--st-tint-soft,rgba(0,0,0,.05));text-decoration-style:solid}
+.gl-term:focus-visible{outline:2px solid var(--st-tint,#8a4b3a);outline-offset:2px}
+.gl-pop{position:fixed;z-index:85;width:min(320px,calc(100vw - 16px));padding:12px 14px 10px;border-radius:14px;background:#fff;color:#1c1c1e;
+  box-shadow:0 12px 32px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.12);font:400 .9375rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;animation:hl-in .14s ease-out}
+.gl-pop[hidden]{display:none}
+.gl-pop p{margin:0 0 8px}
+.gl-pop .gl-t{font-weight:700;color:var(--st-tint,#8a4b3a)}
+.gl-pop .gl-q{color:#555}
+.gl-pop .gl-reveal{display:block;width:100%;min-height:40px;margin:0 0 8px;border:0;border-radius:10px;background:var(--st-tint,#8a4b3a);color:#fff;font:700 .875rem/1 inherit;font-family:inherit;cursor:pointer}
+.gl-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px;border-top:.5px solid rgba(0,0,0,.12);font-size:.8125rem}
+.gl-src{color:var(--st-tint,#8a4b3a);font-weight:700;text-decoration:none}
+.gl-mode{border:0;border-radius:8px;padding:6px 10px;min-height:32px;background:rgba(0,0,0,.05);color:#333;font:700 .8125rem/1 inherit;font-family:inherit;cursor:pointer}
+.gl-mode[aria-pressed="true"]{background:var(--st-tint-soft,rgba(0,0,0,.08));color:var(--st-tint,#8a4b3a)}
+@media (pointer:coarse){.gl-mode{min-height:40px}}
+@media print{.gl-pop{display:none!important}.gl-term{text-decoration:none}}

@@ -53,3 +53,19 @@ for page in list(ROOT.glob("*.html")) + list(ROOT.glob("*/*.html")):
     t = t.replace(s.group(0), s.group(0) + f'\n<script src="{pre}assets/czytanie.js"></script>', 1)
     page.write_text(t, encoding="utf-8"); k += 1
 print("czytanie podpięte do", k, "stron")
+
+# słownik w locie: indeks pojęć + pojecia.js przed czytanie.js (zakreślenia obejmują oznaczone pojęcia)
+g = 0
+for page in list(ROOT.glob("*/*.html")):
+    if "tools" in page.parts:
+        continue
+    t = page.read_text(encoding="utf-8")
+    if "assets/czytanie.js" not in t or "assets/pojecia.js" in t:
+        continue
+    s = re.search(r'<script src="((?:\.\./)?)assets/czytanie\.js[^"]*"></script>', t)
+    if not s:
+        continue
+    pre = s.group(1)
+    t = t.replace(s.group(0), f'<script src="{pre}assets/glossary-index.js"></script>\n<script src="{pre}assets/pojecia.js"></script>\n' + s.group(0), 1)
+    page.write_text(t, encoding="utf-8"); g += 1
+print("słownik w locie podpięty do", g, "stron")

@@ -42,3 +42,28 @@ for key, items in DATA.items():
         main.insert(0, new)
     path.write_text(str(soup), encoding="utf-8")
     print(f"{key}: {len(items)} pojęć")
+
+# ---------------------------------------------------------------------------
+# Słownik w locie: indeks pojęć dla każdego przedmiotu (assets/glossary-index.js).
+# pojecia.js oznacza te pojęcia w treści notatek i pokazuje dymek z definicją.
+SUBJ = {s["dir"]: s for s in json.loads((ROOT / "tools" / "subjects.json").read_text(encoding="utf-8"))}
+import re
+def base(t):
+    return re.sub(r"\s*\([^)]*\)", "", t).strip().lower()
+
+index = {}
+for key, items in DATA.items():
+    if key.startswith("_"):
+        continue
+    d, f = key.split("/", 1)
+    unit = next((u for u in SUBJ.get(d, {}).get("units", []) if u["file"] == f), None)
+    label = (unit or {}).get("label", "")
+    seen = {base(t) for t, *_ in index.get(d, [])}
+    for t, defn in items:
+        if base(t) in seen:
+            continue
+        seen.add(base(t))
+        index.setdefault(d, []).append([t, defn, f, label])
+(ROOT / "assets" / "glossary-index.js").write_text(
+    "window.STUDIA_GLOSSARY=" + json.dumps(index, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+print("słownik w locie:", {d: len(v) for d, v in index.items()})
