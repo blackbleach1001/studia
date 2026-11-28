@@ -188,6 +188,89 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
   .page{display:block;padding:0}
   details.block,details.q{break-inside:avoid}
 }
+
+/* =========================================================
+   Schematy w notatkach: <figure class="sch"> … <figcaption>
+   flow (łańcuch), tree (korzeń + gałęzie), cols (karty), matrix (2×2),
+   balance (szala), layers (warstwy/piramida), scale (kontinuum)
+   ========================================================= */
+.sch{margin:0 0 1.6em;padding:14px 14px 16px;border-radius:12px;background:var(--st-surface);overflow:hidden;container-type:inline-size}
+.sch figcaption{font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--tint);margin:0 0 12px}
+.sch ul,.sch ol{list-style:none;margin:0;padding:0}
+.sch li{margin:0}
+.sch-box,.sch-flow>li,.sch-cols>li,.sch-layers>li,.sch-root{
+  background:var(--card);border-radius:10px;padding:8px 11px;box-shadow:0 0 0 .5px var(--line),0 1px 2px rgba(43,33,24,.05);
+  font-size:.875rem;line-height:1.4;color:var(--ink)}
+.sch b{display:block;font-weight:700;color:var(--ink);margin-bottom:1px}
+.sch strong{font-weight:700;color:var(--ink)}
+.sch li>span,.sch .sub{display:block;color:var(--ink-soft);font-size:.8125rem}
+.sch .hi,.sch li.hi{background:var(--tint);color:#fff;box-shadow:none}
+.sch .hi b,.sch .hi span,.sch .hi strong{color:#fff}
+.sch .soft{background:var(--tint-soft);box-shadow:none}
+figure.sch p.sch-note{margin:12px 0 0;font-size:.875rem;line-height:1.5;color:var(--ink-soft);text-align:left}
+/* łańcuch: pionowo na telefonie, poziomo od 600px */
+.sch-flow{display:flex;flex-direction:column;gap:20px}
+.sch-flow>li{position:relative;flex:1 1 0;min-width:0}
+.sch-flow>li+li::before{content:"↓";position:absolute;left:50%;top:-19px;transform:translateX(-50%);color:var(--tint);font-weight:700;font-size:.9rem;line-height:1}
+@container (min-width:520px){
+  .sch-flow{flex-direction:row;gap:22px;align-items:stretch}
+  .sch-flow>li+li::before{content:"→";left:-17px;top:50%;transform:translateY(-50%)}
+  .sch-flow.v{flex-direction:column;gap:20px}
+  .sch-flow.v>li+li::before{content:"↓";left:50%;top:-19px;transform:translateX(-50%)}
+}
+.sch-flow.loop>li:last-child::after{content:"↺ wraca do początku";display:block;margin-top:4px;font-size:.75rem;color:var(--tint)}
+.sch-flow.loop>li.hi:last-child::after{color:#fff;opacity:.85}
+/* drzewo: korzeń + gałęzie */
+.sch-root{text-align:center;max-width:26em;margin:0 auto 18px;position:relative}
+.sch-root::after{content:"";position:absolute;left:50%;bottom:-14px;width:1.5px;height:10px;background:var(--tint)}
+.sch-cols{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,118px),1fr))}
+.sch-cols>li{border-top:3px solid var(--tint)}
+.sch-cols>li ul{margin-top:4px}
+.sch-cols>li ul li{font-size:.8125rem;color:var(--ink-soft);padding-left:.9em;position:relative}
+.sch-cols>li ul li::before{content:"·";position:absolute;left:.2em;color:var(--tint);font-weight:700}
+.sch-cols.c2{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+/* macierz 2×2 z osiami */
+.sch-matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:.8125rem;align-items:stretch}
+.sch-matrix>div{border-radius:8px;padding:8px;line-height:1.35}
+.sch-matrix .ax{color:var(--ink-soft);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+.sch-matrix .c{background:var(--card);box-shadow:0 0 0 .5px var(--line);text-align:center}
+.sch-matrix .c b{font-size:.875rem}
+.sch-matrix .c.hi{background:var(--tint);box-shadow:none}
+.sch-matrix .c.hi b,.sch-matrix .c.hi .sub{color:#fff}
+/* szala: dwie strony + wynik */
+.sch-balance{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:start}
+.sch-balance>.mid{align-self:center;font-size:1.6rem;color:var(--tint);text-align:center;line-height:1}
+.sch-balance>div:not(.mid){background:var(--card);border-radius:10px;padding:8px 10px;box-shadow:0 0 0 .5px var(--line);font-size:.8125rem}
+.sch-balance .neg{border-top:3px solid hsl(8,55%,55%)}
+.sch-balance .pos{border-top:3px solid hsl(150,35%,40%)}
+.sch-balance ul li{padding-left:.9em;position:relative;color:var(--ink-soft)}
+.sch-balance ul li::before{content:"·";position:absolute;left:.2em;font-weight:700}
+
+@container (max-width:340px){.sch-balance{grid-template-columns:1fr}.sch-balance>.mid{transform:rotate(90deg)}}
+/* warstwy / piramida: każda następna węższa */
+.sch-layers{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sch-layers>li{width:100%;text-align:center}
+.sch-layers>li:nth-child(2){width:88%}.sch-layers>li:nth-child(3){width:76%}.sch-layers>li:nth-child(4){width:64%}.sch-layers>li:nth-child(5){width:52%}
+.sch-layers.flat>li{width:100%!important;text-align:left}
+/* kontinuum */
+.sch-scale{position:relative;padding-top:4px}
+.sch-scale .bar{height:10px;border-radius:5px;background:linear-gradient(90deg,hsl(8,55%,62%),hsl(45,70%,62%),hsl(150,35%,48%))}
+.sch-scale .ends{display:flex;justify-content:space-between;gap:12px;margin-top:6px;font-size:.8125rem;font-weight:700}
+.sch-scale .ends span:last-child{text-align:right}
+.sch-scale .sub{margin-top:4px}
+/* znacznik części w długiej notatce */
+.sch-part{margin:3em 0 -1.2em;padding:6px 0 0;border-top:2px solid var(--tint);font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--tint)}
+
+.sch{--st-surface:var(--parchment);--card:#fff;--tint:var(--accent-deep);--tint-soft:var(--accent-tint);--line:var(--rule);--ink-mute:var(--ink-soft)}
+.chapter .sch li,.chapter .sch .sch-cols>li ul li,.chapter .sch .sch-matrix,.chapter .sch li>span,.chapter .sch .sub{font-size:13px;line-height:1.4;margin:0}
+.chapter .sch b,.chapter .sch .sch-root{font-size:14px;line-height:1.35}
+.chapter .sch figcaption{font-size:12px}
+body .chapter .sch li,body .chapter .sch p.sch-note{font-size:13px!important}
+body .chapter figure.sch p.sch-note{font-size:14px!important}
+.chapter .sch .sch-cols>li ul{margin:4px 0 0;padding:0}
+.chapter figure.sch p.sch-note{font-size:14px;line-height:1.5;margin:12px 0 0}
+.sch figcaption{font-family:inherit}
+.sch b{font-family:inherit}
 </style>
 <meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css?v=e384f346" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/pro.css?v=ec8e35d0">
@@ -1180,6 +1263,60 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
 </ul>
 </section>
 <!-- ============ KTO JEST KIM ============ -->
+<section class="chapter" id="wyk-4">
+<div class="chapter-head"><span class="num">W</span><h2>Ze slajdów wykładu: pamięć sensoryczna i krótkotrwała</h2></div>
+<p>Wykład dr Anny Kamzy, blok 3a: magazynowy model pamięci, pamięć ikoniczna i echoiczna, pamięć krótkotrwała, porcjowanie, model pamięci roboczej Baddeleya. <span class="src">slajdy 1–34</span></p>
+<figure class="sch"><figcaption>Model magazynowy (Atkinson i Shiffrin, 1968)</figcaption>
+<ol class="sch-flow"><li><b>Pamięć sensoryczna</b><span>ultrakrótka: od kilkudziesięciu do kilkuset ms</span></li><li><b>Pamięć krótkotrwała (STM)</b><span>bez powtórek zanika po 15–30 s</span></li><li class="hi"><b>Pamięć długotrwała (LTM)</b><span>przechowywanie bardzo długie</span></li></ol>
+<p class="sch-note">Między STM a LTM działają <strong>powtórki</strong>; z każdego magazynu może wyjść <strong>reakcja</strong>. <span class="src">sl. 3, 21</span></p></figure>
+<h3>Pamięć ikoniczna i eksperyment Sperlinga</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Wariant (Sperling, 1960)</th><th>Procedura</th><th>Co pokazuje</th></tr></thead>
+<tbody>
+<tr><td>A. Odtwarzanie pełne</td><td style="font-weight:400">punkt fiksacji → plansza z literami (50 ms) → pusta plansza → wymienianie wszystkich liter</td><td style="font-weight:400">badani podają tylko kilka liter</td></tr>
+<tr><td>B. Odtwarzanie częściowe</td><td style="font-weight:400">po zniknięciu planszy <strong>sygnał dźwiękowy</strong> (po 0–1 s) wskazuje, który rząd podać</td><td style="font-weight:400">dostępnych jest więcej liter niż przy odtwarzaniu pełnym; im później sygnał, tym gorzej → ślad szybko zanika</td></tr>
+<tr><td>C. Maskowanie wsteczne</td><td style="font-weight:400">po planszy pojawia się <strong>maska</strong></td><td style="font-weight:400">nowy bodziec zastępuje ślad w pamięci ikonicznej</td></tr>
+</tbody></table></div>
+<p class="src">sl. 6–10</p>
+<ul>
+<li>Charakterystyka pamięci ikonicznej: czas przechowywania <strong>maks. ok. 500 ms</strong>; pojemność <strong>do 18 elementów</strong>; kodowanie <strong>szybkie, automatyczne</strong>; zapominanie przez <strong>zatarcie</strong> (np. po zamknięciu oczu) i <strong>maskowanie</strong> (np. przeniesienie wzroku); gdy zaangażuje się uwaga – <strong>transfer do STM</strong>. <span class="src">sl. 11</span></li>
+<li>Zjawiska pochodne: <strong>trwałość wizualna</strong> i jej odmiana – <strong>powidok</strong>. <span class="src">sl. 12–15</span></li>
+<li>Funkcje: wstępne opracowanie bodźca; <strong>integrowanie bodźców w czasie</strong> (film: spójne kolejne bodźce tworzą całość – integracja zamiast maskowania); <strong>ciągłość doświadczenia przy ruchach sakkadowych</strong> (sakkada ok. 30 ms, fiksacja ok. 300 ms; czytanie, orientacja w przestrzeni). <span class="src">sl. 16–17</span></li>
+</ul>
+<h3>Pamięć echoiczna</h3>
+<ul>
+<li>Modalność <strong>słuchowa</strong> (mowa, dźwięki); czas przechowywania <strong>2–4 s</strong>; pojemność <strong>mniejsza</strong> niż ikonicznej (ok. 5 jednostek); kodowanie szybkie i automatyczne (bez kontroli); zapominanie przez zatarcie i maskowanie innym dźwiękiem. <span class="src">sl. 18</span></li>
+<li><strong>Trwałość słuchowa</strong>: niezależnie od czasu trwania dźwięku (30 czy 100 ms) jego subiektywna długość to ok. 130 ms.</li>
+<li><strong>Efekt modalności</strong>: przy słuchowej prezentacji listy ostatnie 2–3 elementy odtwarzamy lepiej niż przy wzrokowej.</li>
+<li><strong>Efekt sufiksu werbalnego</strong>: gorsze odtwarzanie ostatnich elementów listy słuchowej, gdy na końcu pojawi się nieistotne słowo (Jagodzińska). <span class="src">sl. 19</span></li>
+</ul>
+<figure class="sch"><figcaption>Ikoniczna a echoiczna</figcaption>
+<div class="sch-matrix" style="grid-template-columns:auto 1fr 1fr">
+<div></div><div class="ax">Ikoniczna</div><div class="ax">Echoiczna</div>
+<div class="ax">Informacje</div><div class="c"><b>wzrokowe</b></div><div class="c"><b>słuchowe</b></div>
+<div class="ax">Czas</div><div class="c"><b>do ok. 0,5 s</b></div><div class="c hi"><b>2–4 s</b></div>
+<div class="ax">Pojemność</div><div class="c hi"><b>do 18 elementów</b></div><div class="c"><b>ok. 5 jednostek</b></div>
+<div class="ax">Reguła</div><div class="c"><b>pojemność &gt; trwałość</b></div><div class="c"><b>pojemność &lt; trwałość</b></div>
+</div><p class="sch-note">Wspólne: przechowują <strong>surowe dane sensoryczne</strong>, pozwalają opracować bodziec, który już przestał działać, i mogą zostać przerwane nowym bodźcem (<strong>maskowanie</strong>). <span class="src">sl. 20</span></p></figure>
+<h3>Pamięć krótkotrwała</h3>
+<ul>
+<li><strong>Porcjowanie</strong> (<em>chunking</em>; Miller, 1956): pojemność STM zależy od liczby <strong>porcji</strong>, a nie elementów. Porcja to zbiór elementów silnie powiązanych ze sobą i słabo z innymi; porcje opierają się na <strong>wiedzy z LTM</strong> (najpierw znamy litery, potem porcjujemy je w słowa). Pojemność: <strong>7 ± 2 porcje</strong>; czas przechowywania bez powtórek ok. <strong>18–30 s</strong>. <span class="src">sl. 22</span></li>
+<li><strong>Format kodowania</strong> z dowodami: <strong>akustyczny</strong> (efekt podobieństwa akustycznego), <strong>wzrokowo-przestrzenny</strong> (wyobrażenia, rotacje mentalne), <strong>semantyczny</strong> (mylenie świeżo zapamiętanych słów z synonimami; „filiżanka” = „naczynie do picia kawy”). <span class="src">sl. 23–24</span></li>
+<li>Zapamiętywanie przez <strong>wewnętrzne powtórki</strong>; zapominanie przez <strong>zanikanie</strong> śladu z czasem i <strong>interferencję</strong>; wydobywanie: przeszukiwanie <strong>seryjne i wyczerpujące</strong>. <span class="src">sl. 25</span></li>
+</ul>
+<h3>Pamięć robocza (Baddeley i Hitch)</h3>
+<p><strong>Pamięć robocza (operacyjna, WM)</strong> – nowsze ujęcie STM: nie tylko <strong>chwilowe przechowywanie</strong> (zapamiętaj numer telefonu), ale też <strong>bieżące przetwarzanie</strong> (zamień w pamięci dwie ostatnie cyfry) i <strong>integrowanie</strong> informacji bieżących z LTM. <span class="src">sl. 26</span></p>
+<figure class="sch"><figcaption>Model pamięci roboczej Baddeleya</figcaption>
+<div class="sch-root hi"><b>Centralny system wykonawczy</b><span>procesy uwagowe: kieruje podsystemami</span></div>
+<ul class="sch-cols"><li><b>Pętla fonologiczna</b><ul><li>pętla artykulacyjna (powtarzanie)</li><li>magazyn fonologiczny</li></ul></li><li><b>Bufor epizodyczny</b><ul><li>łączy informacje w epizody</li><li>kontakt z pamięcią epizodyczną</li></ul></li><li><b>Notes wzrokowo-przestrzenny</b><ul><li>wewnętrzny system piszący</li><li>podręczny magazyn wzrokowy</li></ul></li></ul>
+<p class="sch-note">Podsystemy współpracują z <strong>pamięcią długotrwałą</strong> (język, pamięć epizodyczna, znaczenia informacji wzrokowych). <span class="src">sl. 27, 31–32</span></p></figure>
+<ul>
+<li>Neuropsychologia pętli fonologicznej: uszkodzenie <strong>pętli artykulacyjnej</strong> (okolica <strong>Broki</strong>) – zaburzenia artykulacji przy zachowanym rozumieniu i przechowywaniu; uszkodzenie <strong>magazynu fonologicznego</strong> (okolica <strong>Wernickego</strong>) – zaburzenia przechowywania informacji werbalnej przy zachowanym powtarzaniu. <span class="src">sl. 28</span></li>
+<li>Notes wzrokowo-przestrzenny: <strong>wewnętrzny system piszący</strong> łączy się z drogą grzbietową, <strong>magazyn wzrokowy</strong> z drogą brzuszną. <span class="src">sl. 32</span></li>
+<li><strong>Efekt długości słowa</strong> (Baddeley, 1975): pojemność werbalnej WM zależy od <strong>czasu wymawiania</strong> (ok. <strong>2 s</strong>), nie od liczby sylab; słowa wymawiane krócej mieszczą się w większej liczbie. <span class="src">sl. 29</span></li>
+</ul>
+<div class="key"><strong>Miller (7 ± 2 porcje) czy Baddeley (ok. 2 s)? Obaj mają rację.</strong> Pojemność zależy od <strong>liczby porcji</strong> i <strong>liczby sylab</strong> w porcjach: im większe porcje, tym mniej z nich zmieścimy w ok. 2 sekundach. <span class="src">sl. 30</span></div>
+<div class="st-check"><button data-check="poznawcza/fiszki:c4b709d7,poznawcza/fiszki:f5087435,poznawcza/fiszki:6cbcc1ec,poznawcza/fiszki:3391b625,poznawcza/fiszki:ee89d24b,poznawcza/fiszki:9d0552df,poznawcza/fiszki:1a48cd60,poznawcza/fiszki:2a31ced5,poznawcza/fiszki:55de470c,poznawcza/fiszki:219895a5,poznawcza/fiszki:4a253571" data-title="Ze slajdów wykładu: pamięć sensoryczna i krótkotrwała" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>11 pytań</span></span></button></div></section>
 <section class="chapter" id="kto-4">
 <div class="chapter-head"><span class="num"></span><h2>Kto jest kim — wykład 4</h2></div>
 <div class="cards">
@@ -1219,7 +1356,7 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
 <div class="card"><h4>Watkins; Watkins i Tulving</h4><span class="yr">1974; 1975</span><p>Rozpoznanie bywa trudniejsze od przypominania.</p></div>
 <div class="card"><h4>Craik i Lockhart</h4><span class="yr">1972</span><p>Powtórki podtrzymujące i elaboracyjne; poziomy przetwarzania.</p></div>
 </div>
-</section>
+<div class="st-check"><button data-check="poznawcza/fiszki:848a504b" data-title="Kto jest kim — wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź tę sekcję</b><span>1 pytanie</span></span></button></div></section>
 <section class="chapter" id="pytania-4">
 <div class="chapter-head"><span class="num">?</span><h2>Pytania kontrolne — rozdziały 4 i 5</h2></div>
 <p>Pytania z końca obu rozdziałów (s. 175 i 221) i dodatkowe z sylabusa.</p>
@@ -1232,7 +1369,7 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
   Ćwiczenia: Sternberg, R. J. (2001). <cite>Psychologia poznawcza</cite>. Warszawa: WSiP, s. 23–31; Nęcka, E., Orzechowski, J., Szymura, B., Wichary, S. <cite>Psychologia poznawcza</cite>. Warszawa: PWN 2020, s. 33–39, 168–174, 222–246, 258–279 (+ starsze wydanie, s. 266–276).
   Wykresy i schematy to uproszczone rysunki odtworzone na podstawie rycin podręczników — wartości przybliżone. Fragmenty spoza lektur są oznaczone.
 </footer>
-<div class="st-check unit"><button data-check="poznawcza/fiszki:a49393ef,poznawcza/fiszki:0da753be,poznawcza/fiszki:49410c0f,poznawcza/fiszki:848a504b,poznawcza/fiszki:bd2757e0,poznawcza/fiszki:d9d56e2a,poznawcza/fiszki:c4279a6e,poznawcza/fiszki:43a4d34e,poznawcza/fiszki:2a31de9f,poznawcza/fiszki:2431604b,poznawcza/fiszki:d5d658ab,poznawcza/fiszki:24dea611,poznawcza/fiszki:14b22d48,poznawcza/fiszki:86f1fb18,poznawcza/fiszki:1113a02d,poznawcza/fiszki:77e33b9b,poznawcza/fiszki:5c241179" data-title="Wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>17 pytań</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-3.html"><span>Poprzednia</span><b>Wykład 3</b><i>Natura i funkcje uwagi</i></a><a class="next" href="cwiczenia-1.html"><span>Następna</span><b>Ćwiczenia 1</b><i>Psychologia poznawcza w relacji do innych dziedzin</i></a></nav></main>
+<div class="st-check unit"><button data-check="poznawcza/fiszki:a49393ef,poznawcza/fiszki:0da753be,poznawcza/fiszki:49410c0f,poznawcza/fiszki:848a504b,poznawcza/fiszki:bd2757e0,poznawcza/fiszki:d9d56e2a,poznawcza/fiszki:c4279a6e,poznawcza/fiszki:43a4d34e,poznawcza/fiszki:2a31de9f,poznawcza/fiszki:2431604b,poznawcza/fiszki:d5d658ab,poznawcza/fiszki:24dea611,poznawcza/fiszki:14b22d48,poznawcza/fiszki:86f1fb18,poznawcza/fiszki:1113a02d,poznawcza/fiszki:77e33b9b,poznawcza/fiszki:5c241179,poznawcza/fiszki:c4b709d7,poznawcza/fiszki:f5087435,poznawcza/fiszki:6cbcc1ec,poznawcza/fiszki:3391b625,poznawcza/fiszki:ee89d24b,poznawcza/fiszki:9d0552df,poznawcza/fiszki:1a48cd60,poznawcza/fiszki:2a31ced5,poznawcza/fiszki:646bc3a9,poznawcza/fiszki:55de470c,poznawcza/fiszki:219895a5,poznawcza/fiszki:4a253571" data-title="Wykład 4" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="14" x="3" y="7"></rect><path d="M7 4h12a2 2 0 0 1 2 2v11"></path></svg><span class="st-check-tx"><b>Sprawdź cały wykład</b><span>29 pytań</span></span></button></div><nav aria-label="Części przedmiotu" class="st-pager"><a class="prev" href="wyklad-3.html"><span>Poprzednia</span><b>Wykład 3</b><i>Natura i funkcje uwagi</i></a><a class="next" href="cwiczenia-1.html"><span>Następna</span><b>Ćwiczenia 1</b><i>Psychologia poznawcza w relacji do innych dziedzin</i></a></nav></main>
 </div>
 <script>
 (function(){
@@ -1287,7 +1424,7 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
   if(h)reveal(h); else setTab(load(KEY_TAB)==='cw'?'cw':'wyk');
 })();
 </script>
-<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=56152b60"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Poznawcza" data-home="../" data-title="Wykład 4" src="../assets/reader.js?v=2edc1715"></script><script src="../assets/sesja.js?v=90983177"></script>
+<script src="../assets/srs.js?v=304c63b2"></script><script src="../assets/flashcards.js?v=76b8deb4"></script><script src="cards.js?v=9732bf1f"></script><script src="../assets/check.js?v=23cf51fb"></script><script data-back="./" data-back-label="Poznawcza" data-home="../" data-title="Wykład 4" src="../assets/reader.js?v=2edc1715"></script><script src="../assets/sesja.js?v=90983177"></script>
 <script src="../assets/czytanie.js?v=cc607b65"></script>
 </body>
 </html>

@@ -188,6 +188,89 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
   .page{display:block;padding:0}
   details.block,details.q{break-inside:avoid}
 }
+
+/* =========================================================
+   Schematy w notatkach: <figure class="sch"> … <figcaption>
+   flow (łańcuch), tree (korzeń + gałęzie), cols (karty), matrix (2×2),
+   balance (szala), layers (warstwy/piramida), scale (kontinuum)
+   ========================================================= */
+.sch{margin:0 0 1.6em;padding:14px 14px 16px;border-radius:12px;background:var(--st-surface);overflow:hidden;container-type:inline-size}
+.sch figcaption{font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--tint);margin:0 0 12px}
+.sch ul,.sch ol{list-style:none;margin:0;padding:0}
+.sch li{margin:0}
+.sch-box,.sch-flow>li,.sch-cols>li,.sch-layers>li,.sch-root{
+  background:var(--card);border-radius:10px;padding:8px 11px;box-shadow:0 0 0 .5px var(--line),0 1px 2px rgba(43,33,24,.05);
+  font-size:.875rem;line-height:1.4;color:var(--ink)}
+.sch b{display:block;font-weight:700;color:var(--ink);margin-bottom:1px}
+.sch strong{font-weight:700;color:var(--ink)}
+.sch li>span,.sch .sub{display:block;color:var(--ink-soft);font-size:.8125rem}
+.sch .hi,.sch li.hi{background:var(--tint);color:#fff;box-shadow:none}
+.sch .hi b,.sch .hi span,.sch .hi strong{color:#fff}
+.sch .soft{background:var(--tint-soft);box-shadow:none}
+figure.sch p.sch-note{margin:12px 0 0;font-size:.875rem;line-height:1.5;color:var(--ink-soft);text-align:left}
+/* łańcuch: pionowo na telefonie, poziomo od 600px */
+.sch-flow{display:flex;flex-direction:column;gap:20px}
+.sch-flow>li{position:relative;flex:1 1 0;min-width:0}
+.sch-flow>li+li::before{content:"↓";position:absolute;left:50%;top:-19px;transform:translateX(-50%);color:var(--tint);font-weight:700;font-size:.9rem;line-height:1}
+@container (min-width:520px){
+  .sch-flow{flex-direction:row;gap:22px;align-items:stretch}
+  .sch-flow>li+li::before{content:"→";left:-17px;top:50%;transform:translateY(-50%)}
+  .sch-flow.v{flex-direction:column;gap:20px}
+  .sch-flow.v>li+li::before{content:"↓";left:50%;top:-19px;transform:translateX(-50%)}
+}
+.sch-flow.loop>li:last-child::after{content:"↺ wraca do początku";display:block;margin-top:4px;font-size:.75rem;color:var(--tint)}
+.sch-flow.loop>li.hi:last-child::after{color:#fff;opacity:.85}
+/* drzewo: korzeń + gałęzie */
+.sch-root{text-align:center;max-width:26em;margin:0 auto 18px;position:relative}
+.sch-root::after{content:"";position:absolute;left:50%;bottom:-14px;width:1.5px;height:10px;background:var(--tint)}
+.sch-cols{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,118px),1fr))}
+.sch-cols>li{border-top:3px solid var(--tint)}
+.sch-cols>li ul{margin-top:4px}
+.sch-cols>li ul li{font-size:.8125rem;color:var(--ink-soft);padding-left:.9em;position:relative}
+.sch-cols>li ul li::before{content:"·";position:absolute;left:.2em;color:var(--tint);font-weight:700}
+.sch-cols.c2{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+/* macierz 2×2 z osiami */
+.sch-matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:.8125rem;align-items:stretch}
+.sch-matrix>div{border-radius:8px;padding:8px;line-height:1.35}
+.sch-matrix .ax{color:var(--ink-soft);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+.sch-matrix .c{background:var(--card);box-shadow:0 0 0 .5px var(--line);text-align:center}
+.sch-matrix .c b{font-size:.875rem}
+.sch-matrix .c.hi{background:var(--tint);box-shadow:none}
+.sch-matrix .c.hi b,.sch-matrix .c.hi .sub{color:#fff}
+/* szala: dwie strony + wynik */
+.sch-balance{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:start}
+.sch-balance>.mid{align-self:center;font-size:1.6rem;color:var(--tint);text-align:center;line-height:1}
+.sch-balance>div:not(.mid){background:var(--card);border-radius:10px;padding:8px 10px;box-shadow:0 0 0 .5px var(--line);font-size:.8125rem}
+.sch-balance .neg{border-top:3px solid hsl(8,55%,55%)}
+.sch-balance .pos{border-top:3px solid hsl(150,35%,40%)}
+.sch-balance ul li{padding-left:.9em;position:relative;color:var(--ink-soft)}
+.sch-balance ul li::before{content:"·";position:absolute;left:.2em;font-weight:700}
+
+@container (max-width:340px){.sch-balance{grid-template-columns:1fr}.sch-balance>.mid{transform:rotate(90deg)}}
+/* warstwy / piramida: każda następna węższa */
+.sch-layers{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sch-layers>li{width:100%;text-align:center}
+.sch-layers>li:nth-child(2){width:88%}.sch-layers>li:nth-child(3){width:76%}.sch-layers>li:nth-child(4){width:64%}.sch-layers>li:nth-child(5){width:52%}
+.sch-layers.flat>li{width:100%!important;text-align:left}
+/* kontinuum */
+.sch-scale{position:relative;padding-top:4px}
+.sch-scale .bar{height:10px;border-radius:5px;background:linear-gradient(90deg,hsl(8,55%,62%),hsl(45,70%,62%),hsl(150,35%,48%))}
+.sch-scale .ends{display:flex;justify-content:space-between;gap:12px;margin-top:6px;font-size:.8125rem;font-weight:700}
+.sch-scale .ends span:last-child{text-align:right}
+.sch-scale .sub{margin-top:4px}
+/* znacznik części w długiej notatce */
+.sch-part{margin:3em 0 -1.2em;padding:6px 0 0;border-top:2px solid var(--tint);font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--tint)}
+
+.sch{--st-surface:var(--parchment);--card:#fff;--tint:var(--accent-deep);--tint-soft:var(--accent-tint);--line:var(--rule);--ink-mute:var(--ink-soft)}
+.chapter .sch li,.chapter .sch .sch-cols>li ul li,.chapter .sch .sch-matrix,.chapter .sch li>span,.chapter .sch .sub{font-size:13px;line-height:1.4;margin:0}
+.chapter .sch b,.chapter .sch .sch-root{font-size:14px;line-height:1.35}
+.chapter .sch figcaption{font-size:12px}
+body .chapter .sch li,body .chapter .sch p.sch-note{font-size:13px!important}
+body .chapter figure.sch p.sch-note{font-size:14px!important}
+.chapter .sch .sch-cols>li ul{margin:4px 0 0;padding:0}
+.chapter figure.sch p.sch-note{font-size:14px;line-height:1.5;margin:12px 0 0}
+.sch figcaption{font-family:inherit}
+.sch b{font-family:inherit}
 </style>
 <meta content="noindex, nofollow" name="robots"/><link href="../assets/icon-180.png" rel="apple-touch-icon"/><link href="../assets/overlay.css" rel="stylesheet"/><style>:root{--st-h:209;--st-s:33%;--st-l:56%}</style></head>
 <body>
@@ -2577,6 +2660,111 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
 </ul>
 </section>
 <!-- ============ KTO JEST KIM ============ -->
+<section class="chapter" id="wyk-3">
+<div class="chapter-head"><span class="num">W</span><h2>Ze slajdów wykładu: procesy uwagi</h2></div>
+<p>Wykład dr Anny Kamzy, blok 2: pojęcie i funkcje uwagi, modele uwagi selektywnej, uwaga a świadomość (priming podprogowy), uwaga podzielna i multitasking, procesy automatyczne i kontrolowane, hamowanie, paradoks tłumienia myśli. <span class="src">slajdy 1–52</span></p>
+<figure class="sch"><figcaption>Mapa bloku: uwaga</figcaption>
+<div class="sch-root hi"><b>Uwaga</b><span>system selekcji informacji, który chroni przed przeładowaniem systemu poznawczego</span></div>
+<ul class="sch-cols"><li><b>Selekcja</b><span>Broadbent, Treisman, Lavie</span></li><li><b>Świadomość</b><span>priming podprogowy</span></li><li><b>Podzielność</b><span>Kahneman, Wickens, multitasking</span></li><li><b>Kontrola</b><span>automatyczne vs kontrolowane, hamowanie, Stroop, Wegner</span></li></ul>
+</figure>
+
+<h3>Czym jest uwaga i jakie ma funkcje</h3>
+<p><strong>Uwaga</strong> – system odpowiedzialny za <strong>selekcję informacji</strong> i zapobieganie negatywnym skutkom <strong>przeładowania</strong> systemu poznawczego nadmiarem danych. Jej przedmiotem są bodźce <strong>zewnętrzne</strong> i <strong>wewnętrzne</strong>. <span class="src">sl. 4</span></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Funkcja</th><th>Na czym polega</th></tr></thead>
+<tbody>
+<tr><td>Selektywność</td><td style="font-weight:400">selekcjonowanie, redukcja nadmiaru bodźców, kontrola nadmiaru możliwych reakcji</td></tr>
+<tr><td>Przeszukiwanie pola percepcyjnego</td><td style="font-weight:400">ukierunkowanie procesów poznawczych; zakres ogniskowania: uwaga <strong>intensywna</strong> i <strong>ekstensywna</strong></td></tr>
+<tr><td>Przerzutność i podzielność</td><td style="font-weight:400">ile zasobów poznawczych poświęcamy na różne zadania</td></tr>
+<tr><td>Czujność</td><td style="font-weight:400">podtrzymywanie zaangażowania poznawczego podczas wykonywania czynności</td></tr>
+</tbody></table></div>
+<p class="src">sl. 5</p>
+
+<h3>Patrzeć to nie widzieć</h3>
+<ul>
+<li><strong>Ślepota z nieuwagi</strong> (<em>inattentional blindness</em>; Simons, 2010 – „Monkey Business Illusion”): niedostrzeganie obiektów lub zdarzeń w polu widzenia, na które <strong>nie zwrócono uwagi</strong> – zwykle takich, których się nie spodziewamy. Jest <strong>mniejsza</strong>, gdy bodziec jest zagrażający albo zgodny z osobistymi celami; <strong>znika</strong>, jeśli osoba wie, że bodziec może się pojawić. Pokrewne zjawisko: niezauważanie zmiany rozmówcy (Simons i Levin, 1998). <span class="src">sl. 6–7</span></li>
+<li><strong>Mrugnięcie uwagowe</strong> (<em>attentional blink</em>; Shapiro, 1997): przejściowe pogorszenie wykrywania bodźca, który pojawia się <strong>krótko po innym ważnym bodźcu</strong> w szybkim strumieniu bodźców wzrokowych; wyjaśnienie: <strong>refrakcja neuronalna</strong>, <strong>miejsce sinawe</strong> (<em>locus coeruleus</em>). <span class="src">sl. 8</span></li>
+</ul>
+<div class="key"><strong>Patrzeć ≠ widzieć</strong> (percepcja bez uwagi vs z uwagą): do efektywnej percepcji potrzebna jest uwaga, a zaangażowanie jej w jedno zadanie może sprawić, że przegapimy nawet wyraźne zdarzenia. <span class="src">sl. 9</span></div>
+
+<h3>Modele uwagi selektywnej: Broadbent i Treisman</h3>
+<p>Wspólne założenie: <strong>ograniczona przepustowość</strong> przetwarzania informacji – metafora <strong>„szyjki od butelki”</strong> (<em>bottleneck</em>). Badania prowadzono w paradygmacie <strong>słuchania dychotycznego</strong> (Cherry, 1953): do każdego ucha inny komunikat, jeden trzeba powtarzać (<em>shadowing</em>). Z komunikatu ignorowanego ludzie pamiętają tylko cechy fizyczne (np. „głos męski, niski”), ale nie treść. <span class="src">sl. 11–14</span></p>
+<figure class="sch"><figcaption>Gdzie działa selekcja</figcaption>
+<div class="sch-matrix" style="grid-template-columns:auto 1fr 1fr">
+<div></div><div class="ax">Broadbent (1958): filtr</div><div class="ax">Treisman (1964): osłabiacz</div>
+<div class="ax">Kanał ignorowany</div><div class="c"><b>zablokowany</b><span class="sub">filtr wybiera kanał</span></div><div class="c hi"><b>osłabiony</b><span class="sub">przechodzi dalej słabszy</span></div>
+<div class="ax">Analiza</div><div class="c"><b>tylko cechy fizyczne</b><span class="sub">bez znaczenia</span></div><div class="c"><b>kilka etapów selekcji</b><span class="sub">może dojść do znaczenia</span></div>
+<div class="ax">Słabość / dowód</div><div class="c"><b>mechaniczna, „bezrefleksyjna”</b></div><div class="c"><b>efekt cocktail party</b><span class="sub">własne imię, „Mysz zjadła ser”</span></div>
+</div></figure>
+<ul>
+<li><strong>Broadbent</strong>: informacje nieobjęte uwagą są analizowane wstępnie <strong>wyłącznie ze względu na właściwości fizyczne</strong>; selekcja wynika z ograniczonej przepustowości kanału na <strong>wczesnych</strong> etapach. Wada: mechaniczne działanie uwagi. <span class="src">sl. 15</span></li>
+<li><strong>Treisman – hipoteza osłabiacza</strong>: informacje ignorowane <strong>nie są całkowicie blokowane</strong>, lecz <strong>osłabiane</strong>; w słabszej postaci przechodzą dalej, gdzie mogą zostać objęte uwagą i uświadomione. Wniosek: jest <strong>kilka etapów selekcji</strong>. Dowody: <strong>efekt cocktail party</strong> (przeniesienie uwagi na kanał ignorowany po usłyszeniu własnego imienia: według slajdu w 51% prób, Moray, 1959) oraz łączenie treści z obu uszu w sensowną całość („Mysz zjadła ser. Dwa-cztery-sześć”). <span class="src">sl. 17–19</span></li>
+</ul>
+<figure class="sch"><figcaption>Etapy selekcji według Treisman</figcaption>
+<ol class="sch-flow v"><li><b>1. Analiza właściwości sensorycznych</b><span>automatyczna, nieświadoma; przyciągają cechy priorytetowe: ruch, kolor (bodźce dystynktywne)</span></li><li><b>2. Identyfikacja</b><span>zauważenie: „co to za hałas?”</span></li><li><b>3. Nadanie znaczenia</b><span>zależy od konsekwencji, ważności, kontekstu, nastawienia i primingu</span></li><li class="hi"><b>Dalsze operacje poznawcze</b><span>bodźce ignorowane mogą tu dotrzeć w wersji osłabionej</span></li></ol>
+</figure>
+<ul>
+<li><strong>Próg dostępu na etapie 1</strong>: uwagę automatycznie przyciągają <strong>cechy priorytetowe</strong> – <strong>ruch</strong> (źródło ewolucyjne) i <strong>kolor</strong> (jaskrawość, odmienność); to wczesne, oddolne <strong>procesy przeduwagowe</strong>, więc takie bodźce mogą działać jako <strong>dystraktory</strong>. <span class="src">sl. 21</span></li>
+<li><strong>Dalsze progi</strong> zależą od: <strong>konsekwencji</strong> bodźca dla jednostki (zagrożenie, dobrostan), jego <strong>ważności i powszechności</strong>, <strong>kontekstu</strong> (zgodność z oczekiwaniami), ukierunkowania przez <strong>nastawienie percepcyjne, schematy</strong> i <strong>priming</strong>. Przykład ze szczekającym psem: ta sama analiza sensoryczna, ale różne znaczenie – dla jednej osoby „to tylko pies sąsiada”, dla innej, pogryzionej miesiąc temu, sygnał niebezpieczeństwa uruchamiający dalsze operacje. <span class="src">sl. 22–23</span></li>
+</ul>
+
+<h3>Uwaga a świadomość: priming podprogowy</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Proces świadomy (Velmans)</th><th>Proces nieświadomy (Baars)</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">zdajemy sobie sprawę z jego przebiegu</td><td style="font-weight:400">brak subiektywnego doświadczenia</td></tr>
+<tr><td style="font-weight:400">mamy wiedzę o jego rezultatach</td><td style="font-weight:400">nie można go zrelacjonować</td></tr>
+<tr><td style="font-weight:400">świadomość wpływa na jego przebieg</td><td style="font-weight:400">ujawniają się jednak obiektywne skutki jego działania</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Priming (torowanie)</strong>: wpływ bodźca wcześniejszego (<strong>prymy</strong>) na przetwarzanie bodźca późniejszego. <strong>Nadprogowy</strong> – pryma przetwarzana świadomie; <strong>podprogowy</strong> – pryma nie jest świadomie rozpoznawana: ekspozycja prymy (np. 17, 33 lub 50 ms) → <strong>maska</strong> → bodziec docelowy; efekt mierzy się czasem reakcji i poprawnością. <span class="src">sl. 26</span></li>
+<li><strong>Dehaene i in. (1998)</strong>: zamaskowana cyfra przyspieszała reakcję na widoczną cyfrę, gdy obie wymagały tej samej odpowiedzi (obie większe od 5), średnio o <strong>24 ms</strong>; zamaskowana cyfra aktywowała <strong>korę ruchową</strong>. Mózg może nieświadomie przetworzyć znaczenie symbolu i przygotować ruch. <span class="src">sl. 27</span></li>
+<li><strong>Nava i Turati (2020)</strong>: u <strong>trzymiesięcznych niemowląt</strong> podprogowa twarz (zwłaszcza zagniewana) przed neutralnym obiektem zmieniała reakcję fizjologiczną (przewodnictwo skóry) na ten obiekt, także później. <span class="src">sl. 28</span></li>
+<li><strong>Del Cul i in. (2007)</strong>: przy przetwarzaniu podprogowym aktywność ogranicza się do <strong>kory potylicznej</strong> (wczesne obszary wzrokowe); świadome przetwarzanie obejmuje też wyższe obszary i <strong>korę przedczołową</strong>. <span class="src">sl. 29</span></li>
+</ul>
+<div class="key">Informacje nieobjęte świadomą uwagą <strong>mogą wpływać</strong> na emocje i zachowanie, jeśli bodźce podprogowe są <strong>stosunkowo proste</strong>, a zadanie <strong>mało wymagające</strong> (niska zajętość systemu poznawczego). <span class="src">sl. 30</span></div>
+<figure class="sch"><figcaption>Teoria obciążenia percepcyjnego (Lavie, 1995; 2000)</figcaption>
+<div class="sch-matrix" style="grid-template-columns:auto 1fr 1fr">
+<div></div><div class="ax">Duże obciążenie</div><div class="ax">Małe obciążenie</div>
+<div class="ax">Przykład</div><div class="c"><b>dużo bodźców, trudne zadanie</b></div><div class="c"><b>łatwe zadanie</b><span class="sub">proste rachunki</span></div>
+<div class="ax">Selekcja</div><div class="c hi"><b>wczesna</b><span class="sub">szybka blokada dystraktorów</span></div><div class="c hi"><b>późna</b><span class="sub">przechodzi więcej bodźców</span></div>
+<div class="ax">Priming</div><div class="c"><b>słaby albo brak</b></div><div class="c"><b>silniejszy</b><span class="sub">prymy też przechodzą</span></div>
+</div><p class="sch-note">Lavie godzi spór o wczesną i późną selekcję: <strong>moment selekcji zależy od obciążenia</strong>. <span class="src">sl. 31–32</span></p></figure>
+
+<h3>Podzielność uwagi i multitasking</h3>
+<p><strong>Podzielność uwagi</strong> – możliwość koncentracji na dwóch lub więcej źródłach informacji i kontroli czynności jednoczesnych. <span class="src">sl. 34</span></p>
+<figure class="sch"><figcaption>Czy uwaga jest jednorodna?</figcaption>
+<ul class="sch-cols c2"><li><b>Model holistyczny (Kahneman)</b><span>jedna, jednorodna pula zasobów; przy czynnościach jednoczesnych <strong>interferencja zasobowa</strong></span></li><li><b>Model wielozasobowy (Wickens)</b><span>osobne kanały (wzrokowy, słuchowy, dotykowy) z własnymi filtrami; ten sam kanał → <strong>interferencja strukturalna</strong>, różne kanały → można nadzorować oba</span></li></ul>
+</figure>
+<ul>
+<li><strong>Multitasking</strong>: kilka czynności jednocześnie (dzielenie uwagi) albo naprzemiennie (przerzucanie uwagi); „pokolenie multitaskingu” (Walls), „ciągła częściowa uwaga” (Stone). <span class="src">sl. 38</span></li>
+<li>Koszty (Carrier i in.; Otto i in.; Bergen i in.; Madore i Wagner): <strong>stres i kortyzol</strong> → wyczerpanie i wypalenie; gorsze <strong>zapamiętywanie</strong>; osłabienie <strong>przedniego zakrętu obręczy</strong>; ok. 1/3 dnia na czynności bez rezultatu; strata do 50% czasu przy przełączaniu; powrót do zadania nawet do <strong>25 min</strong>; niższa kreatywność i empatia; o 50% więcej błędów. <strong>Trening nie usuwa</strong> kosztów, jeśli zadania wymagają uwagi. <span class="src">sl. 39–40</span></li>
+<li>Multitasking działa bez większych kosztów, gdy czynności są <strong>proste</strong>, angażują <strong>różne kanały</strong> albo są <strong>zautomatyzowane</strong>; problem pojawia się przy łączeniu <strong>czynności kontrolowanych</strong>. <span class="src">sl. 41</span></li>
+</ul>
+
+<h3>Procesy automatyczne i kontrolowane</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Automatyczne</th><th>Kontrolowane (Posner i Snyder, 1975)</th></tr></thead>
+<tbody>
+<tr><td style="font-weight:400">nie angażują świadomości</td><td style="font-weight:400">angażują świadomość</td></tr>
+<tr><td style="font-weight:400">małe zapotrzebowanie na zasoby uwagi</td><td style="font-weight:400">duże zapotrzebowanie</td></tr>
+<tr><td style="font-weight:400">równoległe, szybkie</td><td style="font-weight:400">szeregowe, wolne</td></tr>
+<tr><td style="font-weight:400">proste procesy; zadania znane i łatwe</td><td style="font-weight:400">złożone procesy; zadania nowe i trudne</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Automatyzmy pierwotne</strong>: wrodzone, bezwysiłkowe, uruchamiane <strong>nieintencjonalnie</strong> (przetwarzanie podprogowe, odruchy). <strong>Wtórne</strong>: dawniej kontrolowane, zautomatyzowane przez <strong>wprawę</strong>; poza kontrolą świadomości, ale uruchamiane <strong>intencjonalnie</strong> (rower, pisanie na klawiaturze, PIN, chodzenie). <span class="src">sl. 43</span></li>
+<li>Automatyczne i kontrolowane nie są przeciwieństwem: to <strong>kontinuum</strong> od znikomego do znacznego obciążenia uwagi (np. jazda samochodem u kierowcy wprawnego i kursanta; chodzenie u dorosłego, dziecka i osoby w rehabilitacji). <span class="src">sl. 44–46</span></li>
+</ul>
+<figure class="sch"><figcaption>Hamowanie: kontrola nad automatyzmami</figcaption>
+<ol class="sch-flow v"><li><b>Automatyzm wtórny</b><span>np. czytanie słowa</span></li><li><b>Hamowanie (inhibicja)</b><span>powstrzymanie automatycznej reakcji niepasującej do zadania; dążenie do celu mimo dystraktorów</span></li><li class="hi"><b>Zadanie Stroopa</b><span>wskaźnik interferencji = RT niespójne − RT spójne; im wyższy, tym <strong>gorsze</strong> hamowanie</span></li></ol>
+<p class="sch-note">Hamowanie to jedna z <strong>trzech funkcji wykonawczych</strong> (obok giętkości poznawczej i pamięci roboczej); podłoże: <strong>płaty czołowe</strong>. <span class="src">sl. 47–49</span></p></figure>
+<ul>
+<li><strong>Kultura a hamowanie</strong>: <strong>kontrola proaktywna</strong> (aktywne utrzymywanie celu zadania, by sprawnie zareagować) – częstsza u osób z <strong>Azji Wschodniej</strong> (silniejsza aktywacja lewego dolnego zakrętu czołowego; zgodna z wartością harmonii społecznej); <strong>kontrola reaktywna</strong> (natychmiastowe hamowanie po pojawieniu się bodźca) – częstsza na <strong>Zachodzie</strong> (wartość niezależności). <span class="src">sl. 50</span></li>
+</ul>
+<figure class="sch"><figcaption>Efekt rykoszetu: paradoks tłumienia myśli (Wegner)</figcaption>
+<ul class="sch-cols c2"><li><b>Proces wykonawczy</b><span>utrzymuje w świadomości treści zgodne z celem (myśli zastępcze); <strong>wysiłkowy</strong>, wymaga zasobów uwagi</span></li><li><b>Proces monitorujący</b><span>sprawdza, czy cel jest osiągnięty („czy nie myślę o białym misiu?”); <strong>automatyczny</strong>, bezwysiłkowy</span></li></ul>
+<p class="sch-note">Problem: monitorowanie <strong>ciągle aktywuje</strong> niechcianą myśl, więc gdy zabraknie zasobów na proces wykonawczy, myśl wraca silniej. Ratunek: <strong>autodystrakcja</strong> (zajęcie uwagi czymś innym). <span class="src">sl. 51</span></p></figure>
+</section>
 <section class="chapter" id="kto-3">
 <div class="chapter-head"><span class="num"></span><h2>Kto jest kim — rozdział 3</h2></div>
 <div class="cards">
@@ -3684,6 +3872,64 @@ mark{background:linear-gradient(transparent 50%,hsl(46 92% 74% / .75) 50%);color
 </section>
 
 <!-- ============ KTO JEST KIM ============ -->
+<section class="chapter" id="wyk-4">
+<div class="chapter-head"><span class="num">W</span><h2>Ze slajdów wykładu: pamięć sensoryczna i krótkotrwała</h2></div>
+<p>Wykład dr Anny Kamzy, blok 3a: magazynowy model pamięci, pamięć ikoniczna i echoiczna, pamięć krótkotrwała, porcjowanie, model pamięci roboczej Baddeleya. <span class="src">slajdy 1–34</span></p>
+<figure class="sch"><figcaption>Model magazynowy (Atkinson i Shiffrin, 1968)</figcaption>
+<ol class="sch-flow"><li><b>Pamięć sensoryczna</b><span>ultrakrótka: od kilkudziesięciu do kilkuset ms</span></li><li><b>Pamięć krótkotrwała (STM)</b><span>bez powtórek zanika po 15–30 s</span></li><li class="hi"><b>Pamięć długotrwała (LTM)</b><span>przechowywanie bardzo długie</span></li></ol>
+<p class="sch-note">Między STM a LTM działają <strong>powtórki</strong>; z każdego magazynu może wyjść <strong>reakcja</strong>. <span class="src">sl. 3, 21</span></p></figure>
+
+<h3>Pamięć ikoniczna i eksperyment Sperlinga</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Wariant (Sperling, 1960)</th><th>Procedura</th><th>Co pokazuje</th></tr></thead>
+<tbody>
+<tr><td>A. Odtwarzanie pełne</td><td style="font-weight:400">punkt fiksacji → plansza z literami (50 ms) → pusta plansza → wymienianie wszystkich liter</td><td style="font-weight:400">badani podają tylko kilka liter</td></tr>
+<tr><td>B. Odtwarzanie częściowe</td><td style="font-weight:400">po zniknięciu planszy <strong>sygnał dźwiękowy</strong> (po 0–1 s) wskazuje, który rząd podać</td><td style="font-weight:400">dostępnych jest więcej liter niż przy odtwarzaniu pełnym; im później sygnał, tym gorzej → ślad szybko zanika</td></tr>
+<tr><td>C. Maskowanie wsteczne</td><td style="font-weight:400">po planszy pojawia się <strong>maska</strong></td><td style="font-weight:400">nowy bodziec zastępuje ślad w pamięci ikonicznej</td></tr>
+</tbody></table></div>
+<p class="src">sl. 6–10</p>
+<ul>
+<li>Charakterystyka pamięci ikonicznej: czas przechowywania <strong>maks. ok. 500 ms</strong>; pojemność <strong>do 18 elementów</strong>; kodowanie <strong>szybkie, automatyczne</strong>; zapominanie przez <strong>zatarcie</strong> (np. po zamknięciu oczu) i <strong>maskowanie</strong> (np. przeniesienie wzroku); gdy zaangażuje się uwaga – <strong>transfer do STM</strong>. <span class="src">sl. 11</span></li>
+<li>Zjawiska pochodne: <strong>trwałość wizualna</strong> i jej odmiana – <strong>powidok</strong>. <span class="src">sl. 12–15</span></li>
+<li>Funkcje: wstępne opracowanie bodźca; <strong>integrowanie bodźców w czasie</strong> (film: spójne kolejne bodźce tworzą całość – integracja zamiast maskowania); <strong>ciągłość doświadczenia przy ruchach sakkadowych</strong> (sakkada ok. 30 ms, fiksacja ok. 300 ms; czytanie, orientacja w przestrzeni). <span class="src">sl. 16–17</span></li>
+</ul>
+
+<h3>Pamięć echoiczna</h3>
+<ul>
+<li>Modalność <strong>słuchowa</strong> (mowa, dźwięki); czas przechowywania <strong>2–4 s</strong>; pojemność <strong>mniejsza</strong> niż ikonicznej (ok. 5 jednostek); kodowanie szybkie i automatyczne (bez kontroli); zapominanie przez zatarcie i maskowanie innym dźwiękiem. <span class="src">sl. 18</span></li>
+<li><strong>Trwałość słuchowa</strong>: niezależnie od czasu trwania dźwięku (30 czy 100 ms) jego subiektywna długość to ok. 130 ms.</li>
+<li><strong>Efekt modalności</strong>: przy słuchowej prezentacji listy ostatnie 2–3 elementy odtwarzamy lepiej niż przy wzrokowej.</li>
+<li><strong>Efekt sufiksu werbalnego</strong>: gorsze odtwarzanie ostatnich elementów listy słuchowej, gdy na końcu pojawi się nieistotne słowo (Jagodzińska). <span class="src">sl. 19</span></li>
+</ul>
+<figure class="sch"><figcaption>Ikoniczna a echoiczna</figcaption>
+<div class="sch-matrix" style="grid-template-columns:auto 1fr 1fr">
+<div></div><div class="ax">Ikoniczna</div><div class="ax">Echoiczna</div>
+<div class="ax">Informacje</div><div class="c"><b>wzrokowe</b></div><div class="c"><b>słuchowe</b></div>
+<div class="ax">Czas</div><div class="c"><b>do ok. 0,5 s</b></div><div class="c hi"><b>2–4 s</b></div>
+<div class="ax">Pojemność</div><div class="c hi"><b>do 18 elementów</b></div><div class="c"><b>ok. 5 jednostek</b></div>
+<div class="ax">Reguła</div><div class="c"><b>pojemność &gt; trwałość</b></div><div class="c"><b>pojemność &lt; trwałość</b></div>
+</div><p class="sch-note">Wspólne: przechowują <strong>surowe dane sensoryczne</strong>, pozwalają opracować bodziec, który już przestał działać, i mogą zostać przerwane nowym bodźcem (<strong>maskowanie</strong>). <span class="src">sl. 20</span></p></figure>
+
+<h3>Pamięć krótkotrwała</h3>
+<ul>
+<li><strong>Porcjowanie</strong> (<em>chunking</em>; Miller, 1956): pojemność STM zależy od liczby <strong>porcji</strong>, a nie elementów. Porcja to zbiór elementów silnie powiązanych ze sobą i słabo z innymi; porcje opierają się na <strong>wiedzy z LTM</strong> (najpierw znamy litery, potem porcjujemy je w słowa). Pojemność: <strong>7 ± 2 porcje</strong>; czas przechowywania bez powtórek ok. <strong>18–30 s</strong>. <span class="src">sl. 22</span></li>
+<li><strong>Format kodowania</strong> z dowodami: <strong>akustyczny</strong> (efekt podobieństwa akustycznego), <strong>wzrokowo-przestrzenny</strong> (wyobrażenia, rotacje mentalne), <strong>semantyczny</strong> (mylenie świeżo zapamiętanych słów z synonimami; „filiżanka” = „naczynie do picia kawy”). <span class="src">sl. 23–24</span></li>
+<li>Zapamiętywanie przez <strong>wewnętrzne powtórki</strong>; zapominanie przez <strong>zanikanie</strong> śladu z czasem i <strong>interferencję</strong>; wydobywanie: przeszukiwanie <strong>seryjne i wyczerpujące</strong>. <span class="src">sl. 25</span></li>
+</ul>
+
+<h3>Pamięć robocza (Baddeley i Hitch)</h3>
+<p><strong>Pamięć robocza (operacyjna, WM)</strong> – nowsze ujęcie STM: nie tylko <strong>chwilowe przechowywanie</strong> (zapamiętaj numer telefonu), ale też <strong>bieżące przetwarzanie</strong> (zamień w pamięci dwie ostatnie cyfry) i <strong>integrowanie</strong> informacji bieżących z LTM. <span class="src">sl. 26</span></p>
+<figure class="sch"><figcaption>Model pamięci roboczej Baddeleya</figcaption>
+<div class="sch-root hi"><b>Centralny system wykonawczy</b><span>procesy uwagowe: kieruje podsystemami</span></div>
+<ul class="sch-cols"><li><b>Pętla fonologiczna</b><ul><li>pętla artykulacyjna (powtarzanie)</li><li>magazyn fonologiczny</li></ul></li><li><b>Bufor epizodyczny</b><ul><li>łączy informacje w epizody</li><li>kontakt z pamięcią epizodyczną</li></ul></li><li><b>Notes wzrokowo-przestrzenny</b><ul><li>wewnętrzny system piszący</li><li>podręczny magazyn wzrokowy</li></ul></li></ul>
+<p class="sch-note">Podsystemy współpracują z <strong>pamięcią długotrwałą</strong> (język, pamięć epizodyczna, znaczenia informacji wzrokowych). <span class="src">sl. 27, 31–32</span></p></figure>
+<ul>
+<li>Neuropsychologia pętli fonologicznej: uszkodzenie <strong>pętli artykulacyjnej</strong> (okolica <strong>Broki</strong>) – zaburzenia artykulacji przy zachowanym rozumieniu i przechowywaniu; uszkodzenie <strong>magazynu fonologicznego</strong> (okolica <strong>Wernickego</strong>) – zaburzenia przechowywania informacji werbalnej przy zachowanym powtarzaniu. <span class="src">sl. 28</span></li>
+<li>Notes wzrokowo-przestrzenny: <strong>wewnętrzny system piszący</strong> łączy się z drogą grzbietową, <strong>magazyn wzrokowy</strong> z drogą brzuszną. <span class="src">sl. 32</span></li>
+<li><strong>Efekt długości słowa</strong> (Baddeley, 1975): pojemność werbalnej WM zależy od <strong>czasu wymawiania</strong> (ok. <strong>2 s</strong>), nie od liczby sylab; słowa wymawiane krócej mieszczą się w większej liczbie. <span class="src">sl. 29</span></li>
+</ul>
+<div class="key"><strong>Miller (7 ± 2 porcje) czy Baddeley (ok. 2 s)? Obaj mają rację.</strong> Pojemność zależy od <strong>liczby porcji</strong> i <strong>liczby sylab</strong> w porcjach: im większe porcje, tym mniej z nich zmieścimy w ok. 2 sekundach. <span class="src">sl. 30</span></div>
+</section>
 <section class="chapter" id="kto-4">
 <div class="chapter-head"><span class="num"></span><h2>Kto jest kim — wykład 4</h2></div>
 <div class="cards">
