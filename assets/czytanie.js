@@ -536,10 +536,13 @@
   // listy: krótkie punkty (bez zagnieżdżeń) dostają układ w dwóch kolumnach
   Array.prototype.forEach.call(root.querySelectorAll("ul"), function (ul) {
     if (ul.closest(".sch, .st-prime, nav, .hl-ui, .st-sheet, table, .cards, .must")) return;
-    var li = ul.children; if (li.length < 4) return;
-    var total = 0;
-    for (var i = 0; i < li.length; i++) { if (li[i].tagName !== "LI" || li[i].querySelector("ul, ol, table, p")) return; total += li[i].textContent.length; }
-    if (total / li.length <= 140) ul.classList.add("rd-grid2");
+    var li = ul.children; if (li.length < 3) return;
+    var total = 0, mx = 0;
+    for (var i = 0; i < li.length; i++) {
+      if (li[i].tagName !== "LI" || li[i].querySelector("ul, ol, table, figure")) return;
+      var n = li[i].textContent.length; total += n; if (n > mx) mx = n;
+    }
+    if (total / li.length <= 320 && mx <= 600) ul.classList.add("rd-grid2");   // kafelki obok siebie; bardzo długie punkty zostają w jednej kolumnie
   });
   // kotwice: akapity z przykładem
   Array.prototype.forEach.call(root.querySelectorAll("p, li"), function (el) {

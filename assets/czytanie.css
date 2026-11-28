@@ -199,8 +199,17 @@ html.rd-blur .rd-root .is-shown{animation:rd-reveal .25s ease-out}
    ========================================================= */
 /* 1. Krótkie listy w dwóch kolumnach (szerszy ekran) */
 @media (min-width:700px){
-  html.rd-2col .rd-root ul.rd-grid2{columns:2;column-gap:32px;column-rule:.5px solid var(--st-sep,rgba(0,0,0,.12))}
-  html.rd-2col .rd-root ul.rd-grid2>li{break-inside:avoid;-webkit-column-break-inside:avoid}
+  /* kafelki czytane wierszami: jak kartki rozłożone na biurku */
+  html.rd-2col .rd-root ul.rd-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;list-style:none;padding:0;margin:.4em 0 1.2em}
+  html.rd-2col .rd-root ul.rd-grid2>li{margin:0;padding:10px 12px 10px 14px;border-radius:10px;background:var(--st-surface,#f4f4f2);border-left:3px solid var(--st-tint-soft,rgba(0,0,0,.08));line-height:1.5}
+  html.rd-2col .rd-root ul.rd-grid2>li.rd-ex{border-left:2px dashed var(--st-tint,#8a4b3a);margin-left:0}
+  html.rd-2col .rd-root ul.rd-grid2>li:last-child:nth-child(odd){grid-column:1 / -1}
+  /* Pojęcia na start: siatka kafelków (pojęcie nad definicją) */
+  html.rd-2col .rd-root .st-prime dl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  html.rd-2col .rd-root .st-prime dl>div{display:block;padding:10px 12px;border-radius:10px;background:var(--st-surface,#f4f4f2);border-top:0}
+  html.rd-2col .rd-root .st-prime dl>div:last-child:nth-child(odd){grid-column:1 / -1}
+  html.rd-2col .rd-root .st-prime dt{margin:0 0 2px}
+  html.rd-2col .rd-root .st-prime dd{margin:0}
 }
 /* 2. Kotwice wizualne: definicja, przykład, tabela, nowa sekcja */
 .rd-root p.def,.rd-root div.def,.rd-root .key{border:0;border-left:3px solid var(--st-tint,#8a4b3a);background:var(--st-tint-soft,rgba(0,0,0,.04));border-radius:0 8px 8px 0;padding:10px 14px}
