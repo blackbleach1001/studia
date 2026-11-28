@@ -562,3 +562,39 @@
   document.addEventListener("visibilitychange", function () { if (document.hidden) save(); });
   save();
 })();
+
+/* ---------- tytuł w górnym pasku nie wchodzi pod przyciski ----------
+   Przyciski (spis, skupienie, lektor, zakreślenia, ukryj klucze, wygląd) stoją w prawym rogu,
+   a tytuł jest wyśrodkowany: jego szerokość liczymy z miejsca wolnego po obu stronach,
+   a gdy zostaje za mało (wąskie okno, Split View na iPadzie), tytuł chowamy. */
+(function () {
+  var nav, title, done = false;
+  function init() {
+    if (done) return;
+    nav = document.querySelector(".st-nav"); title = nav && nav.querySelector(".st-title");
+    if (!title) return;                                        // pasek tworzy reader.js – czasem później niż ten skrypt
+    done = true; start();
+  }
+  function fit() {
+    var dock = document.querySelector(".dock"), back = nav.querySelector(".st-back");
+    var vw = document.documentElement.clientWidth;
+    var right = dock ? vw - dock.getBoundingClientRect().left : 0;
+    var left = back ? back.getBoundingClientRect().right : 0;
+    var side = Math.max(right, left) + 12;                    // tytuł jest na środku: zostawiamy tyle samo z obu stron
+    var max = vw - 2 * side;
+    title.style.maxWidth = Math.max(0, max) + "px";
+    title.style.visibility = max < 140 ? "hidden" : "";
+  }
+  function start() {
+    fit();
+    addEventListener("resize", fit);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(fit);
+      var d = document.querySelector(".dock"); if (d) ro.observe(d);
+      var b = nav.querySelector(".st-back"); if (b) ro.observe(b);
+    }
+    setTimeout(fit, 600);                                     // przyciski czytania dochodzą po załadowaniu
+  }
+  init();
+  if (!done) { document.addEventListener("DOMContentLoaded", init); addEventListener("load", init); setTimeout(init, 300); setTimeout(init, 1200); }
+})();

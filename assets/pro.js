@@ -329,3 +329,4 @@
   new MutationObserver(jump).observe(panel, { attributes: true, attributeFilter: ["hidden"] });
   jump();
 })();
+
