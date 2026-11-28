@@ -219,7 +219,6 @@
     del: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
     hl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l-5 5v4h4l5-5"/><path d="M9 11l6-6 4 4-6 6z"/><path d="M14 20h6"/></svg>',
     img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></svg>',
-    scan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg>',
     eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-3.2 4.1M6.6 6.6A17 17 0 0 0 2.5 12S6 19 12 19a9.6 9.6 0 0 0 4.3-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>',
     aa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19l5-14 5 14M5 14h6"/><path d="M15 12.5a3 3 0 0 1 6 0V19M21 15.5c-3.5-.6-6 .2-6 2a1.8 1.8 0 0 0 3.2 1.1"/></svg>'
   };
@@ -454,7 +453,6 @@
     '<div class="rd-set"><span class="rd-lbl">Szerokość kolumny</span><div class="rd-seg" data-k="w"><button type="button" data-v="narrow">Wąska</button><button type="button" data-v="std">Zwykła</button><button type="button" data-v="wide">Szeroka</button></div></div>' +
     '<p class="rd-sample">Spostrzeganie to proces tworzenia reprezentacji przedmiotu na podstawie informacji ze zmysłów i, w pewnych przypadkach, z pamięci.</p>' +
     '<div class="rd-set"><span class="rd-lbl">Tryby nauki</span><div class="rd-modes">' +
-      '<button type="button" data-mode="scan"><b>Skanowanie</b><span>wyraźne tylko nagłówki, pogrubienia i zakreślenia</span></button>' +
       '<button type="button" data-mode="blur"><b>Ukryj klucze</b><span>rozmyte pogrubienia – dotknij, by odsłonić</span></button>' +
       '<button type="button" data-mode="grid"><b>Listy w dwóch kolumnach</b><span>krótkie listy obok siebie (szerszy ekran)</span></button>' +
     '</div></div>' +
@@ -508,31 +506,19 @@
   }, true);
   if (BLUR) html.classList.add("rd-blur");
 
-  /* --- tryby nauki: skanowanie, listy w dwóch kolumnach, przygaszanie znanych sekcji --- */
-  var SK = "studia-skan", SCAN = !!load(SK, false);
+  /* --- tryby nauki: listy w dwóch kolumnach, przygaszanie znanych sekcji --- */
+  try { localStorage.removeItem("studia-skan"); } catch (e) {}
   var GK = "studia-2kol", GRID = load(GK, true) !== false;
-  function setScan(v) { SCAN = v; store(SK, v); html.classList.toggle("rd-scan", v); if (!v) Array.prototype.forEach.call(root.querySelectorAll(".rd-lit"), function (e) { e.classList.remove("rd-lit"); }); }
   function setGrid(v) { GRID = v; store(GK, v); html.classList.toggle("rd-2col", v); }
-  var MODES = { scan: function () { return SCAN; }, blur: function () { return BLUR; }, grid: function () { return GRID; } };
+  var MODES = { blur: function () { return BLUR; }, grid: function () { return GRID; } };
   var TOGGLE = {
-    scan: function () { setScan(!SCAN); toast(SCAN ? "Skanowanie: dotknij akapitu, by go rozjaśnić" : "Skanowanie wyłączone"); syncDock(); },
     blur: function () { setBlur(!BLUR); syncDock(); },
     grid: function () { setGrid(!GRID); }
   };
   function syncDock() {
     Array.prototype.forEach.call(document.querySelectorAll(".rd-dock-blur"), function (k) { k.setAttribute("aria-pressed", String(BLUR)); });
-    Array.prototype.forEach.call(document.querySelectorAll(".rd-dock-scan"), function (k) { k.setAttribute("aria-pressed", String(SCAN)); });
   }
-  if (SCAN) html.classList.add("rd-scan");
   if (GRID) html.classList.add("rd-2col");
-  // skanowanie: dotknięcie akapitu rozjaśnia go (na myszy wystarcza najechanie)
-  var LIT = "p, li, dd, td, blockquote, .def, figure";
-  root.addEventListener("click", function (e) {
-    if (!SCAN) return;
-    var s = getSelection(); if (s && !s.isCollapsed) return;
-    var b = e.target.closest && e.target.closest(LIT); if (!b || !root.contains(b)) return;
-    b.classList.add("rd-lit");
-  });
   // listy: krótkie punkty (bez zagnieżdżeń) dostają układ w dwóch kolumnach
   Array.prototype.forEach.call(root.querySelectorAll("ul"), function (ul) {
     if (ul.closest(".sch, .st-prime, nav, .hl-ui, .st-sheet, table, .cards, .must")) return;
@@ -596,10 +582,6 @@
       k.onclick = function () { setBlur(!BLUR); syncDock(); toast(BLUR ? "Klucze ukryte – dotknij, by odsłonić" : "Klucze widoczne"); };
       bar.appendChild(k);
     }
-    var sc = document.createElement("button"); sc.type = "button"; sc.className = "rd-dock-scan";
-    sc.innerHTML = ICON.scan + "<span>Skanowanie</span>"; sc.setAttribute("aria-pressed", String(SCAN));
-    sc.onclick = function () { TOGGLE.scan(); };
-    bar.appendChild(sc);
     var a = document.createElement("button"); a.type = "button"; a.innerHTML = ICON.aa + "<span>Wygląd</span>";
     a.onclick = function () { fillLook(); openSheet(lookS); };
     bar.appendChild(a);

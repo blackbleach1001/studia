@@ -195,7 +195,7 @@ html.rd-blur .rd-root .is-shown{animation:rd-reveal .25s ease-out}
 @media print{html.rd-blur .rd-root :is(strong, b, mark.hl){filter:none!important}}
 
 /* =========================================================
-   Tryby nauki (czytanie.js): układ, kotwice, skanowanie, znane sekcje
+   Tryby nauki (czytanie.js): układ, kotwice, znane sekcje
    ========================================================= */
 /* 1. Krótkie listy w dwóch kolumnach (szerszy ekran) */
 @media (min-width:700px){
@@ -219,19 +219,6 @@ html.rd-blur .rd-root .is-shown{animation:rd-reveal .25s ease-out}
 .rd-root table tbody tr+tr td{border-top:.5px solid var(--st-sep,rgba(0,0,0,.14))}
 .rd-root table tbody td:first-child{font-weight:700}
 .rd-root>h2{margin-top:3.2em}
-/* 3. Skanowanie: tło przygaszone, szkielet wyraźny */
-html.rd-scan .rd-root :is(p, li, dd, td, blockquote, figcaption, .def, .tldr):not(.sch, .sch *){color:color-mix(in srgb,currentColor 28%,transparent);transition:color .15s}
-html.rd-scan .rd-root :is(strong, b, mark.hl, th, h1, h2, h3, h4, summary, .gl-term, a, .tldr .lbl, .must-tag):not(.sch *),
-html.rd-scan .rd-root td:first-child,
-html.rd-scan .rd-root :is(p, li, dd, td, blockquote, .def, figure).rd-lit,
-html.rd-scan .rd-root :is(p, li, dd, td, blockquote, .def, figure).rd-lit *{color:var(--st-ink,#1c1c1e)}
-html.rd-scan .rd-root a{color:var(--st-tint,#8a4b3a)}
-@media (hover:hover) and (pointer:fine){
-  html.rd-scan .rd-root :is(p, li, dd, td, blockquote, .def):hover,
-  html.rd-scan .rd-root :is(p, li, dd, td, blockquote, .def):hover *{color:var(--st-ink,#1c1c1e)}
-}
-.rd-dock-scan[aria-pressed="true"]{color:var(--st-tint)}
-@media (max-width:599px){.rd-dock-scan{display:none!important}}   /* telefon: przełącznik w arkuszu Wygląd */
 /* 4. Znane sekcje: ciche przygaszenie, bez liczników */
 .rd-known-btn{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:30px;height:30px;margin-left:8px;padding:0;border:0;border-radius:50%;
   background:transparent;color:var(--st-ink-3,#8e8e93);opacity:.35;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .15s,background .15s}
@@ -249,4 +236,4 @@ h2:hover .rd-known-btn,.rd-known-btn:focus-visible{opacity:1}
 .rd-modes button span{display:block;font-size:.8125rem;color:var(--st-ink-2,#555)}
 .rd-modes button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--st-tint,#8a4b3a);background:var(--st-tint-soft,rgba(0,0,0,.05))}
 .rd-modes button[aria-pressed="true"] b::after{content:" ✓";color:var(--st-tint,#8a4b3a)}
-@media print{html.rd-scan .rd-root *{color:#000!important}.rd-known-btn{display:none}.rd-root .rd-known{opacity:1!important}}
+@media print{.rd-known-btn{display:none}.rd-root .rd-known{opacity:1!important}}
