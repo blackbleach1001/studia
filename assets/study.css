@@ -391,3 +391,14 @@ figure.sch p.sch-note{margin:12px 0 0;font-size:.875rem;line-height:1.5;color:va
 .sch-scale .sub{margin-top:4px}
 /* znacznik części w długiej notatce */
 .sch-part{margin:3em 0 -1.2em;padding:6px 0 0;border-top:2px solid var(--tint);font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--tint)}
+
+/* ---------- „Do zapamiętania” wskazane przez prowadzącą ---------- */
+.must{margin:0 0 1.6em;padding:14px 16px 10px;border-radius:12px;background:var(--card);box-shadow:inset 0 0 0 2px var(--tint)}
+.must-h{font:700 .75rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--tint);margin:0 0 8px}
+.must-h::before{content:"★ "}
+.must ol{margin:0 0 .4em;padding-left:1.3em}
+.must li{margin:0 0 .45em;font-size:.9375rem}
+.must li a{font-weight:700}
+.must-tag{display:inline-block;margin:-.2em 0 .8em;padding:3px 9px;border-radius:6px;background:var(--tint);color:#fff;font:700 .75rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif}
+.must-tag::before{content:"★ "}
+figure.sch.must-fig{box-shadow:inset 0 0 0 2px var(--tint)}
