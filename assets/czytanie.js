@@ -236,7 +236,8 @@
             '<button type="button" data-act="img" aria-label="Kopiuj jako obraz">' + ICON.img + "</button>");
   }
   function place(rect) {
-    tb.hidden = false;
+    tb.hidden = false; html.classList.add("hl-open");
+    if (coarse) { tb.style.left = tb.style.top = ""; return; }   // dotyk: pasek przyklejony na dole (CSS), z dala od menu Apple
     var w = tb.offsetWidth, h = tb.offsetHeight, vw = document.documentElement.clientWidth;
     var x = Math.min(Math.max(8, rect.left + rect.width / 2 - w / 2), vw - w - 8);
     var below = coarse || rect.top < h + 70;                  // na telefonie pod zaznaczeniem (nad nim jest menu systemu)
@@ -247,7 +248,7 @@
   function showFor(range) {
     cur = { range: range.cloneRange() };
     tb.innerHTML = tbHTML(null); tb.classList.remove("is-edit");
-    var r = range.getBoundingClientRect(); if (!r.width && !r.height) return hide();
+    var r = range.getBoundingClientRect(); if (!coarse && !r.width && !r.height) return hide();
     place(r);
   }
   function showEdit(id, anchor) {
@@ -257,7 +258,7 @@
     var a = ms[0].getBoundingClientRect(), b = ms[ms.length - 1].getBoundingClientRect();
     place(anchor || { left: Math.min(a.left, b.left), right: Math.max(a.right, b.right), width: Math.abs(Math.max(a.right, b.right) - Math.min(a.left, b.left)), top: a.top, bottom: b.bottom });
   }
-  function hide() { tb.hidden = true; cur = null; }
+  function hide() { tb.hidden = true; cur = null; html.classList.remove("hl-open"); }
   tb.addEventListener("pointerdown", function (e) { e.preventDefault(); });   // nie gubić zaznaczenia
   tb.addEventListener("mousedown", function (e) { e.preventDefault(); });
   tb.addEventListener("click", function (e) {
@@ -298,7 +299,7 @@
       var r = selRange();
       if (r) showFor(r);
       else if (cur && cur.range) hide();
-    }, coarse ? 350 : 120);
+    }, coarse ? 220 : 120);
   }
   document.addEventListener("selectionchange", onSel);
   document.addEventListener("mouseup", onSel);
@@ -311,7 +312,7 @@
     if (cur && cur.id) hide();
   });
   addEventListener("scroll", function () {
-    if (tb.hidden || !cur) return;
+    if (tb.hidden || !cur || coarse) return;
     if (cur.range) { var r = cur.range.getBoundingClientRect(); place(r); }
     else showEdit(cur.id);
   }, { passive: true });

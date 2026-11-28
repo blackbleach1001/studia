@@ -84,7 +84,18 @@ mark.hl.is-flash{animation:hl-flash 1.2s ease}
 .hl-tb .hl-dot[data-c="p"]::before{background:var(--hl-p)}
 .hl-tb .hl-dot[aria-pressed="true"]::before{box-shadow:0 0 0 2px #1c1c1e,0 0 0 4px #fff}
 .hl-sep{width:1px;align-self:stretch;margin:6px 3px;background:rgba(255,255,255,.2)}
-@media (pointer:coarse){.hl-tb button{min-width:44px;min-height:44px}.hl-tb .hl-dot{min-width:40px}}
+.hl-tb{-webkit-touch-callout:none}
+/* Dotyk (iPhone, iPad): menu zaznaczania Apple stoi nad/pod tekstem i nie da się go wyłączyć,
+   więc pasek zakreśleń nie pływa przy zaznaczeniu, tylko wysuwa się na dole ekranu, w miejscu docka. */
+@media (pointer:coarse){
+  .hl-tb{left:calc(12px + env(safe-area-inset-left,0px));right:calc(12px + env(safe-area-inset-right,0px));top:auto;
+    bottom:calc(10px + env(safe-area-inset-bottom,0px));justify-content:space-around;padding:6px 8px;border-radius:18px;
+    max-width:560px;margin:0 auto;animation:hl-up .18s ease-out}
+  .hl-tb button{min-width:44px;min-height:44px}.hl-tb .hl-dot{min-width:44px}
+  .hl-tb button span{display:none}
+  html.hl-open .dock{visibility:hidden}
+}
+@keyframes hl-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* ---------- arkusze ---------- */
 .rd-sheet .st-panel{max-height:82vh}
