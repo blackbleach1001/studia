@@ -1,5 +1,10 @@
 [
  {
+  "date": "2026-12-09",
+  "subj": "metodologia",
+  "text": "Zadanie domowe: pierwsze obowiązkowe zadanie (Classroom)"
+ },
+ {
   "date": "2026-12-19",
   "subj": "poznawcza",
   "text": "Projekt zespołowy: prezentacja i badanie (efekt Stroopa) na ćwiczeniach z uwagi · max 12 pkt"
@@ -8,5 +13,10 @@
   "date": "2026-12-26",
   "subj": "poznawcza",
   "text": "Projekt zespołowy: termin oddania raportu (PDF do Classroom), −2 pkt za dzień zwłoki"
+ },
+ {
+  "date": "2026-12-31",
+  "subj": "praca",
+  "text": "Techpol – zadanie grupowe: termin oddania (Classroom)"
  }
 ]
