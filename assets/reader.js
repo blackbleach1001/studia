@@ -5,7 +5,7 @@
 (function () {
   "use strict";
   var KEY = "studia-reader-v2";
-  var S = { focus: false, rate: 1, player: false };
+  var S = { focus: false, rate: 1, player: false, nvol: 0.08 };
   try { Object.assign(S, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
   function save() {
     try {
@@ -89,6 +89,7 @@
     play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>',
     pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
     prev: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 6.5v11a.8.8 0 0 1-1.25.66L2.5 12.66a.8.8 0 0 1 0-1.32l7.25-5.5A.8.8 0 0 1 11 6.5zM21 6.5v11a.8.8 0 0 1-1.25.66l-7.25-5.5a.8.8 0 0 1 0-1.32l7.25-5.5A.8.8 0 0 1 21 6.5z"/></svg>',
+    wave: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0" opacity=".45"/><path d="M2 7c2-3 4-3 6 0s4 3 6 0 4-3 6 0" opacity=".45"/></svg>',
     next: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32l-7.25-5.5A.8.8 0 0 0 13 6.5zM3 6.5v11a.8.8 0 0 0 1.25.66l7.25-5.5a.8.8 0 0 0 0-1.32L4.25 5.84A.8.8 0 0 0 3 6.5z"/></svg>'
   };
 
@@ -235,6 +236,52 @@
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
 
+  /* ---------- brązowy szum (Web Audio, bez plików) ----------
+     Jeden kontekst na stronę: wyłączenie wycisza i usypia (suspend), więc szybkie
+     ponowne włączenie nie walczy z zamykaniem. Pętla 8 s bez „kliku” na łączeniu:
+     dryf błądzenia losowego jest odjęty, więc koniec bufora wraca do początku.
+     Startuje tylko po dotknięciu (zasady autoodtwarzania); na iPhonie przełącznik
+     wyciszenia może go zablokować. */
+  var AC = window.AudioContext || window.webkitAudioContext, hasNoise = !!AC;
+  var nz = { ctx: null, gain: null, on: false, tok: 0 };
+  function noiseBuffer(ctx) {
+    var n = Math.floor(ctx.sampleRate * 8), buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0);
+    var last = 0, i, peak = 0, mean = 0;
+    for (i = 0; i < n; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last; }
+    var drift = d[n - 1] - d[0];
+    for (i = 0; i < n; i++) { d[i] -= drift * i / (n - 1); mean += d[i]; }
+    mean /= n;
+    for (i = 0; i < n; i++) { d[i] -= mean; if (Math.abs(d[i]) > peak) peak = Math.abs(d[i]); }
+    if (peak > 0) for (i = 0; i < n; i++) d[i] *= 0.9 / peak;
+    return buf;
+  }
+  function noiseOn() {
+    if (!nz.ctx) {
+      var ctx = nz.ctx = new AC(), src = ctx.createBufferSource(), f = ctx.createBiquadFilter();
+      src.buffer = noiseBuffer(ctx); src.loop = true;
+      f.type = "lowpass"; f.frequency.value = 420;
+      nz.gain = ctx.createGain(); nz.gain.gain.value = 0;
+      src.connect(f); f.connect(nz.gain); nz.gain.connect(ctx.destination); src.start();
+    }
+    nz.tok++; nz.on = true;
+    nz.ctx.resume();
+    var g = nz.gain.gain, t = nz.ctx.currentTime;
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(S.nvol, t + 0.6);
+  }
+  function noiseOff() {
+    if (!nz.ctx || !nz.on) return;
+    nz.on = false;
+    var g = nz.gain.gain, t = nz.ctx.currentTime, tok = ++nz.tok;
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(0, t + 0.4);
+    setTimeout(function () { if (tok === nz.tok && !nz.on) nz.ctx.suspend(); }, 450);
+  }
+  function noiseVol() {
+    if (!nz.on) return;
+    var g = nz.gain.gain, t = nz.ctx.currentTime;
+    g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(S.nvol, t + 0.15);
+  }
+  addEventListener("pagehide", function () { if (nz.ctx) { nz.ctx.close(); nz.ctx = null; nz.on = false; } });
+
   /* ---------- pasek narzędzi na dole + lektor ---------- */
   var dock = document.createElement("div");
   dock.className = "dock";
@@ -248,6 +295,8 @@
         '<button class="ctl" type="button" data-a="next" aria-label="Następny akapit">' + ICON.next + '</button>' +
       '</div>' +
       '<label class="rate"><span>Prędkość</span><input type="range" min="0.6" max="1.8" step="0.05" data-a="rate" aria-label="Prędkość czytania"><output data-rate></output></label>' +
+      (hasNoise ? '<div class="noise"><button type="button" data-a="noise" aria-pressed="false">' + ICON.wave + '<span>Brązowy szum</span></button>' +
+        '<input type="range" min="0.02" max="0.3" step="0.01" data-a="nvol" aria-label="Głośność szumu"></div>' : "") +
     '</section>' : "") +
     '<nav class="dock-bar" aria-label="Narzędzia">' +
       (hasToc ? '<button type="button" data-a="toc" aria-haspopup="dialog">' + ICON.list + '<span>Spis treści</span></button>' : "") +
@@ -261,6 +310,7 @@
   var player = $(".player"), btnPlay = $('[data-a="play"]');
   var rateIn = $('[data-a="rate"]'), rateOut = $("[data-rate]");
   var nowEl = $("[data-now]"), subEl = $("[data-sub]");
+  var btnNoise = $('[data-a="noise"]'), nvolIn = $('[data-a="nvol"]');
 
   function applyUI() {
     document.body.classList.toggle("focus", !!S.focus && !NOFOCUS);
@@ -271,6 +321,11 @@
       document.body.classList.toggle("tts-on", !!S.player);
       rateIn.value = S.rate;
       rateOut.textContent = Number(S.rate).toFixed(2).replace(".", ",") + "×";
+    }
+    if (btnNoise) {
+      btnNoise.setAttribute("aria-pressed", String(nz.on));
+      nvolIn.value = S.nvol; nvolIn.disabled = !nz.on;
+      btnPlayer.classList.toggle("has-noise", nz.on);      // kropka przy „Lektor”, gdy szum gra przy zamkniętym panelu
     }
   }
 
@@ -285,6 +340,7 @@
     }
     if (a === "player") { S.player = !S.player; if (!S.player) stop(); }
     if (a === "play") { speaking ? pause() : play(); }
+    if (a === "noise") { nz.on ? noiseOff() : noiseOn(); }
     if (a === "prev") step(-1);
     if (a === "next") step(1);
     save(); applyUI();
@@ -293,6 +349,8 @@
     S.rate = parseFloat(rateIn.value); save(); applyUI();
     if (speaking) speakSentence();           // nowa prędkość od bieżącego zdania
   });
+
+  if (nvolIn) nvolIn.addEventListener("input", function () { S.nvol = parseFloat(nvolIn.value); save(); noiseVol(); });
 
   function firstVisibleBlock() {
     var list = blocks();

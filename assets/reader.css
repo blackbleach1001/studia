@@ -89,6 +89,14 @@
 .player .rate{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:.875rem;color:var(--st-ink-3)}
 .player .rate input{flex:1;accent-color:var(--st-tint);min-height:44px;margin:0}
 .player .rate output{min-width:3em;text-align:right;font-weight:700;color:var(--st-ink);font-variant-numeric:tabular-nums}
+.player .noise{display:flex;align-items:center;gap:10px;margin-top:2px;padding-top:6px;border-top:.5px solid var(--st-sep)}
+.player .noise button{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:0;border-radius:22px;background:transparent;color:var(--st-ink-3);font:inherit;font-size:.875rem;cursor:pointer;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.player .noise button svg{width:20px;height:20px}
+.player .noise button[aria-pressed="true"]{color:var(--st-tint);background:var(--st-tint-soft)}
+.player .noise input{flex:1;accent-color:var(--st-tint);min-height:44px;margin:0}
+.player .noise input:disabled{opacity:.35}
+.dock-bar button.has-noise{position:relative}
+.dock-bar button.has-noise::after{content:"";position:absolute;top:7px;right:calc(50% - 16px);width:6px;height:6px;border-radius:50%;background:var(--st-tint)}
 
 /* ---------- spis treści (arkusz) ---------- */
 .st-sheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center}
