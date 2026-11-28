@@ -166,7 +166,12 @@
         "title": "Modele badawcze: od pytania do testu",
         "src": "Józefacka t. 1, s. 37–63 · Bedyńska i Cypryańska, s. 149–157, 160–192, 198–221",
         "sub_short": "Hipotezy, eksperyment vs korelacja, r-Pearsona, chi-kwadrat, testy t",
-        "hand": true
+        "hand": true,
+        "plan": [
+          4,
+          5,
+          6
+        ]
       },
       {
         "key": "wyklad-5",
@@ -176,7 +181,10 @@
         "title": "Próba i jej dobór",
         "src": "Józefacka t. 1, s. 80–85, 132–148",
         "sub_short": "Dobór losowy i nielosowy, trafność, estymacja, błąd standardowy, n = 30",
-        "hand": true
+        "hand": true,
+        "plan": [
+          7
+        ]
       },
       {
         "key": "wyklad-6",
@@ -186,7 +194,8 @@
         "title": "Wnioskowanie statystyczne",
         "src": "Józefacka t. 1, s. 167–195 · Bedyńska, s. 136–140",
         "sub_short": "H₀ i H₁, błędy I i II rodzaju, α, przedziały ufności, p, wartość krytyczna, df, chi-kwadrat",
-        "hand": true
+        "hand": true,
+        "plan": []
       },
       {
         "key": "wyklad-7",
@@ -196,7 +205,10 @@
         "title": "Testy, moc, wielkość efektu",
         "src": "Józefacka t. 1, s. 167–195 · t. 2, s. 141–209",
         "sub_short": "Moc testu, wielkość efektu, testy parametryczne i nieparametryczne, wybór testu, post hoc, Bonferroni",
-        "hand": true
+        "hand": true,
+        "plan": [
+          8
+        ]
       },
       {
         "key": "cw-2",
