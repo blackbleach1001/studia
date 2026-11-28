@@ -219,6 +219,7 @@
     del: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
     hl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l-5 5v4h4l5-5"/><path d="M9 11l6-6 4 4-6 6z"/><path d="M14 20h6"/></svg>',
     img: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></svg>',
+    eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-3.2 4.1M6.6 6.6A17 17 0 0 0 2.5 12S6 19 12 19a9.6 9.6 0 0 0 4.3-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>',
     aa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19l5-14 5 14M5 14h6"/><path d="M15 12.5a3 3 0 0 1 6 0V19M21 15.5c-3.5-.6-6 .2-6 2a1.8 1.8 0 0 0 3.2 1.1"/></svg>'
   };
   var tb = document.createElement("div");
@@ -474,6 +475,31 @@
   /* =========================================================
      6. Przyciski w pasku narzędzi
      ========================================================= */
+  /* --- tryb „Ukryj klucze” --- */
+  var BK = "studia-klucze", BLUR = !!load(BK, false);
+  var KEYSEL = "strong, b, mark.hl, .st-prime dt";
+  var NOBLUR = "h1, h2, h3, h4, summary, figcaption, th, button, a, .hl-ui, .st-check, .must-tag, .st-prime-h, .tldr .lbl";
+  function setBlur(v) {
+    BLUR = v; store(BK, v);
+    html.classList.toggle("rd-blur", v);
+    if (!v) Array.prototype.forEach.call(root.querySelectorAll(".is-shown"), function (e) { e.classList.remove("is-shown"); });
+  }
+  function hiddenKey(t) {
+    if (!BLUR || !t.closest) return null;
+    var k = t.closest(KEYSEL);
+    if (!k || !root.contains(k) || k.closest(NOBLUR)) return null;
+    for (var p = k; p && p !== root; p = p.parentElement) if (p.matches && p.matches(KEYSEL) && !p.classList.contains("is-shown")) k = p;   // najszerszy rozmyty
+    return k.classList.contains("is-shown") ? null : k;
+  }
+  document.addEventListener("click", function (e) {           // faza przechwytywania: odsłonięcie ma pierwszeństwo przed paskiem zakreśleń i słownikiem
+    var k = hiddenKey(e.target); if (!k) return;
+    var s = getSelection(); if (s && !s.isCollapsed) return;
+    e.preventDefault(); e.stopPropagation();
+    k.classList.add("is-shown");
+    Array.prototype.forEach.call(k.querySelectorAll(KEYSEL), function (x) { x.classList.add("is-shown"); });
+  }, true);
+  if (BLUR) html.classList.add("rd-blur");
+
   var dockHL = null;
   function dockButtons(withHL) {
     var bar = document.querySelector(".dock-bar");
@@ -486,6 +512,13 @@
       dockHL.innerHTML = ICON.hl + "<span>Zakreślenia</span>";
       dockHL.onclick = function () { fillList(); openSheet(listS); };
       bar.appendChild(dockHL);
+    }
+    if (withHL) {                                            // „Ukryj klucze”: rozmyte pogrubienia i zakreślenia (aktywne przypominanie)
+      var k = document.createElement("button"); k.type = "button"; k.className = "rd-dock-blur";
+      k.innerHTML = ICON.eye + "<span>Ukryj klucze</span>";
+      k.setAttribute("aria-pressed", String(BLUR));
+      k.onclick = function () { setBlur(!BLUR); k.setAttribute("aria-pressed", String(BLUR)); toast(BLUR ? "Klucze ukryte – dotknij, by odsłonić" : "Klucze widoczne"); };
+      bar.appendChild(k);
     }
     var a = document.createElement("button"); a.type = "button"; a.innerHTML = ICON.aa + "<span>Wygląd</span>";
     a.onclick = function () { fillLook(); openSheet(lookS); };

@@ -183,3 +183,13 @@ mark.hl.is-flash{animation:hl-flash 1.2s ease}
 .gl-mode[aria-pressed="true"]{background:var(--st-tint-soft,rgba(0,0,0,.08));color:var(--st-tint,#8a4b3a)}
 @media (pointer:coarse){.gl-mode{min-height:40px}}
 @media print{.gl-pop{display:none!important}.gl-term{text-decoration:none}}
+
+/* ---------- tryb „Ukryj klucze” (czytanie.js) ---------- */
+html.rd-blur .rd-root :is(strong, b, mark.hl, .st-prime dt):not(.is-shown){filter:blur(5px);cursor:pointer;-webkit-user-select:none;user-select:none;transition:filter .18s ease}
+html.rd-blur .rd-root :is(strong, b, mark.hl, .st-prime dt):not(.is-shown) :is(strong, b, mark.hl){filter:none}
+html.rd-blur .rd-root :is(h1, h2, h3, h4, summary, figcaption, th, button, a, .hl-ui, .st-check, .must-tag, .st-prime-h, .tldr .lbl) :is(strong, b),
+html.rd-blur .rd-root :is(a, button) :is(strong, b){filter:none;cursor:auto;-webkit-user-select:auto;user-select:auto}
+html.rd-blur .rd-root .is-shown{animation:rd-reveal .25s ease-out}
+@keyframes rd-reveal{from{background:var(--st-tint-soft,rgba(0,0,0,.06))}to{background:transparent}}
+.rd-dock-blur[aria-pressed="true"]{color:var(--st-tint)}
+@media print{html.rd-blur .rd-root :is(strong, b, mark.hl){filter:none!important}}
